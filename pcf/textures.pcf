@@ -1,0 +1,16 @@
+### FILE : Initialisation des textures du jeu. ###
+//format = pathfile / ID de la texture
+
+-BACKGROUNDS
+textures/backgrounds/test.png TEST1
+textures/backgrounds/test2.png TEST2
+
+-ITEMS
+textures/items/boot1.png BOOTS1
+textures/items/boot2.png BOOTS2
+
+-PNJS
+textures/pnjs/pnj1.png PNJ1
+textures/pnjs/pnj2.png PNJ2
+
+### END OF FILE ###

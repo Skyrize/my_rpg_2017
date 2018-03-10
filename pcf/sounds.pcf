@@ -1,0 +1,8 @@
+### FILE : Initialisation des sons et des musiques du jeu ###
+//Format = pathfile / Nom de la musique/du son
+
+-SOUNDS
+
+-MUSICS
+
+### END OF FILE ###

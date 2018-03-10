@@ -1,0 +1,8 @@
+### FILE : Initialisation des fonts de texts du jeu. ###
+//format = pathfile / ID de la font
+
+-FONTS
+fonts/lifecraft.ttf LIFECRAFT
+fonts/arcade_classic.ttf ARCADE
+
+### END OF FILE ###
