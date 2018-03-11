@@ -36,7 +36,7 @@ int init_my_scenes(my_w_t *window)
 {
 
 	get_infos_t infos = {"pcf/scenes.pcf", "-",
-	&init_scenes_and_objs_from_pcf};
+	&init_scenes_from_pcf};
 
 	window->scenes = hm_create(16, &scenes_destroy);
 	if (analyse_my_project_config_file(window, &infos) != 0) {

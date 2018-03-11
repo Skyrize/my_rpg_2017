@@ -28,7 +28,6 @@ my_w_t init_my_window(void)
 	my_w_t window;
 
 	window.error_no = 0;
-	window.actual_scene = "START";
 	window.clocker = init_timer();
 	window.window = sfRenderWindow_create((sfVideoMode){1600, 900, 32},
 	"World of CookCraft", sfResize | sfClose, NULL);
@@ -37,5 +36,6 @@ my_w_t init_my_window(void)
 	|| init_my_scenes(&window) != 0
 	|| !window.clocker.clock || init_game_tools(&window) != 0)
 		window.error_no = 84;
+	window.actual_scene = "START";
 	return (window);
 }

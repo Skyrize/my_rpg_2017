@@ -12,8 +12,10 @@ SRC	=	main.c	\
 		src/init/scenes_tab_init.c	\
 		src/init/list_filling_init.c	\
 		src/init/init_libs.c	\
+		src/init/init_words.c	\
 		src/input/input_functions.c	\
 		src/warning_functions/init_warning.c	\
+		src/warning_functions/init_warning_2.c	\
 		src/warning_functions/display_warning.c	\
 		src/list_management/objs_list_creation.c	\
 		src/game_lobby/game_computing_functions.c	\

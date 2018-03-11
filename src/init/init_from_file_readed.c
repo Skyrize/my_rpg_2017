@@ -7,6 +7,7 @@
 
 #include "my.h"
 #include "rpg.h"
+extern key_word_t init_words[];
 
 int init_fonts_lib_from_pcf(char **infos, my_w_t *window)
 {
@@ -18,36 +19,24 @@ int init_fonts_lib_from_pcf(char **infos, my_w_t *window)
 	return (0);
 }
 
-int init_obj_and_texts_from_pcf(char **infos, my_w_t *window,
-	char **type, hashmap_t *current_list)
-{
-	if (my_fastcmp(type[0], "OBJ") == 0)
-		if (init_an_obj(infos, window, current_list) != 0)
-			return (84);
-	if (my_fastcmp(type[0], "TEXT") == 0)
-		if (init_a_text(infos, window, current_list) != 0)
-			return (84);
-	return (0);
-}
-
-int init_scenes_and_objs_from_pcf(char **infos, my_w_t *window)
+int init_scenes_from_pcf(char **infos, my_w_t *window)
 {
 	char **type = my_str_to_word_array(infos[0], '=');
-	static scene_t *current_scene = NULL;
-	static hashmap_t *current_list = NULL;
+	static hashmap_t *current_list;
+	unsigned int i = 0;
 
 	if (!type)
 		return (84);
-	if (my_fastcmp(type[0], "SCENE") == 0) {
-		if (init_scene_lists(type[1], window) != 0)
-			return (84);
-		current_scene = hm_get(window->scenes, type[1]);
+	for (; init_words[i].key_word; i++) {
+		if (my_fastcmp(init_words[i].key_word, type[0]) == 0) {
+			window->error_no = init_words[i].fptr(infos, type,
+				&current_list, window);
+			break;
+		}
 	}
-	if (my_fastcmp(type[0], "INDEX") == 0)
-		current_list = current_scene->objs[my_getnbr(type[1])];
-	if (my_fastcmp(infos[0], "LIST=TEXTS") == 0)
-		current_list = current_scene->texts;
-	if (init_obj_and_texts_from_pcf(infos, window, type, current_list) != 0)
+	if (window->error_no != 0)
+		return (84);
+	if (check_invalid_key_word(init_words[i].key_word, type[0]) != 0)
 		return (84);
 	return (0);
 }

@@ -34,10 +34,10 @@ typedef struct mapping_s
 
 typedef enum
 {
-	BACKGROUNDS,
-	PNJS,
-	ITEMS,
-	BUTTONS,
+	BACKGROUNDS = 0,
+	PNJS = 1,
+	ITEMS = 2,
+	BUTTONS = 3,
 } objs_type_t;
 
 typedef struct scene_s {
@@ -68,6 +68,12 @@ typedef struct my_window_s
 } my_w_t;
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
+
+typedef struct key_word_s
+{
+	char *key_word;
+	int (*fptr)(char **, char **, hashmap_t **, my_w_t *);
+} key_word_t;
 
 typedef struct get_infos_s
 {
@@ -113,8 +119,16 @@ int analyse_my_project_config_file(my_w_t *window, get_infos_t *infos);
 int init_audio_lib_from_pcf(char **infos, my_w_t *window);
 int init_textures_lib_from_pcf(char **infos, my_w_t *window);
 int init_audio_lib_from_pcf(char **infos, my_w_t *window);
-int init_scenes_and_objs_from_pcf(char **infos, my_w_t *window);
+int init_scenes_from_pcf(char **infos, my_w_t *window);
 int init_fonts_lib_from_pcf(char **infos, my_w_t *window);
+
+/// KEY WORDS FUNCTIONS
+
+int get_a_scene(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_list(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_an_index(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_an_obj(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_text(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 
 /// INIT WARNING
 
@@ -123,6 +137,7 @@ int check_missing_information_for_text(char **infos);
 int check_unexisting_font(sfFont *font, char *font_name);
 int check_invalid_obj_init(char **obj_type, char **obj_x, char **obj_y);
 int check_invalid_texture(sfTexture *texture, char *texture_name);
+int check_invalid_key_word(char *last_word_used, char *key_word);
 
 /// IN GAME WARNING
 
