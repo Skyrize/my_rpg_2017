@@ -29,7 +29,8 @@ my_w_t init_my_window(void)
 
 	window.error_no = 0;
 	window.clocker = init_timer();
-	window.window = sfRenderWindow_create((sfVideoMode){1600, 900, 32},
+	window.window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
+		WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
 	"World of CookCraft", sfResize | sfClose, NULL);
 	if (!window.window || init_my_textures_lib(&window) != 0
 	|| init_my_audio_lib(&window) != 0 || init_my_fonts_lib(&window) != 0
