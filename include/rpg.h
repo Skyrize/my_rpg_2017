@@ -9,7 +9,41 @@
 #define RPG_H_
 #include "hashify.h"
 
+///////////////////////////////// INIT DEFINES //////////////////////////////
+
+#define TEXT_SEPARATOR_CHAR '_'
+#define OBJ_KEYWORD "OBJ"
+#define TEXTURE_KEYWORD "TEXTURE"
+#define TEXT_KEYWORD "TEXT"
+#define STR_KEYWORD "STR"
+#define FONT_KEYWORD "FONT"
+#define CHARAC_SIZE_KEYWORD "CHARAC_SIZE"
+#define X_KEYWORD "X"
+#define Y_KEYWORD "Y"
+
+///////////////////////////////////// DEFINES //////////////////////////////
+
+#define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
+#define OVER_COLOR ((sfColor){255, 100, 100, 255})
+#define OBJS_TYPE_NB 4
+
 ////////////////////////////////// OBJECTS //////////////////////////////
+
+typedef struct obj_data_s
+{
+	char *name;
+	char *type;
+	sfVector2f position;
+} obj_data_t;
+
+typedef struct text_data_s
+{
+	char *name;
+	char *text;
+	sfFont *font;
+	int charac_size;
+	sfVector2f position;
+} text_data_t;
 
 typedef struct game_objs_s game_objs_t;
 
@@ -41,7 +75,7 @@ typedef enum
 } objs_type_t;
 
 typedef struct scene_s {
-	hashmap_t *objs[4];
+	hashmap_t *objs[OBJS_TYPE_NB];
 	hashmap_t *texts;
 	sfMusic *music;
 } scene_t;
@@ -85,24 +119,21 @@ typedef struct get_infos_s
 
 typedef struct text_infos_s
 {
+	char **name;
 	char **text;
-	char **text_font;
-	char **text_charac_size;
-	char **text_x;
-	char **text_y;
+	char **font;
+	char **charac_size;
+	char **x;
+	char **y;
 } text_infos_t;
 
 typedef struct obj_infos_s
 {
-	char **obj_type;
-	char **obj_x;
-	char **obj_y;
+	char **name;
+	char **type;
+	char **x;
+	char **y;
 } obj_infos_t;
-
-///////////////////////////////////// DEFINES //////////////////////////////
-
-#define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
-#define OVER_COLOR ((sfColor){255, 100, 100, 255})
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -147,6 +178,9 @@ int check_invalid_key_word(char *last_word_used, char *key_word);
 int check_invalid_music(sfMusic *music, char *music_name);
 int check_missing_args_for_key_word(char **args);
 int check_invalid_text_init(text_infos_t *text);
+int check_invalid_index(int index);
+int check_already_existing_obj(obj_data_t *data, hashmap_t *current_list);
+int check_already_existing_text(text_data_t *data, hashmap_t *current_list);
 
 /// IN GAME WARNING
 
@@ -154,8 +188,8 @@ int check_valid_display(scene_t *current_scene, char *scene_seeked);
 
 /// HASHMAP LIST ADDING
 
-int add_obj_to_list(char *obj_key, hashmap_t *list, sfVector2f *position, my_w_t *window);
-int add_text_to_list(text_infos_t *text, my_w_t *window, hashmap_t *current_list);
+int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
+int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 
 /// DESTROY FUNCTIONS
 

@@ -13,7 +13,7 @@ int scene_init(scene_t **value)
 	*value = malloc(sizeof(scene_t));
 	if (!*value)
 		return (84);
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i != OBJS_TYPE_NB; i++) {
 		(*value)->objs[i] = hm_create(64, &obj_destroy);
 		if (!(*value)->objs[i])
 			return (84);

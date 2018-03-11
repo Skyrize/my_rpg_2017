@@ -17,6 +17,7 @@ SRC	=	main.c	\
 		src/input/input_functions.c	\
 		src/warning_functions/init_warning.c	\
 		src/warning_functions/init_warning_2.c	\
+		src/warning_functions/init_warning_3.c	\
 		src/warning_functions/display_warning.c	\
 		src/list_management/objs_list_creation.c	\
 		src/game_lobby/game_computing_functions.c	\

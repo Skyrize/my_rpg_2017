@@ -46,6 +46,8 @@ int get_an_index(char **infos, char **type, hashmap_t **current_list,
 {
 	scene_t *current_scene = hm_get(window->scenes, window->actual_scene);
 
+	if (check_invalid_index(my_getnbr(type[1])) != 0)
+		return (84);
 	*current_list = current_scene->objs[my_getnbr(type[1])];
 	(void)current_list;
 	(void)infos;

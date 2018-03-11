@@ -26,14 +26,10 @@ int display_scene(my_w_t *window, bucket_t *current_scene)
 
 	if (check_valid_display(scene, window->actual_scene) != 0)
 		return (84);
-	display_hashmap(window, scene->objs[BACKGROUNDS],
-		&display_bucket_objs);
-	display_hashmap(window, scene->objs[PNJS],
-		&display_bucket_objs);
-	display_hashmap(window, scene->objs[ITEMS],
-		&display_bucket_objs);
-	display_hashmap(window, scene->objs[BUTTONS],
-		&display_bucket_objs);
+	for (int i = 0; i != OBJS_TYPE_NB; i++) {
+		display_hashmap(window, scene->objs[i],
+			&display_bucket_objs);
+	}
 	display_hashmap(window, scene->texts, &display_bucket_texts);
 	return (0);
 }

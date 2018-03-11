@@ -46,18 +46,30 @@ int check_missing_args_for_key_word(char **args)
 
 int check_invalid_text_init(text_infos_t *text)
 {
-	if (!text->text || !text->text_font || !text->text_charac_size
-		|| !text->text_x || !text->text_y || !text->text[0]
-		|| !text->text_font[0] || !text->text_charac_size[0]
-		|| !text->text_x[0] || !text->text_y[0] || !text->text[1]
-		|| !text->text_font[1] || !text->text_charac_size[1]
-		|| !text->text_x[1] || !text->text_y[1]
-		|| my_fastcmp(text->text[0], "TEXT") == 1
-		|| my_fastcmp(text->text_font[0], "FONT") == 1
-		|| my_fastcmp(text->text_charac_size[0], "CHARAC_SIZE") == 1
-		|| my_fastcmp(text->text_x[0], "X") == 1
-		|| my_fastcmp(text->text_y[0], "Y") == 1) {
+	if (!text->name || !text->text || !text->font || !text->charac_size
+		|| !text->x || !text->y
+		|| !text->name[0] || !text->name[1]
+		|| !text->text[0] || !text->text[1]
+		|| !text->font[0] || !text->font[1]
+		|| !text->charac_size[0] || !text->charac_size[1]
+		|| !text->x[0] || !text->x[1]
+		|| !text->y[0] || !text->y[1]
+		|| my_fastcmp(text->name[0], TEXT_KEYWORD) == 1
+		|| my_fastcmp(text->text[0], STR_KEYWORD) == 1
+		|| my_fastcmp(text->font[0], FONT_KEYWORD) == 1
+		|| my_fastcmp(text->charac_size[0], CHARAC_SIZE_KEYWORD) == 1
+		|| my_fastcmp(text->x[0], X_KEYWORD) == 1
+		|| my_fastcmp(text->y[0], Y_KEYWORD) == 1) {
 		my_printf("WARNING: INVALID TEXT INIT FORMAT");
+		return (84);
+	}
+	return (0);
+}
+
+int check_invalid_index(int index)
+{
+	if (index < 0 || index >= OBJS_TYPE_NB) {
+		my_printf("WARNING: INDEX HAS TO STICK BETWEEN 0 AND 3 !\n");
 		return (84);
 	}
 	return (0);
