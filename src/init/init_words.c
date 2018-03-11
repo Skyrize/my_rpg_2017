@@ -13,6 +13,7 @@ key_word_t init_words[] = {{"SCENE", &get_a_scene},
 {"INDEX", &get_an_index},
 {"OBJ", &get_an_obj},
 {"TEXT", &get_a_text},
+{"MUSIC", &get_a_music},
 {NULL, NULL}};
 
 int get_a_scene(char **infos, char **type, hashmap_t **current_list,

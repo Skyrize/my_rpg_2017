@@ -20,20 +20,20 @@ void display_hashmap(my_w_t *window, hashmap_t *hashmap, void (*fptr)())
 	}
 }
 
-int display_scene(my_w_t *window)
+int display_scene(my_w_t *window, bucket_t *current_scene)
 {
-	scene_t *current_scene = hm_get(window->scenes, window->actual_scene);
+	scene_t *scene = current_scene->value;
 
-	if (check_valid_display(current_scene, window->actual_scene) != 0)
+	if (check_valid_display(scene, window->actual_scene) != 0)
 		return (84);
-	display_hashmap(window, current_scene->objs[BACKGROUNDS],
+	display_hashmap(window, scene->objs[BACKGROUNDS],
 		&display_bucket_objs);
-	display_hashmap(window, current_scene->objs[PNJS],
+	display_hashmap(window, scene->objs[PNJS],
 		&display_bucket_objs);
-	display_hashmap(window, current_scene->objs[ITEMS],
+	display_hashmap(window, scene->objs[ITEMS],
 		&display_bucket_objs);
-	display_hashmap(window, current_scene->objs[BUTTONS],
+	display_hashmap(window, scene->objs[BUTTONS],
 		&display_bucket_objs);
-	display_hashmap(window, current_scene->texts, &display_bucket_texts);
+	display_hashmap(window, scene->texts, &display_bucket_texts);
 	return (0);
 }

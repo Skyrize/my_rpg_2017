@@ -43,6 +43,7 @@ typedef enum
 typedef struct scene_s {
 	hashmap_t *objs[4];
 	hashmap_t *texts;
+	sfMusic *music;
 } scene_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
@@ -91,13 +92,17 @@ typedef struct text_infos_s
 	char **text_y;
 } text_infos_t;
 
+typedef struct obj_infos_s
+{
+	char **obj_type;
+	char **obj_x;
+	char **obj_y;
+} obj_infos_t;
+
 ///////////////////////////////////// DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){255, 100, 100, 255})
-#define WRONG_OBJ_INIT (!obj_type || !obj_x || !obj_y || !obj_type[0] || !obj_x[0] || !obj_y[0] || !obj_type[1] || !obj_x[1] || !obj_y[1] || my_fastcmp(obj_type[0], "OBJ") == 1 || my_fastcmp(obj_x[0], "X") == 1 || my_fastcmp(obj_y[0], "Y") == 1)
-#define WRONG_TEXT_INIT (!text.text || !text.text_font || !text.text_charac_size || !text.text_x || !text.text_y || !text.text[0] || !text.text_font[0] || !text.text_charac_size[0] || !text.text_x[0] || !text.text_y[0] || !text.text[1] || !text.text_font[1] || !text.text_charac_size[1] || !text.text_x[1] || !text.text_y[1] || my_fastcmp(text.text[0], "TEXT") == 1 || my_fastcmp(text.text_font[0], "FONT") == 1 || my_fastcmp(text.text_charac_size[0], "CHARAC_SIZE") == 1 || my_fastcmp(text.text_x[0], "X") == 1 || my_fastcmp(text.text_y[0], "Y") == 1)
-
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -129,15 +134,19 @@ int get_a_list(char **infos, char **type, hashmap_t **current_list, my_w_t *wind
 int get_an_index(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_an_obj(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_text(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_music(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 
 /// INIT WARNING
 
 int check_missing_information_for_obj(char **infos);
 int check_missing_information_for_text(char **infos);
 int check_unexisting_font(sfFont *font, char *font_name);
-int check_invalid_obj_init(char **obj_type, char **obj_x, char **obj_y);
+int check_invalid_obj_init(obj_infos_t *obj);
 int check_invalid_texture(sfTexture *texture, char *texture_name);
 int check_invalid_key_word(char *last_word_used, char *key_word);
+int check_invalid_music(sfMusic *music, char *music_name);
+int check_missing_args_for_key_word(char **args);
+int check_invalid_text_init(text_infos_t *text);
 
 /// IN GAME WARNING
 
@@ -157,11 +166,11 @@ void scenes_destroy(scene_t *scene);
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
-int game_lobby(my_w_t *window);
+int game_lobby(my_w_t *window, bucket_t *current_scene);
 
 /// DISPLAY FUNCTIONS
 
-int display_scene(my_w_t *window);
+int display_scene(my_w_t *window, bucket_t *current_scene);
 void display_hashmap_objs(my_w_t *window, hashmap_t *hashmap);
 void display_bucket_objs(my_w_t *window, bucket_t *obj);
 void display_bucket_texts(my_w_t *window, bucket_t *obj);

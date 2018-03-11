@@ -25,7 +25,7 @@ int init_scenes_from_pcf(char **infos, my_w_t *window)
 	static hashmap_t *current_list;
 	unsigned int i = 0;
 
-	if (!type)
+	if (check_missing_args_for_key_word(type) != 0)
 		return (84);
 	for (; init_words[i].key_word; i++) {
 		if (my_fastcmp(init_words[i].key_word, type[0]) == 0) {

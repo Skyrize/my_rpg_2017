@@ -8,6 +8,23 @@
 #include "my.h"
 #include "rpg.h"
 
+int scene_init(scene_t **value)
+{
+	*value = malloc(sizeof(scene_t));
+	if (!*value)
+		return (84);
+	for (int i = 0; i < 4; i++) {
+		(*value)->objs[i] = hm_create(64, &obj_destroy);
+		if (!(*value)->objs[i])
+			return (84);
+	}
+	(*value)->texts = hm_create(64, &sfText_destroy);
+	if (!(*value)->texts)
+		return (84);
+	(*value)->music = NULL;
+	return (0);
+}
+
 int init_scene_lists(char *scene_name, my_w_t *window)
 {
 	bucket_t *scene = hm_get_bucket(window->scenes, scene_name);
@@ -17,16 +34,7 @@ int init_scene_lists(char *scene_name, my_w_t *window)
 		my_printf("WARNING: TWO SCENES WITH THE SAME NAME!\n");
 		return (84);
 	}
-	value = malloc(sizeof(scene_t));
-	if (!value)
-		return (84);
-	for (int i = 0; i < 4; i++) {
-		value->objs[i] = hm_create(64, &obj_destroy);
-		if (!value->objs[i])
-			return (84);
-	}
-	value->texts = hm_create(64, &sfText_destroy);
-	if (!value->texts)
+	if (scene_init(&value) != 0)
 		return (84);
 	hm_add(window->scenes, scene_name, value);
 	return (0);

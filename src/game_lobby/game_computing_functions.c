@@ -20,11 +20,11 @@ void compute_game(my_w_t *window)
 	(void)window;
 }
 
-int game_lobby(my_w_t *window)
+int game_lobby(my_w_t *window, bucket_t *current_scene)
 {
 	analyse_events(window);
 	compute_game(window);
-	if (display_scene(window) != 0)
+	if (display_scene(window, current_scene) != 0)
 		return (84);
 	return (0);
 }

@@ -13,6 +13,7 @@ SRC	=	main.c	\
 		src/init/list_filling_init.c	\
 		src/init/init_libs.c	\
 		src/init/init_words.c	\
+		src/init/init_words_2.c	\
 		src/input/input_functions.c	\
 		src/warning_functions/init_warning.c	\
 		src/warning_functions/init_warning_2.c	\
