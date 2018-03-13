@@ -48,7 +48,6 @@ int init_textures_lib_from_pcf(char **infos, my_w_t *window)
 		return (84);
 	if (check_already_existing_texture(window->textures_lib, infos[1]) != 0)
 		return (84);
-	my_printf("infos 1 = %s\n", infos[1]);
 	hm_add(window->textures_lib, infos[1], texture);
 	return (0);
 }

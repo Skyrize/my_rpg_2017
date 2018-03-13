@@ -9,15 +9,31 @@ textures/backgrounds/test2.png TEST2
 ITEMS:
 	MAGE:
 ----------------BOOTS:
-			textures/items/mage/boots/mage_mythic_01.png MAGE_MYTHIC_BOOTS_01
+			textures/items/mage/boots/mythic/mythic_01.png MAGE_MYTHIC_BOOTS_01
+			textures/items/mage/boots/epic/epic_01.png MAGE_EPIC_BOOTS_01
+			textures/items/mage/boots/epic/epic_02.png MAGE_EPIC_BOOTS_02
+			textures/items/mage/boots/epic/epic_03.png MAGE_EPIC_BOOTS_03
+			textures/items/mage/boots/rare/rare_01.png MAGE_RARE_BOOTS_01
+			textures/items/mage/boots/rare/rare_02.png MAGE_RARE_BOOTS_02
+			textures/items/mage/boots/rare/rare_03.png MAGE_RARE_BOOTS_03
+			textures/items/mage/boots/rare/rare_04.png MAGE_RARE_BOOTS_04
+			textures/items/mage/boots/rare/rare_05.png MAGE_RARE_BOOTS_05
+			textures/items/mage/boots/common/common_00.png MAGE_COMMON_BOOTS_00
+			textures/items/mage/boots/common/common_01.png MAGE_COMMON_BOOTS_01
+			textures/items/mage/boots/common/common_02.png MAGE_COMMON_BOOTS_02
+			textures/items/mage/boots/common/common_03.png MAGE_COMMON_BOOTS_03
+			textures/items/mage/boots/common/common_04.png MAGE_COMMON_BOOTS_04
+			textures/items/mage/boots/common/common_05.png MAGE_COMMON_BOOTS_05
+			textures/items/mage/boots/common/common_06.png MAGE_COMMON_BOOTS_06
+			textures/items/mage/boots/common/common_07.png MAGE_COMMON_BOOTS_07
 
 	WARRIOR:
 ----------------BOOTS:
-			textures/items/warrior/boots/warrior_rare_01.png WARRIOR_RARE_BOOTS_01
+			textures/items/warrior/boots/rare/rare_01.png WARRIOR_RARE_BOOTS_01
 
 	HUNTER:
 ----------------BOOTS:
-			textures/items/hunter/boots/hunter_rare_01.png HUNTER_RARE_BOOTS_01
+			textures/items/hunter/boots/rare/rare_01.png HUNTER_RARE_BOOTS_01
 
 -PNJS
 textures/pnjs/pnj1.png PNJ1
