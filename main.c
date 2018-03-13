@@ -38,7 +38,7 @@ int main()
 	my_w_t window = init_my_window();
 	bucket_t *current_scene = NULL;
 
-	if (window.error_no != 0)
+	if (check_invalid_window_init(window.error_no) != 0)
 		return (84);
 	process_pre_window(&window, &current_scene);
 	while (sfRenderWindow_isOpen(window.window)) {

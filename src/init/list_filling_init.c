@@ -24,8 +24,6 @@ int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list)
 	obj_infos_t obj;
 	obj_data_t data;
 
-	if (check_missing_information_for_obj(infos) != 0)
-		return (84);
 	obj.name = my_str_to_word_array(infos[0], '=');
 	obj.type = my_str_to_word_array(infos[1], '=');
 	obj.x = my_str_to_word_array(infos[2], '=');
@@ -72,8 +70,6 @@ int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list)
 	text_infos_t text;
 	text_data_t data;
 
-	if (check_missing_information_for_text(infos) != 0)
-		return (84);
 	text = get_text_infos(infos);
 	if (check_invalid_text_init(&text) != 0)
 		return (84);

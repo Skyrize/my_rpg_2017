@@ -8,14 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-key_word_t init_words[] = {{"SCENE", &get_a_scene},
-{"LIST", &get_a_list},
-{"INDEX", &get_an_index},
-{"OBJ", &get_an_obj},
-{"TEXT", &get_a_text},
-{"MUSIC", &get_a_music},
-{NULL, NULL}};
-
 int get_a_scene(char **infos, char **type, hashmap_t **current_list,
 	my_w_t *window)
 {
@@ -34,6 +26,8 @@ int get_a_list(char **infos, char **type, hashmap_t **current_list,
 
 	if (my_strcmp(infos[0], "LIST=TEXTS") == 0) {
 		current_scene = hm_get(window->scenes, window->actual_scene);
+		if (check_undefined_scene(current_scene, infos[0]) != 0)
+			return (84);
 		*current_list = current_scene->texts;
 	}
 	(void)current_list;
@@ -45,12 +39,17 @@ int get_an_index(char **infos, char **type, hashmap_t **current_list,
 	my_w_t *window)
 {
 	scene_t *current_scene = hm_get(window->scenes, window->actual_scene);
+	char *asked_list;
 
 	if (check_invalid_index(my_getnbr(type[1])) != 0)
 		return (84);
 	*current_list = current_scene->objs[my_getnbr(type[1])];
+	asked_list = my_strcat("OBJ=", type[1]);
+	if (check_undefined_scene(current_scene, asked_list) != 0)
+		return (84);
 	(void)current_list;
 	(void)infos;
+	free(asked_list);
 	return (0);
 }
 

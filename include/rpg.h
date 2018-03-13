@@ -11,10 +11,12 @@
 
 ///////////////////////////////// INIT DEFINES //////////////////////////////
 
-#define TEXT_SEPARATOR_CHAR '_'
-#define OBJ_KEYWORD "OBJ"
+#define INIT_INDICATOR "-" /// String to put in the begining of the line to indicate that lines below are init informations.
+#define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string init. Get replaced with spaces.
+#define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
+#define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
+
 #define TEXTURE_KEYWORD "TEXTURE"
-#define TEXT_KEYWORD "TEXT"
 #define STR_KEYWORD "STR"
 #define FONT_KEYWORD "FONT"
 #define CHARAC_SIZE_KEYWORD "CHARAC_SIZE"
@@ -26,12 +28,12 @@
 #define WINDOW_WIDTH 1600
 #define WINDOW_HEIGHT 900
 #define WINDOW_BITS_PER_PIXEL 32
-#define OBJS_TYPE_NB 4
+#define OBJS_TYPE_NB 5
 
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
-#define OVER_COLOR ((sfColor){255, 100, 100, 255})
+#define OVER_COLOR ((sfColor){120, 210, 210, 130})
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -76,8 +78,9 @@ typedef enum
 {
 	BACKGROUNDS = 0,
 	PNJS = 1,
-	ITEMS = 2,
-	BUTTONS = 3,
+	MONSTERS = 2,
+	ITEMS = 3,
+	BUTTONS = 4,
 } objs_type_t;
 
 typedef struct scene_s {
@@ -113,6 +116,7 @@ typedef struct my_window_s
 typedef struct key_word_s
 {
 	char *key_word;
+	int nb_sub_keywords;
 	int (*fptr)(char **, char **, hashmap_t **, my_w_t *);
 } key_word_t;
 
@@ -173,20 +177,37 @@ int get_an_obj(char **infos, char **type, hashmap_t **current_list, my_w_t *wind
 int get_a_text(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_music(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 
-/// INIT WARNING
+/// INIT WARNING : UNEXISTING
 
-int check_missing_information_for_obj(char **infos);
-int check_missing_information_for_text(char **infos);
 int check_unexisting_font(sfFont *font, char *font_name);
+int check_unexisting_texture(sfTexture *texture, char *texture_name);
+int check_unexisting_music(sfMusic *music, char *music_name);
+
+/// INIT WARNING : INVALID
+
 int check_invalid_obj_init(obj_infos_t *obj);
-int check_invalid_texture(sfTexture *texture, char *texture_name);
-int check_invalid_key_word(char *last_word_used, char *key_word);
-int check_invalid_music(sfMusic *music, char *music_name);
-int check_missing_args_for_key_word(char **args);
+int check_invalid_key_word(char *last_word_used, char *key_word, int error_no);
 int check_invalid_text_init(text_infos_t *text);
 int check_invalid_index(int index);
+int check_invalid_file(int fd, char *filename);
+int check_invalid_window_init(int error_no);
+
+/// INIT WARNING : ALREADY_EXISTING
+
 int check_already_existing_obj(obj_data_t *data, hashmap_t *current_list);
 int check_already_existing_text(text_data_t *data, hashmap_t *current_list);
+int check_already_existing_texture(hashmap_t *hashmap, char *texture_name);
+int check_already_existing_audio(hashmap_t *hashmap, char *audio_name);
+int check_already_existing_font(hashmap_t *hashmap, char *font_name);
+
+/// INIT WARNING : MISSING
+
+int check_missing_args_for_key_word(char **args);
+int check_missing_sub_keyword(char *keyword, int nb_keyword, char **subwords_tab);
+
+/// INIT WARNING : UNDEFINED
+
+int check_undefined_scene(scene_t *current_scene, char *asked_list);
 
 /// IN GAME WARNING
 

@@ -29,7 +29,7 @@ game_objs_t *init_game_objs(obj_data_t *data, my_w_t *window)
 	sfVector2u texture_size;
 	sfVector2f rec_size;
 
-	if (check_invalid_texture(texture, data->type) != 0 || new_obj == NULL)
+	if (check_unexisting_texture(texture, data->type) != 0 || new_obj == NULL)
 		return (NULL);
 	texture_size = sfTexture_getSize(texture);
 	rec_size.x = texture_size.x;
