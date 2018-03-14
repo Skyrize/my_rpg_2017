@@ -1,4 +1,5 @@
 ### FILE : Initialisation des textures du jeu. ###
+//format : see format file help for syntax
 //format = line starting with the
 //format = pathfile / ID de la texture
 
@@ -7,36 +8,88 @@ textures/backgrounds/test.png TEST1
 textures/backgrounds/test2.png TEST2
 
 ITEMS:
-	MAGE:
-----------------BOOTS:
-			textures/items/mage/boots/mythic/mythic_01.png MAGE_MYTHIC_BOOTS_01
-			textures/items/mage/boots/epic/epic_01.png MAGE_EPIC_BOOTS_01
-			textures/items/mage/boots/epic/epic_02.png MAGE_EPIC_BOOTS_02
-			textures/items/mage/boots/epic/epic_03.png MAGE_EPIC_BOOTS_03
-			textures/items/mage/boots/rare/rare_01.png MAGE_RARE_BOOTS_01
-			textures/items/mage/boots/rare/rare_02.png MAGE_RARE_BOOTS_02
-			textures/items/mage/boots/rare/rare_03.png MAGE_RARE_BOOTS_03
-			textures/items/mage/boots/rare/rare_04.png MAGE_RARE_BOOTS_04
-			textures/items/mage/boots/rare/rare_05.png MAGE_RARE_BOOTS_05
-			textures/items/mage/boots/common/common_00.png MAGE_COMMON_BOOTS_00
-			textures/items/mage/boots/common/common_01.png MAGE_COMMON_BOOTS_01
-			textures/items/mage/boots/common/common_02.png MAGE_COMMON_BOOTS_02
-			textures/items/mage/boots/common/common_03.png MAGE_COMMON_BOOTS_03
-			textures/items/mage/boots/common/common_04.png MAGE_COMMON_BOOTS_04
-			textures/items/mage/boots/common/common_05.png MAGE_COMMON_BOOTS_05
-			textures/items/mage/boots/common/common_06.png MAGE_COMMON_BOOTS_06
-			textures/items/mage/boots/common/common_07.png MAGE_COMMON_BOOTS_07
+---------PANTS:
+	textures/items/pants/mythic/mythic_01.png MYTHIC_PANTS_01
+	textures/items/pants/epic/epic_02.png EPIC_PANTS_02
+	textures/items/pants/epic/epic_01.png EPIC_PANTS_01
+	textures/items/pants/epic/epic_03.png EPIC_PANTS_03
+	textures/items/pants/rare/rare_01.png RARE_PANTS_01
+	textures/items/pants/rare/rare_02.png RARE_PANTS_02
+	textures/items/pants/rare/rare_03.png RARE_PANTS_03
+	textures/items/pants/rare/rare_04.png RARE_PANTS_04
+	textures/items/pants/rare/rare_05.png RARE_PANTS_05
+	textures/items/pants/common/common_00.png COMMON_PANTS_00
+	textures/items/pants/common/common_01.png COMMON_PANTS_01
+	textures/items/pants/common/common_02.png COMMON_PANTS_02
+	textures/items/pants/common/common_03.png COMMON_PANTS_03
+	textures/items/pants/common/common_04.png COMMON_PANTS_04
+	textures/items/pants/common/common_05.png COMMON_PANTS_05
+	textures/items/pants/common/common_06.png COMMON_PANTS_06
+	textures/items/pants/common/common_07.png COMMON_PANTS_07
 
-	WARRIOR:
-----------------BOOTS:
-			textures/items/warrior/boots/rare/rare_01.png WARRIOR_RARE_BOOTS_01
+---------GAUNTLETS:
+	textures/items/gauntlets/mythic/mythic_01.png MYTHIC_GAUNTLETS_01
+	textures/items/gauntlets/epic/epic_01.png EPIC_GAUNTLETS_01
+	textures/items/gauntlets/epic/epic_02.png EPIC_GAUNTLETS_02
+	textures/items/gauntlets/epic/epic_03.png EPIC_GAUNTLETS_03
+	textures/items/gauntlets/rare/rare_01.png RARE_GAUNTLETS_01
+	textures/items/gauntlets/rare/rare_02.png RARE_GAUNTLETS_02
+	textures/items/gauntlets/rare/rare_03.png RARE_GAUNTLETS_03
+	textures/items/gauntlets/rare/rare_04.png RARE_GAUNTLETS_04
+	textures/items/gauntlets/rare/rare_05.png RARE_GAUNTLETS_05
+	textures/items/gauntlets/common/common_00.png COMMON_GAUNTLETS_00
+	textures/items/gauntlets/common/common_01.png COMMON_GAUNTLETS_01
+	textures/items/gauntlets/common/common_02.png COMMON_GAUNTLETS_02
+	textures/items/gauntlets/common/common_03.png COMMON_GAUNTLETS_03
+	textures/items/gauntlets/common/common_04.png COMMON_GAUNTLETS_04
+	textures/items/gauntlets/common/common_05.png COMMON_GAUNTLETS_05
+	textures/items/gauntlets/common/common_06.png COMMON_GAUNTLETS_06
+	textures/items/gauntlets/common/common_07.png COMMON_GAUNTLETS_07
 
-	HUNTER:
-----------------BOOTS:
-			textures/items/hunter/boots/rare/rare_01.png HUNTER_RARE_BOOTS_01
+---------HELMET:
+	textures/items/helmet/mythic/mythic_01.png MYTHIC_HELMET_01
+	textures/items/helmet/epic/epic_01.png EPIC_HELMET_01
+	textures/items/helmet/epic/epic_02.png EPIC_HELMET_02
+	textures/items/helmet/epic/epic_03.png EPIC_HELMET_03
+	textures/items/helmet/rare/rare_01.png RARE_HELMET_01
+	textures/items/helmet/rare/rare_02.png RARE_HELMET_02
+	textures/items/helmet/rare/rare_03.png RARE_HELMET_03
+	textures/items/helmet/rare/rare_04.png RARE_HELMET_04
+	textures/items/helmet/rare/rare_05.png RARE_HELMET_05
+	textures/items/helmet/common/common_00.png COMMON_HELMET_00
+	textures/items/helmet/common/common_01.png COMMON_HELMET_01
+	textures/items/helmet/common/common_02.png COMMON_HELMET_02
+	textures/items/helmet/common/common_03.png COMMON_HELMET_03
+	textures/items/helmet/common/common_04.png COMMON_HELMET_04
+	textures/items/helmet/common/common_05.png COMMON_HELMET_05
+	textures/items/helmet/common/common_06.png COMMON_HELMET_06
+	textures/items/helmet/common/common_07.png COMMON_HELMET_07
+
+---------CHEST:
+	textures/items/chest/mythic/mythic_01.png MYTHIC_CHEST_01
+	textures/items/chest/epic/epic_01.png EPIC_CHEST_01
+	textures/items/chest/epic/epic_02.png EPIC_CHEST_02
+	textures/items/chest/epic/epic_03.png EPIC_CHEST_03
+	textures/items/chest/rare/rare_01.png RARE_CHEST_01
+	textures/items/chest/rare/rare_02.png RARE_CHEST_02
+	textures/items/chest/rare/rare_03.png RARE_CHEST_03
+	textures/items/chest/rare/rare_04.png RARE_CHEST_04
+	textures/items/chest/rare/rare_05.png RARE_CHEST_05
+	textures/items/chest/common/common_00.png COMMON_CHEST_00
+	textures/items/chest/common/common_01.png COMMON_CHEST_01
+	textures/items/chest/common/common_02.png COMMON_CHEST_02
+	textures/items/chest/common/common_03.png COMMON_CHEST_03
+	textures/items/chest/common/common_04.png COMMON_CHEST_04
+	textures/items/chest/common/common_05.png COMMON_CHEST_05
+	textures/items/chest/common/common_06.png COMMON_CHEST_06
+	textures/items/chest/common/common_07.png COMMON_CHEST_07
 
 -PNJS
 textures/pnjs/pnj1.png PNJ1
 textures/pnjs/pnj2.png PNJ2
+
+HUD:
+---------INVENTORY:
+	textures/hud/inventory/backpack.png BACKPACK
 
 ### END OF FILE ###

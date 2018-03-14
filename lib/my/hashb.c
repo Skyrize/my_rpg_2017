@@ -53,6 +53,10 @@ void *hm_get(hashmap_t *hashmap, char *key)
 	unsigned int i;
 	bucket_t *list;
 
+	if (!key) {
+		my_printf("WARNING: KEY PASSED IS NULL !\n");
+		return (NULL);
+	}
 	if (!hashmap) {
 		my_printf("WARNING: HM_GET: ASKED FOR UNEXISTING HASHMAP !\n");
 		return (NULL);

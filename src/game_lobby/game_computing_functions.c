@@ -26,5 +26,6 @@ int game_lobby(my_w_t *window, bucket_t *current_scene)
 	compute_game(window);
 	if (display_scene(window, current_scene) != 0)
 		return (84);
+	display_scene(window, hm_get_bucket(window->scenes, "TEST"));
 	return (0);
 }

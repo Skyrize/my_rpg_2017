@@ -31,12 +31,12 @@ my_w_t init_my_window(void)
 	window.clocker = init_timer();
 	window.window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
 		WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
-	"World of CookCraft", sfResize | sfClose, NULL);
+	"LE SEIGNEUR DU SAAAAALE", sfResize | sfClose, NULL);
 	if (!window.window || init_my_textures_lib(&window) != 0
 	|| init_my_audio_lib(&window) != 0 || init_my_fonts_lib(&window) != 0
 	|| init_my_scenes(&window) != 0
 	|| !window.clocker.clock || init_game_tools(&window) != 0)
 		window.error_no = 84;
-	window.actual_scene = "START";
+	window.actual_scene = "ITEM";
 	return (window);
 }

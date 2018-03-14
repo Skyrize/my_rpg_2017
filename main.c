@@ -16,21 +16,27 @@ void start_scene_music(scene_t *scene)
 	}
 }
 
-void process_pre_window(my_w_t *window, bucket_t **current_scene)
+int process_pre_window(my_w_t *window, bucket_t **current_scene)
 {
 	sfRenderWindow_setFramerateLimit(window->window, 60);
 	*current_scene = hm_get_bucket(window->scenes, window->actual_scene);
-	(void)current_scene;
+	if (check_unexisting_scene(*current_scene, window->actual_scene) != 0)
+		return (84);
 	start_scene_music((*current_scene)->value);
+	return (0);
 }
 
-void look_if_scene_has_changed(my_w_t *window, bucket_t **current_scene)
+int look_if_scene_has_changed(my_w_t *window, bucket_t **current_scene)
 {
 	if (my_strcmp((*current_scene)->key, window->actual_scene) != 0) {
 		*current_scene = hm_get_bucket(window->scenes,
 			window->actual_scene);
+		if (check_unexisting_scene(*current_scene,
+			window->actual_scene) != 0)
+			return (84);
 		start_scene_music((*current_scene)->value);
 	}
+	return (0);
 }
 
 int main()
@@ -40,11 +46,13 @@ int main()
 
 	if (check_invalid_window_init(window.error_no) != 0)
 		return (84);
-	process_pre_window(&window, &current_scene);
+	if (process_pre_window(&window, &current_scene) != 0)
+		return (84);
 	while (sfRenderWindow_isOpen(window.window)) {
 		get_time(&window);
 		sfRenderWindow_clear(window.window, sfBlack);
-		look_if_scene_has_changed(&window, &current_scene);
+		if (look_if_scene_has_changed(&window, &current_scene) != 0)
+			return (84);
 		if (game_lobby(&window, current_scene) != 0)
 			return (84);
 		sfRenderWindow_display(window.window);

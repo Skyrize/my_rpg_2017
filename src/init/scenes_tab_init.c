@@ -43,7 +43,7 @@ int init_scene_lists(char *scene_name, my_w_t *window)
 int init_my_scenes(my_w_t *window)
 {
 
-	get_infos_t infos = {"pcf/scenes.pcf", "-",
+	get_infos_t infos = {"pcf/scenes.pcf", INIT_INDICATOR,
 	&init_scenes_from_pcf};
 
 	window->scenes = hm_create(16, &scenes_destroy);

@@ -8,13 +8,17 @@
 #include "my.h"
 #include "rpg.h"
 
-static const key_word_t init_words[] = {{"SCENE", 0, &get_a_scene},
-{"LIST", 0, &get_a_list},
-{"INDEX", 0, &get_an_index},
-{"OBJ", 3, &get_an_obj},
-{"TEXT", 5, &get_a_text},
-{"MUSIC", 0, &get_a_music},
-{NULL, 0, NULL}};
+const key_word_t init_words[] = {
+	{"SCENE", 0, &get_a_scene, NULL},
+	{"LIST", 0, &get_a_list, NULL},
+	{"INDEX", 0, &get_an_index, NULL},
+	{"OBJ", 3, &get_an_obj,
+		(char *[]) {"TEXTURE", "X", "Y", NULL}},
+	{"TEXT", 5, &get_a_text,
+		(char *[]) {"STR", "FONT", "CHARAC_SIZE", "X", "Y", NULL}},
+	{"MUSIC", 0, &get_a_music, NULL},
+	{NULL, 0, NULL, NULL}
+};
 
 int init_scenes_from_pcf(char **infos, my_w_t *window)
 {

@@ -8,6 +8,8 @@
 #include "my.h"
 #include "rpg.h"
 
+extern const key_word_t init_words[];
+
 int check_invalid_text_init(text_infos_t *text)
 {
 	if (!text->name || !text->text || !text->font || !text->charac_size
@@ -18,11 +20,11 @@ int check_invalid_text_init(text_infos_t *text)
 		|| !text->charac_size[0] || !text->charac_size[1]
 		|| !text->x[0] || !text->x[1]
 		|| !text->y[0] || !text->y[1]
-		|| my_fastcmp(text->text[0], STR_KEYWORD) == 1
-		|| my_fastcmp(text->font[0], FONT_KEYWORD) == 1
-		|| my_fastcmp(text->charac_size[0], CHARAC_SIZE_KEYWORD) == 1
-		|| my_fastcmp(text->x[0], X_KEYWORD) == 1
-		|| my_fastcmp(text->y[0], Y_KEYWORD) == 1) {
+		|| my_fastcmp(text->text[0], init_words[4].args[0]) == 1
+		|| my_fastcmp(text->font[0], init_words[4].args[1]) == 1
+		|| my_fastcmp(text->charac_size[0], init_words[4].args[2]) == 1
+		|| my_fastcmp(text->x[0], init_words[4].args[3]) == 1
+		|| my_fastcmp(text->y[0], init_words[4].args[4]) == 1) {
 		my_printf("WARNING: INVALID TEXT INIT FORMAT !\n");
 		return (84);
 	}
@@ -36,9 +38,9 @@ int check_invalid_obj_init(obj_infos_t *obj)
 		|| !obj->type[0] || !obj->type[1]
 		|| !obj->x[0] || !obj->x[1]
 		 || !obj->y[0] || !obj->y[1]
-		|| my_fastcmp(obj->type[0], TEXTURE_KEYWORD) == 1
-		|| my_fastcmp(obj->x[0], X_KEYWORD) == 1
-		|| my_fastcmp(obj->y[0], Y_KEYWORD) == 1) {
+		|| my_fastcmp(obj->type[0], init_words[3].args[0]) == 1
+		|| my_fastcmp(obj->x[0], init_words[3].args[1]) == 1
+		|| my_fastcmp(obj->y[0], init_words[3].args[2]) == 1) {
 		my_printf("WARNING: INVALID OBJ INIT\n");
 		return (84);
 	}

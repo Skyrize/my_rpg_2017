@@ -43,10 +43,10 @@ int get_an_index(char **infos, char **type, hashmap_t **current_list,
 
 	if (check_invalid_index(my_getnbr(type[1])) != 0)
 		return (84);
-	*current_list = current_scene->objs[my_getnbr(type[1])];
 	asked_list = my_strcat("OBJ=", type[1]);
 	if (check_undefined_scene(current_scene, asked_list) != 0)
 		return (84);
+	*current_list = current_scene->objs[my_getnbr(type[1])];
 	(void)current_list;
 	(void)infos;
 	free(asked_list);

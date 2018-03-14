@@ -11,17 +11,13 @@
 
 ///////////////////////////////// INIT DEFINES //////////////////////////////
 
+/// METTRE UN GNL QUI MARCHE POUR SUPPRIMER CA :
+#define END_OF_FILE "### END OF FILE ###"
+
 #define INIT_INDICATOR "-" /// String to put in the begining of the line to indicate that lines below are init informations.
 #define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string init. Get replaced with spaces.
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
-
-#define TEXTURE_KEYWORD "TEXTURE"
-#define STR_KEYWORD "STR"
-#define FONT_KEYWORD "FONT"
-#define CHARAC_SIZE_KEYWORD "CHARAC_SIZE"
-#define X_KEYWORD "X"
-#define Y_KEYWORD "Y"
 
 //////////////////////////////// WINDOW DEFINES //////////////////////////////
 
@@ -118,6 +114,7 @@ typedef struct key_word_s
 	char *key_word;
 	int nb_sub_keywords;
 	int (*fptr)(char **, char **, hashmap_t **, my_w_t *);
+	char **args;
 } key_word_t;
 
 typedef struct get_infos_s
@@ -212,6 +209,7 @@ int check_undefined_scene(scene_t *current_scene, char *asked_list);
 /// IN GAME WARNING
 
 int check_valid_display(scene_t *current_scene, char *scene_seeked);
+int check_unexisting_scene(bucket_t *scene, char *scene_name);
 
 /// HASHMAP LIST ADDING
 
