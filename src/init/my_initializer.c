@@ -37,6 +37,6 @@ my_w_t init_my_window(void)
 	|| init_my_scenes(&window) != 0
 	|| !window.clocker.clock || init_game_tools(&window) != 0)
 		window.error_no = 84;
-	window.actual_scene = "ITEM";
+	window.actual_scene = "GAME";
 	return (window);
 }
