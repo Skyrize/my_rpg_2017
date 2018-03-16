@@ -17,9 +17,14 @@ void scenes_destroy(scene_t *scene)
 	hm_destroy(scene->objs[BUTTONS]);
 }
 
-void obj_destroy(game_objs_t *obj)
+void obj_destroy(obj_t *obj)
 {
 	sfRectangleShape_destroy(obj->obj);
+}
+
+void texture_destroy(texture_t *texture)
+{
+	sfTexture_destroy(texture->texture);
 }
 
 void destroy_and_free(my_w_t *window)

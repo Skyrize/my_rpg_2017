@@ -70,6 +70,7 @@ int my_arraycmp(unsigned int *, unsigned int *);
 void replace_char(char *, char, char);
 char *my_cleanstr(char *str, char to_clean);
 void display_char_2d(char *option, char **str);
+void free_char_2d(char **);
 
 /* MY_PRINTF */
 

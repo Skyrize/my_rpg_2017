@@ -54,7 +54,7 @@ void *hm_get(hashmap_t *hashmap, char *key)
 	bucket_t *list;
 
 	if (!key) {
-		my_printf("WARNING: KEY PASSED IS NULL !\n");
+		my_printf("WARNING: HM_GET: KEY PASSED IS NULL !\n");
 		return (NULL);
 	}
 	if (!hashmap) {

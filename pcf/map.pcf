@@ -1,0 +1,8 @@
+
+ZONE: nom de la zone
+	MAP/X=0/Y=0
+		TILE/X=0/Y=0
+			TEXTURE=ID_TEXTURE
+			-texture2:
+			...
+		TILE_1_0:

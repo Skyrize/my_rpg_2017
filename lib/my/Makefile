@@ -51,9 +51,10 @@ SRC	=	my_compute_power_rec.c	\
 		replace_char.c	\
 		my_cleanstr.c	\
 		display_char_2d.c	\
+		free_char_2d.c	\
 		put_a_square_csfml.c	\
 		hash.c	\
-		hashb.c
+		hashb.c	\
 
 OBJ	=	$(SRC:.c=.o)
 

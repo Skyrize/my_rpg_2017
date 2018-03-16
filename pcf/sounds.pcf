@@ -4,6 +4,6 @@
 -SOUNDS
 
 -MUSIC
-sounds/oui.ogg OUI
+AUDIO=OUI FILEPATH=sounds/oui.ogg
 
 ### END OF FILE ###

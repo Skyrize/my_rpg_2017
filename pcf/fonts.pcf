@@ -2,7 +2,7 @@
 //format = pathfile / ID de la font
 
 -FONTS
-fonts/lifecraft.ttf LIFECRAFT
-fonts/arcade_classic.ttf ARCADE
+FONT=LIFECRAFT FILEPATH=fonts/lifecraft.ttf
+FONT=ARCADE FILEPATH=fonts/arcade_classic.ttf
 
 ### END OF FILE ###

@@ -8,24 +8,24 @@
 #include "my.h"
 #include "rpg.h"
 
-int check_already_existing_obj(obj_data_t *data, hashmap_t *current_list)
+int check_already_existing_obj(char *obj_name, hashmap_t *current_list)
 {
-	bucket_t *obj = hm_get_bucket(current_list, data->name);
+	bucket_t *obj = hm_get_bucket(current_list, obj_name);
 
 	if (obj != NULL) {
 		my_printf("WARNING: OBJ '%s' REDECLARED IN SCENE !\n",
-		data->name);
+		obj_name);
 		return (84);
 	}
 	return (0);
 }
-int check_already_existing_text(text_data_t *data, hashmap_t *current_list)
+int check_already_existing_text(char *text_name, hashmap_t *current_list)
 {
-	bucket_t *obj = hm_get_bucket(current_list, data->name);
+	bucket_t *obj = hm_get_bucket(current_list, text_name);
 
 	if (obj != NULL) {
 		my_printf("WARNING: TEXT '%s' REDECLARED IN SCENE !\n",
-		data->name);
+		text_name);
 		return (84);
 	}
 	return (0);
@@ -33,7 +33,7 @@ int check_already_existing_text(text_data_t *data, hashmap_t *current_list)
 
 int check_already_existing_texture(hashmap_t *hashmap, char *texture_name)
 {
-	sfTexture *texture = hm_get(hashmap, texture_name);
+	texture_t *texture = hm_get(hashmap, texture_name);
 
 	if (texture != NULL) {
 		my_printf("WARNING: TEXTURE '%s' REDECLARED IN TEXTURES! \n",
@@ -43,10 +43,8 @@ int check_already_existing_texture(hashmap_t *hashmap, char *texture_name)
 	return (0);
 }
 
-int check_already_existing_audio(hashmap_t *hashmap, char *audio_name)
+int check_already_existing_audio(sfMusic *audio, char *audio_name)
 {
-	sfMusic *audio = hm_get(hashmap, audio_name);
-
 	if (audio != NULL) {
 		my_printf("WARNING: AUDIO '%s' REDECLARED IN SOUNDS! \n",
 		audio_name);
@@ -55,10 +53,8 @@ int check_already_existing_audio(hashmap_t *hashmap, char *audio_name)
 	return (0);
 }
 
-int check_already_existing_font(hashmap_t *hashmap, char *font_name)
+int check_already_existing_font(sfFont *font, char *font_name)
 {
-	sfFont *font = hm_get(hashmap, font_name);
-
 	if (font != NULL) {
 		my_printf("WARNING: FONT '%s' REDECLARED IN FONTS! \n",
 		font_name);

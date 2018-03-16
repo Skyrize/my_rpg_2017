@@ -28,13 +28,13 @@ int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list)
 	obj.type = my_str_to_word_array(infos[1], '=');
 	obj.x = my_str_to_word_array(infos[2], '=');
 	obj.y = my_str_to_word_array(infos[3], '=');
-	if (check_invalid_obj_init(&obj) != 0)
-		return (84);
 	data = get_obj_data_from_infos(&obj);
-	if (check_already_existing_obj(&data, current_list) != 0)
-		return (84);
 	if (add_obj_to_list(&data, current_list, window) != 0)
 		return (84);
+	free_char_2d(obj.name);
+	free_char_2d(obj.type);
+	free_char_2d(obj.x);
+	free_char_2d(obj.y);
 	return (0);
 }
 
@@ -67,15 +67,9 @@ text_infos_t get_text_infos(char **infos)
 
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list)
 {
-	text_infos_t text;
-	text_data_t data;
+	text_infos_t text = get_text_infos(infos);
+	text_data_t data = get_text_data_from_infos(&text, window);
 
-	text = get_text_infos(infos);
-	if (check_invalid_text_init(&text) != 0)
-		return (84);
-	data = get_text_data_from_infos(&text, window);
-	if (check_already_existing_text(&data, current_list) != 0)
-		return (84);
 	if (check_unexisting_font(data.font, text.font[1]) != 0)
 		return (84);
 	if (add_text_to_list(&data, current_list) != 0)

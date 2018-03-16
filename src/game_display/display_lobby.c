@@ -20,16 +20,18 @@ void display_hashmap(my_w_t *window, hashmap_t *hashmap, void (*fptr)())
 	}
 }
 
-int display_scene(my_w_t *window, bucket_t *current_scene)
+int display_scenes(my_w_t *window)
 {
-	scene_t *scene = current_scene->value;
+	display_list_t *tmp = window->displayed_scenes;
 
-	if (check_valid_display(scene, window->actual_scene) != 0)
-		return (84);
-	for (int i = 0; i != OBJS_TYPE_NB; i++) {
-		display_hashmap(window, scene->objs[i],
-			&display_bucket_objs);
+	while (tmp) {
+		for (int i = 0; i != OBJS_TYPE_NB; i++) {
+			display_hashmap(window, tmp->scene->objs[i],
+				&display_bucket_objs);
+		}
+		display_hashmap(window, tmp->scene->texts,
+			&display_bucket_texts);
+		tmp = tmp->next;
 	}
-	display_hashmap(window, scene->texts, &display_bucket_texts);
 	return (0);
 }
