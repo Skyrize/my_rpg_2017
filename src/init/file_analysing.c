@@ -8,6 +8,21 @@
 #include "my.h"
 #include "rpg.h"
 
+void map_savior(my_w_t *window)
+{
+	ZONE_COOR_X = -1;
+	ZONE_COOR_Y = -1;
+	AREA_COOR_X = -1;
+	AREA_COOR_Y = -1;
+	TILE_COOR_X = -1;
+	TILE_COOR_Y = -1;
+}
+
+void list_savior(my_w_t *window)
+{
+	window->current = NULL;
+}
+
 int get_infos(int fd, my_w_t *window, get_infos_t *infos)
 {
 	char *line = my_get_next_line(fd);
@@ -36,7 +51,7 @@ int analyse_my_project_config_file(my_w_t *window, get_infos_t *infos)
 	line = my_get_next_line(fd);
 	while (my_fastcmp(line, END_OF_FILE) == 1) {
 		if (my_fastcmp(line, infos->indicator) == 0) {
-			window->current = NULL;
+			infos->savior(window);
 			error_no = get_infos(fd, window, infos);
 		}
 		if (error_no != 0)

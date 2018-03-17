@@ -1,11 +1,12 @@
 ### FILE : Initialisation des scènes. ###
-//Format : SCENE= nom de la scène
-//Format 	LIST=OBJS
-//Format		INDEX= index du tableau d'objets
-//Format			OBJ=nom de l'objet / TEXTURE= ID de la texture / X= pos en x / Y= pos en y
-//Format	LIST=TEXTS
-//Format		TEXT=nom du text / TEXT=text / FONT=ID de la font / CHARAC_SIZE=taille de charactère / X= pos en x / Y= pos en y
-//format	MUSIC= ID de la musique
+//Format: INIT_INDICATOR + description (voir .h)
+//Format:	SCENE= nom de la scène + PRIORITY=priorité de la scène
+//Format 		LIST=OBJS --->définit que l'on va ajouter des valeurs dans la liste d’objets
+//Format			INDEX= index du tableau d'objets
+//Format				OBJ=nom de l'objet / TEXTURE= ID de la texture / X= pos en x / Y= pos en y
+//Format		LIST=TEXTS --->définit que l'on va ajouter des valeurs dans la liste de texts
+//Format			TEXT=nom du text / TEXT=text / FONT=ID de la font / CHARAC_SIZE=taille de charactère / X= pos en x / Y= pos en y
+//format		MUSIC= ID de la musique
 
 ________________________________________________________________________________
 -START
@@ -95,40 +96,9 @@ ________________________________________________________________________________
 ________________________________________________________________________________
 -GAME
 	SCENE=GAME PRIORITY=0
-		LIST=OBJS
-			INDEX=3
-				OBJ=LAVA_01 TEXTURE=LAVA_01 X=0 Y=0
-				OBJ=LAVA_02 TEXTURE=LAVA_01 X=50 Y=0
-				OBJ=LAVA_03 TEXTURE=LAVA_01 X=100 Y=0
-				OBJ=LAVA_04 TEXTURE=LAVA_01 X=150 Y=0
-				OBJ=LAVA_05 TEXTURE=LAVA_01 X=200 Y=0
-				OBJ=LAVA_06 TEXTURE=LAVA_01 X=0 Y=50
-				OBJ=LAVA_07 TEXTURE=LAVA_01 X=50 Y=50
-				OBJ=LAVA_08 TEXTURE=LAVA_01 X=100 Y=50
-				OBJ=LAVA_09 TEXTURE=LAVA_01 X=150 Y=50
-				OBJ=LAVA_10 TEXTURE=LAVA_01 X=200 Y=50
-				OBJ=LAVA_11 TEXTURE=LAVA_01 X=0 Y=100
-				OBJ=LAVA_12 TEXTURE=LAVA_01 X=50 Y=100
-				OBJ=LAVA_13 TEXTURE=LAVA_01 X=100 Y=100
-				OBJ=LAVA_14 TEXTURE=LAVA_01 X=150 Y=100
-				OBJ=LAVA_15 TEXTURE=LAVA_01 X=200 Y=100
-				OBJ=WATER_01 TEXTURE=WATER_02 X=250 Y=0
-				OBJ=WATER_02 TEXTURE=WATER_02 X=300 Y=0
-				OBJ=WATER_03 TEXTURE=WATER_02 X=350 Y=0
-				OBJ=WATER_04 TEXTURE=WATER_02 X=400 Y=0
-				OBJ=WATER_05 TEXTURE=WATER_02 X=450 Y=0
-				OBJ=WATER_06 TEXTURE=WATER_02 X=250 Y=50
-				OBJ=WATER_07 TEXTURE=WATER_02 X=300 Y=50
-				OBJ=WATER_08 TEXTURE=WATER_02 X=350 Y=50
-				OBJ=WATER_09 TEXTURE=WATER_02 X=400 Y=50
-				OBJ=WATER_10 TEXTURE=WATER_02 X=450 Y=50
-				OBJ=WATER_11 TEXTURE=WATER_02 X=250 Y=100
-				OBJ=WATER_12 TEXTURE=WATER_02 X=300 Y=100
-				OBJ=WATER_13 TEXTURE=WATER_02 X=350 Y=100
-				OBJ=WATER_14 TEXTURE=WATER_02 X=400 Y=100
-				OBJ=WATER_15 TEXTURE=WATER_02 X=450 Y=100
 		LIST=TEXTS
-			TEXT=test1 STR=SCENE:_GAME FONT=LIFECRAFT CHARAC_SIZE=100 X=100 Y=400
+			TEXT=Je_suis_trofortish STR=Cette_scene_ne_possede_aucun_object_initialise_par_la_scene FONT=LIFECRAFT CHARAC_SIZE=30 X=0 Y=300
+			TEXT=Je_suis_trofortish_2 STR=a_part_ce_text,_mais_bel_et_bien_uniquement_des_tiles! FONT=LIFECRAFT CHARAC_SIZE=30 X=0 Y=400
 
 ________________________________________________________________________________
 

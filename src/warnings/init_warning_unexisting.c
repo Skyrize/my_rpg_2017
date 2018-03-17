@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int check_unexisting_texture(sfTexture *texture, char *texture_name)
+int check_unexisting_texture(texture_t *texture, char *texture_name)
 {
 	if (!texture) {
 		my_printf("WARNING: CAN'T FIND TEXTURE '%s' IN TEXTURE LIB !\n",
@@ -31,8 +31,18 @@ int check_unexisting_font(sfFont *font, char *font_name)
 int check_unexisting_music(sfMusic *music, char *music_name)
 {
 	if (!music) {
-		my_printf("WARNING: CAN'T FIND MUSIC '%s' AT INITIALISATION!\n",
+		my_printf("WARNING: CAN'T FIND MUSIC '%s' AT INITIALISATION",
 		music_name);
+		my_printf(" !\n");
+		return (84);
+	}
+	return (0);
+}
+
+int check_unexisting_zone(char *zone_name)
+{
+	if (!zone_name) {
+		my_printf("WARNING: YOU TRIED TO ENTER AN UNEXISTING ZONE !\n");
 		return (84);
 	}
 	return (0);

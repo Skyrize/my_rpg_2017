@@ -61,7 +61,8 @@ int init_my_scenes(my_w_t *window)
 		(char *[]) {"STR", "FONT", "CHARAC_SIZE", "X", "Y", NULL}},
 	{"MUSIC", 0, &get_a_music, NULL},
 	{NULL, 0, NULL, NULL}};
-	get_infos_t infos = {"pcf/scenes.pcf", INIT_INDICATOR, scene_keys};
+	get_infos_t infos = {"pcf/scenes.pcf", INIT_INDICATOR, scene_keys,
+	&list_savior};
 
 	window->scenes = hm_create(16, &scenes_destroy);
 	if (analyse_my_project_config_file(window, &infos) != 0) {

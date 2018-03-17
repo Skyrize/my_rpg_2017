@@ -38,3 +38,26 @@ int check_undefined_list(hashmap_t *current_list, char *obj)
 	}
 	return (0);
 }
+
+int check_undefined_area(my_w_t *window)
+{
+	if (AREA_COOR_X == -1 || AREA_COOR_Y == -1) {
+		my_printf("WARNING: YOU TRIED TO ADD A TILE AT %d/%d BUT",
+		TILE_COOR_X, TILE_COOR_Y);
+		my_printf(" YOU DIDN'T SPECIFIED AN AREA IN ZONE '%s' !\n",
+		ZONE_NAME);
+		return (84);
+	}
+	return (0);
+}
+
+int check_undefined_tile(my_w_t *window)
+{
+	if (TILE_COOR_X == -1 || TILE_COOR_Y == -1) {
+		my_printf("WARNING: YOU TRIED TO ADD TEXTURE '%s' BUT YOU ");
+		my_printf("DIDN'T SPECIFIED A TILE FOR AREA '%s' !\n",
+		AREA_NAME);
+		return (84);
+	}
+	return (0);
+}

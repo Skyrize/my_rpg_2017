@@ -22,6 +22,8 @@ int process_pre_window(my_w_t *window)
 	start_scene_music(window->current->value);
 	if (add_scene_to_list(window->current, window) != 0)
 		return (84);
+	if (load_my_zone(window) != 0)
+		return (84);
 	return (0);
 }
 

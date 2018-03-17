@@ -1,7 +1,12 @@
 ### FILE : Initialisation des textures du jeu. ###
-//format : see format file help for syntax
-//format = line starting with the
-//format = pathfile / ID de la texture
+//Format: INIT_INDICATOR + description (voir .h)
+//Format: 	TEXTURE=Texture_name
+//Format:		FILEPATH=chemin d'accès
+//Format:		ANIMATED=0/1 définit si la texture est animée (0 = false, 1 = true)
+//Format:		RECT_VALUES=DATA Définit la position puis la taille du carré qui adaptera la texture
+//Format:		RECT_START=DATA position de départ et de replacement du carré (si ANIMATED=0 vous pouvez laisser à 0/0)
+//Format:		RECT_MAX=DATA position maximum du carré pendant son déplacement (ne pas oublié que c'est le point en haut à gauche donc compter aussi la taille du offset, peut être laissé à 0/0 si ANIMATED=0)
+//Format:		RECT_OFFSET=DATA Déplacement du carré en x et en y (si ANIMATED=0 vous pouvez laisser à 0/0)
 
 -BACKGROUNDS
 
@@ -624,11 +629,11 @@ CHARACTERS:
 		RECT_OFFSET=DATA X=0 Y=0
 	TEXTURE=MAGE_01
 		FILEPATH=textures/characters/players/mage_01.png
-		ANIMATED=0
-		RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=150 HEIGHT=400
+		ANIMATED=1
+		RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=50 HEIGHT=100
 		RECT_START=DATA X=0 Y=0
-		RECT_MAX=DATA X=0 Y=0
-		RECT_OFFSET=DATA X=0 Y=0
+		RECT_MAX=DATA X=150 Y=0
+		RECT_OFFSET=DATA X=50 Y=0
 	TEXTURE=HUNTER_01
 		FILEPATH=textures/characters/players/hunter_01.png
 		ANIMATED=0

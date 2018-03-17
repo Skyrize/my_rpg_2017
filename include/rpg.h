@@ -19,16 +19,27 @@
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
 #define STARTING_SCENE_NAME "GAME" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
+#define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
 #define GAME_TITLE "We have to choose a title for our rpg."
 
 //////////////////////////////// WINDOW DEFINES //////////////////////////////
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
-#define TILES_X 16
-#define TILES_Y 12
 #define WINDOW_BITS_PER_PIXEL 32
+#define WINDOW_PIXELS_UNIT 50
 #define OBJS_TYPE_NB 5
+#define PRIORITY_MAX 4
+
+
+///////////////////////////////// MAPS DEFINES //////////////////////////////
+
+#define ZONE_TAB_X 4
+#define ZONE_TAB_Y 4
+#define AREA_TAB_X 3
+#define AREA_TAB_Y 3
+#define TILE_TAB_X 16
+#define TILE_TAB_Y 12
 
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
@@ -69,25 +80,42 @@ typedef struct texture_s
 } texture_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////
+typedef struct tile_list_s tile_list_t;
+
+typedef struct tile_list_s
+{
+	int priority;
+	obj_t *tile;
+	tile_list_t *next;
+} tile_list_t;
 
 typedef struct tile_s
 {
 	sfBool block;
-	sfRectangleShape *tile;
-	sfBool door;
-	void (*teleport)();
+	tile_list_t *displayed_tiles;
 } tile_t;
 
-typedef struct map_s
+typedef struct area_s
 {
-	tile_t tiles[TILES_X][TILES_Y];
+	char *name;
 	sfBool encounter;
-} map_t;
+	tile_t tiles[TILE_TAB_Y][TILE_TAB_X];
+} area_t;
 
 typedef struct zone_s
 {
-	map_t **maps;
+	char *name;
+	char *filepath;
 } zone_t;
+
+typedef struct map_s
+{
+	sfVector2i zone_coord;
+	sfVector2i area_coord;
+	sfVector2i tile_coord;
+	zone_t zones[ZONE_TAB_Y][ZONE_TAB_X];
+	area_t areas[AREA_TAB_Y][AREA_TAB_X];
+} map_t;
 
 //////////////////////////////////////// SCENES ////////////////////////////
 
@@ -131,15 +159,25 @@ typedef struct my_window_s
 	sfEvent event;
 	sfRenderWindow *window;
 	ctime_t clocker;
+	map_t map;
 	bucket_t *current;
-	hashmap_t *textures_lib;
+	hashmap_t *scenes;
 	hashmap_t *audio_lib;
 	hashmap_t *fonts_lib;
-	hashmap_t *scenes;
+	hashmap_t *textures_lib;
 	display_list_t *displayed_scenes;
 } my_w_t;
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
+typedef struct key_word_s key_word_t;
+
+typedef struct get_infos_s
+{
+	char *filepath;
+	char *indicator;
+	const key_word_t *keys;
+	void (*savior)(my_w_t *);
+} get_infos_t;
 
 typedef struct key_word_s
 {
@@ -148,34 +186,6 @@ typedef struct key_word_s
 	int (*fptr)(char **, char **, hashmap_t **, my_w_t *);
 	char **args;
 } key_word_t;
-
-/////////////////////////////////////// DATAS //////////////////////////////////
-
-typedef struct obj_data_s
-{
-	char *name;
-	char *type;
-	sfVector2f position;
-} obj_data_t;
-
-typedef struct text_data_s
-{
-	char *name;
-	char *text;
-	sfFont *font;
-	int charac_size;
-	sfVector2f position;
-} text_data_t;
-
-
-/////////////////////////////////////// INFOS /////////////////////////////////
-
-typedef struct get_infos_s
-{
-	char *filepath;
-	char *indicator;
-	const key_word_t *keys;
-} get_infos_t;
 
 typedef struct text_infos_s
 {
@@ -195,6 +205,44 @@ typedef struct obj_infos_s
 	char **y;
 } obj_infos_t;
 
+/////////////////////////////////////// DATAS //////////////////////////////////
+
+typedef struct obj_data_s
+{
+	char *name;
+	char *type;
+	sfVector2f position;
+} obj_data_t;
+
+typedef struct text_data_s
+{
+	char *name;
+	char *text;
+	sfFont *font;
+	int charac_size;
+	sfVector2f position;
+} text_data_t;
+
+//////////////////////////////////// DATA DEFINES /////////////////////////////
+
+#define ZONE_COOR_X window->map.zone_coord.x
+#define ZONE_COOR_Y window->map.zone_coord.y
+#define AREA_COOR_X window->map.area_coord.x
+#define AREA_COOR_Y window->map.area_coord.y
+#define TILE_COOR_X window->map.tile_coord.x
+#define TILE_COOR_Y window->map.tile_coord.y
+
+#define ZONE window->map.zones[ZONE_COOR_Y][ZONE_COOR_X]
+#define AREA window->map.areas[AREA_COOR_Y][AREA_COOR_X]
+#define TILE AREA.tiles[TILE_COOR_Y][TILE_COOR_X]
+
+#define ZONE_NAME ZONE.name
+#define ZONE_FILEPATH ZONE.filepath
+#define AREA_NAME AREA.name
+#define AREA_ENCOUTER AREA.encounter
+#define TILE_LIST TILE.displayed_tiles
+#define TILE_BLOCK TILE.block
+
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -202,12 +250,21 @@ typedef struct obj_infos_s
 
 my_w_t init_my_window(void);
 int init_my_scenes(my_w_t *window);
-int init_scene_lists(char **infos, my_w_t *window);
-int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_my_audio_lib(my_w_t *window);
 int init_my_textures_lib(my_w_t *window);
 int init_my_fonts_lib(my_w_t *window);
+int init_my_map(my_w_t *window);
+int init_my_zone(my_w_t *window);
+int init_scene_lists(char **infos, my_w_t *window);
+int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
+
+int load_my_zone(my_w_t *window);
+
+/// SAVIOR TRICK FUNCTIONS
+
+void list_savior(my_w_t *window);
+void map_savior(my_w_t *window);
 
 /// INIT FROM PROG CONFIG FILE
 
@@ -231,12 +288,18 @@ int get_a_rect_values(char **infos, char **type, hashmap_t **current_list, my_w_
 int get_a_rect_max_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_rect_max_offset(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_rect_start_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_map(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_zone(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_an_area(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_tile(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 
 /// INIT WARNING : UNEXISTING
 
 int check_unexisting_font(sfFont *font, char *font_name);
-int check_unexisting_texture(sfTexture *texture, char *texture_name);
+int check_unexisting_texture(texture_t *texture, char *texture_name);
 int check_unexisting_music(sfMusic *music, char *music_name);
+int check_unexisting_zone(char *zone_name);
 
 /// INIT WARNING : INVALID
 
@@ -247,6 +310,10 @@ int check_invalid_index(int index);
 int check_invalid_file(int fd, char *filename);
 int check_invalid_window_init(int error_no);
 int check_invalid_animated(sfBool animated);
+int check_invalid_zone_coords(char *name, my_w_t *window);
+int check_invalid_area_coords(char *name, my_w_t *window);
+int check_invalid_tile_coords(char *name, my_w_t *window);
+int check_invalid_priority(int priority, char *texture_name, my_w_t *window);
 
 /// INIT WARNING : ALREADY_EXISTING
 
@@ -257,6 +324,11 @@ int check_already_existing_audio(sfMusic *audio, char *audio_name);
 int check_already_existing_font(sfFont *font, char *font_name);
 int check_already_existing_scene(bucket_t *scene, char *scene_name);
 int check_already_existing_music(sfMusic *music, char *music_name);
+int check_already_existing_zone_name(char *name, my_w_t *window);
+int check_already_existing_zone_coords(char *name, my_w_t *window);
+int check_already_existing_area_name(char *name, my_w_t *window);
+int check_already_existing_area_coords(char *name, my_w_t *window);
+int check_already_existing_tile_coords(my_w_t *window);
 
 /// INIT WARNING : MISSING
 
@@ -269,23 +341,26 @@ int check_missing_or_invalid_sub_keyword(const key_word_t *keys, int index, char
 int check_undefined_scene(bucket_t *scene, char *asked_list);
 int check_undefined_list(hashmap_t *current_list, char *obj);
 int check_undefined_texture(bucket_t *texture, char *data);
+int check_undefined_area(my_w_t *window);
+int check_undefined_tile(my_w_t *window);
 
 /// IN GAME WARNING
 
 int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked);
+int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
+
+/// LIST CREATING
+
+obj_t *create_obj(obj_data_t *data, my_w_t *window);
+display_list_t *create_a_display(char *name, scene_t *scene);
+tile_list_t *create_a_tile(char *texture_name, int priority, my_w_t *window);
 
 /// LIST ADDING
 
 int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 int add_scene_to_list(bucket_t *scene, my_w_t *window);
-
-/// DESTROY FUNCTIONS
-
-void destroy_and_free(my_w_t *window);
-void obj_destroy(obj_t *obj);
-void scenes_destroy(scene_t *scene);
-void texture_destroy(texture_t *texture);
+int add_tile_to_list(char *texture, int priority, my_w_t *window);
 
 /// GAME FUNCTIONS
 
@@ -298,10 +373,20 @@ int display_scenes(my_w_t *window);
 void display_hashmap_objs(my_w_t *window, hashmap_t *hashmap);
 void display_bucket_objs(my_w_t *window, bucket_t *obj);
 void display_bucket_texts(my_w_t *window, bucket_t *obj);
-void move_rect(obj_t *obj);
+void time_animation(obj_t *obj, float seconds, my_w_t *window);
+int display_map(my_w_t *window);
 
 /// INPUT
 
 void analyse_events(my_w_t *window);
+
+/// DESTROY FUNCTIONS
+
+void destroy_and_free(my_w_t *window);
+void obj_destroy(obj_t *obj);
+void scenes_destroy(scene_t *scene);
+void texture_destroy(texture_t *texture);
+
+/// END
 
 #endif /* RPG_H_ */

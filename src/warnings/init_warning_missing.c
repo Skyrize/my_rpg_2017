@@ -24,7 +24,7 @@ int check_missing_args_for_key_word(const key_word_t *keys, int index,
 		return (0);
 	if (my_fastcmp(args[0], keys[index].args[j - 1]) != 0) {
 		my_printf("WARNING: EXPECTED SUB KEYWORD '%s'",
-		keys[index].args[j]);
+		keys[index].args[j - 1]);
 		my_printf(" FOR THE KEYWORD '%s' BUT GOT '%s' INSTEAD !\n",
 		keys[index].key_word, args[0]);
 		return (84);
@@ -42,7 +42,7 @@ int check_missing_or_invalid_sub_keyword(const key_word_t *keys, int index,
 	if (i - 1 != keys[index].nb_sub_keywords) {
 		my_printf("WARNING: %d ARGUMENT(S) FOR KEYWORD '%s'",
 		keys[index].nb_sub_keywords, keys[index].key_word);
-		my_printf(" ARE REQUIRED BUT GOT %d!\n", i - 1);
+		my_printf(" ARE REQUIRED BUT GOT %d !\n", i - 1);
 		return (84);
 	}
 	for (int j = 0; subwords_tab[j]; j++) {

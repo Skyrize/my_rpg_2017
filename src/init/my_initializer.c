@@ -35,7 +35,7 @@ my_w_t init_my_window(void)
 	window.displayed_scenes = NULL;
 	if (!window.window || init_my_textures_lib(&window) != 0
 	|| init_my_audio_lib(&window) != 0 || init_my_fonts_lib(&window) != 0
-	|| init_my_scenes(&window) != 0
+	|| init_my_scenes(&window) != 0 || init_my_map(&window) != 0
 	|| !window.clocker.clock || init_game_tools(&window) != 0) {
 		window.error_no = 84;
 		return (window);

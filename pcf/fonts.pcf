@@ -1,5 +1,6 @@
 ### FILE : Initialisation des fonts de texts du jeu. ###
-//format = pathfile / ID de la font
+//Format: INIT_INDICATOR + description (voir .h)
+//Format:	FONT=nom de la font + FILEPATH=chemin d'accès
 
 -FONTS
 FONT=LIFECRAFT FILEPATH=fonts/lifecraft.ttf

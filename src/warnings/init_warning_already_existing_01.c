@@ -36,7 +36,7 @@ int check_already_existing_texture(hashmap_t *hashmap, char *texture_name)
 	texture_t *texture = hm_get(hashmap, texture_name);
 
 	if (texture != NULL) {
-		my_printf("WARNING: TEXTURE '%s' REDECLARED IN TEXTURES! \n",
+		my_printf("WARNING: TEXTURE '%s' REDECLARED IN TEXTURES !\n",
 		texture_name);
 		return (84);
 	}
@@ -46,7 +46,7 @@ int check_already_existing_texture(hashmap_t *hashmap, char *texture_name)
 int check_already_existing_audio(sfMusic *audio, char *audio_name)
 {
 	if (audio != NULL) {
-		my_printf("WARNING: AUDIO '%s' REDECLARED IN SOUNDS! \n",
+		my_printf("WARNING: AUDIO '%s' REDECLARED IN SOUNDS !\n",
 		audio_name);
 		return (84);
 	}
@@ -56,7 +56,7 @@ int check_already_existing_audio(sfMusic *audio, char *audio_name)
 int check_already_existing_font(sfFont *font, char *font_name)
 {
 	if (font != NULL) {
-		my_printf("WARNING: FONT '%s' REDECLARED IN FONTS! \n",
+		my_printf("WARNING: FONT '%s' REDECLARED IN FONTS !\n",
 		font_name);
 		return (84);
 	}

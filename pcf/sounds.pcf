@@ -1,5 +1,6 @@
 ### FILE : Initialisation des sons et des musiques du jeu ###
-//Format = pathfile / Nom de la musique/du son
+//Format: INIT_INDICATOR + description (voir .h)
+//Format:	AUDIO=nom de l'audio + FILEPATH=chemin d'accès
 
 -SOUNDS
 

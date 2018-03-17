@@ -17,11 +17,7 @@ void display_bucket_objs(my_w_t *window, bucket_t *obj)
 		display = tmp->value;
 		sfRenderWindow_drawRectangleShape(window->window,
 			display->obj, NULL);
-		if (display->obj_rect.animated == sfTrue
-			&& window->clocker.seconds >= 0.1) {
-			move_rect(display);
-			sfClock_restart(window->clocker.clock);
-		}
+		time_animation(display, 0.1, window);
 		tmp = tmp->next;
 	}
 }
