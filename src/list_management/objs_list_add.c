@@ -32,7 +32,7 @@ int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window)
 	return (0);
 }
 
-int add_scene_to_list(bucket_t *scene, my_w_t *window)
+int add_scene_to_display_list(bucket_t *scene, my_w_t *window)
 {
 	display_list_t *display = create_a_display(scene->key, scene->value);
 	display_list_t *tmp = window->displayed_scenes;

@@ -20,7 +20,7 @@ int process_pre_window(my_w_t *window)
 {
 	sfRenderWindow_setFramerateLimit(window->window, 60);
 	start_scene_music(window->current->value);
-	if (add_scene_to_list(window->current, window) != 0)
+	if (add_scene_to_display_list(window->current, window) != 0)
 		return (84);
 	if (load_my_zone(window) != 0)
 		return (84);

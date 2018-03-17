@@ -300,6 +300,7 @@ int check_unexisting_font(sfFont *font, char *font_name);
 int check_unexisting_texture(texture_t *texture, char *texture_name);
 int check_unexisting_music(sfMusic *music, char *music_name);
 int check_unexisting_zone(char *zone_name);
+int check_unexisting_scene(bucket_t *scene, char *asked_scene);
 
 /// INIT WARNING : INVALID
 
@@ -359,8 +360,13 @@ tile_list_t *create_a_tile(char *texture_name, int priority, my_w_t *window);
 
 int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
-int add_scene_to_list(bucket_t *scene, my_w_t *window);
+int add_scene_to_display_list(bucket_t *scene, my_w_t *window);
 int add_tile_to_list(char *texture, int priority, my_w_t *window);
+
+/// LIST REMOVING
+
+void clean_displayed_scenes(my_w_t *window);
+int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 
 /// GAME FUNCTIONS
 

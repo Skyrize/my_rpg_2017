@@ -29,6 +29,7 @@ void texture_destroy(texture_t *texture)
 
 void destroy_and_free(my_w_t *window)
 {
+	clean_displayed_scenes(window);
 	hm_destroy(window->textures_lib);
 	hm_destroy(window->audio_lib);
 	hm_destroy(window->fonts_lib);

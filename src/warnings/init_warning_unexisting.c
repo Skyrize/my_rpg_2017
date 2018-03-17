@@ -8,6 +8,16 @@
 #include "my.h"
 #include "rpg.h"
 
+int check_unexisting_scene(bucket_t *scene, char *asked_scene)
+{
+	if (!scene) {
+		my_printf("WARNING: CAN'T FIND SCENE '%s' IN SCENES LIST !\n",
+		asked_scene);
+		return (84);
+	}
+	return (0);
+}
+
 int check_unexisting_texture(texture_t *texture, char *texture_name)
 {
 	if (!texture) {
