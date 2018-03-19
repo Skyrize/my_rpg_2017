@@ -8,6 +8,18 @@
 #include "my.h"
 #include "rpg.h"
 
+void clean_displayed_tiles(my_w_t *window)
+{
+	tile_list_t *tmp;
+
+	while (TILE_LIST) {
+		tmp = TILE_LIST;
+		TILE_LIST = tmp->next;
+		obj_destroy(tmp->tile);
+		free(tmp);
+	}
+}
+
 void clean_displayed_scenes(my_w_t *window)
 {
 	display_list_t *tmp;

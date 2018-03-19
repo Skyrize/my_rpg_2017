@@ -367,6 +367,7 @@ int add_tile_to_list(char *texture, int priority, my_w_t *window);
 
 void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
+void clean_displayed_tiles(my_w_t *window);
 
 /// GAME FUNCTIONS
 

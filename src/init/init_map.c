@@ -8,6 +8,31 @@
 #include "my.h"
 #include "rpg.h"
 
+void unload_my_tiles(my_w_t *window)
+{
+	if (AREA_NAME != NULL)
+		clean_displayed_tiles(window);
+}
+
+void unload_my_area(my_w_t *window)
+{
+	TILE_COOR_X = 0;
+	TILE_COOR_Y = 0;
+	for (; TILE_COOR_Y != TILE_TAB_Y; TILE_COOR_Y++)
+		for (; TILE_COOR_X != TILE_TAB_X; TILE_COOR_X++)
+			unload_my_tiles(window);
+
+}
+
+void unload_my_zone(my_w_t *window)
+{
+	AREA_COOR_X = 0;
+	AREA_COOR_Y = 0;
+	for (; AREA_COOR_Y != AREA_TAB_Y; AREA_COOR_Y++)
+		for (; AREA_COOR_X != AREA_TAB_X; AREA_COOR_X++)
+			unload_my_area(window);
+}
+
 int load_my_zone(my_w_t *window)
 {
 	const key_word_t zone_keys[] = {

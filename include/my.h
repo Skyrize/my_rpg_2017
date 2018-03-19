@@ -23,7 +23,7 @@
 #include <criterion/redirect.h>
 #include <errno.h>
 #ifndef READ_SIZE
-#define READ_SIZE 3
+#define READ_SIZE 80
 #endif /* !READ_SIZE */
 void my_putchar(char);
 int my_isneg(int);

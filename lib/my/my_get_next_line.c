@@ -51,7 +51,7 @@ char *my_get_next_line(int fd)
 		if (str[i] == '\n') {
 			str[i] = 0;
 			break;
-		} else if (str[i] == -1) {
+		} else if (str[i] == -1 || str[i] == 0) {
 			free(str);
 			return (NULL);
 		}

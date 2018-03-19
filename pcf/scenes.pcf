@@ -89,7 +89,6 @@ ________________________________________________________________________________
 		LIST=TEXTS
 			TEXT=NAME_LAURA STR=LAURA FONT=LIFECRAFT CHARAC_SIZE=50 X=0 Y=200
 			TEXT=NAME_MIKE STR=MIKE FONT=ARCADE CHARAC_SIZE=50 X=100 Y=300
-		MUSIC=OUI
 
 ________________________________________________________________________________
 
