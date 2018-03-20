@@ -407,7 +407,7 @@ int credits(my_w_t *window);
 int exit_game(my_w_t *window);
 int caracteristique(my_w_t *window);
 int credits(my_w_t *window);
-int inventaire(my_w_t *window);
+int inventory(my_w_t *window);
 int load(my_w_t *window);
 int map(my_w_t *window);
 int new_game(my_w_t *window);

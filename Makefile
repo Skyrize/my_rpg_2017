@@ -43,7 +43,7 @@ SRC	=	main.c	\
 		src/HUD/button_function/caracteristique.c \
 		src/HUD/button_function/credits.c \
 		src/HUD/button_function/exit.c \
-		src/HUD/button_function/inventaire.c \
+		src/HUD/button_function/inventory.c \
 		src/HUD/button_function/load.c \
 		src/HUD/button_function/map.c \
 		src/HUD/button_function/new_game.c \
