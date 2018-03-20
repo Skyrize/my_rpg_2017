@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void display_bucket_texts(my_w_t *window, bucket_t *obj)
+int display_bucket_texts(my_w_t *window, bucket_t *obj)
 {
 	bucket_t *tmp = obj;
 	sfText *display;
@@ -18,4 +18,5 @@ void display_bucket_texts(my_w_t *window, bucket_t *obj)
 		sfRenderWindow_drawText(window->window, display, NULL);
 		tmp = tmp->next;
 	}
+	return (0);
 }

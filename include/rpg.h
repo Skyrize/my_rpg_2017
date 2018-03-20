@@ -46,6 +46,22 @@
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 130})
 
+//HUD
+#define NEW_GAME "new_game"
+#define RESUME_GAME "resume"
+#define OPTION_GAME "option"
+#define CREDITS_GAME "credits"
+#define SAVE_GAME "save"
+#define RE_LOAD "re_load"
+#define QUIT_GAME "quit"
+#define QUETES_GAME "quetes"
+#define PAUSE_GAME "pause"
+#define CARAC_GAME "caracteristique"
+#define EXIT_GAME "exit"
+#define INVENTORY_GAME "inventaire"
+#define LOAD_GAME "load"
+#define MAP_GAME "map"
+
 ////////////////////////////////// OBJECTS //////////////////////////////
 
 typedef struct obj_data_s obj_data_t;
@@ -254,22 +270,6 @@ typedef struct myfunc_s {
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
 
-//HUD
-#define NEW_GAME "new_game"
-#define RESUME_GAME "resume"
-#define OPTION_GAME "option"
-#define CREDITS_GAME "credits"
-#define SAVE_GAME "save"
-#define RE_LOAD "re_load"
-#define QUIT_GAME "quit"
-#define QUETES_GAME "quetes"
-#define PAUSE_GAME "pause"
-#define CARAC_GAME "caracteristique"
-#define EXIT_GAME "exit"
-#define INVENTORY_GAME "inventaire"
-#define LOAD_GAME "load"
-#define MAP_GAME "map"
-
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -426,12 +426,11 @@ int game_lobby(my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-void display_hashmap_objs(my_w_t *window, hashmap_t *hashmap);
-void display_bucket_objs(my_w_t *window, bucket_t *obj);
-void display_bucket_texts(my_w_t *window, bucket_t *obj);
+int display_bucket_objs(my_w_t *window, bucket_t *obj);
+int display_bucket_texts(my_w_t *window, bucket_t *obj);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
-void read_hashmap(my_w_t *window, hashmap_t *hashmap, void (*fptr)());
+int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)());
 
 /// INPUT
 

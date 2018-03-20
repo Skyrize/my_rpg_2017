@@ -40,21 +40,20 @@ SRC	=	main.c	\
 		src/game_display/display_texts.c	\
 		src/game_display/move_rect.c	\
 		src/free_destroy/free_and_destroy_lobby.c	\
-		src/HUD/button_function/caracteristique.c \
-		src/HUD/button_function/credits.c \
-		src/HUD/button_function/exit.c \
-		src/HUD/button_function/inventory.c \
-		src/HUD/button_function/load.c \
-		src/HUD/button_function/map.c \
-		src/HUD/button_function/new_game.c \
-		src/HUD/button_function/option.c \
-		src/HUD/button_function/pause.c \
-		src/HUD/button_function/quetes.c \
-		src/HUD/button_function/quit.c \
-		src/HUD/button_function/re_load.c \
-		src/HUD/button_function/resume.c \
-		src/HUD/button_function/save.c \
-		src/HUD/init_func_button.c \
+		src/hud/caracteristique.c \
+		src/hud/credits.c \
+		src/hud/exit.c \
+		src/hud/inventory.c \
+		src/hud/load.c \
+		src/hud/map.c \
+		src/hud/new_game.c \
+		src/hud/option.c \
+		src/hud/pause.c \
+		src/hud/quetes.c \
+		src/hud/quit.c \
+		src/hud/re_load.c \
+		src/hud/resume.c \
+		src/hud/save.c \
 
 OBJS	=	$(SRC:.c=.o)
 
