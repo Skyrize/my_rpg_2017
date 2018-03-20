@@ -41,6 +41,11 @@
 #define TILE_TAB_X 16
 #define TILE_TAB_Y 12
 
+//////////////////////////////// PLAYER DEFINES /////////////////////////////
+
+#define INVENTORY_SIZE_Y 7
+#define INVENTORY_SIZE_X 5
+
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
@@ -160,6 +165,36 @@ typedef struct display_list_s
 	char *scene_name;
 	display_list_t *next;
 } display_list_t;
+
+/////////////////////////////////// PLAYER ////////////////////////////////
+
+typedef enum
+{
+	MAGE = 0,
+	HUNTER = 1,
+	WARRIOR = 2,
+} player_character_t;
+
+typedef struct characteristic_s
+{
+	int vitality;
+	int armor;
+	char *speciality_name;
+	int speciality;
+} characteristic_t;
+
+typedef struct inventory_s
+{
+	int golds;
+	obj_t inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+} inventory_t;
+
+typedef struct player_s
+{
+	char *name;
+	player_character_t character;
+	characteristic_t characteristics;
+} player_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 

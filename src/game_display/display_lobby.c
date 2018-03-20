@@ -16,7 +16,7 @@ int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)())
 	for (unsigned int i = 0; i != hashmap->size; i++) {
 		tmp = hashmap->data[i];
 		if (tmp != NULL) {
-			error_no = fptr(window, tmp);
+			error_no += fptr(window, tmp);
 		}
 		if (error_no != 0)
 			return (84);
