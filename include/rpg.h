@@ -18,7 +18,7 @@
 #define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string init. Get replaced with spaces.
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
-#define STARTING_SCENE_NAME "GAME" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
+#define STARTING_SCENE_NAME "MENU_PRINCIPAL" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
 #define GAME_TITLE "We have to choose a title for our rpg."
 
