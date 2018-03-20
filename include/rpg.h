@@ -225,6 +225,17 @@ typedef struct text_data_s
 
 //////////////////////////////////// DATA DEFINES /////////////////////////////
 
+//////////////////////////////////// DATA HUD /////////////////////////////
+
+typedef struct myfunc_s {
+	char *balise;
+	int (*instruction)();
+} myfunc_t;
+
+
+//////////////////////////////////// DATA HUD /////////////////////////////
+
+
 #define ZONE_COOR_X window->map.zone_coord.x
 #define ZONE_COOR_Y window->map.zone_coord.y
 #define AREA_COOR_X window->map.area_coord.x
@@ -242,6 +253,22 @@ typedef struct text_data_s
 #define AREA_ENCOUTER AREA.encounter
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
+
+//HUD
+#define NEW_GAME "new_game"
+#define RESUME_GAME "resume"
+#define OPTION_GAME "option"
+#define CREDITS_GAME "credits"
+#define SAVE_GAME "save"
+#define RE_LOAD "re_load"
+#define QUIT_GAME "quit"
+#define QUETES_GAME "quetes"
+#define PAUSE_GAME "pause"
+#define CARAC_GAME "caracteristique"
+#define EXIT_GAME "exit"
+#define INVENTORY_GAME "inventaire"
+#define LOAD_GAME "load"
+#define MAP_GAME "map"
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -368,6 +395,30 @@ int add_tile_to_list(char *texture, int priority, my_w_t *window);
 void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
+
+/// HUD FUNCTIONS
+
+//BUTTON FUNCTIO?
+int start_game(my_w_t *window);
+int option(my_w_t *window);
+int credits(my_w_t *window);
+int exit_game(my_w_t *window);
+int caracteristique(my_w_t *window);
+int credits(my_w_t *window);
+int inventaire(my_w_t *window);
+int load(my_w_t *window);
+int map(my_w_t *window);
+int new_game(my_w_t *window);
+int pause_game(my_w_t *window);
+int quetes(my_w_t *window);
+int quit(my_w_t *window);
+int re_load(my_w_t *window);
+int resume(my_w_t *window);
+int save(my_w_t *window);
+
+//INIT
+int init_callback_obj(my_w_t *window);
+/// END OF HUD
 
 /// GAME FUNCTIONS
 
