@@ -25,18 +25,3 @@ myfunc_t g_tab[] =
 	{"SAVE", save},
 	{0, 0}
 };
-
-/*
-int init_callback_obj(my_w_t *window)
-{
-	int i = 0;
-
-	while (g_tab[i].balise != 0) {
-		if (!g_tab[i].balise || ![MANQUE UN ARGS])
-			return (84);
-		if (my_strcmp(g_tab[i].balise, [MANQUE UN ARGS]) == 0)
-			[MANQUE UN ARGS] = g_tab[i].instruction;
-		i += 1;
-	}
-	return (0);
-}*/

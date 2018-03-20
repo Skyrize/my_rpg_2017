@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void display_hashmap(my_w_t *window, hashmap_t *hashmap, void (*fptr)())
+void read_hashmap(my_w_t *window, hashmap_t *hashmap, void (*fptr)())
 {
 	bucket_t *tmp;
 
@@ -29,10 +29,10 @@ int display_scenes(my_w_t *window)
 			return (84);
 	while (tmp) {
 		for (int i = 0; i != OBJS_TYPE_NB; i++) {
-			display_hashmap(window, tmp->scene->objs[i],
+			read_hashmap(window, tmp->scene->objs[i],
 				&display_bucket_objs);
 		}
-		display_hashmap(window, tmp->scene->texts,
+		read_hashmap(window, tmp->scene->texts,
 			&display_bucket_texts);
 		tmp = tmp->next;
 	}

@@ -283,6 +283,7 @@ int init_my_fonts_lib(my_w_t *window);
 int init_my_map(my_w_t *window);
 int init_my_zone(my_w_t *window);
 int init_scene_lists(char **infos, my_w_t *window);
+int init_callback_obj(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
 
@@ -398,7 +399,8 @@ void clean_displayed_tiles(my_w_t *window);
 
 /// HUD FUNCTIONS
 
-//BUTTON FUNCTIO?
+//BUTTONS FUNCTIONS
+
 int start_game(my_w_t *window);
 int option(my_w_t *window);
 int credits(my_w_t *window);
@@ -416,10 +418,6 @@ int re_load(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
 
-//INIT
-int init_callback_obj(my_w_t *window);
-/// END OF HUD
-
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
@@ -433,6 +431,7 @@ void display_bucket_objs(my_w_t *window, bucket_t *obj);
 void display_bucket_texts(my_w_t *window, bucket_t *obj);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
+void read_hashmap(my_w_t *window, hashmap_t *hashmap, void (*fptr)());
 
 /// INPUT
 
