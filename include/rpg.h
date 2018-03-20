@@ -41,10 +41,31 @@
 #define TILE_TAB_X 16
 #define TILE_TAB_Y 12
 
+//////////////////////////////// PLAYER DEFINES /////////////////////////////
+
+#define INVENTORY_SIZE_Y 7
+#define INVENTORY_SIZE_X 5
+
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 130})
+
+//HUD
+#define NEW_GAME "new_game"
+#define RESUME_GAME "resume"
+#define OPTION_GAME "option"
+#define CREDITS_GAME "credits"
+#define SAVE_GAME "save"
+#define RE_LOAD "re_load"
+#define QUIT_GAME "quit"
+#define QUETES_GAME "quetes"
+#define PAUSE_GAME "pause"
+#define CARAC_GAME "caracteristique"
+#define EXIT_GAME "exit"
+#define INVENTORY_GAME "inventaire"
+#define LOAD_GAME "load"
+#define MAP_GAME "map"
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -66,6 +87,7 @@ typedef struct obj_s
 {
 	int (*callback)();
 	sfRectangleShape *obj;
+	sfBool button;
 	rect_t obj_rect;
 } obj_t;
 
@@ -144,6 +166,36 @@ typedef struct display_list_s
 	display_list_t *next;
 } display_list_t;
 
+/////////////////////////////////// PLAYER ////////////////////////////////
+
+typedef enum
+{
+	MAGE = 0,
+	HUNTER = 1,
+	WARRIOR = 2,
+} player_character_t;
+
+typedef struct characteristic_s
+{
+	int vitality;
+	int armor;
+	char *speciality_name;
+	int speciality;
+} characteristic_t;
+
+typedef struct inventory_s
+{
+	int golds;
+	obj_t inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+} inventory_t;
+
+typedef struct player_s
+{
+	char *name;
+	player_character_t character;
+	characteristic_t characteristics;
+} player_t;
+
 /////////////////////////////////// WINDOW ////////////////////////////////
 
 typedef struct ctime_s
@@ -201,6 +253,7 @@ typedef struct obj_infos_s
 {
 	char **name;
 	char **type;
+	char **button;
 	char **x;
 	char **y;
 } obj_infos_t;
@@ -211,6 +264,7 @@ typedef struct obj_data_s
 {
 	char *name;
 	char *type;
+	sfBool button;
 	sfVector2f position;
 } obj_data_t;
 
@@ -224,6 +278,17 @@ typedef struct text_data_s
 } text_data_t;
 
 //////////////////////////////////// DATA DEFINES /////////////////////////////
+
+//////////////////////////////////// DATA HUD /////////////////////////////
+
+typedef struct myfunc_s {
+	char *balise;
+	int (*instruction)();
+} myfunc_t;
+
+
+//////////////////////////////////// DATA HUD /////////////////////////////
+
 
 #define ZONE_COOR_X window->map.zone_coord.x
 #define ZONE_COOR_Y window->map.zone_coord.y
@@ -256,6 +321,7 @@ int init_my_fonts_lib(my_w_t *window);
 int init_my_map(my_w_t *window);
 int init_my_zone(my_w_t *window);
 int init_scene_lists(char **infos, my_w_t *window);
+int init_my_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
 
@@ -369,6 +435,27 @@ void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
 
+/// HUD FUNCTIONS
+
+//BUTTONS FUNCTIONS
+
+int start_game(my_w_t *window);
+int option(my_w_t *window);
+int credits(my_w_t *window);
+int exit_game(my_w_t *window);
+int caracteristique(my_w_t *window);
+int credits(my_w_t *window);
+int inventory(my_w_t *window);
+int load(my_w_t *window);
+int map(my_w_t *window);
+int new_game(my_w_t *window);
+int pause_game(my_w_t *window);
+int quetes(my_w_t *window);
+int quit(my_w_t *window);
+int re_load(my_w_t *window);
+int resume(my_w_t *window);
+int save(my_w_t *window);
+
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
@@ -377,11 +464,11 @@ int game_lobby(my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-void display_hashmap_objs(my_w_t *window, hashmap_t *hashmap);
-void display_bucket_objs(my_w_t *window, bucket_t *obj);
-void display_bucket_texts(my_w_t *window, bucket_t *obj);
+int display_bucket_objs(my_w_t *window, bucket_t *obj);
+int display_bucket_texts(my_w_t *window, bucket_t *obj);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
+int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)());
 
 /// INPUT
 

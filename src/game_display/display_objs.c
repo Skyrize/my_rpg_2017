@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void display_bucket_objs(my_w_t *window, bucket_t *obj)
+int display_bucket_objs(my_w_t *window, bucket_t *obj)
 {
 	bucket_t *tmp = obj;
 	obj_t *display;
@@ -20,4 +20,5 @@ void display_bucket_objs(my_w_t *window, bucket_t *obj)
 		time_animation(display, 0.1, window);
 		tmp = tmp->next;
 	}
+	return (0);
 }
