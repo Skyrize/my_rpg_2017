@@ -78,8 +78,7 @@ prepare_lib:
 
 map:	prepare_lib
 	make -C bonus/map_creator/
-	cp map_editor ../../
-	./map_editor
+	mv bonus/map_creator/map_editor ./
 
 tests_run:	prepare_lib
 	make -C tests/
@@ -88,6 +87,12 @@ tests_run:	prepare_lib
 
 $(NAME):	$(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LFLAGS) $(CFLAGS)
+
+clean_map:
+	make clean -C bonus/map_creator
+
+fclean_map:
+	make fclean -C bonus/map_creator
 
 clean:
 	make clean -C lib/my
