@@ -14,7 +14,7 @@ myfunc_t g_tab[] =
 	{"OPTION", option},
 	{"CREDITS", credits},
 	{"CARACTERISTIQUE", caracteristique},
-	{"INVENTAIRE", inventaire},
+	{"INVENTAIRE", inventory},
 	{"MAP", map},
 	{"NEW_GAME", new_game},
 	{"PAUSE", pause},
