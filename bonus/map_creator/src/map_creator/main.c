@@ -1,26 +1,50 @@
 /*
 ** EPITECH PROJECT, 2017
-** CPE_matchstick_2017
+** delivery
 ** File description:
-** main.c
+** delivery made by Sanchez Lucas
 */
 
-#include "../../include/my_world.h"
-#include <SFML/Window.h>
+#include "map_editor.h"
 
-void init(ressources_t *rsces)
+sfRenderWindow *my_window_create()
 {
-	create_textures(rsces);
-	create_sounds(rsces);
-	create_gui(rsces);
-	sfRenderWindow_setFramerateLimit(rsces->window, 30);
-	main_loop(rsces);
+	sfRenderWindow *window;
+	sfVideoMode mode;
+
+	mode.width = 1600;
+	mode.height = 900;
+	mode.bitsPerPixel = 32;
+	window = sfRenderWindow_create(mode, "Map Editor By Lucas Sanchez",
+							sfClose, NULL);
+	sfRenderWindow_setFramerateLimit(window, 30);
+	return (window);
 }
 
-int main(int ac, char *av[])
+void main_loop(ressources_t *rsces, sfVector2i area)
 {
-	ressources_t *rsces = create_ressources();
+	sfEvent event;
 
-	init(rsces);
+	while (sfRenderWindow_isOpen(rsces->window)) {
+		while (sfRenderWindow_pollEvent(rsces->window, &event))
+			on_event(rsces, event);
+		sfRenderWindow_clear(rsces->window, sfBlack);
+		sfRenderWindow_display(rsces->window);
+	}
+}
+
+int main(int ac, char **av)
+{
+	sfRenderWindow *window = my_window_create();
+	ressources_t rsces;
+	my_w_t my_window = init_my_window();
+	v2i area;
+
+	if (ac != 3)
+		return (84);
+	area = area_selector();
+	rsces.window = window;
+	rsces.rsces = &my_window;
+	main_loop(&rsces, area);
 	return (0);
 }
