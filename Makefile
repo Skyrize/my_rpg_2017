@@ -76,6 +76,11 @@ all:	prepare_lib $(NAME)
 prepare_lib:
 	make -C lib/my
 
+map:	prepare_lib
+	make -C bonus/map_creator/
+	cp map_editor ../../
+	./map_editor
+
 tests_run:	prepare_lib
 	make -C tests/
 	tests/unit-tests
