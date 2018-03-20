@@ -32,7 +32,7 @@ obj_t *create_obj(obj_data_t *data, my_w_t *window)
 	new_obj->obj = sfRectangleShape_create();
 	if (!new_obj->obj)
 		return (NULL);
-	new_obj->button = data->button % 1;
+	new_obj->button = data->button % 2;
 	sfRectangleShape_setTexture(new_obj->obj, texture->texture, sfTrue);
 	sfRectangleShape_setSize(new_obj->obj, rec_size);
 	sfRectangleShape_setPosition(new_obj->obj, data->position);

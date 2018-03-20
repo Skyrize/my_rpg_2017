@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_rpg_2017
+** my_prg_2017
 ** File description:
 ** (enter)
 */
@@ -34,11 +34,16 @@ int init_button_callback(bucket_t *button_bucket)
 		return (84);
 	if (button->button == sfFalse)
 		return (0);
-	while (g_tab[i].balise != 0) {
-		my_printf("button = %s\n", button_bucket->key);
-		if (my_fastcmp(g_tab[i].balise, button_bucket->key) == 0)
+	for (; g_tab[i].balise != 0; i++) {
+		if (my_fastcmp(g_tab[i].balise, button_bucket->key) == 0) {
 			button->callback = g_tab[i].instruction;
-		i += 1;
+			break;
+		}
+	}
+	if (g_tab[i].balise == 0) {
+		my_printf("WARNING: CAN'T FIND BUTTON '%s' !\n",
+		button_bucket->key);
+		return (84);
 	}
 	return (0);
 }
@@ -65,7 +70,7 @@ int read_scenes(my_w_t *window, bucket_t *scene_bucket)
 	while (tmp) {
 		scene = tmp->value;
 		for (int i = 0; i != OBJS_TYPE_NB; i++) {
-			error_no = read_hashmap(window, scene->objs[BUTTONS],
+			error_no += read_hashmap(window, scene->objs[i],
 				&seek_buttons);
 		}
 		if (error_no != 0)
