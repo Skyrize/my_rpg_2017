@@ -46,6 +46,22 @@
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 130})
 
+//HUD
+#define NEW_GAME "new_game"
+#define RESUME_GAME "resume"
+#define OPTION_GAME "option"
+#define CREDITS_GAME "credits"
+#define SAVE_GAME "save"
+#define RE_LOAD "re_load"
+#define QUIT_GAME "quit"
+#define QUETES_GAME "quetes"
+#define PAUSE_GAME "pause"
+#define CARAC_GAME "caracteristique"
+#define EXIT_GAME "exit"
+#define INVENTORY_GAME "inventaire"
+#define LOAD_GAME "load"
+#define MAP_GAME "map"
+
 ////////////////////////////////// OBJECTS //////////////////////////////
 
 typedef struct obj_data_s obj_data_t;
@@ -66,6 +82,7 @@ typedef struct obj_s
 {
 	int (*callback)();
 	sfRectangleShape *obj;
+	sfBool button;
 	rect_t obj_rect;
 } obj_t;
 
@@ -201,6 +218,7 @@ typedef struct obj_infos_s
 {
 	char **name;
 	char **type;
+	char **button;
 	char **x;
 	char **y;
 } obj_infos_t;
@@ -211,6 +229,7 @@ typedef struct obj_data_s
 {
 	char *name;
 	char *type;
+	sfBool button;
 	sfVector2f position;
 } obj_data_t;
 
@@ -254,22 +273,6 @@ typedef struct myfunc_s {
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
 
-//HUD
-#define NEW_GAME "new_game"
-#define RESUME_GAME "resume"
-#define OPTION_GAME "option"
-#define CREDITS_GAME "credits"
-#define SAVE_GAME "save"
-#define RE_LOAD "re_load"
-#define QUIT_GAME "quit"
-#define QUETES_GAME "quetes"
-#define PAUSE_GAME "pause"
-#define CARAC_GAME "caracteristique"
-#define EXIT_GAME "exit"
-#define INVENTORY_GAME "inventaire"
-#define LOAD_GAME "load"
-#define MAP_GAME "map"
-
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -283,6 +286,7 @@ int init_my_fonts_lib(my_w_t *window);
 int init_my_map(my_w_t *window);
 int init_my_zone(my_w_t *window);
 int init_scene_lists(char **infos, my_w_t *window);
+int init_my_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
 
@@ -398,7 +402,8 @@ void clean_displayed_tiles(my_w_t *window);
 
 /// HUD FUNCTIONS
 
-//BUTTON FUNCTIO?
+//BUTTONS FUNCTIONS
+
 int start_game(my_w_t *window);
 int option(my_w_t *window);
 int credits(my_w_t *window);
@@ -416,10 +421,6 @@ int re_load(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
 
-//INIT
-int init_callback_obj(my_w_t *window);
-/// END OF HUD
-
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
@@ -428,11 +429,11 @@ int game_lobby(my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-void display_hashmap_objs(my_w_t *window, hashmap_t *hashmap);
-void display_bucket_objs(my_w_t *window, bucket_t *obj);
-void display_bucket_texts(my_w_t *window, bucket_t *obj);
+int display_bucket_objs(my_w_t *window, bucket_t *obj);
+int display_bucket_texts(my_w_t *window, bucket_t *obj);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
+int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)());
 
 /// INPUT
 
