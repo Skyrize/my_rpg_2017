@@ -13,6 +13,7 @@ SRC	=	main.c	\
 		src/init/list_filling_init.c	\
 		src/init/init_libs.c	\
 		src/init/init_map.c	\
+		src/init/buttons_init.c	\
 		src/init/scene_keys_functions_01.c	\
 		src/init/scene_keys_functions_02.c	\
 		src/init/texture_keys_functions_01.c	\

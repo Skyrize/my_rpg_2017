@@ -25,16 +25,19 @@ static const myfunc_t g_tab[] =
 	{0, 0}
 };
 
-int init_button_callback(my_w_t *window, bucket_t *button_bucket)
+int init_button_callback(bucket_t *button_bucket)
 {
-	obj_t *obj = button_bucket->value;
+	obj_t *button = button_bucket->value;
 	int i = 0;
 
 	if (!button)
 		return (84);
+	if (button->button == sfFalse)
+		return (0);
 	while (g_tab[i].balise != 0) {
+		my_printf("button = %s\n", button_bucket->key);
 		if (my_fastcmp(g_tab[i].balise, button_bucket->key) == 0)
-			obj->callback = g_tab[i].instruction;
+			button->callback = g_tab[i].instruction;
 		i += 1;
 	}
 	return (0);
@@ -45,10 +48,11 @@ int seek_buttons(my_w_t *window, bucket_t *button_bucket)
 	bucket_t *tmp = button_bucket;
 
 	while (tmp) {
-		if (init_button_callback(window, button_bucket) != 0)
+		if (init_button_callback(button_bucket) != 0)
 			return (84);
 		tmp = tmp->next;
 	}
+	(void)window;
 	return (0);
 }
 
@@ -56,11 +60,15 @@ int read_scenes(my_w_t *window, bucket_t *scene_bucket)
 {
 	bucket_t *tmp = scene_bucket;
 	scene_t *scene;
+	int error_no = 0;
 
 	while (tmp) {
 		scene = tmp->value;
-		if (read_hashmap(window, scene->objs[BUTTONS],
-			&seek_buttons) != 0)
+		for (int i = 0; i != OBJS_TYPE_NB; i++) {
+			error_no = read_hashmap(window, scene->objs[BUTTONS],
+				&seek_buttons);
+		}
+		if (error_no != 0)
 			return (84);
 		tmp = tmp->next;
 	}

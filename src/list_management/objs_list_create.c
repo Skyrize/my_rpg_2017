@@ -32,6 +32,7 @@ obj_t *create_obj(obj_data_t *data, my_w_t *window)
 	new_obj->obj = sfRectangleShape_create();
 	if (!new_obj->obj)
 		return (NULL);
+	new_obj->button = data->button % 1;
 	sfRectangleShape_setTexture(new_obj->obj, texture->texture, sfTrue);
 	sfRectangleShape_setSize(new_obj->obj, rec_size);
 	sfRectangleShape_setPosition(new_obj->obj, data->position);
@@ -61,7 +62,7 @@ tile_list_t *create_a_tile(char *texture_name, int priority, my_w_t *window)
 	new_tile->priority = priority;
 	if (check_invalid_priority(priority, texture_name, window) != 0)
 		return (NULL);
-	new_tile->tile = create_obj(&(obj_data_t){NULL, texture_name,
+	new_tile->tile = create_obj(&(obj_data_t){NULL, texture_name, sfFalse,
 		(sfVector2f){TILE_COOR_X * WINDOW_PIXELS_UNIT,
 			TILE_COOR_Y * WINDOW_PIXELS_UNIT}}, window);
 	if (!new_tile->tile)

@@ -82,6 +82,7 @@ typedef struct obj_s
 {
 	int (*callback)();
 	sfRectangleShape *obj;
+	sfBool button;
 	rect_t obj_rect;
 } obj_t;
 
@@ -217,6 +218,7 @@ typedef struct obj_infos_s
 {
 	char **name;
 	char **type;
+	char **button;
 	char **x;
 	char **y;
 } obj_infos_t;
@@ -227,6 +229,7 @@ typedef struct obj_data_s
 {
 	char *name;
 	char *type;
+	sfBool button;
 	sfVector2f position;
 } obj_data_t;
 
@@ -283,7 +286,7 @@ int init_my_fonts_lib(my_w_t *window);
 int init_my_map(my_w_t *window);
 int init_my_zone(my_w_t *window);
 int init_scene_lists(char **infos, my_w_t *window);
-int init_callback_obj(my_w_t *window);
+int init_my_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
 
