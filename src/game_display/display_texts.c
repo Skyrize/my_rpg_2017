@@ -8,15 +8,10 @@
 #include "my.h"
 #include "rpg.h"
 
-int display_bucket_texts(my_w_t *window, bucket_t *obj)
+int display_texts(bucket_t *text, my_w_t *window)
 {
-	bucket_t *tmp = obj;
-	sfText *display;
+	sfText *display = text->value;
 
-	while (tmp) {
-		display = tmp->value;
-		sfRenderWindow_drawText(window->window, display, NULL);
-		tmp = tmp->next;
-	}
+	sfRenderWindow_drawText(window->window, display, NULL);
 	return (0);
 }

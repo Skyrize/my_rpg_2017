@@ -39,19 +39,17 @@ int button_fly_over(obj_t *button, sfVector2i clickPosition)
 	clickPosition.y > sfRectangleShape_getPosition(button->obj).y);
 }
 
-int callback_func(obj_t *button, my_w_t *window)
+int process_button_over(bucket_t *button_bucket, my_w_t *window)
 {
-		return (button->callback(window));
-	return (0);
-}
+	obj_t *button = button_bucket->value;
 
-int process_button_over(obj_t *button, my_w_t *window)
-{
-	if (button_fly_over(button, POS_MOUSE) == 1 &&
-	buttonisclicked((button), POS_MOUSE) == 0)
+	if (button->button != sfTrue)
+		return (0);
+	if (button_fly_over(button, MOUSE_POS) == 1 &&
+	buttonisclicked((button), MOUSE_POS) == 0)
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
-	else if (button_fly_over(button, POS_MOUSE) == 1 &&
-	buttonisclicked((button), POS_MOUSE) == 1) {
+	else if (button_fly_over(button, MOUSE_POS) == 1 &&
+	buttonisclicked((button), MOUSE_POS) == 1) {
 		for (int i = 40000000 ; i != 0 ; i--);
 		return (button->callback(window));
 	} else
@@ -59,31 +57,16 @@ int process_button_over(obj_t *button, my_w_t *window)
 	return (0);
 }
 
-int read_buttons(my_w_t *window, bucket_t *button_bucket)
-{
-	bucket_t *tmp = button_bucket;
-	obj_t *button = button_bucket->value;
-
-	while (tmp) {
-		if (button->button == sfTrue)
-			process_button_over(button, window);
-		tmp = tmp->next;
-	}
-	return (0);
-}
-void read_scene_button(scene_t *scene, my_w_t *window)
-{
-	for (int i = 0 ; i != OBJS_TYPE_NB ; i++) {
-		read_hashmap(window, scene->objs[i], &read_buttons);
-	}
-}
-
 int manage_buttons(my_w_t *window)
 {
 	display_list_t *tmp = window->displayed_scenes;
+	scene_t *scene;
 
 	while (tmp) {
-		read_scene_button(tmp->scene, window);
+		scene = tmp->scene;
+		for (int i = 0 ; i != OBJS_TYPE_NB ; i++)
+			read_hashmap(window, scene->objs[i],
+				&process_button_over);
 		tmp = tmp->next;
 	}
 	return (0);
