@@ -23,6 +23,10 @@ static const myfunc_t g_tab[] =
 	{"RESUME", resume},
 	{"SAVE", save},
 	{"EXIT", exit_game},
+	{"HOME", menu_principale},
+	{"SONG", manage_song},
+	{"FRAME_RATE_MORE", frame_rate_more},
+	{"FRAME_RATE_LESS", frame_rate_less},
 	{0, 0}
 };
 

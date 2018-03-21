@@ -26,6 +26,10 @@ int game_lobby(my_w_t *window)
 	POS_MOUSE = sfMouse_getPosition((const sfWindow *)
 	window->window);
 	compute_game(window);
+	scene_t *test_scene = window->current->value;
+	my_printf("scene : %s && song : %d && FRAME RATE %d\n",
+	window->current->key, test_scene->play_music,
+	window->framerate_game);
 	if (manage_buttons(window) == 1)
 		return (1);
 	if (display_scenes(window) != 0)

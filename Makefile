@@ -56,6 +56,9 @@ SRC	=	main.c	\
 		src/hud/resume.c \
 		src/hud/save.c \
 		src/hud/manage_buttons_game.c \
+		src/hud/menu_principale.c \
+		src/hud/manage_song.c \
+		src/hud/frame_rate.c \
 
 OBJS	=	$(SRC:.c=.o)
 

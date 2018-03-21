@@ -52,6 +52,7 @@ int process_button_over(obj_t *button, my_w_t *window)
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
 	else if (button_fly_over(button, POS_MOUSE) == 1 &&
 	buttonisclicked((button), POS_MOUSE) == 1) {
+		for (int i = 40000000 ; i != 0 ; i--);
 		return (button->callback(window));
 	} else
 		sfRectangleShape_setFillColor(button->obj, REGULAR_COLOR);

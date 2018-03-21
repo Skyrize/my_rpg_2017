@@ -56,7 +56,7 @@
 //HUD
 #define NEW_GAME "NEW_GAME"
 #define RESUME_GAME "RESUME"
-#define OPTION_GAME "OPTION"
+#define OPTION_GAME "OPTION_GAME"
 #define CREDITS_GAME "CREDITS"
 #define SAVE_GAME "SAVE"
 #define RE_LOAD "RELOAD"
@@ -68,6 +68,7 @@
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
 #define MAP_GAME "MAP"
+#define HOME "MENU_PRINCIPAL"
 #define POS_MOUSE window->pos_mouse
 
 ////////////////////////////////// OBJECTS //////////////////////////////
@@ -156,6 +157,7 @@ typedef enum
 typedef struct scene_s {
 	hashmap_t *objs[OBJS_TYPE_NB];
 	hashmap_t *texts;
+	sfBool play_music;
 	sfMusic *music;
 	int priority;
 } scene_t;
@@ -211,6 +213,7 @@ typedef struct ctime_s
 typedef struct my_window_s
 {
 	int error_no;
+	int framerate_game;
 	sfVector2i pos_mouse;
 	sfEvent event;
 	sfRenderWindow *window;
@@ -460,6 +463,10 @@ int quit(my_w_t *window);
 int re_load(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
+int menu_principale(my_w_t *window);
+int manage_song(my_w_t *window);
+int frame_rate_more(my_w_t *window);
+int frame_rate_less(my_w_t *window);
 
 /// GAME FUNCTIONS
 

@@ -18,7 +18,9 @@ void start_scene_music(scene_t *scene)
 
 int process_pre_window(my_w_t *window)
 {
-	sfRenderWindow_setFramerateLimit(window->window, 60);
+	window->framerate_game = 60;
+	sfRenderWindow_setFramerateLimit(window->window,
+	window->framerate_game);
 	start_scene_music(window->current->value);
 	if (add_scene_to_display_list(window->current, window) != 0)
 		return (84);
