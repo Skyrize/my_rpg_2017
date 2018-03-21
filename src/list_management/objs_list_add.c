@@ -56,9 +56,9 @@ int add_scene_to_display_list(bucket_t *scene, my_w_t *window)
 	return (0);
 }
 
-int add_tile_to_list(char *texture, int priority, my_w_t *window)
+int add_tile_to_list(char *texture, my_w_t *window)
 {
-	tile_list_t *display = create_a_tile(texture, priority, window);
+	tile_list_t *display = create_a_tile(texture, window);
 	tile_list_t *tmp = TILE_LIST;
 
 	if (!display)
