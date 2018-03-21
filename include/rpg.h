@@ -96,6 +96,7 @@ typedef struct obj_s
 
 typedef struct texture_s
 {
+	int priority;
 	sfTexture *texture;
 	sfBool animated;
 	sfIntRect rect;
@@ -363,7 +364,7 @@ int get_a_zone(char **infos, char **type, hashmap_t **current_list, my_w_t *wind
 int get_an_area(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_tile(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-
+int get_a_priority(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 /// INIT WARNING : UNEXISTING
 
 int check_unexisting_font(sfFont *font, char *font_name);
@@ -384,7 +385,7 @@ int check_invalid_animated(sfBool animated);
 int check_invalid_zone_coords(char *name, my_w_t *window);
 int check_invalid_area_coords(char *name, my_w_t *window);
 int check_invalid_tile_coords(char *name, my_w_t *window);
-int check_invalid_priority(int priority, char *texture_name, my_w_t *window);
+int check_invalid_priority(int priority, char *texture_name);
 
 /// INIT WARNING : ALREADY_EXISTING
 
@@ -424,14 +425,14 @@ int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
 
 obj_t *create_obj(obj_data_t *data, my_w_t *window);
 display_list_t *create_a_display(char *name, scene_t *scene);
-tile_list_t *create_a_tile(char *texture_name, int priority, my_w_t *window);
+tile_list_t *create_a_tile(char *texture_name, my_w_t *window);
 
 /// LIST ADDING
 
 int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 int add_scene_to_display_list(bucket_t *scene, my_w_t *window);
-int add_tile_to_list(char *texture, int priority, my_w_t *window);
+int add_tile_to_list(char *texture, my_w_t *window);
 
 /// LIST REMOVING
 
