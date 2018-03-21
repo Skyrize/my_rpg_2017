@@ -29,7 +29,7 @@ void init_window_values(my_w_t *window)
 	window->clocker = init_timer();
 	window->window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
 		WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
-	GAME_TITLE, sfResize | sfClose, NULL);
+	GAME_TITLE, sfClose, NULL);
 	window->displayed_scenes = NULL;
 }
 

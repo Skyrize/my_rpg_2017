@@ -9,7 +9,7 @@
 
 int new_game(my_w_t *window)
 {
-	window->current = hm_get_bucket(window->scenes, NEW_GAME);
-	clean_displayed_scenes_and_add_back(window, NEW_GAME);
+	window->current = hm_get_bucket(window->scenes, "GAME");
+	clean_displayed_scenes_and_add_back(window, "GAME");
 	return (0);
 }

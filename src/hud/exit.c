@@ -7,9 +7,8 @@
 
 #include "rpg.h"
 
+//NE PAS OUBLIER LE EXIT
 int exit_game(my_w_t *window)
 {
-	window->current = hm_get_bucket(window->scenes, EXIT_GAME);
-	clean_displayed_scenes_and_add_back(window, EXIT_GAME);
-	return (0);
+	exit (0);
 }

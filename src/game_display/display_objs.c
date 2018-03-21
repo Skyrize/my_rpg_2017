@@ -17,7 +17,7 @@ int display_bucket_objs(my_w_t *window, bucket_t *obj)
 		display = tmp->value;
 		sfRenderWindow_drawRectangleShape(window->window,
 			display->obj, NULL);
-		time_animation(display, 0.1, window);
+			time_animation(display, CLOCK_SPEED_MENU, window);
 		tmp = tmp->next;
 	}
 	return (0);
