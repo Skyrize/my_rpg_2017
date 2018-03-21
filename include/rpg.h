@@ -20,7 +20,7 @@
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
 #define STARTING_SCENE_NAME "MENU_PRINCIPAL" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
-#define GAME_TITLE "We have to choose a title for our rpg."
+#define GAME_TITLE "Lands Of Valoran"
 
 //////////////////////////////// WINDOW DEFINES //////////////////////////////
 

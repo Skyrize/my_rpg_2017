@@ -47,7 +47,7 @@ SRC	=	src/init/file_analysing.c	\
 
 OBJS	=	$(SRC:.c=.o)
 
-NAME	=	my_map_editor
+NAME	=	map_editor
 
 LFLAGS	=	-lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
 #-lc_graph_prog
