@@ -22,6 +22,7 @@ static const myfunc_t g_tab[] =
 	{"RELOAD", re_load},
 	{"RESUME", resume},
 	{"SAVE", save},
+	{"EXIT", exit_game},
 	{0, 0}
 };
 
@@ -82,6 +83,7 @@ int read_scenes(my_w_t *window, bucket_t *scene_bucket)
 
 int init_my_buttons(my_w_t *window)
 {
+	POS_MOUSE = (sfVector2i){0, 0};
 	if (read_hashmap(window, window->scenes, &read_scenes) != 0)
 		return (84);
 	return (0);

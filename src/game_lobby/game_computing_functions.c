@@ -23,7 +23,11 @@ void compute_game(my_w_t *window)
 int game_lobby(my_w_t *window)
 {
 	analyse_events(window);
+	POS_MOUSE = sfMouse_getPosition((const sfWindow *)
+	window->window);
 	compute_game(window);
+	if (manage_buttons(window) == 1)
+		return (1);
 	if (display_scenes(window) != 0)
 		return (84);
 	return (0);

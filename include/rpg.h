@@ -30,6 +30,8 @@
 #define WINDOW_PIXELS_UNIT 50
 #define OBJS_TYPE_NB 5
 #define PRIORITY_MAX 4
+#define CLOCK_SPEED_MENU 0.01
+#define CLOCK_SPEED_GAME 0.1
 
 
 ///////////////////////////////// MAPS DEFINES //////////////////////////////
@@ -49,23 +51,24 @@
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
-#define OVER_COLOR ((sfColor){120, 210, 210, 130})
+#define OVER_COLOR ((sfColor){120, 210, 210, 255})
 
 //HUD
-#define NEW_GAME "new_game"
-#define RESUME_GAME "resume"
-#define OPTION_GAME "option"
-#define CREDITS_GAME "credits"
+#define NEW_GAME "NEW_GAME"
+#define RESUME_GAME "RESUME"
+#define OPTION_GAME "OPTION"
+#define CREDITS_GAME "CREDITS"
 #define SAVE_GAME "save"
-#define RE_LOAD "re_load"
+#define RE_LOAD "RELOAD"
 #define QUIT_GAME "quit"
 #define QUETES_GAME "quetes"
 #define PAUSE_GAME "pause"
 #define CARAC_GAME "caracteristique"
-#define EXIT_GAME "exit"
+#define EXIT_GAME "EXIT"
 #define INVENTORY_GAME "inventaire"
 #define LOAD_GAME "load"
 #define MAP_GAME "map"
+#define POS_MOUSE window->pos_mouse
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -208,6 +211,7 @@ typedef struct ctime_s
 typedef struct my_window_s
 {
 	int error_no;
+	sfVector2i pos_mouse;
 	sfEvent event;
 	sfRenderWindow *window;
 	ctime_t clocker;
@@ -435,7 +439,8 @@ void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
 
-/// HUD FUNCTIONS
+/// MANAGE BUTTONS
+int manage_buttons(my_w_t *window);
 
 //BUTTONS FUNCTIONS
 

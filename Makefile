@@ -55,6 +55,7 @@ SRC	=	main.c	\
 		src/hud/re_load.c \
 		src/hud/resume.c \
 		src/hud/save.c \
+		src/hud/manage_buttons_game.c \
 
 OBJS	=	$(SRC:.c=.o)
 
