@@ -213,12 +213,8 @@ typedef struct ctime_s
 typedef struct my_window_s
 {
 	int error_no;
-<<<<<<< HEAD
 	int framerate_game;
-	sfVector2i pos_mouse;
-=======
 	sfVector2i mouse_pos;
->>>>>>> clemdev
 	sfEvent event;
 	sfRenderWindow *window;
 	ctime_t clocker;
