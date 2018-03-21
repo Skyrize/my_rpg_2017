@@ -28,6 +28,7 @@ int frame_rate_more(my_w_t *window)
 	(char *)int_to_str(window->framerate_game));
 	sfRenderWindow_setFramerateLimit(window->window,
 	window->framerate_game);
+	return (0);
 }
 
 int frame_rate_less(my_w_t *window)
@@ -50,4 +51,5 @@ int frame_rate_less(my_w_t *window)
 	(char *)int_to_str(window->framerate_game));
 	sfRenderWindow_setFramerateLimit(window->window,
 	window->framerate_game);
+	return (0);
 }
