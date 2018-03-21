@@ -468,7 +468,7 @@ int menu_principale(my_w_t *window);
 int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);
-
+char *int_to_str(int nb);
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
