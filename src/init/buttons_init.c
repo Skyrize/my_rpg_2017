@@ -26,7 +26,7 @@ static const myfunc_t g_tab[] =
 	{0, 0}
 };
 
-int init_button_callback(bucket_t *button_bucket)
+int init_button_callback(bucket_t *button_bucket, my_w_t *window)
 {
 	obj_t *button = button_bucket->value;
 	int i = 0;
@@ -46,44 +46,24 @@ int init_button_callback(bucket_t *button_bucket)
 		button_bucket->key);
 		return (84);
 	}
-	return (0);
-}
-
-int seek_buttons(my_w_t *window, bucket_t *button_bucket)
-{
-	bucket_t *tmp = button_bucket;
-
-	while (tmp) {
-		if (init_button_callback(button_bucket) != 0)
-			return (84);
-		tmp = tmp->next;
-	}
 	(void)window;
 	return (0);
 }
 
-int read_scenes(my_w_t *window, bucket_t *scene_bucket)
+int read_scenes(bucket_t *scene_bucket, my_w_t *window)
 {
-	bucket_t *tmp = scene_bucket;
-	scene_t *scene;
-	int error_no = 0;
+	scene_t *scene = scene_bucket->value;
 
-	while (tmp) {
-		scene = tmp->value;
-		for (int i = 0; i != OBJS_TYPE_NB; i++) {
-			error_no += read_hashmap(window, scene->objs[i],
-				&seek_buttons);
-		}
-		if (error_no != 0)
+	for (int i = 0; i != OBJS_TYPE_NB; i++) {
+		if (read_hashmap(window, scene->objs[i],
+			&init_button_callback) != 0)
 			return (84);
-		tmp = tmp->next;
 	}
 	return (0);
 }
 
 int init_my_buttons(my_w_t *window)
 {
-	POS_MOUSE = (sfVector2i){0, 0};
 	if (read_hashmap(window, window->scenes, &read_scenes) != 0)
 		return (84);
 	return (0);

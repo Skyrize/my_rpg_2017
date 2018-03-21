@@ -23,7 +23,7 @@ void compute_game(my_w_t *window)
 int game_lobby(my_w_t *window)
 {
 	analyse_events(window);
-	POS_MOUSE = sfMouse_getPosition((const sfWindow *)
+	MOUSE_POS = sfMouse_getPosition((const sfWindow *)
 	window->window);
 	compute_game(window);
 	if (manage_buttons(window) == 1)

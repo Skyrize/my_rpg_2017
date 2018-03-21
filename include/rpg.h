@@ -68,7 +68,6 @@
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
 #define MAP_GAME "MAP"
-#define POS_MOUSE window->pos_mouse
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -212,7 +211,7 @@ typedef struct ctime_s
 typedef struct my_window_s
 {
 	int error_no;
-	sfVector2i pos_mouse;
+	sfVector2i mouse_pos;
 	sfEvent event;
 	sfRenderWindow *window;
 	ctime_t clocker;
@@ -312,6 +311,8 @@ typedef struct myfunc_s {
 #define AREA_ENCOUTER AREA.encounter
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
+
+#define MOUSE_POS window->mouse_pos
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -470,8 +471,8 @@ int game_lobby(my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-int display_bucket_objs(my_w_t *window, bucket_t *obj);
-int display_bucket_texts(my_w_t *window, bucket_t *obj);
+int display_objs(bucket_t *obj_bucket, my_w_t *window);
+int display_texts(bucket_t *text_bucket, my_w_t *window);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
 int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)());
