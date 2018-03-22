@@ -18,9 +18,9 @@
 #define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string init. Get replaced with spaces.
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
-#define STARTING_SCENE_NAME "GAME" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
+#define STARTING_SCENE_NAME "MENU_PRINCIPAL" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
-#define GAME_TITLE "We have to choose a title for our rpg."
+#define GAME_TITLE "Lands Of Valoran"
 
 //////////////////////////////// WINDOW DEFINES //////////////////////////////
 
@@ -30,6 +30,8 @@
 #define WINDOW_PIXELS_UNIT 50
 #define OBJS_TYPE_NB 5
 #define PRIORITY_MAX 4
+#define CLOCK_SPEED_MENU 0.01
+#define CLOCK_SPEED_GAME 0.1
 
 
 ///////////////////////////////// MAPS DEFINES //////////////////////////////
@@ -49,25 +51,26 @@
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
-#define OVER_COLOR ((sfColor){120, 210, 210, 130})
+#define OVER_COLOR ((sfColor){120, 210, 210, 255})
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
 
 //HUD
-#define NEW_GAME "new_game"
-#define RESUME_GAME "resume"
-#define OPTION_GAME "option"
-#define CREDITS_GAME "credits"
-#define SAVE_GAME "save"
-#define RE_LOAD "re_load"
-#define QUIT_GAME "quit"
-#define QUETES_GAME "quetes"
-#define PAUSE_GAME "pause"
-#define CARAC_GAME "caracteristique"
-#define EXIT_GAME "exit"
-#define INVENTORY_GAME "inventaire"
-#define LOAD_GAME "load"
-#define MAP_GAME "map"
+#define NEW_GAME "NEW_GAME"
+#define RESUME_GAME "RESUME"
+#define OPTION_GAME "OPTION_GAME"
+#define CREDITS_GAME "CREDITS"
+#define SAVE_GAME "SAVE"
+#define RE_LOAD "RELOAD"
+#define QUIT_GAME "QUIT"
+#define QUETES_GAME "QUETE"
+#define PAUSE_GAME "PAUSE"
+#define CARAC_GAME "CARACTERISTIC"
+#define EXIT_GAME "EXIT"
+#define INVENTORY_GAME "INVENTORY"
+#define LOAD_GAME "LOAD"
+#define MAP_GAME "MAP"
+#define HOME "MENU_PRINCIPAL"
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -95,6 +98,7 @@ typedef struct obj_s
 
 typedef struct texture_s
 {
+	int priority;
 	sfTexture *texture;
 	sfBool animated;
 	sfIntRect rect;
@@ -155,6 +159,7 @@ typedef enum
 typedef struct scene_s {
 	hashmap_t *objs[OBJS_TYPE_NB];
 	hashmap_t *texts;
+	sfBool play_music;
 	sfMusic *music;
 	int priority;
 } scene_t;
@@ -210,6 +215,8 @@ typedef struct ctime_s
 typedef struct my_window_s
 {
 	int error_no;
+	int framerate_game;
+	sfVector2i mouse_pos;
 	sfEvent event;
 	sfRenderWindow *window;
 	ctime_t clocker;
@@ -310,6 +317,8 @@ typedef struct myfunc_s {
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
 
+#define MOUSE_POS window->mouse_pos
+
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -361,7 +370,7 @@ int get_a_zone(char **infos, char **type, hashmap_t **current_list, my_w_t *wind
 int get_an_area(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_tile(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-
+int get_a_priority(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 /// INIT WARNING : UNEXISTING
 
 int check_unexisting_font(sfFont *font, char *font_name);
@@ -382,7 +391,7 @@ int check_invalid_animated(sfBool animated);
 int check_invalid_zone_coords(char *name, my_w_t *window);
 int check_invalid_area_coords(char *name, my_w_t *window);
 int check_invalid_tile_coords(char *name, my_w_t *window);
-int check_invalid_priority(int priority, char *texture_name, my_w_t *window);
+int check_invalid_priority(int priority, char *texture_name);
 
 /// INIT WARNING : ALREADY_EXISTING
 
@@ -422,14 +431,14 @@ int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
 
 obj_t *create_obj(obj_data_t *data, my_w_t *window);
 display_list_t *create_a_display(char *name, scene_t *scene);
-tile_list_t *create_a_tile(char *texture_name, int priority, my_w_t *window);
+tile_list_t *create_a_tile(char *texture_name, my_w_t *window);
 
 /// LIST ADDING
 
 int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 int add_scene_to_display_list(bucket_t *scene, my_w_t *window);
-int add_tile_to_list(char *texture, int priority, my_w_t *window);
+int add_tile_to_list(char *texture, my_w_t *window);
 
 /// LIST REMOVING
 
@@ -437,7 +446,8 @@ void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
 
-/// HUD FUNCTIONS
+/// MANAGE BUTTONS
+int manage_buttons(my_w_t *window);
 
 //BUTTONS FUNCTIONS
 
@@ -457,7 +467,11 @@ int quit(my_w_t *window);
 int re_load(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
-
+int menu_principale(my_w_t *window);
+int manage_song(my_w_t *window);
+int frame_rate_more(my_w_t *window);
+int frame_rate_less(my_w_t *window);
+char *int_to_str(int nb);
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
@@ -466,8 +480,8 @@ int game_lobby(my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-int display_bucket_objs(my_w_t *window, bucket_t *obj);
-int display_bucket_texts(my_w_t *window, bucket_t *obj);
+int display_objs(bucket_t *obj_bucket, my_w_t *window);
+int display_texts(bucket_t *text_bucket, my_w_t *window);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
 int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)());

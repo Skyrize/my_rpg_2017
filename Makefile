@@ -34,6 +34,7 @@ SRC	=	main.c	\
 		src/list_management/objs_list_create.c	\
 		src/list_management/objs_list_add.c	\
 		src/list_management/objs_list_remove.c	\
+		src/list_management/objs_list_get.c	\
 		src/game_lobby/game_computing_functions.c	\
 		src/game_display/display_lobby.c	\
 		src/game_display/display_map.c	\
@@ -55,6 +56,10 @@ SRC	=	main.c	\
 		src/hud/re_load.c \
 		src/hud/resume.c \
 		src/hud/save.c \
+		src/hud/manage_buttons_game.c \
+		src/hud/menu_principale.c \
+		src/hud/manage_song.c \
+		src/hud/frame_rate.c \
 
 OBJS	=	$(SRC:.c=.o)
 

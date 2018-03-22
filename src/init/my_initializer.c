@@ -27,9 +27,10 @@ void init_window_values(my_w_t *window)
 {
 	window->error_no = 0;
 	window->clocker = init_timer();
+	MOUSE_POS = (sfVector2i){0, 0};
 	window->window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
 		WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
-	GAME_TITLE, sfResize | sfClose, NULL);
+	GAME_TITLE, sfClose, NULL);
 	window->displayed_scenes = NULL;
 }
 

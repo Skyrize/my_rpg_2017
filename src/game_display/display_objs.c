@@ -8,17 +8,12 @@
 #include "my.h"
 #include "rpg.h"
 
-int display_bucket_objs(my_w_t *window, bucket_t *obj)
+int display_objs(bucket_t *obj, my_w_t *window)
 {
-	bucket_t *tmp = obj;
-	obj_t *display;
+	obj_t *display = obj->value;
 
-	while (tmp) {
-		display = tmp->value;
-		sfRenderWindow_drawRectangleShape(window->window,
-			display->obj, NULL);
-		time_animation(display, 0.1, window);
-		tmp = tmp->next;
-	}
+	sfRenderWindow_drawRectangleShape(window->window,
+		display->obj, NULL);
+	time_animation(display, CLOCK_SPEED_MENU, window);
 	return (0);
 }

@@ -63,14 +63,12 @@ int check_invalid_tile_coords(char *name, my_w_t *window)
 	return (0);
 }
 
-int check_invalid_priority(int priority, char *texture_name, my_w_t *window)
+int check_invalid_priority(int priority, char *texture_name)
 {
 	if (priority < 0 || priority > PRIORITY_MAX) {
 		my_printf("WARNING: INVALID PRIORITY FOR THE TEXTURE");
-		my_printf(" '%s' AT THE TILE (%d/%d) IN THE",
-		texture_name, TILE_COOR_X, TILE_COOR_Y);
-		my_printf(" AREA '%s'. HAVE TO STICK BETWEEN 0 AND %d",
-		AREA_NAME, PRIORITY_MAX);
+		my_printf(" '%s'. HAVE TO STICK BETWEEN 0 AND %d",
+		texture_name, PRIORITY_MAX);
 		return (84);
 	}
 	return (0);

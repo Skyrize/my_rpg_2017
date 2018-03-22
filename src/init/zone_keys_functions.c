@@ -11,7 +11,7 @@
 int get_an_area(char **infos, char **type,
 	hashmap_t **current_list, my_w_t *window)
 {
-	char **enc = my_str_to_word_array(infos[2], KEYWORD_SEPARATOR_CHAR);
+	char **enc = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
 	char **x = my_str_to_word_array(infos[2], KEYWORD_SEPARATOR_CHAR);
 	char **y = my_str_to_word_array(infos[3], KEYWORD_SEPARATOR_CHAR);
 
@@ -42,9 +42,9 @@ int get_a_tile(char **infos, char **type,
 
 	if (!block || !x || !y || !current_list)
 		return (84);
-	TILE_BLOCK = my_getnbr(block[1]);
 	TILE_COOR_X = my_getnbr(x[1]);
 	TILE_COOR_Y = my_getnbr(y[1]);
+	TILE_BLOCK = my_getnbr(block[1]);
 	if (check_undefined_area(window) != 0)
 		return (84);
 	if (check_invalid_tile_coords(type[1], window) != 0)
@@ -60,14 +60,12 @@ int get_a_tile(char **infos, char **type,
 int get_a_tile_texture(char **infos, char **type,
 	hashmap_t **current_list, my_w_t *window)
 {
-	char **prio = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
-
-	if (!prio || !current_list)
+	if (!current_list)
 		return (84);
 	if (check_undefined_tile(window) != 0)
 		return (84);
-	if (add_tile_to_list(type[1], my_getnbr(prio[1]), window) != 0)
+	if (add_tile_to_list(type[1], window) != 0)
 		return (84);
-	free_char_2d(prio);
+	(void)infos;
 	return (0);
 }

@@ -41,8 +41,8 @@ int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name)
 		window->displayed_scenes = tmp->next;
 		if (my_strcmp(scene_name, tmp->scene_name) != 0) {
 			free(tmp);
+		} else
 			already_in = 1;
-		}
 	}
 	if (already_in == 0) {
 		bucket_t *scene = hm_get_bucket(window->scenes, scene_name);
