@@ -58,11 +58,9 @@ int read_scenes(bucket_t *scene_bucket, my_w_t *window)
 {
 	scene_t *scene = scene_bucket->value;
 
-	for (int i = 0; i != OBJS_TYPE_NB; i++) {
-		if (read_hashmap(window, scene->objs[i],
-			&init_button_callback) != 0)
-			return (84);
-	}
+	if (read_hashmap(window, scene->objs,
+		&init_button_callback) != 0)
+		return (84);
 	return (0);
 }
 
