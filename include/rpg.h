@@ -193,11 +193,18 @@ typedef struct inventory_s
 	obj_t inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
+typedef struct act_stats_s
+{
+	int health;
+	int armor;
+} act_stats_t;
+
 typedef struct player_s
 {
 	char *name;
 	player_character_t character;
 	characteristic_t characteristics;
+	act_stats_t *act_stats;
 } player_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
