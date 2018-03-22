@@ -14,7 +14,11 @@ void assign_texture_to_elem(texture_list_t *list, sfTexture *texture,
 	int y = 10;
 
 	list->texture = texture;
+	if (!list->texture)
+		my_printf("Texture NULLLLLLL\n");
 	list->sprite = sfSprite_create();
+	if (!list->sprite)
+		my_printf("Sprite NULLLLLLL\n");
 	sfSprite_setTexture(list->sprite, texture, sfTrue);
 	sfSprite_setPosition(list->sprite, V2F(x + a, y + b));
 	sfSprite_setScale(list->sprite, V2F(0.5, 0.5));
