@@ -196,6 +196,7 @@ typedef struct inventory_s
 typedef struct player_s
 {
 	char *name;
+	obj_t *player;
 	player_character_t character;
 	characteristic_t characteristics;
 } player_t;
