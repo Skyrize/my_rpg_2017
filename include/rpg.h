@@ -501,6 +501,12 @@ void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
 
+/// PLAYER FUNCTIONS
+
+void unload_my_zone(my_w_t *window);
+bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
+			 sfVector2i pos_zone, my_w_t *window);
+
 /// END
 
 #endif /* RPG_H_ */
