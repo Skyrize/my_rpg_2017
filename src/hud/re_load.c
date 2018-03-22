@@ -9,7 +9,11 @@
 
 int re_load(my_w_t *window)
 {
+	int error_no = 0;
+
 	window->current = hm_get_bucket(window->scenes, RE_LOAD);
-	clean_displayed_scenes_and_add_back(window, RE_LOAD);
-	return (0);
+	error_no = clean_displayed_scenes_and_add_back(window, RE_LOAD);
+	if (error_no == 84)
+		return (84);
+	return (1);
 }

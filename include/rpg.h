@@ -28,7 +28,6 @@
 #define WINDOW_HEIGHT 600
 #define WINDOW_BITS_PER_PIXEL 32
 #define WINDOW_PIXELS_UNIT 50
-#define OBJS_TYPE_NB 5
 #define PRIORITY_MAX 4
 #define CLOCK_SPEED_MENU 0.01
 #define CLOCK_SPEED_GAME 0.1
@@ -88,6 +87,7 @@ typedef struct rect_s
 
 typedef struct obj_s
 {
+	int priority;
 	int (*callback)();
 	sfRectangleShape *obj;
 	sfBool button;
@@ -110,7 +110,6 @@ typedef struct tile_list_s tile_list_t;
 
 typedef struct tile_list_s
 {
-	int priority;
 	obj_t *tile;
 	tile_list_t *next;
 } tile_list_t;
@@ -155,7 +154,7 @@ typedef enum
 } objs_type_t;
 
 typedef struct scene_s {
-	hashmap_t *objs[OBJS_TYPE_NB];
+	hashmap_t *objs;
 	hashmap_t *texts;
 	sfBool play_music;
 	sfMusic *music;
@@ -478,7 +477,7 @@ int game_lobby(my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-int display_objs(bucket_t *obj_bucket, my_w_t *window);
+int display_objs(hashmap_t *objs, my_w_t *window);
 int display_texts(bucket_t *text_bucket, my_w_t *window);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
