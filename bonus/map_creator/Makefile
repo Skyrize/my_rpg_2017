@@ -25,7 +25,12 @@ SRC	=	src/init/file_analysing.c			\
 		src/warnings/init_warning_undefined.c		\
 		src/map_creator/events.c			\
 		src/map_creator/main.c				\
-		src/map_creator/area_selector.c			\
+		src/map_creator/seek_zone.c			\
+		src/map_creator/draw_list.c			\
+		src/map_creator/ingame_warning.c		\
+		src/map_creator/display_map.c			\
+		src/map_creator/move_rect.c			\
+		src/map_creator/add_texture.c			\
 		src/list_management/objs_list_create.c		\
 		src/list_management/objs_list_add.c		\
 		src/list_management/objs_list_remove.c		\

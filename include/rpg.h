@@ -50,6 +50,8 @@
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 130})
+#define V2F(x, y) (sfVector2f) {(float) x, (float) y}
+#define V2I(x, y) (sfVector2i) {(int) x, (int) y}
 
 //HUD
 #define NEW_GAME "new_game"

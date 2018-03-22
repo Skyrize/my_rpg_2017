@@ -22,8 +22,14 @@
 typedef sfVector2f v2f;
 typedef sfVector2i v2i;
 
-#define V2F(x, y) (sfVector2f) {(float) x, (float) y}
-#define V2I(x, y) (sfVector2i) {(int) x, (int) y}
+typedef struct texture_list_s texture_list_t;
+
+typedef struct texture_list_s {
+	sfSprite *sprite;
+	sfTexture *texture;
+	sfVector2f pos;
+	texture_list_t *next;
+} texture_list_t;
 
 typedef struct ressources_s {
 	sfRenderWindow *window;
@@ -32,5 +38,11 @@ typedef struct ressources_s {
 
 void on_event(ressources_t *, sfEvent);
 v2i area_selector(void);
+int seek_zone(my_w_t *, char *);
+texture_list_t *read_hashmap_texture(hashmap_t *);
+void draw_texture_list(texture_list_t *list, sfRenderWindow *);
+void time_animation(obj_t *obj, float seconds, my_w_t *window);
+int display_map(my_w_t *window);
+int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
 
 #endif /* MAP_EDITOR */
