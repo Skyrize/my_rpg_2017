@@ -43,7 +43,7 @@ my_w_t init_my_window(void)
 	|| init_my_audio_lib(&window) != 0 || init_my_fonts_lib(&window) != 0
 	|| init_my_scenes(&window) != 0 || init_my_map(&window) != 0
 	|| !window.clocker.clock || init_game_tools(&window) != 0
-	|| init_my_buttons(&window) != 0) {
+	|| init_my_buttons(&window) != 0 || init_my_player(&window) != 0) {
 		window.error_no = 84;
 		return (window);
 	}

@@ -172,13 +172,6 @@ typedef struct display_list_s
 
 /////////////////////////////////// PLAYER ////////////////////////////////
 
-typedef enum
-{
-	MAGE = 0,
-	HUNTER = 1,
-	WARRIOR = 2,
-} player_character_t;
-
 typedef struct characteristic_s
 {
 	int vitality;
@@ -190,18 +183,23 @@ typedef struct characteristic_s
 typedef struct inventory_s
 {
 	int golds;
-	obj_t inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
 typedef struct player_s
 {
 	char *name;
-	obj_t *player;
-	player_character_t character;
+	obj_t *character;
+	inventory_t inventory;
 	characteristic_t characteristics;
 } player_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
+
+typedef struct game_s
+{
+	player_t player;
+} game_t;
 
 typedef struct ctime_s
 {
@@ -219,6 +217,7 @@ typedef struct my_window_s
 	sfRenderWindow *window;
 	ctime_t clocker;
 	map_t map;
+	game_t game;
 	bucket_t *current;
 	hashmap_t *scenes;
 	hashmap_t *audio_lib;
@@ -284,7 +283,6 @@ typedef struct text_data_s
 	sfVector2f position;
 } text_data_t;
 
-//////////////////////////////////// DATA DEFINES /////////////////////////////
 
 //////////////////////////////////// DATA HUD /////////////////////////////
 
@@ -293,9 +291,7 @@ typedef struct myfunc_s {
 	int (*instruction)();
 } myfunc_t;
 
-
-//////////////////////////////////// DATA HUD /////////////////////////////
-
+//////////////////////////////////// DATA DEFINES /////////////////////////////
 
 #define ZONE_COOR_X window->map.zone_coord.x
 #define ZONE_COOR_Y window->map.zone_coord.y
@@ -317,6 +313,22 @@ typedef struct myfunc_s {
 
 #define MOUSE_POS window->mouse_pos
 
+////////////////////////////////////// GAME DEFINES //////////////////////////
+
+#define PLAYER window->game.player
+#define PLAYER_NAME PLAYER.name
+#define PLAYER_CHARACTER PLAYER.character
+#define PLAYER_INVENTORY PLAYER.inventory
+#define PLAYER_CHARAC PLAYER.characteristics
+
+#define PLAYER_GOLDS PLAYER_INVENTORY.golds
+#define PLAYER_ITEMS PLAYER_INVENTORY.inventory_items
+
+#define PLAYER_VITALITY PLAYER_CHARAC.vitality
+#define PLAYER_ARMOR PLAYER_CHARAC.armor
+#define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
+#define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
+
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -333,6 +345,7 @@ int init_scene_lists(char **infos, my_w_t *window);
 int init_my_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
+int init_my_player(my_w_t *window);
 
 int load_my_zone(my_w_t *window);
 
