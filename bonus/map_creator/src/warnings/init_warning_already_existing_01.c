@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int check_already_existing_obj(char *obj_name, hashmap_t *current_list)
 {

@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int get_an_area(char **infos, char **type,
 	hashmap_t **current_list, my_w_t *window)

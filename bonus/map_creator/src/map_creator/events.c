@@ -7,24 +7,19 @@
 
 #include "map_editor.h"
 
-void left_click_event(ressources_t *rsces)
+void right_click_event(ressources_t *rsces, texture_list_t *list)
 {
 	return;
 }
 
-void right_click_event(ressources_t *rsces)
-{
-	return;
-}
-
-void on_event(ressources_t *rsces, sfEvent event)
+void on_event(ressources_t *rsces, texture_list_t *list, sfEvent event)
 {
 	if (event.type == sfEvtClosed)
 		sfRenderWindow_close(rsces->window);
 	if (event.type == sfEvtMouseButtonPressed) {
 		if (event.mouseButton.button == sfMouseLeft)
-			left_click_event(rsces);
+			left_click_event(rsces, list);
 		else if (event.mouseButton.button == sfMouseRight)
-			right_click_event(rsces);
+			right_click_event(rsces, list);
 	}
 }

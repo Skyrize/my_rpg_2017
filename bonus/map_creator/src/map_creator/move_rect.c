@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 void move_rect(obj_t *obj)
 {

@@ -16,7 +16,7 @@
 #include <SFML/Audio.h>
 #include <SFML/System.h>
 #include <SFML/Window/Event.h>
-#include "my.h"
+#include "../../../include/my.h"
 #include "rpg.h"
 
 typedef sfVector2f v2f;
@@ -25,6 +25,7 @@ typedef sfVector2i v2i;
 typedef struct texture_list_s texture_list_t;
 
 typedef struct texture_list_s {
+	char *name;
 	sfSprite *sprite;
 	sfTexture *texture;
 	sfVector2f pos;
@@ -33,10 +34,13 @@ typedef struct texture_list_s {
 
 typedef struct ressources_s {
 	sfRenderWindow *window;
+	sfTexture *selected;
+	char *selected_texture_name;
 	my_w_t *rsces;
 } ressources_t;
 
-void on_event(ressources_t *, sfEvent);
+my_w_t init_my_ressource_window(sfRenderWindow *);
+void on_event(ressources_t *, texture_list_t *, sfEvent);
 v2i area_selector(void);
 int seek_zone(my_w_t *, char *);
 texture_list_t *read_hashmap_texture(hashmap_t *);
@@ -44,5 +48,8 @@ void draw_texture_list(texture_list_t *list, sfRenderWindow *);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
 int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
+void add_texture_to_list(texture_list_t *list, texture_t *texture);
+void add_big_texture_to_list(texture_list_t *list, texture_t *texture);
+void left_click_event(ressources_t *rsces, texture_list_t *list);
 
 #endif /* MAP_EDITOR */

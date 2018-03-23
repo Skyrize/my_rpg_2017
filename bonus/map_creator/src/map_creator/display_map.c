@@ -11,12 +11,8 @@ int display_tiles(int x, int y, int priority, my_w_t *window)
 {
 	tile_list_t *tmp = AREA.tiles[y][x].displayed_tiles;
 
-	if (check_invalid_tile_display(tmp, x, y, window) != 0)
-		return (84);
 	while (tmp) {
-		if (tmp->priority == priority) {
-			if (!tmp->tile)
-				my_printf("x = %d y = %d", x, y);
+		if (tmp->tile->priority == priority) {
 			sfRenderWindow_drawRectangleShape(window->window,
 				tmp->tile->obj, NULL);
 			time_animation(tmp->tile, 0.1, window);

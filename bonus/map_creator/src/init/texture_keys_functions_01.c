@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int get_a_texture(char **infos, char **type,
 	hashmap_t **current_list, my_w_t *window)
@@ -24,6 +23,7 @@ int get_a_texture(char **infos, char **type,
 	texture->rect_start = (sfVector2i){0, 0};
 	texture->rect_max = (sfVector2i){0, 0};
 	texture->rect_offset = (sfVector2i){0, 0};
+	texture->name = my_strdup(type[1]);
 	hm_add(*current_list, type[1], texture);
 	window->current = hm_get_bucket(*current_list, type[1]);
 	(void)infos;

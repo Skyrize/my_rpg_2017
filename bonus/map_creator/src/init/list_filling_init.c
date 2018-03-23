@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 obj_data_t get_obj_data_from_infos(obj_infos_t *obj)
 {

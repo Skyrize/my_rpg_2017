@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int init_from_pcf(char **infos, my_w_t *window, const key_word_t *keys)
 {

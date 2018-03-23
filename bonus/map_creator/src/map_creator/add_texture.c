@@ -8,55 +8,74 @@
 #include "map_editor.h"
 
 void assign_texture_to_elem(texture_list_t *list, sfTexture *texture,
-								int a, int b)
+							v2f pos, char *name)
 {
-	int x = 810;
-	int y = 10;
-
 	list->texture = texture;
-	if (!list->texture)
-		my_printf("Texture NULLLLLLL\n");
 	list->sprite = sfSprite_create();
-	if (!list->sprite)
-		my_printf("Sprite NULLLLLLL\n");
 	sfSprite_setTexture(list->sprite, texture, sfTrue);
-	sfSprite_setPosition(list->sprite, V2F(x + a, y + b));
-	sfSprite_setScale(list->sprite, V2F(0.5, 0.5));
-	list->pos = V2F(x + a, y + b);
+	sfSprite_setTextureRect(list->sprite, (sfIntRect){0, 0, 50, 50});
+	sfSprite_setPosition(list->sprite, pos);
+	list->pos = pos;
+	list->name = name;
 	list->next = NULL;
 }
 
-void add_texture_to_list(texture_list_t *list, sfTexture *texture)
+void add_texture_to_list(texture_list_t *list, texture_t *texture)
 {
 	static int a = 0;
 	static int b = 0;
 	texture_list_t *new_elem;
 
 	if (!list->sprite) {
-		assign_texture_to_elem(list, texture, a, b);
-		a += 26;
+		assign_texture_to_elem(list, texture->texture,
+					V2F(810 + a, 10 + b), texture->name);
+		a += 104;
 		return;
 	}
-	while (list->next)
-		list = list->next;
+	for (; list->next; list = list->next);
 	new_elem = malloc(sizeof(*new_elem));
-	assign_texture_to_elem(new_elem, texture, a, b);
+	assign_texture_to_elem(new_elem, texture->texture,
+					V2F(810 + a, 10 + b), texture->name);
 	list->next = new_elem;
-	a += 26;
+	a += 104;
+	if (a >= 104 * 9) {
+		a = 0;
+		b += 52;
+	}
 }
 
-texture_list_t *read_hashmap_texture(hashmap_t *textures)
+void assign_big_texture_to_elem(texture_list_t *list, sfTexture *texture,
+							v2f pos, char *name)
 {
-	texture_list_t *list = malloc(sizeof(*list));
-	bucket_t *tmp;
+	list->texture = texture;
+	list->sprite = sfSprite_create();
+	sfSprite_setTexture(list->sprite, texture, sfTrue);
+	sfSprite_setPosition(list->sprite, pos);
+	list->pos = pos;
+	list->name = name;
+	list->next = NULL;
+}
 
-	list->sprite = NULL;
-	for (int i = 0; i != textures->size; i++) {
-		tmp = textures->data[i];
-		while (tmp) {
-			add_texture_to_list(list, tmp->value);
-			tmp = tmp->next;
-		}
+void add_big_texture_to_list(texture_list_t *list, texture_t *texture)
+{
+	static int a = 0;
+	static int b = 0;
+	texture_list_t *new_elem;
+
+	if (!list->sprite) {
+		assign_big_texture_to_elem(list, texture->texture,
+					V2F(10 + a, 650 + b), texture->name);
+		a += 208;
+		return;
 	}
-	return (list);
+	for (; list->next; list = list->next);
+	new_elem = malloc(sizeof(*new_elem));
+	assign_big_texture_to_elem(new_elem, texture->texture,
+					V2F(10 + a, 650 + b), texture->name);
+	list->next = new_elem;
+	a += 208;
+	if (a >= 208 * 8) {
+		a = 0;
+		b += 104;
+	}
 }
