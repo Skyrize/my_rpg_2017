@@ -24,12 +24,14 @@ sfRenderWindow *my_window_create()
 void main_loop(ressources_t *rsces, texture_list_t *list, sfVector2i area)
 {
 	sfEvent event;
+	sfClock *my_clock = sfClock_create();
 
 	(void) area;
 	while (sfRenderWindow_isOpen(rsces->window)) {
 		while (sfRenderWindow_pollEvent(rsces->window, &event))
-			on_event(rsces, list, event);
+			on_event(rsces, list, event, my_clock);
 		sfRenderWindow_clear(rsces->window, sfWhite);
+		my_printf("MODE = %d\n", rsces->mode);
 		display_map(rsces->rsces);
 		draw_texture_list(list, rsces->window);
 		sfRenderWindow_display(rsces->window);
@@ -44,6 +46,7 @@ int main(int ac, char **av)
 	v2i area;
 
 	rsces.window = my_window_create();
+	rsces.mode = 0;
 	window = init_my_ressource_window(rsces.window);
 	list = read_hashmap_texture(window.textures_lib);
 	if (ac != 4)
