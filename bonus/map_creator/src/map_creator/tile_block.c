@@ -11,7 +11,6 @@ void add_block_filter(ressources_t *rsces, my_w_t *window)
 {
 	tile_list_t *tmp = TILE.displayed_tiles;
 
-	my_printf("test\n");
 	while (tmp->next)
 		tmp = tmp->next;
 	sfRectangleShape_setFillColor(tmp->tile->obj, OVER_COLOR);
@@ -29,20 +28,20 @@ void remove_block_filter(ressources_t *rsces, my_w_t *window)
 void check_click_for_block(ressources_t *rsces, my_w_t *window, int i, int j)
 {
 	v2i pos = sfMouse_getPositionRenderWindow(rsces->window);
-	area_t area = AREA;
+	area_t *area = &AREA;
 
-	if (button_is_clicked(area.tiles[i][j].displayed_tiles->tile->obj,
+	if (button_is_clicked(area->tiles[i][j].displayed_tiles->tile->obj,
 									pos)) {
 		TILE_COOR_Y = i;
 		TILE_COOR_X = j;
-		if (!sfRectangleShape_getTexture(area.tiles[i][j]. \
+		if (!sfRectangleShape_getTexture(area->tiles[i][j]. \
 		displayed_tiles->tile->obj))
 			return;
-		if (!area.tiles[i][j].block) {
-			area.tiles[i][j].block = true;
+		if (!area->tiles[i][j].block) {
+			area->tiles[i][j].block = true;
 			add_block_filter(rsces, window);
 		} else {
-			area.tiles[i][j].block = false;
+			area->tiles[i][j].block = false;
 			remove_block_filter(rsces, window);
 		}
 	}
