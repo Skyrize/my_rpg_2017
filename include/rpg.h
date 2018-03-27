@@ -68,6 +68,7 @@
 #define LOAD_GAME "LOAD"
 #define MAP_GAME "MAP"
 #define HOME "MENU_PRINCIPAL"
+#define CONTROL_KEY "CONTROL_KEY"
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -500,6 +501,9 @@ int frame_rate_less(my_w_t *window);
 int select_varyan(my_w_t *window);
 int select_jaina(my_w_t *window);
 int select_avelus(my_w_t *window);
+int control_key(my_w_t *window);
+int key_french(my_w_t *window);
+int key_english(my_w_t *window);
 
 /// GAME FUNCTIONS
 
