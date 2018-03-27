@@ -19,8 +19,6 @@ int manage_song(my_w_t *window)
 		return (84);
 	tmp_value = tmp_scene->value;
 	curr_scene = bucket_scene->value;
-	if (curr_scene == NULL)
-		exit (84);
 	bucket_texts = hm_get_bucket(curr_scene->texts, "OFFON");
 	if (tmp_value->play_music == sfFalse) {
 		tmp_value->play_music = sfTrue;

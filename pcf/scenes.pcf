@@ -50,6 +50,7 @@ ________________________________________________________________________________
 			OBJ=AGILITY TEXTURE=AGILITY_ICON BUTTON=0 X=62 Y=280
 			OBJ=STRENGHT TEXTURE=STRENGHT_ICON BUTTON=0 X=316 Y=280
 			OBJ=WISDOM TEXTURE=WISDOM_ICON BUTTON=0 X=566 Y=280
+			OBJ=HOME TEXTURE=BUTTON_EMPTY BUTTON=1 X=510 Y=5
 		LIST=TEXTS
 			TEXT=AVELUS STR=Avelus FONT=RING CHARAC_SIZE=30 X=110 Y=125
 			TEXT=AVELUS_DESC STR=The_Hunter FONT=RING CHARAC_SIZE=15 X=110 Y=175
@@ -96,6 +97,7 @@ ________________________________________________________________________________
 			TEXT=JAINA_ARMOR STR=:___50 FONT=RING CHARAC_SIZE=25 X=600 Y=245
 			TEXT=JAINA_AGILITY STR=:___50 FONT=RING CHARAC_SIZE=25 X=600 Y=273
 			TEXT=JAINA_WEAPONS STR=:___staffs FONT=RING CHARAC_SIZE=20 X=600 Y=307
+			TEXT=HOME STR=HOME FONT=ARCADE CHARAC_SIZE=35 X=610 Y=10
 
 ________________________________________________________________________________
 -LOAD
