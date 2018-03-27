@@ -11,6 +11,9 @@
 static const myfunc_t g_tab[] =
 {
 	{"NEW_GAME", new_game},
+	{"SELECT_VARYAN", select_varyan},
+	{"SELECT_JAINA", select_jaina},
+	{"SELECT_AVELUS", select_avelus},
 	{"OPTION", option},
 	{"CREDITS", credits},
 	{"CHARACTERISTIC", caracteristique},
