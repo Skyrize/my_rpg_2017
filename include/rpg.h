@@ -68,6 +68,7 @@
 #define LOAD_GAME "LOAD"
 #define MAP_GAME "MAP"
 #define HOME "MENU_PRINCIPAL"
+#define CONTROL_KEY "CONTROL_KEY"
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -186,13 +187,27 @@ typedef struct inventory_s
 	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
+typedef struct act_stats_s
+{
+	int health;
+	int armor;
+} act_stats_t;
+
 typedef struct player_s
 {
 	char *name;
 	obj_t *character;
 	inventory_t inventory;
 	characteristic_t characteristics;
+	act_stats_t *act_stats;
 } player_t;
+
+typedef enum direction_e {
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+} direction_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 
@@ -215,6 +230,7 @@ typedef struct my_window_s
 	sfVector2i mouse_pos;
 	sfEvent event;
 	sfRenderWindow *window;
+	sfBool click_released;
 	ctime_t clocker;
 	map_t map;
 	game_t game;
@@ -485,6 +501,9 @@ int frame_rate_less(my_w_t *window);
 int select_varyan(my_w_t *window);
 int select_jaina(my_w_t *window);
 int select_avelus(my_w_t *window);
+int control_key(my_w_t *window);
+int key_french(my_w_t *window);
+int key_english(my_w_t *window);
 
 /// GAME FUNCTIONS
 
@@ -510,6 +529,15 @@ void destroy_and_free(my_w_t *window);
 void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
+
+/// PLAYER FUNCTIONS
+
+void unload_my_zone(my_w_t *window);
+bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
+			 sfVector2i pos_zone, my_w_t *window);
+bool move_player_zone(direction_t dir, my_w_t *window, bool check);
+bool move_player_area(direction_t dir, my_w_t *window, bool check);
+bool move_player(direction_t dir, my_w_t *window, bool check);
 
 /// END
 

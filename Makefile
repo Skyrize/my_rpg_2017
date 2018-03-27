@@ -61,6 +61,8 @@ SRC	=	main.c	\
 		src/hud/menu_principale.c \
 		src/hud/manage_song.c \
 		src/hud/frame_rate.c \
+		src/hud/control_key.c \
+		src/hud/key_game.c \
 
 OBJS	=	$(SRC:.c=.o)
 

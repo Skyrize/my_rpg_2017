@@ -30,6 +30,9 @@ static const myfunc_t g_tab[] =
 	{"SONG", manage_song},
 	{"FRAME_RATE_MORE", frame_rate_more},
 	{"FRAME_RATE_LESS", frame_rate_less},
+	{"CONTROL", control_key},
+	{"KEY_ZQSD", key_french},
+	{"KEY_WASD", key_english},
 	{0, 0}
 };
 
