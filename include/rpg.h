@@ -217,6 +217,7 @@ typedef struct my_window_s
 	sfVector2i mouse_pos;
 	sfEvent event;
 	sfRenderWindow *window;
+	sfBool click_released;
 	ctime_t clocker;
 	map_t map;
 	bucket_t *current;
