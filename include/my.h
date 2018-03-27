@@ -86,6 +86,7 @@ void my_printadress(va_list);
 void my_printoctal(va_list);
 void my_printpercent(va_list);
 void my_printformatedstring(va_list);
+char *int_to_str(int nb);
 
 typedef struct fnct_s
 {

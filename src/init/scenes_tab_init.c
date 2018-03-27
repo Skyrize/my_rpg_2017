@@ -14,11 +14,9 @@ scene_t *scene_init(int priority)
 
 	if (!value)
 		return (NULL);
-	for (int i = 0; i != OBJS_TYPE_NB; i++) {
-		value->objs[i] = hm_create(64, &obj_destroy);
-		if (!value->objs[i])
-			return (NULL);
-	}
+	value->objs = hm_create(64, &obj_destroy);
+	if (!value->objs)
+		return (NULL);
 	value->texts = hm_create(64, &sfText_destroy);
 	if (!value->texts)
 		return (NULL);
@@ -54,7 +52,6 @@ int init_my_scenes(my_w_t *window)
 	const key_word_t scene_keys[] = {
 	{"SCENE", 1, &get_a_scene, (char *[]) {"PRIORITY", NULL}},
 	{"LIST", 0, &get_a_list, NULL},
-	{"INDEX", 0, &get_an_index, NULL},
 	{"OBJ", 4, &get_an_obj,
 		(char *[]) {"TEXTURE", "BUTTON", "X", "Y", NULL}},
 	{"TEXT", 5, &get_a_text,

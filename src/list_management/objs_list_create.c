@@ -27,6 +27,7 @@ obj_t *create_obj(obj_data_t *data, my_w_t *window)
 	if (check_unexisting_texture(texture, data->type) != 0
 	|| new_obj == NULL)
 		return (NULL);
+	new_obj->priority = texture->priority;
 	rec_size.x = texture->rect.width;
 	rec_size.y = texture->rect.height;
 	new_obj->obj = sfRectangleShape_create();
@@ -56,13 +57,9 @@ display_list_t *create_a_display(char *name, scene_t *scene)
 tile_list_t *create_a_tile(char *texture_name, my_w_t *window)
 {
 	tile_list_t *new_tile = malloc(sizeof(tile_list_t));
-	texture_t *texture = hm_get(window->textures_lib, texture_name);
 
 	if (!new_tile)
 		return (NULL);
-	if (check_unexisting_texture(texture, texture_name) != 0)
-		return (NULL);
-	new_tile->priority = texture->priority;
 	new_tile->tile = create_obj(&(obj_data_t){NULL, texture_name, sfFalse,
 		(sfVector2f){TILE_COOR_X * WINDOW_PIXELS_UNIT,
 			TILE_COOR_Y * WINDOW_PIXELS_UNIT}}, window);

@@ -16,11 +16,7 @@ int display_scenes(my_w_t *window)
 		if (display_map(window) != 0)
 			return (84);
 	while (tmp) {
-		for (int i = 0; i != OBJS_TYPE_NB; i++) {
-			window->error_no = read_hashmap(window,
-				tmp->scene->objs[i], &display_objs);
-		}
-		if (window->error_no != 0)
+		if (display_objs(tmp->scene->objs, window) != 0)
 			return (84);
 		if (read_hashmap(window, tmp->scene->texts,
 			&display_texts) != 0)

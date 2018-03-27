@@ -64,12 +64,16 @@ int manage_buttons(my_w_t *window)
 {
 	display_list_t *tmp = window->displayed_scenes;
 	scene_t *scene;
+	int error_no = 0;
 
 	while (tmp) {
 		scene = tmp->scene;
-		for (int i = 0 ; i != OBJS_TYPE_NB ; i++)
-			read_hashmap(window, scene->objs[i],
-				&process_button_over);
+		error_no = read_hashmap(window, scene->objs,
+			&process_button_over);
+		if (error_no == 1)
+			return (0);
+		if (error_no == 84)
+			return (84);
 		tmp = tmp->next;
 	}
 	return (0);

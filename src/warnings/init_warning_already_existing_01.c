@@ -21,9 +21,9 @@ int check_already_existing_obj(char *obj_name, hashmap_t *current_list)
 }
 int check_already_existing_text(char *text_name, hashmap_t *current_list)
 {
-	bucket_t *obj = hm_get_bucket(current_list, text_name);
+	bucket_t *text = hm_get_bucket(current_list, text_name);
 
-	if (obj != NULL) {
+	if (text != NULL) {
 		my_printf("WARNING: TEXT '%s' REDECLARED IN SCENE !\n",
 		text_name);
 		return (84);

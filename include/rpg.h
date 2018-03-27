@@ -28,7 +28,6 @@
 #define WINDOW_HEIGHT 600
 #define WINDOW_BITS_PER_PIXEL 32
 #define WINDOW_PIXELS_UNIT 50
-#define OBJS_TYPE_NB 5
 #define PRIORITY_MAX 4
 #define CLOCK_SPEED_MENU 0.01
 #define CLOCK_SPEED_GAME 0.1
@@ -88,6 +87,7 @@ typedef struct rect_s
 
 typedef struct obj_s
 {
+	int priority;
 	int (*callback)();
 	sfRectangleShape *obj;
 	sfBool button;
@@ -110,7 +110,6 @@ typedef struct tile_list_s tile_list_t;
 
 typedef struct tile_list_s
 {
-	int priority;
 	obj_t *tile;
 	tile_list_t *next;
 } tile_list_t;
@@ -155,7 +154,7 @@ typedef enum
 } objs_type_t;
 
 typedef struct scene_s {
-	hashmap_t *objs[OBJS_TYPE_NB];
+	hashmap_t *objs;
 	hashmap_t *texts;
 	sfBool play_music;
 	sfMusic *music;
@@ -173,13 +172,6 @@ typedef struct display_list_s
 
 /////////////////////////////////// PLAYER ////////////////////////////////
 
-typedef enum
-{
-	MAGE = 0,
-	HUNTER = 1,
-	WARRIOR = 2,
-} player_character_t;
-
 typedef struct characteristic_s
 {
 	int vitality;
@@ -191,17 +183,23 @@ typedef struct characteristic_s
 typedef struct inventory_s
 {
 	int golds;
-	obj_t inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
 typedef struct player_s
 {
 	char *name;
-	player_character_t character;
+	obj_t *character;
+	inventory_t inventory;
 	characteristic_t characteristics;
 } player_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
+
+typedef struct game_s
+{
+	player_t player;
+} game_t;
 
 typedef struct ctime_s
 {
@@ -220,6 +218,7 @@ typedef struct my_window_s
 	sfBool click_released;
 	ctime_t clocker;
 	map_t map;
+	game_t game;
 	bucket_t *current;
 	hashmap_t *scenes;
 	hashmap_t *audio_lib;
@@ -285,7 +284,6 @@ typedef struct text_data_s
 	sfVector2f position;
 } text_data_t;
 
-//////////////////////////////////// DATA DEFINES /////////////////////////////
 
 //////////////////////////////////// DATA HUD /////////////////////////////
 
@@ -294,9 +292,7 @@ typedef struct myfunc_s {
 	int (*instruction)();
 } myfunc_t;
 
-
-//////////////////////////////////// DATA HUD /////////////////////////////
-
+//////////////////////////////////// DATA DEFINES /////////////////////////////
 
 #define ZONE_COOR_X window->map.zone_coord.x
 #define ZONE_COOR_Y window->map.zone_coord.y
@@ -318,6 +314,22 @@ typedef struct myfunc_s {
 
 #define MOUSE_POS window->mouse_pos
 
+////////////////////////////////////// GAME DEFINES //////////////////////////
+
+#define PLAYER window->game.player
+#define PLAYER_NAME PLAYER.name
+#define PLAYER_CHARACTER PLAYER.character
+#define PLAYER_INVENTORY PLAYER.inventory
+#define PLAYER_CHARAC PLAYER.characteristics
+
+#define PLAYER_GOLDS PLAYER_INVENTORY.golds
+#define PLAYER_ITEMS PLAYER_INVENTORY.inventory_items
+
+#define PLAYER_VITALITY PLAYER_CHARAC.vitality
+#define PLAYER_ARMOR PLAYER_CHARAC.armor
+#define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
+#define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
+
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -334,6 +346,7 @@ int init_scene_lists(char **infos, my_w_t *window);
 int init_my_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
+int init_my_player(my_w_t *window);
 
 int load_my_zone(my_w_t *window);
 
@@ -470,7 +483,10 @@ int menu_principale(my_w_t *window);
 int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);
-char *int_to_str(int nb);
+int select_varyan(my_w_t *window);
+int select_jaina(my_w_t *window);
+int select_avelus(my_w_t *window);
+
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
@@ -479,7 +495,7 @@ int game_lobby(my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-int display_objs(bucket_t *obj_bucket, my_w_t *window);
+int display_objs(hashmap_t *objs, my_w_t *window);
 int display_texts(bucket_t *text_bucket, my_w_t *window);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);

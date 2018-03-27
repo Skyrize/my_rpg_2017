@@ -10,8 +10,11 @@
 
 int add_text_to_list(text_data_t *data, hashmap_t *current_list)
 {
-	sfText *sftext = sfText_create();
+	sfText *sftext;
 
+	if (check_already_existing_text(data->name, current_list) != 0)
+		return (84);
+	sftext = sfText_create();
 	if (!sftext)
 		return (84);
 	sfText_setString(sftext, data->text);
@@ -24,8 +27,11 @@ int add_text_to_list(text_data_t *data, hashmap_t *current_list)
 
 int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window)
 {
-	obj_t *new_obj = create_obj(data, window);
+	obj_t *new_obj;
 
+	if (check_already_existing_obj(data->name, list) != 0)
+		return (84);
+	new_obj = create_obj(data, window);
 	if (new_obj == NULL)
 		return (84);
 	hm_add(list, data->name, new_obj);
@@ -67,13 +73,13 @@ int add_tile_to_list(char *texture, my_w_t *window)
 		TILE_LIST = display;
 		return (0);
 	}
-	if (tmp->priority >= display->priority) {
+	if (tmp->tile->priority >= display->tile->priority) {
 		display->next = tmp;
 		TILE_LIST = display;
 		return (0);
 	}
 	while (tmp->next
-		&& display->priority > tmp->next->priority)
+		&& display->tile->priority > tmp->next->tile->priority)
 		tmp = tmp->next;
 	display->next = tmp->next;
 	tmp->next = display;
