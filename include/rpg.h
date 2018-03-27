@@ -207,6 +207,13 @@ typedef struct player_s
 	act_stats_t *act_stats;
 } player_t;
 
+typedef enum direction_e {
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+} direction_t;
+
 /////////////////////////////////// WINDOW ////////////////////////////////
 
 typedef struct ctime_s
@@ -506,6 +513,7 @@ void texture_destroy(texture_t *texture);
 void unload_my_zone(my_w_t *window);
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
 			 sfVector2i pos_zone, my_w_t *window);
+bool move_player_zone(direction_t dir, my_w_t *window, bool check);
 
 /// END
 
