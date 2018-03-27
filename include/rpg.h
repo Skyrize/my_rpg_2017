@@ -186,13 +186,27 @@ typedef struct inventory_s
 	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
+typedef struct act_stats_s
+{
+	int health;
+	int armor;
+} act_stats_t;
+
 typedef struct player_s
 {
 	char *name;
 	obj_t *character;
 	inventory_t inventory;
 	characteristic_t characteristics;
+	act_stats_t *act_stats;
 } player_t;
+
+typedef enum direction_e {
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+} direction_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 
@@ -511,6 +525,15 @@ void destroy_and_free(my_w_t *window);
 void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
+
+/// PLAYER FUNCTIONS
+
+void unload_my_zone(my_w_t *window);
+bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
+			 sfVector2i pos_zone, my_w_t *window);
+bool move_player_zone(direction_t dir, my_w_t *window, bool check);
+bool move_player_area(direction_t dir, my_w_t *window, bool check);
+bool move_player(direction_t dir, my_w_t *window, bool check);
 
 /// END
 
