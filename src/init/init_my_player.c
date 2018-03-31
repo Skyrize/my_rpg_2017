@@ -27,7 +27,7 @@ int select_varyan(my_w_t *window)
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Strenght";
 	PLAYER_SPECIALITY = 50;
-	return (resume(window));
+	return (game(window));
 }
 
 int select_jaina(my_w_t *window)
@@ -49,7 +49,7 @@ int select_jaina(my_w_t *window)
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Wisdom";
 	PLAYER_SPECIALITY = 50;
-	return (resume(window));
+	return (game(window));
 }
 
 int select_avelus(my_w_t *window)
@@ -71,5 +71,5 @@ int select_avelus(my_w_t *window)
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Agility";
 	PLAYER_SPECIALITY = 50;
-	return (resume(window));
+	return (game(window));
 }

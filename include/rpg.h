@@ -58,7 +58,6 @@
 #define OPTION_GAME "OPTION_GAME"
 #define CREDITS_GAME "CREDITS"
 #define SAVE_GAME "SAVE"
-#define RE_LOAD "RELOAD"
 #define QUIT_GAME "QUIT"
 #define QUETES_GAME "QUETE"
 #define PAUSE_GAME "PAUSE"
@@ -473,7 +472,7 @@ int add_tile_to_list(char *texture, my_w_t *window);
 void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
-
+void clean_displayed_scene_name(my_w_t *window, char *name_scenes);
 /// MANAGE BUTTONS
 int manage_buttons(my_w_t *window);
 
@@ -505,6 +504,10 @@ int select_avelus(my_w_t *window);
 int control_key(my_w_t *window);
 int key_french(my_w_t *window);
 int key_english(my_w_t *window);
+int no_save(my_w_t *window);
+int yes_save(my_w_t *window);
+int game(my_w_t *window);
+
 
 /// GAME FUNCTIONS
 

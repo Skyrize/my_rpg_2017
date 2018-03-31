@@ -22,7 +22,7 @@ static const myfunc_t g_tab[] =
 	{"PAUSE", pause_game},
 	{"QUESTS", quetes},
 	{"QUIT", quit},
-	{"RELOAD", re_load},
+	{"LOAD", re_load},
 	{"RESUME", resume},
 	{"SAVE", save},
 	{"EXIT", exit_game},
@@ -33,6 +33,8 @@ static const myfunc_t g_tab[] =
 	{"CONTROL", control_key},
 	{"KEY_ZQSD", key_french},
 	{"KEY_WASD", key_english},
+	{"YES", yes_save},
+	{"NO", no_save},
 	{0, 0}
 };
 

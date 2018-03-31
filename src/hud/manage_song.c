@@ -25,7 +25,7 @@ int manage_song(my_w_t *window)
 		sfText_setString(bucket_texts->value, "ON");
 	} else {
 		tmp_value->play_music = sfFalse;
-		sfText_setString(bucket_texts->value, "FALSE");
+		sfText_setString(bucket_texts->value, "OFF");
 	}
 	return (0);
 }
