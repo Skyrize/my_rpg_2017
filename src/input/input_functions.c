@@ -11,8 +11,7 @@
 void analyse_events(my_w_t *window)
 {
 	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
-		if (window->event.type == sfEvtClosed
-			|| sfKeyboard_isKeyPressed(sfKeyEscape) == sfTrue)
+		if (window->event.type == sfEvtClosed)
 			sfRenderWindow_close(window->window);
 		if (window->event.type == sfEvtMouseButtonReleased)
 			window->click_released = sfTrue;

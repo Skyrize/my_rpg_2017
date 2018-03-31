@@ -33,6 +33,20 @@ void init_window_values(my_w_t *window)
 	GAME_TITLE, sfClose, NULL);
 	window->displayed_scenes = NULL;
 	window->click_released = sfTrue;
+	window->click_released = sfTrue;
+}
+
+void init_text_values(my_w_t *window)
+{
+	bucket_t *bucket_scene = hm_get_bucket(window->scenes, PAUSE_GAME);
+	bucket_t *bucket_texts = NULL;
+	scene_t *curr_scene = NULL;
+
+	if (!bucket_scene)
+		return;
+	curr_scene = bucket_scene->value;
+	bucket_texts = hm_get_bucket(curr_scene->texts, "VERSION_GAME");
+	sfText_setString(bucket_texts->value, VERSION_GAME);
 }
 
 my_w_t init_my_window(void)
@@ -48,6 +62,7 @@ my_w_t init_my_window(void)
 		window.error_no = 84;
 		return (window);
 	}
+	init_text_values(&window);
 	window.current = hm_get_bucket(window.scenes, STARTING_SCENE_NAME);
 	if (check_scene_not_created(window.current,
 		"my_initializer.c", 42, STARTING_SCENE_NAME) != 0)

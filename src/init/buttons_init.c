@@ -19,7 +19,7 @@ static const myfunc_t g_tab[] =
 	{"CHARACTERISTIC", caracteristique},
 	{"INVENTORY", inventory},
 	{"MAP", map},
-	{"PAUSE", pause},
+	{"PAUSE", pause_game},
 	{"QUESTS", quetes},
 	{"QUIT", quit},
 	{"RELOAD", re_load},
