@@ -4,6 +4,7 @@
 ** File description:
 ** (CPE_getnextline_2017)
 */
+
 #include "../../include/my.h"
 
 char *my_realloc(char *str, int len)
@@ -40,10 +41,8 @@ char *my_get_next_line(int fd)
 {
 	char *str = malloc(sizeof(char) * (READ_SIZE + 1));
 
-	if (fd == -1 || !str) {
-		free(str);
+	if (fd == -1 || !str)
 		return (NULL);
-	}
 	for (int i = 0; 1; i++) {
 		if (i % READ_SIZE == 0)
 			str = my_realloc(str, i);
@@ -51,9 +50,12 @@ char *my_get_next_line(int fd)
 		if (str[i] == '\n') {
 			str[i] = 0;
 			break;
-		} else if (str[i] == -1 || str[i] == 0) {
-			free(str);
+		}
+		if ((str[i] == -1 && i == 0) || str[i] == 0)
 			return (NULL);
+		if (str[i] == -1) {
+			str[i] = 0;
+			return (str);
 		}
 	}
 	return (str);
