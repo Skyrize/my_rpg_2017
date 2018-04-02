@@ -7,7 +7,6 @@
 
 #include <my.h>
 #include <rpg.h>
-#include <Audio.h>
 
 bool set_ply_zone(sfVector2i pos_zone, my_w_t *window, bool check)
 {

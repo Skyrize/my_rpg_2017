@@ -22,6 +22,8 @@ int display_tiles(int x, int y, int priority, my_w_t *window)
 		}
 		tmp = tmp->next;
 	}
+	if (priority == 3)
+		display_obj(window->game.player.character, window);
 	return (0);
 }
 

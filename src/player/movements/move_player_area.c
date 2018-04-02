@@ -64,4 +64,5 @@ bool move_player_area(direction_t dir, my_w_t *window, bool check)
 		case RIGHT:
 			return (move_player_aera_right(window, check));
 	}
+	return (false);
 }
