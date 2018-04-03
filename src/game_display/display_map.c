@@ -22,8 +22,12 @@ int display_tiles(int x, int y, int priority, my_w_t *window)
 		}
 		tmp = tmp->next;
 	}
-	if (priority == 3)
-		display_obj(window->game.player.character, window);
+	if (priority == 3) {
+
+		sfRectangleShape_setPosition(window->game.player.character->obj, (sfVector2f) {window->map.tile_coord.x * 50, window->map.tile_coord.y * 50});
+		sfRenderWindow_drawRectangleShape(window->window,
+			window->game.player.character->obj, NULL);
+	}
 	return (0);
 }
 
