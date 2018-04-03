@@ -307,6 +307,15 @@ typedef struct myfunc_s {
 	int (*instruction)();
 } myfunc_t;
 
+/////////////////////////////// CONTROLS ///////////////////////////////////
+
+typedef struct controls_s {
+	sfKeyCode player_up;
+	sfKeyCode player_down;
+	sfKeyCode player_left;
+	sfKeyCode player_right;
+} controls_t;
+
 //////////////////////////////////// DATA DEFINES /////////////////////////////
 
 #define ZONE_COOR_X window->map.zone_coord.x
@@ -518,6 +527,7 @@ void update_characteristics(scene_t *scene, my_w_t *window);
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
+int display_obj(obj_t *obj, my_w_t *window);
 int display_objs(hashmap_t *objs, my_w_t *window);
 int display_texts(bucket_t *text_bucket, my_w_t *window);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);

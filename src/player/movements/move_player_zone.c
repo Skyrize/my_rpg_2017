@@ -72,4 +72,5 @@ bool move_player_zone(direction_t dir, my_w_t *window, bool check)
 		case RIGHT:
 			return (move_player_zone_right(window, check));
 	}
+	return (false);
 }
