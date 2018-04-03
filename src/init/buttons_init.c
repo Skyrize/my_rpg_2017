@@ -16,7 +16,7 @@ static const myfunc_t g_tab[] =
 	{"SELECT_AVELUS", select_avelus},
 	{"OPTION", option},
 	{"CREDITS", credits},
-	{"CHARACTERISTIC", caracteristique},
+	{"CHARACTERISTIC", characteristique},
 	{"INVENTORY", inventory},
 	{"MAP", map},
 	{"PAUSE", pause_game},

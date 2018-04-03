@@ -61,7 +61,7 @@
 #define QUIT_GAME "QUIT"
 #define QUETES_GAME "QUETE"
 #define PAUSE_GAME "PAUSE"
-#define CARAC_GAME "CARACTERISTIC"
+#define CHARAC_GAME "CHARACTERISTICS"
 #define EXIT_GAME "EXIT"
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
@@ -482,7 +482,7 @@ int start_game(my_w_t *window);
 int option(my_w_t *window);
 int credits(my_w_t *window);
 int exit_game(my_w_t *window);
-int caracteristique(my_w_t *window);
+int characteristique(my_w_t *window);
 int credits(my_w_t *window);
 int inventory(my_w_t *window);
 int load(my_w_t *window);
