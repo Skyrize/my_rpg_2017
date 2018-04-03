@@ -45,6 +45,8 @@ int process_pre_window(my_w_t *window)
 		return (84);
 	if (load_my_zone(window) != 0)
 		return (84);
+	TILE_COOR_X = 10;
+	TILE_COOR_Y = 6;
 	return (0);
 }
 
