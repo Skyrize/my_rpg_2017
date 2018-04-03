@@ -12,7 +12,7 @@ bool move_player_up(my_w_t *window, bool check)
 {
 	if (TILE_COOR_Y - 1 <= -1)
 		return (move_player_area(UP, window, check));
-	if (AREA.tiles[TILE_COOR_X][TILE_COOR_Y - 1].block)
+	if (AREA.tiles[TILE_COOR_Y][TILE_COOR_X].block)
 		return (false);
 	if (check)
 		return (true);
@@ -24,7 +24,7 @@ bool move_player_down(my_w_t *window, bool check)
 {
 	if (TILE_COOR_Y + 1 > TILE_TAB_Y - 2)
 		return (move_player_area(DOWN, window, check));
-	if (AREA.tiles[TILE_COOR_X][TILE_COOR_Y + 1].block)
+	if (AREA.tiles[TILE_COOR_Y + 2][TILE_COOR_X].block)
 		return (false);
 	if (check)
 		return (true);
@@ -36,7 +36,7 @@ bool move_player_left(my_w_t *window, bool check)
 {
 	if (TILE_COOR_X - 1 <= -1)
 		return (move_player_area(LEFT, window, check));
-	if (AREA.tiles[TILE_COOR_X - 1][TILE_COOR_Y].block)
+	if (AREA.tiles[TILE_COOR_Y + 1][TILE_COOR_X - 1].block)
 		return (false);
 	if (check)
 		return (true);
@@ -48,7 +48,7 @@ bool move_player_right(my_w_t *window, bool check)
 {
 	if (TILE_COOR_X + 1 > TILE_TAB_X - 1)
 		return (move_player_area(RIGHT, window, check));
-	if (AREA.tiles[TILE_COOR_X + 1][TILE_COOR_Y].block)
+	if (AREA.tiles[TILE_COOR_Y + 1][TILE_COOR_X + 1].block)
 		return (false);
 	if (check)
 		return (true);
