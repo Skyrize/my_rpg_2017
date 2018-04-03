@@ -43,26 +43,27 @@ SRC	=	main.c	\
 		src/game_display/display_texts.c	\
 		src/game_display/move_rect.c	\
 		src/free_destroy/free_and_destroy_lobby.c	\
-		src/hud/caracteristique.c \
-		src/hud/credits.c \
-		src/hud/exit.c \
-		src/hud/inventory.c \
-		src/hud/load.c \
-		src/hud/map.c \
-		src/hud/new_game.c \
-		src/hud/option.c \
-		src/hud/pause.c \
-		src/hud/quetes.c \
-		src/hud/quit.c \
-		src/hud/re_load.c \
-		src/hud/resume.c \
-		src/hud/save.c \
-		src/hud/manage_buttons_game.c \
-		src/hud/menu_principale.c \
-		src/hud/manage_song.c \
-		src/hud/frame_rate.c \
-		src/hud/control_key.c \
-		src/hud/key_game.c \
+		src/hud/caracteristique.c	\
+		src/hud/credits.c	\
+		src/hud/exit.c	\
+		src/hud/inventory.c	\
+		src/hud/load.c	\
+		src/hud/map.c	\
+		src/hud/new_game.c	\
+		src/hud/option.c	\
+		src/hud/pause.c	\
+		src/hud/quetes.c	\
+		src/hud/quit.c	\
+		src/hud/re_load.c	\
+		src/hud/resume.c	\
+		src/hud/save.c	\
+		src/hud/manage_buttons_game.c	\
+		src/hud/menu_principale.c	\
+		src/hud/manage_song.c	\
+		src/hud/frame_rate.c	\
+		src/hud/control_key.c	\
+		src/hud/key_game.c	\
+		src/player/stats/characteristics.c	\
 
 OBJS	=	$(SRC:.c=.o)
 

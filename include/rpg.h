@@ -513,6 +513,7 @@ int game(my_w_t *window);
 
 void get_time(my_w_t *window);
 int game_lobby(my_w_t *window);
+void update_characteristics(scene_t *scene, my_w_t *window);
 
 /// DISPLAY FUNCTIONS
 
