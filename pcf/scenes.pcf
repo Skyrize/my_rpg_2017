@@ -11,8 +11,11 @@ ________________________________________________________________________________
 -GAME
 	SCENE=GAME PRIORITY=0
 		LIST=OBJS
-			OBJ=SETTINGS_BG TEXTURE=SETTINGS_BG BUTTON=0 X=720 Y=-5
-			OBJ=PAUSE TEXTURE=ICO_PAUSE BUTTON=1 X=726 Y=40
+			OBJ=MAP TEXTURE=MAP_BUTTON BUTTON=1 X=308 Y=557
+			OBJ=QUESTS TEXTURE=QUEST_BUTTON BUTTON=1 X=349 Y=557
+			OBJ=CHARACTERISTIC TEXTURE=CHARAC_BUTTON BUTTON=1 X=382 Y=557
+			OBJ=INVENTORY TEXTURE=INVENTORY_BUTTON BUTTON=1 X=415 Y=557
+			OBJ=PAUSE TEXTURE=COG_BUTTON BUTTON=1 X=448 Y=557
 
 ________________________________________________________________________________
 -PAUSE
@@ -175,10 +178,10 @@ ________________________________________________________________________________
 			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
 
 _____________________________________________________________________________
--CARACTERISTIQUE
-	SCENE=CARACTERISTIQUE PRIORITY=12
+-CHARACTERISTICS
+	SCENE=CHARACTERISTICS PRIORITY=12
 		LIST=OBJS
-			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
+			OBJ=BACKGROUND TEXTURE=CHARACTERISTICS_BG BUTTON=0 X=294 Y=25
 
 _____________________________________________________________________________
 -MENU_PRINCIPAL
