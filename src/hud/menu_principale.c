@@ -9,12 +9,16 @@
 
 int menu_principale(my_w_t *window)
 {
-	int error_no = 0;
+	static sfBool updated = sfFalse;
 
 	window->current = hm_get_bucket(window->scenes, HOME);
-	error_no = clean_displayed_scenes_and_add_back(window, HOME);
-	if (error_no == 84)
+	if (clean_displayed_scenes_and_add_back(window, HOME) != 0)
 		return (84);
+	if (PLAYER_NAME && updated == sfFalse) {
+		updated = sfTrue;
+		if (update_button("NEW_GAME", "CONTINUE",
+		window->current->value, window) != 0)
+			return (84);
+	}
 	return (1);
-	return (0);
 }

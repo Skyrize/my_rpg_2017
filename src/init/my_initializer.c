@@ -26,13 +26,13 @@ int init_game_tools(my_w_t *window)
 void init_window_values(my_w_t *window)
 {
 	window->error_no = 0;
+	PLAYER_NAME = NULL;
 	window->clocker = init_timer();
 	MOUSE_POS = (sfVector2i){0, 0};
 	window->window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
 		WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
 	GAME_TITLE, sfClose, NULL);
 	window->displayed_scenes = NULL;
-	window->click_released = sfTrue;
 	window->click_released = sfTrue;
 }
 

@@ -59,7 +59,7 @@
 #define CREDITS_GAME "CREDITS"
 #define SAVE_GAME "SAVE"
 #define QUIT_GAME "QUIT"
-#define QUETES_GAME "QUETE"
+#define QUESTS_GAME "QUESTS"
 #define PAUSE_GAME "PAUSE"
 #define CHARAC_GAME "CHARACTERISTICS"
 #define EXIT_GAME "EXIT"
@@ -319,10 +319,10 @@ typedef struct text_data_s
 
 //////////////////////////////////// DATA HUD /////////////////////////////
 
-typedef struct myfunc_s {
+typedef struct button_s {
 	char *balise;
 	int (*instruction)();
-} myfunc_t;
+} button_t;
 
 
 #define ZONE_COOR_X window->map.zone_coord.x
@@ -414,6 +414,7 @@ int get_an_area(char **infos, char **type, hashmap_t **current_list, my_w_t *win
 int get_a_tile(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_priority(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+
 /// INIT WARNING : UNEXISTING
 
 int check_unexisting_font(sfFont *font, char *font_name);
@@ -482,6 +483,7 @@ int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 int add_scene_to_display_list(bucket_t *scene, my_w_t *window);
 int add_tile_to_list(char *texture, my_w_t *window);
+display_list_t *get_scene_from_displayed(char *asked, my_w_t *window);
 
 /// LIST REMOVING
 
@@ -489,8 +491,12 @@ void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
 void clean_displayed_scene_name(my_w_t *window, char *name_scenes);
+
 /// MANAGE BUTTONS
+
 int manage_buttons(my_w_t *window);
+int button_display_hide_scene(char *scene_name, void (*update)(), my_w_t *window);
+int update_button(char *seek, char *replacement, scene_t *scene, my_w_t *window);
 
 //BUTTONS FUNCTIONS
 
