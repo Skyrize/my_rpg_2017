@@ -28,11 +28,11 @@ void main_loop(ressources_t *rsces, texture_list_t *list, sfVector2i area)
 
 	(void) area;
 	while (sfRenderWindow_isOpen(rsces->window)) {
-		while (sfRenderWindow_pollEvent(rsces->window, &event))
-			on_event(rsces, list, event, my_clock);
 		sfRenderWindow_clear(rsces->window, sfWhite);
 		display_map(rsces->rsces);
 		draw_texture_list(list, rsces->window);
+		while (sfRenderWindow_pollEvent(rsces->window, &event))
+			on_event(rsces, list, event, my_clock);
 		sfRenderWindow_display(rsces->window);
 	}
 }

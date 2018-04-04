@@ -24,8 +24,10 @@ int check_timer(sfClock *my_clock)
 void on_event(ressources_t *rsces, texture_list_t *list, sfEvent event,
 							sfClock *my_clock)
 {
-	if (event.type == sfEvtClosed)
+	if (event.type == sfEvtClosed) {
+		save_map(rsces->rsces);
 		sfRenderWindow_close(rsces->window);
+	}
 	if (sfMouse_isButtonPressed(sfMouseLeft) && check_timer(my_clock))
 		left_click_event(rsces, list);
 	else if (sfMouse_isButtonPressed(sfMouseRight) && check_timer(my_clock))

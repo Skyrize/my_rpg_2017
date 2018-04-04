@@ -89,6 +89,7 @@ typedef struct rect_s
 
 typedef struct obj_s
 {
+	char *name;
 	int priority;
 	int (*callback)();
 	sfRectangleShape *obj;

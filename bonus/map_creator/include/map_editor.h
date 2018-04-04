@@ -55,5 +55,8 @@ void left_click_event(ressources_t *rsces, texture_list_t *list);
 void right_click_event(ressources_t *rsces, texture_list_t *list);
 int button_is_clicked(sfRectangleShape *rec, v2i clickPosition);
 void check_click_for_block(ressources_t *rsces, my_w_t *window, int i, int j);
+void save_map(my_w_t *window);
+void write_areas(my_w_t *window, int fd);
+
 
 #endif /* MAP_EDITOR */

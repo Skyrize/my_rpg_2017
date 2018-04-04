@@ -64,6 +64,7 @@ tile_list_t *create_a_tile(char *texture_name, my_w_t *window)
 			TILE_COOR_Y * WINDOW_PIXELS_UNIT}}, window);
 	if (!new_tile->tile)
 		return (NULL);
+	new_tile->tile->name = my_strdup(texture_name);
 	new_tile->next = NULL;
 	return (new_tile);
 }

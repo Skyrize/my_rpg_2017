@@ -7,12 +7,13 @@
 
 #include "map_editor.h"
 
-void replace_black_tile(sfTexture *texture, my_w_t *window)
+void replace_black_tile(sfTexture *texture, char *name, my_w_t *window)
 {
 	tile_list_t *tmp = TILE_LIST;
 
 	sfRectangleShape_setTexture(tmp->tile->obj, texture, 1);
 	sfRectangleShape_setFillColor(tmp->tile->obj, REGULAR_COLOR);
+	tmp->tile->name = name;
 }
 
 void check_click_for_add(ressources_t *rsces, my_w_t *window, int i, int j)
@@ -28,7 +29,8 @@ void check_click_for_add(ressources_t *rsces, my_w_t *window, int i, int j)
 		displayed_tiles->tile->obj))
 			add_tile_to_list(rsces->selected_texture_name, window);
 		else
-			replace_black_tile(rsces->selected, window);
+			replace_black_tile(rsces->selected,
+					rsces->selected_texture_name, window);
 	}
 }
 

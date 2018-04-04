@@ -35,6 +35,8 @@ SRC	=	src/init/file_analysing.c			\
 		src/map_creator/right_event.c			\
 		src/map_creator/add_texture.c			\
 		src/map_creator/read_hashmap.c			\
+		src/map_creator/write_area.c			\
+		src/map_creator/save_map.c			\
 		src/list_management/objs_list_create.c		\
 		src/list_management/objs_list_add.c		\
 		src/list_management/objs_list_remove.c		\
