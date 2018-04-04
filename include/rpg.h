@@ -68,7 +68,7 @@
 #define MAP_GAME "MAP"
 #define HOME "MENU_PRINCIPAL"
 #define CONTROL_KEY "CONTROL_KEY"
-#define VERSION_GAME "V1"
+#define VERSION_GAME "V0.8"
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -463,6 +463,7 @@ int check_undefined_tile(my_w_t *window);
 
 int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked);
 int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
+int check_invalid_map_display(my_w_t *window);
 
 /// LIST CREATING
 
