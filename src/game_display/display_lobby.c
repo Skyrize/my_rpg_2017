@@ -12,7 +12,7 @@ int display_scenes(my_w_t *window)
 {
 	display_list_t *tmp = window->displayed_scenes;
 
-	if (my_strcmp(window->current->key, MAP_SCENE_NAME) == 0)
+	if (my_strcmp(tmp->scene_name, MAP_SCENE_NAME) == 0)
 		if (display_map(window) != 0)
 			return (84);
 	while (tmp) {

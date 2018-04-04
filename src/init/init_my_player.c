@@ -10,7 +10,7 @@
 
 int init_characteristics_scene(char **desc, obj_data_t *data, my_w_t *window)
 {
-	scene_t *scene = hm_get(window->scenes, "CHARACTERISTICS");
+	scene_t *scene = hm_get(window->scenes, CHARAC_GAME);
 	obj_data_t special_data = {"SPECIAL_CHARAC", desc[2], sfFalse,
 	(sfVector2f){316, 215}};
 	sfText *name = hm_get(scene->texts, "CHARAC");

@@ -8,26 +8,11 @@
 #include "my.h"
 #include "rpg.h"
 
-int read_bucket(my_w_t *window, bucket_t *bucket, int (*fptr)())
+display_list_t *get_scene_from_displayed(char *asked, my_w_t *window)
 {
-	bucket_t *tmp = bucket;
+	display_list_t *tmp = window->displayed_scenes;
 
-	while (tmp) {
-		if (fptr(tmp, window) != 0)
-			return (84);
+	while (tmp && my_strcmp(tmp->scene_name, asked) == 1)
 		tmp = tmp->next;
-	}
-	return (0);
-}
-
-int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)())
-{
-	bucket_t *tmp;
-
-	for (unsigned int i = 0; i != hashmap->size; i++) {
-		tmp = hashmap->data[i];
-		if (read_bucket(window, tmp, fptr) != 0)
-			return (84);
-	}
-	return (0);
+	return (tmp);
 }
