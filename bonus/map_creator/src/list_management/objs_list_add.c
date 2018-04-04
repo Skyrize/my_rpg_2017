@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int add_text_to_list(text_data_t *data, hashmap_t *current_list)
 {
@@ -56,9 +55,9 @@ int add_scene_to_display_list(bucket_t *scene, my_w_t *window)
 	return (0);
 }
 
-int add_tile_to_list(char *texture, int priority, my_w_t *window)
+int add_tile_to_list(char *texture, my_w_t *window)
 {
-	tile_list_t *display = create_a_tile(texture, priority, window);
+	tile_list_t *display = create_a_tile(texture, window);
 	tile_list_t *tmp = TILE_LIST;
 
 	if (!display)
@@ -67,13 +66,12 @@ int add_tile_to_list(char *texture, int priority, my_w_t *window)
 		TILE_LIST = display;
 		return (0);
 	}
-	if (tmp->priority >= display->priority) {
+	if (tmp->tile->priority >= display->tile->priority) {
 		display->next = tmp;
 		TILE_LIST = display;
 		return (0);
 	}
-	while (tmp->next
-		&& display->priority > tmp->next->priority)
+	while (tmp->next && display->tile->priority > tmp->next->tile->priority)
 		tmp = tmp->next;
 	display->next = tmp->next;
 	tmp->next = display;

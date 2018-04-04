@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int check_undefined_scene(bucket_t *scene, char *asked_list)
 {
