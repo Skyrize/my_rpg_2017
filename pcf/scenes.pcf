@@ -32,7 +32,7 @@ ________________________________________________________________________________
 			TEXT=OPTION STR=OPTION FONT=ARCADE CHARAC_SIZE=20 X=360 Y=225
 			TEXT=SAVE STR=SAVE FONT=ARCADE CHARAC_SIZE=20 X=365 Y=305
 			TEXT=HOME STR=HOME FONT=ARCADE CHARAC_SIZE=20 X=365 Y=390
-			TEXT=VERSION_GAME STR=V FONT=ARCADE CHARAC_SIZE=10 X=300 Y=125
+			TEXT=VERSION_GAME STR=V FONT=LIFECRAFT CHARAC_SIZE=10 X=300 Y=125
 
 ________________________________________________________________________________
 -SAVE

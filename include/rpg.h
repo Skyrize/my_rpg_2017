@@ -68,7 +68,7 @@
 #define MAP_GAME "MAP"
 #define HOME "MENU_PRINCIPAL"
 #define CONTROL_KEY "CONTROL_KEY"
-#define VERSION_GAME "V1"
+#define VERSION_GAME "V1.0"
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 

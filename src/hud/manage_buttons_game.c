@@ -53,7 +53,7 @@ int process_button_over(bucket_t *button_bucket, my_w_t *window)
 	buttonisclicked((button), MOUSE_POS) == 1
 	&& window->click_released == sfTrue) {
 		window->click_released = sfFalse;
-		return (button->callback(window));
+		return (button->callback != NULL ? button->callback(window) : 0);
 	} else
 		sfRectangleShape_setFillColor(button->obj, REGULAR_COLOR);
 	return (0);
