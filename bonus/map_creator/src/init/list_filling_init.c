@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 obj_data_t get_obj_data_from_infos(obj_infos_t *obj)
 {
@@ -14,6 +13,7 @@ obj_data_t get_obj_data_from_infos(obj_infos_t *obj)
 
 	data.name = obj->name[1];
 	data.type = obj->type[1];
+	data.button = my_getnbr(obj->button[1]);
 	data.position.x = (float)my_getnbr(obj->x[1]);
 	data.position.y = (float)my_getnbr(obj->y[1]);
 	return (data);
@@ -26,13 +26,15 @@ int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list)
 
 	obj.name = my_str_to_word_array(infos[0], '=');
 	obj.type = my_str_to_word_array(infos[1], '=');
-	obj.x = my_str_to_word_array(infos[2], '=');
-	obj.y = my_str_to_word_array(infos[3], '=');
+	obj.button = my_str_to_word_array(infos[2], '=');
+	obj.x = my_str_to_word_array(infos[3], '=');
+	obj.y = my_str_to_word_array(infos[4], '=');
 	data = get_obj_data_from_infos(&obj);
 	if (add_obj_to_list(&data, current_list, window) != 0)
 		return (84);
 	free_char_2d(obj.name);
 	free_char_2d(obj.type);
+	free_char_2d(obj.button);
 	free_char_2d(obj.x);
 	free_char_2d(obj.y);
 	return (0);

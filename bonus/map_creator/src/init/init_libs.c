@@ -5,14 +5,14 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int init_my_textures_lib(my_w_t *window)
 {
 	const key_word_t texture_keys[] = {
 	{"TEXTURE", 0, &get_a_texture, NULL},
 	{"FILEPATH", 0, &get_a_texture_filepath, NULL},
+	{"PRIORITY", 0, &get_a_priority, NULL},
 	{"ANIMATED", 0, &get_an_animated, NULL},
 	{"RECT_VALUES", 4, &get_a_rect_values,
 		(char *[]) {"LEFT", "TOP", "WIDTH", "HEIGHT", NULL}},
