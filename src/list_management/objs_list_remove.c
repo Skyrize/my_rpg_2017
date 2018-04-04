@@ -31,6 +31,23 @@ void clean_displayed_scenes(my_w_t *window)
 	}
 }
 
+void clean_displayed_scene_name(my_w_t *window, char *name_scenes)
+{
+	display_list_t *tmp = window->displayed_scenes;
+	display_list_t *freed;
+
+	while (tmp) {
+		if (tmp->next != NULL &&
+		my_strcmp(tmp->next->scene_name, name_scenes) == 0) {
+			freed = tmp->next;
+			tmp->next = tmp->next->next;
+			free(freed);
+			break;
+		}
+		tmp = tmp->next;
+	}
+}
+
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name)
 {
 	display_list_t *tmp;

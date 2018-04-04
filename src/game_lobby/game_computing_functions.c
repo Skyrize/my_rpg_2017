@@ -15,20 +15,18 @@ void get_time(my_w_t *window)
 	window->clocker.timer.microseconds / 1000000.0;
 }
 
-void compute_game(my_w_t *window)
-{
-	(void)window;
-}
-
 int game_lobby(my_w_t *window)
 {
 	analyse_events(window);
 	MOUSE_POS = sfMouse_getPosition((const sfWindow *)
 	window->window);
-	compute_game(window);
-	if (manage_buttons(window) == 1)
-		return (1);
-	if (display_scenes(window) != 0)
+	if (display_scenes(window) != 0) {
+		my_printf("WARNING: ERROR IN DISPLAY !\n");
 		return (84);
+	}
+	if (manage_buttons(window) != 0) {
+		my_printf("WARNING: ERROR IN BUTTONS MANAGEMENT !\n");
+		return (84);
+	}
 	return (0);
 }

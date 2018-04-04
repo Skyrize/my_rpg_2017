@@ -8,6 +8,15 @@
 #include "my.h"
 #include "rpg.h"
 
+sfVector2f vec2u_to_vec2f(sfVector2u vecu)
+{
+	sfVector2f vecf;
+
+	vecf.x = (float)vecu.x;
+	vecf.y = (float)vecu.y;
+	return (vecf);
+}
+
 int buttonisclicked(obj_t *button, sfVector2i clickPosition)
 {
 	return (clickPosition.x <
@@ -18,6 +27,7 @@ int buttonisclicked(obj_t *button, sfVector2i clickPosition)
 	sfRectangleShape_getSize(button->obj).y &&
 	clickPosition.y > sfRectangleShape_getPosition(button->obj).y
 	&& sfMouse_isButtonPressed(sfMouseLeft));
+
 }
 
 int button_fly_over(obj_t *button, sfVector2i clickPosition)
@@ -40,8 +50,9 @@ int process_button_over(bucket_t *button_bucket, my_w_t *window)
 	buttonisclicked((button), MOUSE_POS) == 0)
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
 	else if (button_fly_over(button, MOUSE_POS) == 1 &&
-	buttonisclicked((button), MOUSE_POS) == 1) {
-		for (int i = 40000000 ; i != 0 ; i--);
+	buttonisclicked((button), MOUSE_POS) == 1
+	&& window->click_released == sfTrue) {
+		window->click_released = sfFalse;
 		return (button->callback(window));
 	} else
 		sfRectangleShape_setFillColor(button->obj, REGULAR_COLOR);

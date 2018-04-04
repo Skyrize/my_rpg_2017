@@ -26,12 +26,41 @@ int init_game_tools(my_w_t *window)
 void init_window_values(my_w_t *window)
 {
 	window->error_no = 0;
+	PLAYER_NAME = NULL;
 	window->clocker = init_timer();
 	MOUSE_POS = (sfVector2i){0, 0};
 	window->window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
 		WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
 	GAME_TITLE, sfClose, NULL);
 	window->displayed_scenes = NULL;
+	window->click_released = sfTrue;
+}
+
+void init_text_values(my_w_t *window)
+{
+	bucket_t *bucket_scene = hm_get_bucket(window->scenes, PAUSE_GAME);
+	bucket_t *bucket_texts = NULL;
+	scene_t *curr_scene = NULL;
+
+	if (!bucket_scene)
+		return;
+	curr_scene = bucket_scene->value;
+	bucket_texts = hm_get_bucket(curr_scene->texts, "VERSION_GAME");
+	sfText_setString(bucket_texts->value, VERSION_GAME);
+}
+
+void init_key_control(my_w_t *window)
+{
+	window->key_player = malloc(sizeof(*window->key_player));
+	window->key_player->up = (sfKeyCode *)sfKeyZ;
+	window->key_player->down = (sfKeyCode *)sfKeyS;
+	window->key_player->left = (sfKeyCode *)sfKeyQ;
+	window->key_player->right = (sfKeyCode *)sfKeyD;
+	window->key_player->up_1 = (sfKeyCode *)sfKeyUp;
+	window->key_player->down_1 = (sfKeyCode *)sfKeyDown;
+	window->key_player->left_1 = (sfKeyCode *)sfKeyLeft;
+	window->key_player->right_1 = (sfKeyCode *)sfKeyRight;
+	window->key_player->move = 1;
 }
 
 my_w_t init_my_window(void)
@@ -47,6 +76,8 @@ my_w_t init_my_window(void)
 		window.error_no = 84;
 		return (window);
 	}
+	init_text_values(&window);
+	init_key_control(&window);
 	window.current = hm_get_bucket(window.scenes, STARTING_SCENE_NAME);
 	if (check_scene_not_created(window.current,
 		"my_initializer.c", 42, STARTING_SCENE_NAME) != 0)

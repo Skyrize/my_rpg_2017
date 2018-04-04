@@ -45,10 +45,9 @@ int get_an_obj(char **infos, char **type, hashmap_t **current_list,
 		return (84);
 	if (check_undefined_list(*current_list, infos[0]) != 0)
 		return (84);
-	if (check_already_existing_obj(type[1], *current_list) != 0)
-		return (84);
 	if (init_an_obj(infos, window, *current_list) != 0)
 		return (84);
+	(void)type;
 	return (0);
 }
 
@@ -59,9 +58,8 @@ int get_a_text(char **infos, char **type, hashmap_t **current_list,
 		return (84);
 	if (check_undefined_list(*current_list, infos[0]) != 0)
 		return (84);
-	if (check_already_existing_text(type[0], *current_list) != 0)
-		return (84);
 	if (init_a_text(infos, window, *current_list) != 0)
 		return (84);
+	(void)type;
 	return (0);
 }

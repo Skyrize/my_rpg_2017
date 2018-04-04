@@ -8,18 +8,22 @@
 #include "my.h"
 #include "rpg.h"
 
-static const myfunc_t g_tab[] =
+static const button_t g_tab[] =
 {
 	{"NEW_GAME", new_game},
+	{"CONTINUE", game},
+	{"SELECT_VARYAN", select_varyan},
+	{"SELECT_JAINA", select_jaina},
+	{"SELECT_AVELUS", select_avelus},
 	{"OPTION", option},
 	{"CREDITS", credits},
-	{"CHARACTERISTIC", caracteristique},
+	{"CHARACTERISTIC", characteristique},
 	{"INVENTORY", inventory},
 	{"MAP", map},
-	{"PAUSE", pause},
+	{"PAUSE", pause_game},
 	{"QUESTS", quetes},
 	{"QUIT", quit},
-	{"RELOAD", re_load},
+	{"LOAD", re_load},
 	{"RESUME", resume},
 	{"SAVE", save},
 	{"EXIT", exit_game},
@@ -27,8 +31,33 @@ static const myfunc_t g_tab[] =
 	{"SONG", manage_song},
 	{"FRAME_RATE_MORE", frame_rate_more},
 	{"FRAME_RATE_LESS", frame_rate_less},
+	{"CONTROL", control_key},
+	{"KEY_ZQSD", key_french},
+	{"KEY_WASD", key_english},
+	{"YES", yes_save},
+	{"NO", no_save},
 	{0, 0}
 };
+int init_button_callback(bucket_t *button_bucket, my_w_t *window);
+
+int update_button(char *seek, char *replacement, scene_t *scene, my_w_t *window)
+{
+	bucket_t *button_bucket = hm_get_bucket(scene->objs, seek);
+	bucket_t *text_bucket = hm_get_bucket(scene->texts, seek);
+	sfText *text;
+
+	if (!button_bucket || !text_bucket)
+		return (84);
+	text = text_bucket->value;
+	free(button_bucket->key);
+	free(text_bucket->key);
+	button_bucket->key = my_strdup(replacement);
+	text_bucket->key = my_strdup(replacement);
+	if (!button_bucket->key || !text_bucket->key)
+		return (84);
+	sfText_setString(text, replacement);
+	return (init_button_callback(button_bucket, window));
+}
 
 int init_button_callback(bucket_t *button_bucket, my_w_t *window)
 {

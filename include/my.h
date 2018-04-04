@@ -58,7 +58,6 @@ int my_showstr(char const *);
 int my_showmem(char const *, int);
 char *my_strcat(char *, char const *);
 char *my_strncat(char *, char const *, int);
-char *my_int_to_array(int);
 char **my_str_to_word_array(char *, char);
 int my_fastcmp(char const *, char const *);
 char *my_strdup(char *);
@@ -86,6 +85,7 @@ void my_printadress(va_list);
 void my_printoctal(va_list);
 void my_printpercent(va_list);
 void my_printformatedstring(va_list);
+char *int_to_str(int nb);
 
 typedef struct fnct_s
 {

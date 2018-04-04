@@ -5,5 +5,6 @@
 -FONTS
 FONT=LIFECRAFT FILEPATH=fonts/lifecraft.ttf
 FONT=ARCADE FILEPATH=fonts/arcade_classic.ttf
+FONT=RING FILEPATH=fonts/ring_bearer.ttf
 
 ### END OF FILE ###

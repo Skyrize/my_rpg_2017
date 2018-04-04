@@ -14,6 +14,7 @@ SRC	=	main.c	\
 		src/init/init_libs.c	\
 		src/init/init_map.c	\
 		src/init/buttons_init.c	\
+		src/init/init_my_player.c	\
 		src/init/scene_keys_functions_01.c	\
 		src/init/scene_keys_functions_02.c	\
 		src/init/texture_keys_functions_01.c	\
@@ -34,6 +35,7 @@ SRC	=	main.c	\
 		src/list_management/objs_list_create.c	\
 		src/list_management/objs_list_add.c	\
 		src/list_management/objs_list_remove.c	\
+		src/list_management/objs_list_read.c	\
 		src/list_management/objs_list_get.c	\
 		src/game_lobby/game_computing_functions.c	\
 		src/game_display/display_lobby.c	\
@@ -56,10 +58,18 @@ SRC	=	main.c	\
 		src/hud/re_load.c \
 		src/hud/resume.c \
 		src/hud/save.c \
+		src/hud/buttons_functions_type.c \
 		src/hud/manage_buttons_game.c \
 		src/hud/menu_principale.c \
 		src/hud/manage_song.c \
 		src/hud/frame_rate.c \
+		src/hud/control_key.c \
+		src/hud/key_game.c \
+		src/player/movements/move_player.c	\
+		src/player/movements/move_player_area.c	\
+		src/player/movements/move_player_zone.c	\
+		src/player/movements/set_player_pos.c	\
+		src/player/stats/characteristics.c	\
 
 OBJS	=	$(SRC:.c=.o)
 
