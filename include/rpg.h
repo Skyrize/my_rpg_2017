@@ -208,6 +208,22 @@ typedef enum direction_e {
 	LEFT,
 	RIGHT
 } direction_t;
+/////////////////////////////// CONTROLS ///////////////////////////////////
+
+typedef struct key_control_s
+{
+	sfKeyCode *up;
+	sfKeyCode *down;
+	sfKeyCode *right;
+	sfKeyCode *left;
+	sfKeyCode *up_1;
+	sfKeyCode *down_1;
+	sfKeyCode *right_1;
+	sfKeyCode *left_1;
+	int move;
+} key_control_t;
+
+//////////////////////////////////// DATA DEFINES /////////////////////////////
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 
@@ -240,6 +256,7 @@ typedef struct my_window_s
 	hashmap_t *fonts_lib;
 	hashmap_t *textures_lib;
 	display_list_t *displayed_scenes;
+	key_control_t *key_player;
 } my_w_t;
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
@@ -307,16 +324,6 @@ typedef struct myfunc_s {
 	int (*instruction)();
 } myfunc_t;
 
-/////////////////////////////// CONTROLS ///////////////////////////////////
-
-typedef struct controls_s {
-	sfKeyCode player_up;
-	sfKeyCode player_down;
-	sfKeyCode player_left;
-	sfKeyCode player_right;
-} controls_t;
-
-//////////////////////////////////// DATA DEFINES /////////////////////////////
 
 #define ZONE_COOR_X window->map.zone_coord.x
 #define ZONE_COOR_Y window->map.zone_coord.y

@@ -20,6 +20,7 @@ int game(my_w_t *window)
 
 int resume(my_w_t *window)
 {
+	window->key_player->move = 1;
 	clean_displayed_scene_name(window, PAUSE_GAME);
 	return (1);
 }

@@ -49,6 +49,20 @@ void init_text_values(my_w_t *window)
 	sfText_setString(bucket_texts->value, VERSION_GAME);
 }
 
+void init_key_control(my_w_t *window)
+{
+	window->key_player = malloc(sizeof(*window->key_player));
+	window->key_player->up = (sfKeyCode *)sfKeyZ;
+	window->key_player->down = (sfKeyCode *)sfKeyS;
+	window->key_player->left = (sfKeyCode *)sfKeyQ;
+	window->key_player->right = (sfKeyCode *)sfKeyD;
+	window->key_player->up_1 = (sfKeyCode *)sfKeyUp;
+	window->key_player->down_1 = (sfKeyCode *)sfKeyDown;
+	window->key_player->left_1 = (sfKeyCode *)sfKeyLeft;
+	window->key_player->right_1 = (sfKeyCode *)sfKeyRight;
+	window->key_player->move = 1;
+}
+
 my_w_t init_my_window(void)
 {
 	my_w_t window;
@@ -63,6 +77,7 @@ my_w_t init_my_window(void)
 		return (window);
 	}
 	init_text_values(&window);
+	init_key_control(&window);
 	window.current = hm_get_bucket(window.scenes, STARTING_SCENE_NAME);
 	if (check_scene_not_created(window.current,
 		"my_initializer.c", 42, STARTING_SCENE_NAME) != 0)
