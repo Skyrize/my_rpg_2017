@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int check_missing_args_for_key_word(const key_word_t *keys, int index,
 	char **args, int j)

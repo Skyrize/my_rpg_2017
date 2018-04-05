@@ -60,17 +60,16 @@
 #define OPTION_GAME "OPTION_GAME"
 #define CREDITS_GAME "CREDITS"
 #define SAVE_GAME "SAVE"
+#define RE_LOAD "RELOAD"
 #define QUIT_GAME "QUIT"
-#define QUESTS_GAME "QUESTS"
+#define QUETES_GAME "QUETE"
 #define PAUSE_GAME "PAUSE"
-#define CHARAC_GAME "CHARACTERISTICS"
+#define CARAC_GAME "CARACTERISTIC"
 #define EXIT_GAME "EXIT"
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
 #define MAP_GAME "MAP"
 #define HOME "MENU_PRINCIPAL"
-#define CONTROL_KEY "CONTROL_KEY"
-#define VERSION_GAME "V0.8"
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -90,6 +89,7 @@ typedef struct rect_s
 
 typedef struct obj_s
 {
+	char *name;
 	int priority;
 	int (*callback)();
 	sfRectangleShape *obj;
@@ -100,6 +100,7 @@ typedef struct obj_s
 typedef struct texture_s
 {
 	int priority;
+	char *name;
 	sfTexture *texture;
 	sfBool animated;
 	sfIntRect rect;
@@ -175,6 +176,13 @@ typedef struct display_list_s
 
 /////////////////////////////////// PLAYER ////////////////////////////////
 
+typedef enum
+{
+	MAGE = 0,
+	HUNTER = 1,
+	WARRIOR = 2,
+} player_character_t;
+
 typedef struct characteristic_s
 {
 	int vitality;
@@ -186,53 +194,17 @@ typedef struct characteristic_s
 typedef struct inventory_s
 {
 	int golds;
-	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+	obj_t inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
-
-typedef struct act_stats_s
-{
-	int health;
-	int armor;
-} act_stats_t;
 
 typedef struct player_s
 {
 	char *name;
-	obj_t *character;
-	inventory_t inventory;
+	player_character_t character;
 	characteristic_t characteristics;
-	act_stats_t *act_stats;
 } player_t;
 
-typedef enum direction_e {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
-} direction_t;
-/////////////////////////////// CONTROLS ///////////////////////////////////
-
-typedef struct key_control_s
-{
-	sfKeyCode *up;
-	sfKeyCode *down;
-	sfKeyCode *right;
-	sfKeyCode *left;
-	sfKeyCode *up_1;
-	sfKeyCode *down_1;
-	sfKeyCode *right_1;
-	sfKeyCode *left_1;
-	int move;
-} key_control_t;
-
-//////////////////////////////////// DATA DEFINES /////////////////////////////
-
 /////////////////////////////////// WINDOW ////////////////////////////////
-
-typedef struct game_s
-{
-	player_t player;
-} game_t;
 
 typedef struct ctime_s
 {
@@ -248,17 +220,14 @@ typedef struct my_window_s
 	sfVector2i mouse_pos;
 	sfEvent event;
 	sfRenderWindow *window;
-	sfBool click_released;
 	ctime_t clocker;
 	map_t map;
-	game_t game;
 	bucket_t *current;
 	hashmap_t *scenes;
 	hashmap_t *audio_lib;
 	hashmap_t *fonts_lib;
 	hashmap_t *textures_lib;
 	display_list_t *displayed_scenes;
-	key_control_t *key_player;
 } my_w_t;
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
@@ -318,13 +287,17 @@ typedef struct text_data_s
 	sfVector2f position;
 } text_data_t;
 
+//////////////////////////////////// DATA DEFINES /////////////////////////////
 
 //////////////////////////////////// DATA HUD /////////////////////////////
 
-typedef struct button_s {
+typedef struct myfunc_s {
 	char *balise;
 	int (*instruction)();
-} button_t;
+} myfunc_t;
+
+
+//////////////////////////////////// DATA HUD /////////////////////////////
 
 
 #define ZONE_COOR_X window->map.zone_coord.x
@@ -347,22 +320,6 @@ typedef struct button_s {
 
 #define MOUSE_POS window->mouse_pos
 
-////////////////////////////////////// GAME DEFINES //////////////////////////
-
-#define PLAYER window->game.player
-#define PLAYER_NAME PLAYER.name
-#define PLAYER_CHARACTER PLAYER.character
-#define PLAYER_INVENTORY PLAYER.inventory
-#define PLAYER_CHARAC PLAYER.characteristics
-
-#define PLAYER_GOLDS PLAYER_INVENTORY.golds
-#define PLAYER_ITEMS PLAYER_INVENTORY.inventory_items
-
-#define PLAYER_VITALITY PLAYER_CHARAC.vitality
-#define PLAYER_ARMOR PLAYER_CHARAC.armor
-#define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
-#define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
-
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -379,7 +336,6 @@ int init_scene_lists(char **infos, my_w_t *window);
 int init_my_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
-int init_my_player(my_w_t *window);
 
 int load_my_zone(my_w_t *window);
 
@@ -416,7 +372,6 @@ int get_an_area(char **infos, char **type, hashmap_t **current_list, my_w_t *win
 int get_a_tile(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
 int get_a_priority(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-
 /// INIT WARNING : UNEXISTING
 
 int check_unexisting_font(sfFont *font, char *font_name);
@@ -472,7 +427,6 @@ int check_undefined_tile(my_w_t *window);
 
 int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked);
 int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
-int check_invalid_map_display(my_w_t *window);
 
 /// LIST CREATING
 
@@ -486,20 +440,15 @@ int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 int add_scene_to_display_list(bucket_t *scene, my_w_t *window);
 int add_tile_to_list(char *texture, my_w_t *window);
-display_list_t *get_scene_from_displayed(char *asked, my_w_t *window);
 
 /// LIST REMOVING
 
 void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
-void clean_displayed_scene_name(my_w_t *window, char *name_scenes);
 
 /// MANAGE BUTTONS
-
 int manage_buttons(my_w_t *window);
-int button_display_hide_scene(char *scene_name, void (*update)(), my_w_t *window);
-int update_button(char *seek, char *replacement, scene_t *scene, my_w_t *window);
 
 //BUTTONS FUNCTIONS
 
@@ -507,7 +456,7 @@ int start_game(my_w_t *window);
 int option(my_w_t *window);
 int credits(my_w_t *window);
 int exit_game(my_w_t *window);
-int characteristique(my_w_t *window);
+int caracteristique(my_w_t *window);
 int credits(my_w_t *window);
 int inventory(my_w_t *window);
 int load(my_w_t *window);
@@ -523,27 +472,15 @@ int menu_principale(my_w_t *window);
 int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);
-int select_varyan(my_w_t *window);
-int select_jaina(my_w_t *window);
-int select_avelus(my_w_t *window);
-int control_key(my_w_t *window);
-int key_french(my_w_t *window);
-int key_english(my_w_t *window);
-int no_save(my_w_t *window);
-int yes_save(my_w_t *window);
-int game(my_w_t *window);
-
-
+char *int_to_str(int nb);
 /// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
 int game_lobby(my_w_t *window);
-void update_characteristics(scene_t *scene, my_w_t *window);
 
 /// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
-int display_obj(obj_t *obj, my_w_t *window);
 int display_objs(hashmap_t *objs, my_w_t *window);
 int display_texts(bucket_t *text_bucket, my_w_t *window);
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
@@ -560,16 +497,6 @@ void destroy_and_free(my_w_t *window);
 void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
-
-/// PLAYER FUNCTIONS
-
-void unload_my_zone(my_w_t *window);
-bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
-			 sfVector2i pos_zone, my_w_t *window);
-bool move_player_zone(direction_t dir, my_w_t *window, bool check);
-bool move_player_area(direction_t dir, my_w_t *window, bool check);
-bool move_player(direction_t dir, my_w_t *window, bool check);
-void anim_player(my_w_t *window);
 
 /// END
 

@@ -5,15 +5,12 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int display_tiles(int x, int y, int priority, my_w_t *window)
 {
 	tile_list_t *tmp = AREA.tiles[y][x].displayed_tiles;
 
-	if (check_invalid_tile_display(tmp, x, y, window) != 0)
-		return (84);
 	while (tmp) {
 		if (tmp->tile->priority == priority) {
 			sfRenderWindow_drawRectangleShape(window->window,
@@ -21,13 +18,6 @@ int display_tiles(int x, int y, int priority, my_w_t *window)
 			time_animation(tmp->tile, 0.1, window);
 		}
 		tmp = tmp->next;
-	}
-	if (priority == 3) {
-		sfRectangleShape_setPosition(window->game.player.character->obj,
-			(sfVector2f) {window->map.tile_coord.x * 50,
-				window->map.tile_coord.y * 50});
-		sfRenderWindow_drawRectangleShape(window->window,
-			window->game.player.character->obj, NULL);
 	}
 	return (0);
 }
@@ -46,8 +36,6 @@ int display_area(int priority, my_w_t *window)
 
 int display_map(my_w_t *window)
 {
-	if (check_invalid_map_display(window) != 0)
-		return (84);
 	for (int priority = 0; priority != PRIORITY_MAX + 1; priority++)
 		if (display_area(priority, window) != 0)
 			return (84);
