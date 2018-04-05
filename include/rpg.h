@@ -602,6 +602,7 @@ bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera, sfVector2i po
 bool move_player_zone(direction_t dir, my_w_t *window, bool check);
 bool move_player_area(direction_t dir, my_w_t *window, bool check);
 bool move_player(direction_t dir, my_w_t *window, bool check);
+void anim_player(my_w_t *window);
 
 /////////////////////////// END
 
