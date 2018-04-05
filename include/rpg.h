@@ -384,6 +384,9 @@ int init_my_player(my_w_t *window);
 /// Change ZONE_COOR_X and ZONE_COOR_Y and call load_my_zone to fulfill AREA maps with asked zone.
 int load_my_zone(my_w_t *window);
 
+///Unload and free the current zone (ZONE_COOR_X/Y)
+void unload_my_zone(my_w_t *window);*
+
 /////////////////////////// SAVIOR TRICK FUNCTIONS
 
 void list_savior(my_w_t *window);
@@ -578,10 +581,20 @@ void update_characteristics(scene_t *scene, my_w_t *window);
 
 ///Read the linked list of displayed scenes and display there obj and text. If the first one is GAME, display map. return (0/84)
 int display_scenes(my_w_t *window);
+
+///Display passed obj and animate it.
 int display_obj(obj_t *obj, my_w_t *window);
+
+///Read the passed hashmap and if the obj priority match the actual priority, send the object to display_obj.
 int display_objs(hashmap_t *objs, my_w_t *window);
+
+///Display a passed text via a bucket (call with read_hashmap)
 int display_texts(bucket_t *text_bucket, my_w_t *window);
+
+///Animate a given objetc every given seconds.
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
+
+///Read and display the map (in function of AREA_COOR_X/Y) in function of their priorities
 int display_map(my_w_t *window);
 
 /////////////////////////// INPUT
@@ -597,7 +610,6 @@ void texture_destroy(texture_t *texture);
 
 /////////////////////////// PLAYER FUNCTIONS
 
-void unload_my_zone(my_w_t *window);
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera, sfVector2i pos_zone, my_w_t *window);
 bool move_player_zone(direction_t dir, my_w_t *window, bool check);
 bool move_player_area(direction_t dir, my_w_t *window, bool check);
