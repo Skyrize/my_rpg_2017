@@ -385,7 +385,7 @@ int init_my_player(my_w_t *window);
 int load_my_zone(my_w_t *window);
 
 ///Unload and free the current zone (ZONE_COOR_X/Y)
-void unload_my_zone(my_w_t *window);*
+void unload_my_zone(my_w_t *window);
 
 /////////////////////////// SAVIOR TRICK FUNCTIONS
 
