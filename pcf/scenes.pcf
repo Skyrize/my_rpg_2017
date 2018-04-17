@@ -32,7 +32,7 @@ ________________________________________________________________________________
 			TEXT=OPTION STR=OPTION FONT=ARCADE CHARAC_SIZE=20 X=360 Y=225
 			TEXT=SAVE STR=SAVE FONT=ARCADE CHARAC_SIZE=20 X=365 Y=305
 			TEXT=HOME STR=HOME FONT=ARCADE CHARAC_SIZE=20 X=365 Y=390
-			TEXT=VERSION_GAME STR=V FONT=ARCADE CHARAC_SIZE=10 X=300 Y=125
+			TEXT=VERSION_GAME STR=V FONT=LIFECRAFT CHARAC_SIZE=10 X=300 Y=125
 
 ________________________________________________________________________________
 -SAVE
@@ -225,5 +225,20 @@ _____________________________________________________________________________
 			TEXT=OPTION STR=OPTION FONT=ARCADE CHARAC_SIZE=30 X=345 Y=530
 			TEXT=USER_KEY STR=FRENCH FONT=ARCADE CHARAC_SIZE=30 X=340 Y=250
 			TEXT=KEYBOARD STR=KEYBOARD FONT=ARCADE CHARAC_SIZE=30 X=340 Y=290
+
+_____________________________________________________________________________
+-BATTLE
+	SCENE=BATTLE PRIORITY=0
+		LIST=OBJS
+			OBJ=BACKGROUND TEXTURE=PLAINS_BATTLE_BG BUTTON=0 X=0 Y=0
+			OBJ=PANEL TEXTURE=BUTTON_BATTLE_BG BUTTON=0 X=0 Y=430
+
+_____________________________________________________________________________
+-BATTLE_BUTTONS
+	SCENE=BATTLE_BASIC_BUTTONS PRIORITY=1
+		LIST=OBJS
+			OBJ=ATTACK TEXTURE=BUTTON_EMPTY BUTTON=1 X=50 Y=440
+		LIST=TEXTS
+			TEXT=ATTACK STR=Attack FONT=RING CHARAC_SIZE=30 X=55 Y=445
 
 ### END OF FILE ###
