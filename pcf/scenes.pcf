@@ -19,7 +19,7 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________
 -PAUSE
-	SCENE=PAUSE PRIORITY=2
+	SCENE=PAUSE PRIORITY=3
 		LIST=OBJS
 			OBJ=PAUSE_BG TEXTURE=PAUSE_BG BUTTON=0 X=170 Y=80
 			OBJ=RESUME TEXTURE=BUTTON_PAUSE_EMPTY BUTTON=1 X=300 Y=140
@@ -150,31 +150,31 @@ ________________________________________________________________________________
 
 ________________________________________________________________________________
 -CREDITS
-	SCENE=CREDITS PRIORITY=7
+	SCENE=CREDITS PRIORITY=2
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
 
 ________________________________________________________________________
 -QUIT
-	SCENE=QUIT PRIORITY=8
+	SCENE=QUIT PRIORITY=2
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
 
 ________________________________________________________________________________
 -MAP
-	SCENE=MAP PRIORITY=9
+	SCENE=MAP PRIORITY=2
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
 
 ________________________________________________________________________________
 -INVENTORY
-	SCENE=INVENTORY PRIORITY=10
+	SCENE=INVENTORY PRIORITY=2
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=INVENTORY_BG BUTTON=0 X=544 Y=25
 
 ________________________________________________________________________________
 -QUETES
-	SCENE=QUESTS PRIORITY=11
+	SCENE=QUESTS PRIORITY=2
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=QUESTS_BG BUTTON=0 X=40 Y=25
 		LIST=TEXTS
@@ -182,7 +182,7 @@ ________________________________________________________________________________
 
 _____________________________________________________________________________
 -CHARACTERISTICS
-	SCENE=CHARACTERISTICS PRIORITY=12
+	SCENE=CHARACTERISTICS PRIORITY=2
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=CHARACTERISTICS_BG BUTTON=0 X=294 Y=25
 		LIST=TEXTS
@@ -230,8 +230,11 @@ _____________________________________________________________________________
 -HEALTH_HUD
 	SCENE=HEALTH_HUD PRIORITY=1
 		LIST=OBJS
-			OBJ=BACKGROUND TEXTURE=MENU_BG BUTTON=0 X=0 Y=0
+			OBJ=BACKGROUND TEXTURE=HUD_HEALTH BUTTON=0 X=0 Y=0
+			OBJ=END_LIFE_BAR TEXTURE=END_LIFE_BAR BUTTON=0 X=190 Y=5
+			OBJ=BG_LIFE TEXTURE=BG_LIFE_BAR BUTTON=0 X=90 Y=8
+			OBJ=HEALTH_BAR TEXTURE=LIFE BUTTON=0 X=90 Y=8
 		LIST=TEXTS
-			TEXT=OPTION STR=OPTION FONT=ARCADE CHARAC_SIZE=30 X=345 Y=530
+			TEXT=OPTION STR=HEALTH_SCENE FONT=ARCADE CHARAC_SIZE=30 X=345 Y=200
 
 ### END OF FILE ###
