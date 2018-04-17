@@ -226,4 +226,12 @@ _____________________________________________________________________________
 			TEXT=USER_KEY STR=FRENCH FONT=ARCADE CHARAC_SIZE=30 X=340 Y=250
 			TEXT=KEYBOARD STR=KEYBOARD FONT=ARCADE CHARAC_SIZE=30 X=340 Y=290
 
+_____________________________________________________________________________
+-HEALTH_HUD
+	SCENE=HEALTH_HUD PRIORITY=1
+		LIST=OBJS
+			OBJ=BACKGROUND TEXTURE=MENU_BG BUTTON=0 X=0 Y=0
+		LIST=TEXTS
+			TEXT=OPTION STR=OPTION FONT=ARCADE CHARAC_SIZE=30 X=345 Y=530
+
 ### END OF FILE ###
