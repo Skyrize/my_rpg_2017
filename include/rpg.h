@@ -18,7 +18,7 @@
 #define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string init. Get replaced with spaces.
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
-#define STARTING_SCENE_NAME "BATTLE" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
+#define STARTING_SCENE_NAME "MENU_PRINCIPAL" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
 #define GAME_TITLE "Lands Of Valoran"
 
@@ -357,6 +357,9 @@ typedef struct button_s {
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
 #define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
 
+#define MIN(X, Y) X >= Y ? Y : X
+#define MAX(X, Y) X >= Y ? X : Y
+
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -543,7 +546,7 @@ int re_load(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
 int menu_principale(my_w_t *window);
-void manage_life(my_w_t *window);
+int manage_life(my_w_t *window);
 int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);

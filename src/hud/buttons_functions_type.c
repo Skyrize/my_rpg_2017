@@ -8,7 +8,8 @@
 #include "my.h"
 #include "rpg.h"
 
-int button_display_hide_scene(char *scene_name, void (*update)(), my_w_t *window)
+int button_display_hide_scene(char *scene_name,
+				void (*update)(), my_w_t *window)
 {
 	display_list_t *displayed_scene = get_scene_from_displayed(scene_name,
 	window);

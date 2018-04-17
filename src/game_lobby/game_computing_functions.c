@@ -21,7 +21,10 @@ int manage(my_w_t *window)
 		my_printf("WARNING: ERROR IN BUTTONS MANAGEMENT !\n");
 		return (84);
 	}
-	manage_life(window);
+	if (manage_life(window) != 0) {
+		my_printf("WARNING: ERROR IN LIFE MANAGEMENT !\n");
+		return (84);
+	}
 	return (0);
 }
 
@@ -32,6 +35,8 @@ int game_lobby(my_w_t *window)
 	if (display_scenes(window) != 0) {
 		my_printf("WARNING: ERROR IN DISPLAY !\n");
 		return (84);
-	}	
+	}
+	if (manage(window) == 84)
+		return (84);
 	return (0);
 }
