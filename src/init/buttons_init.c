@@ -39,6 +39,7 @@ static const button_t g_tab[] =
 	{"ATTACK", exit_game},
 	{0, 0}
 };
+
 int init_button_callback(bucket_t *button_bucket, my_w_t *window);
 
 int update_button(char *seek, char *replacement, scene_t *scene, my_w_t *window)
