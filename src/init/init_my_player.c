@@ -42,7 +42,7 @@ int select_varyan(my_w_t *window)
 	for (int y = 0; y != INVENTORY_SIZE_Y; y++)
 		for (int x = 0; x != INVENTORY_SIZE_X; x++)
 			PLAYER_ITEMS[y][x] = NULL;
-	PLAYER_VITALITY = 100;
+	PLAYER_HEALTH = 100;
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Strenght";
 	PLAYER_SPECIALITY = 50;
@@ -65,7 +65,7 @@ int select_jaina(my_w_t *window)
 	for (int y = 0; y != INVENTORY_SIZE_Y; y++)
 		for (int x = 0; x != INVENTORY_SIZE_X; x++)
 			PLAYER_ITEMS[y][x] = NULL;
-	PLAYER_VITALITY = 100;
+	PLAYER_HEALTH = 100;
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Wisdom";
 	PLAYER_SPECIALITY = 50;
@@ -88,7 +88,7 @@ int select_avelus(my_w_t *window)
 	for (int y = 0; y != INVENTORY_SIZE_Y; y++)
 		for (int x = 0; x != INVENTORY_SIZE_X; x++)
 			PLAYER_ITEMS[y][x] = NULL;
-	PLAYER_VITALITY = 100;
+	PLAYER_HEALTH = 100;
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Agility";
 	PLAYER_SPECIALITY = 50;

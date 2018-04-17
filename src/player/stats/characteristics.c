@@ -21,7 +21,7 @@ void update_characteristic(int value, char *wanted, scene_t *scene)
 
 void update_characteristics(scene_t *scene, my_w_t *window)
 {
-	update_characteristic(PLAYER_VITALITY, "VITALITY", scene);
+	update_characteristic(PLAYER_HEALTH, "HEALTH", scene);
 	update_characteristic(PLAYER_ARMOR, "ARMOR", scene);
 	update_characteristic(PLAYER_SPECIALITY, "SPECIAL", scene);
 }
