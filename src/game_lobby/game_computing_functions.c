@@ -25,6 +25,7 @@ int manage(my_w_t *window)
 		my_printf("WARNING: ERROR IN LIFE MANAGEMENT !\n");
 		return (84);
 	}
+	anim_player(window);
 	return (0);
 }
 

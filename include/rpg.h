@@ -600,6 +600,7 @@ bool move_player_zone(direction_t dir, my_w_t *window, bool check);
 bool move_player_area(direction_t dir, my_w_t *window, bool check);
 bool move_player(direction_t dir, my_w_t *window, bool check);
 void anim_player(my_w_t *window);
+void set_init_player_rect(my_w_t *window);
 
 /////////////////////////// END
 
