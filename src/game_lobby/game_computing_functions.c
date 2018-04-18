@@ -26,6 +26,7 @@ int manage(my_w_t *window)
 		return (84);
 	}
 	anim_player(window);
+	smooth_move_player(window);
 	return (0);
 }
 

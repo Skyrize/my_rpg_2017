@@ -27,7 +27,8 @@ bool move_player_up(my_w_t *window, bool check)
 		return (false);
 	if (check)
 		return (true);
-	TILE_COOR_Y--;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X,
+							  TILE_COOR_Y - 1};
 	return (true);
 }
 
@@ -49,7 +50,8 @@ bool move_player_down(my_w_t *window, bool check)
 		return (false);
 	if (check)
 		return (true);
-	TILE_COOR_Y++;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X,
+							  TILE_COOR_Y + 1};
 	return (true);
 }
 
@@ -71,7 +73,8 @@ bool move_player_left(my_w_t *window, bool check)
 		return (false);
 	if (check)
 		return (true);
-	TILE_COOR_X--;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X - 1,
+							  TILE_COOR_Y};
 	return (true);
 }
 
@@ -93,13 +96,16 @@ bool move_player_right(my_w_t *window, bool check)
 		return (false);
 	if (check)
 		return (true);
-	TILE_COOR_X++;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X + 1,
+							  TILE_COOR_Y};
 	return (true);
 }
 
 bool move_player(direction_t dir, my_w_t *window, bool check)
 {
 	if (my_strcmp(window->current->key, "GAME") != 0)
+		return (false);
+	if (window->game.player.character->obj_rect.animated)
 		return (false);
 	switch (dir) {
 		case UP:
