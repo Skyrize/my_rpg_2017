@@ -50,7 +50,7 @@ int check_missing_or_invalid_sub_keyword(const key_word_t *keys, int index,
 		if (check_missing_args_for_key_word(keys, index,
 			key_args, j) != 0)
 			return (84);
-		free_char_2d(key_args);
+		my_destroy_tab(key_args);
 	}
 	return (0);
 }

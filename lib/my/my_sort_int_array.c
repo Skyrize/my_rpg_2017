@@ -6,7 +6,6 @@
 */
 
 void my_swap(int *a, int *b);
-
 int my_put_nbr(int nb);
 
 int exchange(int *tab, int j)

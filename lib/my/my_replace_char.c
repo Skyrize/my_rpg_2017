@@ -5,7 +5,7 @@
 ** (enter)
 */
 
-void replace_char(char *str, char seeked, char replacement)
+void my_replace_char(char *str, char seeked, char replacement)
 {
 	for (int i = 0; str[i]; i++) {
 		if (str[i] == seeked)

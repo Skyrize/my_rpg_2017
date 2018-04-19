@@ -24,10 +24,10 @@ int get_a_rect_values(char **infos, char **type,
 		return (84);
 	texture->rect = (sfIntRect){my_getnbr(left[1]), my_getnbr(top[1]),
 		my_getnbr(width[1]), my_getnbr(height[1])};
-	free_char_2d(left);
-	free_char_2d(top);
-	free_char_2d(width);
-	free_char_2d(height);
+	my_destroy_tab(left);
+	my_destroy_tab(top);
+	my_destroy_tab(width);
+	my_destroy_tab(height);
 	(void)type;
 	(void)current_list;
 	return (0);
@@ -44,8 +44,8 @@ int get_a_rect_max_values(char **infos, char **type,
 		return (84);
 	texture = window->current->value;
 	texture->rect_max = (sfVector2i){my_getnbr(x[1]), my_getnbr(y[1])};
-	free_char_2d(x);
-	free_char_2d(y);
+	my_destroy_tab(x);
+	my_destroy_tab(y);
 	(void)type;
 	(void)current_list;
 	return (0);
@@ -62,8 +62,8 @@ int get_a_rect_start_values(char **infos, char **type,
 		return (84);
 	texture = window->current->value;
 	texture->rect_max = (sfVector2i){my_getnbr(x[1]), my_getnbr(y[1])};
-	free_char_2d(x);
-	free_char_2d(y);
+	my_destroy_tab(x);
+	my_destroy_tab(y);
 	(void)type;
 	(void)current_list;
 	return (0);
@@ -80,8 +80,8 @@ int get_a_rect_max_offset(char **infos, char **type,
 		return (84);
 	texture = window->current->value;
 	texture->rect_offset = (sfVector2i){my_getnbr(x[1]), my_getnbr(y[1])};
-	free_char_2d(x);
-	free_char_2d(y);
+	my_destroy_tab(x);
+	my_destroy_tab(y);
 	(void)type;
 	(void)current_list;
 	return (0);

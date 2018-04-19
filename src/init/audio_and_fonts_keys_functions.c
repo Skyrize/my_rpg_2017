@@ -23,7 +23,7 @@ int get_an_audio(char **infos, char **type,
 	if (!audio)
 		return (84);
 	hm_add(window->audio_lib, type[1], audio);
-	free_char_2d(audio_path);
+	my_destroy_tab(audio_path);
 	return (0);
 }
 
@@ -42,6 +42,6 @@ int get_a_font(char **infos, char **type,
 	if (!font)
 		return (84);
 	hm_add(window->fonts_lib, type[1], font);
-	free_char_2d(font_path);
+	my_destroy_tab(font_path);
 	return (0);
 }

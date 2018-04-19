@@ -7,7 +7,7 @@
 
 #include "../../include/my.h"
 
-void free_char_2d(char **tab)
+void my_destroy_tab(char **tab)
 {
 	for (int i = 0; tab[i]; i++)
 		free(tab[i]);

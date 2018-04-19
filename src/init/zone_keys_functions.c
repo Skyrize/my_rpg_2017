@@ -27,9 +27,9 @@ int get_an_area(char **infos, char **type,
 	if (check_already_existing_area_name(type[1], window) != 0)
 		return (84);
 	AREA_NAME = my_strdup(type[1]);
-	free_char_2d(enc);
-	free_char_2d(x);
-	free_char_2d(y);
+	my_destroy_tab(enc);
+	my_destroy_tab(x);
+	my_destroy_tab(y);
 	return (0);
 }
 
@@ -51,9 +51,9 @@ int get_a_tile(char **infos, char **type,
 		return (84);
 	if (check_already_existing_tile_coords(window) != 0)
 		return (84);
-	free_char_2d(block);
-	free_char_2d(x);
-	free_char_2d(y);
+	my_destroy_tab(block);
+	my_destroy_tab(x);
+	my_destroy_tab(y);
 	return (0);
 }
 

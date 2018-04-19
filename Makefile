@@ -79,17 +79,16 @@ NAME	=	my_rpg
 
 NAME2	=	unit-tests
 
-LFLAGS	=	-lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
-#-lc_graph_prog
+CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
 
-CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -L./lib/my -lmy
+LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy
 
 CC	=	gcc
 
 all:	prepare_lib $(NAME)
 
 prepare_lib:
-	make -C lib/my
+	make -C lib/
 
 map:	prepare_lib
 	make -C bonus/map_creator/
@@ -101,7 +100,7 @@ tests_run:	prepare_lib
 
 
 $(NAME):	$(OBJS)
-	$(CC) -o $(NAME) $(OBJS) $(LFLAGS) $(CFLAGS)
+	$(CC) -o $(NAME) $(OBJS) $(LDFLAGS) $(CFLAGS)
 
 clean_map:
 	make clean -C bonus/map_creator
@@ -110,13 +109,13 @@ fclean_map:
 	make fclean -C bonus/map_creator
 
 clean:
-	make clean -C lib/my
+	make clean -C lib/
 	make clean -C tests/
 	$(RM) $(OBJS)
 
 fclean:	clean
+	make fclean -C lib/
 	make fclean -C tests/
-	make fclean -C lib/my/
 	$(RM) $(NAME)
 
 re:	fclean all

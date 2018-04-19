@@ -9,8 +9,6 @@
 //Format:		RECT_MAX=DATA position maximum du carré pendant son déplacement (ne pas oublié que c'est le point en haut à gauche donc compter aussi la taille du offset, peut être laissé à 0/0 si ANIMATED=0)
 //Format:		RECT_OFFSET=DATA Déplacement du carré en x et en y (si ANIMATED=0 vous pouvez laisser à 0/0)
 
--BACKGROUNDS
-
 ITEMS:
 ---------PANTS:
 	TEXTURE=MYTHIC_PANTS_01

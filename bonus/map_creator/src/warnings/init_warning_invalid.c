@@ -17,8 +17,8 @@ int check_invalid_key_word(char *last_word_used, char **type, char **infos,
 		type[0]);
 		return (84);
 	}
-	free_char_2d(type);
-	free_char_2d(infos);
+	my_destroy_tab(type);
+	my_destroy_tab(infos);
 	return (0);
 }
 
