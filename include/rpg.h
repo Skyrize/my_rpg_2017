@@ -51,8 +51,12 @@
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 255})
+#define TRANSPARENCY_COLOR ((sfColor){255, 255, 255, 50})
+
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
+#define MIN(X, Y) X >= Y ? Y : X
+#define MAX(X, Y) X >= Y ? X : Y
 
 //HUD
 #define NEW_GAME "NEW_GAME"
@@ -362,9 +366,6 @@ typedef struct button_s {
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
 #define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
 
-#define MIN(X, Y) X >= Y ? Y : X
-#define MAX(X, Y) X >= Y ? X : Y
-
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
@@ -551,7 +552,6 @@ int re_load(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
 int menu_principale(my_w_t *window);
-int manage_life(my_w_t *window);
 int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);
@@ -564,6 +564,13 @@ int key_english(my_w_t *window);
 int no_save(my_w_t *window);
 int yes_save(my_w_t *window);
 int game(my_w_t *window);
+
+/////////////////////////// HUD FONCTIONS
+
+void set_hud_opacity(bucket_t *bucket, my_w_t *window);
+int manage_hud_opacity(my_w_t *window);
+int manage_life(my_w_t *window);
+int change_area_hud(my_w_t *window);
 
 /////////////////////////// GAME FUNCTIONS
 

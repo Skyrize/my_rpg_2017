@@ -17,16 +17,14 @@ void get_time(my_w_t *window)
 
 int manage(my_w_t *window)
 {
-	if (manage_buttons(window) != 0) {
-		my_printf("WARNING: ERROR IN BUTTONS MANAGEMENT !\n");
+	if (manage_buttons(window) != 0 || manage_life(window) != 0) {
+		my_printf("ERROR IN MANAGEMENT\n");
 		return (84);
 	}
-	if (manage_life(window) != 0) {
-		my_printf("WARNING: ERROR IN LIFE MANAGEMENT !\n");
-		return (84);
-	}
+	change_area_hud(window);
 	anim_player(window);
 	smooth_move_player(window);
+	manage_hud_opacity(window);
 	return (0);
 }
 
