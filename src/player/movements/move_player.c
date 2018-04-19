@@ -19,7 +19,7 @@ bool move_player_up(my_w_t *window, bool check)
 		window->game.player.character->obj_rect.rect_offset.x = 50;
 		window->game.player.character->obj_rect.rect_offset.y = 0;
 		window->game.player.character->obj_rect.animated = sfTrue;
-		set_init_player_rect(window);
+		set_anim_side(window);
 	}
 	if (TILE_COOR_Y - 1 <= -1)
 		return (move_player_area(UP, window, check));
@@ -42,7 +42,7 @@ bool move_player_down(my_w_t *window, bool check)
 		window->game.player.character->obj_rect.rect_offset.x = 50;
 		window->game.player.character->obj_rect.rect_offset.y = 0;
 		window->game.player.character->obj_rect.animated = sfTrue;
-		set_init_player_rect(window);
+		set_anim_side(window);
 	}
 	if (TILE_COOR_Y + 1 > TILE_TAB_Y - 2)
 		return (move_player_area(DOWN, window, check));
@@ -65,7 +65,7 @@ bool move_player_left(my_w_t *window, bool check)
 		window->game.player.character->obj_rect.rect_offset.x = 50;
 		window->game.player.character->obj_rect.rect_offset.y = 0;
 		window->game.player.character->obj_rect.animated = sfTrue;
-		set_init_player_rect(window);
+		set_anim_side(window);
 	}
 	if (TILE_COOR_X - 1 <= -1)
 		return (move_player_area(LEFT, window, check));
@@ -88,7 +88,7 @@ bool move_player_right(my_w_t *window, bool check)
 		window->game.player.character->obj_rect.rect_offset.x = 50;
 		window->game.player.character->obj_rect.rect_offset.y = 0;
 		window->game.player.character->obj_rect.animated = sfTrue;
-		set_init_player_rect(window);
+		set_anim_side(window);
 	}
 	if (TILE_COOR_X + 1 > TILE_TAB_X - 1)
 		return (move_player_area(RIGHT, window, check));

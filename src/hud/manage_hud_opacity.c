@@ -21,7 +21,7 @@ void set_hud_opacity(bucket_t *bucket, my_w_t *window)
 	color = sfRectangleShape_getFillColor(rec);
 	if (color.r == 120 && color.g == 210 && color.b == 210)
 		return;
-	if (PLAYER.character->obj_rect.animated)
+	if (window->game.movement.is_moving)
 		sfRectangleShape_setFillColor(rec, TRANSPARENCY_COLOR);
 	else
 		sfRectangleShape_setFillColor(rec, REGULAR_COLOR);
