@@ -177,7 +177,8 @@ typedef struct display_list_s
 
 typedef struct characteristic_s
 {
-	int vitality;
+	int health;
+	int max_health;
 	int armor;
 	char *speciality_name;
 	int speciality;
@@ -189,19 +190,12 @@ typedef struct inventory_s
 	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
-typedef struct act_stats_s
-{
-	int health;
-	int armor;
-} act_stats_t;
-
 typedef struct player_s
 {
 	char *name;
 	obj_t *character;
 	inventory_t inventory;
 	characteristic_t characteristics;
-	act_stats_t *act_stats;
 } player_t;
 
 typedef enum direction_e {
@@ -358,10 +352,13 @@ typedef struct button_s {
 #define PLAYER_GOLDS PLAYER_INVENTORY.golds
 #define PLAYER_ITEMS PLAYER_INVENTORY.inventory_items
 
-#define PLAYER_VITALITY PLAYER_CHARAC.vitality
+#define PLAYER_HEALTH PLAYER_CHARAC.health
 #define PLAYER_ARMOR PLAYER_CHARAC.armor
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
 #define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
+
+#define MIN(X, Y) X >= Y ? Y : X
+#define MAX(X, Y) X >= Y ? X : Y
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -549,6 +546,7 @@ int re_load(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
 int menu_principale(my_w_t *window);
+int manage_life(my_w_t *window);
 int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);
@@ -561,7 +559,6 @@ int key_english(my_w_t *window);
 int no_save(my_w_t *window);
 int yes_save(my_w_t *window);
 int game(my_w_t *window);
-
 
 /////////////////////////// GAME FUNCTIONS
 

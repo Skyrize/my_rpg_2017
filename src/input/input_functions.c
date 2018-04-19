@@ -28,6 +28,10 @@ void on_key_pressed(my_w_t *window, sfEvent *event)
 	|| event->key.code == (sfKeyCode)window->key_player->right_1) {
 		move_player(RIGHT, window, false);
 	}
+	if (event->key.code == sfKeyP)
+		PLAYER_HEALTH += 1;
+	else if (event->key.code == sfKeyM)
+		PLAYER_HEALTH -= 1;
 }
 
 void analyse_events(my_w_t *window)

@@ -36,6 +36,7 @@ static const button_t g_tab[] =
 	{"KEY_WASD", key_english},
 	{"YES", yes_save},
 	{"NO", no_save},
+	{"ATTACK", exit_game},
 	{0, 0}
 };
 
