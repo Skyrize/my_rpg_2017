@@ -13,7 +13,7 @@ obj_data_t get_obj_data_from_infos(obj_infos_t *obj)
 	obj_data_t data;
 
 	data.name = obj->name[1];
-	data.type = obj->type[1];
+	data.texture = obj->type[1];
 	data.button = my_getnbr(obj->button[1]);
 	data.position.x = (float)my_getnbr(obj->x[1]);
 	data.position.y = (float)my_getnbr(obj->y[1]);

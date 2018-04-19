@@ -19,7 +19,21 @@ ctime_t init_timer(void)
 
 int init_inventory(my_w_t *window)
 {
+	///to change
 	PLAYER_GOLDS = 100;
+	PLAYER_WEAPON.item = create_obj(&(obj_data_t){"ITEM", "COMMON_BOW_00", 1, V2F(585, 135)}, window);
+	PLAYER_HELMET.item = create_obj(&(obj_data_t){"ITEM", "COMMON_HELMET_00", 1, V2F(635, 85)}, window);
+	PLAYER_CHEST.item = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
+	PLAYER_GAUNTLETS.item = create_obj(&(obj_data_t){"ITEM", "COMMON_GAUNTLETS_00", 1, V2F(690, 135)}, window);
+	PLAYER_PANTS.item = create_obj(&(obj_data_t){"ITEM", "COMMON_PANTS_00", 1, V2F(635, 185)}, window);
+	for (int x = 0; x != INVENTORY_SIZE_X; x++)
+		for (int y = 0; y != INVENTORY_SIZE_Y; y++)
+			PLAYER_ITEMS[y][x].item = NULL;
+	PLAYER_WEAPON.stats = (item_stat_t){100, 10, 10};
+	PLAYER_HELMET.stats = (item_stat_t){100, 10, 10};
+	PLAYER_CHEST.stats = (item_stat_t){100, 10, 10};
+	PLAYER_GAUNTLETS.stats = (item_stat_t){100, 10, 10};
+	PLAYER_PANTS.stats = (item_stat_t){100, 10, 10};
 	return (0);
 }
 

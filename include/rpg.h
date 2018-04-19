@@ -178,12 +178,17 @@ typedef struct display_list_s
 } display_list_t;
 
 /////////////////////////////// INVENTORY ///////////////////////////////////
-typedef struct stat_s stat_t;
+typedef struct item_stat_s
+{
+	int health;
+	int armor;
+	int special;
+} item_stat_t;
 
 typedef struct item_s
 {
 	obj_t *item;
-	stat_t *stats;
+	item_stat_t stats;
 } item_t;
 
 typedef struct inventory_s
@@ -331,7 +336,7 @@ typedef struct obj_infos_s
 typedef struct obj_data_s
 {
 	char *name;
-	char *type;
+	char *texture;
 	sfBool button;
 	sfVector2f position;
 } obj_data_t;
