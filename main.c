@@ -48,7 +48,7 @@ int process_pre_window(my_w_t *window)
 	TILE_COOR_X = 8;
 	TILE_COOR_Y = 6;
 	AREA_COOR_X = 0;
-	AREA_COOR_Y = 0;
+	AREA_COOR_Y = 2;
 	ZONE_COOR_X = 0;
 	ZONE_COOR_Y = 0;
 	return (0);

@@ -13,17 +13,25 @@
 void on_key_pressed(my_w_t *window, sfEvent *event)
 {
 	if (event->key.code == (sfKeyCode)window->key_player->up ||
-	event->key.code == (sfKeyCode)window->key_player->up_1)
+	event->key.code == (sfKeyCode)window->key_player->up_1) {
 		move_player(UP, window, false);
+	}
 	if (event->key.code == (sfKeyCode)window->key_player->down
-	|| event->key.code == (sfKeyCode)window->key_player->down_1)
+	|| event->key.code == (sfKeyCode)window->key_player->down_1) {
 		move_player(DOWN, window, false);
+	}
 	if (event->key.code == (sfKeyCode)window->key_player->left
-	|| event->key.code == (sfKeyCode)window->key_player->left_1)
+	|| event->key.code == (sfKeyCode)window->key_player->left_1) {
 		move_player(LEFT, window, false);
+	}
 	if (event->key.code == (sfKeyCode)window->key_player->right
-	|| event->key.code == (sfKeyCode)window->key_player->right_1)
+	|| event->key.code == (sfKeyCode)window->key_player->right_1) {
 		move_player(RIGHT, window, false);
+	}
+	if (event->key.code == sfKeyP)
+		PLAYER_HEALTH += 1;
+	else if (event->key.code == sfKeyM)
+		PLAYER_HEALTH -= 1;
 }
 
 void analyse_events(my_w_t *window)

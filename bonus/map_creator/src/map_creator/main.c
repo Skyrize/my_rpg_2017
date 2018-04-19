@@ -21,12 +21,11 @@ sfRenderWindow *my_window_create()
 	return (window);
 }
 
-void main_loop(ressources_t *rsces, texture_list_t *list, sfVector2i area)
+void main_loop(ressources_t *rsces, texture_list_t *list)
 {
 	sfEvent event;
 	sfClock *my_clock = sfClock_create();
 
-	(void) area;
 	while (sfRenderWindow_isOpen(rsces->window)) {
 		sfRenderWindow_clear(rsces->window, sfWhite);
 		display_map(rsces->rsces);
@@ -55,9 +54,8 @@ int main(int ac, char **av)
 		return (84);
 	}
 	load_my_zone(&window);
-	area.x = my_getnbr(av[2]);
-	area.y = my_getnbr(av[3]);
+	window.map.area_coord = V2I(my_getnbr(av[2]), my_getnbr(av[3]));
 	rsces.rsces = &window;
-	main_loop(&rsces, list, area);
+	main_loop(&rsces, list);
 	return (0);
 }
