@@ -16,8 +16,11 @@ bool move_player_aera_up(my_w_t *window, bool check)
 		return (false);
 	if (check)
 		return (true);
-	TILE_COOR_Y = TILE_TAB_Y - 1;
+	TILE_COOR_Y = TILE_TAB_Y - 2;
 	AREA_COOR_Y--;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X,
+							  TILE_COOR_Y};
+	set_initial_player_pos(window);
 	return (true);
 }
 
@@ -31,6 +34,9 @@ bool move_player_aera_down(my_w_t *window, bool check)
 		return (true);
 	TILE_COOR_Y = 0;
 	AREA_COOR_Y++;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X,
+							  TILE_COOR_Y};
+	set_initial_player_pos(window);
 	return (true);
 }
 
@@ -44,6 +50,9 @@ bool move_player_aera_left(my_w_t *window, bool check)
 		return (true);
 	TILE_COOR_X = TILE_TAB_X - 1;
 	AREA_COOR_X--;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X,
+							  TILE_COOR_Y};
+	set_initial_player_pos(window);
 	return (true);
 }
 
@@ -57,6 +66,9 @@ bool move_player_aera_right(my_w_t *window, bool check)
 		return (true);
 	TILE_COOR_X = 0;
 	AREA_COOR_X++;
+	window->game.movement.target_tile = (sfVector2i) {TILE_COOR_X,
+							  TILE_COOR_Y};
+	set_initial_player_pos(window);
 	return (true);
 }
 
