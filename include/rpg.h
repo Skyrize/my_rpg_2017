@@ -229,6 +229,8 @@ typedef struct key_control_s
 
 typedef struct movement_s {
 	sfVector2i target_tile;
+	int anim_mult;
+	bool is_moving;
 } movement_t;
 
 typedef struct game_s
@@ -365,6 +367,12 @@ typedef struct button_s {
 #define PLAYER_ARMOR PLAYER_CHARAC.armor
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
 #define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
+
+#define MIN(X, Y) X >= Y ? Y : X
+#define MAX(X, Y) X >= Y ? X : Y
+
+#define KEY_PRESSED(key) \
+sfKeyboard_isKeyPressed((sfKeyCode) window->key_player->key)
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -624,11 +632,14 @@ bool move_player_zone(direction_t dir, my_w_t *window, bool check);
 bool move_player_area(direction_t dir, my_w_t *window, bool check);
 bool move_player(direction_t dir, my_w_t *window, bool check);
 void anim_player(my_w_t *window);
-void set_init_player_rect(my_w_t *window);
+void set_anim_side(my_w_t *window);
 void init_movements(my_w_t *window);
 void smooth_move_player(my_w_t *window);
 void set_initial_player_pos(my_w_t *window);
 void set_waiting_player_rect(my_w_t *window);
+bool is_pressing_controls(my_w_t *window);
+void update_moving_state(my_w_t *window);
+bool is_player_moving(my_w_t *window);
 
 /////////////////////////// END
 
