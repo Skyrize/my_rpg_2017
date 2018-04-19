@@ -11,11 +11,15 @@ void set_hud_opacity(bucket_t *bucket, my_w_t *window)
 {
 	obj_t *obj = bucket->value;
 	sfRectangleShape *rec;
+	sfColor color;
 
 	if (!obj)
 		return;
 	rec = obj->obj;
 	if (!rec || !PLAYER.character)
+		return;
+	color = sfRectangleShape_getFillColor(rec);
+	if (color.r == 120 && color.g == 210 && color.b == 210)
 		return;
 	if (PLAYER.character->obj_rect.animated)
 		sfRectangleShape_setFillColor(rec, TRANSPARENCY_COLOR);

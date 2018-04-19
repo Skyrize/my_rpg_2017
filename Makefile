@@ -67,6 +67,7 @@ SRC	=	main.c						\
 		src/hud/key_game.c 				\
 		src/hud/manage_life.c				\
 		src/hud/manage_hud_opacity.c			\
+		src/hud/area_hud.c				\
 		src/player/movements/move_player.c		\
 		src/player/movements/move_player_area.c		\
 		src/player/movements/move_player_zone.c		\

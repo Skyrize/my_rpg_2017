@@ -251,4 +251,11 @@ _____________________________________________________________________________
 			OBJ=HEALTH_BAR TEXTURE=LIFE BUTTON=0 X=90 Y=10
 			OBJ=CHARACTERISTIC TEXTURE=JAINA_ICON BUTTON=1 X=20 Y=18
 
+_____________________________________________________________________________
+-AREA_HUD
+	SCENE=AREA_HUD PRIORITY=1
+		LIST=TEXTS
+			TEXT=X STR=0 FONT=RING CHARAC_SIZE=30 X=750 Y=5
+			TEXT=Y STR=0 FONT=RING CHARAC_SIZE=30 X=770 Y=5
+
 ### END OF FILE ###
