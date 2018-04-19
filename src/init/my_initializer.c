@@ -78,6 +78,7 @@ my_w_t init_my_window(void)
 	}
 	init_text_values(&window);
 	init_key_control(&window);
+	init_movements(&window);
 	window.current = hm_get_bucket(window.scenes, STARTING_SCENE_NAME);
 	if (check_scene_not_created(window.current,
 		"my_initializer.c", 42, STARTING_SCENE_NAME) != 0)
