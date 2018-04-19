@@ -32,7 +32,7 @@ int update_element(my_w_t *window)
 
 	if (!curr_scene || !curr_scene->objs || !name_texture)
 		return (84);
-	check = hm_get(window->textures_lib, name_texture);
+	check = hm_get(TEXTURES_LIB, name_texture);
 	if (!check || !check->value)
 		return (84);
 	new_texture = check->value;

@@ -27,9 +27,9 @@ void texture_destroy(texture_t *texture)
 void destroy_and_free(my_w_t *window)
 {
 	clean_displayed_scenes(window);
-	hm_destroy(window->textures_lib);
-	hm_destroy(window->audio_lib);
-	hm_destroy(window->fonts_lib);
+	hm_destroy(TEXTURES_LIB);
+	hm_destroy(AUDIO_LIB);
+	hm_destroy(FONTS_LIB);
 	hm_destroy(window->scenes);
 	sfClock_destroy(window->clocker.clock);
 	sfRenderWindow_destroy(window->window);

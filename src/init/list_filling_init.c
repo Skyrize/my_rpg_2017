@@ -48,7 +48,7 @@ text_data_t get_text_data_from_infos(text_infos_t *text, my_w_t *window)
 	data.name = text->name[1];
 	data.text = text->text[1];
 	my_replace_char(data.text, TEXT_SEPARATOR_CHAR, ' ');
-	data.font = hm_get(window->fonts_lib, text->font[1]);
+	data.font = hm_get(FONTS_LIB, text->font[1]);
 	data.charac_size = my_getnbr(text->charac_size[1]);
 	data.position.x = (float)my_getnbr(text->x[1]);
 	data.position.y = (float)my_getnbr(text->y[1]);

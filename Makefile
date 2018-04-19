@@ -5,7 +5,7 @@
 ## all clean fclean re
 ##
 
-SRC	=	main.c						\
+SRC	=	src/main.c						\
 		src/init/my_initializer.c			\
 		src/init/file_analysing.c			\
 		src/init/init_from_file_readed.c		\

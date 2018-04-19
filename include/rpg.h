@@ -67,7 +67,7 @@
 #define QUIT_GAME "QUIT"
 #define QUESTS_GAME "QUESTS"
 #define PAUSE_GAME "PAUSE"
-#define CHARAC_GAME "CHARACTERISTICS"
+#define STATS_GAME "STATS"
 #define EXIT_GAME "EXIT"
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
@@ -177,29 +177,43 @@ typedef struct display_list_s
 	display_list_t *next;
 } display_list_t;
 
+/////////////////////////////// INVENTORY ///////////////////////////////////
+typedef struct stat_s stat_t;
+
+typedef struct item_s
+{
+	obj_t *item;
+	stat_t *stats;
+} item_t;
+
+typedef struct inventory_s
+{
+	int golds;
+	item_t weapon;
+	item_t helmet;
+	item_t chest;
+	item_t gauntlets;
+	item_t pants;
+	item_t items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+} inventory_t;
+
 /////////////////////////////////// PLAYER ////////////////////////////////
 
-typedef struct characteristic_s
+typedef struct stat_s
 {
 	int health;
 	int max_health;
 	int armor;
 	char *speciality_name;
 	int speciality;
-} characteristic_t;
-
-typedef struct inventory_s
-{
-	int golds;
-	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
-} inventory_t;
+} stat_t;
 
 typedef struct player_s
 {
 	char *name;
 	obj_t *character;
 	inventory_t inventory;
-	characteristic_t characteristics;
+	stat_t stats;
 } player_t;
 
 typedef enum direction_e {
@@ -208,6 +222,7 @@ typedef enum direction_e {
 	LEFT,
 	RIGHT
 } direction_t;
+
 /////////////////////////////// CONTROLS ///////////////////////////////////
 
 typedef struct key_control_s
@@ -244,6 +259,14 @@ typedef struct ctime_s
 	float seconds;
 } ctime_t;
 
+typedef struct lib_s
+{
+	hashmap_t *audio;
+	hashmap_t *fonts;
+	hashmap_t *textures;
+	hashmap_t *items;
+} lib_t;
+
 typedef struct my_window_s
 {
 	int error_no;
@@ -256,15 +279,14 @@ typedef struct my_window_s
 	map_t map;
 	game_t game;
 	bucket_t *current;
+	lib_t libraries;
 	hashmap_t *scenes;
-	hashmap_t *audio_lib;
-	hashmap_t *fonts_lib;
-	hashmap_t *textures_lib;
 	display_list_t *displayed_scenes;
 	key_control_t *key_player;
 } my_w_t;
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
+
 typedef struct key_word_s key_word_t;
 
 typedef struct get_infos_s
@@ -329,6 +351,10 @@ typedef struct button_s {
 	int (*instruction)();
 } button_t;
 
+#define AUDIO_LIB window->libraries.audio
+#define FONTS_LIB window->libraries.fonts
+#define TEXTURES_LIB window->libraries.textures
+#define ITEMS_LIB window->libraries.items
 
 #define ZONE_COOR_X window->map.zone_coord.x
 #define ZONE_COOR_Y window->map.zone_coord.y
@@ -356,10 +382,15 @@ typedef struct button_s {
 #define PLAYER_NAME PLAYER.name
 #define PLAYER_CHARACTER PLAYER.character
 #define PLAYER_INVENTORY PLAYER.inventory
-#define PLAYER_CHARAC PLAYER.characteristics
+#define PLAYER_CHARAC PLAYER.stats
 
 #define PLAYER_GOLDS PLAYER_INVENTORY.golds
-#define PLAYER_ITEMS PLAYER_INVENTORY.inventory_items
+#define PLAYER_ITEMS PLAYER_INVENTORY.items
+#define PLAYER_WEAPON PLAYER_INVENTORY.weapon
+#define PLAYER_HELMET PLAYER_INVENTORY.helmet
+#define PLAYER_CHEST PLAYER_INVENTORY.chest
+#define PLAYER_GAUNTLETS PLAYER_INVENTORY.gauntlets
+#define PLAYER_PANTS PLAYER_INVENTORY.pants
 
 #define PLAYER_HEALTH PLAYER_CHARAC.health
 #define PLAYER_ARMOR PLAYER_CHARAC.armor
@@ -583,8 +614,8 @@ void get_time(my_w_t *window);
 ///Main game function. return 0/84
 int game_lobby(my_w_t *window);
 
-///Update the 3 characteristics strings in a given scene with there actual values in Window.
-void update_characteristics(scene_t *scene, my_w_t *window);
+///Update the 3 stats strings in a given scene with there actual values in Window.
+void update_stats(scene_t *scene, my_w_t *window);
 
 /////////////////////////// DISPLAY FUNCTIONS
 

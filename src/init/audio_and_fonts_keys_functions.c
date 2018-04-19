@@ -15,14 +15,14 @@ int get_an_audio(char **infos, char **type,
 	char **audio_path = my_str_to_word_array(infos[1],
 		KEYWORD_SEPARATOR_CHAR);
 
-	*current_list = window->audio_lib;
+	*current_list = AUDIO_LIB;
 	audio = hm_get(*current_list, type[1]);
 	if (check_already_existing_audio(audio, type[1]) != 0)
 		return (84);
 	audio = sfMusic_createFromFile(audio_path[1]);
 	if (!audio)
 		return (84);
-	hm_add(window->audio_lib, type[1], audio);
+	hm_add(AUDIO_LIB, type[1], audio);
 	my_destroy_tab(audio_path);
 	return (0);
 }
@@ -34,14 +34,14 @@ int get_a_font(char **infos, char **type,
 	char **font_path = my_str_to_word_array(infos[1],
 		KEYWORD_SEPARATOR_CHAR);
 
-	*current_list = window->fonts_lib;
+	*current_list = FONTS_LIB;
 	font = hm_get(*current_list, type[1]);
 	if (check_already_existing_font(font, type[1]) != 0)
 		return (84);
 	font = sfFont_createFromFile(font_path[1]);
 	if (!font)
 		return (84);
-	hm_add(window->fonts_lib, type[1], font);
+	hm_add(FONTS_LIB, type[1], font);
 	my_destroy_tab(font_path);
 	return (0);
 }
