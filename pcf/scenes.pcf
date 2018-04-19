@@ -255,7 +255,6 @@ _____________________________________________________________________________
 -AREA_HUD
 	SCENE=AREA_HUD PRIORITY=1
 		LIST=TEXTS
-			TEXT=X STR=0 FONT=RING CHARAC_SIZE=30 X=750 Y=5
-			TEXT=Y STR=0 FONT=RING CHARAC_SIZE=30 X=770 Y=5
+			TEXT=POS STR=0,0 FONT=RING CHARAC_SIZE=50 X=730 Y=-10
 
 ### END OF FILE ###
