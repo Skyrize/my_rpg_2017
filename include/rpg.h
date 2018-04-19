@@ -51,8 +51,12 @@
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 255})
+#define TRANSPARENCY_COLOR ((sfColor){255, 255, 255, 50})
+
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
+#define MIN(X, Y) X >= Y ? Y : X
+#define MAX(X, Y) X >= Y ? X : Y
 
 //HUD
 #define NEW_GAME "NEW_GAME"
@@ -177,7 +181,8 @@ typedef struct display_list_s
 
 typedef struct characteristic_s
 {
-	int vitality;
+	int health;
+	int max_health;
 	int armor;
 	char *speciality_name;
 	int speciality;
@@ -189,19 +194,12 @@ typedef struct inventory_s
 	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
-typedef struct act_stats_s
-{
-	int health;
-	int armor;
-} act_stats_t;
-
 typedef struct player_s
 {
 	char *name;
 	obj_t *character;
 	inventory_t inventory;
 	characteristic_t characteristics;
-	act_stats_t *act_stats;
 } player_t;
 
 typedef enum direction_e {
@@ -229,9 +227,14 @@ typedef struct key_control_s
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 
+typedef struct movement_s {
+	sfVector2i target_tile;
+} movement_t;
+
 typedef struct game_s
 {
 	player_t player;
+	movement_t movement;
 } game_t;
 
 typedef struct ctime_s
@@ -358,7 +361,7 @@ typedef struct button_s {
 #define PLAYER_GOLDS PLAYER_INVENTORY.golds
 #define PLAYER_ITEMS PLAYER_INVENTORY.inventory_items
 
-#define PLAYER_VITALITY PLAYER_CHARAC.vitality
+#define PLAYER_HEALTH PLAYER_CHARAC.health
 #define PLAYER_ARMOR PLAYER_CHARAC.armor
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
 #define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
@@ -565,6 +568,12 @@ int no_save(my_w_t *window);
 int yes_save(my_w_t *window);
 int game(my_w_t *window);
 
+/////////////////////////// HUD FONCTIONS
+
+void set_hud_opacity(bucket_t *bucket, my_w_t *window);
+int manage_hud_opacity(my_w_t *window);
+int manage_life(my_w_t *window);
+int change_area_hud(my_w_t *window);
 
 /////////////////////////// GAME FUNCTIONS
 
@@ -615,6 +624,11 @@ bool move_player_zone(direction_t dir, my_w_t *window, bool check);
 bool move_player_area(direction_t dir, my_w_t *window, bool check);
 bool move_player(direction_t dir, my_w_t *window, bool check);
 void anim_player(my_w_t *window);
+void set_init_player_rect(my_w_t *window);
+void init_movements(my_w_t *window);
+void smooth_move_player(my_w_t *window);
+void set_initial_player_pos(my_w_t *window);
+void set_waiting_player_rect(my_w_t *window);
 
 /////////////////////////// END
 
