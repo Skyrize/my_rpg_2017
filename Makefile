@@ -66,13 +66,14 @@ SRC	=	main.c						\
 		src/hud/control_key.c 				\
 		src/hud/key_game.c 				\
 		src/hud/manage_life.c				\
+		src/hud/manage_hud_opacity.c			\
 		src/player/movements/move_player.c		\
 		src/player/movements/move_player_area.c		\
 		src/player/movements/move_player_zone.c		\
 		src/player/movements/set_player_pos.c		\
 		src/player/stats/characteristics.c		\
 		src/player/animations/player_anim.c		\
-		src/player/movements/smooth_move.c
+		src/player/movements/smooth_move.c		\
 
 OBJS	=	$(SRC:.c=.o)
 
