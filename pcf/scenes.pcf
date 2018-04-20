@@ -239,7 +239,7 @@ _____________________________________________________________________________
 		LIST=OBJS
 			OBJ=ATTACK TEXTURE=BUTTON_EMPTY BUTTON=1 X=50 Y=440
 		LIST=TEXTS
-			TEXT=ATTACK STR=Attack FONT=RING CHARAC_SIZE=30 X=55 Y=445
+			TEXT=ATTACK STR=ATTACK FONT=RING CHARAC_SIZE=30 X=55 Y=445
 
 _____________________________________________________________________________
 -HEALTH_HUD
