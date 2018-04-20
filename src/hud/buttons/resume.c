@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-char *found_icon(my_w_t *window)
+char *found_icon(window_t *window)
 {
 	char *icon_tab[4][2] = {
 	{"Avelus", "AVELUS_ICON"},
@@ -22,7 +22,7 @@ char *found_icon(my_w_t *window)
 	return (NULL);
 }
 
-int update_element(my_w_t *window)
+int update_element(window_t *window)
 {
 	scene_t *curr_scene = hm_get(SCENES, "HEALTH_HUD");
 	obj_t *player_icon = NULL;
@@ -43,9 +43,9 @@ int update_element(my_w_t *window)
 	return (0);
 }
 
-int game(my_w_t *window)
+int game(window_t *window)
 {
-	window->current = hm_get_bucket(SCENES, "GAME");
+	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
 
 	update_element(window);
 	if (clean_displayed_scenes_and_add_back(window, "GAME") != 0)
@@ -59,9 +59,9 @@ int game(my_w_t *window)
 	return (1);
 }
 
-int resume(my_w_t *window)
+int resume(window_t *window)
 {
-	window->current = hm_get_bucket(SCENES, "GAME");
+	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
 	clean_displayed_scene_name(window, PAUSE_GAME);
 	return (1);
 }

@@ -8,9 +8,9 @@
 #include "my.h"
 #include "rpg.h"
 
-display_list_t *get_scene_from_displayed(char *asked, my_w_t *window)
+display_list_t *get_scene_from_displayed(char *asked, window_t *window)
 {
-	display_list_t *tmp = window->displayed_scenes;
+	display_list_t *tmp = DISPLAYED_SCENES;
 
 	while (tmp && my_strcmp(tmp->scene_name, asked) == 1)
 		tmp = tmp->next;

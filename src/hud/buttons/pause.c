@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int pause_game(my_w_t *window)
+int pause_game(window_t *window)
 {
 	sfRectangleShape *rec = sfRectangleShape_create();
 

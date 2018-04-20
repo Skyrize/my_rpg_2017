@@ -40,7 +40,7 @@ int button_fly_over(obj_t *button, sfVector2i clickPosition)
 	clickPosition.y > sfRectangleShape_getPosition(button->obj).y);
 }
 
-int process_button_over(bucket_t *button_bucket, my_w_t *window)
+int process_button_over(bucket_t *button_bucket, window_t *window)
 {
 	obj_t *button = button_bucket->value;
 
@@ -51,8 +51,8 @@ int process_button_over(bucket_t *button_bucket, my_w_t *window)
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
 	else if (button_fly_over(button, MOUSE_POS) == 1 &&
 	buttonisclicked((button), MOUSE_POS) == 1
-	&& window->click_released == sfTrue) {
-		window->click_released = sfFalse;
+	&& CLICK_RELEASED == sfTrue) {
+		CLICK_RELEASED = sfFalse;
 		return (button->callback != NULL ? button->callback(window) : 0);
 	} else if (!window->game.movement.is_moving
 	&& sfRectangleShape_getFillColor(button->obj).a == 255)
@@ -60,9 +60,9 @@ int process_button_over(bucket_t *button_bucket, my_w_t *window)
 	return (0);
 }
 
-int manage_buttons(my_w_t *window)
+int manage_buttons(window_t *window)
 {
-	display_list_t *tmp = window->displayed_scenes;
+	display_list_t *tmp = DISPLAYED_SCENES;
 	scene_t *scene;
 	int error_no = 0;
 

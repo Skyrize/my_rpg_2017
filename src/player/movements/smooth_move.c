@@ -8,20 +8,20 @@
 #include <rpg.h>
 #include <SFML/Audio.h>
 
-void init_movements(my_w_t *window)
+void init_movements(window_t *window)
 {
 	window->game.movement.target_tile = (sfVector2i) {0, 0};
 	window->game.movement.anim_mult = 1;
 	window->game.movement.is_moving = false;
 }
 
-void set_initial_player_pos(my_w_t *window)
+void set_initial_player_pos(window_t *window)
 {
 	sfRectangleShape_setPosition(window->game.player.character->obj, \
 	(sfVector2f) {TILE_COOR_X * 50, TILE_COOR_Y * 50});
 }
 
-bool is_pressing_controls(my_w_t *window)
+bool is_pressing_controls(window_t *window)
 {
 	if (KEY_PRESSED(left) || KEY_PRESSED(left_1) || KEY_PRESSED(right) ||
 	    KEY_PRESSED(right_1) || KEY_PRESSED(up) || KEY_PRESSED(up_1) ||
@@ -30,7 +30,7 @@ bool is_pressing_controls(my_w_t *window)
 	return (false);
 }
 
-void is_waiting(my_w_t *window)
+void is_waiting(window_t *window)
 {
 	if (!is_pressing_controls(window))
 		set_waiting_player_rect(window);
@@ -38,16 +38,16 @@ void is_waiting(my_w_t *window)
 
 //TODO norme
 //call every frames
-void smooth_move_player(my_w_t *window)
+void smooth_move_player(window_t *window)
 {
-	sfVector2i act_pos = window->map.tile_coord;
+	sfVector2i act_pos = MAP.tile_coord;
 	sfVector2i *target_pos = &(window->game.movement.target_tile);
 	sfVector2f s_pos;
 	sfVector2f offset_f = (sfVector2f) {(target_pos->x - act_pos.x) * 5,
 					    (target_pos->y - act_pos.y) * 5};
 	static bool is_check = false;
 
-	if (my_strcmp(window->current->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_SCENE->key, "GAME") != 0)
 		return;
 	if (!(window->game.player.character))
 		return;

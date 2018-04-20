@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int init_battle(my_w_t *window)
+int init_battle(window_t *window)
 {
 	scene_t *battle_scene = hm_get(SCENES, "BATTLE");
 	bucket_t *battle_buttons = hm_get_bucket(SCENES,

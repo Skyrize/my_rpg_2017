@@ -24,7 +24,7 @@ void texture_destroy(texture_t *texture)
 	sfTexture_destroy(texture->texture);
 }
 
-void destroy_and_free(my_w_t *window)
+void destroy_and_free(window_t *window)
 {
 	clean_displayed_scenes(window);
 	hm_destroy(TEXTURES_LIB);

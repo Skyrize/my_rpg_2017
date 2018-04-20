@@ -7,9 +7,9 @@
 
 #include "rpg.h"
 
-int quit(my_w_t *window)
+int quit(window_t *window)
 {
-	window->current = hm_get_bucket(SCENES, QUIT_GAME);
+	CURRENT_SCENE = hm_get_bucket(SCENES, QUIT_GAME);
 	if (clean_displayed_scenes_and_add_back(window, QUIT_GAME) != 0)
 		return (84);
 	return (1);

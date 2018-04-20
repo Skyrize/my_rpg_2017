@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int init_from_pcf(char **infos, my_w_t *window, const key_word_t *keys)
+int init_from_pcf(char **infos, window_t *window, const key_word_t *keys)
 {
 	char **type = my_str_to_word_array(infos[0], '=');
 	static hashmap_t *current_list;
@@ -30,7 +30,7 @@ int init_from_pcf(char **infos, my_w_t *window, const key_word_t *keys)
 	return (0);
 }
 
-void map_savior(my_w_t *window)
+void map_savior(window_t *window)
 {
 	ZONE_COOR_X = -1;
 	ZONE_COOR_Y = -1;
@@ -40,12 +40,12 @@ void map_savior(my_w_t *window)
 	TILE_COOR_Y = -1;
 }
 
-void list_savior(my_w_t *window)
+void list_savior(window_t *window)
 {
-	window->current = NULL;
+	CURRENT_SCENE = NULL;
 }
 
-int get_infos(int fd, my_w_t *window, get_infos_t *infos)
+int get_infos(int fd, window_t *window, get_infos_t *infos)
 {
 	char *line = my_get_next_line(fd);
 	char **line_words;
@@ -62,7 +62,7 @@ int get_infos(int fd, my_w_t *window, get_infos_t *infos)
 	return (0);
 }
 
-int analyse_my_project_config_file(my_w_t *window, get_infos_t *infos)
+int analyse_my_project_config_file(window_t *window, get_infos_t *infos)
 {
 	int fd = open(infos->filepath, O_RDONLY);
 	char *line = NULL;

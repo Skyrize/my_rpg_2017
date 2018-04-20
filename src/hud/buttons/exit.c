@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int exit_game(my_w_t *window)
+int exit_game(window_t *window)
 {
 	sfRenderWindow_close(window->window);
 	return (0);

@@ -25,7 +25,7 @@ scene_t *scene_init(int priority)
 	return (value);
 }
 
-int init_scene_lists(char **infos, my_w_t *window)
+int init_scene_lists(char **infos, window_t *window)
 {
 	char **name = my_str_to_word_array(infos[0], KEYWORD_SEPARATOR_CHAR);
 	char **priority = my_str_to_word_array(infos[1],
@@ -47,7 +47,7 @@ int init_scene_lists(char **infos, my_w_t *window)
 	return (0);
 }
 
-int init_my_scenes(my_w_t *window)
+int init_my_scenes(window_t *window)
 {
 	const key_word_t scene_keys[] = {
 	{"SCENE", 1, &get_a_scene, (char *[]) {"PRIORITY", NULL}},

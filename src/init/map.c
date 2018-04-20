@@ -8,13 +8,13 @@
 #include "my.h"
 #include "rpg.h"
 
-void unload_my_tiles(my_w_t *window)
+void unload_my_tiles(window_t *window)
 {
 	if (AREA_NAME != NULL)
 		clean_displayed_tiles(window);
 }
 
-void unload_my_area(my_w_t *window)
+void unload_my_area(window_t *window)
 {
 	TILE_COOR_X = 0;
 	TILE_COOR_Y = 0;
@@ -24,7 +24,7 @@ void unload_my_area(my_w_t *window)
 
 }
 
-void unload_my_zone(my_w_t *window)
+void unload_my_zone(window_t *window)
 {
 	AREA_COOR_X = 0;
 	AREA_COOR_Y = 0;
@@ -33,7 +33,7 @@ void unload_my_zone(my_w_t *window)
 			unload_my_area(window);
 }
 
-int load_my_zone(my_w_t *window)
+int load_my_zone(window_t *window)
 {
 	const key_word_t zone_keys[] = {
 	{"AREA", 3, &get_an_area, (char *[]) {"ENCOUNTER", "X", "Y", NULL}},
@@ -56,7 +56,7 @@ int load_my_zone(my_w_t *window)
 	return (0);
 }
 
-int init_my_map(my_w_t *window)
+int init_my_map(window_t *window)
 {
 	const key_word_t map_keys[] = {
 	{"ZONE", 3, &get_a_map, (char *[]) {"FILEPATH", "X", "Y", NULL}},
@@ -66,12 +66,12 @@ int init_my_map(my_w_t *window)
 
 	for (int y = 0; y != ZONE_TAB_Y; y++)
 		for (int x = 0; x != ZONE_TAB_X; x++) {
-			window->map.zones[y][x].name = NULL;
-			window->map.zones[y][x].filepath = NULL;
+			MAP.zones[y][x].name = NULL;
+			MAP.zones[y][x].filepath = NULL;
 		}
 	for (int y = 0; y != AREA_TAB_Y; y++)
 		for (int x = 0; x != AREA_TAB_X; x++)
-			window->map.areas[y][x].name = NULL;
+			MAP.areas[y][x].name = NULL;
 	if (analyse_my_project_config_file(window, &infos) != 0) {
 		my_printf("WARNING: ERROR IN MAP INIT !\n");
 		return (84);

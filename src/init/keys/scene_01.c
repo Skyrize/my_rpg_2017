@@ -9,29 +9,29 @@
 #include "rpg.h"
 
 int get_a_scene(char **infos, char **type, hashmap_t **current_list,
-	my_w_t *window)
+	window_t *window)
 {
 	(void)infos;
 	*current_list = SCENES;
 	if (init_scene_lists(infos, window) != 0)
 		return (84);
-	window->current = hm_get_bucket(*current_list, type[1]);
+	CURRENT_SCENE = hm_get_bucket(*current_list, type[1]);
 	return (0);
 }
 
 int get_a_list(char **infos, char **type, hashmap_t **current_list,
-	my_w_t *window)
+	window_t *window)
 {
 	scene_t *current_scene;
 
-	if (check_undefined_scene(window->current, infos[0]) != 0)
+	if (check_undefined_scene(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
 	if (my_strcmp(type[1], "TEXTS") == 0) {
-		current_scene = window->current->value;
+		current_scene = CURRENT_SCENE->value;
 		*current_list = current_scene->texts;
 	}
 	if (my_strcmp(type[1], "OBJS") == 0) {
-		current_scene = window->current->value;
+		current_scene = CURRENT_SCENE->value;
 		*current_list = current_scene->objs;
 	}
 	(void)current_list;
@@ -39,9 +39,9 @@ int get_a_list(char **infos, char **type, hashmap_t **current_list,
 }
 
 int get_an_obj(char **infos, char **type, hashmap_t **current_list,
-	my_w_t *window)
+	window_t *window)
 {
-	if (check_undefined_scene(window->current, infos[0]) != 0)
+	if (check_undefined_scene(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
 	if (check_undefined_list(*current_list, infos[0]) != 0)
 		return (84);
@@ -52,9 +52,9 @@ int get_an_obj(char **infos, char **type, hashmap_t **current_list,
 }
 
 int get_a_text(char **infos, char **type, hashmap_t **current_list,
-	my_w_t *window)
+	window_t *window)
 {
-	if (check_undefined_scene(window->current, infos[0]) != 0)
+	if (check_undefined_scene(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
 	if (check_undefined_list(*current_list, infos[0]) != 0)
 		return (84);

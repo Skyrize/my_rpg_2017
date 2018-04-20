@@ -7,9 +7,9 @@
 
 #include <rpg.h>
 
-bool is_player_moving(my_w_t *window)
+bool is_player_moving(window_t *window)
 {
-	if (strcmp(window->current->key, "GAME") != 0)
+	if (strcmp(CURRENT_SCENE->key, "GAME") != 0)
 		return (false);
 	if (is_pressing_controls(window))
 		return (true);
@@ -17,7 +17,7 @@ bool is_player_moving(my_w_t *window)
 }
 
 //call every frames
-void update_moving_state(my_w_t *window)
+void update_moving_state(window_t *window)
 {
 	window->game.movement.is_moving = is_player_moving(window);
 }

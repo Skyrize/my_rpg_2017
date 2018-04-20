@@ -16,7 +16,7 @@ void start_scene_music(scene_t *scene)
 	}
 }
 
-void init_frame_rate(my_w_t *window)
+void init_frame_rate(window_t *window)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
 	scene_t *scene_option = NULL;
@@ -30,18 +30,18 @@ void init_frame_rate(my_w_t *window)
 	text_bucket = hm_get_bucket(scene_option->texts, "FRAME");
 	if (!text_bucket)
 		return;
-	window->framerate_game = 60;
+	FRAMERATE = 60;
 	sfText_setString(text_bucket->value,
-	(char *)int_to_str(window->framerate_game));
+	(char *)int_to_str(FRAMERATE));
 	sfRenderWindow_setFramerateLimit(window->window,
-	window->framerate_game);
+	FRAMERATE);
 }
 
-int process_pre_window(my_w_t *window)
+int process_pre_window(window_t *window)
 {
 	init_frame_rate(window);
-	start_scene_music(window->current->value);
-	if (add_scene_to_display_list(window->current, window) != 0)
+	start_scene_music(CURRENT_SCENE->value);
+	if (add_scene_to_display_list(CURRENT_SCENE, window) != 0)
 		return (84);
 	if (load_my_zone(window) != 0)
 		return (84);
@@ -56,7 +56,7 @@ int process_pre_window(my_w_t *window)
 
 int main()
 {
-	my_w_t window = init_my_window();
+	window_t window = init_my_window();
 
 	if (check_invalid_window_init(window.error_no) != 0)
 		return (84);

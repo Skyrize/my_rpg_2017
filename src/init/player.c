@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int init_stats_scene(char **desc, obj_data_t *data, my_w_t *window)
+int init_stats_scene(char **desc, obj_data_t *data, window_t *window)
 {
 	scene_t *scene = hm_get(SCENES, STATS_GAME);
 	obj_data_t special_data = {"SPECIAL_CHARAC", desc[2], sfFalse,
@@ -28,7 +28,7 @@ int init_stats_scene(char **desc, obj_data_t *data, my_w_t *window)
 	return (0);
 }
 
-int select_varyan(my_w_t *window)
+int select_varyan(window_t *window)
 {
 	obj_data_t charac_data = {"VARYAN", "WARRIOR_01", sfFalse,
 	(sfVector2f){304, 55}};
@@ -48,7 +48,7 @@ int select_varyan(my_w_t *window)
 	return (game(window));
 }
 
-int select_jaina(my_w_t *window)
+int select_jaina(window_t *window)
 {
 	obj_data_t charac_data = {"JAINA", "MAGE_01", sfFalse,
 	(sfVector2f){304, 55}};
@@ -68,7 +68,7 @@ int select_jaina(my_w_t *window)
 	return (game(window));
 }
 
-int select_avelus(my_w_t *window)
+int select_avelus(window_t *window)
 {
 	obj_data_t charac_data = {"AVELUS", "HUNTER_01", sfFalse,
 	(sfVector2f){304, 55}};

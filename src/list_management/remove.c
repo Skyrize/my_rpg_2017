@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void clean_displayed_tiles(my_w_t *window)
+void clean_displayed_tiles(window_t *window)
 {
 	tile_list_t *tmp;
 
@@ -20,20 +20,20 @@ void clean_displayed_tiles(my_w_t *window)
 	}
 }
 
-void clean_displayed_scenes(my_w_t *window)
+void clean_displayed_scenes(window_t *window)
 {
 	display_list_t *tmp;
 
-	while (window->displayed_scenes) {
-		tmp = window->displayed_scenes;
-		window->displayed_scenes = tmp->next;
+	while (DISPLAYED_SCENES) {
+		tmp = DISPLAYED_SCENES;
+		DISPLAYED_SCENES = tmp->next;
 		free(tmp);
 	}
 }
 
-void clean_displayed_scene_name(my_w_t *window, char *name_scenes)
+void clean_displayed_scene_name(window_t *window, char *name_scenes)
 {
-	display_list_t *tmp = window->displayed_scenes;
+	display_list_t *tmp = DISPLAYED_SCENES;
 	display_list_t *freed;
 
 	while (tmp) {
@@ -48,14 +48,14 @@ void clean_displayed_scene_name(my_w_t *window, char *name_scenes)
 	}
 }
 
-int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name)
+int clean_displayed_scenes_and_add_back(window_t *window, char *scene_name)
 {
 	display_list_t *tmp;
 	int already_in = 0;
 
-	while (window->displayed_scenes) {
-		tmp = window->displayed_scenes;
-		window->displayed_scenes = tmp->next;
+	while (DISPLAYED_SCENES) {
+		tmp = DISPLAYED_SCENES;
+		DISPLAYED_SCENES = tmp->next;
 		if (my_strcmp(scene_name, tmp->scene_name) != 0) {
 			free(tmp);
 		} else

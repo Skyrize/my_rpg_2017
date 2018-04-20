@@ -25,7 +25,7 @@ void move_rect(obj_t *obj)
 	sfRectangleShape_setTextureRect(obj->obj, obj->obj_rect.rect);
 }
 
-void time_animation(obj_t *obj, float seconds, my_w_t *window)
+void time_animation(obj_t *obj, float seconds, window_t *window)
 {
 	if (obj->obj_rect.animated == sfTrue
 		&& window->clocker.seconds >= seconds) {

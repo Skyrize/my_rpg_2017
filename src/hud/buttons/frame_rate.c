@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "my.h"
 
-int frame_rate_more(my_w_t *window)
+int frame_rate_more(window_t *window)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
 	scene_t *scene_option = NULL;
@@ -22,16 +22,16 @@ int frame_rate_more(my_w_t *window)
 	text_bucket = hm_get_bucket(scene_option->texts, "FRAME");
 	if (!text_bucket)
 		return (84);
-	if ((window->framerate_game += 10) >= 120)
-		window->framerate_game = 120;
+	if ((FRAMERATE += 10) >= 120)
+		FRAMERATE = 120;
 	sfText_setString(text_bucket->value,
-	(char *)int_to_str(window->framerate_game));
+	(char *)int_to_str(FRAMERATE));
 	sfRenderWindow_setFramerateLimit(window->window,
-	window->framerate_game);
+	FRAMERATE);
 	return (0);
 }
 
-int frame_rate_less(my_w_t *window)
+int frame_rate_less(window_t *window)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
 	scene_t *scene_option = NULL;
@@ -45,11 +45,11 @@ int frame_rate_less(my_w_t *window)
 	text_bucket = hm_get_bucket(scene_option->texts, "FRAME");
 	if (!text_bucket)
 		return (84);
-	if ((window->framerate_game -= 10) <= 30)
-		window->framerate_game = 30;
+	if ((FRAMERATE -= 10) <= 30)
+		FRAMERATE = 30;
 	sfText_setString(text_bucket->value,
-	(char *)int_to_str(window->framerate_game));
+	(char *)int_to_str(FRAMERATE));
 	sfRenderWindow_setFramerateLimit(window->window,
-	window->framerate_game);
+	FRAMERATE);
 	return (0);
 }

@@ -8,14 +8,14 @@
 #include "my.h"
 #include "rpg.h"
 
-void get_time(my_w_t *window)
+void get_time(window_t *window)
 {
 	window->clocker.timer = sfClock_getElapsedTime(window->clocker.clock);
 	window->clocker.seconds =
 	window->clocker.timer.microseconds / 1000000.0;
 }
 
-int manage(my_w_t *window)
+int manage(window_t *window)
 {
 	if (manage_buttons(window) != 0 || manage_life(window) != 0) {
 		my_printf("ERROR IN MANAGEMENT\n");
@@ -28,7 +28,7 @@ int manage(my_w_t *window)
 	return (0);
 }
 
-int game_lobby(my_w_t *window)
+int game_lobby(window_t *window)
 {
 	analyse_events(window);
 	MOUSE_POS = sfMouse_getPosition((const sfWindow *)window->window);

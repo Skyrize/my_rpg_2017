@@ -7,24 +7,24 @@
 
 #include "rpg.h"
 
-void replace_key(int choice, my_w_t *window)
+void replace_key(int choice, window_t *window)
 {
 	if (choice == 0) {
-		window->key_player->up = (sfKeyCode *)sfKeyZ;
-		window->key_player->down = (sfKeyCode *)sfKeyS;
-		window->key_player->left = (sfKeyCode *)sfKeyQ;
-		window->key_player->right = (sfKeyCode *)sfKeyD;
-		window->key_player->up_1 = (sfKeyCode *)sfKeyUp;
+		KEY_PLAYER->up = (sfKeyCode *)sfKeyZ;
+		KEY_PLAYER->down = (sfKeyCode *)sfKeyS;
+		KEY_PLAYER->left = (sfKeyCode *)sfKeyQ;
+		KEY_PLAYER->right = (sfKeyCode *)sfKeyD;
+		KEY_PLAYER->up_1 = (sfKeyCode *)sfKeyUp;
 	} else {
-		window->key_player->up = (sfKeyCode *)sfKeyW;
-		window->key_player->down = (sfKeyCode *)sfKeyS;
-		window->key_player->left = (sfKeyCode *)sfKeyA;
-		window->key_player->right = (sfKeyCode *)sfKeyD;
-		window->key_player->up_1 = (sfKeyCode *)sfKeyUp;
+		KEY_PLAYER->up = (sfKeyCode *)sfKeyW;
+		KEY_PLAYER->down = (sfKeyCode *)sfKeyS;
+		KEY_PLAYER->left = (sfKeyCode *)sfKeyA;
+		KEY_PLAYER->right = (sfKeyCode *)sfKeyD;
+		KEY_PLAYER->up_1 = (sfKeyCode *)sfKeyUp;
 	}
 }
 
-int key_french(my_w_t *window)
+int key_french(window_t *window)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, CONTROL_KEY);
 	bucket_t *bucket_texts = NULL;
@@ -39,7 +39,7 @@ int key_french(my_w_t *window)
 	return (0);
 }
 
-int key_english(my_w_t *window)
+int key_english(window_t *window)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, CONTROL_KEY);
 	bucket_t *bucket_texts = NULL;

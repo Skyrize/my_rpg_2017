@@ -25,7 +25,7 @@ int add_text_to_list(text_data_t *data, hashmap_t *current_list)
 	return (0);
 }
 
-int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window)
+int add_obj_to_list(obj_data_t *data, hashmap_t *list, window_t *window)
 {
 	obj_t *new_obj;
 
@@ -38,20 +38,20 @@ int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window)
 	return (0);
 }
 
-int add_scene_to_display_list(bucket_t *scene, my_w_t *window)
+int add_scene_to_display_list(bucket_t *scene, window_t *window)
 {
 	display_list_t *display = create_a_display(scene->key, scene->value);
-	display_list_t *tmp = window->displayed_scenes;
+	display_list_t *tmp = DISPLAYED_SCENES;
 
 	if (!display)
 		return (84);
 	if (!tmp) {
-		window->displayed_scenes = display;
+		DISPLAYED_SCENES = display;
 		return (0);
 	}
 	if (tmp->scene->priority >= display->scene->priority) {
 		display->next = tmp;
-		window->displayed_scenes = display;
+		DISPLAYED_SCENES = display;
 		return (0);
 	}
 	while (tmp->next
@@ -62,7 +62,7 @@ int add_scene_to_display_list(bucket_t *scene, my_w_t *window)
 	return (0);
 }
 
-int add_tile_to_list(char *texture, my_w_t *window)
+int add_tile_to_list(char *texture, window_t *window)
 {
 	tile_list_t *display = create_a_tile(texture, window);
 	tile_list_t *tmp = TILE_LIST;

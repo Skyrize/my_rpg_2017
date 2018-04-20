@@ -17,7 +17,7 @@ ctime_t init_timer(void)
 	return (clocker);
 }
 
-int init_inventory(my_w_t *window)
+int init_inventory(window_t *window)
 {
 	slot_t sweap;
 	slot_t shel;
@@ -78,7 +78,7 @@ int init_inventory(my_w_t *window)
 	return (0);
 }
 
-void init_window_values(my_w_t *window)
+void init_window_values(window_t *window)
 {
 	window->error_no = 0;
 	PLAYER_NAME = NULL;
@@ -87,11 +87,11 @@ void init_window_values(my_w_t *window)
 	window->window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
 		WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
 	GAME_TITLE, sfClose, NULL);
-	window->displayed_scenes = NULL;
-	window->click_released = sfTrue;
+	DISPLAYED_SCENES = NULL;
+	CLICK_RELEASED = sfTrue;
 }
 
-void init_text_values(my_w_t *window)
+void init_text_values(window_t *window)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, PAUSE_GAME);
 	bucket_t *bucket_texts = NULL;
@@ -104,23 +104,23 @@ void init_text_values(my_w_t *window)
 	sfText_setString(bucket_texts->value, VERSION_GAME);
 }
 
-void init_key_control(my_w_t *window)
+void init_key_control(window_t *window)
 {
-	window->key_player = malloc(sizeof(*window->key_player));
-	window->key_player->up = (sfKeyCode *)sfKeyZ;
-	window->key_player->down = (sfKeyCode *)sfKeyS;
-	window->key_player->left = (sfKeyCode *)sfKeyQ;
-	window->key_player->right = (sfKeyCode *)sfKeyD;
-	window->key_player->up_1 = (sfKeyCode *)sfKeyUp;
-	window->key_player->down_1 = (sfKeyCode *)sfKeyDown;
-	window->key_player->left_1 = (sfKeyCode *)sfKeyLeft;
-	window->key_player->right_1 = (sfKeyCode *)sfKeyRight;
-	window->key_player->move = 1;
+	KEY_PLAYER = malloc(sizeof(*KEY_PLAYER));
+	KEY_PLAYER->up = (sfKeyCode *)sfKeyZ;
+	KEY_PLAYER->down = (sfKeyCode *)sfKeyS;
+	KEY_PLAYER->left = (sfKeyCode *)sfKeyQ;
+	KEY_PLAYER->right = (sfKeyCode *)sfKeyD;
+	KEY_PLAYER->up_1 = (sfKeyCode *)sfKeyUp;
+	KEY_PLAYER->down_1 = (sfKeyCode *)sfKeyDown;
+	KEY_PLAYER->left_1 = (sfKeyCode *)sfKeyLeft;
+	KEY_PLAYER->right_1 = (sfKeyCode *)sfKeyRight;
+	KEY_PLAYER->move = 1;
 }
 
-my_w_t init_my_window(void)
+window_t init_my_window(void)
 {
-	my_w_t window;
+	window_t window;
 
 	init_window_values(&window);
 	if (!window.window || init_my_textures_lib(&window) != 0
@@ -134,8 +134,8 @@ my_w_t init_my_window(void)
 	init_text_values(&window);
 	init_key_control(&window);
 	init_movements(&window);
-	window.current = hm_get_bucket(window.scenes, STARTING_SCENE_NAME);
-	if (check_scene_not_created(window.current,
+	window.game.current = hm_get_bucket(window.game.scenes, STARTING_SCENE_NAME);
+	if (check_scene_not_created(window.game.current,
 		"my_initializer.c", 42, STARTING_SCENE_NAME) != 0)
 		window.error_no = 84;
 	return (window);

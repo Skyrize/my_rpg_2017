@@ -46,9 +46,9 @@ static const button_t g_tab[] =
 	{NULL, NULL}
 };
 
-int init_button_callback(bucket_t *button_bucket, my_w_t *window);
+int init_button_callback(bucket_t *button_bucket, window_t *window);
 
-int update_button(char *seek, char *replacement, scene_t *scene, my_w_t *window)
+int update_button(char *seek, char *replacement, scene_t *scene, window_t *window)
 {
 	bucket_t *button_bucket = hm_get_bucket(scene->objs, seek);
 	bucket_t *text_bucket = hm_get_bucket(scene->texts, seek);
@@ -80,7 +80,7 @@ int seek_button_type(char **balise, int (*instruction)(), char *button_key, obj_
 	return (0);
 }
 
-int init_button_callback(bucket_t *button_bucket, my_w_t *window)
+int init_button_callback(bucket_t *button_bucket, window_t *window)
 {
 	obj_t *button = button_bucket->value;
 	int my_errno = 0;
@@ -105,7 +105,7 @@ int init_button_callback(bucket_t *button_bucket, my_w_t *window)
 	return (my_errno);
 }
 
-int read_scenes(bucket_t *scene_bucket, my_w_t *window)
+int read_scenes(bucket_t *scene_bucket, window_t *window)
 {
 	scene_t *scene = scene_bucket->value;
 
@@ -115,7 +115,7 @@ int read_scenes(bucket_t *scene_bucket, my_w_t *window)
 	return (0);
 }
 
-int init_my_buttons(my_w_t *window)
+int init_my_buttons(window_t *window)
 {
 	if (read_hashmap(window, SCENES, &read_scenes) != 0)
 		return (84);

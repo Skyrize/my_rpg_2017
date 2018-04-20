@@ -8,7 +8,7 @@
 #include <my.h>
 #include <rpg.h>
 
-bool set_ply_zone(sfVector2i pos_zone, my_w_t *window, bool check)
+bool set_ply_zone(sfVector2i pos_zone, window_t *window, bool check)
 {
 	if (pos_zone.x == ZONE_COOR_X && pos_zone.y == ZONE_COOR_Y)
 		return (true);
@@ -25,7 +25,7 @@ bool set_ply_zone(sfVector2i pos_zone, my_w_t *window, bool check)
 	return (true);
 }
 
-bool set_ply_area(sfVector2i pos_area, my_w_t *window, bool check)
+bool set_ply_area(sfVector2i pos_area, window_t *window, bool check)
 {
 	if (pos_area.x == AREA_COOR_X && pos_area.y == AREA_COOR_Y)
 		return (true);
@@ -40,7 +40,7 @@ bool set_ply_area(sfVector2i pos_area, my_w_t *window, bool check)
 	return (true);
 }
 
-bool set_ply_tile(sfVector2i pos_tile, my_w_t *window, bool check)
+bool set_ply_tile(sfVector2i pos_tile, window_t *window, bool check)
 {
 	if (pos_tile.x == TILE_COOR_X && pos_tile.y == TILE_COOR_Y)
 		return (true);
@@ -56,7 +56,7 @@ bool set_ply_tile(sfVector2i pos_tile, my_w_t *window, bool check)
 }
 
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
-			 sfVector2i pos_zone, my_w_t *window)
+			 sfVector2i pos_zone, window_t *window)
 {
 	if (!(set_ply_zone(pos_zone, window, true) &&
 		set_ply_area(pos_aera, window, true) &&

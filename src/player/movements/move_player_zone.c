@@ -8,7 +8,7 @@
 #include <my.h>
 #include <rpg.h>
 
-bool move_player_zone_up(my_w_t *window, bool check)
+bool move_player_zone_up(window_t *window, bool check)
 {
 	if (ZONE_COOR_X - 1 < 0)
 		return (false);
@@ -21,7 +21,7 @@ bool move_player_zone_up(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player_zone_down(my_w_t *window, bool check)
+bool move_player_zone_down(window_t *window, bool check)
 {
 	if (ZONE_COOR_X + 1 > ZONE_TAB_X)
 		return (false);
@@ -34,7 +34,7 @@ bool move_player_zone_down(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player_zone_left(my_w_t *window, bool check)
+bool move_player_zone_left(window_t *window, bool check)
 {
 	if (ZONE_COOR_Y - 1 < 0)
 		return (false);
@@ -47,7 +47,7 @@ bool move_player_zone_left(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player_zone_right(my_w_t *window, bool check)
+bool move_player_zone_right(window_t *window, bool check)
 {
 	if (ZONE_COOR_Y - 1 > ZONE_TAB_Y)
 		return (false);
@@ -60,7 +60,7 @@ bool move_player_zone_right(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player_zone(direction_t dir, my_w_t *window, bool check)
+bool move_player_zone(direction_t dir, window_t *window, bool check)
 {
 	switch (dir) {
 		case UP:

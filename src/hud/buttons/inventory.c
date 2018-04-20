@@ -9,7 +9,7 @@
 
 
 
-int add_to_slot(slot_t *slot, sfVector2i *pos, my_w_t *window)
+int add_to_slot(slot_t *slot, sfVector2i *pos, window_t *window)
 {
 	static sfVector2f slot_pos = {563, 290};
 
@@ -27,7 +27,7 @@ int add_to_slot(slot_t *slot, sfVector2i *pos, my_w_t *window)
 	return (0);
 }
 
-int add_helmet(slot_t *slot, my_w_t *window)
+int add_helmet(slot_t *slot, window_t *window)
 {
 	static sfVector2f slot_pos = {634, 84};
 
@@ -43,7 +43,7 @@ int add_helmet(slot_t *slot, my_w_t *window)
 	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
 	return (0);
 }
-int add_chest(slot_t *slot, my_w_t *window)
+int add_chest(slot_t *slot, window_t *window)
 {
 	static sfVector2f slot_pos = {634, 129};
 
@@ -59,7 +59,7 @@ int add_chest(slot_t *slot, my_w_t *window)
 	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
 	return (0);
 }
-int add_pants(slot_t *slot, my_w_t *window)
+int add_pants(slot_t *slot, window_t *window)
 {
 	static sfVector2f slot_pos = {634, 172};
 
@@ -75,7 +75,7 @@ int add_pants(slot_t *slot, my_w_t *window)
 	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
 	return (0);
 }
-int add_gauntlets(slot_t *slot, my_w_t *window)
+int add_gauntlets(slot_t *slot, window_t *window)
 {
 	static sfVector2f slot_pos = {589, 128};
 
@@ -91,7 +91,7 @@ int add_gauntlets(slot_t *slot, my_w_t *window)
 	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
 	return (0);
 }
-int add_weapon(slot_t *slot, my_w_t *window)
+int add_weapon(slot_t *slot, window_t *window)
 {
 	static sfVector2f slot_pos = {678, 128};
 
@@ -112,7 +112,7 @@ int add_weapon(slot_t *slot, my_w_t *window)
 
 
 
-int helmet_slot(my_w_t *window)
+int helmet_slot(window_t *window)
 {
 	///rajouter les checks
 	(void)window;
@@ -120,42 +120,42 @@ int helmet_slot(my_w_t *window)
 	return (0);
 }
 
-int chest_slot(my_w_t *window)
+int chest_slot(window_t *window)
 {
 	(void)window;
 	my_printf("Chest slot in construction.\n");
 	return (0);
 }
 
-int gauntlets_slot(my_w_t *window)
+int gauntlets_slot(window_t *window)
 {
 	(void)window;
 	my_printf("Gauntlets slot in construction.\n");
 	return (0);
 }
 
-int pants_slot(my_w_t *window)
+int pants_slot(window_t *window)
 {
 	(void)window;
 	my_printf("Pants slot in construction.\n");
 	return (0);
 }
 
-int weapon_slot(my_w_t *window)
+int weapon_slot(window_t *window)
 {
 	(void)window;
 	my_printf("Weapon slot in construction.\n");
 	return (0);
 }
 
-int slot(my_w_t *window)
+int slot(window_t *window)
 {
 	(void)window;
 	my_printf("Inventory slot in construction.\n");
 	return (0);
 }
 
-int inventory(my_w_t *window)
+int inventory(window_t *window)
 {
 	return (button_display_hide_scene(INVENTORY_GAME,
 		NULL, window));

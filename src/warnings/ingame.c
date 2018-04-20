@@ -18,7 +18,7 @@ int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked)
 	return (0);
 }
 
-int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window)
+int check_invalid_tile_display(tile_list_t *tile, int x, int y, window_t *window)
 {
 	if (!tile) {
 		my_printf("WARNING: IN AREA '%s' AT POSITION (%d/%d),",
@@ -29,7 +29,7 @@ int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window)
 	return (0);
 }
 
-int check_invalid_map_name(my_w_t *window)
+int check_invalid_map_name(window_t *window)
 {
 	if (!ZONE_NAME) {
 		my_printf("WARNING: YOU ARE TRYING TO ENTER ZONE AT");
@@ -46,7 +46,7 @@ int check_invalid_map_name(my_w_t *window)
 	return (0);
 }
 
-int check_invalid_map_display(my_w_t *window)
+int check_invalid_map_display(window_t *window)
 {
 	if (ZONE_COOR_Y < 0 || ZONE_COOR_Y >= ZONE_TAB_Y
 		|| ZONE_COOR_X < 0 || ZONE_COOR_X >= ZONE_TAB_X) {

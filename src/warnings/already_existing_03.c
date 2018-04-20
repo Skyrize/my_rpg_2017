@@ -8,15 +8,15 @@
 #include "my.h"
 #include "rpg.h"
 
-int seek_area_name(char *name, int y, my_w_t *window)
+int seek_area_name(char *name, int y, window_t *window)
 {
 	for (int x = 0; x != AREA_TAB_X; x++)
-		if (my_fastcmp(window->map.areas[y][x].name, name) == 0)
+		if (my_fastcmp(MAP.areas[y][x].name, name) == 0)
 			return (84);
 	return (0);
 }
 
-int check_already_existing_area_name(char *name, my_w_t *window)
+int check_already_existing_area_name(char *name, window_t *window)
 {
 	for (int y = 0; y != AREA_TAB_Y; y++)
 		if (seek_area_name(name, y, window) != 0) {
@@ -26,7 +26,7 @@ int check_already_existing_area_name(char *name, my_w_t *window)
 	return (0);
 }
 
-int check_already_existing_area_coords(char *name, my_w_t *window)
+int check_already_existing_area_coords(char *name, window_t *window)
 {
 	if (AREA_NAME != NULL) {
 		my_printf("WARNING: YOU ARE TRYING TO PUT AREA '%s'", name);
@@ -36,7 +36,7 @@ int check_already_existing_area_coords(char *name, my_w_t *window)
 	return (0);
 }
 
-int check_already_existing_tile_coords(my_w_t *window)
+int check_already_existing_tile_coords(window_t *window)
 {
 	if (TILE_COOR_X != -1 && TILE_LIST != NULL) {
 		my_printf("WARNING: YOU ARE TRYING TO PUT 2 TILES AT ");

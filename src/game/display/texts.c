@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int display_texts(bucket_t *text, my_w_t *window)
+int display_texts(bucket_t *text, window_t *window)
 {
 	sfText *display = text->value;
 

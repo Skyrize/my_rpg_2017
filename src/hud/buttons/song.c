@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int manage_song(my_w_t *window)
+int manage_song(window_t *window)
 {
 	bucket_t *tmp_scene = hm_get_bucket(SCENES, "GAME");
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);

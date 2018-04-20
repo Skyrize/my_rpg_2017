@@ -32,7 +32,7 @@ int check_invalid_file(int fd, char *filename)
 	return (0);
 }
 
-int check_invalid_zone_coords(char *name, my_w_t *window)
+int check_invalid_zone_coords(char *name, window_t *window)
 {
 	if (ZONE_COOR_X < 0 || ZONE_COOR_X >= ZONE_TAB_X
 		|| ZONE_COOR_Y < 0 || ZONE_COOR_Y >= ZONE_TAB_Y) {

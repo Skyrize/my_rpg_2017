@@ -9,7 +9,7 @@
 #include "rpg.h"
 
 int get_a_map(char **infos, char **type,
-	hashmap_t **current_list, my_w_t *window)
+	hashmap_t **current_list, window_t *window)
 {
 	char **path = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
 	char **x = my_str_to_word_array(infos[2], KEYWORD_SEPARATOR_CHAR);

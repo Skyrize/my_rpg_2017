@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int quetes(my_w_t *window)
+int quetes(window_t *window)
 {
 	return (button_display_hide_scene(QUESTS_GAME,
 		NULL, window));

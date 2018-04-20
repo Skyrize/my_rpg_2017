@@ -10,7 +10,7 @@
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Audio.h>
 
-void set_next_rect_b(my_w_t *window)
+void set_next_rect_b(window_t *window)
 {
 	int mult = window->game.movement.anim_mult;
 
@@ -20,7 +20,7 @@ void set_next_rect_b(my_w_t *window)
 		(mult * PLAYER.character->obj_rect.rect_offset.y);
 }
 
-void set_next_rect(my_w_t *window)
+void set_next_rect(window_t *window)
 {
 	int act_x;
 	int act_y;
@@ -40,7 +40,7 @@ void set_next_rect(my_w_t *window)
 		window->game.player.character->obj_rect.rect);
 }
 
-void set_anim_side(my_w_t *window)
+void set_anim_side(window_t *window)
 {
 	PLAYER.character->obj_rect.rect.top =
 		PLAYER.character->obj_rect.rect_start.y;
@@ -49,7 +49,7 @@ void set_anim_side(my_w_t *window)
 		window->game.player.character->obj_rect.rect);
 }
 
-void set_waiting_player_rect(my_w_t *window)
+void set_waiting_player_rect(window_t *window)
 {
 	PLAYER.character->obj_rect.rect.top =
 		PLAYER.character->obj_rect.rect_start.y;
@@ -60,12 +60,12 @@ void set_waiting_player_rect(my_w_t *window)
 }
 
 //call on every frames
-void anim_player(my_w_t *window)
+void anim_player(window_t *window)
 {
 	static sfClock *clock = NULL;
 
 	update_moving_state(window);
-	if (strcmp(window->current->key, "GAME") != 0)
+	if (strcmp(CURRENT_SCENE->key, "GAME") != 0)
 		return;
 	if (!(window->game.player.character))
 		return;

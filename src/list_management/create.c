@@ -18,7 +18,7 @@ void create_obj_rect(obj_t *new_obj, texture_t *texture)
 	sfRectangleShape_setTextureRect(new_obj->obj, texture->rect);
 }
 
-obj_t *create_obj(obj_data_t *data, my_w_t *window)
+obj_t *create_obj(obj_data_t *data, window_t *window)
 {
 	texture_t *texture = hm_get(TEXTURES_LIB, data->texture);
 	obj_t *new_obj = malloc(sizeof(obj_t));
@@ -54,7 +54,7 @@ display_list_t *create_a_display(char *name, scene_t *scene)
 	return (display);
 }
 
-tile_list_t *create_a_tile(char *texture_name, my_w_t *window)
+tile_list_t *create_a_tile(char *texture_name, window_t *window)
 {
 	tile_list_t *new_tile = malloc(sizeof(tile_list_t));
 

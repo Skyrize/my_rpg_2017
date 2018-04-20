@@ -19,7 +19,7 @@ void update_characteristic(int value, char *wanted, scene_t *scene)
 		sfText_setString(actual, display);
 }
 
-void update_stats(scene_t *scene, my_w_t *window)
+void update_stats(scene_t *scene, window_t *window)
 {
 	update_characteristic(PLAYER_HEALTH, "HEALTH", scene);
 	update_characteristic(PLAYER_ARMOR, "ARMOR", scene);

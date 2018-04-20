@@ -9,7 +9,7 @@
 #include "rpg.h"
 
 int get_a_font(char **infos, char **type,
-	hashmap_t **current_list, my_w_t *window)
+	hashmap_t **current_list, window_t *window)
 {
 	sfFont *font;
 	char **font_path = my_str_to_word_array(infos[1],

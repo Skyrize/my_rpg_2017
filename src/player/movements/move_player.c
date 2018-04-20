@@ -9,7 +9,7 @@
 #include <rpg.h>
 #include <SFML/Graphics/Rect.h>
 
-bool move_player_up(my_w_t *window, bool check)
+bool move_player_up(window_t *window, bool check)
 {
 	if (!check) {
 		window->game.player.character->obj_rect.rect_start.x = 0;
@@ -32,7 +32,7 @@ bool move_player_up(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player_down(my_w_t *window, bool check)
+bool move_player_down(window_t *window, bool check)
 {
 	if (!check) {
 		window->game.player.character->obj_rect.rect_start.x = 0;
@@ -55,7 +55,7 @@ bool move_player_down(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player_left(my_w_t *window, bool check)
+bool move_player_left(window_t *window, bool check)
 {
 	if (!check) {
 		window->game.player.character->obj_rect.rect_start.x = 0;
@@ -78,7 +78,7 @@ bool move_player_left(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player_right(my_w_t *window, bool check)
+bool move_player_right(window_t *window, bool check)
 {
 	if (!check) {
 		window->game.player.character->obj_rect.rect_start.x = 0;
@@ -101,9 +101,9 @@ bool move_player_right(my_w_t *window, bool check)
 	return (true);
 }
 
-bool move_player(direction_t dir, my_w_t *window, bool check)
+bool move_player(direction_t dir, window_t *window, bool check)
 {
-	if (my_strcmp(window->current->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_SCENE->key, "GAME") != 0)
 		return (false);
 	if (window->game.player.character->obj_rect.animated)
 		return (false);

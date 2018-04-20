@@ -27,7 +27,7 @@ int check_invalid_animated(sfBool animated)
 	return (0);
 }
 
-int check_invalid_area_coords(char *name, my_w_t *window)
+int check_invalid_area_coords(char *name, window_t *window)
 {
 	if (AREA_ENCOUTER != sfTrue && AREA_ENCOUTER != sfFalse) {
 		my_printf("WARNING: AREA '%s' ENCOUTER IS %d BUT",
@@ -45,7 +45,7 @@ int check_invalid_area_coords(char *name, my_w_t *window)
 	return (0);
 }
 
-int check_invalid_tile_coords(char *name, my_w_t *window)
+int check_invalid_tile_coords(char *name, window_t *window)
 {
 	if (TILE_BLOCK != sfTrue && TILE_BLOCK != sfFalse) {
 		my_printf("WARNING: IN AREA '%s', TILE BLOCK IS %d BUT",

@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int save(my_w_t *window)
+int save(window_t *window)
 {
 	int error_no = 0;
 
@@ -19,7 +19,7 @@ int save(my_w_t *window)
 	return (1);
 }
 
-int yes_save(my_w_t *window)
+int yes_save(window_t *window)
 {
 	int error_no = 0;
 
@@ -31,7 +31,7 @@ int yes_save(my_w_t *window)
 	return (1);
 }
 
-int no_save(my_w_t *window)
+int no_save(window_t *window)
 {
 	int error_no = 0;
 

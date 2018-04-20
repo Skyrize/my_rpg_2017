@@ -9,7 +9,7 @@
 #include "rpg.h"
 
 int get_an_area(char **infos, char **type,
-	hashmap_t **current_list, my_w_t *window)
+	hashmap_t **current_list, window_t *window)
 {
 	char **enc = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
 	char **x = my_str_to_word_array(infos[2], KEYWORD_SEPARATOR_CHAR);
@@ -34,7 +34,7 @@ int get_an_area(char **infos, char **type,
 }
 
 int get_a_tile(char **infos, char **type,
-	hashmap_t **current_list, my_w_t *window)
+	hashmap_t **current_list, window_t *window)
 {
 	char **block = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
 	char **x = my_str_to_word_array(infos[2], KEYWORD_SEPARATOR_CHAR);
@@ -58,7 +58,7 @@ int get_a_tile(char **infos, char **type,
 }
 
 int get_a_tile_texture(char **infos, char **type,
-	hashmap_t **current_list, my_w_t *window)
+	hashmap_t **current_list, window_t *window)
 {
 	if (!current_list)
 		return (84);

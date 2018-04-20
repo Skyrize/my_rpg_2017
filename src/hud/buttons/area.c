@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int change_area_hud(my_w_t *window)
+int change_area_hud(window_t *window)
 {
 	scene_t *area = hm_get(SCENES, "AREA_HUD");
 	sfText *pos_area = hm_get(area->texts, "POS");

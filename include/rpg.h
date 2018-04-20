@@ -292,6 +292,7 @@ typedef struct lib_s
 typedef struct game_s
 {
 	map_t map;
+	tool_t tools;
 	lib_t libraries;
 	player_t player;
 	movement_t movement;
@@ -301,23 +302,14 @@ typedef struct game_s
 	display_list_t *displayed_scenes;
 } game_t;
 
-typedef struct my_window_s
+typedef struct window_s
 {
 	int error_no;
 	sfEvent event;
 	sfRenderWindow *window;
 	ctime_t clocker;
 	game_t game;
-} my_w_t;
-
-#define GAME window->game
-#define SCENES GAME.scenes
-
-#define LIBS GAME.libraries
-#define AUDIO_LIB LIBS.audio
-#define FONTS_LIB LIBS.fonts
-#define TEXTURES_LIB LIBS.textures
-#define ITEMS_LIB LIBS.items
+} window_t;
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
 
@@ -328,14 +320,14 @@ typedef struct get_infos_s
 	char *filepath;
 	char *indicator;
 	const key_word_t *keys;
-	void (*savior)(my_w_t *);
+	void (*savior)(window_t *);
 } get_infos_t;
 
 typedef struct key_word_s
 {
 	char *key_word;
 	int nb_sub_keywords;
-	int (*fptr)(char **, char **, hashmap_t **, my_w_t *);
+	int (*fptr)(char **, char **, hashmap_t **, window_t *);
 	char **args;
 } key_word_t;
 
@@ -386,20 +378,31 @@ typedef struct button_s {
 } button_t;
 
 
-#define AUDIO_LIB GAME.libraries.audio
-#define FONTS_LIB GAME.libraries.fonts
-#define TEXTURES_LIB GAME.libraries.textures
-#define ITEMS_LIB GAME.libraries.items
+#define GAME window->game
+#define SCENES GAME.scenes
+#define CURRENT_SCENE GAME.current
+#define DISPLAYED_SCENES GAME.displayed_scenes
+#define FRAMERATE GAME.tools.framerate
+#define CLICK_RELEASED GAME.tools.click_released
+#define KEY_PLAYER GAME.key_player
 
-#define ZONE_COOR_X GAME.map.zone_coord.x
-#define ZONE_COOR_Y GAME.map.zone_coord.y
-#define AREA_COOR_X GAME.map.area_coord.x
-#define AREA_COOR_Y GAME.map.area_coord.y
-#define TILE_COOR_X GAME.map.tile_coord.x
-#define TILE_COOR_Y GAME.map.tile_coord.y
+#define LIBS GAME.libraries
+#define AUDIO_LIB LIBS.audio
+#define FONTS_LIB LIBS.fonts
+#define TEXTURES_LIB LIBS.textures
+#define ITEMS_LIB LIBS.items
 
-#define ZONE GAME.map.zones[ZONE_COOR_Y][ZONE_COOR_X]
-#define AREA GAME.map.areas[AREA_COOR_Y][AREA_COOR_X]
+#define MAP GAME.map
+
+#define ZONE_COOR_X MAP.zone_coord.x
+#define ZONE_COOR_Y MAP.zone_coord.y
+#define AREA_COOR_X MAP.area_coord.x
+#define AREA_COOR_Y MAP.area_coord.y
+#define TILE_COOR_X MAP.tile_coord.x
+#define TILE_COOR_Y MAP.tile_coord.y
+
+#define ZONE MAP.zones[ZONE_COOR_Y][ZONE_COOR_X]
+#define AREA MAP.areas[AREA_COOR_Y][AREA_COOR_X]
 #define TILE AREA.tiles[TILE_COOR_Y][TILE_COOR_X]
 
 #define ZONE_NAME ZONE.name
@@ -443,68 +446,68 @@ sfKeyboard_isKeyPressed((sfKeyCode) GAME.key_player->key)
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 ///temp
-int add_to_slot(slot_t *slot, sfVector2i *pos, my_w_t *window);
-int add_helmet(slot_t *slot, my_w_t *window);
-int add_chest(slot_t *slot, my_w_t *window);
-int add_pants(slot_t *slot, my_w_t *window);
-int add_gauntlets(slot_t *slot, my_w_t *window);
-int add_weapon(slot_t *slot, my_w_t *window);
+int add_to_slot(slot_t *slot, sfVector2i *pos, window_t *window);
+int add_helmet(slot_t *slot, window_t *window);
+int add_chest(slot_t *slot, window_t *window);
+int add_pants(slot_t *slot, window_t *window);
+int add_gauntlets(slot_t *slot, window_t *window);
+int add_weapon(slot_t *slot, window_t *window);
 
 
 /////////////////////////// INIT FUNCTIONS
 
-my_w_t init_my_window(void);
-int init_my_scenes(my_w_t *window);
-int init_my_audio_lib(my_w_t *window);
-int init_my_textures_lib(my_w_t *window);
-int init_my_fonts_lib(my_w_t *window);
-int init_my_map(my_w_t *window);
-int init_my_zone(my_w_t *window);
-int init_scene_lists(char **infos, my_w_t *window);
-int init_my_buttons(my_w_t *window);
-int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
-int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
-int init_my_player(my_w_t *window);
+window_t init_my_window(void);
+int init_my_scenes(window_t *window);
+int init_my_audio_lib(window_t *window);
+int init_my_textures_lib(window_t *window);
+int init_my_fonts_lib(window_t *window);
+int init_my_map(window_t *window);
+int init_my_zone(window_t *window);
+int init_scene_lists(char **infos, window_t *window);
+int init_my_buttons(window_t *window);
+int init_a_text(char **infos, window_t *window, hashmap_t *current_list);
+int init_an_obj(char **infos, window_t *window, hashmap_t *current_list);
+int init_my_player(window_t *window);
 
 /// Change ZONE_COOR_X and ZONE_COOR_Y and call load_my_zone to fulfill AREA maps with asked zone.
-int load_my_zone(my_w_t *window);
+int load_my_zone(window_t *window);
 
 ///Unload and free the current zone (ZONE_COOR_X/Y)
-void unload_my_zone(my_w_t *window);
+void unload_my_zone(window_t *window);
 
 /////////////////////////// SAVIOR TRICK FUNCTIONS
 
-void list_savior(my_w_t *window);
-void map_savior(my_w_t *window);
+void list_savior(window_t *window);
+void map_savior(window_t *window);
 
 /////////////////////////// INIT FROM PROG CONFIG FILE
 
-int analyse_my_project_config_file(my_w_t *window, get_infos_t *infos);
-int init_from_pcf(char **infos, my_w_t *window, const key_word_t *keys);
+int analyse_my_project_config_file(window_t *window, get_infos_t *infos);
+int init_from_pcf(char **infos, window_t *window, const key_word_t *keys);
 
 /////////////////////////// KEY WORDS FUNCTIONS
 
-int get_a_scene(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_list(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_index(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_obj(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_text(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_music(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_audio(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_font(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_texture_filepath(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_animated(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_max_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_max_offset(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_start_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_map(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_zone(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_area(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_tile(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_priority(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_scene(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_list(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_an_index(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_an_obj(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_text(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_music(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_an_audio(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_font(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_texture(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_texture_filepath(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_an_animated(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_rect_values(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_rect_max_values(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_rect_max_offset(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_rect_start_values(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_map(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_zone(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_an_area(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_tile(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, window_t *window);
+int get_a_priority(char **infos, char **type, hashmap_t **current_list, window_t *window);
 
 /////////////////////////// INIT WARNING : UNEXISTING
 
@@ -523,9 +526,9 @@ int check_invalid_index(int index);
 int check_invalid_file(int fd, char *filename);
 int check_invalid_window_init(int error_no);
 int check_invalid_animated(sfBool animated);
-int check_invalid_zone_coords(char *name, my_w_t *window);
-int check_invalid_area_coords(char *name, my_w_t *window);
-int check_invalid_tile_coords(char *name, my_w_t *window);
+int check_invalid_zone_coords(char *name, window_t *window);
+int check_invalid_area_coords(char *name, window_t *window);
+int check_invalid_tile_coords(char *name, window_t *window);
 int check_invalid_priority(int priority, char *texture_name);
 
 /////////////////////////// INIT WARNING : ALREADY_EXISTING
@@ -537,11 +540,11 @@ int check_already_existing_audio(sfMusic *audio, char *audio_name);
 int check_already_existing_font(sfFont *font, char *font_name);
 int check_already_existing_scene(bucket_t *scene, char *scene_name);
 int check_already_existing_music(sfMusic *music, char *music_name);
-int check_already_existing_zone_name(char *name, my_w_t *window);
-int check_already_existing_zone_coords(char *name, my_w_t *window);
-int check_already_existing_area_name(char *name, my_w_t *window);
-int check_already_existing_area_coords(char *name, my_w_t *window);
-int check_already_existing_tile_coords(my_w_t *window);
+int check_already_existing_zone_name(char *name, window_t *window);
+int check_already_existing_zone_coords(char *name, window_t *window);
+int check_already_existing_area_name(char *name, window_t *window);
+int check_already_existing_area_coords(char *name, window_t *window);
+int check_already_existing_tile_coords(window_t *window);
 
 /////////////////////////// INIT WARNING : MISSING
 
@@ -554,172 +557,172 @@ int check_missing_or_invalid_sub_keyword(const key_word_t *keys, int index, char
 int check_undefined_scene(bucket_t *scene, char *asked_list);
 int check_undefined_list(hashmap_t *current_list, char *obj);
 int check_undefined_texture(bucket_t *texture, char *data);
-int check_undefined_area(my_w_t *window);
-int check_undefined_tile(my_w_t *window);
+int check_undefined_area(window_t *window);
+int check_undefined_tile(window_t *window);
 
 /////////////////////////// IN GAME WARNING
 
 int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked);
-int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
-int check_invalid_map_display(my_w_t *window);
+int check_invalid_tile_display(tile_list_t *tile, int x, int y, window_t *window);
+int check_invalid_map_display(window_t *window);
 
 /////////////////////////// LIST CREATING
 
 ///Pass an obj_data and window and return a placed object ready to use. return NULL on fail
-obj_t *create_obj(obj_data_t *data, my_w_t *window);
+obj_t *create_obj(obj_data_t *data, window_t *window);
 
 ///Pass a scene name and the scene itself return a struct used to display a linked list of scenes. return NULL on fail
 display_list_t *create_a_display(char *name, scene_t *scene);
 
 ///Pass a texture name and window and return a tile_list used to display a linked list of tiles. return NULL on fail
-tile_list_t *create_a_tile(char *texture_name, my_w_t *window);
+tile_list_t *create_a_tile(char *texture_name, window_t *window);
 
 //////////////////////////// LIST ADDING
 
 ///Create an obj with passed data and add it to passed hashmap. Pass window too. return 0/84
-int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
+int add_obj_to_list(obj_data_t *data, hashmap_t *list, window_t *window);
 
 ///Create an obj with passed data and add it to passed hashmap. Pass window too. return 0/84
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 
 ///Create an obj with passed data and add it to passed hashmap. Pass window too. return 0/84
-int add_scene_to_display_list(bucket_t *scene, my_w_t *window);
+int add_scene_to_display_list(bucket_t *scene, window_t *window);
 
 ///Create an obj with passed data and add it to passed hashmap. Pass window too. return 0/84
-int add_tile_to_list(char *texture, my_w_t *window);
+int add_tile_to_list(char *texture, window_t *window);
 
 /////////////////////////// LIST READ
 
 ///Send window every bucket in a passed hasmap to a passed function pointer. Return 0/84 depending on pointer return
-int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)(bucket_t *, my_w_t *));
+int read_hashmap(window_t *window, hashmap_t *hashmap, int (*fptr)(bucket_t *, window_t *));
 
 /////////////////////////// LIST GET
 
 ///Pass a scene name and the window and return the display node containing the asked scene. Return NULL if nothing founded.
-display_list_t *get_scene_from_displayed(char *asked, my_w_t *window);
+display_list_t *get_scene_from_displayed(char *asked, window_t *window);
 
 /////////////////////////// LIST REMOVING
 
 ///Clean all displayed scenes.
-void clean_displayed_scenes(my_w_t *window);
+void clean_displayed_scenes(window_t *window);
 
 ///Clean all displayed scenes and if the scene name passed is found, let it in the list. If not, create and add it. return 0/84
-int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
+int clean_displayed_scenes_and_add_back(window_t *window, char *scene_name);
 
 ///Clean all displayed tiles.
-void clean_displayed_tiles(my_w_t *window);
+void clean_displayed_tiles(window_t *window);
 
 ///Clean only the scene with the name passed.
-void clean_displayed_scene_name(my_w_t *window, char *name_scenes);
+void clean_displayed_scene_name(window_t *window, char *name_scenes);
 
 /////////////////////////// MANAGE BUTTONS
 
-int manage_buttons(my_w_t *window);
-int button_display_hide_scene(char *scene_name, void (*update)(), my_w_t *window);
-int update_button(char *seek, char *replacement, scene_t *scene, my_w_t *window);
+int manage_buttons(window_t *window);
+int button_display_hide_scene(char *scene_name, void (*update)(), window_t *window);
+int update_button(char *seek, char *replacement, scene_t *scene, window_t *window);
 
 /////////////////////////// BUTTONS FUNCTIONS
 
-int start_game(my_w_t *window);
-int option(my_w_t *window);
-int credits(my_w_t *window);
-int exit_game(my_w_t *window);
-int stats(my_w_t *window);
-int credits(my_w_t *window);
-int inventory(my_w_t *window);
-int load(my_w_t *window);
-int map(my_w_t *window);
-int new_game(my_w_t *window);
-int pause_game(my_w_t *window);
-int quetes(my_w_t *window);
-int quit(my_w_t *window);
-int reload(my_w_t *window);
-int resume(my_w_t *window);
-int save(my_w_t *window);
-int main_menu(my_w_t *window);
-int manage_song(my_w_t *window);
-int frame_rate_more(my_w_t *window);
-int frame_rate_less(my_w_t *window);
-int select_varyan(my_w_t *window);
-int select_jaina(my_w_t *window);
-int select_avelus(my_w_t *window);
-int control_key(my_w_t *window);
-int key_french(my_w_t *window);
-int key_english(my_w_t *window);
-int no_save(my_w_t *window);
-int yes_save(my_w_t *window);
-int game(my_w_t *window);
-int slot(my_w_t *window);
-int helmet_slot(my_w_t *window);
-int chest_slot(my_w_t *window);
-int gauntlets_slot(my_w_t *window);
-int pants_slot(my_w_t *window);
-int weapon_slot(my_w_t *window);
+int start_game(window_t *window);
+int option(window_t *window);
+int credits(window_t *window);
+int exit_game(window_t *window);
+int stats(window_t *window);
+int credits(window_t *window);
+int inventory(window_t *window);
+int load(window_t *window);
+int map(window_t *window);
+int new_game(window_t *window);
+int pause_game(window_t *window);
+int quetes(window_t *window);
+int quit(window_t *window);
+int reload(window_t *window);
+int resume(window_t *window);
+int save(window_t *window);
+int main_menu(window_t *window);
+int manage_song(window_t *window);
+int frame_rate_more(window_t *window);
+int frame_rate_less(window_t *window);
+int select_varyan(window_t *window);
+int select_jaina(window_t *window);
+int select_avelus(window_t *window);
+int control_key(window_t *window);
+int key_french(window_t *window);
+int key_english(window_t *window);
+int no_save(window_t *window);
+int yes_save(window_t *window);
+int game(window_t *window);
+int slot(window_t *window);
+int helmet_slot(window_t *window);
+int chest_slot(window_t *window);
+int gauntlets_slot(window_t *window);
+int pants_slot(window_t *window);
+int weapon_slot(window_t *window);
 
 /////////////////////////// HUD FONCTIONS
 
-int set_hud_opacity(bucket_t *bucket, my_w_t *window);
-int manage_hud_opacity(my_w_t *window);
-int manage_life(my_w_t *window);
-int change_area_hud(my_w_t *window);
+int set_hud_opacity(bucket_t *bucket, window_t *window);
+int manage_hud_opacity(window_t *window);
+int manage_life(window_t *window);
+int change_area_hud(window_t *window);
 
 /////////////////////////// GAME FUNCTIONS
 
 ///Pass window, fulfill the timer struct in it.
-void get_time(my_w_t *window);
+void get_time(window_t *window);
 
 ///Main game function. return 0/84
-int game_lobby(my_w_t *window);
+int game_lobby(window_t *window);
 
 ///Update the 3 stats strings in a given scene with there actual values in Window.
-void update_stats(scene_t *scene, my_w_t *window);
+void update_stats(scene_t *scene, window_t *window);
 
 /////////////////////////// DISPLAY FUNCTIONS
 
 ///Read the linked list of displayed scenes and display there obj and text. If the first one is GAME, display map. return (0/84)
-int display_scenes(my_w_t *window);
+int display_scenes(window_t *window);
 
 ///Display passed obj and animate it.
-int display_obj(obj_t *obj, my_w_t *window);
+int display_obj(obj_t *obj, window_t *window);
 
 ///Read the passed hashmap and if the obj priority match the actual priority, send the object to display_obj.
-int display_objs(hashmap_t *objs, my_w_t *window);
+int display_objs(hashmap_t *objs, window_t *window);
 
 ///Display a passed text via a bucket (call with read_hashmap)
-int display_texts(bucket_t *text_bucket, my_w_t *window);
+int display_texts(bucket_t *text_bucket, window_t *window);
 
 ///Animate a given objetc every given seconds.
-void time_animation(obj_t *obj, float seconds, my_w_t *window);
+void time_animation(obj_t *obj, float seconds, window_t *window);
 
 ///Read and display the map (in function of AREA_COOR_X/Y) in function of their priorities
-int display_map(my_w_t *window);
+int display_map(window_t *window);
 
 /////////////////////////// INPUT
 
-void analyse_events(my_w_t *window);
+void analyse_events(window_t *window);
 
 /////////////////////////// DESTROY FUNCTIONS
 
-void destroy_and_free(my_w_t *window);
+void destroy_and_free(window_t *window);
 void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
 
 /////////////////////////// PLAYER FUNCTIONS
 
-bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera, sfVector2i pos_zone, my_w_t *window);
-bool move_player_zone(direction_t dir, my_w_t *window, bool check);
-bool move_player_area(direction_t dir, my_w_t *window, bool check);
-bool move_player(direction_t dir, my_w_t *window, bool check);
-void anim_player(my_w_t *window);
-void set_anim_side(my_w_t *window);
-void init_movements(my_w_t *window);
-void smooth_move_player(my_w_t *window);
-void set_initial_player_pos(my_w_t *window);
-void set_waiting_player_rect(my_w_t *window);
-bool is_pressing_controls(my_w_t *window);
-void update_moving_state(my_w_t *window);
-bool is_player_moving(my_w_t *window);
+bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera, sfVector2i pos_zone, window_t *window);
+bool move_player_zone(direction_t dir, window_t *window, bool check);
+bool move_player_area(direction_t dir, window_t *window, bool check);
+bool move_player(direction_t dir, window_t *window, bool check);
+void anim_player(window_t *window);
+void set_anim_side(window_t *window);
+void init_movements(window_t *window);
+void smooth_move_player(window_t *window);
+void set_initial_player_pos(window_t *window);
+void set_waiting_player_rect(window_t *window);
+bool is_pressing_controls(window_t *window);
+void update_moving_state(window_t *window);
+bool is_player_moving(window_t *window);
 
 /////////////////////////// END
 

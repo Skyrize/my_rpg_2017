@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int init_my_audio_lib(my_w_t *window)
+int init_my_audio_lib(window_t *window)
 {
 	const key_word_t audio_keys[] = {
 	{"AUDIO", 1, &get_an_audio, (char *[]) {"FILEPATH", NULL}},
@@ -24,7 +24,7 @@ int init_my_audio_lib(my_w_t *window)
 	return (0);
 }
 
-int init_my_fonts_lib(my_w_t *window)
+int init_my_fonts_lib(window_t *window)
 {
 	const key_word_t font_keys[] = {
 	{"FONT", 1, &get_a_font, (char *[]) {"FILEPATH", NULL}},
@@ -40,7 +40,7 @@ int init_my_fonts_lib(my_w_t *window)
 	return (0);
 }
 
-int init_my_textures_lib(my_w_t *window)
+int init_my_textures_lib(window_t *window)
 {
 	const key_word_t texture_keys[] = {
 	{"TEXTURE", 0, &get_a_texture, NULL},

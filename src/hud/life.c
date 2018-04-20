@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int manage_life(my_w_t *window)
+int manage_life(window_t *window)
 {
 	float ratios;
 	scene_t *health = hm_get(SCENES, "HEALTH_HUD");

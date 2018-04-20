@@ -20,7 +20,7 @@ obj_data_t get_obj_data_from_infos(obj_infos_t *obj)
 	return (data);
 }
 
-int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list)
+int init_an_obj(char **infos, window_t *window, hashmap_t *current_list)
 {
 	obj_infos_t obj;
 	obj_data_t data;
@@ -41,7 +41,7 @@ int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list)
 	return (0);
 }
 
-text_data_t get_text_data_from_infos(text_infos_t *text, my_w_t *window)
+text_data_t get_text_data_from_infos(text_infos_t *text, window_t *window)
 {
 	text_data_t data;
 
@@ -68,7 +68,7 @@ text_infos_t get_text_infos(char **infos)
 	return (text);
 }
 
-int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list)
+int init_a_text(char **infos, window_t *window, hashmap_t *current_list)
 {
 	text_infos_t text = get_text_infos(infos);
 	text_data_t data = get_text_data_from_infos(&text, window);

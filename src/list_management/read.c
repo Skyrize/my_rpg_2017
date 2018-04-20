@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int read_bucket(my_w_t *window, bucket_t *bucket, int (*fptr)(bucket_t *, my_w_t *))
+int read_bucket(window_t *window, bucket_t *bucket, int (*fptr)(bucket_t *, window_t *))
 {
 	bucket_t *tmp = bucket;
 	int error_no = 0;
@@ -22,7 +22,7 @@ int read_bucket(my_w_t *window, bucket_t *bucket, int (*fptr)(bucket_t *, my_w_t
 	return (0);
 }
 
-int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)(bucket_t *, my_w_t *))
+int read_hashmap(window_t *window, hashmap_t *hashmap, int (*fptr)(bucket_t *, window_t *))
 {
 	bucket_t *tmp;
 	int error_no = 0;

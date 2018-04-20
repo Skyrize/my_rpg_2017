@@ -16,7 +16,7 @@ void increment_opacity(sfRectangleShape *rec, int ratio)
 	sfRectangleShape_setFillColor(rec, color);
 }
 
-int set_hud_opacity(bucket_t *bucket, my_w_t *window)
+int set_hud_opacity(bucket_t *bucket, window_t *window)
 {
 	obj_t *obj = bucket->value;
 	sfRectangleShape *rec;
@@ -33,7 +33,7 @@ int set_hud_opacity(bucket_t *bucket, my_w_t *window)
 	return (0);
 }
 
-int manage_hud_opacity(my_w_t *window)
+int manage_hud_opacity(window_t *window)
 {
 	scene_t *health = hm_get(SCENES, "HEALTH_HUD");
 	scene_t *game_bar = hm_get(SCENES, "GAME");

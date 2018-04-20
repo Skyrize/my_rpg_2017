@@ -39,7 +39,7 @@ int check_undefined_list(hashmap_t *current_list, char *obj)
 	return (0);
 }
 
-int check_undefined_area(my_w_t *window)
+int check_undefined_area(window_t *window)
 {
 	if (AREA_COOR_X == -1 || AREA_COOR_Y == -1) {
 		my_printf("WARNING: YOU TRIED TO ADD A TILE AT %d/%d BUT",
@@ -51,7 +51,7 @@ int check_undefined_area(my_w_t *window)
 	return (0);
 }
 
-int check_undefined_tile(my_w_t *window)
+int check_undefined_tile(window_t *window)
 {
 	if (TILE_COOR_X == -1 || TILE_COOR_Y == -1) {
 		my_printf("WARNING: YOU TRIED TO ADD TEXTURE '%s' BUT YOU ");

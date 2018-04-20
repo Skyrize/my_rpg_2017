@@ -9,15 +9,15 @@
 #include "rpg.h"
 
 int get_a_music(char **infos, char **type, hashmap_t **current_list,
-	my_w_t *window)
+	window_t *window)
 {
 	scene_t *current_scene;
 
 	(void)infos;
 	(void)current_list;
-	if (check_undefined_scene(window->current, infos[0]) != 0)
+	if (check_undefined_scene(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
-	current_scene = window->current->value;
+	current_scene = CURRENT_SCENE->value;
 	if (check_already_existing_music(current_scene->music,
 		type[1]) != 0)
 		return (84);

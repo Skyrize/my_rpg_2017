@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void affichage_inventaire_a_refaire(my_w_t *window)
+void affichage_inventaire_a_refaire(window_t *window)
 {
 	if (PLAYER_WEAPON.item.obj)
 		sfRenderWindow_drawRectangleShape(window->window, PLAYER_WEAPON.item.obj->obj, NULL);
@@ -28,9 +28,9 @@ void affichage_inventaire_a_refaire(my_w_t *window)
 	}
 }
 
-int display_scenes(my_w_t *window)
+int display_scenes(window_t *window)
 {
-	display_list_t *tmp = window->displayed_scenes;
+	display_list_t *tmp = DISPLAYED_SCENES;
 
 	if (my_strcmp(tmp->scene_name, MAP_SCENE_NAME) == 0)
 		if (display_map(window) != 0)

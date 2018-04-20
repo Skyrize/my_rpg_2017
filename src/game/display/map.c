@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int display_tiles(int x, int y, int priority, my_w_t *window)
+int display_tiles(int x, int y, int priority, window_t *window)
 {
 	tile_list_t *tmp = AREA.tiles[y][x].displayed_tiles;
 
@@ -28,7 +28,7 @@ int display_tiles(int x, int y, int priority, my_w_t *window)
 	return (0);
 }
 
-int display_area(int priority, my_w_t *window)
+int display_area(int priority, window_t *window)
 {
 	for (int y = 0; y != TILE_TAB_Y; y++) {
 		for (int x = 0; x != TILE_TAB_X; x++)
@@ -40,7 +40,7 @@ int display_area(int priority, my_w_t *window)
 	return (0);
 }
 
-int display_map(my_w_t *window)
+int display_map(window_t *window)
 {
 	if (check_invalid_map_display(window) != 0)
 		return (84);
