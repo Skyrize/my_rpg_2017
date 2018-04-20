@@ -55,6 +55,7 @@ int game(my_w_t *window)
 		return (84);
 	if (add_scene_to_display_list(
 		hm_get_bucket(window->scenes, "AREA_HUD"), window) != 0)
+		return (84);
 	return (1);
 }
 

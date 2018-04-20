@@ -16,4 +16,5 @@ int change_area_hud(my_w_t *window)
 		return (0);
 	sfText_setString(pos_area, my_strcat(int_to_str(AREA_COOR_X),
 				my_strcat(",", int_to_str(AREA_COOR_Y))));
+	return (0);
 }

@@ -609,7 +609,7 @@ int game(my_w_t *window);
 
 /////////////////////////// HUD FONCTIONS
 
-void set_hud_opacity(bucket_t *bucket, my_w_t *window);
+int set_hud_opacity(bucket_t *bucket, my_w_t *window);
 int manage_hud_opacity(my_w_t *window);
 int manage_life(my_w_t *window);
 int change_area_hud(my_w_t *window);
