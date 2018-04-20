@@ -42,8 +42,8 @@ int init_scene_lists(char **infos, my_w_t *window)
 	if (!value)
 		return (84);
 	hm_add(window->scenes, name[1], value);
-	free_char_2d(name);
-	free_char_2d(priority);
+	my_destroy_tab(name);
+	my_destroy_tab(priority);
 	return (0);
 }
 

@@ -29,8 +29,8 @@ char get_my_char(int fd)
 
 	if (len == i) {
 		len = read(fd, str, READ_SIZE);
-		if (len == 0 || len == -1)
-			return (-1);
+		if (len == 0)
+			return (0);
 		i = 0;
 	}
 	i++;
@@ -51,12 +51,11 @@ char *my_get_next_line(int fd)
 			str[i] = 0;
 			break;
 		}
-		if ((str[i] == -1 && i == 0) || str[i] == 0)
+		if (str[i] == 0 && i == 0) {
+			free(str);
 			return (NULL);
-		if (str[i] == -1) {
-			str[i] = 0;
+		} else if (str[i] == 0 && i != 0)
 			return (str);
-		}
 	}
 	return (str);
 }

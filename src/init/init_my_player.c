@@ -8,9 +8,9 @@
 #include "my.h"
 #include "rpg.h"
 
-int init_characteristics_scene(char **desc, obj_data_t *data, my_w_t *window)
+int init_stats_scene(char **desc, obj_data_t *data, my_w_t *window)
 {
-	scene_t *scene = hm_get(window->scenes, CHARAC_GAME);
+	scene_t *scene = hm_get(window->scenes, STATS_GAME);
 	obj_data_t special_data = {"SPECIAL_CHARAC", desc[2], sfFalse,
 	(sfVector2f){316, 215}};
 	sfText *name = hm_get(scene->texts, "CHARAC");
@@ -24,7 +24,7 @@ int init_characteristics_scene(char **desc, obj_data_t *data, my_w_t *window)
 		return (84);
 	sfText_setString(name, desc[0]);
 	sfText_setString(lore, desc[1]);
-	update_characteristics(scene, window);
+	update_stats(scene, window);
 	return (0);
 }
 
@@ -38,16 +38,12 @@ int select_varyan(my_w_t *window)
 	PLAYER_CHARACTER = create_obj(&charac_data, window);
 	if (!PLAYER_CHARACTER)
 		return (84);
-	PLAYER_GOLDS = 100;
-	for (int y = 0; y != INVENTORY_SIZE_Y; y++)
-		for (int x = 0; x != INVENTORY_SIZE_X; x++)
-			PLAYER_ITEMS[y][x] = NULL;
 	PLAYER_HEALTH = 100;
 	PLAYER_CHARAC.max_health = 100;
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Strenght";
 	PLAYER_SPECIALITY = 50;
-	if (init_characteristics_scene(desc, &charac_data, window) != 0)
+	if (init_stats_scene(desc, &charac_data, window) != 0)
 		return (84);
 	return (game(window));
 }
@@ -62,16 +58,12 @@ int select_jaina(my_w_t *window)
 	PLAYER_CHARACTER = create_obj(&charac_data, window);
 	if (!PLAYER_CHARACTER)
 		return (84);
-	PLAYER_GOLDS = 100;
-	for (int y = 0; y != INVENTORY_SIZE_Y; y++)
-		for (int x = 0; x != INVENTORY_SIZE_X; x++)
-			PLAYER_ITEMS[y][x] = NULL;
 	PLAYER_HEALTH = 100;
 	PLAYER_CHARAC.max_health = 100;
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Wisdom";
 	PLAYER_SPECIALITY = 50;
-	if (init_characteristics_scene(desc, &charac_data, window) != 0)
+	if (init_stats_scene(desc, &charac_data, window) != 0)
 		return (84);
 	return (game(window));
 }
@@ -86,16 +78,12 @@ int select_avelus(my_w_t *window)
 	PLAYER_CHARACTER = create_obj(&charac_data, window);
 	if (!PLAYER_CHARACTER)
 		return (84);
-	PLAYER_GOLDS = 100;
-	for (int y = 0; y != INVENTORY_SIZE_Y; y++)
-		for (int x = 0; x != INVENTORY_SIZE_X; x++)
-			PLAYER_ITEMS[y][x] = NULL;
 	PLAYER_HEALTH = 100;
 	PLAYER_CHARAC.max_health = 100;
 	PLAYER_ARMOR = 50;
 	PLAYER_SPECIALITY_NAME = "Agility";
 	PLAYER_SPECIALITY = 50;
-	if (init_characteristics_scene(desc, &charac_data, window) != 0)
+	if (init_stats_scene(desc, &charac_data, window) != 0)
 		return (84);
 	return (game(window));
 }

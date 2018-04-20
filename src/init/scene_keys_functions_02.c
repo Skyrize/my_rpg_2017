@@ -21,7 +21,7 @@ int get_a_music(char **infos, char **type, hashmap_t **current_list,
 	if (check_already_existing_music(current_scene->music,
 		type[1]) != 0)
 		return (84);
-	current_scene->music = hm_get(window->audio_lib, type[1]);
+	current_scene->music = hm_get(AUDIO_LIB, type[1]);
 	if (check_unexisting_music(current_scene->music, type[1]) != 0)
 		return (84);
 	return (0);

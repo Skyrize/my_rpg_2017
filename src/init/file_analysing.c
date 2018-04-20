@@ -59,6 +59,7 @@ int analyse_my_project_config_file(my_w_t *window, get_infos_t *infos)
 		free(line);
 		line = my_get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 	return (error_no);
 }

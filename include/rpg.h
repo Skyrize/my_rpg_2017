@@ -67,7 +67,7 @@
 #define QUIT_GAME "QUIT"
 #define QUESTS_GAME "QUESTS"
 #define PAUSE_GAME "PAUSE"
-#define CHARAC_GAME "CHARACTERISTICS"
+#define STATS_GAME "STATS"
 #define EXIT_GAME "EXIT"
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
@@ -177,29 +177,43 @@ typedef struct display_list_s
 	display_list_t *next;
 } display_list_t;
 
+/////////////////////////////// INVENTORY ///////////////////////////////////
+typedef struct stat_s stat_t;
+
+typedef struct item_s
+{
+	obj_t *item;
+	stat_t *stats;
+} item_t;
+
+typedef struct inventory_s
+{
+	int golds;
+	item_t weapon;
+	item_t helmet;
+	item_t chest;
+	item_t gauntlets;
+	item_t pants;
+	item_t items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+} inventory_t;
+
 /////////////////////////////////// PLAYER ////////////////////////////////
 
-typedef struct characteristic_s
+typedef struct stat_s
 {
 	int health;
 	int max_health;
 	int armor;
 	char *speciality_name;
 	int speciality;
-} characteristic_t;
-
-typedef struct inventory_s
-{
-	int golds;
-	obj_t *inventory_items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
-} inventory_t;
+} stat_t;
 
 typedef struct player_s
 {
 	char *name;
 	obj_t *character;
 	inventory_t inventory;
-	characteristic_t characteristics;
+	stat_t stats;
 } player_t;
 
 typedef enum direction_e {
@@ -208,6 +222,7 @@ typedef enum direction_e {
 	LEFT,
 	RIGHT
 } direction_t;
+
 /////////////////////////////// CONTROLS ///////////////////////////////////
 
 typedef struct key_control_s
@@ -229,6 +244,8 @@ typedef struct key_control_s
 
 typedef struct movement_s {
 	sfVector2i target_tile;
+	int anim_mult;
+	bool is_moving;
 } movement_t;
 
 typedef struct game_s
@@ -244,6 +261,14 @@ typedef struct ctime_s
 	float seconds;
 } ctime_t;
 
+typedef struct lib_s
+{
+	hashmap_t *audio;
+	hashmap_t *fonts;
+	hashmap_t *textures;
+	hashmap_t *items;
+} lib_t;
+
 typedef struct my_window_s
 {
 	int error_no;
@@ -256,15 +281,14 @@ typedef struct my_window_s
 	map_t map;
 	game_t game;
 	bucket_t *current;
+	lib_t libraries;
 	hashmap_t *scenes;
-	hashmap_t *audio_lib;
-	hashmap_t *fonts_lib;
-	hashmap_t *textures_lib;
 	display_list_t *displayed_scenes;
 	key_control_t *key_player;
 } my_w_t;
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
+
 typedef struct key_word_s key_word_t;
 
 typedef struct get_infos_s
@@ -329,6 +353,10 @@ typedef struct button_s {
 	int (*instruction)();
 } button_t;
 
+#define AUDIO_LIB window->libraries.audio
+#define FONTS_LIB window->libraries.fonts
+#define TEXTURES_LIB window->libraries.textures
+#define ITEMS_LIB window->libraries.items
 
 #define ZONE_COOR_X window->map.zone_coord.x
 #define ZONE_COOR_Y window->map.zone_coord.y
@@ -356,15 +384,26 @@ typedef struct button_s {
 #define PLAYER_NAME PLAYER.name
 #define PLAYER_CHARACTER PLAYER.character
 #define PLAYER_INVENTORY PLAYER.inventory
-#define PLAYER_CHARAC PLAYER.characteristics
+#define PLAYER_CHARAC PLAYER.stats
 
 #define PLAYER_GOLDS PLAYER_INVENTORY.golds
-#define PLAYER_ITEMS PLAYER_INVENTORY.inventory_items
+#define PLAYER_ITEMS PLAYER_INVENTORY.items
+#define PLAYER_WEAPON PLAYER_INVENTORY.weapon
+#define PLAYER_HELMET PLAYER_INVENTORY.helmet
+#define PLAYER_CHEST PLAYER_INVENTORY.chest
+#define PLAYER_GAUNTLETS PLAYER_INVENTORY.gauntlets
+#define PLAYER_PANTS PLAYER_INVENTORY.pants
 
 #define PLAYER_HEALTH PLAYER_CHARAC.health
 #define PLAYER_ARMOR PLAYER_CHARAC.armor
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
 #define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
+
+#define MIN(X, Y) X >= Y ? Y : X
+#define MAX(X, Y) X >= Y ? X : Y
+
+#define KEY_PRESSED(key) \
+sfKeyboard_isKeyPressed((sfKeyCode) window->key_player->key)
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -386,6 +425,9 @@ int init_my_player(my_w_t *window);
 
 /// Change ZONE_COOR_X and ZONE_COOR_Y and call load_my_zone to fulfill AREA maps with asked zone.
 int load_my_zone(my_w_t *window);
+
+///Unload and free the current zone (ZONE_COOR_X/Y)
+void unload_my_zone(my_w_t *window);
 
 /////////////////////////// SAVIOR TRICK FUNCTIONS
 
@@ -580,17 +622,27 @@ void get_time(my_w_t *window);
 ///Main game function. return 0/84
 int game_lobby(my_w_t *window);
 
-///Update the 3 characteristics strings in a given scene with there actual values in Window.
-void update_characteristics(scene_t *scene, my_w_t *window);
+///Update the 3 stats strings in a given scene with there actual values in Window.
+void update_stats(scene_t *scene, my_w_t *window);
 
 /////////////////////////// DISPLAY FUNCTIONS
 
 ///Read the linked list of displayed scenes and display there obj and text. If the first one is GAME, display map. return (0/84)
 int display_scenes(my_w_t *window);
+
+///Display passed obj and animate it.
 int display_obj(obj_t *obj, my_w_t *window);
+
+///Read the passed hashmap and if the obj priority match the actual priority, send the object to display_obj.
 int display_objs(hashmap_t *objs, my_w_t *window);
+
+///Display a passed text via a bucket (call with read_hashmap)
 int display_texts(bucket_t *text_bucket, my_w_t *window);
+
+///Animate a given objetc every given seconds.
 void time_animation(obj_t *obj, float seconds, my_w_t *window);
+
+///Read and display the map (in function of AREA_COOR_X/Y) in function of their priorities
 int display_map(my_w_t *window);
 
 /////////////////////////// INPUT
@@ -606,17 +658,19 @@ void texture_destroy(texture_t *texture);
 
 /////////////////////////// PLAYER FUNCTIONS
 
-void unload_my_zone(my_w_t *window);
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera, sfVector2i pos_zone, my_w_t *window);
 bool move_player_zone(direction_t dir, my_w_t *window, bool check);
 bool move_player_area(direction_t dir, my_w_t *window, bool check);
 bool move_player(direction_t dir, my_w_t *window, bool check);
 void anim_player(my_w_t *window);
-void set_init_player_rect(my_w_t *window);
+void set_anim_side(my_w_t *window);
 void init_movements(my_w_t *window);
 void smooth_move_player(my_w_t *window);
 void set_initial_player_pos(my_w_t *window);
 void set_waiting_player_rect(my_w_t *window);
+bool is_pressing_controls(my_w_t *window);
+void update_moving_state(my_w_t *window);
+bool is_player_moving(my_w_t *window);
 
 /////////////////////////// END
 

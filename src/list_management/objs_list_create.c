@@ -20,7 +20,7 @@ void create_obj_rect(obj_t *new_obj, texture_t *texture)
 
 obj_t *create_obj(obj_data_t *data, my_w_t *window)
 {
-	texture_t *texture = hm_get(window->textures_lib, data->type);
+	texture_t *texture = hm_get(TEXTURES_LIB, data->type);
 	obj_t *new_obj = malloc(sizeof(obj_t));
 	sfVector2f rec_size;
 

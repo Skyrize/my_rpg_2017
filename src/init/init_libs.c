@@ -16,7 +16,7 @@ int init_my_audio_lib(my_w_t *window)
 	get_infos_t infos = {"pcf/sounds.pcf", INIT_INDICATOR, audio_keys,
 	&list_savior};
 
-	window->audio_lib = hm_create(64, &sfMusic_destroy);
+	AUDIO_LIB = hm_create(64, &sfMusic_destroy);
 	if (analyse_my_project_config_file(window, &infos) != 0) {
 		my_printf("WARNING: ERROR IN AUDIO LIB INIT !\n");
 		return (84);
@@ -32,7 +32,7 @@ int init_my_fonts_lib(my_w_t *window)
 	get_infos_t infos = {"pcf/fonts.pcf", INIT_INDICATOR, font_keys,
 	&list_savior};
 
-	window->fonts_lib = hm_create(16, &sfFont_destroy);
+	FONTS_LIB = hm_create(16, &sfFont_destroy);
 	if (analyse_my_project_config_file(window, &infos) != 0) {
 		my_printf("WARNING: ERROR IN FONTS LIB INIT !\n");
 		return (84);
@@ -57,7 +57,7 @@ int init_my_textures_lib(my_w_t *window)
 	get_infos_t infos = {"pcf/textures.pcf", INIT_INDICATOR, texture_keys,
 	&list_savior};
 
-	window->textures_lib = hm_create(512, &texture_destroy);
+	TEXTURES_LIB = hm_create(512, &texture_destroy);
 	if (analyse_my_project_config_file(window, &infos) != 0) {
 		my_printf("WARNING: ERROR IN TEXTURES LIB INIT !\n");
 		return (84);

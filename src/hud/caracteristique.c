@@ -9,6 +9,6 @@
 
 int characteristique(my_w_t *window)
 {
-	return (button_display_hide_scene(CHARAC_GAME,
-		&update_characteristics, window));
+	return (button_display_hide_scene(STATS_GAME,
+		&update_stats, window));
 }

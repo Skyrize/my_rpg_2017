@@ -9,8 +9,6 @@
 //Format:		RECT_MAX=DATA position maximum du carré pendant son déplacement (ne pas oublié que c'est le point en haut à gauche donc compter aussi la taille du offset, peut être laissé à 0/0 si ANIMATED=0)
 //Format:		RECT_OFFSET=DATA Déplacement du carré en x et en y (si ANIMATED=0 vous pouvez laisser à 0/0)
 
--BACKGROUNDS
-
 ITEMS:
 ---------PANTS:
 	TEXTURE=MYTHIC_PANTS_01
@@ -1499,7 +1497,7 @@ TILES:
 		RECT_OFFSET=DATA X=0 Y=0
 	TEXTURE=WELL_UP_01
 		FILEPATH=textures/tiles/misc/well_up_01.png
-		PRIORITY=2
+		PRIORITY=4
 		ANIMATED=0
 		RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=50 HEIGHT=50
 		RECT_START=DATA X=0 Y=0
@@ -1507,7 +1505,7 @@ TILES:
 		RECT_OFFSET=DATA X=0 Y=0
 	TEXTURE=WELL_DOWN_01
 		FILEPATH=textures/tiles/misc/well_down_01.png
-		PRIORITY=4
+		PRIORITY=2
 		ANIMATED=0
 		RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=50 HEIGHT=50
 		RECT_START=DATA X=0 Y=0
@@ -1914,8 +1912,8 @@ HUD:
 		RECT_START=DATA X=0 Y=0
 		RECT_MAX=DATA X=0 Y=0
 		RECT_OFFSET=DATA X=0 Y=0
-	TEXTURE=CHARACTERISTICS_BG
-		FILEPATH=textures/hud/backgrounds/characteristics_bg.png
+	TEXTURE=STATS_BG
+		FILEPATH=textures/hud/backgrounds/stats_bg.png
 		PRIORITY=1
 		ANIMATED=0
 		RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=216 HEIGHT=480

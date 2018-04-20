@@ -15,7 +15,7 @@ int get_a_texture(char **infos, char **type,
 
 	if (!texture)
 		return (84);
-	*current_list = window->textures_lib;
+	*current_list = TEXTURES_LIB;
 	if (check_already_existing_texture(*current_list, type[1]) != 0)
 		return (84);
 	texture->texture = NULL;
