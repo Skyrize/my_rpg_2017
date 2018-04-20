@@ -10,11 +10,11 @@
 int change_area_hud(my_w_t *window)
 {
 	scene_t *area = hm_get(window->scenes, "AREA_HUD");
-	sfText *x = hm_get(area->objs, "X");
-	sfText *y = hm_get(area->objs, "Y");
+	sfText *pos_area = hm_get(area->texts, "POS");
 
-	if (!x || !y)
+	if (!pos_area)
 		return (0);
-	sfText_setString(x, my_strcat("X = ", int_to_str(AREA_COOR_X)));
-	sfText_setString(y, my_strcat("Y = ", int_to_str(AREA_COOR_Y)));
+	sfText_setString(pos_area, my_strcat(int_to_str(AREA_COOR_X),
+				my_strcat(",", int_to_str(AREA_COOR_Y))));
+	return (0);
 }
