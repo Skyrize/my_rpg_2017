@@ -43,8 +43,8 @@ void smooth_move_player(my_w_t *window)
 	sfVector2i act_pos = window->map.tile_coord;
 	sfVector2i *target_pos = &(window->game.movement.target_tile);
 	sfVector2f s_pos;
-	sfVector2f offset_f = (sfVector2f) {(target_pos->x - act_pos.x) * 2,
-					    (target_pos->y - act_pos.y) * 2};
+	sfVector2f offset_f = (sfVector2f) {(target_pos->x - act_pos.x) * 5,
+					    (target_pos->y - act_pos.y) * 5};
 	static bool is_check = false;
 
 	if (my_strcmp(window->current->key, "GAME") != 0)
