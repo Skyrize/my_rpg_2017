@@ -151,20 +151,14 @@ ________________________________________________________________________________
 ________________________________________________________________________________
 -CREDITS
 	SCENE=CREDITS PRIORITY=2
-		LIST=OBJS
-			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
 
 ________________________________________________________________________
 -QUIT
 	SCENE=QUIT PRIORITY=2
-		LIST=OBJS
-			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
 
 ________________________________________________________________________________
 -MAP
 	SCENE=MAP PRIORITY=2
-		LIST=OBJS
-			OBJ=BACKGROUND TEXTURE=BACKPACK BUTTON=0 X=1400 Y=600
 
 ________________________________________________________________________________
 -INVENTORY
