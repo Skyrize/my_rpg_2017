@@ -24,13 +24,12 @@ int init_inventory(my_w_t *window)
 	slot_t schest;
 	slot_t sgaunt;
 	slot_t spants;
+	slot_t item;
 	item_t weap;
 	item_t hel;
 	item_t chest;
 	item_t gaunt;
 	item_t pants;
-	item_t i00;
-	item_t i01;
 	sweap.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_BOW_00", 1, V2F(585, 135)}, window);
 	shel.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_HELMET_00", 1, V2F(635, 85)}, window);
 	schest.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
@@ -41,8 +40,8 @@ int init_inventory(my_w_t *window)
 	obj_t *c = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
 	obj_t *g = create_obj(&(obj_data_t){"ITEM", "COMMON_GAUNTLETS_00", 1, V2F(690, 135)}, window);
 	obj_t *p = create_obj(&(obj_data_t){"ITEM", "COMMON_PANTS_00", 1, V2F(635, 185)}, window);
-	obj_t *i0 = create_obj(&(obj_data_t){"ITEM", "MYTHIC_CHEST_01", 1, V2F(635, 185)}, window);
-	obj_t *i1 = create_obj(&(obj_data_t){"ITEM", "MYTHIC_HELMET_01", 1, V2F(635, 185)}, window);
+	ITEM_SELECTOR.base = NULL;
+	ITEM_SELECTOR.dest = NULL;
 	PLAYER_HELMET.item.obj = NULL;
 	PLAYER_CHEST.item.obj = NULL;
 	PLAYER_GAUNTLETS.item.obj = NULL;
@@ -54,7 +53,7 @@ int init_inventory(my_w_t *window)
 		for (int y = 0; y != INVENTORY_SIZE_Y; y++) {
 			PLAYER_ITEMS[y][x].item.obj = NULL;
 		}
-	PLAYER_ITEMS[0][0].slot = create_obj(&(obj_data_t){"ITEM", "INVENTORY", 1, V2F(635, 185)}, window);
+	item.item.obj = create_obj(&(obj_data_t){"ITEM", "MYTHIC_CHEST_01", 1, V2F(635, 185)}, window);
 	weap.stats = (item_stat_t){100, 10, 10};
 	hel.stats = (item_stat_t){100, 10, 10};
 	chest.stats = (item_stat_t){100, 10, 10};
@@ -75,6 +74,7 @@ int init_inventory(my_w_t *window)
 	add_pants(&spants, window);
 	add_weapon(&sweap, window);
 	add_gauntlets(&sgaunt, window);
+	add_to_slot(&item, &V2I(0, 0), window);
 	return (0);
 }
 

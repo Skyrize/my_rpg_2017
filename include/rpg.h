@@ -191,23 +191,23 @@ typedef struct item_s
 	item_stat_t stats;
 } item_t;
 
-typedef struct item_getter_s
-{
-	sfVector2f base_emplacement;
-	bucket_t *slot_grabbed;
-	bucket_t *slot_drop;
-	item_t *selected;
-} item_getter_t;
-
 typedef struct slot_s
 {
 	item_t item;
 	obj_t *slot;
 } slot_t;
 
+typedef struct item_getter_s
+{
+	sfVector2f base_emplacement;
+	slot_t *base;
+	slot_t *dest;
+} item_getter_t;
+
 typedef struct inventory_s
 {
 	int golds;
+	item_getter_t selector;
 	slot_t weapon;
 	slot_t helmet;
 	slot_t chest;
@@ -413,6 +413,8 @@ typedef struct button_s {
 #define PLAYER_GAUNTLETS PLAYER_INVENTORY.gauntlets
 #define PLAYER_PANTS PLAYER_INVENTORY.pants
 
+#define ITEM_SELECTOR PLAYER_INVENTORY.selector
+
 #define PLAYER_HEALTH PLAYER_CHARAC.health
 #define PLAYER_ARMOR PLAYER_CHARAC.armor
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
@@ -425,6 +427,14 @@ typedef struct button_s {
 sfKeyboard_isKeyPressed((sfKeyCode) window->key_player->key)
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
+
+///temp
+int add_to_slot(slot_t *slot, sfVector2i *pos, my_w_t *window);
+int add_helmet(slot_t *slot, my_w_t *window);
+int add_chest(slot_t *slot, my_w_t *window);
+int add_pants(slot_t *slot, my_w_t *window);
+int add_gauntlets(slot_t *slot, my_w_t *window);
+int add_weapon(slot_t *slot, my_w_t *window);
 
 
 /////////////////////////// INIT FUNCTIONS

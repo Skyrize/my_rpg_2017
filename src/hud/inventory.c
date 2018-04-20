@@ -114,6 +114,7 @@ int add_weapon(slot_t *slot, my_w_t *window)
 
 int helmet_slot(my_w_t *window)
 {
+	///rajouter les checks
 	(void)window;
 	my_printf("Helmet slot in construction.\n");
 	return (0);
