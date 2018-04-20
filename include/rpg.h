@@ -648,7 +648,8 @@ int set_hud_opacity(bucket_t *bucket, my_w_t *window);
 int manage_hud_opacity(my_w_t *window);
 int manage_life(my_w_t *window);
 int change_area_hud(my_w_t *window);
-
+int manage_hit_enemy(my_w_t *window);
+int manage_notif(my_w_t *window, char *);
 /////////////////////////// GAME FUNCTIONS
 
 ///Pass window, fulfill the timer struct in it.

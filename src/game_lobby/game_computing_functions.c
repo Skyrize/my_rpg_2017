@@ -15,6 +15,8 @@ void get_time(my_w_t *window)
 	window->clocker.timer.microseconds / 1000000.0;
 }
 
+//	manage_hit_enemy(window); // A MIEUX PLACER
+//	manage_notif(window, "Tu est pd");
 int manage(my_w_t *window)
 {
 	if (manage_buttons(window) != 0 || manage_life(window) != 0) {

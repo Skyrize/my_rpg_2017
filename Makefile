@@ -76,6 +76,8 @@ SRC	=	src/main.c						\
 		src/player/animations/player_anim.c		\
 		src/player/movements/smooth_move.c		\
 		src/player/movements/is_player_moving.c		\
+		src/battle/manage_hit.c \
+		src/battle/manage_notif.c
 
 OBJS	=	$(SRC:.c=.o)
 
