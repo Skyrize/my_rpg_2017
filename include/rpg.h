@@ -672,6 +672,10 @@ bool is_pressing_controls(my_w_t *window);
 void update_moving_state(my_w_t *window);
 bool is_player_moving(my_w_t *window);
 
+/////////////////////////// BATTLE FUNCTIONS
+
+int init_battle(my_w_t *window);
+
 /////////////////////////// END
 
 #endif /* RPG_H_ */

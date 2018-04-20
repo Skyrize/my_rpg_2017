@@ -32,6 +32,8 @@ void on_key_pressed(my_w_t *window, sfEvent *event)
 		PLAYER_HEALTH += 1;
 	else if (event->key.code == sfKeyM)
 		PLAYER_HEALTH -= 1;
+	if (event->key.code == sfKeyB)
+		init_battle(window);
 }
 
 void analyse_events(my_w_t *window)

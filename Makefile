@@ -5,7 +5,7 @@
 ## all clean fclean re
 ##
 
-SRC	=	src/main.c						\
+SRC	=	src/main.c					\
 		src/init/my_initializer.c			\
 		src/init/file_analysing.c			\
 		src/init/init_from_file_readed.c		\
@@ -75,7 +75,8 @@ SRC	=	src/main.c						\
 		src/player/stats/characteristics.c		\
 		src/player/animations/player_anim.c		\
 		src/player/movements/smooth_move.c		\
-		src/player/movements/is_player_moving.c
+		src/player/movements/is_player_moving.c		\
+		src/battle/init_battle.c			\
 
 OBJS	=	$(SRC:.c=.o)
 

@@ -37,6 +37,9 @@ static const button_t g_tab[] =
 	{"YES", yes_save},
 	{"NO", no_save},
 	{"ATTACK", exit_game},
+	{"ITEMS", exit_game},
+	{"SPELLS", exit_game},
+	{"RUN_AWAY", exit_game},
 	{0, 0}
 };
 
