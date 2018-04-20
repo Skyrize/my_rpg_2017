@@ -18,7 +18,7 @@ void start_scene_music(scene_t *scene)
 
 void init_frame_rate(my_w_t *window)
 {
-	bucket_t *bucket_scene = hm_get_bucket(window->scenes, OPTION_GAME);
+	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
 	scene_t *scene_option = NULL;
 	bucket_t *text_bucket = NULL;
 

@@ -261,24 +261,25 @@ typedef struct key_control_s
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 
-typedef struct movement_s {
-	sfVector2i target_tile;
-	int anim_mult;
-	bool is_moving;
-} movement_t;
-
-typedef struct game_s
-{
-	player_t player;
-	movement_t movement;
-} game_t;
-
 typedef struct ctime_s
 {
 	sfClock *clock;
 	sfTime timer;
 	float seconds;
 } ctime_t;
+
+typedef struct movement_s {
+	sfVector2i target_tile;
+	int anim_mult;
+	bool is_moving;
+} movement_t;
+
+typedef struct tool_s
+{
+	int framerate;
+	sfVector2i mouse_pos;
+	sfBool click_released;
+} tool_t;
 
 typedef struct lib_s
 {
@@ -288,23 +289,35 @@ typedef struct lib_s
 	hashmap_t *items;
 } lib_t;
 
+typedef struct game_s
+{
+	map_t map;
+	lib_t libraries;
+	player_t player;
+	movement_t movement;
+	bucket_t *current;
+	hashmap_t *scenes;
+	key_control_t *key_player;
+	display_list_t *displayed_scenes;
+} game_t;
+
 typedef struct my_window_s
 {
 	int error_no;
-	int framerate_game;
-	sfVector2i mouse_pos;
 	sfEvent event;
 	sfRenderWindow *window;
-	sfBool click_released;
 	ctime_t clocker;
-	map_t map;
 	game_t game;
-	bucket_t *current;
-	lib_t libraries;
-	hashmap_t *scenes;
-	display_list_t *displayed_scenes;
-	key_control_t *key_player;
 } my_w_t;
+
+#define GAME window->game
+#define SCENES GAME.scenes
+
+#define LIBS GAME.libraries
+#define AUDIO_LIB LIBS.audio
+#define FONTS_LIB LIBS.fonts
+#define TEXTURES_LIB LIBS.textures
+#define ITEMS_LIB LIBS.items
 
 ///////////////////////////////// INITIALISATION ////////////////////////////
 
@@ -372,20 +385,21 @@ typedef struct button_s {
 	int (*instruction)();
 } button_t;
 
-#define AUDIO_LIB window->libraries.audio
-#define FONTS_LIB window->libraries.fonts
-#define TEXTURES_LIB window->libraries.textures
-#define ITEMS_LIB window->libraries.items
 
-#define ZONE_COOR_X window->map.zone_coord.x
-#define ZONE_COOR_Y window->map.zone_coord.y
-#define AREA_COOR_X window->map.area_coord.x
-#define AREA_COOR_Y window->map.area_coord.y
-#define TILE_COOR_X window->map.tile_coord.x
-#define TILE_COOR_Y window->map.tile_coord.y
+#define AUDIO_LIB GAME.libraries.audio
+#define FONTS_LIB GAME.libraries.fonts
+#define TEXTURES_LIB GAME.libraries.textures
+#define ITEMS_LIB GAME.libraries.items
 
-#define ZONE window->map.zones[ZONE_COOR_Y][ZONE_COOR_X]
-#define AREA window->map.areas[AREA_COOR_Y][AREA_COOR_X]
+#define ZONE_COOR_X GAME.map.zone_coord.x
+#define ZONE_COOR_Y GAME.map.zone_coord.y
+#define AREA_COOR_X GAME.map.area_coord.x
+#define AREA_COOR_Y GAME.map.area_coord.y
+#define TILE_COOR_X GAME.map.tile_coord.x
+#define TILE_COOR_Y GAME.map.tile_coord.y
+
+#define ZONE GAME.map.zones[ZONE_COOR_Y][ZONE_COOR_X]
+#define AREA GAME.map.areas[AREA_COOR_Y][AREA_COOR_X]
 #define TILE AREA.tiles[TILE_COOR_Y][TILE_COOR_X]
 
 #define ZONE_NAME ZONE.name
@@ -395,11 +409,11 @@ typedef struct button_s {
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
 
-#define MOUSE_POS window->mouse_pos
+#define MOUSE_POS GAME.tools.mouse_pos
 
 ////////////////////////////////////// GAME DEFINES //////////////////////////
 
-#define PLAYER window->game.player
+#define PLAYER GAME.player
 #define PLAYER_NAME PLAYER.name
 #define PLAYER_CHARACTER PLAYER.character
 #define PLAYER_INVENTORY PLAYER.inventory
@@ -424,7 +438,7 @@ typedef struct button_s {
 #define MAX(X, Y) X >= Y ? X : Y
 
 #define KEY_PRESSED(key) \
-sfKeyboard_isKeyPressed((sfKeyCode) window->key_player->key)
+sfKeyboard_isKeyPressed((sfKeyCode) GAME.key_player->key)
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
@@ -610,7 +624,7 @@ int start_game(my_w_t *window);
 int option(my_w_t *window);
 int credits(my_w_t *window);
 int exit_game(my_w_t *window);
-int characteristique(my_w_t *window);
+int stats(my_w_t *window);
 int credits(my_w_t *window);
 int inventory(my_w_t *window);
 int load(my_w_t *window);
@@ -619,10 +633,10 @@ int new_game(my_w_t *window);
 int pause_game(my_w_t *window);
 int quetes(my_w_t *window);
 int quit(my_w_t *window);
-int re_load(my_w_t *window);
+int reload(my_w_t *window);
 int resume(my_w_t *window);
 int save(my_w_t *window);
-int menu_principale(my_w_t *window);
+int main_menu(my_w_t *window);
 int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);
