@@ -10,11 +10,22 @@
 
 void affichage_inventaire_a_refaire(my_w_t *window)
 {
-	sfRenderWindow_drawRectangleShape(window->window, PLAYER_WEAPON.item->obj, NULL);
-	sfRenderWindow_drawRectangleShape(window->window, PLAYER_HELMET.item->obj, NULL);
-	sfRenderWindow_drawRectangleShape(window->window, PLAYER_CHEST.item->obj, NULL);
-	sfRenderWindow_drawRectangleShape(window->window, PLAYER_GAUNTLETS.item->obj, NULL);
-	sfRenderWindow_drawRectangleShape(window->window, PLAYER_PANTS.item->obj, NULL);
+	if (PLAYER_WEAPON.item.obj)
+		sfRenderWindow_drawRectangleShape(window->window, PLAYER_WEAPON.item.obj->obj, NULL);
+	if (PLAYER_HELMET.item.obj)
+		sfRenderWindow_drawRectangleShape(window->window, PLAYER_HELMET.item.obj->obj, NULL);
+	if (PLAYER_CHEST.item.obj)
+		sfRenderWindow_drawRectangleShape(window->window, PLAYER_CHEST.item.obj->obj, NULL);
+	if (PLAYER_GAUNTLETS.item.obj)
+		sfRenderWindow_drawRectangleShape(window->window, PLAYER_GAUNTLETS.item.obj->obj, NULL);
+	if (PLAYER_PANTS.item.obj)
+		sfRenderWindow_drawRectangleShape(window->window, PLAYER_PANTS.item.obj->obj, NULL);
+	for (int Y = 0; Y != INVENTORY_SIZE_Y; Y++) {
+		for (int X = 0; X != INVENTORY_SIZE_X; X++) {
+			if (PLAYER_ITEMS[Y][X].item.obj)
+				sfRenderWindow_drawRectangleShape(window->window, PLAYER_ITEMS[Y][X].item.obj->obj, NULL);
+		}
+	}
 }
 
 int display_scenes(my_w_t *window)

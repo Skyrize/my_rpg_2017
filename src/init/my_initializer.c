@@ -19,21 +19,62 @@ ctime_t init_timer(void)
 
 int init_inventory(my_w_t *window)
 {
+	slot_t sweap;
+	slot_t shel;
+	slot_t schest;
+	slot_t sgaunt;
+	slot_t spants;
+	item_t weap;
+	item_t hel;
+	item_t chest;
+	item_t gaunt;
+	item_t pants;
+	item_t i00;
+	item_t i01;
+	sweap.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_BOW_00", 1, V2F(585, 135)}, window);
+	shel.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_HELMET_00", 1, V2F(635, 85)}, window);
+	schest.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
+	sgaunt.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_GAUNTLETS_00", 1, V2F(690, 135)}, window);
+	spants.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_PANTS_00", 1, V2F(635, 185)}, window);
+	obj_t *w = create_obj(&(obj_data_t){"ITEM", "COMMON_BOW_00", 1, V2F(585, 135)}, window);
+	obj_t *h = create_obj(&(obj_data_t){"ITEM", "COMMON_HELMET_00", 1, V2F(635, 85)}, window);
+	obj_t *c = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
+	obj_t *g = create_obj(&(obj_data_t){"ITEM", "COMMON_GAUNTLETS_00", 1, V2F(690, 135)}, window);
+	obj_t *p = create_obj(&(obj_data_t){"ITEM", "COMMON_PANTS_00", 1, V2F(635, 185)}, window);
+	obj_t *i0 = create_obj(&(obj_data_t){"ITEM", "MYTHIC_CHEST_01", 1, V2F(635, 185)}, window);
+	obj_t *i1 = create_obj(&(obj_data_t){"ITEM", "MYTHIC_HELMET_01", 1, V2F(635, 185)}, window);
+	PLAYER_HELMET.item.obj = NULL;
+	PLAYER_CHEST.item.obj = NULL;
+	PLAYER_GAUNTLETS.item.obj = NULL;
+	PLAYER_PANTS.item.obj = NULL;
+	PLAYER_WEAPON.item.obj = NULL;
 	///to change
 	PLAYER_GOLDS = 100;
-	PLAYER_WEAPON.item = create_obj(&(obj_data_t){"ITEM", "COMMON_BOW_00", 1, V2F(585, 135)}, window);
-	PLAYER_HELMET.item = create_obj(&(obj_data_t){"ITEM", "COMMON_HELMET_00", 1, V2F(635, 85)}, window);
-	PLAYER_CHEST.item = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
-	PLAYER_GAUNTLETS.item = create_obj(&(obj_data_t){"ITEM", "COMMON_GAUNTLETS_00", 1, V2F(690, 135)}, window);
-	PLAYER_PANTS.item = create_obj(&(obj_data_t){"ITEM", "COMMON_PANTS_00", 1, V2F(635, 185)}, window);
 	for (int x = 0; x != INVENTORY_SIZE_X; x++)
-		for (int y = 0; y != INVENTORY_SIZE_Y; y++)
-			PLAYER_ITEMS[y][x].item = NULL;
-	PLAYER_WEAPON.stats = (item_stat_t){100, 10, 10};
-	PLAYER_HELMET.stats = (item_stat_t){100, 10, 10};
-	PLAYER_CHEST.stats = (item_stat_t){100, 10, 10};
-	PLAYER_GAUNTLETS.stats = (item_stat_t){100, 10, 10};
-	PLAYER_PANTS.stats = (item_stat_t){100, 10, 10};
+		for (int y = 0; y != INVENTORY_SIZE_Y; y++) {
+			PLAYER_ITEMS[y][x].item.obj = NULL;
+		}
+	PLAYER_ITEMS[0][0].slot = create_obj(&(obj_data_t){"ITEM", "INVENTORY", 1, V2F(635, 185)}, window);
+	weap.stats = (item_stat_t){100, 10, 10};
+	hel.stats = (item_stat_t){100, 10, 10};
+	chest.stats = (item_stat_t){100, 10, 10};
+	gaunt.stats = (item_stat_t){100, 10, 10};
+	pants.stats = (item_stat_t){100, 10, 10};
+	weap.obj = w;
+	hel.obj = h;
+	chest.obj = c;
+	gaunt.obj = g;
+	pants.obj = p;
+	sweap.item = weap;
+	shel.item = hel;
+	schest.item = chest;
+	sgaunt.item = gaunt;
+	spants.item = pants;
+	add_helmet(&shel, window);
+	add_chest(&schest, window);
+	add_pants(&spants, window);
+	add_weapon(&sweap, window);
+	add_gauntlets(&sgaunt, window);
 	return (0);
 }
 

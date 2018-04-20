@@ -187,19 +187,33 @@ typedef struct item_stat_s
 
 typedef struct item_s
 {
-	obj_t *item;
+	obj_t *obj;
 	item_stat_t stats;
 } item_t;
+
+typedef struct item_getter_s
+{
+	sfVector2f base_emplacement;
+	bucket_t *slot_grabbed;
+	bucket_t *slot_drop;
+	item_t *selected;
+} item_getter_t;
+
+typedef struct slot_s
+{
+	item_t item;
+	obj_t *slot;
+} slot_t;
 
 typedef struct inventory_s
 {
 	int golds;
-	item_t weapon;
-	item_t helmet;
-	item_t chest;
-	item_t gauntlets;
-	item_t pants;
-	item_t items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
+	slot_t weapon;
+	slot_t helmet;
+	slot_t chest;
+	slot_t gauntlets;
+	slot_t pants;
+	slot_t items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
 /////////////////////////////////// PLAYER ////////////////////////////////
@@ -354,7 +368,7 @@ typedef struct text_data_s
 //////////////////////////////////// DATA HUD /////////////////////////////
 
 typedef struct button_s {
-	char *balise;
+	char **balise;
 	int (*instruction)();
 } button_t;
 
@@ -611,6 +625,12 @@ int key_english(my_w_t *window);
 int no_save(my_w_t *window);
 int yes_save(my_w_t *window);
 int game(my_w_t *window);
+int slot(my_w_t *window);
+int helmet_slot(my_w_t *window);
+int chest_slot(my_w_t *window);
+int gauntlets_slot(my_w_t *window);
+int pants_slot(my_w_t *window);
+int weapon_slot(my_w_t *window);
 
 /////////////////////////// HUD FONCTIONS
 

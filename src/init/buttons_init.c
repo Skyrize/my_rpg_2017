@@ -10,34 +10,40 @@
 
 static const button_t g_tab[] =
 {
-	{"NEW_GAME", new_game},
-	{"CONTINUE", game},
-	{"SELECT_VARYAN", select_varyan},
-	{"SELECT_JAINA", select_jaina},
-	{"SELECT_AVELUS", select_avelus},
-	{"OPTION", option},
-	{"CREDITS", credits},
-	{"CHARACTERISTIC", characteristique},
-	{"INVENTORY", inventory},
-	{"MAP", map},
-	{"PAUSE", pause_game},
-	{"QUESTS", quetes},
-	{"QUIT", quit},
-	{"LOAD", re_load},
-	{"RESUME", resume},
-	{"SAVE", save},
-	{"EXIT", exit_game},
-	{"HOME", menu_principale},
-	{"SONG", manage_song},
-	{"FRAME_RATE_MORE", frame_rate_more},
-	{"FRAME_RATE_LESS", frame_rate_less},
-	{"CONTROL", control_key},
-	{"KEY_ZQSD", key_french},
-	{"KEY_WASD", key_english},
-	{"YES", yes_save},
-	{"NO", no_save},
-	{"ATTACK", exit_game},
-	{0, 0}
+	{(char *[]){"NEW_GAME", NULL}, new_game},
+	{(char *[]){"CONTINUE", NULL}, game},
+	{(char *[]){"SELECT_VARYAN", NULL}, select_varyan},
+	{(char *[]){"SELECT_JAINA", NULL}, select_jaina},
+	{(char *[]){"SELECT_AVELUS", NULL}, select_avelus},
+	{(char *[]){"OPTION", NULL}, option},
+	{(char *[]){"CREDITS", NULL}, credits},
+	{(char *[]){"CHARACTERISTIC", NULL}, characteristique},
+	{(char *[]){"INVENTORY", NULL}, inventory},
+	{(char *[]){"MAP", NULL}, map},
+	{(char *[]){"PAUSE", NULL}, pause_game},
+	{(char *[]){"QUESTS", NULL}, quetes},
+	{(char *[]){"QUIT", NULL}, quit},
+	{(char *[]){"LOAD", NULL}, re_load},
+	{(char *[]){"RESUME", NULL}, resume},
+	{(char *[]){"SAVE", NULL}, save},
+	{(char *[]){"EXIT", NULL}, exit_game},
+	{(char *[]){"HOME", NULL}, menu_principale},
+	{(char *[]){"SONG", NULL}, manage_song},
+	{(char *[]){"FRAME_RATE_MORE", NULL}, frame_rate_more},
+	{(char *[]){"FRAME_RATE_LESS", NULL}, frame_rate_less},
+	{(char *[]){"CONTROL", NULL}, control_key},
+	{(char *[]){"KEY_ZQSD", NULL}, key_french},
+	{(char *[]){"KEY_WASD", NULL}, key_english},
+	{(char *[]){"YES", NULL}, yes_save},
+	{(char *[]){"NO", NULL}, no_save},
+	{(char *[]){"ATTACK", NULL}, exit_game},
+	{(char *[]){"SLOT_HELMET", NULL}, helmet_slot},
+	{(char *[]){"SLOT_CHEST", NULL}, chest_slot},
+	{(char *[]){"SLOT_GAUNTLETS", NULL}, gauntlets_slot},
+	{(char *[]){"SLOT_PANTS", NULL}, pants_slot},
+	{(char *[]){"SLOT_WEAPON", NULL}, weapon_slot},
+	{(char *[]){"SLOT_00", "SLOT_01", "SLOT_02", "SLOT_03", "SLOT_04", "SLOT_10", "SLOT_11", "SLOT_12", "SLOT_13", "SLOT_14", "SLOT_20", "SLOT_21", "SLOT_22", "SLOT_23", "SLOT_24", "SLOT_30", "SLOT_31", "SLOT_32", "SLOT_33", "SLOT_34", "SLOT_40", "SLOT_41", "SLOT_42", "SLOT_43", "SLOT_44", NULL}, slot},
+	{NULL, NULL}
 };
 
 int init_button_callback(bucket_t *button_bucket, my_w_t *window);
@@ -61,28 +67,42 @@ int update_button(char *seek, char *replacement, scene_t *scene, my_w_t *window)
 	return (init_button_callback(button_bucket, window));
 }
 
+int seek_button_type(char **balise, int (*instruction)(), char *button_key, obj_t *button)
+{
+	int i = 0;
+
+	for (; balise[i]; i++) {
+		if (my_fastcmp(balise[i], button_key) == 0) {
+			button->callback = instruction;
+			break;
+		}
+	}
+	return (0);
+}
+
 int init_button_callback(bucket_t *button_bucket, my_w_t *window)
 {
 	obj_t *button = button_bucket->value;
-	int i = 0;
+	int my_errno = 0;
 
 	if (!button)
 		return (84);
 	if (button->button == sfFalse)
 		return (0);
-	for (; g_tab[i].balise != 0; i++) {
-		if (my_fastcmp(g_tab[i].balise, button_bucket->key) == 0) {
-			button->callback = g_tab[i].instruction;
+	button->callback = NULL;
+	for (int i = 0; g_tab[i].balise != 0; i++) {
+		my_errno = seek_button_type(g_tab[i].balise,
+		g_tab[i].instruction, button_bucket->key, button);
+		if (my_errno != 0)
 			break;
-		}
 	}
-	if (g_tab[i].balise == 0) {
+	if (!button->callback) {
 		my_printf("WARNING: CAN'T FIND BUTTON '%s' !\n",
 		button_bucket->key);
 		return (84);
 	}
 	(void)window;
-	return (0);
+	return (my_errno);
 }
 
 int read_scenes(bucket_t *scene_bucket, my_w_t *window)
