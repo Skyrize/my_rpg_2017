@@ -273,7 +273,7 @@ typedef struct obj_infos_s
 typedef struct obj_data_s
 {
 	char *name;
-	char *type;
+	char *texture;
 	sfBool button;
 	sfVector2f position;
 } obj_data_t;

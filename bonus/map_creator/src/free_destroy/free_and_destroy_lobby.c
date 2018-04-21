@@ -29,7 +29,7 @@ void destroy_and_free(my_w_t *window)
 	hm_destroy(window->textures_lib);
 	hm_destroy(window->audio_lib);
 	hm_destroy(window->fonts_lib);
-	hm_destroy(SCENES);
+	hm_destroy(window->scenes);
 	sfClock_destroy(window->clocker.clock);
 	sfRenderWindow_destroy(window->window);
 }

@@ -44,7 +44,7 @@ int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name)
 		}
 	}
 	if (already_in == 0) {
-		bucket_t *scene = hm_get_bucket(SCENES, scene_name);
+		bucket_t *scene = hm_get_bucket(window->scenes, scene_name);
 		if (check_unexisting_scene(scene, scene_name) != 0)
 			return (84);
 		add_scene_to_display_list(scene, window);
