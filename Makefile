@@ -76,6 +76,8 @@ SRC	=	src/main.c						\
 		src/warnings/missing.c		\
 		src/warnings/undefined.c		\
 		src/warnings/ingame.c			\
+		src/battle/manage_hit.c \
+		src/battle/manage_notif.c
 
 OBJS	=	$(SRC:.c=.o)
 

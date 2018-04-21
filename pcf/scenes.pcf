@@ -219,7 +219,7 @@ _____________________________________________________________________________
 
 _____________________________________________________________________________
 -MENU_PRINCIPAL
-	SCENE=MENU_PRINCIPAL PRIORITY=1
+	SCENE=MAIN_MENU PRIORITY=1
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=MENU_BG BUTTON=0 X=0 Y=0
 			OBJ=TITLE TEXTURE=TITLE_GAME BUTTON=0 X=100 Y=0
@@ -256,6 +256,10 @@ _____________________________________________________________________________
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=PLAINS_BATTLE_BG BUTTON=0 X=0 Y=0
 			OBJ=PANEL TEXTURE=BUTTON_BATTLE_BG BUTTON=0 X=0 Y=430
+			OBJ=NOTIF TEXTURE=BG_NOTIF BUTTON=0 X=800 Y=10
+		LIST=TEXTS
+			TEXT=HIT STR=_ FONT=LIFECRAFT CHARAC_SIZE=90 X=500 Y=300
+			TEXT=NOTIF_TEXT STR=_ FONT=LIFECRAFT CHARAC_SIZE=40 X=840 Y=50
 
 _____________________________________________________________________________
 -BATTLE_BUTTONS

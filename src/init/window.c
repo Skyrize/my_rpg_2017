@@ -136,7 +136,7 @@ window_t init_my_window(void)
 	init_movements(&window);
 	window.game.current = hm_get_bucket(window.game.scenes, STARTING_SCENE_NAME);
 	if (check_scene_not_created(window.game.current,
-		"my_initializer.c", 42, STARTING_SCENE_NAME) != 0)
+		"src/init/window.c", 42, STARTING_SCENE_NAME) != 0)
 		window.error_no = 84;
 	return (window);
 }
