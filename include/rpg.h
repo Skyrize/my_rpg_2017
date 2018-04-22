@@ -18,7 +18,7 @@
 #define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string init. Get replaced with spaces.
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
-#define STARTING_SCENE_NAME "MENU_PRINCIPALE" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
+#define STARTING_SCENE_NAME "BATTLE" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
 #define GAME_TITLE "Lands Of Valoran"
 
@@ -649,7 +649,10 @@ int manage_hud_opacity(my_w_t *window);
 int manage_life(my_w_t *window);
 int change_area_hud(my_w_t *window);
 int manage_hit_enemy(my_w_t *window);
-int manage_notif(my_w_t *window, char *);
+int manage_notif_right(my_w_t *window, char *);
+int manage_notif_left(my_w_t *window, char *);
+void move_and_update(sfRectangleShape *notif, sfText *notif_text,
+char *notif_output, int offset);
 /////////////////////////// GAME FUNCTIONS
 
 ///Pass window, fulfill the timer struct in it.

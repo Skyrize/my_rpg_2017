@@ -24,11 +24,11 @@ char *notif_output, int offset)
 	sfText_move(notif_text, (sfVector2f){offset, 0});
 }
 
-int manage_notif(my_w_t *window, char *notif_output)
+int manage_notif_right(my_w_t *window, char *notif_output)
 {
 	scene_t *battle_game = hm_get(window->scenes, "BATTLE");
-	obj_t *obj = hm_get(battle_game->objs, "NOTIF");
-	sfText *notif_text = hm_get(battle_game->texts, "NOTIF_TEXT");
+	obj_t *obj = hm_get(battle_game->objs, "NOTIF_RIGHT");
+	sfText *notif_text = hm_get(battle_game->texts, "NOTIF_RIGHT");
 	sfRectangleShape *notif_bg = obj->obj;
 	static int check_hit;
 	static int offset = -2;

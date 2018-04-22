@@ -16,7 +16,7 @@ void get_time(my_w_t *window)
 }
 
 //	manage_hit_enemy(window); // A MIEUX PLACER
-//	manage_notif(window, "Tu est pd");
+//	manage_notif_right(window, "Tu est pd");
 int manage(my_w_t *window)
 {
 	if (manage_buttons(window) != 0 || manage_life(window) != 0) {
@@ -27,6 +27,8 @@ int manage(my_w_t *window)
 	anim_player(window);
 	smooth_move_player(window);
 	manage_hud_opacity(window);
+	manage_notif_right(window, "double chattes");
+	manage_notif_left(window, "Tu est pd");
 	return (0);
 }
 

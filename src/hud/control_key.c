@@ -11,6 +11,8 @@ int control_key(my_w_t *window)
 {
 	int error_no = 0;
 
+	if (!window || !window->current || !window->scenes)
+		return (84);
 	window->current = hm_get_bucket(window->scenes, CONTROL_KEY);
 	error_no = clean_displayed_scenes_and_add_back(window, CONTROL_KEY);
 	if (error_no == 84)
