@@ -79,6 +79,14 @@
 #define CONTROL_KEY "CONTROL_KEY"
 #define VERSION_GAME "V0.8"
 
+//NOTIF MANAGEMENT
+
+#define NOTIF_NULL_ARGS (!game || !notif_output)
+#define BATTLE_GAME_NULL_DATA (!battle_game || !battle_game->objs\
+|| !battle_game->texts)
+#define IS_APRESSED (!(sfMouse_isButtonPressed(sfMouseLeft)) && check_hit == 0)
+#define IS_A_BATTLE (my_strcmp(CURRENT_SCENE->key, "BATTLE") != 0)
+
 ////////////////////////////////// OBJECTS //////////////////////////////
 
 typedef struct obj_data_s obj_data_t;

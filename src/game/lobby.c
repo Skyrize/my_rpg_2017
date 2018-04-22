@@ -26,7 +26,10 @@ int manage(window_t *window, game_t *game)
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0
-	|| manage_hud_opacity(game) != 0)
+	|| manage_hud_opacity(game) != 0
+	|| manage_hit_enemy(game) != 0
+	|| manage_notif_right(game, "Tu est pd") != 0
+	|| manage_notif_left(game, "Tu est pd") != 0)
 		return (84);
 	smooth_move_player(game);
 	return (0);

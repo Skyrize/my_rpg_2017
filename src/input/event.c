@@ -9,7 +9,6 @@
 #include "my.h"
 #include "rpg.h"
 
-//TODO add controls structure (already create on rpg.h)
 void on_key_pressed(game_t *game, sfEvent *event)
 {
 	if (event->key.code == (sfKeyCode)KEY_PLAYER.up ||

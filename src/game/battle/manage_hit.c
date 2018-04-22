@@ -14,7 +14,6 @@ int re_init_at_initial(sfText *hit)
 		sfText_setCharacterSize(hit, 90);
 		sfText_setPosition(hit, (sfVector2f){500, 300});
 		sfText_setString(hit, "");
-		//sfText_setFillColor(hit, (sfColor){255, 255, 255, 255});
 		sfText_setRotation(hit, 0);
 		return (1);
 	}
@@ -31,7 +30,6 @@ int update_text_hit(sfText *hit, int check_hit)
 		sfText_setString(hit, "-200");
 		sfText_setOrigin(hit, (sfVector2f){80, 85});
 		sfText_move(hit, (sfVector2f){0, -10});
-		//sfText_setFillColor(hit, (sfColor){255, 0, 0, offset});
 		offset -= 10;
 		if (sfText_getCharacterSize(hit) != 0)
 			new_size = sfText_getCharacterSize(hit) + 1;
@@ -46,11 +44,14 @@ int update_text_hit(sfText *hit, int check_hit)
 int manage_hit_enemy(game_t *game)
 {
 	scene_t *battle_game = hm_get(SCENES, "BATTLE");
-	sfText *hit = hm_get(battle_game->texts, "HIT");
+	sfText *hit = NULL;
 	static int check_hit;
 
+	if (!battle_game || !game || !battle_game->texts)
+		return (84);
+	hit = hm_get(battle_game->texts, "HIT");
 	if (!hit)
-		return (0);
+		return (84);
 	if (re_init_at_initial(hit) == 1) {
 		check_hit = 0;
 		return (0);
