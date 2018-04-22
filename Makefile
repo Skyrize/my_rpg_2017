@@ -10,9 +10,11 @@ SRC	=	src/main.c						\
 		src/init/libs.c				\
 		src/init/list_filling.c			\
 		src/init/map.c				\
+		src/init/inventory.c				\
 		src/init/player.c			\
 		src/init/scenes.c			\
 		src/init/window.c			\
+		src/init/game.c			\
 		src/init/free_destroy/lobby.c	\
 		src/init/read/file_analysing.c			\
 		src/init/keys/audio.c	\
@@ -30,6 +32,7 @@ SRC	=	src/main.c						\
 		src/list_management/read.c		\
 		src/list_management/get.c		\
 		src/game/lobby.c	\
+		src/game/start.c	\
 		src/game/display/lobby.c		\
 		src/game/display/map.c			\
 		src/game/display/objs.c			\
@@ -67,7 +70,8 @@ SRC	=	src/main.c						\
 		src/player/movements/is_player_moving.c		\
 		src/player/animations/player_anim.c		\
 		src/player/stats/stats.c		\
-		src/warnings/unexisting.c		\
+		src/warnings/unexisting_01.c		\
+		src/warnings/unexisting_02.c		\
 		src/warnings/invalid_01.c		\
 		src/warnings/invalid_02.c		\
 		src/warnings/already_existing_01.c	\

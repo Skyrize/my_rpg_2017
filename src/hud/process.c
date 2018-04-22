@@ -40,7 +40,7 @@ int button_fly_over(obj_t *button, sfVector2i clickPosition)
 	clickPosition.y > sfRectangleShape_getPosition(button->obj).y);
 }
 
-int process_button_over(bucket_t *button_bucket, window_t *window)
+int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 {
 	obj_t *button = button_bucket->value;
 
@@ -53,26 +53,26 @@ int process_button_over(bucket_t *button_bucket, window_t *window)
 	buttonisclicked((button), MOUSE_POS) == 1
 	&& CLICK_RELEASED == sfTrue) {
 		CLICK_RELEASED = sfFalse;
-		return (button->callback != NULL ? button->callback(window) : 0);
-	} else if (!window->game.movement.is_moving
+		return (button->callback ? button->callback(window, game) : 84);
+	} else if (!game->movement.is_moving
 	&& sfRectangleShape_getFillColor(button->obj).a == 255)
 		sfRectangleShape_setFillColor(button->obj, REGULAR_COLOR);
 	return (0);
 }
 
-int manage_buttons(window_t *window)
+int manage_buttons(window_t *window, game_t *game)
 {
 	display_list_t *tmp = DISPLAYED_SCENES;
 	scene_t *scene;
-	int error_no = 0;
+	int my_errno = 0;
 
 	while (tmp) {
 		scene = tmp->scene;
-		error_no = read_hashmap(window, scene->objs,
+		my_errno = read_hashmap(window, game, scene->objs,
 			&process_button_over);
-		if (error_no == 1)
+		if (my_errno == 1)
 			return (0);
-		if (error_no == 84)
+		if (my_errno == 84)
 			return (84);
 		tmp = tmp->next;
 	}

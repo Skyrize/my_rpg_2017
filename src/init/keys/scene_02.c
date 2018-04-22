@@ -9,7 +9,7 @@
 #include "rpg.h"
 
 int get_a_music(char **infos, char **type, hashmap_t **current_list,
-	window_t *window)
+	game_t *game)
 {
 	scene_t *current_scene;
 

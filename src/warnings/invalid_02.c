@@ -8,15 +8,6 @@
 #include "my.h"
 #include "rpg.h"
 
-int check_invalid_window_init(int error_no)
-{
-	if (error_no != 0) {
-		my_printf("WARNING: ERROR IN INITIALISATION !\n");
-		return (84);
-	}
-	return (0);
-}
-
 int check_invalid_animated(sfBool animated)
 {
 	if (animated != sfTrue && animated != sfFalse) {
@@ -27,7 +18,7 @@ int check_invalid_animated(sfBool animated)
 	return (0);
 }
 
-int check_invalid_area_coords(char *name, window_t *window)
+int check_invalid_area_coords(char *name, game_t *game)
 {
 	if (AREA_ENCOUTER != sfTrue && AREA_ENCOUTER != sfFalse) {
 		my_printf("WARNING: AREA '%s' ENCOUTER IS %d BUT",
@@ -45,7 +36,7 @@ int check_invalid_area_coords(char *name, window_t *window)
 	return (0);
 }
 
-int check_invalid_tile_coords(char *name, window_t *window)
+int check_invalid_tile_coords(char *name, game_t *game)
 {
 	if (TILE_BLOCK != sfTrue && TILE_BLOCK != sfFalse) {
 		my_printf("WARNING: IN AREA '%s', TILE BLOCK IS %d BUT",

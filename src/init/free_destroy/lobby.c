@@ -24,9 +24,9 @@ void texture_destroy(texture_t *texture)
 	sfTexture_destroy(texture->texture);
 }
 
-void destroy_and_free(window_t *window)
+void destroy_and_free(window_t *window, game_t *game)
 {
-	clean_displayed_scenes(window);
+	clean_displayed_scenes(game);
 	hm_destroy(TEXTURES_LIB);
 	hm_destroy(AUDIO_LIB);
 	hm_destroy(FONTS_LIB);

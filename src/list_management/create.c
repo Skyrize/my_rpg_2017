@@ -18,14 +18,14 @@ void create_obj_rect(obj_t *new_obj, texture_t *texture)
 	sfRectangleShape_setTextureRect(new_obj->obj, texture->rect);
 }
 
-obj_t *create_obj(obj_data_t *data, window_t *window)
+obj_t *create_obj(obj_data_t *data, game_t *game)
 {
 	texture_t *texture = hm_get(TEXTURES_LIB, data->texture);
 	obj_t *new_obj = malloc(sizeof(obj_t));
 	sfVector2f rec_size;
 
 	if (check_unexisting_texture(texture, data->texture) != 0
-	|| new_obj == NULL)
+	|| !new_obj)
 		return (NULL);
 	new_obj->priority = texture->priority;
 	rec_size.x = texture->rect.width;
@@ -54,7 +54,7 @@ display_list_t *create_a_display(char *name, scene_t *scene)
 	return (display);
 }
 
-tile_list_t *create_a_tile(char *texture_name, window_t *window)
+tile_list_t *create_a_tile(char *texture_name, game_t *game)
 {
 	tile_list_t *new_tile = malloc(sizeof(tile_list_t));
 
@@ -62,7 +62,7 @@ tile_list_t *create_a_tile(char *texture_name, window_t *window)
 		return (NULL);
 	new_tile->tile = create_obj(&(obj_data_t){NULL, texture_name, sfFalse,
 		(sfVector2f){TILE_COOR_X * WINDOW_PIXELS_UNIT,
-			TILE_COOR_Y * WINDOW_PIXELS_UNIT}}, window);
+			TILE_COOR_Y * WINDOW_PIXELS_UNIT}}, game);
 	if (!new_tile->tile)
 		return (NULL);
 	new_tile->next = NULL;

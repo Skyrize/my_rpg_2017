@@ -7,8 +7,9 @@
 
 #include "rpg.h"
 
-int map(window_t *window)
+int map(window_t *window, game_t *game)
 {
+	(void)window;
 	return (button_display_hide_scene(MAP_GAME,
-		NULL, window));
+		NULL, game));
 }

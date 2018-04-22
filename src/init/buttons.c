@@ -11,7 +11,7 @@
 static const button_t g_tab[] =
 {
 	{(char *[]){"NEW_GAME", NULL}, new_game},
-	{(char *[]){"CONTINUE", NULL}, game},
+	{(char *[]){"CONTINUE", NULL}, launch_game},
 	{(char *[]){"SELECT_VARYAN", NULL}, select_varyan},
 	{(char *[]){"SELECT_JAINA", NULL}, select_jaina},
 	{(char *[]){"SELECT_AVELUS", NULL}, select_avelus},
@@ -46,9 +46,9 @@ static const button_t g_tab[] =
 	{NULL, NULL}
 };
 
-int init_button_callback(bucket_t *button_bucket, window_t *window);
+int init_button_callback(bucket_t *button_bucket, game_t *game);
 
-int update_button(char *seek, char *replacement, scene_t *scene, window_t *window)
+int update_button(char *seek, char *replacement, scene_t *scene, game_t *game)
 {
 	bucket_t *button_bucket = hm_get_bucket(scene->objs, seek);
 	bucket_t *text_bucket = hm_get_bucket(scene->texts, seek);
@@ -64,7 +64,7 @@ int update_button(char *seek, char *replacement, scene_t *scene, window_t *windo
 	if (!button_bucket->key || !text_bucket->key)
 		return (84);
 	sfText_setString(text, replacement);
-	return (init_button_callback(button_bucket, window));
+	return (init_button_callback(button_bucket, game));
 }
 
 int seek_button_type(char **balise, int (*instruction)(), char *button_key, obj_t *button)
@@ -80,7 +80,7 @@ int seek_button_type(char **balise, int (*instruction)(), char *button_key, obj_
 	return (0);
 }
 
-int init_button_callback(bucket_t *button_bucket, window_t *window)
+int init_button_callback(bucket_t *button_bucket, game_t *game)
 {
 	obj_t *button = button_bucket->value;
 	int my_errno = 0;
@@ -96,28 +96,25 @@ int init_button_callback(bucket_t *button_bucket, window_t *window)
 		if (my_errno != 0)
 			break;
 	}
-	if (!button->callback) {
-		my_printf("WARNING: CAN'T FIND BUTTON '%s' !\n",
-		button_bucket->key);
+	if (check_unexisting_button(button->callback, button_bucket->key) != 0)
 		return (84);
-	}
-	(void)window;
+	(void)game;
 	return (my_errno);
 }
 
-int read_scenes(bucket_t *scene_bucket, window_t *window)
+int read_scenes(bucket_t *scene_bucket, game_t *game)
 {
 	scene_t *scene = scene_bucket->value;
 
-	if (read_hashmap(window, scene->objs,
+	if (read_hashmap(NULL, game, scene->objs,
 		&init_button_callback) != 0)
 		return (84);
 	return (0);
 }
 
-int init_my_buttons(window_t *window)
+int init_buttons(game_t *game)
 {
-	if (read_hashmap(window, SCENES, &read_scenes) != 0)
+	if (read_hashmap(NULL, game, SCENES, &read_scenes) != 0)
 		return (84);
 	return (0);
 }

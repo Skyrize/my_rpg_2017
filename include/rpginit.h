@@ -17,14 +17,14 @@ typedef struct get_infos_s
 	char *filepath;
 	char *indicator;
 	const key_word_t *keys;
-	void (*savior)(window_t *);
+	void (*savior)(game_t *);
 } get_infos_t;
 
 typedef struct key_word_s
 {
 	char *key_word;
 	int nb_sub_keywords;
-	int (*fptr)(char **, char **, hashmap_t **, window_t *);
+	int (*fptr)(char **, char **, hashmap_t **, game_t *);
 	char **args;
 } key_word_t;
 

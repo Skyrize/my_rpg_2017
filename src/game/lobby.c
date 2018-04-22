@@ -8,37 +8,38 @@
 #include "my.h"
 #include "rpg.h"
 
-void get_time(window_t *window)
+void get_time(ctime_t *clocker)
 {
-	window->clocker.timer = sfClock_getElapsedTime(window->clocker.clock);
-	window->clocker.seconds =
-	window->clocker.timer.microseconds / 1000000.0;
+	clocker->timer = sfClock_getElapsedTime(clocker->clock);
+	clocker->seconds = clocker->timer.microseconds / 1000000.0;
 }
 
 //	manage_hit_enemy(window); // A MIEUX PLACER
 //	manage_notif(window, "Tu est pd");
-int manage(window_t *window)
+int manage(window_t *window, game_t *game)
 {
-	if (manage_buttons(window) != 0 || manage_life(window) != 0) {
-		my_printf("ERROR IN MANAGEMENT\n");
+	if (manage_buttons(window, game) != 0) {
+		my_printf("WARNING: ERROR IN BUTTONS !\n");
 		return (84);
 	}
-	change_area_hud(window);
-	anim_player(window);
-	smooth_move_player(window);
-	manage_hud_opacity(window);
+	if (manage_life(game) != 0
+	|| change_area_hud(game) != 0
+	|| anim_player(game) != 0
+	|| manage_hud_opacity(game) != 0)
+		return (84);
+	smooth_move_player(game);
 	return (0);
 }
 
-int game_lobby(window_t *window)
+int game_lobby(window_t *window, game_t *game)
 {
-	analyse_events(window);
+	analyse_events(window, game);
 	MOUSE_POS = sfMouse_getPosition((const sfWindow *)window->window);
-	if (display_scenes(window) != 0) {
+	if (display_scenes(window, game) != 0) {
 		my_printf("WARNING: ERROR IN DISPLAY !\n");
 		return (84);
 	}
-	if (manage(window) == 84)
+	if (manage(window, game) != 0)
 		return (84);
 	return (0);
 }

@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void clean_displayed_tiles(window_t *window)
+void clean_displayed_tiles(game_t *game)
 {
 	tile_list_t *tmp;
 
@@ -20,7 +20,7 @@ void clean_displayed_tiles(window_t *window)
 	}
 }
 
-void clean_displayed_scenes(window_t *window)
+void clean_displayed_scenes(game_t *game)
 {
 	display_list_t *tmp;
 
@@ -31,7 +31,7 @@ void clean_displayed_scenes(window_t *window)
 	}
 }
 
-void clean_displayed_scene_name(window_t *window, char *name_scenes)
+void clean_displayed_scene_name(game_t *game, char *name_scenes)
 {
 	display_list_t *tmp = DISPLAYED_SCENES;
 	display_list_t *freed;
@@ -48,7 +48,7 @@ void clean_displayed_scene_name(window_t *window, char *name_scenes)
 	}
 }
 
-int clean_displayed_scenes_and_add_back(window_t *window, char *scene_name)
+int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name)
 {
 	display_list_t *tmp;
 	int already_in = 0;
@@ -65,7 +65,7 @@ int clean_displayed_scenes_and_add_back(window_t *window, char *scene_name)
 		bucket_t *scene = hm_get_bucket(SCENES, scene_name);
 		if (check_unexisting_scene(scene, scene_name) != 0)
 			return (84);
-		add_scene_to_display_list(scene, window);
+		add_scene_to_display_list(scene, game);
 	}
 	return (0);
 }

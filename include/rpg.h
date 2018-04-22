@@ -75,7 +75,7 @@
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
 #define MAP_GAME "MAP"
-#define HOME "MENU_PRINCIPAL"
+#define HOME "MAIN_MENU"
 #define CONTROL_KEY "CONTROL_KEY"
 #define VERSION_GAME "V0.8"
 
@@ -234,7 +234,6 @@ typedef struct player_s
 {
 	char *name;
 	obj_t *character;
-	inventory_t inventory;
 	stat_t stats;
 } player_t;
 
@@ -297,19 +296,18 @@ typedef struct game_s
 	lib_t libraries;
 	player_t player;
 	movement_t movement;
+	inventory_t inventory;
+	key_control_t key_player;
 	bucket_t *current;
 	hashmap_t *scenes;
-	key_control_t *key_player;
 	display_list_t *displayed_scenes;
 } game_t;
 
 typedef struct window_s
 {
-	int error_no;
 	sfEvent event;
 	sfRenderWindow *window;
 	ctime_t clocker;
-	game_t game;
 } window_t;
 
 #include "rpginit.h"

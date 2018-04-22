@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "my.h"
 
-int frame_rate_more(window_t *window)
+int frame_rate_more(window_t *window, game_t *game)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
 	scene_t *scene_option = NULL;
@@ -31,7 +31,7 @@ int frame_rate_more(window_t *window)
 	return (0);
 }
 
-int frame_rate_less(window_t *window)
+int frame_rate_less(window_t *window, game_t *game)
 {
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
 	scene_t *scene_option = NULL;

@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int manage_song(window_t *window)
+int manage_song(window_t *window, game_t *game)
 {
 	bucket_t *tmp_scene = hm_get_bucket(SCENES, "GAME");
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
@@ -27,5 +27,6 @@ int manage_song(window_t *window)
 		tmp_value->play_music = sfFalse;
 		sfText_setString(bucket_texts->value, "OFF");
 	}
+	(void)window;
 	return (0);
 }

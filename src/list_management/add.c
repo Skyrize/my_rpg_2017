@@ -25,20 +25,20 @@ int add_text_to_list(text_data_t *data, hashmap_t *current_list)
 	return (0);
 }
 
-int add_obj_to_list(obj_data_t *data, hashmap_t *list, window_t *window)
+int add_obj_to_list(obj_data_t *data, hashmap_t *list, game_t *game)
 {
 	obj_t *new_obj;
 
 	if (check_already_existing_obj(data->name, list) != 0)
 		return (84);
-	new_obj = create_obj(data, window);
+	new_obj = create_obj(data, game);
 	if (new_obj == NULL)
 		return (84);
 	hm_add(list, data->name, new_obj);
 	return (0);
 }
 
-int add_scene_to_display_list(bucket_t *scene, window_t *window)
+int add_scene_to_display_list(bucket_t *scene, game_t *game)
 {
 	display_list_t *display = create_a_display(scene->key, scene->value);
 	display_list_t *tmp = DISPLAYED_SCENES;
@@ -62,9 +62,9 @@ int add_scene_to_display_list(bucket_t *scene, window_t *window)
 	return (0);
 }
 
-int add_tile_to_list(char *texture, window_t *window)
+int add_tile_to_list(char *texture, game_t *game)
 {
-	tile_list_t *display = create_a_tile(texture, window);
+	tile_list_t *display = create_a_tile(texture, game);
 	tile_list_t *tmp = TILE_LIST;
 
 	if (!display)

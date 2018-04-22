@@ -16,31 +16,33 @@ void increment_opacity(sfRectangleShape *rec, int ratio)
 	sfRectangleShape_setFillColor(rec, color);
 }
 
-int set_hud_opacity(bucket_t *bucket, window_t *window)
+int set_hud_opacity(bucket_t *bucket, game_t *game)
 {
 	obj_t *obj = bucket->value;
-	sfRectangleShape *rec;
 
 	if (!obj)
-		return (1);
-	rec = obj->obj;
-	if (!rec)
-		return (1);
-	if (window->game.movement.is_moving)
-		increment_opacity(rec, -1);
+		return (84);
+	if (!obj->obj)
+		return (84);
+	if (game->movement.is_moving)
+		increment_opacity(obj->obj, -1);
 	else
-		increment_opacity(rec, 1);
+		increment_opacity(obj->obj, 1);
 	return (0);
 }
 
-int manage_hud_opacity(window_t *window)
+int manage_hud_opacity(game_t *game)
 {
 	scene_t *health = hm_get(SCENES, "HEALTH_HUD");
-	scene_t *game_bar = hm_get(SCENES, "GAME");
+	scene_t *game_hud = hm_get(SCENES, "GAME");
 
-	if (!health || !game_bar)
+	if (check_undefined_scene((bucket_t *)health, "HEALTH_HUD") != 0)
 		return (84);
-	read_hashmap(window, game_bar->objs, &set_hud_opacity);
-	read_hashmap(window, health->objs, &set_hud_opacity);
+	if (check_undefined_scene((bucket_t *)game_hud, "GAME") != 0)
+		return (84);
+	if (read_hashmap(NULL, game, game_hud->objs, &set_hud_opacity) != 0)
+		return (84);
+	if (read_hashmap(NULL, game, health->objs, &set_hud_opacity) != 0)
+		return (84);
 	return (0);
 }

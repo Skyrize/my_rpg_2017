@@ -43,7 +43,7 @@ int update_text_hit(sfText *hit, int check_hit)
 	return (0);
 }
 
-int manage_hit_enemy(window_t *window)
+int manage_hit_enemy(game_t *game)
 {
 	scene_t *battle_game = hm_get(SCENES, "BATTLE");
 	sfText *hit = hm_get(battle_game->texts, "HIT");

@@ -8,69 +8,69 @@
 #include <my.h>
 #include <rpg.h>
 
-bool move_player_zone_up(window_t *window, bool check)
+bool move_player_zone_up(game_t *game, bool check)
 {
 	if (ZONE_COOR_X - 1 < 0)
 		return (false);
 	if (check)
 		return (true);
-	unload_my_zone(window);
+	unload_my_zone(game);
 	AREA_COOR_X = AREA_TAB_X - 1;
 	ZONE_COOR_X--;
-	load_my_zone(window);
+	load_my_zone(game);
 	return (true);
 }
 
-bool move_player_zone_down(window_t *window, bool check)
+bool move_player_zone_down(game_t *game, bool check)
 {
 	if (ZONE_COOR_X + 1 > ZONE_TAB_X)
 		return (false);
 	if (check)
 		return (true);
-	unload_my_zone(window);
+	unload_my_zone(game);
 	AREA_COOR_X = 0;
 	ZONE_COOR_X++;
-	load_my_zone(window);
+	load_my_zone(game);
 	return (true);
 }
 
-bool move_player_zone_left(window_t *window, bool check)
+bool move_player_zone_left(game_t *game, bool check)
 {
 	if (ZONE_COOR_Y - 1 < 0)
 		return (false);
 	if (check)
 		return (true);
-	unload_my_zone(window);
+	unload_my_zone(game);
 	AREA_COOR_Y = AREA_TAB_Y - 1;
 	ZONE_COOR_Y--;
-	load_my_zone(window);
+	load_my_zone(game);
 	return (true);
 }
 
-bool move_player_zone_right(window_t *window, bool check)
+bool move_player_zone_right(game_t *game, bool check)
 {
 	if (ZONE_COOR_Y - 1 > ZONE_TAB_Y)
 		return (false);
 	if (check)
 		return (true);
-	unload_my_zone(window);
+	unload_my_zone(game);
 	AREA_COOR_Y = 0;
 	ZONE_COOR_Y++;
-	load_my_zone(window);
+	load_my_zone(game);
 	return (true);
 }
 
-bool move_player_zone(direction_t dir, window_t *window, bool check)
+bool move_player_zone(direction_t dir, game_t *game, bool check)
 {
 	switch (dir) {
 		case UP:
-			return (move_player_zone_up(window, check));
+			return (move_player_zone_up(game, check));
 		case DOWN:
-			return (move_player_zone_down(window, check));
+			return (move_player_zone_down(game, check));
 		case LEFT:
-			return (move_player_zone_left(window, check));
+			return (move_player_zone_left(game, check));
 		case RIGHT:
-			return (move_player_zone_right(window, check));
+			return (move_player_zone_right(game, check));
 	}
 	return (false);
 }

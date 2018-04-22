@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-display_list_t *get_scene_from_displayed(char *asked, window_t *window)
+display_list_t *get_scene_from_displayed(char *asked, game_t *game)
 {
 	display_list_t *tmp = DISPLAYED_SCENES;
 

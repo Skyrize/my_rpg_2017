@@ -25,7 +25,7 @@ scene_t *scene_init(int priority)
 	return (value);
 }
 
-int init_scene_lists(char **infos, window_t *window)
+int init_scene_lists(char **infos, game_t *game)
 {
 	char **name = my_str_to_word_array(infos[0], KEYWORD_SEPARATOR_CHAR);
 	char **priority = my_str_to_word_array(infos[1],
@@ -47,7 +47,7 @@ int init_scene_lists(char **infos, window_t *window)
 	return (0);
 }
 
-int init_my_scenes(window_t *window)
+int init_scenes(game_t *game)
 {
 	const key_word_t scene_keys[] = {
 	{"SCENE", 1, &get_a_scene, (char *[]) {"PRIORITY", NULL}},
@@ -62,7 +62,7 @@ int init_my_scenes(window_t *window)
 	&list_savior};
 
 	SCENES = hm_create(16, &scenes_destroy);
-	if (analyse_my_project_config_file(window, &infos) != 0) {
+	if (!SCENES || analyse_pcf(game, &infos) != 0) {
 		my_printf("WARNING: ERROR IN SCENES LIST INIT !\n");
 		return (84);
 	}

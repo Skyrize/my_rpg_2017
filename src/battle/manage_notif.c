@@ -24,7 +24,7 @@ char *notif_output, int offset)
 	sfText_move(notif_text, (sfVector2f){offset, 0});
 }
 
-int manage_notif(window_t *window, char *notif_output)
+int manage_notif(game_t *game, char *notif_output)
 {
 	scene_t *battle_game = hm_get(SCENES, "BATTLE");
 	obj_t *obj = hm_get(battle_game->objs, "NOTIF");

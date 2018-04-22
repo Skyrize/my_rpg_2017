@@ -8,30 +8,36 @@
 #include "my.h"
 #include "rpg.h"
 
-int read_bucket(window_t *window, bucket_t *bucket, int (*fptr)(bucket_t *, window_t *))
+int read_bucket(window_t *window, game_t *game, bucket_t *bucket, int (*fptr)())
 {
 	bucket_t *tmp = bucket;
-	int error_no = 0;
+	int my_errno = 0;
 
 	while (tmp) {
-		error_no = fptr(tmp, window);
-		if (error_no != 0)
-			return (error_no);
+		if (!window && game) {
+			my_errno = fptr(tmp, game);
+		} else if (window && !game) {
+			my_errno = fptr(tmp, window);
+		} else {
+			my_errno = fptr(tmp, window, game);
+		}
+		if (my_errno != 0)
+			return (my_errno);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-int read_hashmap(window_t *window, hashmap_t *hashmap, int (*fptr)(bucket_t *, window_t *))
+int read_hashmap(window_t *window, game_t *game, hashmap_t *hashmap, int (*fptr)())
 {
 	bucket_t *tmp;
-	int error_no = 0;
+	int my_errno = 0;
 
 	for (unsigned int i = 0; i != hashmap->size; i++) {
 		tmp = hashmap->data[i];
-		error_no = read_bucket(window, tmp, fptr);
-		if (error_no != 0)
-			return (error_no);
+		my_errno = read_bucket(window, game, tmp, fptr);
+		if (my_errno != 0)
+			return (my_errno);
 	}
 	return (0);
 }

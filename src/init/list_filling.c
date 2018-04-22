@@ -8,19 +8,16 @@
 #include "my.h"
 #include "rpg.h"
 
-obj_data_t get_obj_data_from_infos(obj_infos_t *obj)
+void get_obj_data_from_infos(obj_infos_t *obj, obj_data_t *data)
 {
-	obj_data_t data;
-
-	data.name = obj->name[1];
-	data.texture = obj->type[1];
-	data.button = my_getnbr(obj->button[1]);
-	data.position.x = (float)my_getnbr(obj->x[1]);
-	data.position.y = (float)my_getnbr(obj->y[1]);
-	return (data);
+	data->name = obj->name[1];
+	data->texture = obj->type[1];
+	data->button = my_getnbr(obj->button[1]);
+	data->position.x = (float)my_getnbr(obj->x[1]);
+	data->position.y = (float)my_getnbr(obj->y[1]);
 }
 
-int init_an_obj(char **infos, window_t *window, hashmap_t *current_list)
+int init_an_obj(char **infos, game_t *game, hashmap_t *current_list)
 {
 	obj_infos_t obj;
 	obj_data_t data;
@@ -30,8 +27,8 @@ int init_an_obj(char **infos, window_t *window, hashmap_t *current_list)
 	obj.button = my_str_to_word_array(infos[2], '=');
 	obj.x = my_str_to_word_array(infos[3], '=');
 	obj.y = my_str_to_word_array(infos[4], '=');
-	data = get_obj_data_from_infos(&obj);
-	if (add_obj_to_list(&data, current_list, window) != 0)
+	get_obj_data_from_infos(&obj, &data);
+	if (add_obj_to_list(&data, current_list, game) != 0)
 		return (84);
 	my_destroy_tab(obj.name);
 	my_destroy_tab(obj.type);
@@ -41,38 +38,43 @@ int init_an_obj(char **infos, window_t *window, hashmap_t *current_list)
 	return (0);
 }
 
-text_data_t get_text_data_from_infos(text_infos_t *text, window_t *window)
+int get_text_data_from_infos(text_infos_t *text, text_data_t *data, game_t *game)
 {
-	text_data_t data;
-
-	data.name = text->name[1];
-	data.text = text->text[1];
-	my_replace_char(data.text, TEXT_SEPARATOR_CHAR, ' ');
-	data.font = hm_get(FONTS_LIB, text->font[1]);
-	data.charac_size = my_getnbr(text->charac_size[1]);
-	data.position.x = (float)my_getnbr(text->x[1]);
-	data.position.y = (float)my_getnbr(text->y[1]);
-	return (data);
+	data->name = text->name[1];
+	data->text = text->text[1];
+	my_replace_char(data->text, TEXT_SEPARATOR_CHAR, ' ');
+	data->font = hm_get(FONTS_LIB, text->font[1]);
+	if (check_unexisting_font(data->font, text->font[1]) != 0)
+		return (84);
+	data->charac_size = my_getnbr(text->charac_size[1]);
+	data->position.x = (float)my_getnbr(text->x[1]);
+	data->position.y = (float)my_getnbr(text->y[1]);
+	return (0);
 }
 
-text_infos_t get_text_infos(char **infos)
+int get_text_infos(char **infos, text_infos_t *text)
+{
+	text->name = my_str_to_word_array(infos[0], '=');
+	text->text = my_str_to_word_array(infos[1], '=');
+	text->font = my_str_to_word_array(infos[2], '=');
+	text->charac_size = my_str_to_word_array(infos[3], '=');
+	text->x = my_str_to_word_array(infos[4], '=');
+	text->y = my_str_to_word_array(infos[5], '=');
+	if (!text->name || !text->text || !text->font
+	|| !text->charac_size || !text->x || !text->y)
+		return (84);
+	return (0);
+}
+
+int init_a_text(char **infos, game_t *game, hashmap_t *current_list)
 {
 	text_infos_t text;
+	text_data_t data;
 
-	text.name = my_str_to_word_array(infos[0], '=');
-	text.text = my_str_to_word_array(infos[1], '=');
-	text.font = my_str_to_word_array(infos[2], '=');
-	text.charac_size = my_str_to_word_array(infos[3], '=');
-	text.x = my_str_to_word_array(infos[4], '=');
-	text.y = my_str_to_word_array(infos[5], '=');
-	return (text);
-}
-
-int init_a_text(char **infos, window_t *window, hashmap_t *current_list)
-{
-	text_infos_t text = get_text_infos(infos);
-	text_data_t data = get_text_data_from_infos(&text, window);
-
+	if (get_text_infos(infos, &text) != 0)
+		return (84);
+	if (get_text_data_from_infos(&text, &data, game) != 0)
+		return (84);
 	if (check_unexisting_font(data.font, text.font[1]) != 0)
 		return (84);
 	if (add_text_to_list(&data, current_list) != 0)

@@ -8,32 +8,32 @@
 #include "my.h"
 #include "rpg.h"
 
-void unload_my_tiles(window_t *window)
+void unload_my_tiles(game_t *game)
 {
 	if (AREA_NAME != NULL)
-		clean_displayed_tiles(window);
+		clean_displayed_tiles(game);
 }
 
-void unload_my_area(window_t *window)
+void unload_my_area(game_t *game)
 {
 	TILE_COOR_X = 0;
 	TILE_COOR_Y = 0;
 	for (; TILE_COOR_Y != TILE_TAB_Y; TILE_COOR_Y++)
 		for (; TILE_COOR_X != TILE_TAB_X; TILE_COOR_X++)
-			unload_my_tiles(window);
+			unload_my_tiles(game);
 
 }
 
-void unload_my_zone(window_t *window)
+void unload_my_zone(game_t *game)
 {
 	AREA_COOR_X = 0;
 	AREA_COOR_Y = 0;
 	for (; AREA_COOR_Y != AREA_TAB_Y; AREA_COOR_Y++)
 		for (; AREA_COOR_X != AREA_TAB_X; AREA_COOR_X++)
-			unload_my_area(window);
+			unload_my_area(game);
 }
 
-int load_my_zone(window_t *window)
+int load_my_zone(game_t *game)
 {
 	const key_word_t zone_keys[] = {
 	{"AREA", 3, &get_an_area, (char *[]) {"ENCOUNTER", "X", "Y", NULL}},
@@ -45,7 +45,7 @@ int load_my_zone(window_t *window)
 
 	if (check_unexisting_zone(ZONE_NAME) != 0)
 		return (84);
-	if (analyse_my_project_config_file(window, &infos) != 0) {
+	if (analyse_pcf(game, &infos) != 0) {
 		ZONE_COOR_X = zone_pos.x;
 		ZONE_COOR_Y = zone_pos.y;
 		my_printf("WARNING: ERROR IN ZONE '%s' INIT !\n", ZONE_NAME);
@@ -56,7 +56,7 @@ int load_my_zone(window_t *window)
 	return (0);
 }
 
-int init_my_map(window_t *window)
+int init_map(game_t *game)
 {
 	const key_word_t map_keys[] = {
 	{"ZONE", 3, &get_a_map, (char *[]) {"FILEPATH", "X", "Y", NULL}},
@@ -72,7 +72,7 @@ int init_my_map(window_t *window)
 	for (int y = 0; y != AREA_TAB_Y; y++)
 		for (int x = 0; x != AREA_TAB_X; x++)
 			MAP.areas[y][x].name = NULL;
-	if (analyse_my_project_config_file(window, &infos) != 0) {
+	if (analyse_pcf(game, &infos) != 0) {
 		my_printf("WARNING: ERROR IN MAP INIT !\n");
 		return (84);
 	}

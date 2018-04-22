@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-char *found_icon(window_t *window)
+char *found_icon(game_t *game)
 {
 	char *icon_tab[4][2] = {
 	{"Avelus", "AVELUS_ICON"},
@@ -22,13 +22,13 @@ char *found_icon(window_t *window)
 	return (NULL);
 }
 
-int update_element(window_t *window)
+int update_element(game_t *game)
 {
 	scene_t *curr_scene = hm_get(SCENES, "HEALTH_HUD");
 	obj_t *player_icon = NULL;
 	bucket_t *check = NULL;
 	sfTexture *new_texture;
-	char *name_texture = found_icon(window);
+	char *name_texture = found_icon(game);
 
 	if (!curr_scene || !curr_scene->objs || !name_texture)
 		return (84);
@@ -43,25 +43,27 @@ int update_element(window_t *window)
 	return (0);
 }
 
-int game(window_t *window)
+int launch_game(window_t *window, game_t *game)
 {
 	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
 
-	update_element(window);
-	if (clean_displayed_scenes_and_add_back(window, "GAME") != 0)
+	update_element(game);
+	if (clean_displayed_scenes_and_add_back(game, "GAME") != 0)
 		return (84);
 	if (add_scene_to_display_list(
-		hm_get_bucket(SCENES, "HEALTH_HUD"), window) != 0)
+		hm_get_bucket(SCENES, "HEALTH_HUD"), game) != 0)
 		return (84);
 	if (add_scene_to_display_list(
-		hm_get_bucket(SCENES, "AREA_HUD"), window) != 0)
+		hm_get_bucket(SCENES, "AREA_HUD"), game) != 0)
 		return (84);
+	(void)window;
 	return (1);
 }
 
-int resume(window_t *window)
+int resume(window_t *window, game_t *game)
 {
 	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
-	clean_displayed_scene_name(window, PAUSE_GAME);
+	clean_displayed_scene_name(game, PAUSE_GAME);
+	(void)window;
 	return (1);
 }

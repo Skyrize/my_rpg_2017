@@ -9,7 +9,7 @@
 #include "rpg.h"
 
 int get_a_rect_values(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;
 	char **left = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
@@ -34,7 +34,7 @@ int get_a_rect_values(char **infos, char **type,
 }
 
 int get_a_rect_max_values(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;
 	char **x = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
@@ -52,7 +52,7 @@ int get_a_rect_max_values(char **infos, char **type,
 }
 
 int get_a_rect_start_values(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;
 	char **x = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
@@ -70,7 +70,7 @@ int get_a_rect_start_values(char **infos, char **type,
 }
 
 int get_a_rect_max_offset(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;
 	char **x = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);

@@ -7,8 +7,9 @@
 
 #include "rpg.h"
 
-int stats(window_t *window)
+int stats(window_t *window, game_t *game)
 {
+	(void)window;
 	return (button_display_hide_scene(STATS_GAME,
-		&update_stats, window));
+		&update_stats, game));
 }

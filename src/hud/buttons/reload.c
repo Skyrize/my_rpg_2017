@@ -7,13 +7,14 @@
 
 #include "rpg.h"
 
-int reload(window_t *window)
+int reload(window_t *window, game_t *game)
 {
-	int error_no = 0;
+	int my_errno = 0;
 
 	CURRENT_SCENE = hm_get_bucket(SCENES, LOAD_GAME);
-	error_no = clean_displayed_scenes_and_add_back(window, LOAD_GAME);
-	if (error_no == 84)
+	my_errno = clean_displayed_scenes_and_add_back(game, LOAD_GAME);
+	if (my_errno == 84)
 		return (84);
+	(void)window;
 	return (1);
 }

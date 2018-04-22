@@ -9,7 +9,7 @@
 #include "rpg.h"
 
 int get_a_texture(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture = malloc(sizeof(texture_t));
 
@@ -31,7 +31,7 @@ int get_a_texture(char **infos, char **type,
 }
 
 int get_a_texture_filepath(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;
 
@@ -47,7 +47,7 @@ int get_a_texture_filepath(char **infos, char **type,
 }
 
 int get_an_animated(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;
 	sfBool animated;
@@ -65,7 +65,7 @@ int get_an_animated(char **infos, char **type,
 }
 
 int get_a_priority(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;
 	int priority;

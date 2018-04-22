@@ -7,13 +7,16 @@
 
 #include "rpg.h"
 
-int change_area_hud(window_t *window)
+int change_area_hud(game_t *game)
 {
 	scene_t *area = hm_get(SCENES, "AREA_HUD");
-	sfText *pos_area = hm_get(area->texts, "POS");
+	sfText *pos_area;
 
-	if (!pos_area)
-		return (0);
+	if (check_unexisting_scene((bucket_t *)area, "AREA_HUD") != 0)
+		return (84);
+	pos_area = hm_get(area->texts, "POS");
+	if (check_unexisting_text((bucket_t *)pos_area, "POS", "AREA_HUD") != 0)
+		return (84);
 	sfText_setString(pos_area, my_strcat(int_to_str(AREA_COOR_X),
 				my_strcat(",", int_to_str(AREA_COOR_Y))));
 	return (0);

@@ -7,38 +7,41 @@
 
 #include "rpg.h"
 
-int save(window_t *window)
+int save(window_t *window, game_t *game)
 {
-	int error_no = 0;
+	int my_errno = 0;
 
-	clean_displayed_scene_name(window, PAUSE_GAME);
-	error_no = add_scene_to_display_list(
-	hm_get_bucket(SCENES, SAVE_GAME), window);
-	if (error_no == 84)
+	clean_displayed_scene_name(game, PAUSE_GAME);
+	my_errno = add_scene_to_display_list(
+	hm_get_bucket(SCENES, SAVE_GAME), game);
+	if (my_errno == 84)
 		return (84);
+	(void)window;
 	return (1);
 }
 
-int yes_save(window_t *window)
+int yes_save(window_t *window, game_t *game)
 {
-	int error_no = 0;
+	int my_errno = 0;
 
-	clean_displayed_scene_name(window, SAVE_GAME);
-	error_no = add_scene_to_display_list(
-	hm_get_bucket(SCENES, PAUSE_GAME), window);
-	if (error_no == 84)
+	clean_displayed_scene_name(game, SAVE_GAME);
+	my_errno = add_scene_to_display_list(
+	hm_get_bucket(SCENES, PAUSE_GAME), game);
+	if (my_errno == 84)
 		return (84);
+	(void)window;
 	return (1);
 }
 
-int no_save(window_t *window)
+int no_save(window_t *window, game_t *game)
 {
-	int error_no = 0;
+	int my_errno = 0;
 
-	clean_displayed_scene_name(window, SAVE_GAME);
-	error_no = add_scene_to_display_list(
-	hm_get_bucket(SCENES, PAUSE_GAME), window);
-	if (error_no == 84)
+	clean_displayed_scene_name(game, SAVE_GAME);
+	my_errno = add_scene_to_display_list(
+	hm_get_bucket(SCENES, PAUSE_GAME), game);
+	if (my_errno == 84)
 		return (84);
+	(void)window;
 	return (1);
 }

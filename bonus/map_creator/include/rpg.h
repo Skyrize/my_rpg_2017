@@ -325,15 +325,15 @@ typedef struct myfunc_s {
 
 //// INIT FUNCTIONS
 
-my_w_t init_my_window(void);
-int init_my_scenes(my_w_t *window);
-int init_my_audio_lib(my_w_t *window);
-int init_my_textures_lib(my_w_t *window);
-int init_my_fonts_lib(my_w_t *window);
-int init_my_map(my_w_t *window);
-int init_my_zone(my_w_t *window);
+my_w_t init_window(void);
+int init_scenes(my_w_t *window);
+int init_audio_lib(my_w_t *window);
+int init_textures_lib(my_w_t *window);
+int init_fonts_lib(my_w_t *window);
+int init_map(my_w_t *window);
+int init_zone(my_w_t *window);
 int init_scene_lists(char **infos, my_w_t *window);
-int init_my_buttons(my_w_t *window);
+int init_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
 

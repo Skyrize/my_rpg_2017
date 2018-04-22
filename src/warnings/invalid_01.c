@@ -9,9 +9,9 @@
 #include "rpg.h"
 
 int check_invalid_key_word(char *last_word_used, char **type, char **infos,
-	int error_no)
+	int my_errno)
 {
-	if (error_no != 0)
+	if (my_errno != 0)
 		return (84);
 	if (last_word_used == NULL) {
 		my_printf("WARNING: '%s' ISN'T A VALID KEYWORD !\n",
@@ -32,7 +32,7 @@ int check_invalid_file(int fd, char *filename)
 	return (0);
 }
 
-int check_invalid_zone_coords(char *name, window_t *window)
+int check_invalid_zone_coords(char *name, game_t *game)
 {
 	if (ZONE_COOR_X < 0 || ZONE_COOR_X >= ZONE_TAB_X
 		|| ZONE_COOR_Y < 0 || ZONE_COOR_Y >= ZONE_TAB_Y) {

@@ -7,18 +7,19 @@
 
 #include "rpg.h"
 
-int main_menu(window_t *window)
+int main_menu(window_t *window, game_t *game)
 {
 	static sfBool updated = sfFalse;
 
 	CURRENT_SCENE = hm_get_bucket(SCENES, HOME);
-	if (clean_displayed_scenes_and_add_back(window, HOME) != 0)
+	if (clean_displayed_scenes_and_add_back(game, HOME) != 0)
 		return (84);
 	if (PLAYER_NAME && updated == sfFalse) {
 		updated = sfTrue;
 		if (update_button("NEW_GAME", "CONTINUE",
-		CURRENT_SCENE->value, window) != 0)
+		CURRENT_SCENE->value, game) != 0)
 			return (84);
 	}
+	(void)window;
 	return (1);
 }

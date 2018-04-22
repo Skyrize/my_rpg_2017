@@ -9,21 +9,37 @@
 #define RPGDEF_H_
 #include "rpg.h"
 
-#define GAME window->game
-#define SCENES GAME.scenes
-#define CURRENT_SCENE GAME.current
-#define DISPLAYED_SCENES GAME.displayed_scenes
-#define FRAMERATE GAME.tools.framerate
-#define CLICK_RELEASED GAME.tools.click_released
-#define KEY_PLAYER GAME.key_player
+/////////////////////////////////// MAIN /////////////////////////////////
 
-#define LIBS GAME.libraries
+#define SCENES game->scenes
+#define CURRENT_SCENE game->current
+#define DISPLAYED_SCENES game->displayed_scenes
+#define FRAMERATE game->tools.framerate
+#define CLICK_RELEASED game->tools.click_released
+#define KEY_PLAYER game->key_player
+
+#define LIBS game->libraries
 #define AUDIO_LIB LIBS.audio
 #define FONTS_LIB LIBS.fonts
 #define TEXTURES_LIB LIBS.textures
 #define ITEMS_LIB LIBS.items
 
-#define MAP GAME.map
+////////////////////////////////// INVENTORY ///////////////////////////////
+
+#define INVENTORY game->inventory
+#define GOLDS INVENTORY.golds
+#define ITEMS INVENTORY.items
+#define WEAPON INVENTORY.weapon
+#define HELMET INVENTORY.helmet
+#define CHEST INVENTORY.chest
+#define GAUNTLETS INVENTORY.gauntlets
+#define PANTS INVENTORY.pants
+
+#define ITEM_SELECTOR INVENTORY.selector
+
+///////////////////////////////// MAP ///////////////////////////////////////
+
+#define MAP game->map
 
 #define ZONE_COOR_X MAP.zone_coord.x
 #define ZONE_COOR_Y MAP.zone_coord.y
@@ -43,35 +59,27 @@
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
 
-#define MOUSE_POS GAME.tools.mouse_pos
+#define MOUSE_POS game->tools.mouse_pos
 
-////////////////////////////////////// GAME DEFINES //////////////////////////
+////////////////////////////////////// PLAYER //////////////////////////
 
-#define PLAYER GAME.player
+#define PLAYER game->player
 #define PLAYER_NAME PLAYER.name
 #define PLAYER_CHARACTER PLAYER.character
 #define PLAYER_INVENTORY PLAYER.inventory
 #define PLAYER_CHARAC PLAYER.stats
-
-#define PLAYER_GOLDS PLAYER_INVENTORY.golds
-#define PLAYER_ITEMS PLAYER_INVENTORY.items
-#define PLAYER_WEAPON PLAYER_INVENTORY.weapon
-#define PLAYER_HELMET PLAYER_INVENTORY.helmet
-#define PLAYER_CHEST PLAYER_INVENTORY.chest
-#define PLAYER_GAUNTLETS PLAYER_INVENTORY.gauntlets
-#define PLAYER_PANTS PLAYER_INVENTORY.pants
-
-#define ITEM_SELECTOR PLAYER_INVENTORY.selector
 
 #define PLAYER_HEALTH PLAYER_CHARAC.health
 #define PLAYER_ARMOR PLAYER_CHARAC.armor
 #define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
 #define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
 
+////////////////////////////////// USED //////////////////////////////
+
 #define MIN(X, Y) X >= Y ? Y : X
 #define MAX(X, Y) X >= Y ? X : Y
 
 #define KEY_PRESSED(key) \
-sfKeyboard_isKeyPressed((sfKeyCode) GAME.key_player->key)
+sfKeyboard_isKeyPressed((sfKeyCode) game->key_player.key)
 
 #endif /* RPGDEF_H_ */

@@ -8,17 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked)
-{
-	if (!scene) {
-		my_printf("ERROR: IN FILE '%s' AT LINE '%d', ", file, line);
-		my_printf("YOU ASKED FOR UNEXISTING SCENE '%S' !\n", asked);
-		return (84);
-	}
-	return (0);
-}
-
-int check_invalid_tile_display(tile_list_t *tile, int x, int y, window_t *window)
+int check_invalid_tile_display(tile_list_t *tile, int x, int y, game_t *game)
 {
 	if (!tile) {
 		my_printf("WARNING: IN AREA '%s' AT POSITION (%d/%d),",
@@ -29,7 +19,7 @@ int check_invalid_tile_display(tile_list_t *tile, int x, int y, window_t *window
 	return (0);
 }
 
-int check_invalid_map_name(window_t *window)
+int check_invalid_map_name(game_t *game)
 {
 	if (!ZONE_NAME) {
 		my_printf("WARNING: YOU ARE TRYING TO ENTER ZONE AT");
@@ -46,7 +36,7 @@ int check_invalid_map_name(window_t *window)
 	return (0);
 }
 
-int check_invalid_map_display(window_t *window)
+int check_invalid_map_display(game_t *game)
 {
 	if (ZONE_COOR_Y < 0 || ZONE_COOR_Y >= ZONE_TAB_Y
 		|| ZONE_COOR_X < 0 || ZONE_COOR_X >= ZONE_TAB_X) {
@@ -62,5 +52,5 @@ int check_invalid_map_display(window_t *window)
 		AREA_COOR_X, AREA_COOR_Y);
 		return (84);
 	}
-	return (check_invalid_map_name(window));
+	return (check_invalid_map_name(game));
 }

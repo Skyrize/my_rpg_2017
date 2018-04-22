@@ -8,11 +8,11 @@
 #include "my.h"
 #include "rpg.h"
 
-int display_tiles(int x, int y, int priority, window_t *window)
+int display_tiles(int x, int y, int priority, window_t *window, game_t *game)
 {
 	tile_list_t *tmp = AREA.tiles[y][x].displayed_tiles;
 
-	if (check_invalid_tile_display(tmp, x, y, window) != 0)
+	if (check_invalid_tile_display(tmp, x, y, game) != 0)
 		return (84);
 	while (tmp) {
 		if (tmp->tile->priority == priority) {
@@ -24,28 +24,30 @@ int display_tiles(int x, int y, int priority, window_t *window)
 	}
 	if (priority == 3)
 		sfRenderWindow_drawRectangleShape(window->window,
-			window->game.player.character->obj, NULL);
+			game->player.character->obj, NULL);
 	return (0);
 }
 
-int display_area(int priority, window_t *window)
+int display_area(int priority, window_t *window, game_t *game)
 {
+	int my_errno = 0;
+
 	for (int y = 0; y != TILE_TAB_Y; y++) {
 		for (int x = 0; x != TILE_TAB_X; x++)
-			window->error_no += display_tiles(x, y, priority,
-				window);
+			my_errno += display_tiles(x, y, priority,
+				window, game);
 	}
-	if (window->error_no != 0)
+	if (my_errno != 0)
 		return (84);
 	return (0);
 }
 
-int display_map(window_t *window)
+int display_map(window_t *window, game_t *game)
 {
-	if (check_invalid_map_display(window) != 0)
+	if (check_invalid_map_display(game) != 0)
 		return (84);
 	for (int priority = 0; priority != PRIORITY_MAX + 1; priority++)
-		if (display_area(priority, window) != 0)
+		if (display_area(priority, window, game) != 0)
 			return (84);
 	return (0);
 }

@@ -13,6 +13,6 @@ int init_battle(window_t *window)
 	bucket_t *battle_buttons = hm_get_bucket(SCENES,
 							"BATTLE_BASIC_BUTTONS");
 
-	clean_displayed_scenes_and_add_back(window, "BATTLE");
+	clean_displayed_scenes_and_add_back(game, "BATTLE");
 	add_scene_to_display_list(battle_buttons, window);
 }

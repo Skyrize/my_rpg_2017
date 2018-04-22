@@ -9,7 +9,7 @@
 #include "rpg.h"
 
 int get_an_audio(char **infos, char **type,
-	hashmap_t **current_list, window_t *window)
+	hashmap_t **current_list, game_t *game)
 {
 	sfMusic *audio;
 	char **audio_path = my_str_to_word_array(infos[1],
