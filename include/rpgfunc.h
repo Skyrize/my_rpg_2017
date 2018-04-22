@@ -159,7 +159,7 @@ int check_undefined_tile(game_t *game);
 
 /////////////////////////// IN GAME WARNING
 
-int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked);
+int check_scene_not_created(bucket_t *scene, char *file, int line, char *);
 int check_invalid_tile_display(tile_list_t *tile, int x,
 				int y, game_t *game);
 int check_invalid_map_display(game_t *game);
@@ -278,7 +278,8 @@ int manage_life(game_t *game);
 int change_area_hud(game_t *game);
 int manage_hit_enemy(game_t *game);
 int manage_notif(game_t *game, char *);
-
+void move_and_update(sfRectangleShape *notif, sfText *notif_text,
+char *notif_output, int offset);
 /////////////////////////// GAME FUNCTIONS
 
 int start_game(window_t *window, game_t *game);

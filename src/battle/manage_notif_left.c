@@ -24,7 +24,7 @@ void update_offset(int *offset, sfRectangleShape *notif_bg)
 		*offset *= -1;
 }
 
-int manage_notif_left(my_w_t *window, char *notif_output)
+int manage_notif_left(game_t *window, char *notif_output)
 {
 	scene_t *battle_game = hm_get(window->scenes, "BATTLE");
 	obj_t *obj = hm_get(battle_game->objs, "NOTIF_LEFT");
