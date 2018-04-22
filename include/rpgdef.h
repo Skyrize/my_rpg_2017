@@ -66,13 +66,13 @@
 #define PLAYER game->player
 #define PLAYER_NAME PLAYER.name
 #define PLAYER_CHARACTER PLAYER.character
-#define PLAYER_INVENTORY PLAYER.inventory
-#define PLAYER_CHARAC PLAYER.stats
+#define PLAYER_STATS PLAYER.stats
 
-#define PLAYER_HEALTH PLAYER_CHARAC.health
-#define PLAYER_ARMOR PLAYER_CHARAC.armor
-#define PLAYER_SPECIALITY_NAME PLAYER_CHARAC.speciality_name
-#define PLAYER_SPECIALITY PLAYER_CHARAC.speciality
+#define PLAYER_HEALTH PLAYER_STATS.health
+#define PLAYER_MAX_HP PLAYER_STATS.max_health
+#define PLAYER_ARMOR PLAYER_STATS.armor
+#define PLAYER_SPECIALITY PLAYER_STATS.speciality
+#define PLAYER_SPECIALITY_NAME PLAYER_STATS.speciality_name
 
 ////////////////////////////////// USED //////////////////////////////
 
