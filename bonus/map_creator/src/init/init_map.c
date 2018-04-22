@@ -55,7 +55,7 @@ int load_my_zone(my_w_t *window)
 	return (0);
 }
 
-int init_my_map(my_w_t *window)
+int init_map(my_w_t *window)
 {
 	const key_word_t map_keys[] = {
 	{"ZONE", 3, &get_a_map, (char *[]) {"FILEPATH", "X", "Y", NULL}},

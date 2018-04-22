@@ -40,7 +40,7 @@ typedef struct ressources_s {
 	my_w_t *rsces;
 } ressources_t;
 
-my_w_t init_my_ressource_window(sfRenderWindow *);
+my_w_t init_ressource_window(sfRenderWindow *);
 void on_event(ressources_t *, texture_list_t *, sfEvent, sfClock *);
 v2i area_selector(void);
 int seek_zone(my_w_t *, char *);

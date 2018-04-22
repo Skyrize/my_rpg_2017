@@ -5,6 +5,7 @@
 ** null
 */
 
+#include "my.h"
 #include "rpg.h"
 
 int re_init_at_initial(sfText *hit)
@@ -13,7 +14,7 @@ int re_init_at_initial(sfText *hit)
 		sfText_setCharacterSize(hit, 90);
 		sfText_setPosition(hit, (sfVector2f){500, 300});
 		sfText_setString(hit, "");
-		sfText_setFillColor(hit, (sfColor){255, 255, 255, 255});
+		//sfText_setFillColor(hit, (sfColor){255, 255, 255, 255});
 		sfText_setRotation(hit, 0);
 		return (1);
 	}
@@ -30,7 +31,7 @@ int update_text_hit(sfText *hit, int check_hit)
 		sfText_setString(hit, "-200");
 		sfText_setOrigin(hit, (sfVector2f){80, 85});
 		sfText_move(hit, (sfVector2f){0, -10});
-		sfText_setFillColor(hit, (sfColor){255, 0, 0, offset});
+		//sfText_setFillColor(hit, (sfColor){255, 0, 0, offset});
 		offset -= 10;
 		if (sfText_getCharacterSize(hit) != 0)
 			new_size = sfText_getCharacterSize(hit) + 1;
@@ -42,9 +43,9 @@ int update_text_hit(sfText *hit, int check_hit)
 	return (0);
 }
 
-int manage_hit_enemy(my_w_t *window)
+int manage_hit_enemy(game_t *game)
 {
-	scene_t *battle_game = hm_get(window->scenes, "BATTLE");
+	scene_t *battle_game = hm_get(SCENES, "BATTLE");
 	sfText *hit = hm_get(battle_game->texts, "HIT");
 	static int check_hit;
 

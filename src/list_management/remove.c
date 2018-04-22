@@ -1,0 +1,71 @@
+/*
+** EPITECH PROJECT, 2017
+** my_rpg_2017
+** File description:
+** (enter)
+*/
+
+#include "my.h"
+#include "rpg.h"
+
+void clean_displayed_tiles(game_t *game)
+{
+	tile_list_t *tmp;
+
+	while (TILE_LIST) {
+		tmp = TILE_LIST;
+		TILE_LIST = tmp->next;
+		obj_destroy(tmp->tile);
+		free(tmp);
+	}
+}
+
+void clean_displayed_scenes(game_t *game)
+{
+	display_list_t *tmp;
+
+	while (DISPLAYED_SCENES) {
+		tmp = DISPLAYED_SCENES;
+		DISPLAYED_SCENES = tmp->next;
+		free(tmp);
+	}
+}
+
+void clean_displayed_scene_name(game_t *game, char *name_scenes)
+{
+	display_list_t *tmp = DISPLAYED_SCENES;
+	display_list_t *freed;
+
+	while (tmp) {
+		if (tmp->next != NULL &&
+		my_strcmp(tmp->next->scene_name, name_scenes) == 0) {
+			freed = tmp->next;
+			tmp->next = tmp->next->next;
+			free(freed);
+			break;
+		}
+		tmp = tmp->next;
+	}
+}
+
+int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name)
+{
+	display_list_t *tmp;
+	int already_in = 0;
+
+	while (DISPLAYED_SCENES) {
+		tmp = DISPLAYED_SCENES;
+		DISPLAYED_SCENES = tmp->next;
+		if (my_strcmp(scene_name, tmp->scene_name) != 0) {
+			free(tmp);
+		} else
+			already_in = 1;
+	}
+	if (already_in == 0) {
+		bucket_t *scene = hm_get_bucket(SCENES, scene_name);
+		if (check_unexisting_scene(scene, scene_name) != 0)
+			return (84);
+		add_scene_to_display_list(scene, game);
+	}
+	return (0);
+}

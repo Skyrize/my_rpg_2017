@@ -45,7 +45,7 @@ int main(int ac, char **av)
 
 	rsces.window = my_window_create();
 	rsces.mode = 0;
-	window = init_my_ressource_window(rsces.window);
+	window = init_ressource_window(rsces.window);
 	list = read_hashmap_texture(window.textures_lib);
 	if (ac != 4)
 		return (84);
