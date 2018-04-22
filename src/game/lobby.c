@@ -15,7 +15,8 @@ void get_time(ctime_t *clocker)
 }
 
 //	manage_hit_enemy(window); // A MIEUX PLACER
-//	manage_notif(window, "Tu est pd");
+//	manage_notif_right(window, "Tu est pd");
+//	manage_notif_left(window, "Tu est pd");
 int manage(window_t *window, game_t *game)
 {
 	if (manage_buttons(window, game) != 0) {
