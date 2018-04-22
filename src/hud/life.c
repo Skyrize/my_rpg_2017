@@ -19,10 +19,10 @@ int manage_life(game_t *game)
 	if (check_unexisting_obj((bucket_t *)obj,
 	"HEALTH_BAR", "HEALTH_HUD") != 0)
 		return (84);
-	if (PLAYER_CHARAC.max_health <= 0)
+	if (PLAYER_MAX_HP <= 0)
 		return (0);
-	ratios = (float)PLAYER_CHARAC.health /
-		(float)PLAYER_CHARAC.max_health * 100.0;
+	ratios = (float)PLAYER_HEALTH /
+		(float)PLAYER_MAX_HP * 100.0;
 	obj->obj_rect.rect.width = MIN(ratios, 100);
 	obj->obj_rect.rect.width = MAX(obj->obj_rect.rect.width, 0);
 	sfRectangleShape_setTextureRect(obj->obj, obj->obj_rect.rect);

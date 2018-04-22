@@ -24,6 +24,7 @@ int add_weapon(slot_t *slot, game_t *game);
 
 int init_window(window_t *window);
 int init_game(game_t *game);
+void init_player(game_t *game);
 int init_scenes(game_t *game);
 int init_audio_lib(game_t *game);
 int init_textures_lib(game_t *game);

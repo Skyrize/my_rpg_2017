@@ -68,5 +68,6 @@ int init_game(game_t *game)
 	init_key_player(game);
 	init_tools(game);
 	init_movement(game);
+	init_player(game);
 	return (0);
 }
