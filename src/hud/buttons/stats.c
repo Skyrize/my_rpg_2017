@@ -9,6 +9,8 @@
 
 int stats(window_t *window, game_t *game)
 {
+	if (!window || !game)
+		return (84);
 	(void)window;
 	return (button_display_hide_scene(STATS_GAME,
 		&update_stats, game));

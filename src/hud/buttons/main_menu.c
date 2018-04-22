@@ -11,7 +11,11 @@ int main_menu(window_t *window, game_t *game)
 {
 	static sfBool updated = sfFalse;
 
+	if (!window || !game)
+		return (84);
 	CURRENT_SCENE = hm_get_bucket(SCENES, HOME);
+	if (check_unexisting_scene(CURRENT_SCENE, HOME) != 0)
+		return (84);
 	if (clean_displayed_scenes_and_add_back(game, HOME) != 0)
 		return (84);
 	if (PLAYER_NAME && updated == sfFalse) {

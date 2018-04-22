@@ -30,7 +30,7 @@ int key_french(window_t *window, game_t *game)
 	bucket_t *bucket_texts = NULL;
 	scene_t *curr_scene = NULL;
 
-	if (!bucket_scene)
+	if (!bucket_scene || !bucket_scene->value)
 		return (84);
 	curr_scene = bucket_scene->value;
 	bucket_texts = hm_get_bucket(curr_scene->texts, "USER_KEY");
@@ -46,7 +46,7 @@ int key_english(window_t *window, game_t *game)
 	bucket_t *bucket_texts = NULL;
 	scene_t *curr_scene = NULL;
 
-	if (!bucket_scene)
+	if (!bucket_scene || !bucket_scene->value)
 		return (84);
 	curr_scene = bucket_scene->value;
 	bucket_texts = hm_get_bucket(curr_scene->texts, "USER_KEY");

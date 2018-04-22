@@ -66,8 +66,11 @@ int manage_buttons(window_t *window, game_t *game)
 	scene_t *scene;
 	int my_errno = 0;
 
+	if (!tmp || !window || !game)
+		return (84);
 	while (tmp) {
-		scene = tmp->scene;
+		if (!(scene = tmp->scene))
+			return (84);
 		my_errno = read_hashmap(window, game, scene->objs,
 			&process_button_over);
 		if (my_errno == 1)

@@ -80,9 +80,9 @@ SRC	=	src/main.c						\
 		src/warnings/missing.c		\
 		src/warnings/undefined.c		\
 		src/warnings/ingame.c			\
-		src/battle/manage_hit.c \
-		src/battle/manage_notif_right.c \
-		src/battle/manage_notif_left.c \
+		src/game/battle/manage_hit.c \
+		src/game/battle/manage_notif_right.c \
+		src/game/battle/manage_notif_left.c \
 
 OBJS	=	$(SRC:.c=.o)
 

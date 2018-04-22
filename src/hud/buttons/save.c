@@ -11,6 +11,8 @@ int save(window_t *window, game_t *game)
 {
 	int my_errno = 0;
 
+	if (!window || !game)
+		return (0);
 	clean_displayed_scene_name(game, PAUSE_GAME);
 	my_errno = add_scene_to_display_list(
 	hm_get_bucket(SCENES, SAVE_GAME), game);
@@ -24,6 +26,8 @@ int yes_save(window_t *window, game_t *game)
 {
 	int my_errno = 0;
 
+	if (!window || !game)
+		return (0);
 	clean_displayed_scene_name(game, SAVE_GAME);
 	my_errno = add_scene_to_display_list(
 	hm_get_bucket(SCENES, PAUSE_GAME), game);
@@ -37,6 +41,8 @@ int no_save(window_t *window, game_t *game)
 {
 	int my_errno = 0;
 
+	if (!window || !game)
+		return (0);
 	clean_displayed_scene_name(game, SAVE_GAME);
 	my_errno = add_scene_to_display_list(
 	hm_get_bucket(SCENES, PAUSE_GAME), game);

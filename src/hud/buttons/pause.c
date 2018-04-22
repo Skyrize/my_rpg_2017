@@ -10,8 +10,11 @@
 int pause_game(window_t *window, game_t *game)
 {
 	my_printf("C SAL\n PAUSE GAME A REFAIRE\n");
-	sfRectangleShape *rec = sfRectangleShape_create();
+	sfRectangleShape *rec = NULL;
 
+	if (!window || !game)
+		return (84);
+	rec = sfRectangleShape_create();
 	sfRectangleShape_setSize(rec, (sfVector2f){800, 600});
 	sfRectangleShape_setFillColor(rec, (sfColor){0,0,0,128});
 	sfRenderWindow_drawRectangleShape(window->window, rec, NULL);

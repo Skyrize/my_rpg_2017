@@ -14,13 +14,12 @@ int frame_rate_more(window_t *window, game_t *game)
 	scene_t *scene_option = NULL;
 	bucket_t *text_bucket = NULL;
 
-	if (!bucket_scene)
+	if (check_unexisting_scene(bucket_scene, OPTION_GAME) != 0
+	|| !bucket_scene->value)
 		return (84);
 	scene_option = bucket_scene->value;
-	if (!scene_option)
-		return (84);
 	text_bucket = hm_get_bucket(scene_option->texts, "FRAME");
-	if (!text_bucket)
+	if (check_unexisting_text(text_bucket, "FRAME", OPTION_GAME) != 0)
 		return (84);
 	if ((FRAMERATE += 10) >= 120)
 		FRAMERATE = 120;
@@ -37,13 +36,12 @@ int frame_rate_less(window_t *window, game_t *game)
 	scene_t *scene_option = NULL;
 	bucket_t *text_bucket = NULL;
 
-	if (!bucket_scene)
+	if (check_unexisting_scene(bucket_scene, OPTION_GAME) != 0
+	|| !bucket_scene->value)
 		return (84);
 	scene_option = bucket_scene->value;
-	if (!scene_option)
-		return (84);
 	text_bucket = hm_get_bucket(scene_option->texts, "FRAME");
-	if (!text_bucket)
+	if (check_unexisting_text(text_bucket, "FRAME", OPTION_GAME) != 0)
 		return (84);
 	if ((FRAMERATE -= 10) <= 30)
 		FRAMERATE = 30;

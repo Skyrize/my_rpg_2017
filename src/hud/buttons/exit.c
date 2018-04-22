@@ -9,7 +9,7 @@
 
 int exit_game(window_t *window, game_t *game)
 {
-	if (!window || !window->window)
+	if (!window || !window->window || !game)
 		return (84);
 	(void)game;
 	sfRenderWindow_close(window->window);

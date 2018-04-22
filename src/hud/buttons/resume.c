@@ -15,6 +15,8 @@ char *found_icon(game_t *game)
 	{"Jaina", "JAINA_ICON"},
 	{NULL, NULL}};
 
+	if (!game)
+		return (NULL);
 	for (int i = 0 ; icon_tab[i][1] != NULL ; i++) {
 		if (my_strcmp(icon_tab[i][0], PLAYER_NAME) == 0)
 			return (icon_tab[i][1]);
@@ -36,7 +38,7 @@ int update_element(game_t *game)
 	if (!check || !check->value)
 		return (84);
 	new_texture = check->value;
-	player_icon = hm_get(curr_scene->objs, "CHARACTERISTIC");
+	player_icon = hm_get(curr_scene->objs, "STATS");
 	if (!player_icon)
 		return (84);
 	sfRectangleShape_setTexture(player_icon->obj, new_texture, sfTrue);
@@ -45,9 +47,13 @@ int update_element(game_t *game)
 
 int launch_game(window_t *window, game_t *game)
 {
+	if (!window || !game)
+		return (84);
 	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
-
-	update_element(game);
+	if (check_unexisting_scene(CURRENT_SCENE, "GAME") != 0)
+		return (84);
+	if (update_element(game) != 0)
+		return (84);
 	if (clean_displayed_scenes_and_add_back(game, "GAME") != 0)
 		return (84);
 	if (add_scene_to_display_list(
@@ -62,7 +68,11 @@ int launch_game(window_t *window, game_t *game)
 
 int resume(window_t *window, game_t *game)
 {
+	if (!window || !game)
+		return (84);
 	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
+	if (check_unexisting_scene(CURRENT_SCENE, "GAME") != 0)
+		return (84);
 	clean_displayed_scene_name(game, PAUSE_GAME);
 	(void)window;
 	return (1);
