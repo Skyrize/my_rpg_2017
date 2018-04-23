@@ -46,7 +46,7 @@ int get_a_texture_filepath(char **infos, char **type,
 	return (0);
 }
 
-int get_an_animated(char **infos, char **type,
+int is_texture_animated(char **infos, char **type,
 	hashmap_t **current_list, game_t *game)
 {
 	texture_t *texture;

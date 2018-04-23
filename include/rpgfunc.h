@@ -77,7 +77,7 @@ int get_a_texture(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_a_texture_filepath(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_animated(char **infos, char **type,
+int is_texture_animated(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_a_rect_values(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
@@ -98,6 +98,16 @@ int get_a_tile(char **infos, char **type,
 int get_a_tile_texture(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_a_priority(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_an_item(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_an_item_texture(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int is_item_for_quest(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int is_item_consumable(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_item_stats(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 
 /////////////////////////// INIT WARNING : UNEXISTING

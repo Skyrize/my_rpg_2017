@@ -196,7 +196,7 @@ typedef struct item_s
 
 typedef struct slot_s
 {
-	item_t item;
+	item_t *item;
 	obj_t *slot;
 } slot_t;
 

@@ -16,6 +16,7 @@ SRC	=	src/main.c						\
 		src/init/window.c			\
 		src/init/game.c			\
 		src/init/free_destroy/lobby.c	\
+		src/init/read/savior.c			\
 		src/init/read/file_analysing.c			\
 		src/init/keys/audio.c	\
 		src/init/keys/fonts.c	\
@@ -24,6 +25,7 @@ SRC	=	src/main.c						\
 		src/init/keys/scene_02.c		\
 		src/init/keys/texture_01.c		\
 		src/init/keys/texture_02.c		\
+		src/init/keys/items.c		\
 		src/init/keys/zone.c			\
 		src/input/event.c			\
 		src/list_management/create.c		\
