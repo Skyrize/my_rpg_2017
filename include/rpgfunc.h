@@ -135,6 +135,8 @@ int check_invalid_zone_coords(char *name, game_t *game);
 int check_invalid_area_coords(char *name, game_t *game);
 int check_invalid_tile_coords(char *name, game_t *game);
 int check_invalid_priority(int priority, char *texture_name);
+int check_invalid_consumable(sfBool consumable);
+int check_invalid_quest(sfBool quest);
 
 /////////////////////////// INIT WARNING : ALREADY_EXISTING
 
@@ -150,6 +152,7 @@ int check_already_existing_zone_coords(char *name, game_t *game);
 int check_already_existing_area_name(char *name, game_t *game);
 int check_already_existing_area_coords(char *name, game_t *game);
 int check_already_existing_tile_coords(game_t *game);
+int check_already_existing_item(hashmap_t *hashmap, char *item_name);
 
 /////////////////////////// INIT WARNING : MISSING
 
@@ -167,6 +170,7 @@ int check_undefined_list(hashmap_t *current_list, char *obj);
 int check_undefined_texture(bucket_t *texture, char *data);
 int check_undefined_area(game_t *game);
 int check_undefined_tile(game_t *game);
+int check_undefined_item(bucket_t *item, char *data);
 
 /////////////////////////// IN GAME WARNING
 
@@ -183,11 +187,15 @@ obj_t *create_obj(obj_data_t *data, game_t *game);
 
 ///Pass a scene name and the scene itself return a struct used to display a
 ///linked list of scenes. return NULL on fail
-display_list_t *create_a_display(char *name, scene_t *scene);
+display_list_t *create_display(char *name, scene_t *scene);
 
 ///Pass a texture name and window and return a tile_list used to display a
 ///linked list of tiles. return NULL on fail
-tile_list_t *create_a_tile(char *texture_name, game_t *game);
+tile_list_t *create_tile(char *texture_name, game_t *game);
+
+item_t *create_item(obj_t *obj, item_stat_t *stats);
+
+texture_t *create_texture(texture_data_t *data);
 
 //////////////////////////// LIST ADDING
 
@@ -280,6 +288,7 @@ int chest_slot(window_t *window, game_t *game);
 int gauntlets_slot(window_t *window, game_t *game);
 int pants_slot(window_t *window, game_t *game);
 int weapon_slot(window_t *window, game_t *game);
+int display_item_stats(item_t *item, game_t *game);
 
 /////////////////////////// HUD FONCTIONS
 
@@ -337,6 +346,7 @@ void destroy_and_free(window_t *window, game_t *game);
 void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
+void item_destroy(item_t *item);
 
 /////////////////////////// PLAYER FUNCTIONS
 

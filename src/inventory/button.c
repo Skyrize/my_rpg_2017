@@ -8,7 +8,9 @@
 #include "my.h"
 #include "rpg.h"
 
-int init_inventory(game_t *game)
+int display_item_stats(item_t *item, game_t *game)
 {
-	return (0);
+	if (!item || !game)
+		return (84);
+	return (1);
 }

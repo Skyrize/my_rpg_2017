@@ -25,7 +25,10 @@ void texture_destroy(texture_t *texture)
 	sfTexture_destroy(texture->texture);
 }
 
-void item_destroy()
+void item_destroy(item_t *item)
+{
+	obj_destroy(item->obj);
+}
 
 void destroy_and_free(window_t *window, game_t *game)
 {

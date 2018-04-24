@@ -40,7 +40,7 @@ int add_obj_to_list(obj_data_t *data, hashmap_t *list, game_t *game)
 
 int add_scene_to_display_list(bucket_t *scene, game_t *game)
 {
-	display_list_t *display = create_a_display(scene->key, scene->value);
+	display_list_t *display = create_display(scene->key, scene->value);
 	display_list_t *tmp = DISPLAYED_SCENES;
 
 	if (!display)
@@ -64,7 +64,7 @@ int add_scene_to_display_list(bucket_t *scene, game_t *game)
 
 int add_tile_to_list(char *texture, game_t *game)
 {
-	tile_list_t *display = create_a_tile(texture, game);
+	tile_list_t *display = create_tile(texture, game);
 	tile_list_t *tmp = TILE_LIST;
 
 	if (!display)
