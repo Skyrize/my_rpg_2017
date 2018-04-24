@@ -21,7 +21,7 @@
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from
 			///each other or datas from each other.
-#define STARTING_SCENE_NAME "BATTLE" /// Name of the starting scene in a
+#define STARTING_SCENE_NAME "MAIN_MENU" /// Name of the starting scene in a
 			///string. Will be displayed at the begining of the game
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
 #define GAME_TITLE "Lands Of Valoran"
@@ -217,6 +217,7 @@ typedef struct item_getter_s
 	sfVector2f base_emplacement;
 	slot_t *base;
 	slot_t *dest;
+	item_t *item;
 } item_getter_t;
 
 typedef struct inventory_s
