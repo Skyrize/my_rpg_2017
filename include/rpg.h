@@ -56,6 +56,7 @@
 #define OVER_COLOR ((sfColor){120, 210, 210, 255})
 #define TRANSPARENCY_COLOR ((sfColor){255, 255, 255, 50})
 
+#define INTRECT(x, y, width, height) (sfIntRect) {x, y, width, height}
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
 #define MIN(X, Y) X >= Y ? Y : X
@@ -121,7 +122,7 @@ typedef struct texture_s
 	sfVector2i rect_start;
 	sfVector2i rect_max;
 	sfVector2i rect_offset;
-} texture_t;
+} texture_t, texture_data_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////
 typedef struct tile_list_s tile_list_t;
@@ -194,17 +195,20 @@ typedef struct item_stat_s
 	int health;
 	int armor;
 	int special;
+	int damages;
 } item_stat_t;
 
 typedef struct item_s
 {
 	obj_t *obj;
+	sfBool quest;
+	sfBool consumable;
 	item_stat_t stats;
 } item_t;
 
 typedef struct slot_s
 {
-	item_t item;
+	item_t *item;
 	obj_t *slot;
 } slot_t;
 
