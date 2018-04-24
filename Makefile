@@ -16,6 +16,7 @@ SRC	=	src/main.c						\
 		src/init/window.c			\
 		src/init/game.c			\
 		src/init/free_destroy/lobby.c	\
+		src/init/read/savior.c			\
 		src/init/read/file_analysing.c			\
 		src/init/keys/audio.c	\
 		src/init/keys/fonts.c	\
@@ -24,13 +25,16 @@ SRC	=	src/main.c						\
 		src/init/keys/scene_02.c		\
 		src/init/keys/texture_01.c		\
 		src/init/keys/texture_02.c		\
+		src/init/keys/items.c		\
 		src/init/keys/zone.c			\
 		src/input/event.c			\
-		src/list_management/create.c		\
+		src/list_management/create_01.c		\
+		src/list_management/create_02.c		\
 		src/list_management/add.c		\
 		src/list_management/remove.c		\
 		src/list_management/read.c		\
 		src/list_management/get.c		\
+		src/inventory/button.c	\
 		src/game/lobby.c	\
 		src/game/start.c	\
 		src/game/display/lobby.c		\
@@ -74,11 +78,13 @@ SRC	=	src/main.c						\
 		src/warnings/unexisting_02.c		\
 		src/warnings/invalid_01.c		\
 		src/warnings/invalid_02.c		\
+		src/warnings/invalid_03.c		\
 		src/warnings/already_existing_01.c	\
 		src/warnings/already_existing_02.c	\
 		src/warnings/already_existing_03.c	\
 		src/warnings/missing.c		\
-		src/warnings/undefined.c		\
+		src/warnings/undefined_01.c		\
+		src/warnings/undefined_02.c		\
 		src/warnings/ingame.c			\
 		src/game/battle/manage_hit.c \
 		src/game/battle/manage_notif_right.c \

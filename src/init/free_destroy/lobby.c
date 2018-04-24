@@ -12,6 +12,7 @@ void scenes_destroy(scene_t *scene)
 {
 	hm_destroy(scene->texts);
 	hm_destroy(scene->objs);
+	free(scene);
 }
 
 void obj_destroy(obj_t *obj)
@@ -22,6 +23,11 @@ void obj_destroy(obj_t *obj)
 void texture_destroy(texture_t *texture)
 {
 	sfTexture_destroy(texture->texture);
+}
+
+void item_destroy(item_t *item)
+{
+	obj_destroy(item->obj);
 }
 
 void destroy_and_free(window_t *window, game_t *game)

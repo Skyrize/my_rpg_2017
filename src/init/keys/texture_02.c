@@ -20,7 +20,7 @@ int get_a_rect_values(char **infos, char **type,
 	if (check_undefined_texture(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
 	texture = CURRENT_SCENE->value;
-	if (!left || !top || !width || !height)
+	if (!left || !top || !width || !height || !texture)
 		return (84);
 	texture->rect = (sfIntRect){my_getnbr(left[1]), my_getnbr(top[1]),
 		my_getnbr(width[1]), my_getnbr(height[1])};
@@ -43,6 +43,8 @@ int get_a_rect_max_values(char **infos, char **type,
 	if (check_undefined_texture(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
 	texture = CURRENT_SCENE->value;
+	if (!texture)
+		return (84);
 	texture->rect_max = (sfVector2i){my_getnbr(x[1]), my_getnbr(y[1])};
 	my_destroy_tab(x);
 	my_destroy_tab(y);
@@ -61,6 +63,8 @@ int get_a_rect_start_values(char **infos, char **type,
 	if (check_undefined_texture(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
 	texture = CURRENT_SCENE->value;
+	if (!texture)
+		return (84);
 	texture->rect_max = (sfVector2i){my_getnbr(x[1]), my_getnbr(y[1])};
 	my_destroy_tab(x);
 	my_destroy_tab(y);
@@ -79,6 +83,8 @@ int get_a_rect_max_offset(char **infos, char **type,
 	if (check_undefined_texture(CURRENT_SCENE, infos[0]) != 0)
 		return (84);
 	texture = CURRENT_SCENE->value;
+	if (!texture)
+		return (84);
 	texture->rect_offset = (sfVector2i){my_getnbr(x[1]), my_getnbr(y[1])};
 	my_destroy_tab(x);
 	my_destroy_tab(y);
