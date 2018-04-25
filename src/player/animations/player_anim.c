@@ -10,9 +10,9 @@
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Audio.h>
 
-void set_next_rect_b(my_w_t *window)
+void set_next_rect_b(game_t *game)
 {
-	int mult = window->game.movement.anim_mult;
+	int mult = game->movement.anim_mult;
 
 	PLAYER.character->obj_rect.rect.left +=
 		(mult * PLAYER.character->obj_rect.rect_offset.x);
@@ -20,61 +20,65 @@ void set_next_rect_b(my_w_t *window)
 		(mult * PLAYER.character->obj_rect.rect_offset.y);
 }
 
-void set_next_rect(my_w_t *window)
+void set_next_rect(game_t *game)
 {
 	int act_x;
 	int act_y;
-	int mult = window->game.movement.anim_mult;
+	int mult = game->movement.anim_mult;
 
-	set_next_rect_b(window);
+	set_next_rect_b(game);
 	act_y = PLAYER.character->obj_rect.rect.top;
 	act_x = PLAYER.character->obj_rect.rect.left;
 	if (act_x >= PLAYER.character->obj_rect.rect_max.x ||
 	    act_y > PLAYER.character->obj_rect.rect_max.y ||
 	    act_x <= PLAYER.character->obj_rect.rect_start.x ||
 	    act_y < PLAYER.character->obj_rect.rect_start.y) {
-		window->game.movement.anim_mult = -1 * mult;
+		game->movement.anim_mult = -1 * mult;
 	}
 	sfRectangleShape_setTextureRect(
-		window->game.player.character->obj,
-		window->game.player.character->obj_rect.rect);
+		game->player.character->obj,
+		game->player.character->obj_rect.rect);
 }
 
-void set_anim_side(my_w_t *window)
+void set_anim_side(game_t *game)
 {
 	PLAYER.character->obj_rect.rect.top =
 		PLAYER.character->obj_rect.rect_start.y;
 	sfRectangleShape_setTextureRect(
-		window->game.player.character->obj,
-		window->game.player.character->obj_rect.rect);
+		game->player.character->obj,
+		game->player.character->obj_rect.rect);
 }
 
-void set_waiting_player_rect(my_w_t *window)
+void set_waiting_player_rect(game_t *game)
 {
 	PLAYER.character->obj_rect.rect.top =
 		PLAYER.character->obj_rect.rect_start.y;
 	PLAYER.character->obj_rect.rect.left = 50;
 	sfRectangleShape_setTextureRect(
-		window->game.player.character->obj,
-		window->game.player.character->obj_rect.rect);
+		game->player.character->obj,
+		game->player.character->obj_rect.rect);
 }
 
 //call on every frames
-void anim_player(my_w_t *window)
+int anim_player(game_t *game)
 {
-	static sfClock *clock = NULL;
+	static sfClock *clocker = NULL;
 
-	update_moving_state(window);
-	if (strcmp(window->current->key, "GAME") != 0)
-		return;
-	if (!(window->game.player.character))
-		return;
-	if (!window->game.player.character->obj_rect.animated)
-		return;
-	if (!clock)
-		clock = sfClock_create();
-	if (sfClock_getElapsedTime(clock).microseconds > 100000) {
-		sfClock_restart(clock);
-		set_next_rect(window);
+	update_moving_state(game);
+	if (strcmp(CURRENT_SCENE->key, "GAME") != 0)
+		return (0);
+	if (!(game->player.character))
+		return (0);
+	if (!game->player.character->obj_rect.animated)
+		return (0);
+	if (!clocker) {
+		clocker = sfClock_create();
+		if (!clocker)
+			return (84);
 	}
+	if (sfClock_getElapsedTime(clocker).microseconds > 100000) {
+		sfClock_restart(clocker);
+		set_next_rect(game);
+	}
+	return (0);
 }

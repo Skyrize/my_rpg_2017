@@ -5,78 +5,90 @@
 ## all clean fclean re
 ##
 
-SRC	=	src/main.c					\
-		src/init/my_initializer.c			\
-		src/init/file_analysing.c			\
-		src/init/init_from_file_readed.c		\
-		src/init/scenes_tab_init.c			\
-		src/init/list_filling_init.c			\
-		src/init/init_libs.c				\
-		src/init/init_map.c				\
-		src/init/buttons_init.c				\
-		src/init/init_my_player.c			\
-		src/init/scene_keys_functions_01.c		\
-		src/init/scene_keys_functions_02.c		\
-		src/init/texture_keys_functions_01.c		\
-		src/init/texture_keys_functions_02.c		\
-		src/init/map_keys_functions.c			\
-		src/init/zone_keys_functions.c			\
-		src/init/audio_and_fonts_keys_functions.c	\
-		src/input/input_functions.c			\
-		src/warnings/init_warning_unexisting.c		\
-		src/warnings/init_warning_invalid.c		\
-		src/warnings/init_warning_invalid_02.c		\
-		src/warnings/init_warning_already_existing_01.c	\
-		src/warnings/init_warning_already_existing_02.c	\
-		src/warnings/init_warning_already_existing_03.c	\
-		src/warnings/init_warning_missing.c		\
-		src/warnings/init_warning_undefined.c		\
-		src/warnings/ingame_warning.c			\
-		src/list_management/objs_list_create.c		\
-		src/list_management/objs_list_add.c		\
-		src/list_management/objs_list_remove.c		\
-		src/list_management/objs_list_read.c		\
-		src/list_management/objs_list_get.c		\
-		src/game_lobby/game_computing_functions.c	\
-		src/game_display/display_lobby.c		\
-		src/game_display/display_map.c			\
-		src/game_display/display_objs.c			\
-		src/game_display/display_texts.c		\
-		src/game_display/move_rect.c			\
-		src/free_destroy/free_and_destroy_lobby.c	\
-		src/hud/caracteristique.c 			\
-		src/hud/credits.c 				\
-		src/hud/exit.c 					\
-		src/hud/inventory.c 				\
-		src/hud/load.c 					\
-		src/hud/map.c 					\
-		src/hud/new_game.c 				\
-		src/hud/option.c 				\
-		src/hud/pause.c 				\
-		src/hud/quetes.c 				\
-		src/hud/quit.c 					\
-		src/hud/re_load.c 				\
-		src/hud/resume.c 				\
-		src/hud/save.c 					\
-		src/hud/buttons_functions_type.c 		\
-		src/hud/manage_buttons_game.c 			\
-		src/hud/menu_principale.c 			\
-		src/hud/manage_song.c 				\
-		src/hud/frame_rate.c 				\
-		src/hud/control_key.c 				\
-		src/hud/key_game.c 				\
-		src/hud/manage_life.c				\
-		src/hud/manage_hud_opacity.c			\
-		src/hud/area_hud.c				\
-		src/player/movements/move_player.c		\
-		src/player/movements/move_player_area.c		\
-		src/player/movements/move_player_zone.c		\
-		src/player/movements/set_player_pos.c		\
-		src/player/stats/characteristics.c		\
-		src/player/animations/player_anim.c		\
-		src/player/movements/smooth_move.c		\
-		src/player/movements/is_player_moving.c		\
-		src/battle/init_battle.c			\
+SRC	=	src/main.c						\
+		src/init/buttons.c					\
+		src/init/libs.c						\
+		src/init/list_filling.c					\
+		src/init/map.c						\
+		src/init/inventory.c					\
+		src/init/player.c					\
+		src/init/scenes.c					\
+		src/init/window.c					\
+		src/init/game.c						\
+		src/init/free_destroy/lobby.c				\
+		src/init/read/savior.c					\
+		src/init/read/file_analysing.c				\
+		src/init/keys/audio.c					\
+		src/init/keys/fonts.c					\
+		src/init/keys/map.c					\
+		src/init/keys/scene_01.c				\
+		src/init/keys/scene_02.c				\
+		src/init/keys/texture_01.c				\
+		src/init/keys/texture_02.c				\
+		src/init/keys/items.c					\
+		src/init/keys/zone.c					\
+		src/input/event.c					\
+		src/list_management/create_01.c				\
+		src/list_management/create_02.c				\
+		src/list_management/add.c				\
+		src/list_management/remove.c				\
+		src/list_management/read.c				\
+		src/list_management/get.c				\
+		src/inventory/button.c					\
+		src/game/lobby.c					\
+		src/game/start.c					\
+		src/game/display/lobby.c				\
+		src/game/display/map.c					\
+		src/game/display/objs.c					\
+		src/game/display/texts.c				\
+		src/game/display/animate.c				\
+		src/hud/buttons/area.c					\
+		src/hud/buttons/control_key.c 				\
+		src/hud/buttons/credits.c 				\
+		src/hud/buttons/exit.c 					\
+		src/hud/buttons/frame_rate.c 				\
+		src/hud/buttons/inventory.c 				\
+		src/hud/buttons/key_game.c 				\
+		src/hud/buttons/load.c 					\
+		src/hud/buttons/main_menu.c 				\
+		src/hud/buttons/map.c 					\
+		src/hud/buttons/new_game.c 				\
+		src/hud/buttons/option.c 				\
+		src/hud/buttons/pause.c 				\
+		src/hud/buttons/quetes.c 				\
+		src/hud/buttons/quit.c 					\
+		src/hud/buttons/reload.c 				\
+		src/hud/buttons/resume.c 				\
+		src/hud/buttons/save.c 					\
+		src/hud/buttons/song.c 					\
+		src/hud/buttons/stats.c 				\
+		src/hud/scene_hide_and_display.c 			\
+		src/hud/life.c						\
+		src/hud/opacity.c					\
+		src/hud/process.c 					\
+		src/player/movements/move_player.c			\
+		src/player/movements/move_player_area.c			\
+		src/player/movements/move_player_zone.c			\
+		src/player/movements/set_player_pos.c			\
+		src/player/movements/smooth_move.c			\
+		src/player/movements/is_player_moving.c			\
+		src/player/animations/player_anim.c			\
+		src/player/stats/stats.c				\
+		src/warnings/unexisting_01.c				\
+		src/warnings/unexisting_02.c				\
+		src/warnings/invalid_01.c				\
+		src/warnings/invalid_02.c				\
+		src/warnings/invalid_03.c				\
+		src/warnings/already_existing_01.c			\
+		src/warnings/already_existing_02.c			\
+		src/warnings/already_existing_03.c			\
+		src/warnings/missing.c					\
+		src/warnings/undefined_01.c				\
+		src/warnings/undefined_02.c				\
+		src/warnings/ingame.c					\
+		src/game/battle/manage_hit.c 				\
+		src/game/battle/manage_notif_right.c 			\
+		src/game/battle/manage_notif_left.c 			\
 
 OBJS	=	$(SRC:.c=.o)
 
@@ -91,6 +103,10 @@ CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lcsfml-graphics -lcsfml-audio -lcsf
 LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy
 
 CC	=	gcc
+
+_END=$'\x1b[0m'
+_RED=$'\x1b[31m'
+NO_OF_FILES := $(words $(SRC))
 
 all:	prepare_lib $(NAME)
 
@@ -107,7 +123,9 @@ tests_run:	prepare_lib
 
 
 $(NAME):	$(OBJS)
+	@ echo "\033[1;36m[ FILES COMPILED ] \033[0m \033[1;35m$(NO_OF_FILES)\033[0m"
 	$(CC) -o $(NAME) $(OBJS) $(LDFLAGS) $(CFLAGS)
+	@ echo "\033[1;31m ------------------Name of Binary : \033[1;35m$(NAME)\033[0;31m®\033[1;31m Created Sucesfully ------------------\033[0m"
 
 clean_map:
 	make clean -C bonus/map_creator
@@ -127,3 +145,10 @@ fclean:	clean
 
 re:	fclean all
 re_game: fclean game
+
+
+%.o:	%.c
+	@ echo "\033[1;35m[ OK ]\033[0m Compiling" $<
+	@ $(CC) -o $@ -c $< $(CFLAGS)
+
+.SILENT:
