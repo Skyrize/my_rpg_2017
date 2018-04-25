@@ -8,8 +8,10 @@
 #include "my.h"
 #include "rpg.h"
 
-int display_tiles(int x, int y, int priority, window_t *window, game_t *game)
+int display_tiles(sfVector2i *tile_coord, int priority, window_t *window, game_t *game)
 {
+	int x = tile_coord->x;
+	int y = tile_coord->y;
 	tile_list_t *tmp = AREA.tiles[y][x].displayed_tiles;
 
 	if (check_invalid_tile_display(tmp, x, y, game) != 0)
@@ -34,7 +36,7 @@ int display_area(int priority, window_t *window, game_t *game)
 
 	for (int y = 0; y != TILE_TAB_Y; y++) {
 		for (int x = 0; x != TILE_TAB_X; x++)
-			my_errno += display_tiles(x, y, priority,
+			my_errno += display_tiles(&V2I(x, y), priority,
 				window, game);
 	}
 	if (my_errno != 0)

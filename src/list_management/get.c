@@ -8,11 +8,11 @@
 #include "my.h"
 #include "rpg.h"
 
-display_list_t *get_scene_from_displayed(char *asked, game_t *game)
+managed_scene_t *get_scene_from_displayed(char *asked, game_t *game)
 {
-	display_list_t *tmp = DISPLAYED_SCENES;
+	managed_scene_t *tmp = MANAGED_SCENES;
 
-	while (tmp && my_strcmp(tmp->scene_name, asked) == 1)
+	while (tmp && my_strcmp(tmp->name, asked) == 1)
 		tmp = tmp->next;
 	return (tmp);
 }

@@ -11,7 +11,8 @@
 int get_an_item(char **infos, char **type,
 	hashmap_t **current_list, game_t *game)
 {
-	item_t *item = create_item(NULL, &(item_stat_t){0, 0, 0, 0});
+	item_t *item = create_item(&(item_data_t){type[1], NULL, 0, 0,
+	(item_stat_t){0, 0, 0, 0}});
 
 	if (!item)
 		return (84);
@@ -38,7 +39,7 @@ int get_an_item_texture(char **infos, char **type,
 	type[1], 1, V2F(-100, -100)}, game);
 	if (!item->obj)
 		return (84);
-	item->obj->callback = &display_item_stats;
+	item->obj->callback = &click_item;
 	(void)infos;
 	(void)current_list;
 	return (0);

@@ -37,3 +37,12 @@ int check_unexisting_button(int (*callback)(), char *button_name)
 	}
 	return (0);
 }
+
+int check_unexisting_item(item_t *item, char *name)
+{
+	if (!item) {
+		my_printf("WARNING: CAN'T FIND ITEM '%s' !\n", name);
+		return (84);
+	}
+	return (0);
+}
