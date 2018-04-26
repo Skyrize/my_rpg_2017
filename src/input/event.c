@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_runner_2017
+** my_rpg_2017
 ** File description:
 ** null
 */

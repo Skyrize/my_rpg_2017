@@ -36,6 +36,8 @@ SRC	=	src/main.c						\
 		src/list_management/get.c		\
 		src/inventory/button.c	\
 		src/inventory/get.c	\
+		src/inventory/lobby.c	\
+		src/inventory/manage_buttons.c	\
 		src/game/engine.c	\
 		src/game/lobby.c	\
 		src/game/start.c	\

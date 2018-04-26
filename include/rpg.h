@@ -47,13 +47,14 @@
 
 //////////////////////////////// PLAYER DEFINES /////////////////////////////
 
-#define INVENTORY_SIZE_Y 7
+#define INVENTORY_SIZE_Y 5
 #define INVENTORY_SIZE_X 5
 
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 255})
+#define OVER_ITEM_COLOR ((sfColor){255, 100, 100, 255})
 #define TRANSPARENCY_COLOR ((sfColor){255, 255, 255, 50})
 
 #define INTRECT(x, y, width, height) (sfIntRect) {x, y, width, height}

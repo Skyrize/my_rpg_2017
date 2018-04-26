@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_cook_2017
+** my_rpg_2017
 ** File description:
 ** (enter)
 */
@@ -59,8 +59,8 @@ int init_game(game_t *game)
 	|| init_audio_lib(game) != 0
 	|| init_fonts_lib(game) != 0
 	|| init_items_lib(game) != 0
-	|| init_inventory(game) != 0
 	|| init_scenes(game) != 0
+	|| init_inventory(game) != 0
 	|| init_buttons(game) != 0)
 		return (84);
 	if (set_game_version(game) != 0)

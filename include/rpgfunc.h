@@ -288,8 +288,6 @@ int chest_slot(window_t *window, game_t *game);
 int gauntlets_slot(window_t *window, game_t *game);
 int pants_slot(window_t *window, game_t *game);
 int weapon_slot(window_t *window, game_t *game);
-int click_item(sfVector2i *tab_pos, item_t *item, game_t *game);
-int click_slot(sfVector2i *tab_pos, item_t *item, game_t *game);
 
 /////////////////////////// HUD FONCTIONS
 
@@ -302,6 +300,8 @@ int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
 				char *notif_output, int offset);
+int button_fly_over(obj_t *button, sfVector2i clickPosition);
+int buttonisclicked(obj_t *button, sfVector2i clickPosition);
 
 /////////////////////////// GAME FUNCTIONS
 
@@ -375,7 +375,14 @@ bool is_player_moving(game_t *game);
 /////////////////////////////////// INVENTORY
 
 int items_foreach(game_t *game, window_t *window, int (*fptr)());
+int slots_foreach(game_t *game, int (*fptr)());
 item_t *copy_item_lib(char *name, hashmap_t *items_lib);
+
+int inventory_lobby(window_t *window, game_t *game);
+
+int manage_inventory_buttons(game_t *game);
+int click_item(sfVector2i *tab_pos, item_t *item, game_t *game);
+int click_slot(sfVector2i *tab_pos, item_t *item, game_t *game);
 
 /////////////////////////// END
 
