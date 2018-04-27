@@ -1,6 +1,0 @@
-src/game/lobby.c:	clocker->timer = sfClock_getElapsedTime(clocker->clock);
-src/game/lobby.c:	clocker->seconds = 0;
-src/game/lobby.c:	clocker->timer.microseconds / 1000000.0;
-src/init/window.c:	clocker->clock = sfClock_create();
-src/init/window.c:	if (!clocker->clock)
-src/init/window.c:	clocker->seconds = 0;

@@ -8,17 +8,17 @@
 #include "my.h"
 #include "rpg.h"
 
-int hide_scene(char *scene_name, game_t *game)
+int hide_scene(char *scene_name, game_t *game, char *old_scene)
 {
-	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
-	if (check_unexisting_scene(CURRENT_SCENE, "GAME") != 0)
+	CURRENT_SCENE = hm_get_bucket(SCENES, old_scene);
+	if (check_unexisting_scene(CURRENT_SCENE, old_scene) != 0)
 		return (84);
 	clean_displayed_scene_name(game, scene_name);
 	return (0);
 }
 
-int button_display_hide_scene(char *scene_name,
-				void (*fptr)(), game_t *game)
+int button_display_hide_scene(char *scene_name, void (*fptr)(), game_t *game,
+				char *old_scene)
 {
 	display_list_t *displayed_scene = get_scene_from_displayed(scene_name,
 	game);
@@ -27,7 +27,7 @@ int button_display_hide_scene(char *scene_name,
 	if (check_unexisting_scene((bucket_t *)scene, scene_name) != 0)
 		return (84);
 	if (displayed_scene) {
-		if (hide_scene(scene_name, game) != 0)
+		if (hide_scene(scene_name, game, old_scene) != 0)
 			return (84);
 	} else {
 		CURRENT_SCENE = hm_get_bucket(SCENES, scene_name);

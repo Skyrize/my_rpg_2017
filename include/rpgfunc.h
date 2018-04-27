@@ -246,7 +246,7 @@ void clean_displayed_scene_name(game_t *game, char *name_scenes);
 
 int manage_buttons(window_t *window, game_t *game);
 int button_display_hide_scene(char *scene_name, void (*update)(),
-				game_t *game);
+				game_t *game, char *old_scene);
 int update_button(char *seek, char *replacement, scene_t *scene,
 				game_t *game);
 
@@ -300,6 +300,8 @@ int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
 char *notif_output, int offset);
+char *found_icon(game_t *game);
+
 /////////////////////////// GAME FUNCTIONS
 
 int start_game(window_t *window, game_t *game);
@@ -365,6 +367,11 @@ void set_waiting_player_rect(game_t *game);
 bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
+
+/////////////////////////// BATTLE
+
+int init_battle(game_t *game);
+int update_element_in_battle(game_t *game);
 
 /////////////////////////// END
 

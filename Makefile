@@ -89,6 +89,8 @@ SRC	=	src/main.c						\
 		src/game/battle/manage_hit.c 				\
 		src/game/battle/manage_notif_right.c 			\
 		src/game/battle/manage_notif_left.c 			\
+		src/game/battle/init_battle.c				\
+		src/game/battle/update_battle_hud.c			\
 
 OBJS	=	$(SRC:.c=.o)
 
@@ -98,7 +100,8 @@ NAME	=	my_rpg
 
 NAME2	=	unit-tests
 
-CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
+CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lcsfml-graphics \
+		-lcsfml-audio -lcsfml-system -lcsfml-window
 
 LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy
 
