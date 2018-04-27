@@ -163,6 +163,12 @@ typedef struct map_s
 
 //////////////////////////////////////// SCENES ////////////////////////////
 
+typedef struct manager_s
+{
+	char *balise;
+	int (*fptr)();
+} manager_t;
+
 typedef enum
 {
 	BACKGROUNDS = 0,
@@ -180,14 +186,14 @@ typedef struct scene_s {
 	int priority;
 } scene_t;
 
-typedef struct display_list_s display_list_t;
+typedef struct managed_scene_s managed_scene_t;
 
-typedef struct display_list_s
+typedef struct managed_scene_s
 {
 	scene_t *scene;
-	char *scene_name;
-	display_list_t *next;
-} display_list_t;
+	char *name;
+	managed_scene_t *next;
+} managed_scene_t;
 
 /////////////////////////////// INVENTORY ///////////////////////////////////
 typedef struct item_stat_s
@@ -200,11 +206,12 @@ typedef struct item_stat_s
 
 typedef struct item_s
 {
+	char *name;
 	obj_t *obj;
 	sfBool quest;
 	sfBool consumable;
 	item_stat_t stats;
-} item_t;
+} item_t, item_data_t;
 
 typedef struct slot_s
 {
@@ -312,7 +319,7 @@ typedef struct game_s
 	key_control_t key_player;
 	bucket_t *current;
 	hashmap_t *scenes;
-	display_list_t *displayed_scenes;
+	managed_scene_t *displayed_scenes;
 } game_t;
 
 typedef struct window_s

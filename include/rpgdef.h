@@ -13,7 +13,7 @@
 
 #define SCENES game->scenes
 #define CURRENT_SCENE game->current
-#define DISPLAYED_SCENES game->displayed_scenes
+#define MANAGED_SCENES game->displayed_scenes
 #define FRAMERATE game->tools.framerate
 #define CLICK_RELEASED game->tools.click_released
 #define KEY_PLAYER game->key_player

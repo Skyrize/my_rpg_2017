@@ -20,7 +20,7 @@ int hide_scene(char *scene_name, game_t *game, char *old_scene)
 int button_display_hide_scene(char *scene_name, void (*fptr)(), game_t *game,
 				char *old_scene)
 {
-	display_list_t *displayed_scene = get_scene_from_displayed(scene_name,
+	managed_scene_t *displayed_scene = get_scene_from_displayed(scene_name,
 	game);
 	scene_t *scene = hm_get(SCENES, scene_name);
 

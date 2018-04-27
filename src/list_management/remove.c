@@ -22,23 +22,23 @@ void clean_displayed_tiles(game_t *game)
 
 void clean_displayed_scenes(game_t *game)
 {
-	display_list_t *tmp;
+	managed_scene_t *tmp;
 
-	while (DISPLAYED_SCENES) {
-		tmp = DISPLAYED_SCENES;
-		DISPLAYED_SCENES = tmp->next;
+	while (MANAGED_SCENES) {
+		tmp = MANAGED_SCENES;
+		MANAGED_SCENES = tmp->next;
 		free(tmp);
 	}
 }
 
 void clean_displayed_scene_name(game_t *game, char *name_scenes)
 {
-	display_list_t *tmp = DISPLAYED_SCENES;
-	display_list_t *freed;
+	managed_scene_t *tmp = MANAGED_SCENES;
+	managed_scene_t *freed;
 
 	while (tmp) {
 		if (tmp->next != NULL &&
-		my_strcmp(tmp->next->scene_name, name_scenes) == 0) {
+		my_strcmp(tmp->next->name, name_scenes) == 0) {
 			freed = tmp->next;
 			tmp->next = tmp->next->next;
 			free(freed);
@@ -50,13 +50,13 @@ void clean_displayed_scene_name(game_t *game, char *name_scenes)
 
 int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name)
 {
-	display_list_t *tmp;
+	managed_scene_t *tmp;
 	int already_in = 0;
 
-	while (DISPLAYED_SCENES) {
-		tmp = DISPLAYED_SCENES;
-		DISPLAYED_SCENES = tmp->next;
-		if (my_strcmp(scene_name, tmp->scene_name) != 0) {
+	while (MANAGED_SCENES) {
+		tmp = MANAGED_SCENES;
+		MANAGED_SCENES = tmp->next;
+		if (my_strcmp(scene_name, tmp->name) != 0) {
 			free(tmp);
 		} else
 			already_in = 1;

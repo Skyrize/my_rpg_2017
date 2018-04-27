@@ -14,6 +14,8 @@ int read_bucket(window_t *window, game_t *game, bucket_t *bucket, int (*fptr)())
 	int my_errno = 0;
 
 	while (tmp) {
+		if (!window && !game)
+			my_errno = fptr(tmp);
 		if (!window && game) {
 			my_errno = fptr(tmp, game);
 		} else if (window && !game) {

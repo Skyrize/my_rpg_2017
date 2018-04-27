@@ -60,24 +60,17 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 	return (0);
 }
 
-int manage_buttons(window_t *window, game_t *game)
+int manage_buttons(managed_scene_t *scene, window_t *window, game_t *game)
 {
-	display_list_t *tmp = DISPLAYED_SCENES;
-	scene_t *scene;
 	int my_errno = 0;
 
-	if (!tmp || !window || !game)
+	if (!scene || !window || !game)
 		return (84);
-	while (tmp) {
-		if (!(scene = tmp->scene))
-			return (84);
-		my_errno = read_hashmap(window, game, scene->objs,
-			&process_button_over);
-		if (my_errno == 1)
-			return (0);
-		if (my_errno == 84)
-			return (84);
-		tmp = tmp->next;
-	}
+	my_errno = read_hashmap(window, game, scene->scene->objs,
+		&process_button_over);
+	if (my_errno == 1)
+		return (0);
+	if (my_errno == 84)
+		return (84);
 	return (0);
 }
