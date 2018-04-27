@@ -7,6 +7,8 @@
 
 #include "rpg.h"
 
+
+
 int init_battle(game_t *game)
 {
 	scene_t *battle_scene = hm_get(SCENES, "BATTLE");

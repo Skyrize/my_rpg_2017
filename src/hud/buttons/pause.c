@@ -13,10 +13,10 @@ int pause_game(window_t *window, game_t *game)
 	sfRectangleShape *rec = NULL;
 	static char *old_scene = NULL;
 	
-	if (my_strcmp(CURRENT_SCENE->key, "STATS"))
-		old_scene = CURRENT_SCENE->key;
 	if (!window || !game)
 		return (84);
+	if (my_strcmp(CURRENT_SCENE->key, "STATS"))
+		old_scene = CURRENT_SCENE->key;
 	rec = sfRectangleShape_create();
 	sfRectangleShape_setSize(rec, (sfVector2f){800, 600});
 	sfRectangleShape_setFillColor(rec, (sfColor){0,0,0,128});
