@@ -17,7 +17,7 @@ sfVector2f vec2u_to_vec2f(sfVector2u vecu)
 	return (vecf);
 }
 
-int buttonisclicked(obj_t *button, sfVector2i clickPosition)
+int click_button(obj_t *button, sfVector2i clickPosition, sfMouseButton mb)
 {
 	return (clickPosition.x <
 	sfRectangleShape_getPosition(button->obj).x +
@@ -26,7 +26,7 @@ int buttonisclicked(obj_t *button, sfVector2i clickPosition)
 	clickPosition.y < sfRectangleShape_getPosition(button->obj).y +
 	sfRectangleShape_getSize(button->obj).y &&
 	clickPosition.y > sfRectangleShape_getPosition(button->obj).y
-	&& sfMouse_isButtonPressed(sfMouseLeft));
+	&& sfMouse_isButtonPressed(mb));
 
 }
 
@@ -47,10 +47,10 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 	if (button->button != sfTrue)
 		return (0);
 	if (button_fly_over(button, MOUSE_POS) == 1 &&
-	buttonisclicked((button), MOUSE_POS) == 0)
+	click_button((button), MOUSE_POS, sfMouseLeft) == 0)
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
 	else if (button_fly_over(button, MOUSE_POS) == 1 &&
-	buttonisclicked((button), MOUSE_POS) == 1
+	click_button((button), MOUSE_POS, sfMouseLeft) == 1
 	&& CLICK_RELEASED == sfTrue) {
 		CLICK_RELEASED = sfFalse;
 		return (button->callback ? button->callback(window, game) : 84);

@@ -293,6 +293,8 @@ int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
 char *notif_output, int offset);
 int button_fly_over(obj_t *button, sfVector2i clickPosition);
+int click_button(obj_t *button, sfVector2i clickPosition,
+sfMouseButton mb);
 int buttonisclicked(obj_t *button, sfVector2i clickPosition);
 void init_at_default(sfRectangleShape *notif, sfText *notif_text,
 int *check_hit, int *offset);

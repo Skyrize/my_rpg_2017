@@ -11,15 +11,21 @@
 
 int battle_events(window_t *window, game_t *game)
 {
-	(void)window;
-	(void)game;
+	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
+		if (window->event.type == sfEvtClosed)
+			sfRenderWindow_close(window->window);
+		if (window->event.type == sfEvtMouseButtonReleased)
+			CLICK_RELEASED = sfTrue;
+	}
 	return (0);
 }
 
 int battle_lobby(window_t *window, game_t *game)
 {
-
-	if (battle_events(window, game) != 0)
+	if (battle_events(window, game) != 0
+	|| manage_hit_enemy(game) != 0
+	|| manage_notif_right(game, "Tu est pd") != 0
+	|| manage_notif_left(game, "Tu est pd") != 0)
 		return (84);
 	return (0);
 }
