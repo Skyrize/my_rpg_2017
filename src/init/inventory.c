@@ -33,14 +33,11 @@ int init_slot(slot_t *slot, sfVector2f *pos, game_t *game)
 
 int get_starting_items(game_t *game)
 {
-	add_new_to_slot("COMMON_HELMET_00", &HELMET_POS, &HELMET, game);
-	add_new_to_slot("COMMON_CHEST_00", &CHEST_POS, &CHEST, game);
-	add_new_to_slot("COMMON_PANTS_00", &PANTS_POS, &PANTS, game);
-	add_new_to_slot("COMMON_GAUNTLETS_00", &GAUNTLETS_POS, &GAUNTLETS, game);
-	add_new_to_slot("COMMON_BOW_00", &WEAPON_POS, &WEAPON, game);
-	my_printf("NOTE: relace weapon init with null and init it when selecting player.\n");
-	if (!HELMET.item || !CHEST.item
-	|| !PANTS.item || !GAUNTLETS.item || !WEAPON.item) {
+	if (add_new_to_slot("COMMON_HELMET_00", &HELMET_POS, &HELMET, game) != 0
+	|| add_new_to_slot("COMMON_CHEST_00", &CHEST_POS, &CHEST, game) != 0
+	|| add_new_to_slot("COMMON_PANTS_00", &PANTS_POS, &PANTS, game) != 0
+	|| add_new_to_slot("COMMON_GAUNTLETS_00",
+	&GAUNTLETS_POS, &GAUNTLETS, game) != 0) {
 		my_printf("WARNING: ERROR IN STARTING ITEMS INITALISATION !\n");
 		return (84);
 	}
