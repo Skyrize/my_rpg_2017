@@ -8,18 +8,31 @@
 #include "my.h"
 #include "rpg.h"
 
+int is_button_clicked(obj_t *button, slot_t *slot, game_t *game)
+{
+	if (click_button((button), MOUSE_POS, sfMouseLeft) == 0
+	&& click_button((button), MOUSE_POS, sfMouseRight) == 0){
+		sfRectangleShape_setFillColor(button->obj,
+		OVER_ITEM_COLOR);
+	} else if (click_button((button), MOUSE_POS, sfMouseLeft) == 1
+	&& CLICK_RELEASED == sfTrue) {
+		CLICK_RELEASED = sfFalse;
+		return (button->callback ?
+		button->callback(slot, game) : 84);
+	} else if (click_button((button), MOUSE_POS, sfMouseRight) == 1
+	&& CLICK_RELEASED == sfTrue) {
+		CLICK_RELEASED = sfFalse;
+		return (slot->item ? display_item_stats(slot, game) : 0);
+	}
+	return (0);
+}
+
 int process_inventory_button_over(slot_t *slot, game_t *game)
 {
 	obj_t *button = slot->slot;
 
-	if (button_fly_over(button, MOUSE_POS) == 1 &&
-	buttonisclicked((button), MOUSE_POS) == 0)
-		sfRectangleShape_setFillColor(button->obj, OVER_ITEM_COLOR);
-	else if (button_fly_over(button, MOUSE_POS) == 1 &&
-	buttonisclicked((button), MOUSE_POS) == 1
-	&& CLICK_RELEASED == sfTrue) {
-		CLICK_RELEASED = sfFalse;
-		return (button->callback ? button->callback(slot, game) : 84);
+	if (button_fly_over(button, MOUSE_POS) == 1) {
+		return (is_button_clicked(button, slot, game));
 	} else if (!game->movement.is_moving
 	&& sfRectangleShape_getFillColor(button->obj).a == 255)
 		sfRectangleShape_setFillColor(button->obj, REGULAR_COLOR);
