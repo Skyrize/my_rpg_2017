@@ -38,11 +38,14 @@ int init(window_t *window, game_t *game)
 		my_printf("WARNING: ERROR IN GAME INITIALISATION !\n");
 		return (84);
 	}
+<<<<<<< HEAD
 	if (init_rectangle_divers(game) != 0) {
 		my_printf("WARNING: ERROR IN REC DIVERS INITIALISATION !\n");
 		return (84);
 	}
 	my_printf("WARNING: 5 param in display_tiles\n");
+=======
+>>>>>>> 0877806753abf1768efa2ffd49954bb0ae494b44
 	return (0);
 }
 
@@ -51,8 +54,9 @@ int game_loop(window_t *window, game_t *game)
 	while (sfRenderWindow_isOpen(window->window)) {
 		get_time(&window->clocker);
 		sfRenderWindow_clear(window->window, sfBlack);
-		if (game_lobby(window, game) != 0)
+		if (process_engine(window, game) != 0)
 			return (84);
+		display_mouse(game, window);
 		sfRenderWindow_display(window->window);
 	}
 	return (0);

@@ -5,7 +5,6 @@
 ** (enter)
 */
 
-#include "my.h"
 #include "rpg.h"
 
 int display_obj(obj_t *obj, window_t *window)
