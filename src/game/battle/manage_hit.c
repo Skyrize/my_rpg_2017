@@ -11,7 +11,7 @@
 int re_init_at_initial(sfText *hit)
 {
 	if (sfText_getPosition(hit).y <= -300) {
-		sfText_setCharacterSize(hit, 90);
+		sfText_setCharacterSize(hit, 60);
 		sfText_setPosition(hit, (sfVector2f){500, 300});
 		sfText_setString(hit, "");
 		sfText_setRotation(hit, 0);
@@ -28,6 +28,7 @@ int update_text_hit(sfText *hit, int check_hit)
 	if ((sfText_getPosition(hit).y > 0 &&
 	sfMouse_isButtonPressed(sfMouseLeft)) || check_hit == 1) {
 		sfText_setString(hit, "-200");
+		sfText_setFillColor(hit, sfRed);
 		sfText_setOrigin(hit, (sfVector2f){80, 85});
 		sfText_move(hit, (sfVector2f){0, -10});
 		offset -= 10;

@@ -27,11 +27,11 @@ char *notif_output, int offset)
 void update_move_right(sfRectangleShape *notif, sfText *notif_text,
 char *notif_output, int *offset)
 {
-	move_and_update(notif, notif_text, notif_output, *offset);
-	if (sfRectangleShape_getPosition(notif).x <= 400) {
+	if (sfRectangleShape_getPosition(notif).x <= 390)
 		*offset *= -1;
-	} else if (offset == 0)
-		*offset = -2;
+	else if (*offset == 0)
+		*offset = -4;
+	move_and_update(notif, notif_text, notif_output, *offset);
 }
 
 int manage_notif_right(game_t *game, char *notif_output)
@@ -40,16 +40,15 @@ int manage_notif_right(game_t *game, char *notif_output)
 	obj_t *obj = NULL;
 	sfText *notif_text = NULL;
 	sfRectangleShape *notif_bg = NULL;
-	static int check_hit;
-	static int offset = -2;
+	static int check_hit = 0;
+	static int offset = -4;
 
 	if (NOTIF_NULL_ARGS || (BATTLE_GAME_NULL_DATA))
 		return (84);
 	obj = hm_get(battle_game->objs, "NOTIF_RIGHT");
 	notif_text = hm_get(battle_game->texts, "NOTIF_RIGHT");
-	if (!obj || !notif_text)
+	if (!obj || !notif_text || !(notif_bg = obj->obj) )
 		return (84);
-	notif_bg = obj->obj;
 	if (IS_APRESSED || IS_A_BATTLE)
 		return (0);
 	if ((check_hit = 1) && sfRectangleShape_getPosition(notif_bg).x > 800)

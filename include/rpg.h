@@ -21,7 +21,7 @@
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
 #define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from
 			///each other or datas from each other.
-#define STARTING_SCENE_NAME "MAIN_MENU" /// Name of the starting scene in a
+#define STARTING_SCENE_NAME "BATTLE" /// Name of the starting scene in a
 			///string. Will be displayed at the begining of the game
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
 #define GAME_TITLE "Lands Of Valoran"
@@ -85,7 +85,7 @@
 #define NOTIF_NULL_ARGS (!game || !notif_output)
 #define BATTLE_GAME_NULL_DATA (!battle_game || !battle_game->objs\
 || !battle_game->texts)
-#define IS_APRESSED (!(sfMouse_isButtonPressed(sfMouseLeft)) && check_hit == 0)
+#define IS_APRESSED (1 != 1)
 #define IS_A_BATTLE (my_strcmp(CURRENT_SCENE->key, "BATTLE") != 0)
 
 ////////////////////////////////// OBJECTS //////////////////////////////
