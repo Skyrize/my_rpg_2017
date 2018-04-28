@@ -8,6 +8,127 @@
 #include "my.h"
 #include "rpg.h"
 
+int update_name_item(slot_t *slot, game_t *game)
+{
+	scene_t *stats_scene = hm_get(game->scenes, "STATS");
+	bucket_t *bucket_texts = NULL;
+
+	if (!stats_scene || !stats_scene->objs || !stats_scene->texts
+	|| !slot->item || !slot->item->name)
+		return (84);
+	if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
+		return (84);
+	sfText_setString(bucket_texts->value, slot->item->name);
+	return (0);
+}
+
+int update_quest_item(slot_t *slot, game_t *game)
+{
+	// scene_t *stats_scene = hm_get(game->scenes, "STATS");
+	// bucket_t *bucket_texts = NULL;
+
+	// if (!stats_scene || !stats_scene->objs || !stats_scene->texts
+	// || !slot->item || !slot->item->name)
+	// 	return (84);
+	// if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
+	// 	return (84);
+	// sfText_setString(bucket_texts->value, slot->item->name);
+	return (0);
+}
+int umdate_consumable_item(slot_t *slot, game_t *game)
+{
+	// scene_t *stats_scene = hm_get(game->scenes, "STATS");
+	// bucket_t *bucket_texts = NULL;
+
+	// if (!stats_scene || !stats_scene->objs || !stats_scene->texts
+	// || !slot->item || !slot->item->name)
+	// 	return (84);
+	// if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
+	// 	return (84);
+	// sfText_setString(bucket_texts->value, slot->item->name);
+	return (0);
+}
+int update_health_item(slot_t *slot, game_t *game)
+{
+	// scene_t *stats_scene = hm_get(game->scenes, "STATS");
+	// bucket_t *bucket_texts = NULL;
+
+	// if (!stats_scene || !stats_scene->objs || !stats_scene->texts
+	// || !slot->item || !slot->item->name)
+	// 	return (84);
+	// if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
+	// 	return (84);
+	// sfText_setString(bucket_texts->value, slot->item->name);
+	return (0);
+}
+
+int update_armor_item(slot_t *slot, game_t *game)
+{
+	// scene_t *stats_scene = hm_get(game->scenes, "STATS");
+	// bucket_t *bucket_texts = NULL;
+
+	// if (!stats_scene || !stats_scene->objs || !stats_scene->texts
+	// || !slot->item || !slot->item->name)
+	// 	return (84);
+	// if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
+	// 	return (84);
+	// sfText_setString(bucket_texts->value, slot->item->name);
+	return (0);
+}
+
+int update_special_item(slot_t *slot, game_t *game)
+{
+	// scene_t *stats_scene = hm_get(game->scenes, "STATS");
+	// bucket_t *bucket_texts = NULL;
+
+	// if (!stats_scene || !stats_scene->objs || !stats_scene->texts
+	// || !slot->item || !slot->item->name)
+	// 	return (84);
+	// if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
+	// 	return (84);
+	// sfText_setString(bucket_texts->value, slot->item->name);
+	return (0);
+}
+
+int update_damages_item(slot_t *slot, game_t *game)
+{
+	// scene_t *stats_scene = hm_get(game->scenes, "STATS");
+	// bucket_t *bucket_texts = NULL;
+
+	// if (!stats_scene || !stats_scene->objs || !stats_scene->texts
+	// || !slot->item || !slot->item->name)
+	// 	return (84);
+	// if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
+	// 	return (84);
+	// sfText_setString(bucket_texts->value, slot->item->name);
+	return (0);
+}
+
+int update_item_info(slot_t *slot, game_t *game)
+{
+	if (update_name_item(slot, game) != 0
+	|| update_quest_item(slot, game) != 0
+	|| umdate_consumable_item(slot, game) != 0
+	|| update_health_item(slot, game) != 0
+	|| update_armor_item(slot, game) != 0
+	|| update_special_item(slot, game) != 0
+	|| update_damages_item(slot, game) != 0)
+		return (84);
+}
+
+int display_item_stats(slot_t *slot, game_t *game)
+{
+	if (!slot|| !game)
+		return (84);
+	if (get_scene_from_displayed(STATS_GAME, game) == NULL)
+		if (button_display_hide_scene(STATS_GAME,
+		&update_stats, game)!= 0)
+			return (84);
+	if (update_item_info(slot, game) != 0)
+		return (0);
+	return (0);
+}
+
 int select_slot(slot_t *slot, game_t *game)
 {
 	if (!slot->item)
