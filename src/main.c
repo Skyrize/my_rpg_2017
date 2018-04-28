@@ -29,7 +29,6 @@ int init_rectangle_divers(game_t *game)
 
 int init(window_t *window, game_t *game)
 {
-
 	if (init_window(window) != 0) {
 		my_printf("WARNING: ERROR IN WINDOW INITIALISATION !\n");
 		return (84);
@@ -38,14 +37,11 @@ int init(window_t *window, game_t *game)
 		my_printf("WARNING: ERROR IN GAME INITIALISATION !\n");
 		return (84);
 	}
-<<<<<<< HEAD
-	if (init_rectangle_divers(game) != 0) {
-		my_printf("WARNING: ERROR IN REC DIVERS INITIALISATION !\n");
-		return (84);
-	}
+	//if (init_rectangle_divers(game) != 0) {
+	//	my_printf("WARNING: ERROR IN REC DIVERS INITIALISATION !\n");
+	//	return (84);
+	//}
 	my_printf("WARNING: 5 param in display_tiles\n");
-=======
->>>>>>> 0877806753abf1768efa2ffd49954bb0ae494b44
 	return (0);
 }
 

@@ -7,6 +7,7 @@
 
 #include "rpg.h"
 
+/*
 void init_at_default(sfRectangleShape *notif, sfText *notif_text,
 int *check_hit, int *offset)
 {
@@ -55,4 +56,4 @@ int manage_notif_right(game_t *game, char *notif_output)
 		init_at_default(notif_bg, notif_text, &check_hit, &offset);
 	update_move_right(notif_bg, notif_text, notif_output, &offset);
 	return (0);
-}
+}*/

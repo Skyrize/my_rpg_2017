@@ -291,12 +291,12 @@ int manage_hit_enemy(game_t *game);
 int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
-				char *notif_output, int offset);
+char *notif_output, int offset);
 int button_fly_over(obj_t *button, sfVector2i clickPosition);
 int buttonisclicked(obj_t *button, sfVector2i clickPosition);
-char *notif_output, int offset);
 void init_at_default(sfRectangleShape *notif, sfText *notif_text,
 int *check_hit, int *offset);
+
 /////////////////////////// GAME FUNCTIONS
 
 int start_game(window_t *window, game_t *game);

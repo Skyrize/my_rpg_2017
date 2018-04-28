@@ -18,11 +18,8 @@ int battle_events(window_t *window, game_t *game)
 
 int battle_lobby(window_t *window, game_t *game)
 {
-	
-	if (battle_events(window, game) != 0
-	|| manage_hit_enemy(game) != 0
-	|| manage_notif_right(game, "Tu est pd") != 0
-	|| manage_notif_left(game, "Tu est pd") != 0)
+
+	if (battle_events(window, game) != 0)
 		return (84);
 	return (0);
 }
