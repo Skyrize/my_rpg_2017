@@ -11,14 +11,6 @@
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
-///temp
-int add_to_slot(slot_t *slot, sfVector2i *pos, game_t *game);
-int add_helmet(slot_t *slot, game_t *game);
-int add_chest(slot_t *slot, game_t *game);
-int add_pants(slot_t *slot, game_t *game);
-int add_gauntlets(slot_t *slot, game_t *game);
-int add_weapon(slot_t *slot, game_t *game);
-
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);
@@ -377,12 +369,18 @@ bool is_player_moving(game_t *game);
 int items_foreach(game_t *game, window_t *window, int (*fptr)());
 int slots_foreach(game_t *game, int (*fptr)());
 item_t *copy_item_lib(char *name, hashmap_t *items_lib);
+int add_new_to_slot(char *name, sfVector2f *pos, slot_t *slot, game_t *game);
 
 int inventory_lobby(window_t *window, game_t *game);
 
 int manage_inventory_buttons(game_t *game);
-int click_item(sfVector2i *tab_pos, item_t *item, game_t *game);
-int click_slot(sfVector2i *tab_pos, item_t *item, game_t *game);
+int click_slot(slot_t *slot, game_t *game);
+
+//////////////////////////////// MOUSE
+
+int replace_mouse_skin(obj_t *obj, sfVector2f *offset, game_t *game);
+int reset_mouse_skin(game_t *game);
+int display_mouse(game_t *game, window_t *window);
 
 /////////////////////////// END
 

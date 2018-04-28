@@ -8,11 +8,14 @@
 #include "my.h"
 #include "rpg.h"
 
-void init_tools(game_t *game)
+int init_tools(game_t *game)
 {
 	MOUSE_POS = V2I(0, 0);
+	if (reset_mouse_skin(game) != 0)
+		return (84);
 	CLICK_RELEASED = sfTrue;
 	FRAMERATE = 60;
+	return (0);
 }
 
 void init_key_player(game_t *game)
@@ -61,12 +64,12 @@ int init_game(game_t *game)
 	|| init_items_lib(game) != 0
 	|| init_scenes(game) != 0
 	|| init_inventory(game) != 0
-	|| init_buttons(game) != 0)
+	|| init_buttons(game) != 0
+	|| init_tools(game) != 0)
 		return (84);
 	if (set_game_version(game) != 0)
 		return (84);
 	init_key_player(game);
-	init_tools(game);
 	init_movement(game);
 	init_player(game);
 	return (0);

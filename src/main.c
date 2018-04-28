@@ -28,6 +28,7 @@ int game_loop(window_t *window, game_t *game)
 		sfRenderWindow_clear(window->window, sfBlack);
 		if (process_engine(window, game) != 0)
 			return (84);
+		display_mouse(game, window);
 		sfRenderWindow_display(window->window);
 	}
 	return (0);

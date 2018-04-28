@@ -14,9 +14,15 @@
 #define SCENES game->scenes
 #define CURRENT_SCENE game->current
 #define MANAGED_SCENES game->displayed_scenes
-#define FRAMERATE game->tools.framerate
-#define CLICK_RELEASED game->tools.click_released
 #define KEY_PLAYER game->key_player
+
+////////////////////////////////////// TOOLS ////////////////////////////
+
+#define TOOLS game->tools
+#define FRAMERATE TOOLS.framerate
+#define CLICK_RELEASED TOOLS.click_released
+#define MOUSE_SKIN TOOLS.mouse_skin
+#define MOUSE_SKIN_OFFSET TOOLS.mouse_skin_offset
 
 #define LIBS game->libraries
 #define AUDIO_LIB LIBS.audio
@@ -35,7 +41,13 @@
 #define GAUNTLETS INVENTORY.gauntlets
 #define PANTS INVENTORY.pants
 
-#define ITEM_SELECTOR INVENTORY.selector
+#define ITEM_SELECTED INVENTORY.selected
+#define HELMET_POS (sfVector2f){634, 84}
+#define CHEST_POS (sfVector2f){634, 129}
+#define PANTS_POS (sfVector2f){634, 172}
+#define GAUNTLETS_POS (sfVector2f){589, 128}
+#define WEAPON_POS (sfVector2f){678, 128}
+#define SLOT_POS(x, y) (sfVector2f){563 + 36 * x , 290 + y * 36}
 
 ///////////////////////////////// MAP ///////////////////////////////////////
 

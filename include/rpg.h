@@ -218,19 +218,13 @@ typedef struct slot_s
 {
 	item_t *item;
 	obj_t *slot;
+	sfVector2f pos;
 } slot_t;
-
-typedef struct item_getter_s
-{
-	sfVector2f base_emplacement;
-	slot_t *base;
-	slot_t *dest;
-} item_getter_t;
 
 typedef struct inventory_s
 {
 	int golds;
-	item_getter_t selector;
+	item_t *selected;
 	slot_t weapon;
 	slot_t helmet;
 	slot_t chest;
@@ -288,7 +282,8 @@ typedef struct ctime_s
 	float seconds;
 } ctime_t;
 
-typedef struct movement_s {
+typedef struct movement_s
+{
 	sfVector2i target_tile;
 	int anim_mult;
 	bool is_moving;
@@ -298,6 +293,8 @@ typedef struct tool_s
 {
 	int framerate;
 	sfVector2i mouse_pos;
+	obj_t *mouse_skin;
+	sfVector2f mouse_skin_offset;
 	sfBool click_released;
 } tool_t;
 

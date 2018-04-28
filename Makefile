@@ -36,6 +36,7 @@ SRC	=	src/main.c						\
 		src/list_management/get.c		\
 		src/inventory/button.c	\
 		src/inventory/get.c	\
+		src/inventory/add.c	\
 		src/inventory/lobby.c	\
 		src/inventory/manage_buttons.c	\
 		src/game/engine.c	\
@@ -45,11 +46,13 @@ SRC	=	src/main.c						\
 		src/game/display/map.c			\
 		src/game/display/objs.c			\
 		src/game/display/texts.c		\
+		src/game/display/mouse.c		\
 		src/game/display/animate.c			\
 		src/game/battle/lobby.c \
 		src/game/battle/manage/hit.c \
 		src/game/battle/manage/notif_right.c \
 		src/game/battle/manage/notif_left.c \
+		src/game/mouse/replace.c \
 		src/hud/buttons/area.c				\
 		src/hud/buttons/control_key.c 				\
 		src/hud/buttons/credits.c 				\
