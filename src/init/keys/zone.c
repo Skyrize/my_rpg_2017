@@ -13,6 +13,9 @@ void set_area_values(char *encounter, char *x, char *y, game_t *game)
 	AREA_ENCOUTER = my_getnbr(encounter);
 	AREA_COOR_X = my_getnbr(x);
 	AREA_COOR_Y = my_getnbr(y);
+	for (int y = 0; y != TILE_TAB_Y; y++)
+		for (int x = 0; x != TILE_TAB_X; x++)
+			AREA.tiles[y][x].displayed_tiles = NULL;
 }
 
 
