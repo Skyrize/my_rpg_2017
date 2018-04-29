@@ -233,6 +233,17 @@ typedef struct inventory_s
 	slot_t items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
 
+/////////////////////////////////// BATTLE ////////////////////////////////
+
+typedef struct enemy_s {
+	char *name;
+	char *zone;
+	int health;
+	int armor;
+	int damages;
+	obj_t *monster;
+} enemy_t;
+
 /////////////////////////////////// PLAYER ////////////////////////////////
 
 typedef struct stat_s
