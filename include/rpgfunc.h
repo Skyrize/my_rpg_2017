@@ -291,10 +291,13 @@ int manage_hit_enemy(game_t *game);
 int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
-				char *notif_output, int offset);
+char *notif_output, int offset);
 int button_fly_over(obj_t *button, sfVector2i clickPosition);
 int click_button(obj_t *button, sfVector2i clickPosition,
-				sfMouseButton mb);
+sfMouseButton mb);
+int buttonisclicked(obj_t *button, sfVector2i clickPosition);
+void init_at_default(sfRectangleShape *notif, sfText *notif_text,
+int *check_hit, int *offset);
 
 /////////////////////////// GAME FUNCTIONS
 
@@ -376,6 +379,12 @@ int inventory_lobby(window_t *window, game_t *game);
 
 int manage_inventory_buttons(game_t *game);
 int click_slot(slot_t *slot, game_t *game);
+int display_item_stats(slot_t *slot, game_t *game);
+int update_item_info(slot_t *slot, game_t *game);
+int update_damages_item(slot_t *slot, game_t *game);
+int update_special_item(slot_t *slot, game_t *game);
+int update_armor_item(slot_t *slot, game_t *game);
+int update_health_item(slot_t *slot, game_t *game);
 
 //////////////////////////////// MOUSE
 
