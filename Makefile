@@ -97,6 +97,8 @@ SRC	=	src/main.c						\
 		src/warnings/undefined_01.c		\
 		src/warnings/undefined_02.c		\
 		src/warnings/ingame.c			\
+		src/inventory/update_item_stats.c			\
+		src/inventory/update_info_item.c			\
 
 OBJS	=	$(SRC:.c=.o)
 
