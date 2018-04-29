@@ -240,6 +240,7 @@ typedef struct stat_s
 	int health;
 	int max_health;
 	int armor;
+	int level;
 	char *speciality_name;
 	int speciality;
 } stat_t;

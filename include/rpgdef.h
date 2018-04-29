@@ -80,6 +80,7 @@
 #define PLAYER_CHARACTER PLAYER.character
 #define PLAYER_STATS PLAYER.stats
 
+#define PLAYER_LEVEL PLAYER_STATS.level
 #define PLAYER_HEALTH PLAYER_STATS.health
 #define PLAYER_MAX_HP PLAYER_STATS.max_health
 #define PLAYER_ARMOR PLAYER_STATS.armor
