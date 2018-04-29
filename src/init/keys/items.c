@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_cook_2017
+** my_rpg_2017
 ** File description:
 ** (enter)
 */
@@ -39,7 +39,6 @@ int get_an_item_texture(char **infos, char **type,
 	type[1], 1, V2F(-100, -100)}, game);
 	if (!item->obj)
 		return (84);
-	item->obj->callback = &click_item;
 	(void)infos;
 	(void)current_list;
 	return (0);

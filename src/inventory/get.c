@@ -14,7 +14,7 @@ int items_foreach_horizontaly(int y, game_t *game,
 
 	for (int x = 0; x != INVENTORY_SIZE_X; x++) {
 		if (!window) {
-			my_errno = fptr(&ITEMS[y][x], game);
+			my_errno = fptr(&ITEMS[y][x], &SLOT_POS(x, y), game);
 		} else {
 			my_errno = fptr(&ITEMS[y][x], window, game);
 		}
@@ -30,7 +30,7 @@ int items_foreach(game_t *game, window_t *window, int (*fptr)())
 
 	if (!game) {
 		my_printf("ERROR: YOU MUST PASS GAME \
-		STRUCT TO ITEMS_FOREACH\n");
+		STRUCT TO ITEMS_FOREACH !\n");
 		return (84);
 	}
 	for (int y = 0; y != INVENTORY_SIZE_Y; y++) {

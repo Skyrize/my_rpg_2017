@@ -7,34 +7,38 @@
 
 #include "rpg.h"
 
+void set_enemy_alone(game_t *game, texture_t *texture, int i)
+{
+	game->battle.enemy[i].health = 100 * PLAYER_LEVEL;
+	game->battle.enemy[i].armor = 20 * PLAYER_LEVEL;
+	game->battle.enemy[i].damages = 20 * PLAYER_LEVEL;
+	game->battle.enemy[i].rec = sfRectangleShape_create();
+	sfRectangleShape_setTexture(game->battle.enemy[i].rec,
+	texture->texture, sfTrue);
+	sfRectangleShape_setTextureRect(game->battle.enemy[i].rec,
+	(sfIntRect){0, 100, 50, 100});
+	sfRectangleShape_setPosition(game->battle.enemy[i].rec,
+	V2F(600 + (25 * i), 200 + (50 * i)));
+	sfRectangleShape_setSize(game->battle.enemy[i].rec, V2F(50, 100));
+}
+
 void init_enemies(game_t *game)
 {
 	int nbr = rand() % 2 + 1;
-	int x = 400;
-	int y = 100;
+	texture_t *texture = hm_get(TEXTURES_LIB, "SKELETON_01");
 
 	for (int i = 0; i < 3; i++)
-		game->enemy[0].rec = NULL;
-	for (int i = 0; i < nbr; i++) {
-		game->enemy[i].health = 100 * PLAYER_LEVEL;
-		game->enemy[i].armor = 20 * PLAYER_LEVEL;
-		game->enemy[i].damages = 20 * PLAYER_LEVEL;
-		game->enemy[i].rec = sfRectangleShape_create();
-		sfRectangleShape_setTexture(game->enemy[i].rec,
-		hm_get(game->libraries.textures, "SKELETON_01"), sfTrue);
-		sfRectangleShape_setTextureRect(game->enemy[i].rec,
-		(sfIntRect){0, 100, 50, 100});
-		sfRectangleShape_setPosition(game->enemy[i].rec, V2F(x, y));
-		x += 100;
-		y += 100;
-	}
+		game->battle.enemy[i].rec = NULL;
+	set_enemy_alone(game, texture, 0);
+	if (nbr == 2)
+		set_enemy_alone(game, texture, 2);
 }
 
 void init_character(game_t *game)
 {
 	sfRectangleShape_setTextureRect(PLAYER_CHARACTER->obj,
-	(sfIntRect){0, 100, 50, 100});
-	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, V2F(100, 200));
+	(sfIntRect){50, 200, 50, 100});
+	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, V2F(100, 225));
 }
 
 int init_battle(game_t *game)
@@ -50,5 +54,6 @@ int init_battle(game_t *game)
 	CURRENT_SCENE = hm_get_bucket(SCENES, "BATTLE");
 	init_enemies(game);
 	init_character(game);
+	update_element_in_battle(game);
 	return (0);
 }

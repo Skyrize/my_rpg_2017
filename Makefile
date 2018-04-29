@@ -43,6 +43,7 @@ SRC	=	src/main.c						\
 		src/game/display/objs.c					\
 		src/game/display/texts.c				\
 		src/game/display/animate.c				\
+		src/game/display/mouse.c				\
 		src/hud/buttons/area.c					\
 		src/hud/buttons/control_key.c 				\
 		src/hud/buttons/credits.c 				\
@@ -94,7 +95,15 @@ SRC	=	src/main.c						\
 		src/game/battle/update_battle_hud.c			\
 		src/game/battle/lobby.c					\
 		src/game/battle/display.c				\
+		src/game/battle/attack.c				\
+		src/game/battle/select_enemy.c				\
 		src/game/engine.c					\
+		src/game/mouse/replace.c				\
+		src/inventory/update_item_stats.c			\
+		src/inventory/update_info_item.c			\
+		src/inventory/add.c					\
+		src/inventory/lobby.c					\
+		src/inventory/manage_buttons.c				\
 
 OBJS	=	$(SRC:.c=.o)
 

@@ -7,17 +7,24 @@
 
 #include "rpg.h"
 
-int battle_events(game_t *game)
+int battle_events(window_t *window, game_t *game)
 {
-	update_element_in_battle(game);
+	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
+		if (window->event.type == sfEvtClosed)
+			sfRenderWindow_close(window->window);
+		if (window->event.type == sfEvtMouseButtonReleased)
+			CLICK_RELEASED = sfTrue;
+		select_ennemy(window, game);
+	}
 	return (0);
 }
 
 int battle_lobby(window_t *window, game_t *game)
 {
-	(void)window;
-	display_characters(window, game);
-	if (battle_events(game) != 0)
+	if (battle_events(window, game) != 0
+	|| manage_hit_enemy(game) != 0
+	|| manage_life_in_battle(game) != 0
+	|| display_characters(window, game) != 0)
 		return (84);
 	return (0);
 }

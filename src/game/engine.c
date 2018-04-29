@@ -5,13 +5,13 @@
 ** engine.c
 */
 
-#include "my.h"
 #include "rpg.h"
 
 static const manager_t manager_tab[] =
 {
 	{"BATTLE", battle_lobby},
 	{"GAME", game_lobby},
+	{"INVENTORY", inventory_lobby},
 	{NULL, NULL},
 };
 

@@ -15,7 +15,7 @@ int pause_game(window_t *window, game_t *game)
 	
 	if (!window || !game)
 		return (84);
-	if (my_strcmp(CURRENT_SCENE->key, "STATS"))
+	if (my_strcmp(CURRENT_SCENE->key, PAUSE_GAME))
 		old_scene = CURRENT_SCENE->key;
 	rec = sfRectangleShape_create();
 	sfRectangleShape_setSize(rec, (sfVector2f){800, 600});

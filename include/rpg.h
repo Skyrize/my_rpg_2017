@@ -47,13 +47,14 @@
 
 //////////////////////////////// PLAYER DEFINES /////////////////////////////
 
-#define INVENTORY_SIZE_Y 7
+#define INVENTORY_SIZE_Y 5
 #define INVENTORY_SIZE_X 5
 
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 255})
+#define OVER_ITEM_COLOR ((sfColor){255, 100, 100, 255})
 #define TRANSPARENCY_COLOR ((sfColor){255, 255, 255, 50})
 
 #define INTRECT(x, y, width, height) (sfIntRect) {x, y, width, height}
@@ -85,7 +86,7 @@
 #define NOTIF_NULL_ARGS (!game || !notif_output)
 #define BATTLE_GAME_NULL_DATA (!battle_game || !battle_game->objs\
 || !battle_game->texts)
-#define IS_APRESSED (!(sfMouse_isButtonPressed(sfMouseLeft)) && check_hit == 0)
+#define IS_APRESSED (1 != 1)
 #define IS_A_BATTLE (my_strcmp(CURRENT_SCENE->key, "BATTLE") != 0)
 
 ////////////////////////////////// OBJECTS //////////////////////////////
@@ -217,19 +218,13 @@ typedef struct slot_s
 {
 	item_t *item;
 	obj_t *slot;
+	sfVector2f pos;
 } slot_t;
-
-typedef struct item_getter_s
-{
-	sfVector2f base_emplacement;
-	slot_t *base;
-	slot_t *dest;
-} item_getter_t;
 
 typedef struct inventory_s
 {
 	int golds;
-	item_getter_t selector;
+	item_t *selected;
 	slot_t weapon;
 	slot_t helmet;
 	slot_t chest;
@@ -288,6 +283,11 @@ typedef struct enemy_s {
 	sfRectangleShape *rec;
 } enemy_t;
 
+typedef struct battle_s {
+	int selected_enemy;
+	enemy_t enemy[3];
+} battle_t;
+
 /////////////////////////////////// WINDOW ////////////////////////////////
 
 typedef struct ctime_s
@@ -297,7 +297,8 @@ typedef struct ctime_s
 	float seconds;
 } ctime_t;
 
-typedef struct movement_s {
+typedef struct movement_s
+{
 	sfVector2i target_tile;
 	int anim_mult;
 	bool is_moving;
@@ -307,6 +308,8 @@ typedef struct tool_s
 {
 	int framerate;
 	sfVector2i mouse_pos;
+	obj_t *mouse_skin;
+	sfVector2f mouse_skin_offset;
 	sfBool click_released;
 } tool_t;
 
@@ -324,7 +327,7 @@ typedef struct game_s
 	tool_t tools;
 	lib_t libraries;
 	player_t player;
-	enemy_t enemy[3];
+	battle_t battle;
 	movement_t movement;
 	inventory_t inventory;
 	key_control_t key_player;

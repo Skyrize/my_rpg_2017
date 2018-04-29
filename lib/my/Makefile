@@ -5,7 +5,7 @@
 ## compil libmy. from files in lib/my/, copy it in lib, copi .h in include
 ##
 
-CC	=	gcc
+CC	=	gcc -g3
 
 SRC	=	hashb.c	\
 		hash.c	\

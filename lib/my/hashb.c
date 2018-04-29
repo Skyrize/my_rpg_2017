@@ -37,9 +37,19 @@ int my_strcmp_hm(char *a, char *b)
 
 bucket_t *hm_get_bucket(hashmap_t *hashmap, char *key)
 {
-	unsigned int i = hm_hash(hashmap, key);
-	bucket_t *list = hashmap->data[i];
+	unsigned int i;
+	bucket_t *list;
 
+	if (!key) {
+		my_printf("WARNING: HM_GET: KEY PASSED IS NULL !\n");
+		return (NULL);
+	}
+	if (!hashmap) {
+		my_printf("WARNING: HM_GET: ASKED FOR UNEXISTING HASHMAP !\n");
+		return (NULL);
+	}
+	i = hm_hash(hashmap, key);
+	list = hashmap->data[i];
 	while(list != NULL && my_strcmp_hm(list->key, key) != 0) {
 		list = list->next;
 	}

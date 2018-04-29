@@ -9,16 +9,18 @@
 
 int display_characters(window_t *window, game_t *game)
 {
+	if (!window || !game)
+		return (84);
 	sfRenderWindow_drawRectangleShape(window->window,
 	PLAYER_CHARACTER->obj, NULL);
-	if (game->enemy[0].rec)
+	if (game->battle.enemy[0].rec)
 		sfRenderWindow_drawRectangleShape(window->window,
-		game->enemy[0].rec, NULL);
-	if (game->enemy[1].rec)
+		game->battle.enemy[0].rec, NULL);
+	if (game->battle.enemy[1].rec)
 		sfRenderWindow_drawRectangleShape(window->window,
-		game->enemy[1].rec, NULL);
-	if (game->enemy[2].rec)
+		game->battle.enemy[1].rec, NULL);
+	if (game->battle.enemy[2].rec)
 		sfRenderWindow_drawRectangleShape(window->window,
-		game->enemy[2].rec, NULL);
+		game->battle.enemy[2].rec, NULL);
 	return (0);
 }

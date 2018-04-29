@@ -11,14 +11,6 @@
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
-///temp
-int add_to_slot(slot_t *slot, sfVector2i *pos, game_t *game);
-int add_helmet(slot_t *slot, game_t *game);
-int add_chest(slot_t *slot, game_t *game);
-int add_pants(slot_t *slot, game_t *game);
-int add_gauntlets(slot_t *slot, game_t *game);
-int add_weapon(slot_t *slot, game_t *game);
-
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);
@@ -288,8 +280,6 @@ int chest_slot(window_t *window, game_t *game);
 int gauntlets_slot(window_t *window, game_t *game);
 int pants_slot(window_t *window, game_t *game);
 int weapon_slot(window_t *window, game_t *game);
-int click_item(sfVector2i *tab_pos, item_t *item, game_t *game);
-int click_slot(sfVector2i *tab_pos, item_t *item, game_t *game);
 
 /////////////////////////// HUD FONCTIONS
 
@@ -302,7 +292,12 @@ int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
 char *notif_output, int offset);
-char *found_icon(game_t *game);
+int button_fly_over(obj_t *button, sfVector2i clickPosition);
+int click_button(obj_t *button, sfVector2i clickPosition,
+sfMouseButton mb);
+int buttonisclicked(obj_t *button, sfVector2i clickPosition);
+void init_at_default(sfRectangleShape *notif, sfText *notif_text,
+int *check_hit, int *offset);
 
 /////////////////////////// GAME FUNCTIONS
 
@@ -375,14 +370,40 @@ bool is_player_moving(game_t *game);
 
 /////////////////////////// BATTLE
 
+char *found_icon(game_t *game);
 int init_battle(game_t *game);
 int update_element_in_battle(game_t *game);
 int display_characters(window_t *window, game_t *game);
+int manage_life_in_battle(game_t *game);
+int attack(window_t *window, game_t *game);
+void change_selected_enemy(game_t *game, int offset);
+void select_ennemy(window_t *window, game_t *game);
+int first_enemy_available(game_t *game);
+void change_arrow_position(game_t *game);
 
 /////////////////////////////////// INVENTORY
 
 int items_foreach(game_t *game, window_t *window, int (*fptr)());
+int slots_foreach(game_t *game, int (*fptr)());
 item_t *copy_item_lib(char *name, hashmap_t *items_lib);
+int add_new_to_slot(char *name, sfVector2f *pos, slot_t *slot, game_t *game);
+
+int inventory_lobby(window_t *window, game_t *game);
+
+int manage_inventory_buttons(game_t *game);
+int click_slot(slot_t *slot, game_t *game);
+int display_item_stats(slot_t *slot, game_t *game);
+int update_item_info(slot_t *slot, game_t *game);
+int update_damages_item(slot_t *slot, game_t *game);
+int update_special_item(slot_t *slot, game_t *game);
+int update_armor_item(slot_t *slot, game_t *game);
+int update_health_item(slot_t *slot, game_t *game);
+
+//////////////////////////////// MOUSE
+
+int replace_mouse_skin(obj_t *obj, sfVector2f *offset, game_t *game);
+int reset_mouse_skin(game_t *game);
+int display_mouse(game_t *game, window_t *window);
 
 /////////////////////////// END
 

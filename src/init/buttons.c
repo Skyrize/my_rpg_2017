@@ -36,18 +36,8 @@ static const button_t g_tab[] =
 	{(char *[]){"KEY_WASD", NULL}, key_english},
 	{(char *[]){"YES", NULL}, yes_save},
 	{(char *[]){"NO", NULL}, no_save},
-	{(char *[]){"ATTACK", "RUN_AWAY", "SPELLS", "ITEMS", NULL}, exit_game},
-	{(char *[]){"SLOT_HELMET", NULL}, helmet_slot},
-	{(char *[]){"SLOT_CHEST", NULL}, chest_slot},
-	{(char *[]){"SLOT_GAUNTLETS", NULL}, gauntlets_slot},
-	{(char *[]){"SLOT_PANTS", NULL}, pants_slot},
-	{(char *[]){"SLOT_WEAPON", NULL}, weapon_slot},
-	{(char *[]){"SLOT_00", "SLOT_01", "SLOT_02", "SLOT_03", "SLOT_04",
-		"SLOT_10", "SLOT_11", "SLOT_12", "SLOT_13", "SLOT_14",
-		"SLOT_20", "SLOT_21", "SLOT_22", "SLOT_23", "SLOT_24",
-		"SLOT_30", "SLOT_31", "SLOT_32", "SLOT_33", "SLOT_34",
-		"SLOT_40", "SLOT_41", "SLOT_42", "SLOT_43", "SLOT_44",
-		NULL}, slot},
+	{(char *[]){"SPELLS", "ITEMS", "RUN_AWAY", NULL}, exit_game},
+	{(char *[]){"ATTACK", NULL}, attack},
 	{NULL, NULL}
 };
 

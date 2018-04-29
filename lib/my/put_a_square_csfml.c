@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_runner_2017
+** my_rpg_2017
 ** File description:
 ** (put_a_square of a given size a a given place)
 */
