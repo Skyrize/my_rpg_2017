@@ -283,6 +283,14 @@ _____________________________________________________________________________
 			TEXT=RUN_AWAY STR=RUN_____AWAY FONT=ARCADE CHARAC_SIZE=30 X=525 Y=514
 
 _____________________________________________________________________________
+-ATTACK
+	SCENE=ATTACK PRIORITY=1
+		LIST=OBJS
+			OBJ=SELECTOR TEXTURE=SELECTOR BUTTON=0 X=500 Y=30
+		LIST=TEXTS
+			TEXT=ATTACK STR=WHO_DO_YOU_WANT_TO_ATTACK_? FONT=ARCADE CHARAC_SIZE=40 X=160 Y=483
+
+_____________________________________________________________________________
 -HEALTH_HUD
 	SCENE=HEALTH_HUD PRIORITY=1
 		LIST=OBJS

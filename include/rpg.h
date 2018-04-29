@@ -245,6 +245,7 @@ typedef struct stat_s
 	int health;
 	int max_health;
 	int armor;
+	int level;
 	char *speciality_name;
 	int speciality;
 } stat_t;
@@ -277,6 +278,15 @@ typedef struct key_control_s
 	sfKeyCode *left_1;
 	int move;
 } key_control_t;
+
+/////////////////////////////////// BATTLE ////////////////////////////////
+
+typedef struct enemy_s {
+	int health;
+	int armor;
+	int damages;
+	sfRectangleShape *rec;
+} enemy_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 
@@ -314,6 +324,7 @@ typedef struct game_s
 	tool_t tools;
 	lib_t libraries;
 	player_t player;
+	enemy_t enemy[3];
 	movement_t movement;
 	inventory_t inventory;
 	key_control_t key_player;

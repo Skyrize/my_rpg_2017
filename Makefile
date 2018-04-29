@@ -35,6 +35,7 @@ SRC	=	src/main.c						\
 		src/list_management/read.c				\
 		src/list_management/get.c				\
 		src/inventory/button.c					\
+		src/inventory/get.c					\
 		src/game/lobby.c					\
 		src/game/start.c					\
 		src/game/display/lobby.c				\
@@ -91,6 +92,9 @@ SRC	=	src/main.c						\
 		src/game/battle/manage/notif_left.c 			\
 		src/game/battle/init.c					\
 		src/game/battle/update_battle_hud.c			\
+		src/game/battle/lobby.c					\
+		src/game/battle/display.c				\
+		src/game/engine.c					\
 
 OBJS	=	$(SRC:.c=.o)
 
