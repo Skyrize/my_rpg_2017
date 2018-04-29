@@ -47,15 +47,17 @@
 
 //////////////////////////////// PLAYER DEFINES /////////////////////////////
 
-#define INVENTORY_SIZE_Y 7
+#define INVENTORY_SIZE_Y 5
 #define INVENTORY_SIZE_X 5
 
 ///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 255})
+#define OVER_ITEM_COLOR ((sfColor){255, 100, 100, 255})
 #define TRANSPARENCY_COLOR ((sfColor){255, 255, 255, 50})
 
+#define INTRECT(x, y, width, height) (sfIntRect) {x, y, width, height}
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
 #define MIN(X, Y) X >= Y ? Y : X
@@ -84,7 +86,7 @@
 #define NOTIF_NULL_ARGS (!game || !notif_output)
 #define BATTLE_GAME_NULL_DATA (!battle_game || !battle_game->objs\
 || !battle_game->texts)
-#define IS_APRESSED (!(sfMouse_isButtonPressed(sfMouseLeft)) && check_hit == 0)
+#define IS_APRESSED (1 != 1)
 #define IS_A_BATTLE (my_strcmp(CURRENT_SCENE->key, "BATTLE") != 0)
 
 ////////////////////////////////// OBJECTS //////////////////////////////
@@ -121,7 +123,7 @@ typedef struct texture_s
 	sfVector2i rect_start;
 	sfVector2i rect_max;
 	sfVector2i rect_offset;
-} texture_t;
+} texture_t, texture_data_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////
 typedef struct tile_list_s tile_list_t;
@@ -162,6 +164,12 @@ typedef struct map_s
 
 //////////////////////////////////////// SCENES ////////////////////////////
 
+typedef struct manager_s
+{
+	char *balise;
+	int (*fptr)();
+} manager_t;
+
 typedef enum
 {
 	BACKGROUNDS = 0,
@@ -179,14 +187,14 @@ typedef struct scene_s {
 	int priority;
 } scene_t;
 
-typedef struct display_list_s display_list_t;
+typedef struct managed_scene_s managed_scene_t;
 
-typedef struct display_list_s
+typedef struct managed_scene_s
 {
 	scene_t *scene;
-	char *scene_name;
-	display_list_t *next;
-} display_list_t;
+	char *name;
+	managed_scene_t *next;
+} managed_scene_t;
 
 /////////////////////////////// INVENTORY ///////////////////////////////////
 typedef struct item_stat_s
@@ -194,31 +202,29 @@ typedef struct item_stat_s
 	int health;
 	int armor;
 	int special;
+	int damages;
 } item_stat_t;
 
 typedef struct item_s
 {
+	char *name;
 	obj_t *obj;
+	sfBool quest;
+	sfBool consumable;
 	item_stat_t stats;
-} item_t;
+} item_t, item_data_t;
 
 typedef struct slot_s
 {
-	item_t item;
+	item_t *item;
 	obj_t *slot;
+	sfVector2f pos;
 } slot_t;
-
-typedef struct item_getter_s
-{
-	sfVector2f base_emplacement;
-	slot_t *base;
-	slot_t *dest;
-} item_getter_t;
 
 typedef struct inventory_s
 {
 	int golds;
-	item_getter_t selector;
+	item_t *selected;
 	slot_t weapon;
 	slot_t helmet;
 	slot_t chest;
@@ -276,7 +282,8 @@ typedef struct ctime_s
 	float seconds;
 } ctime_t;
 
-typedef struct movement_s {
+typedef struct movement_s
+{
 	sfVector2i target_tile;
 	int anim_mult;
 	bool is_moving;
@@ -286,6 +293,8 @@ typedef struct tool_s
 {
 	int framerate;
 	sfVector2i mouse_pos;
+	obj_t *mouse_skin;
+	sfVector2f mouse_skin_offset;
 	sfBool click_released;
 } tool_t;
 
@@ -308,7 +317,7 @@ typedef struct game_s
 	key_control_t key_player;
 	bucket_t *current;
 	hashmap_t *scenes;
-	display_list_t *displayed_scenes;
+	managed_scene_t *displayed_scenes;
 } game_t;
 
 typedef struct window_s

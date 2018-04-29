@@ -11,14 +11,6 @@
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
-///temp
-int add_to_slot(slot_t *slot, sfVector2i *pos, game_t *game);
-int add_helmet(slot_t *slot, game_t *game);
-int add_chest(slot_t *slot, game_t *game);
-int add_pants(slot_t *slot, game_t *game);
-int add_gauntlets(slot_t *slot, game_t *game);
-int add_weapon(slot_t *slot, game_t *game);
-
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);
@@ -76,7 +68,7 @@ int get_a_texture(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_a_texture_filepath(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_animated(char **infos, char **type,
+int is_texture_animated(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_a_rect_values(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
@@ -98,6 +90,16 @@ int get_a_tile_texture(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_a_priority(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
+int get_an_item(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_an_item_texture(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int is_item_for_quest(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int is_item_consumable(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_item_stats(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
 
 /////////////////////////// INIT WARNING : UNEXISTING
 
@@ -109,6 +111,7 @@ int check_unexisting_scene(bucket_t *scene, char *asked_scene);
 int check_unexisting_text(bucket_t *text, char *asked_text, char *scene_name);
 int check_unexisting_obj(bucket_t *obj, char *asked_obj, char *scene_name);
 int check_unexisting_button(int (*callback)(), char *button_name);
+int check_unexisting_item(item_t *item, char *name);
 
 /////////////////////////// INIT WARNING : INVALID
 
@@ -124,6 +127,8 @@ int check_invalid_zone_coords(char *name, game_t *game);
 int check_invalid_area_coords(char *name, game_t *game);
 int check_invalid_tile_coords(char *name, game_t *game);
 int check_invalid_priority(int priority, char *texture_name);
+int check_invalid_consumable(sfBool consumable);
+int check_invalid_quest(sfBool quest);
 
 /////////////////////////// INIT WARNING : ALREADY_EXISTING
 
@@ -139,6 +144,7 @@ int check_already_existing_zone_coords(char *name, game_t *game);
 int check_already_existing_area_name(char *name, game_t *game);
 int check_already_existing_area_coords(char *name, game_t *game);
 int check_already_existing_tile_coords(game_t *game);
+int check_already_existing_item(hashmap_t *hashmap, char *item_name);
 
 /////////////////////////// INIT WARNING : MISSING
 
@@ -156,6 +162,7 @@ int check_undefined_list(hashmap_t *current_list, char *obj);
 int check_undefined_texture(bucket_t *texture, char *data);
 int check_undefined_area(game_t *game);
 int check_undefined_tile(game_t *game);
+int check_undefined_item(bucket_t *item, char *data);
 
 /////////////////////////// IN GAME WARNING
 
@@ -172,11 +179,15 @@ obj_t *create_obj(obj_data_t *data, game_t *game);
 
 ///Pass a scene name and the scene itself return a struct used to display a
 ///linked list of scenes. return NULL on fail
-display_list_t *create_a_display(char *name, scene_t *scene);
+managed_scene_t *create_display(char *name, scene_t *scene);
 
 ///Pass a texture name and window and return a tile_list used to display a
 ///linked list of tiles. return NULL on fail
-tile_list_t *create_a_tile(char *texture_name, game_t *game);
+tile_list_t *create_tile(char *texture_name, game_t *game);
+
+item_t *create_item(item_data_t *data);
+
+texture_t *create_texture(texture_data_t *data);
 
 //////////////////////////// LIST ADDING
 
@@ -207,7 +218,7 @@ int read_hashmap(window_t *window, game_t *game, hashmap_t *hashmap,
 
 ///Pass a scene name and the window and return the display node containing
 ///the asked scene. Return NULL if nothing founded.
-display_list_t *get_scene_from_displayed(char *asked, game_t *game);
+managed_scene_t *get_scene_from_displayed(char *asked, game_t *game);
 
 /////////////////////////// LIST REMOVING
 
@@ -226,7 +237,7 @@ void clean_displayed_scene_name(game_t *game, char *name_scenes);
 
 /////////////////////////// MANAGE BUTTONS
 
-int manage_buttons(window_t *window, game_t *game);
+int manage_buttons(managed_scene_t *scene, window_t *window, game_t *game);
 int button_display_hide_scene(char *scene_name, void (*update)(),
 				game_t *game);
 int update_button(char *seek, char *replacement, scene_t *scene,
@@ -281,6 +292,13 @@ int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
 char *notif_output, int offset);
+int button_fly_over(obj_t *button, sfVector2i clickPosition);
+int click_button(obj_t *button, sfVector2i clickPosition,
+sfMouseButton mb);
+int buttonisclicked(obj_t *button, sfVector2i clickPosition);
+void init_at_default(sfRectangleShape *notif, sfText *notif_text,
+int *check_hit, int *offset);
+
 /////////////////////////// GAME FUNCTIONS
 
 int start_game(window_t *window, game_t *game);
@@ -289,7 +307,10 @@ int start_game(window_t *window, game_t *game);
 void get_time(ctime_t *clocker);
 
 ///Main game function. return 0/84
+int process_engine(window_t *window, game_t *game);
+
 int game_lobby(window_t *window, game_t *game);
+int battle_lobby(window_t *window, game_t *game);
 
 ///Update the 3 stats strings in a given scene with there actual values
 ///in Window.
@@ -299,7 +320,7 @@ void update_stats(scene_t *scene, game_t *game);
 
 ///Read the linked list of displayed scenes and display there obj and text.
 ///If the first one is GAME, display map. return (0/84)
-int display_scenes(window_t *window, game_t *game);
+int display_scene(managed_scene_t *scene, window_t *window, game_t *game);
 
 ///Display passed obj and animate it.
 int display_obj(obj_t *obj, window_t *window);
@@ -328,6 +349,7 @@ void destroy_and_free(window_t *window, game_t *game);
 void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
+void item_destroy(item_t *item);
 
 /////////////////////////// PLAYER FUNCTIONS
 
@@ -345,6 +367,30 @@ void set_waiting_player_rect(game_t *game);
 bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
+
+/////////////////////////////////// INVENTORY
+
+int items_foreach(game_t *game, window_t *window, int (*fptr)());
+int slots_foreach(game_t *game, int (*fptr)());
+item_t *copy_item_lib(char *name, hashmap_t *items_lib);
+int add_new_to_slot(char *name, sfVector2f *pos, slot_t *slot, game_t *game);
+
+int inventory_lobby(window_t *window, game_t *game);
+
+int manage_inventory_buttons(game_t *game);
+int click_slot(slot_t *slot, game_t *game);
+int display_item_stats(slot_t *slot, game_t *game);
+int update_item_info(slot_t *slot, game_t *game);
+int update_damages_item(slot_t *slot, game_t *game);
+int update_special_item(slot_t *slot, game_t *game);
+int update_armor_item(slot_t *slot, game_t *game);
+int update_health_item(slot_t *slot, game_t *game);
+
+//////////////////////////////// MOUSE
+
+int replace_mouse_skin(obj_t *obj, sfVector2f *offset, game_t *game);
+int reset_mouse_skin(game_t *game);
+int display_mouse(game_t *game, window_t *window);
 
 /////////////////////////// END
 

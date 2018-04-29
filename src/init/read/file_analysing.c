@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_cook_2017
+** my_rpg_2017
 ** File description:
 ** (enter)
 */
@@ -29,21 +29,6 @@ int init_from_pcf(char **infos, game_t *game, const key_word_t *keys)
 		my_errno) != 0)
 		return (84);
 	return (0);
-}
-
-void map_savior(game_t *game)
-{
-	ZONE_COOR_X = -1;
-	ZONE_COOR_Y = -1;
-	AREA_COOR_X = -1;
-	AREA_COOR_Y = -1;
-	TILE_COOR_X = -1;
-	TILE_COOR_Y = -1;
-}
-
-void list_savior(game_t *game)
-{
-	CURRENT_SCENE = NULL;
 }
 
 int get_infos(int fd, game_t *game, get_infos_t *infos)

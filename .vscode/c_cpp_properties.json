@@ -36,6 +36,7 @@
                 "/usr/include",
                 "${workspaceRoot}",
                 "${workspaceRoot}/include",
+                "/home/baudonnel/depository/graphical/my_rpg_2017/include",
                 "${workspaceRoot}/bonus/map_creator/include"
             ],
             "defines": [],

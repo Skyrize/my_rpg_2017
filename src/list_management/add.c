@@ -40,18 +40,18 @@ int add_obj_to_list(obj_data_t *data, hashmap_t *list, game_t *game)
 
 int add_scene_to_display_list(bucket_t *scene, game_t *game)
 {
-	display_list_t *display = create_a_display(scene->key, scene->value);
-	display_list_t *tmp = DISPLAYED_SCENES;
+	managed_scene_t *display = create_display(scene->key, scene->value);
+	managed_scene_t *tmp = MANAGED_SCENES;
 
 	if (!display)
 		return (84);
 	if (!tmp) {
-		DISPLAYED_SCENES = display;
+		MANAGED_SCENES = display;
 		return (0);
 	}
 	if (tmp->scene->priority >= display->scene->priority) {
 		display->next = tmp;
-		DISPLAYED_SCENES = display;
+		MANAGED_SCENES = display;
 		return (0);
 	}
 	while (tmp->next
@@ -64,7 +64,7 @@ int add_scene_to_display_list(bucket_t *scene, game_t *game)
 
 int add_tile_to_list(char *texture, game_t *game)
 {
-	tile_list_t *display = create_a_tile(texture, game);
+	tile_list_t *display = create_tile(texture, game);
 	tile_list_t *tmp = TILE_LIST;
 
 	if (!display)

@@ -13,16 +13,16 @@ int add_to_slot(slot_t *slot, sfVector2i *pos, game_t *game)
 {
 	static sfVector2f slot_pos = {563, 290};
 
-	if (!slot->item.obj || !slot->item.obj->obj) {
+	if (!slot->item->obj || !slot->item->obj->obj) {
 		my_printf("NULL\n");
 		return (84);
 	}
-	if (ITEMS[pos->y][pos->x].item.obj) {
+	if (ITEMS[pos->y][pos->x].item->obj) {
 		my_printf("ALREADY SOMETHING\n");
 		return (1);
 	}
 	ITEMS[pos->y][pos->x] = *slot;
-	sfRectangleShape_setPosition(slot->item.obj->obj,
+	sfRectangleShape_setPosition(slot->item->obj->obj,
 	V2F(slot_pos.x * (pos->x + 1), slot_pos.y * (pos->y + 1)));
 	return (0);
 }
@@ -31,80 +31,80 @@ int add_helmet(slot_t *slot, game_t *game)
 {
 	static sfVector2f slot_pos = {634, 84};
 
-	if (!slot->item.obj || !slot->item.obj->obj) {
+	if (!slot->item->obj || !slot->item->obj->obj) {
 		my_printf("NULL\n");
 		return (84);
 	}
-	if (HELMET.item.obj) {
+	if (HELMET.item->obj) {
 		my_printf("ALREADY SOMETHING\n");
 		return (1);
 	}
 	HELMET = *slot;
-	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
+	sfRectangleShape_setPosition(slot->item->obj->obj, slot_pos);
 	return (0);
 }
 int add_chest(slot_t *slot, game_t *game)
 {
 	static sfVector2f slot_pos = {634, 129};
 
-	if (!slot->item.obj || !slot->item.obj->obj) {
+	if (!slot->item->obj || !slot->item->obj->obj) {
 		my_printf("NULL\n");
 		return (84);
 	}
-	if (CHEST.item.obj) {
+	if (CHEST.item->obj) {
 		my_printf("ALREADY SOMETHING\n");
 		return (1);
 	}
 	CHEST = *slot;
-	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
+	sfRectangleShape_setPosition(slot->item->obj->obj, slot_pos);
 	return (0);
 }
 int add_pants(slot_t *slot, game_t *game)
 {
 	static sfVector2f slot_pos = {634, 172};
 
-	if (!slot->item.obj || !slot->item.obj->obj) {
+	if (!slot->item->obj || !slot->item->obj->obj) {
 		my_printf("NULL\n");
 		return (84);
 	}
-	if (PANTS.item.obj) {
+	if (PANTS.item->obj) {
 		my_printf("ALREADY SOMETHING\n");
 		return (1);
 	}
 	PANTS = *slot;
-	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
+	sfRectangleShape_setPosition(slot->item->obj->obj, slot_pos);
 	return (0);
 }
 int add_gauntlets(slot_t *slot, game_t *game)
 {
 	static sfVector2f slot_pos = {589, 128};
 
-	if (!slot->item.obj || !slot->item.obj->obj) {
+	if (!slot->item->obj || !slot->item->obj->obj) {
 		my_printf("NULL\n");
 		return (84);
 	}
-	if (GAUNTLETS.item.obj) {
+	if (GAUNTLETS.item->obj) {
 		my_printf("ALREADY SOMETHING\n");
 		return (1);
 	}
 	GAUNTLETS = *slot;
-	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
+	sfRectangleShape_setPosition(slot->item->obj->obj, slot_pos);
 	return (0);
 }
 int add_weapon(slot_t *slot, game_t *game)
 {
 	static sfVector2f slot_pos = {678, 128};
 
-	if (!slot->item.obj || !slot->item.obj->obj) {
+	if (!slot->item->obj || !slot->item->obj->obj) {
 		my_printf("NULL\n");
 		return (84);
 	}
-	if (WEAPON.item.obj) {
+	if (WEAPON.item->obj) {
 		my_printf("ALREADY SOMETHING\n");
 		return (1);
 	}
 	WEAPON = *slot;
-	sfRectangleShape_setPosition(slot->item.obj->obj, slot_pos);
+	sfRectangleShape_setPosition(slot->item->obj->obj, slot_pos);
 	return (0);
 }
 

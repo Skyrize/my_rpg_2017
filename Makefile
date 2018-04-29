@@ -16,6 +16,7 @@ SRC	=	src/main.c						\
 		src/init/window.c			\
 		src/init/game.c			\
 		src/init/free_destroy/lobby.c	\
+		src/init/read/savior.c			\
 		src/init/read/file_analysing.c			\
 		src/init/keys/audio.c	\
 		src/init/keys/fonts.c	\
@@ -24,20 +25,34 @@ SRC	=	src/main.c						\
 		src/init/keys/scene_02.c		\
 		src/init/keys/texture_01.c		\
 		src/init/keys/texture_02.c		\
+		src/init/keys/items.c		\
 		src/init/keys/zone.c			\
 		src/input/event.c			\
-		src/list_management/create.c		\
+		src/list_management/create_01.c		\
+		src/list_management/create_02.c		\
 		src/list_management/add.c		\
 		src/list_management/remove.c		\
 		src/list_management/read.c		\
 		src/list_management/get.c		\
+		src/inventory/button.c	\
+		src/inventory/get.c	\
+		src/inventory/add.c	\
+		src/inventory/lobby.c	\
+		src/inventory/manage_buttons.c	\
+		src/game/engine.c	\
 		src/game/lobby.c	\
 		src/game/start.c	\
 		src/game/display/lobby.c		\
 		src/game/display/map.c			\
 		src/game/display/objs.c			\
 		src/game/display/texts.c		\
+		src/game/display/mouse.c		\
 		src/game/display/animate.c			\
+		src/game/battle/lobby.c \
+		src/game/battle/manage/hit.c \
+		src/game/battle/manage/notif_right.c \
+		src/game/battle/manage/notif_left.c \
+		src/game/mouse/replace.c \
 		src/hud/buttons/area.c				\
 		src/hud/buttons/control_key.c 				\
 		src/hud/buttons/credits.c 				\
@@ -74,15 +89,16 @@ SRC	=	src/main.c						\
 		src/warnings/unexisting_02.c		\
 		src/warnings/invalid_01.c		\
 		src/warnings/invalid_02.c		\
+		src/warnings/invalid_03.c		\
 		src/warnings/already_existing_01.c	\
 		src/warnings/already_existing_02.c	\
 		src/warnings/already_existing_03.c	\
 		src/warnings/missing.c		\
-		src/warnings/undefined.c		\
+		src/warnings/undefined_01.c		\
+		src/warnings/undefined_02.c		\
 		src/warnings/ingame.c			\
-		src/game/battle/manage_hit.c \
-		src/game/battle/manage_notif_right.c \
-		src/game/battle/manage_notif_left.c \
+		src/inventory/update_item_stats.c			\
+		src/inventory/update_info_item.c			\
 
 OBJS	=	$(SRC:.c=.o)
 

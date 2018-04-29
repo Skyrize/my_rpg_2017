@@ -46,3 +46,15 @@ int check_already_existing_tile_coords(game_t *game)
 	}
 	return (0);
 }
+
+int check_already_existing_item(hashmap_t *hashmap, char *item_name)
+{
+	item_t *item = hm_get(hashmap, item_name);
+
+	if (item != NULL) {
+		my_printf("WARNING: ITEM '%s' REDECLARED IN ITEMS.PCF !\n",
+		item_name);
+		return (84);
+	}
+	return (0);
+}

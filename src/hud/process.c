@@ -17,7 +17,7 @@ sfVector2f vec2u_to_vec2f(sfVector2u vecu)
 	return (vecf);
 }
 
-int buttonisclicked(obj_t *button, sfVector2i clickPosition)
+int click_button(obj_t *button, sfVector2i clickPosition, sfMouseButton mb)
 {
 	return (clickPosition.x <
 	sfRectangleShape_getPosition(button->obj).x +
@@ -26,7 +26,7 @@ int buttonisclicked(obj_t *button, sfVector2i clickPosition)
 	clickPosition.y < sfRectangleShape_getPosition(button->obj).y +
 	sfRectangleShape_getSize(button->obj).y &&
 	clickPosition.y > sfRectangleShape_getPosition(button->obj).y
-	&& sfMouse_isButtonPressed(sfMouseLeft));
+	&& sfMouse_isButtonPressed(mb));
 
 }
 
@@ -47,10 +47,10 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 	if (button->button != sfTrue)
 		return (0);
 	if (button_fly_over(button, MOUSE_POS) == 1 &&
-	buttonisclicked((button), MOUSE_POS) == 0)
+	click_button((button), MOUSE_POS, sfMouseLeft) == 0)
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
 	else if (button_fly_over(button, MOUSE_POS) == 1 &&
-	buttonisclicked((button), MOUSE_POS) == 1
+	click_button((button), MOUSE_POS, sfMouseLeft) == 1
 	&& CLICK_RELEASED == sfTrue) {
 		CLICK_RELEASED = sfFalse;
 		return (button->callback ? button->callback(window, game) : 84);
@@ -60,24 +60,17 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 	return (0);
 }
 
-int manage_buttons(window_t *window, game_t *game)
+int manage_buttons(managed_scene_t *scene, window_t *window, game_t *game)
 {
-	display_list_t *tmp = DISPLAYED_SCENES;
-	scene_t *scene;
 	int my_errno = 0;
 
-	if (!tmp || !window || !game)
+	if (!scene || !window || !game)
 		return (84);
-	while (tmp) {
-		if (!(scene = tmp->scene))
-			return (84);
-		my_errno = read_hashmap(window, game, scene->objs,
-			&process_button_over);
-		if (my_errno == 1)
-			return (0);
-		if (my_errno == 84)
-			return (84);
-		tmp = tmp->next;
-	}
+	my_errno = read_hashmap(window, game, scene->scene->objs,
+		&process_button_over);
+	if (my_errno == 1)
+		return (0);
+	if (my_errno == 84)
+		return (84);
 	return (0);
 }

@@ -60,5 +60,6 @@ int start_game(window_t *window, game_t *game)
 	if (load_my_zone(game) != 0)
 		return (84);
 	place_player(game);
+	sfRenderWindow_setMouseCursorVisible(window->window, sfFalse);
 	return (0);
 }
