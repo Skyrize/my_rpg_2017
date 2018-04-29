@@ -67,7 +67,7 @@
 #define ZONE_NAME ZONE.name
 #define ZONE_FILEPATH ZONE.filepath
 #define AREA_NAME AREA.name
-#define AREA_ENCOUTER AREA.encounter
+#define AREA_ENCOUNTER AREA.encounter
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
 
