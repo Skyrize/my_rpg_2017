@@ -4,6 +4,7 @@
 ** File description:
 ** take number, change it in given base
 */
+
 void my_putchar(char);
 int my_strlen(char *);
 

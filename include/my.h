@@ -7,6 +7,7 @@
 
 #ifndef MY_H_
 #define MY_H_
+#ifndef READ_SIZE
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 #include <SFML/Window.h>
@@ -22,9 +23,10 @@
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
 #include <errno.h>
-#ifndef READ_SIZE
+#include <stddef.h>
+
 #define READ_SIZE 80
-#endif /* !READ_SIZE */
+
 void my_putchar(char);
 int my_isneg(int);
 int my_put_nbr(int);
@@ -65,12 +67,13 @@ char *my_strdup(char *);
 char *my_get_next_line(int);
 int sum_n_odd_numbers(int);
 int sum_n_even_numbers(int);
-char *my_get_filename(char *);
-int my_arraycmp(unsigned int *, unsigned int *);
-void replace_char(char *, char, char);
+void my_destroy_tab(char **tab);
+char *int_to_str(int nb);
+void my_replace_char(char *str, char seeked, char replacement);
+char *my_get_filename(char *filepath);
+int my_arraycmp(unsigned int *arr1, unsigned int *arr2);
 char *my_cleanstr(char *str, char to_clean);
-void display_char_2d(char *option, char **str);
-void free_char_2d(char **);
+void my_puttab(char *option, char **str);
 
 /* MY_PRINTF */
 
@@ -86,6 +89,10 @@ void my_printadress(va_list);
 void my_printoctal(va_list);
 void my_printpercent(va_list);
 void my_printformatedstring(va_list);
+int my_array_len(char **);
+int my_str_isalphanum(char *str);
+int my_find_char(char seeked, char *inside);
+void my_replace_char(char *str, char seeked, char replacement);
 
 typedef struct fnct_s
 {
@@ -93,7 +100,7 @@ typedef struct fnct_s
 	void (*fptr)(va_list list);
 } fnct_t;
 
-/* CSFML */
+/////////////////////// CSFML ////////////////////////:
 
 typedef struct framebuffer_s
 {
@@ -104,4 +111,10 @@ typedef struct framebuffer_s
 
 void place_a_square(sfVector2f *, sfVector2f *, sfRenderWindow *, sfColor *);
 
+//////////////////////////////////// DEFINES //////////////////////
+
+#define CHAR_IS_NUM(x) (x >= '0' && x <= '9')
+#define CHAR_IS_ALPHA(x) ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z'))
+
+#endif /* !READ_SIZE */
 #endif /* MY_H_ */

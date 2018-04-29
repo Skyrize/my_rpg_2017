@@ -5,13 +5,12 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int check_unexisting_scene(bucket_t *scene, char *asked_scene)
 {
 	if (!scene) {
-		my_printf("WARNING: CAN'T FIND SCENE '%s' IN SCENES LIST !\n",
+		my_printf("WARNING: CAN'T FIND SCENE '%s' !\n",
 		asked_scene);
 		return (84);
 	}
