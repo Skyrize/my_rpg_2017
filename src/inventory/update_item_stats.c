@@ -67,7 +67,8 @@ int update_damages_item(slot_t *slot, game_t *game)
 	|| !slot->item)
 		return (84);
 
-	if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "DAMAGES_ITEM")))
+	if (!(bucket_texts = hm_get_bucket(stats_scene->texts,
+	"DAMAGES_ITEM")))
 		return (84);
 	sfText_setString(bucket_texts->value, my_strcat(
 		"Damages: ", int_to_str(slot->item->stats.damages)));
