@@ -42,19 +42,19 @@ obj_t *create_obj(obj_data_t *data, game_t *game)
 	return (new_obj);
 }
 
-display_list_t *create_a_display(char *name, scene_t *scene)
+managed_scene_t *create_display(char *name, scene_t *scene)
 {
-	display_list_t *display = malloc(sizeof(display_list_t));
+	managed_scene_t *display = malloc(sizeof(managed_scene_t));
 
 	if (!display)
 		return (NULL);
 	display->scene = scene;
-	display->scene_name = name;
+	display->name = name;
 	display->next = NULL;
 	return (display);
 }
 
-tile_list_t *create_a_tile(char *texture_name, game_t *game)
+tile_list_t *create_tile(char *texture_name, game_t *game)
 {
 	tile_list_t *new_tile = malloc(sizeof(tile_list_t));
 
@@ -67,4 +67,18 @@ tile_list_t *create_a_tile(char *texture_name, game_t *game)
 		return (NULL);
 	new_tile->next = NULL;
 	return (new_tile);
+}
+
+item_t *create_item(item_data_t *data)
+{
+	item_t *new = malloc(sizeof(item_t));
+
+	if (!new)
+		return (NULL);
+	new->name = my_strdup(data->name);
+	new->obj = data->obj;
+	new->quest = data->quest;
+	new->consumable = data->consumable;
+	new->stats = data->stats;
+	return (new);
 }

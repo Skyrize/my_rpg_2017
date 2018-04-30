@@ -18,6 +18,16 @@ int check_invalid_animated(sfBool animated)
 	return (0);
 }
 
+int check_invalid_quest(sfBool quest)
+{
+	if (quest != sfTrue && quest != sfFalse) {
+		my_printf("WARNING: QUEST VALUE CAN ONLY BE '0' ");
+		my_printf("FOR FALSE OR '1' FOR TRUE !\n");
+		return (84);
+	}
+	return (0);
+}
+
 int check_invalid_area_coords(char *name, game_t *game)
 {
 	if (AREA_ENCOUTER != sfTrue && AREA_ENCOUTER != sfFalse) {

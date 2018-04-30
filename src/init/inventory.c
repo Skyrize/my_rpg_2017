@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_cook_2017
+** my_rpg_2017
 ** File description:
 ** (enter)
 */
@@ -8,64 +8,53 @@
 #include "my.h"
 #include "rpg.h"
 
+int init_slot(slot_t *slot, sfVector2f *pos, game_t *game)
+{
+	static char *chut[] = {"SLOT_HELMET", "SLOT_CHEST", "SLOT_PANTS",
+	"SLOT_GAUNTLETS", "SLOT_WEAPON", "SLOT_00", "SLOT_01", "SLOT_02",
+	"SLOT_03", "SLOT_04", "SLOT_10", "SLOT_11", "SLOT_12", "SLOT_13",
+	"SLOT_14", "SLOT_20", "SLOT_21", "SLOT_22", "SLOT_23", "SLOT_24",
+	"SLOT_30", "SLOT_31", "SLOT_32", "SLOT_33", "SLOT_34", "SLOT_40",
+	"SLOT_41", "SLOT_42", "SLOT_43", "SLOT_44", NULL};
+	static int i = 0;
+	scene_t *inventory = hm_get(SCENES, "INVENTORY");
+
+	if (!inventory)
+		return (84);
+	slot->item = NULL;
+	slot->slot = hm_get(inventory->objs, chut[i]);
+	if (!slot->slot || !slot->slot->obj)
+		return (84);
+	slot->pos = *pos;
+	slot->slot->callback = &click_slot;
+	i++;
+	return (0);
+}
+
+int get_starting_items(game_t *game)
+{
+	if (add_new_to_slot("COMMON_HELMET_00", &HELMET_POS, &HELMET, game) != 0
+	|| add_new_to_slot("COMMON_CHEST_00", &CHEST_POS, &CHEST, game) != 0
+	|| add_new_to_slot("COMMON_PANTS_00", &PANTS_POS, &PANTS, game) != 0
+	|| add_new_to_slot("COMMON_GAUNTLETS_00",
+	&GAUNTLETS_POS, &GAUNTLETS, game) != 0) {
+		my_printf("WARNING: ERROR IN STARTING ITEMS INITALISATION !\n");
+		return (84);
+	}
+	return (0);
+}
+
 int init_inventory(game_t *game)
-{/* 
-	slot_t sweap;
-	slot_t shel;
-	slot_t schest;
-	slot_t sgaunt;
-	slot_t spants;
-	slot_t item;
-	item_t weap;
-	item_t hel;
-	item_t chest;
-	item_t gaunt;
-	item_t pants;
-	sweap.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_BOW_00", 1, V2F(585, 135)}, window);
-	shel.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_HELMET_00", 1, V2F(635, 85)}, window);
-	schest.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
-	sgaunt.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_GAUNTLETS_00", 1, V2F(690, 135)}, window);
-	spants.slot = create_obj(&(obj_data_t){"ITEM", "COMMON_PANTS_00", 1, V2F(635, 185)}, window);
-	obj_t *w = create_obj(&(obj_data_t){"ITEM", "COMMON_BOW_00", 1, V2F(585, 135)}, window);
-	obj_t *h = create_obj(&(obj_data_t){"ITEM", "COMMON_HELMET_00", 1, V2F(635, 85)}, window);
-	obj_t *c = create_obj(&(obj_data_t){"ITEM", "COMMON_CHEST_00", 1, V2F(635, 135)}, window);
-	obj_t *g = create_obj(&(obj_data_t){"ITEM", "COMMON_GAUNTLETS_00", 1, V2F(690, 135)}, window);
-	obj_t *p = create_obj(&(obj_data_t){"ITEM", "COMMON_PANTS_00", 1, V2F(635, 185)}, window);
-	ITEM_SELECTOR.base = NULL;
-	ITEM_SELECTOR.dest = NULL;
-	HELMET.item.obj = NULL;
-	CHEST.item.obj = NULL;
-	GAUNTLETS.item.obj = NULL;
-	PANTS.item.obj = NULL;
-	WEAPON.item.obj = NULL;
-	///to change
+{
 	GOLDS = 100;
-	for (int x = 0; x != INVENTORY_SIZE_X; x++)
-		for (int y = 0; y != INVENTORY_SIZE_Y; y++) {
-			ITEMS[y][x].item.obj = NULL;
-		}
-	item.item.obj = create_obj(&(obj_data_t){"ITEM", "MYTHIC_CHEST_01", 1, V2F(635, 185)}, window);
-	weap.stats = (item_stat_t){100, 10, 10};
-	hel.stats = (item_stat_t){100, 10, 10};
-	chest.stats = (item_stat_t){100, 10, 10};
-	gaunt.stats = (item_stat_t){100, 10, 10};
-	pants.stats = (item_stat_t){100, 10, 10};
-	weap.obj = w;
-	hel.obj = h;
-	chest.obj = c;
-	gaunt.obj = g;
-	pants.obj = p;
-	sweap.item = weap;
-	shel.item = hel;
-	schest.item = chest;
-	sgaunt.item = gaunt;
-	spants.item = pants;
-	add_helmet(&shel, window);
-	add_chest(&schest, window);
-	add_pants(&spants, window);
-	add_weapon(&sweap, window);
-	add_gauntlets(&sgaunt, window);
-	add_to_slot(&item, &V2I(0, 0), window); */
-	(void)game;
+	ITEM_SELECTED = NULL;
+	init_slot(&HELMET, &HELMET_POS, game);
+	init_slot(&CHEST, &CHEST_POS, game);
+	init_slot(&PANTS, &PANTS_POS, game);
+	init_slot(&GAUNTLETS, &GAUNTLETS_POS, game);
+	init_slot(&WEAPON, &WEAPON_POS, game);
+	items_foreach(game, NULL, init_slot);
+	if (get_starting_items(game) != 0)
+		return (84);
 	return (0);
 }

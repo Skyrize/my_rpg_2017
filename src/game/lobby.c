@@ -1,49 +1,61 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_runner_2017
+** my_rpg_2017
 ** File description:
-** null
+** lobby.c
 */
 
-#include "my.h"
+#include <SFML/Window/Event.h>
 #include "rpg.h"
 
-void get_time(ctime_t *clocker)
+///mettre ici les évènements relatifs à GAME
+
+void on_key_pressed(game_t *game, sfEvent *event)
 {
-	clocker->timer = sfClock_getElapsedTime(clocker->clock);
-	clocker->seconds = clocker->timer.microseconds / 1000000.0;
+	if (event->key.code == (sfKeyCode)KEY_PLAYER.up ||
+	event->key.code == (sfKeyCode)KEY_PLAYER.up_1) {
+		move_player(UP, game, false);
+	}
+	if (event->key.code == (sfKeyCode)KEY_PLAYER.down
+	|| event->key.code == (sfKeyCode)KEY_PLAYER.down_1) {
+		move_player(DOWN, game, false);
+	}
+	if (event->key.code == (sfKeyCode)KEY_PLAYER.left
+	|| event->key.code == (sfKeyCode)KEY_PLAYER.left_1) {
+		move_player(LEFT, game, false);
+	}
+	if (event->key.code == (sfKeyCode)KEY_PLAYER.right
+	|| event->key.code == (sfKeyCode)KEY_PLAYER.right_1) {
+		move_player(RIGHT, game, false);
+	}
+	if (event->key.code == sfKeyP)
+		PLAYER_HEALTH += 1;
+	else if (event->key.code == sfKeyM)
+		PLAYER_HEALTH -= 1;
 }
 
-//	manage_hit_enemy(window); // A MIEUX PLACER
-//	manage_notif_right(window, "Tu est pd");
-//	manage_notif_left(window, "Tu est pd");
-int manage(window_t *window, game_t *game)
+int game_events(window_t *window, game_t *game)
 {
-	if (manage_buttons(window, game) != 0) {
-		my_printf("WARNING: ERROR IN BUTTONS !\n");
-		return (84);
+	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
+		if (window->event.type == sfEvtClosed)
+			sfRenderWindow_close(window->window);
+		if (window->event.type == sfEvtMouseButtonReleased)
+			CLICK_RELEASED = sfTrue;
+		if (window->event.type == sfEvtKeyPressed
+		&& KEY_PLAYER.move == 1)
+			on_key_pressed(game, &window->event);
 	}
-	if (manage_life(game) != 0
-	|| change_area_hud(game) != 0
-	|| anim_player(game) != 0
-	|| manage_hud_opacity(game) != 0
-	|| manage_hit_enemy(game) != 0
-	|| manage_notif_right(game, "Tu est pd") != 0
-	|| manage_notif_left(game, "Tu est pd") != 0)
-		return (84);
-	smooth_move_player(game);
 	return (0);
 }
 
 int game_lobby(window_t *window, game_t *game)
 {
-	analyse_events(window, game);
-	MOUSE_POS = sfMouse_getPosition((const sfWindow *)window->window);
-	if (display_scenes(window, game) != 0) {
-		my_printf("WARNING: ERROR IN DISPLAY !\n");
+	if (game_events(window, game)
+	|| manage_life(game) != 0
+	|| change_area_hud(game) != 0
+	|| anim_player(game) != 0
+	|| manage_hud_opacity(game) != 0)
 		return (84);
-	}
-	if (manage(window, game) != 0)
-		return (84);
+	smooth_move_player(game);
 	return (0);
 }
