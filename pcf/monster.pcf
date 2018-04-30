@@ -1,5 +1,5 @@
 ### FILE : Initialisation des items du jeu. ###
-//Format: INIT_INDICATOR + description (voir .h)
+//Format: INIT_CHAR + description (voir .h)
 //Format: 	MONSTER=nom du monstre
 //Format:		TEXTURE=texture du monstre
 //Format:		ZONE= nom de la zone du monstre
@@ -50,7 +50,6 @@
 --------BOSS:
 	MONSTER=MAD_OGRE
 		TEXTURE=MAD_OGRE
-		ZONE=BOSS_ROOM
 		STATS=DATA HEALTH=350 ARMOR=35 DAMAGES=35
 
 ### END OF FILE ###

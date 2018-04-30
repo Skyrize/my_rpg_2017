@@ -23,13 +23,13 @@ int check_invalid_map_name(game_t *game)
 {
 	if (!ZONE_NAME) {
 		my_printf("WARNING: YOU ARE TRYING TO ENTER ZONE AT");
-		my_printf("%d/%d BUT IT ISN'T INITIALISED !\n",
+		my_printf(" %d/%d BUT IT ISN'T INITIALISED !\n",
 		ZONE_COOR_X, ZONE_COOR_Y);
 		return (84);
 	}
 	if (!AREA_NAME) {
 		my_printf("WARNING: YOU ARE TRYING TO ENTER AREA AT");
-		my_printf("%d/%d BUT IT ISN'T INITIALISED !\n",
+		my_printf(" %d/%d BUT IT ISN'T INITIALISED !\n",
 		AREA_COOR_X, AREA_COOR_Y);
 		return (84);
 	}

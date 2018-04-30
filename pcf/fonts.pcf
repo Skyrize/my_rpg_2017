@@ -1,5 +1,5 @@
 ### FILE : Initialisation des fonts de texts du jeu. ###
-//Format: INIT_INDICATOR + description (voir .h)
+//Format: INIT_CHAR + description (voir .h)
 //Format:	FONT=nom de la font + FILEPATH=chemin d'accès
 
 -FONTS

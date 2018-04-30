@@ -103,7 +103,7 @@ bool move_player_right(game_t *game, bool check)
 
 bool move_player(direction_t dir, game_t *game, bool check)
 {
-	if (my_strcmp(CURRENT_SCENE->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return (false);
 	if (game->player.character->obj_rect.animated)
 		return (false);

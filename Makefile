@@ -12,6 +12,7 @@ SRC	=	src/main.c						\
 		src/init/map.c				\
 		src/init/inventory.c				\
 		src/init/player.c			\
+		src/init/entity.c			\
 		src/init/scenes.c			\
 		src/init/window.c			\
 		src/init/game.c			\
@@ -28,6 +29,7 @@ SRC	=	src/main.c						\
 		src/init/keys/texture_02.c		\
 		src/init/keys/items.c		\
 		src/init/keys/zone.c			\
+		src/init/keys/monster.c			\
 		src/input/event.c			\
 		src/list_management/create_01.c		\
 		src/list_management/create_02.c		\
@@ -94,6 +96,7 @@ SRC	=	src/main.c						\
 		src/warnings/already_existing_01.c	\
 		src/warnings/already_existing_02.c	\
 		src/warnings/already_existing_03.c	\
+		src/warnings/already_existing_04.c	\
 		src/warnings/missing.c		\
 		src/warnings/undefined_01.c		\
 		src/warnings/undefined_02.c		\

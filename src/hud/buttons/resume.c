@@ -49,8 +49,8 @@ int launch_game(window_t *window, game_t *game)
 {
 	if (!window || !game)
 		return (84);
-	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
-	if (check_unexisting_scene(CURRENT_SCENE, "GAME") != 0)
+	CURRENT_BUCKET = hm_get_bucket(SCENES, "GAME");
+	if (check_unexisting_scene(CURRENT_BUCKET, "GAME") != 0)
 		return (84);
 	if (update_element(game) != 0)
 		return (84);
@@ -70,8 +70,8 @@ int resume(window_t *window, game_t *game)
 {
 	if (!window || !game)
 		return (84);
-	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
-	if (check_unexisting_scene(CURRENT_SCENE, "GAME") != 0)
+	CURRENT_BUCKET = hm_get_bucket(SCENES, "GAME");
+	if (check_unexisting_scene(CURRENT_BUCKET, "GAME") != 0)
 		return (84);
 	clean_displayed_scene_name(game, PAUSE_GAME);
 	(void)window;

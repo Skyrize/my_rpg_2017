@@ -40,7 +40,7 @@ void smooth_move_player(game_t *game)
 					(target_pos->y - act_pos.y) * 5};
 	static bool is_check = false;
 
-	if (my_strcmp(CURRENT_SCENE->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!(game->player.character))
 		return;
