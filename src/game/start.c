@@ -38,8 +38,8 @@ int init_frame_rate(window_t *window, game_t *game)
 
 void place_player(game_t *game)
 {
-	TILE_COOR_X = 8;
-	TILE_COOR_Y = 6;
+	TILE_COOR_X = 6;
+	TILE_COOR_Y = 4;
 	AREA_COOR_X = 0;
 	AREA_COOR_Y = 2;
 	ZONE_COOR_X = 3;
