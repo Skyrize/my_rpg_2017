@@ -24,4 +24,5 @@ void update_stats(scene_t *scene, game_t *game)
 	update_characteristic(PLAYER_HEALTH, "HEALTH", scene);
 	update_characteristic(PLAYER_ARMOR, "ARMOR", scene);
 	update_characteristic(PLAYER_SPECIALITY, "SPECIAL", scene);
+	update_characteristic(PLAYER_XP, "XP", scene);
 }

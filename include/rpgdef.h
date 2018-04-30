@@ -85,6 +85,7 @@
 #define PLAYER_MAX_HP PLAYER_STATS.max_health
 #define PLAYER_ARMOR PLAYER_STATS.armor
 #define PLAYER_SPECIALITY PLAYER_STATS.speciality
+#define PLAYER_XP PLAYER_STATS.xp
 #define PLAYER_SPECIALITY_NAME PLAYER_STATS.speciality_name
 
 ////////////////////////////////// USED //////////////////////////////

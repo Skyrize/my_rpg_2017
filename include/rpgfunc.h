@@ -380,6 +380,7 @@ void change_selected_enemy(game_t *game, int offset);
 void select_ennemy(window_t *window, game_t *game);
 int first_enemy_available(game_t *game);
 void change_arrow_position(game_t *game);
+int player_attack(game_t *game);
 
 /////////////////////////////////// INVENTORY
 

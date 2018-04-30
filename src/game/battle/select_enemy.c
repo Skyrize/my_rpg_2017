@@ -56,7 +56,7 @@ void select_ennemy(window_t *window, game_t *game)
 			change_arrow_position(game);
 		}
 		if (sfKeyboard_isKeyPressed(sfKeyReturn)) {
-			//TODO : bagarre
+			player_attack(game);
 		}
 	}
 }

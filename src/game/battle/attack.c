@@ -7,6 +7,11 @@
 
 #include "rpg.h"
 
+int player_attack(game_t *game)
+{
+	int damages = PLAYER_
+}
+
 int attack(window_t *window, game_t *game)
 {
 	(void)window;
