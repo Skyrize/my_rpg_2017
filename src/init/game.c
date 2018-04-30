@@ -62,6 +62,7 @@ int init_game(game_t *game)
 	|| init_audio_lib(game) != 0
 	|| init_fonts_lib(game) != 0
 	|| init_items_lib(game) != 0
+	|| init_monsters_lib(game) != 0
 	|| init_scenes(game) != 0
 	|| init_inventory(game) != 0
 	|| init_buttons(game) != 0

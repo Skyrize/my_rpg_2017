@@ -30,7 +30,8 @@ int read_bucket(window_t *window, game_t *game, bucket_t *bucket, int (*fptr)())
 	return (0);
 }
 
-int read_hashmap(window_t *window, game_t *game, hashmap_t *hashmap, int (*fptr)())
+int read_hashmap(window_t *window, game_t *game,
+hashmap_t *hashmap, int (*fptr)())
 {
 	bucket_t *tmp;
 	int my_errno = 0;

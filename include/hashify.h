@@ -18,7 +18,7 @@
 struct bucket_s {
 	char *key;
 	void *value;
-	struct bucket_s* next;
+	struct bucket_s *next;
 };
 
 struct hashmap_s {
@@ -39,7 +39,8 @@ typedef struct hashmap_s hashmap_t;
 /// \return created hashmap pointer
 hashmap_t *hm_create(unsigned int size, void (*fptr)());
 
-/// Send bucket value to a given destroy function and free all the map (at this time, free only the main pointer and
+/// Send bucket value to a given destroy function and free all the map
+/// (at this time, free only the main pointer and
 /// the array)
 /// \param hashmap hashmap
 void hm_destroy(hashmap_t *hashmap);

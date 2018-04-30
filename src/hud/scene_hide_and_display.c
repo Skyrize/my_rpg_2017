@@ -10,8 +10,8 @@
 
 int hide_scene(char *scene_name, game_t *game)
 {
-	CURRENT_SCENE = hm_get_bucket(SCENES, "GAME");
-	if (check_unexisting_scene(CURRENT_SCENE, "GAME") != 0)
+	CURRENT_BUCKET = hm_get_bucket(SCENES, "GAME");
+	if (check_unexisting_scene(CURRENT_BUCKET, "GAME") != 0)
 		return (84);
 	clean_displayed_scene_name(game, scene_name);
 	return (0);
@@ -30,8 +30,8 @@ int button_display_hide_scene(char *scene_name,
 		if (hide_scene(scene_name, game) != 0)
 			return (84);
 	} else {
-		CURRENT_SCENE = hm_get_bucket(SCENES, scene_name);
-		if (check_unexisting_scene(CURRENT_SCENE, scene_name) != 0)
+		CURRENT_BUCKET = hm_get_bucket(SCENES, scene_name);
+		if (check_unexisting_scene(CURRENT_BUCKET, scene_name) != 0)
 			return (84);
 		if (fptr)
 			fptr(scene, game);

@@ -8,16 +8,16 @@
 #include "my.h"
 #include "rpg.h"
 
-int get_a_music(char **infos, char **type, hashmap_t **current_list,
+int get_music(char **infos, char **type, hashmap_t **current_list,
 	game_t *game)
 {
 	scene_t *current_scene;
 
 	(void)infos;
 	(void)current_list;
-	if (check_undefined_scene(CURRENT_SCENE, infos[0]) != 0)
+	if (check_undefined_scene(CURRENT_BUCKET, infos[0]) != 0)
 		return (84);
-	current_scene = CURRENT_SCENE->value;
+	current_scene = CURRENT_BUCKET->value;
 	if (check_already_existing_music(current_scene->music,
 		type[1]) != 0)
 		return (84);

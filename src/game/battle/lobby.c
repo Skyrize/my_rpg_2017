@@ -7,7 +7,8 @@
 
 #include "rpg.h"
 
-///mettre ici les events relatifs à un combat. les events généraux de type click sur boutons sont déjà géré.
+///mettre ici les events relatifs à un combat.
+///les events généraux de type click sur boutons sont déjà géré.
 
 int battle_events(window_t *window, game_t *game)
 {

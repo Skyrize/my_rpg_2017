@@ -14,11 +14,15 @@
 /// METTRE UN GNL QUI MARCHE POUR SUPPRIMER CA :
 #define END_OF_FILE "### END OF FILE ###"
 
-#define INIT_INDICATOR "-" /// String to put in the begining of the line to indicate that lines below are init informations.
-#define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string init. Get replaced with spaces.
+#define INIT_INDICATOR "-" /// String to put in the begining of the line
+/// to indicate that lines below are init informations.
+#define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string
+/// init. Get replaced with spaces.
 #define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
-#define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from each other or datas from each other.
-#define STARTING_SCENE_NAME "MENU_PRINCIPAL" /// Name of the starting scene in a string. Will be displayed at the begining of the game.
+#define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from
+/// each other or datas from each other.
+#define STARTING_SCENE_NAME "MENU_PRINCIPAL" /// Name of the starting scene
+/// in a string. Will be displayed at the begining of the game.
 #define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
 #define GAME_TITLE "Lands Of Valoran"
 
@@ -351,27 +355,48 @@ int init_from_pcf(char **infos, my_w_t *window, const key_word_t *keys);
 
 /// KEY WORDS FUNCTIONS
 
-int get_a_scene(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_list(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_index(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_obj(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_text(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_music(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_audio(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_font(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_texture_filepath(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_animated(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_max_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_max_offset(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_rect_start_values(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_map(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_zone(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_an_area(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_tile(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_tile_texture(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
-int get_a_priority(char **infos, char **type, hashmap_t **current_list, my_w_t *window);
+int get_a_scene(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_list(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_an_index(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_an_obj(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_text(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_music(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_an_audio(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_font(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_texture(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_texture_filepath(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_an_animated(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_rect_values(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_rect_max_values(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_rect_max_offset(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_rect_start_values(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_map(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_zone(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_an_area(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_tile(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_tile_texture(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
+int get_a_priority(char **infos, char **type,
+				hashmap_t **current_list, my_w_t *window);
 /// INIT WARNING : UNEXISTING
 
 int check_unexisting_font(sfFont *font, char *font_name);
@@ -383,7 +408,8 @@ int check_unexisting_scene(bucket_t *scene, char *asked_scene);
 /// INIT WARNING : INVALID
 
 int check_invalid_obj_init(obj_infos_t *obj);
-int check_invalid_key_word(char *last_word_used, char **type, char **infos, int error_no);
+int check_invalid_key_word(char *last_word_used, char **type,
+				char **infos, int error_no);
 int check_invalid_text_init(text_infos_t *text);
 int check_invalid_index(int index);
 int check_invalid_file(int fd, char *filename);
@@ -411,9 +437,12 @@ int check_already_existing_tile_coords(my_w_t *window);
 
 /// INIT WARNING : MISSING
 
-int check_missing_args_for_key_word(const key_word_t *keys, int index, char **args, int j);
-int check_missing_sub_keyword(char *keyword, int nb_keyword, char **subwords_tab);
-int check_missing_or_invalid_sub_keyword(const key_word_t *keys, int index, char **subwords_tab);
+int check_missing_args_for_key_word(const key_word_t *keys,
+				int index, char **args, int j);
+int check_missing_sub_keyword(char *keyword, int nb_keyword,
+				char **subwords_tab);
+int check_missing_or_invalid_sub_keyword(const key_word_t *keys,
+				int index, char **subwords_tab);
 
 /// INIT WARNING : UNDEFINED
 

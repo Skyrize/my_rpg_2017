@@ -62,7 +62,6 @@ SRC	=	hashb.c	\
 		put_a_square_csfml.c	\
 		sum_n_even_numbers.c	\
 		sum_n_odd_numbers.c	\
-		
 
 OBJ	=	$(SRC:.c=.o)
 

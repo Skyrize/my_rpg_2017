@@ -30,9 +30,9 @@ int check_invalid_quest(sfBool quest)
 
 int check_invalid_area_coords(char *name, game_t *game)
 {
-	if (AREA_ENCOUTER != sfTrue && AREA_ENCOUTER != sfFalse) {
-		my_printf("WARNING: AREA '%s' ENCOUTER IS %d BUT",
-		AREA_NAME, AREA_ENCOUTER);
+	if (AREA_ENCOUNTER != sfTrue && AREA_ENCOUNTER != sfFalse) {
+		my_printf("WARNING: AREA '%s' ENCOUNTER IS %d BUT",
+		AREA_NAME, AREA_ENCOUNTER);
 		my_printf(" SHOULD BE 0 OR 1 !\n");
 		return (84);
 	}

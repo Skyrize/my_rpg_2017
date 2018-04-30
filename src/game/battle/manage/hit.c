@@ -28,7 +28,7 @@ int update_text_hit(sfText *hit, int check_hit)
 	if ((sfText_getPosition(hit).y > 0 &&
 	sfMouse_isButtonPressed(sfMouseLeft)) || check_hit == 1) {
 		sfText_setString(hit, "-200");
-		sfText_setFillColor(hit, sfRed);
+		//sfText_setFillColor(hit, sfRed);
 		sfText_setOrigin(hit, (sfVector2f){80, 85});
 		sfText_move(hit, (sfVector2f){0, -10});
 		offset -= 10;

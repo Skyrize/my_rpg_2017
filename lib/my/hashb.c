@@ -40,7 +40,7 @@ bucket_t *hm_get_bucket(hashmap_t *hashmap, char *key)
 	unsigned int i = hm_hash(hashmap, key);
 	bucket_t *list = hashmap->data[i];
 
-	while(list != NULL && my_strcmp_hm(list->key, key) != 0) {
+	while (list != NULL && my_strcmp_hm(list->key, key) != 0) {
 		list = list->next;
 	}
 	if (list == NULL)
