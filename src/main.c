@@ -41,7 +41,6 @@ int init(window_t *window, game_t *game)
 	//	my_printf("WARNING: ERROR IN REC DIVERS INITIALISATION !\n");
 	//	return (84);
 	//}
-	my_printf("WARNING: 5 param in display_tiles\n");
 	return (0);
 }
 
