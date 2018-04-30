@@ -8,6 +8,7 @@
 #ifndef RPG_H_
 #define RPG_H_
 #include "hashify.h"
+#include "llist.h"
 
 ///////////////////////////////// INIT DEFINES //////////////////////////////
 
