@@ -10,6 +10,7 @@ SRC	=	src/main.c						\
 		src/init/libs.c				\
 		src/init/list_filling.c			\
 		src/init/map.c				\
+		src/init/zone.c				\
 		src/init/inventory.c				\
 		src/init/player.c			\
 		src/init/entity.c			\

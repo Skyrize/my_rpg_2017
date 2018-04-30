@@ -22,7 +22,7 @@ int init_textures_lib(game_t *game);
 int init_fonts_lib(game_t *game);
 int init_items_lib(game_t *game);
 int init_map(game_t *game);
-int init_zone(game_t *game);
+void init_zone(game_t *game);
 int init_inventory(game_t *game);
 int init_scene_lists(char **infos, game_t *game);
 int init_buttons(game_t *game);
