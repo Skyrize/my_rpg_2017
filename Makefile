@@ -16,6 +16,7 @@ SRC	=	src/main.c						\
 		src/init/window.c			\
 		src/init/game.c			\
 		src/init/free_destroy/lobby.c	\
+		src/init/free_destroy/list.c	\
 		src/init/read/savior.c			\
 		src/init/read/file_analysing.c			\
 		src/init/keys/audio.c	\

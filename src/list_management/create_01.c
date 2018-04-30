@@ -49,7 +49,7 @@ managed_scene_t *create_display(char *name, scene_t *scene)
 	if (!display)
 		return (NULL);
 	display->scene = scene;
-	display->name = name;
+	display->name = my_strdup(name);
 	display->next = NULL;
 	return (display);
 }

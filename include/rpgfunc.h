@@ -350,6 +350,7 @@ void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
 void item_destroy(item_t *item);
+void destroy_managed_scene(managed_scene_t *managed);
 
 /////////////////////////// PLAYER FUNCTIONS
 

@@ -24,6 +24,7 @@ void get_time(ctime_t *clocker)
 int manage(managed_scene_t *scene, window_t *window, game_t *game)
 {
 	for (int i = 0; manager_tab[i].balise; i++) {
+		//my_printf("scene->name = %s, manager[%d] = %s\n", scene->name, i, manager_tab[i].balise);
 		if (my_strcmp(scene->name, manager_tab[i].balise) == 0)
 			return (manager_tab[i].fptr(window, game));
 	}
