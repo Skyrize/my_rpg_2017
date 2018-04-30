@@ -10,8 +10,9 @@
 
 int display_item_stats(slot_t *slot, game_t *game)
 {
-	/*static sfRectangleShape *ico_item = NULL;
-	static char *last_item = NULL;*/
+	scene_t *stats_scene = hm_get(game->scenes, STATS_GAME);
+	obj_t *ico_item = hm_get(stats_scene->objs, "ITEM_ICO");
+
 	if (!slot|| !game || !slot->item || !slot->item->name)
 		return (84);
 	if (get_scene_from_displayed(STATS_GAME, game) == NULL)
@@ -19,16 +20,9 @@ int display_item_stats(slot_t *slot, game_t *game)
 		&update_stats, game) == 84)
 			return (84);
 	if (update_item_info(slot, game) != 0)
-		return (0);
-	/*printf("debug : %d\n", my_strcmp(last_item, slot->item->name));
-	if (my_strcmp(last_item, slot->item->name) != 0
-	&& slot->item->obj != NULL) {
-		ico_item = sfRectangleShape_create();
-		sfRectangleShape_setPosition(ico_item, (sfVector2f){200, 100});
-		sfRectangleShape_setTexture(ico_item,
-		sfRectangleShape_getTexture(slot->item->obj->obj), sfTrue);
-	}
-	last_item = my_strdup(slot->item->name);*/
+		return (84);
+	sfRectangleShape_setTexture(ico_item->obj,
+	sfRectangleShape_getTexture(slot->item->obj->obj), sfTrue);
 	return (0);
 }
 
