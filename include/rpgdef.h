@@ -12,7 +12,7 @@
 /////////////////////////////////// MAIN /////////////////////////////////
 
 #define SCENES game->scenes
-#define CURRENT_SCENE game->current
+#define CURRENT_BUCKET game->current
 #define MANAGED_SCENES game->displayed_scenes
 #define KEY_PLAYER game->key_player
 
@@ -29,6 +29,7 @@
 #define FONTS_LIB LIBS.fonts
 #define TEXTURES_LIB LIBS.textures
 #define ITEMS_LIB LIBS.items
+#define MONSTERS_LIB LIBS.monsters
 
 ////////////////////////////////// INVENTORY ///////////////////////////////
 

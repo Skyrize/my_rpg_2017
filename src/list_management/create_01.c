@@ -49,7 +49,7 @@ managed_scene_t *create_display(char *name, scene_t *scene)
 	if (!display)
 		return (NULL);
 	display->scene = scene;
-	display->name = name;
+	display->name = my_strdup(name);
 	display->next = NULL;
 	return (display);
 }
@@ -69,14 +69,18 @@ tile_list_t *create_tile(char *texture_name, game_t *game)
 	return (new_tile);
 }
 
-item_t *create_item(item_data_t *data)
+item_t *create_item(char *name, game_t *game)
 {
 	item_t *new = malloc(sizeof(item_t));
+	item_data_t *data = hm_get(ITEMS_LIB, name);
 
-	if (!new)
+	if (!new || !data)
 		return (NULL);
 	new->name = my_strdup(data->name);
-	new->obj = data->obj;
+	new->obj = create_obj(&(obj_data_t){name,
+					data->texture, 0, V2F(0, 0)}, game);
+	if (!new->obj)
+		return (NULL);
 	new->quest = data->quest;
 	new->consumable = data->consumable;
 	new->stats = data->stats;

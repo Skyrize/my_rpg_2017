@@ -8,18 +8,62 @@
 #include "my.h"
 #include "rpg.h"
 
-texture_t *create_texture(texture_data_t *data)
+item_data_t *create_item_data(char *name)
+{
+	item_data_t *new = malloc(sizeof(item_data_t));
+
+	if (!new)
+		return (NULL);
+	new->name = my_strdup(name);
+	new->texture = NULL;
+	new->quest = 0;
+	new->consumable = 0;
+	new->stats = (item_stat_t){0, 0, 0, 0};
+	return (new);
+}
+
+texture_t *create_texture(void)
 {
 	texture_t *new = malloc(sizeof(texture_t));
 
 	if (!new)
 		return (NULL);
-	new->priority = data->priority;
-	new->texture = data->texture;
-	new->animated = data->animated;
-	new->rect = data->rect;
-	new->rect_start = data->rect_start;
-	new->rect_max = data->rect_max;
-	new->rect_offset = data->rect_offset;
+	new->priority = 0;
+	new->texture = 0;
+	new->animated = 0;
+	new->rect = INTRECT(0, 0, 0, 0);
+	new->rect_start = V2I(0, 0);
+	new->rect_max = V2I(0, 0);
+	new->rect_offset = V2I(0, 0);
+	return (new);
+}
+
+enemy_data_t *create_enemy_data(char *name)
+{
+	enemy_data_t *new = malloc(sizeof(enemy_data_t));
+
+	if (!new)
+		return (NULL);
+	new->name = my_strdup(name);
+	new->zone = NULL;
+	new->texture = NULL;
+	new->stats = (item_stat_t){0, 0, 0, 0};
+	return (new);
+}
+
+enemy_t *create_enemy(char *name, game_t *game)
+{
+	enemy_data_t *data = hm_get(MONSTERS_LIB, name);
+	enemy_t *new = malloc(sizeof(enemy_t));
+
+	if (!data || !new)
+		return (NULL);
+	new->name = my_strdup(data->name);
+	new->zone = my_strdup(data->zone);
+	new->monster = create_obj(&(obj_data_t){name, data->texture,
+					0, V2F(0, 0)}, game);
+	if (!new->name || !new->zone || !new->monster)
+		return (NULL);
+	new->stats = data->stats;
 	return (new);
 }

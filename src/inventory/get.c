@@ -40,17 +40,3 @@ int items_foreach(game_t *game, window_t *window, int (*fptr)())
 	}
 	return (my_errno);
 }
-
-item_t *copy_item_lib(char *name, hashmap_t *items_lib)
-{
-	item_t *item = hm_get(items_lib, name);
-	item_t *new = NULL;
-
-	if (check_unexisting_item(item, name) != 0)
-		return (NULL);
-	new = create_item(&(item_data_t){name, item->obj, item->quest,
-					item->consumable, item->stats});
-	if (!new)
-		return (NULL);
-	return (new);
-}

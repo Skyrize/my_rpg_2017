@@ -1,0 +1,7 @@
+### FILE : Fichier d'initialisation de zone. ###
+//Format: INIT_CHAR + description (voir .h)
+//Format: 	AREA=nom de la région + ENCOUTER=0 ou 1 + X=coord_x + Y=coord_y (voir .h pour x y max)
+//Format: 		TILE=DATA + BLOCK=bloque ou pas le passage + X=coord_x + Y=coord_y (voir .h pour x y max)
+//Format: 			TEXTURE=ID texture du tile
+
+### END OF FILE ###

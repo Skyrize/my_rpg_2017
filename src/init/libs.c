@@ -11,9 +11,9 @@
 int init_audio_lib(game_t *game)
 {
 	const key_word_t audio_keys[] = {
-	{"AUDIO", 1, &get_an_audio, (char *[]) {"FILEPATH", NULL}},
+	{"AUDIO", 1, &getudio, (char *[]) {"FILEPATH", NULL}},
 	{NULL, 0, NULL, NULL}};
-	get_infos_t infos = {"pcf/sounds.pcf", INIT_INDICATOR, audio_keys,
+	get_infos_t infos = {"pcf/sounds.pcf", INIT_CHAR, audio_keys,
 	&list_savior};
 
 	AUDIO_LIB = hm_create(64, &sfMusic_destroy);
@@ -27,9 +27,9 @@ int init_audio_lib(game_t *game)
 int init_fonts_lib(game_t *game)
 {
 	const key_word_t font_keys[] = {
-	{"FONT", 1, &get_a_font, (char *[]) {"FILEPATH", NULL}},
+	{"FONT", 1, &get_font, (char *[]) {"FILEPATH", NULL}},
 	{NULL, 0, NULL, NULL}};
-	get_infos_t infos = {"pcf/fonts.pcf", INIT_INDICATOR, font_keys,
+	get_infos_t infos = {"pcf/fonts.pcf", INIT_CHAR, font_keys,
 	&list_savior};
 
 	FONTS_LIB = hm_create(16, &sfFont_destroy);
@@ -43,14 +43,14 @@ int init_fonts_lib(game_t *game)
 int init_items_lib(game_t *game)
 {
 	const key_word_t items_keys[] = {
-	{"ITEM", 0, &get_an_item, NULL},
-	{"TEXTURE", 0, &get_an_item_texture, NULL},
+	{"ITEM", 0, &get_item, NULL},
+	{"TEXTURE", 0, &get_item_texture, NULL},
 	{"QUEST", 0, &is_item_for_quest, NULL},
 	{"CONSUMABLE", 0, &is_item_consumable, NULL},
 	{"STATS", 4, &get_item_stats, (char *[])
 	{"HEALTH", "ARMOR", "SPECIAL", "DAMAGE", NULL}},
 	{NULL, 0, NULL, NULL}};
-	get_infos_t infos = {"pcf/items.pcf", INIT_INDICATOR, items_keys,
+	get_infos_t infos = {"pcf/items.pcf", INIT_CHAR, items_keys,
 	&list_savior};
 
 	ITEMS_LIB = hm_create(512, &item_destroy);
@@ -63,16 +63,17 @@ int init_items_lib(game_t *game)
 int init_textures_lib(game_t *game)
 {
 	const key_word_t texture_keys[] = {
-	{"TEXTURE", 0, &get_a_texture, NULL}, {"FILEPATH", 0,
-	&get_a_texture_filepath, NULL},	{"PRIORITY", 0, &get_a_priority, NULL},
+	{"TEXTURE", 0, &get_texture, NULL}, {"FILEPATH", 0,
+	&get_texture_filepath, NULL},
+	{"PRIORITY", 0, &get_priority, NULL},
 	{"ANIMATED", 0, &is_texture_animated, NULL}, {"RECT_VALUES", 4,
-	&get_a_rect_values, (char *[]) {"LEFT", "TOP", "WIDTH", "HEIGHT",
-	NULL}}, {"RECT_START", 2, &get_a_rect_start_values, (char *[]) {"X",
-	"Y", NULL}}, {"RECT_MAX", 2, &get_a_rect_max_values,
+	&get_rect_values, (char *[]) {"LEFT", "TOP", "WIDTH", "HEIGHT",
+	NULL}}, {"RECT_START", 2, &get_rect_start_values, (char *[]) {"X",
+	"Y", NULL}}, {"RECT_MAX", 2, &get_rect_max_values,
 	(char *[]) {"X", "Y", NULL}}, {"RECT_OFFSET", 2,
-	&get_a_rect_max_offset, (char *[]) {"X", "Y", NULL}},
+	&get_rect_max_offset, (char *[]) {"X", "Y", NULL}},
 	{NULL, 0, NULL, NULL}};
-	get_infos_t infos = {"pcf/textures.pcf", INIT_INDICATOR, texture_keys,
+	get_infos_t infos = {"pcf/textures.pcf", INIT_CHAR, texture_keys,
 	&list_savior};
 
 	TEXTURES_LIB = hm_create(512, &texture_destroy);

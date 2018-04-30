@@ -14,7 +14,7 @@
 /// METTRE UN GNL QUI MARCHE POUR SUPPRIMER CA :
 #define END_OF_FILE "### END OF FILE ###"
 
-#define INIT_INDICATOR "-" /// String to put in the begining of the line
+#define INIT_CHAR "-" /// String to put in the begining of the line
 			///to indicate that lines below are init informations.
 #define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string
 			///init. Get replaced with spaces.
@@ -38,8 +38,8 @@
 
 ///////////////////////////////// MAPS DEFINES //////////////////////////////
 
-#define ZONE_TAB_X 4
-#define ZONE_TAB_Y 4
+#define ZONE_TAB_X 5
+#define ZONE_TAB_Y 5
 #define AREA_TAB_X 3
 #define AREA_TAB_Y 3
 #define TILE_TAB_X 16
@@ -87,7 +87,7 @@
 #define BATTLE_GAME_NULL_DATA (!battle_game || !battle_game->objs\
 || !battle_game->texts)
 #define IS_APRESSED (1 != 1)
-#define IS_A_BATTLE (my_strcmp(CURRENT_SCENE->key, "BATTLE") != 0)
+#define IS_A_BATTLE (my_strcmp(CURRENT_BUCKET->key, "BATTLE") != 0)
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -212,7 +212,16 @@ typedef struct item_s
 	sfBool quest;
 	sfBool consumable;
 	item_stat_t stats;
-} item_t, item_data_t;
+} item_t;
+
+typedef struct item_data_s
+{
+	char *name;
+	char *texture;
+	sfBool quest;
+	sfBool consumable;
+	item_stat_t stats;
+} item_data_t;
 
 typedef struct slot_s
 {
@@ -238,11 +247,17 @@ typedef struct inventory_s
 typedef struct enemy_s {
 	char *name;
 	char *zone;
-	int health;
-	int armor;
-	int damages;
+	item_stat_t stats;
 	obj_t *monster;
 } enemy_t;
+
+typedef struct enemy_data_s
+{
+	char *name;
+	char *zone;
+	char *texture;
+	item_stat_t stats;
+} enemy_data_t;
 
 /////////////////////////////////// PLAYER ////////////////////////////////
 
@@ -315,6 +330,7 @@ typedef struct lib_s
 	hashmap_t *fonts;
 	hashmap_t *textures;
 	hashmap_t *items;
+	hashmap_t *monsters;
 } lib_t;
 
 typedef struct game_s

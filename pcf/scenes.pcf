@@ -1,5 +1,5 @@
 ### FILE : Initialisation des scènes. ###
-//Format: INIT_INDICATOR + description (voir .h)
+//Format: INIT_CHAR + description (voir .h)
 //Format:	SCENE= nom de la scène + PRIORITY=priorité de la scène
 //Format 		LIST=OBJS --->définit que l'on va ajouter des valeurs dans la liste d’objets
 //Format			OBJ=nom de l'objet / TEXTURE= ID de la texture / BUTTON=0 ou 1 / BUTTON=0 X= pos en x / Y= pos en y

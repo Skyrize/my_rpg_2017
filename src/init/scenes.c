@@ -50,15 +50,15 @@ int init_scene_lists(char **infos, game_t *game)
 int init_scenes(game_t *game)
 {
 	const key_word_t scene_keys[] = {
-	{"SCENE", 1, &get_a_scene, (char *[]) {"PRIORITY", NULL}},
-	{"LIST", 0, &get_a_list, NULL},
-	{"OBJ", 4, &get_an_obj,
+	{"SCENE", 1, &get_scene, (char *[]) {"PRIORITY", NULL}},
+	{"LIST", 0, &get_list, NULL},
+	{"OBJ", 4, &get_obj,
 		(char *[]) {"TEXTURE", "BUTTON", "X", "Y", NULL}},
-	{"TEXT", 5, &get_a_text,
+	{"TEXT", 5, &get_text,
 		(char *[]) {"STR", "FONT", "CHARAC_SIZE", "X", "Y", NULL}},
-	{"MUSIC", 0, &get_a_music, NULL},
+	{"MUSIC", 0, &get_music, NULL},
 	{NULL, 0, NULL, NULL}};
-	get_infos_t infos = {"pcf/scenes.pcf", INIT_INDICATOR, scene_keys,
+	get_infos_t infos = {"pcf/scenes.pcf", INIT_CHAR, scene_keys,
 	&list_savior};
 
 	SCENES = hm_create(16, &scenes_destroy);

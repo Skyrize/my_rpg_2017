@@ -20,5 +20,5 @@ void map_savior(game_t *game)
 
 void list_savior(game_t *game)
 {
-	CURRENT_SCENE = NULL;
+	CURRENT_BUCKET = NULL;
 }

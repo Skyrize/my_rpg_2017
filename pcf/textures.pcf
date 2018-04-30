@@ -1,5 +1,5 @@
 ### FILE : Initialisation des textures du jeu. ###
-//Format: INIT_INDICATOR + description (voir .h)
+//Format: INIT_CHAR + description (voir .h)
 //Format: 	TEXTURE=Texture_name
 //Format:		FILEPATH=chemin d'accès
 //Format:		PRIORITY= de 0 à 4 définit la priorité d'affichage de la texture
@@ -2234,7 +2234,6 @@ TILES:
 		RECT_START=DATA X=0 Y=0
 		RECT_MAX=DATA X=300 Y=0
 		RECT_OFFSET=DATA X=100 Y=0
-		RECT_OFFSET=DATA X=0 Y=0
 	TEXTURE=VENT_LEFT
 		FILEPATH=textures/tiles/interior/vent_left.png
 		PRIORITY=4

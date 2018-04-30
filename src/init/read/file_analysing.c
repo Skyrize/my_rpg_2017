@@ -10,7 +10,7 @@
 
 int init_from_pcf(char **infos, game_t *game, const key_word_t *keys)
 {
-	char **type = my_str_to_word_array(infos[0], '=');
+	char **type = my_str_to_word_array(infos[0], KEYWORD_SEPARATOR_CHAR);
 	static hashmap_t *current_list;
 	unsigned int i = 0;
 	int my_errno = 0;

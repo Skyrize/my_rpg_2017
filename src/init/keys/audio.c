@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int get_an_audio(char **infos, char **type,
+int getudio(char **infos, char **type,
 	hashmap_t **current_list, game_t *game)
 {
 	sfMusic *audio;
