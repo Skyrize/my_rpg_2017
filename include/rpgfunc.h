@@ -392,6 +392,11 @@ int replace_mouse_skin(obj_t *obj, sfVector2f *offset, game_t *game);
 int reset_mouse_skin(game_t *game);
 int display_mouse(game_t *game, window_t *window);
 
+/////////////////////////// PARTICLES
+
+particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
+				    int particle_nbr, game_t *game);
+
 /////////////////////////// END
 
 #endif /* RPGFUNC_H_ */

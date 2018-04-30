@@ -339,6 +339,18 @@ typedef struct window_s
 	ctime_t clocker;
 } window_t;
 
+typedef struct particle_sys_s
+{
+	char *sys_name;
+	sfIntRect spawn_zone;
+	int particle_nbr;
+	sfVector2f force;
+	bool gravity;
+	sfTexture *texture;
+	bool (*condition)(sfSprite *);
+	sfSprite **sprite_arr;
+} particle_sys_t;
+
 #include "rpginit.h"
 #include "rpgdef.h"
 #include "rpgfunc.h"
