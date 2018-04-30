@@ -12,7 +12,7 @@ int display_item_stats(slot_t *slot, game_t *game)
 {
 	/*static sfRectangleShape *ico_item = NULL;
 	static char *last_item = NULL;*/
-	if (!slot|| !game || !slot->item || !slot->item->name)
+	if (!slot || !game || !slot->item || !slot->item->name)
 		return (84);
 	if (get_scene_from_displayed(STATS_GAME, game) == NULL)
 		if (button_display_hide_scene(STATS_GAME,

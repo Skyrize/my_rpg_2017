@@ -36,7 +36,7 @@ unsigned int hm_hash(hashmap_t *hashmap, char *key)
 {
 	unsigned int i = 0;
 
-	while(*key) {
+	while (*key) {
 		i += *key;
 		key++;
 	}

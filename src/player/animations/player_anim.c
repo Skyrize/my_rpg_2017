@@ -30,9 +30,9 @@ void set_next_rect(game_t *game)
 	act_y = PLAYER.character->obj_rect.rect.top;
 	act_x = PLAYER.character->obj_rect.rect.left;
 	if (act_x >= PLAYER.character->obj_rect.rect_max.x ||
-	    act_y > PLAYER.character->obj_rect.rect_max.y ||
-	    act_x <= PLAYER.character->obj_rect.rect_start.x ||
-	    act_y < PLAYER.character->obj_rect.rect_start.y) {
+	act_y > PLAYER.character->obj_rect.rect_max.y ||
+	act_x <= PLAYER.character->obj_rect.rect_start.x ||
+	act_y < PLAYER.character->obj_rect.rect_start.y) {
 		game->movement.anim_mult = -1 * mult;
 	}
 	sfRectangleShape_setTextureRect(
@@ -65,7 +65,7 @@ int anim_player(game_t *game)
 	static sfClock *clocker = NULL;
 
 	update_moving_state(game);
-	if (strcmp(CURRENT_SCENE->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_SCENE->key, "GAME") != 0)
 		return (0);
 	if (!(game->player.character))
 		return (0);

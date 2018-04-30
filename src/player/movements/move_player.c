@@ -28,7 +28,7 @@ bool move_player_up(game_t *game, bool check)
 	if (check)
 		return (true);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X,
-							  TILE_COOR_Y - 1};
+							TILE_COOR_Y - 1};
 	return (true);
 }
 
@@ -51,7 +51,7 @@ bool move_player_down(game_t *game, bool check)
 	if (check)
 		return (true);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X,
-							  TILE_COOR_Y + 1};
+							TILE_COOR_Y + 1};
 	return (true);
 }
 
@@ -74,7 +74,7 @@ bool move_player_left(game_t *game, bool check)
 	if (check)
 		return (true);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X - 1,
-							  TILE_COOR_Y};
+							TILE_COOR_Y};
 	return (true);
 }
 
@@ -97,7 +97,7 @@ bool move_player_right(game_t *game, bool check)
 	if (check)
 		return (true);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X + 1,
-							  TILE_COOR_Y};
+							TILE_COOR_Y};
 	return (true);
 }
 

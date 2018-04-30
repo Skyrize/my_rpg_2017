@@ -64,7 +64,8 @@ int init_textures_lib(game_t *game)
 {
 	const key_word_t texture_keys[] = {
 	{"TEXTURE", 0, &get_a_texture, NULL}, {"FILEPATH", 0,
-	&get_a_texture_filepath, NULL},	{"PRIORITY", 0, &get_a_priority, NULL},
+	&get_a_texture_filepath, NULL},
+	{"PRIORITY", 0, &get_a_priority, NULL},
 	{"ANIMATED", 0, &is_texture_animated, NULL}, {"RECT_VALUES", 4,
 	&get_a_rect_values, (char *[]) {"LEFT", "TOP", "WIDTH", "HEIGHT",
 	NULL}}, {"RECT_START", 2, &get_a_rect_start_values, (char *[]) {"X",

@@ -16,7 +16,7 @@ int pause_game(window_t *window, game_t *game)
 		return (84);
 	rec = sfRectangleShape_create();
 	sfRectangleShape_setSize(rec, (sfVector2f){800, 600});
-	sfRectangleShape_setFillColor(rec, (sfColor){0,0,0,128});
+	sfRectangleShape_setFillColor(rec, (sfColor){0, 0, 0, 128});
 	sfRenderWindow_drawRectangleShape(window->window, rec, NULL);
 	return (button_display_hide_scene(PAUSE_GAME, NULL, game));
 }

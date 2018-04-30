@@ -22,11 +22,11 @@ int init_an_obj(char **infos, game_t *game, hashmap_t *current_list)
 	obj_infos_t obj;
 	obj_data_t data;
 
-	obj.name = my_str_to_word_array(infos[0], '=');
-	obj.type = my_str_to_word_array(infos[1], '=');
-	obj.button = my_str_to_word_array(infos[2], '=');
-	obj.x = my_str_to_word_array(infos[3], '=');
-	obj.y = my_str_to_word_array(infos[4], '=');
+	obj.name = my_str_to_word_array(infos[0], KEYWORD_SEPARATOR_CHAR);
+	obj.type = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
+	obj.button = my_str_to_word_array(infos[2], KEYWORD_SEPARATOR_CHAR);
+	obj.x = my_str_to_word_array(infos[3], KEYWORD_SEPARATOR_CHAR);
+	obj.y = my_str_to_word_array(infos[4], KEYWORD_SEPARATOR_CHAR);
 	get_obj_data_from_infos(&obj, &data);
 	if (add_obj_to_list(&data, current_list, game) != 0)
 		return (84);
@@ -38,7 +38,8 @@ int init_an_obj(char **infos, game_t *game, hashmap_t *current_list)
 	return (0);
 }
 
-int get_text_data_from_infos(text_infos_t *text, text_data_t *data, game_t *game)
+int get_text_data_from_infos(text_infos_t *text,
+text_data_t *data, game_t *game)
 {
 	data->name = text->name[1];
 	data->text = text->text[1];
@@ -54,12 +55,13 @@ int get_text_data_from_infos(text_infos_t *text, text_data_t *data, game_t *game
 
 int get_text_infos(char **infos, text_infos_t *text)
 {
-	text->name = my_str_to_word_array(infos[0], '=');
-	text->text = my_str_to_word_array(infos[1], '=');
-	text->font = my_str_to_word_array(infos[2], '=');
-	text->charac_size = my_str_to_word_array(infos[3], '=');
-	text->x = my_str_to_word_array(infos[4], '=');
-	text->y = my_str_to_word_array(infos[5], '=');
+	text->name = my_str_to_word_array(infos[0], KEYWORD_SEPARATOR_CHAR);
+	text->text = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);
+	text->font = my_str_to_word_array(infos[2], KEYWORD_SEPARATOR_CHAR);
+	text->charac_size = my_str_to_word_array(infos[3],
+	KEYWORD_SEPARATOR_CHAR);
+	text->x = my_str_to_word_array(infos[4], KEYWORD_SEPARATOR_CHAR);
+	text->y = my_str_to_word_array(infos[5], KEYWORD_SEPARATOR_CHAR);
 	if (!text->name || !text->text || !text->font
 	|| !text->charac_size || !text->x || !text->y)
 		return (84);
