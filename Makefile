@@ -112,7 +112,7 @@ NAME	=	my_rpg
 
 NAME2	=	unit-tests
 
-CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lcsfml-graphics -lcsfml-audio -lcsfml-system -lcsfml-window
+CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lc_graph_prog
 
 LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy
 
