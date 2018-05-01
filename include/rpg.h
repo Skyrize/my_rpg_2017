@@ -97,6 +97,8 @@ typedef struct text_data_s text_data_t;
 
 typedef struct obj_s obj_t;
 
+typedef struct particles_s particles_t;
+
 typedef struct rect_s
 {
 	sfBool animated;
@@ -354,6 +356,7 @@ typedef struct game_s
 	bucket_t *current;
 	hashmap_t *scenes;
 	managed_scene_t *displayed_scenes;
+	particles_t *particles;
 } game_t;
 
 typedef struct window_s
@@ -378,6 +381,11 @@ typedef struct particle_sys_s
 	int sys_id;
 	bool activated;
 } particle_sys_t;
+
+typedef struct particles_s
+{
+	particle_sys_t *rain;
+} particles_t;
 
 #include "rpginit.h"
 #include "rpgdef.h"

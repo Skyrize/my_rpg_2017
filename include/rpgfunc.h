@@ -420,10 +420,12 @@ void display_particles(window_t *window, game_t *game);
 void free_particle_sys(particle_sys_t *sys);
 void remove_particle_sys_by_id(int id);
 void remove_particle_sys(particle_sys_t *sys);
-void init_rain(game_t *game);
+particle_sys_t *init_rain(game_t *game);
 void remove_end(node_t *last_node, node_t *act_node,
 		llist_t *particle_sys_list);
 void update_feet_particles(game_t *game);
+void rain(game_t *game, window_t *window);
+int init_particles(game_t *game);
 
 /////////////////////////// END
 

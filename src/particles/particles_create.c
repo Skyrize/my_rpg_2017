@@ -32,7 +32,7 @@ void set_init_particle_pos(particle_sys_t *sys, sfSprite *sprite)
 
 void update_particle_sys(particle_sys_t *sys, game_t *game)
 {
-	if (!sys->sprite_arr)
+	if (!sys->sprite_arr || !sys->activated)
 		return;
 	for (int i = 0; i < sys->spawned_particles_nbr; i++) {
 		sfSprite_move(sys->sprite_arr[i], sys->force);

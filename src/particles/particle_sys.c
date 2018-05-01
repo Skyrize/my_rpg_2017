@@ -70,7 +70,7 @@ void display_particles(window_t *window, game_t *game)
 	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!init) {
-		init_rain(game);
+		init_rain(game, window);
 		init = true;
 	}
 	if (!particle_sys_list)

@@ -66,6 +66,7 @@ int init_game(game_t *game)
 	|| init_scenes(game) != 0
 	|| init_inventory(game) != 0
 	|| init_buttons(game) != 0
+	    || init_particles(game) != 0
 	|| init_tools(game) != 0)
 		return (84);
 	if (set_game_version(game) != 0)
