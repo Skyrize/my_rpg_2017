@@ -31,43 +31,41 @@ int init_from_pcf(char **infos, game_t *game, const key_word_t *keys)
 	return (0);
 }
 
-int get_infos(int fd, game_t *game, get_infos_t *infos)
+int get_infos(getline_t *gl, game_t *game, get_infos_t *infos)
 {
-	char *line = my_get_next_line(fd);
-	char **line_words;
+	char **line_words = NULL;
 
-	while (line && my_strlen(line) > 0) {
-		line_words = my_str_to_word_array(line, DATASET_SEPARATOR_CHAR);
+	while ((gl->read = getline(&gl->line, &gl->len, gl->file)) != -1
+	&& my_strlen(gl->line) > 1) {
+		line_words = my_str_to_word_array(gl->line,
+		DATASET_SEPARATOR_CHAR);
 		if (!line_words || !line_words[0])
 			return (84);
 		if (init_from_pcf(line_words, game, infos->keys) != 0)
 			return (84);
-		free(line);
-		line = my_get_next_line(fd);
+		free(gl->line);
+		gl->line = NULL;
 	}
 	return (0);
 }
 
 int analyse_pcf(game_t *game, get_infos_t *infos)
 {
-	int fd = open(infos->filepath, O_RDONLY);
-	char *line = NULL;
+	getline_t gl = {fopen(infos->filepath, "r"), NULL, 0, 0};
 	int my_errno = 0;
 
-	if (check_invalid_file(fd, infos->filepath) != 0)
+	if (check_invalid_file(gl.file, infos->filepath) != 0)
 		return (84);
-	line = my_get_next_line(fd);
-	while (my_fastcmp(line, END_OF_FILE) == 1) {
-		if (my_fastcmp(line, infos->indicator) == 0) {
+	while ((gl.read = getline(&gl.line, &gl.len, gl.file)) != -1) {
+		if (my_fastcmp(gl.line, infos->indicator) == 0) {
 			infos->savior(game);
-			my_errno = get_infos(fd, game, infos);
+			my_errno = get_infos(&gl, game, infos);
 		}
 		if (my_errno != 0)
 			return (my_errno);
-		free(line);
-		line = my_get_next_line(fd);
+		free(gl.line);
+		gl.line = NULL;
 	}
-	free(line);
-	close(fd);
+	fclose(gl.file);
 	return (my_errno);
 }

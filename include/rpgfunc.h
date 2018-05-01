@@ -83,7 +83,7 @@ int get_map(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_zone(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int getrea(char **infos, char **type,
+int get_area(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_tile(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
@@ -129,7 +129,7 @@ int check_invalid_key_word(char *last_word_used, char **type,
 				char **infos, int my_errno);
 int check_invalid_text_init(text_infos_t *text);
 int check_invalid_index(int index);
-int check_invalid_file(int fd, char *filename);
+int check_invalid_file(FILE *file, char *filename);
 int check_invalid_window_init(int my_errno);
 int check_invalid_animated(sfBool animated);
 int check_invalid_zone_coords(char *name, game_t *game);
