@@ -59,22 +59,16 @@ int press_action_key(game_t *game)
 
 int game_events(window_t *window, game_t *game)
 {
-	int my_errno = 0;
-
-	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
-		if (window->event.type == sfEvtClosed)
-			sfRenderWindow_close(window->window);
-		if (window->event.type == sfEvtMouseButtonReleased)
-			CLICK_RELEASED = sfTrue;
-		if (window->event.type == sfEvtKeyPressed
-		&& KEY_PLAYER.move == 1)
-			on_key_pressed(game, &window->event);
-		if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue) {
-			my_errno = press_action_key(game);
-		}
-		if (my_errno == 84)
-			return (my_errno);
-	}
+	if (window->event.type == sfEvtClosed)
+		sfRenderWindow_close(window->window);
+	if (window->event.type == sfEvtMouseButtonReleased)
+		CLICK_RELEASED = sfTrue;
+	if (window->event.type == sfEvtKeyPressed
+	&& KEY_PLAYER.move == 1)
+		on_key_pressed(game, &window->event);
+	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
+		if (press_action_key(game) != 0)
+			return (84);
 	return (0);
 }
 

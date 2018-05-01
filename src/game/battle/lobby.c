@@ -9,13 +9,11 @@
 
 int battle_events(window_t *window, game_t *game)
 {
-	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
-		if (window->event.type == sfEvtClosed)
-			sfRenderWindow_close(window->window);
-		if (window->event.type == sfEvtMouseButtonReleased)
-			CLICK_RELEASED = sfTrue;
-		select_ennemy(window, game);
-	}
+	if (window->event.type == sfEvtClosed)
+		sfRenderWindow_close(window->window);
+	if (window->event.type == sfEvtMouseButtonReleased)
+		CLICK_RELEASED = sfTrue;
+	select_ennemy(window, game);
 	return (0);
 }
 

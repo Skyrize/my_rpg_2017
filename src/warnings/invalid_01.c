@@ -23,9 +23,9 @@ int check_invalid_key_word(char *last_word_used, char **type, char **infos,
 	return (0);
 }
 
-int check_invalid_file(int fd, char *filename)
+int check_invalid_file(FILE *file, char *filename)
 {
-	if (fd == -1) {
+	if (!file) {
 		my_printf("WARNING: CAN'T FIND '%s' FILE !\n", filename);
 		return (84);
 	}

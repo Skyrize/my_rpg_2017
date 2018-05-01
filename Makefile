@@ -31,7 +31,6 @@ SRC	=	src/main.c						\
 		src/init/keys/items.c		\
 		src/init/keys/zone.c			\
 		src/init/keys/monster.c			\
-		src/input/event.c			\
 		src/list_management/create_01.c		\
 		src/list_management/create_02.c		\
 		src/list_management/add.c		\
