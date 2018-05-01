@@ -33,6 +33,7 @@ int init_frame_rate(window_t *window, game_t *game)
 		return (84);
 	sfText_setString(text_bucket->value, int_to_str(FRAMERATE));
 	sfRenderWindow_setFramerateLimit(window->window, FRAMERATE);
+	sfRenderWindow_setKeyRepeatEnabled(window->window, sfTrue);
 	return (0);
 }
 

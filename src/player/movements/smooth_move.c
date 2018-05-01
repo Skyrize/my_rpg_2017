@@ -16,9 +16,14 @@ void set_initial_player_pos(game_t *game)
 
 bool is_pressing_controls(game_t *game)
 {
-	if (KEY_PRESSED(left) || KEY_PRESSED(left_1) || KEY_PRESSED(right) ||
-	KEY_PRESSED(right_1) || KEY_PRESSED(up) || KEY_PRESSED(up_1) ||
-	KEY_PRESSED(down) || KEY_PRESSED(down_1))
+	if (sfKeyboard_isKeyPressed(KEY_UP)
+	|| sfKeyboard_isKeyPressed(KEY_DOWN)
+	|| sfKeyboard_isKeyPressed(KEY_LEFT)
+	|| sfKeyboard_isKeyPressed(KEY_RIGHT)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT))
 		return (true);
 	return (false);
 }

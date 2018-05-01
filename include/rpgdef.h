@@ -14,7 +14,20 @@
 #define SCENES game->scenes
 #define CURRENT_BUCKET game->current
 #define MANAGED_SCENES game->displayed_scenes
+
+/////////////////////////////////// MAIN /////////////////////////////////
+
 #define KEY_PLAYER game->key_player
+
+#define KEY_UP KEY_PLAYER.up
+#define KEY_DOWN KEY_PLAYER.down
+#define KEY_LEFT KEY_PLAYER.left
+#define KEY_RIGHT KEY_PLAYER.right
+
+#define ARROW_KEY_UP KEY_PLAYER.arrow_up
+#define ARROW_KEY_DOWN KEY_PLAYER.arrow_down
+#define ARROW_KEY_LEFT KEY_PLAYER.arrow_left
+#define ARROW_KEY_RIGHT KEY_PLAYER.arrow_right
 
 ////////////////////////////////////// TOOLS ////////////////////////////
 
@@ -92,8 +105,5 @@
 
 #define MIN(X, Y) X >= Y ? Y : X
 #define MAX(X, Y) X >= Y ? X : Y
-
-#define KEY_PRESSED(key) \
-sfKeyboard_isKeyPressed((sfKeyCode) game->key_player.key)
 
 #endif /* RPGDEF_H_ */

@@ -20,14 +20,14 @@ int init_tools(game_t *game)
 
 void init_key_player(game_t *game)
 {
-	KEY_PLAYER.up = (sfKeyCode *)sfKeyZ;
-	KEY_PLAYER.down = (sfKeyCode *)sfKeyS;
-	KEY_PLAYER.left = (sfKeyCode *)sfKeyQ;
-	KEY_PLAYER.right = (sfKeyCode *)sfKeyD;
-	KEY_PLAYER.up_1 = (sfKeyCode *)sfKeyUp;
-	KEY_PLAYER.down_1 = (sfKeyCode *)sfKeyDown;
-	KEY_PLAYER.left_1 = (sfKeyCode *)sfKeyLeft;
-	KEY_PLAYER.right_1 = (sfKeyCode *)sfKeyRight;
+	KEY_PLAYER.up = sfKeyZ;
+	KEY_PLAYER.down = sfKeyS;
+	KEY_PLAYER.left = sfKeyQ;
+	KEY_PLAYER.right = sfKeyD;
+	KEY_PLAYER.arrow_up = sfKeyUp;
+	KEY_PLAYER.arrow_down = sfKeyDown;
+	KEY_PLAYER.arrow_left = sfKeyLeft;
+	KEY_PLAYER.arrow_right = sfKeyRight;
 	KEY_PLAYER.move = 1;
 }
 
