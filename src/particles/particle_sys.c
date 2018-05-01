@@ -27,6 +27,7 @@ static void particle_sys_init(particle_sys_t *sys)
 	sys->sys_id = id;
 	id++;
 	sys->spawn_density = 3;
+	sys->spawned_particles_nbr = 0;
 	add_sys_to_list(sys);
 }
 
@@ -64,7 +65,6 @@ void display_particles(window_t *window, game_t *game)
 	if (strcmp(CURRENT_SCENE->key, "GAME") != 0)
 		return;
 	if (!init) {
-		my_printf("raining\n");
 		init_rain(game);
 		init = true;
 	}
@@ -86,7 +86,6 @@ void remove_particle_sys_by_id(int id)
 	node_t *last_node = NULL;
 	particle_sys_t *act_sys;
 
-	my_putstr("removing rain\n");
 	if (!particle_sys_list)
 		return;
 	act_node = particle_sys_list->first;
@@ -105,6 +104,5 @@ void remove_particle_sys_by_id(int id)
 		last_node->next = act_node->next;
 	else
 		particle_sys_list->first = act_node->next;
-	my_putstr("oisdjs\n");
 	free_particle_sys(act_node->value);
 }

@@ -37,12 +37,8 @@ void init_particle_position(particle_sys_t *sys)
 	if (max_i > sys->particle_nbr)
 		max_i = sys->particle_nbr;
 	for (; i < max_i; i++) {
-		if (!sys->sprite_arr[i])
-			continue;
-		sfVector2f a = get_particles_spawn_pos(sys);
-		printf("pos: %f %f\n", a.x, a.y);
 		sfSprite_setPosition(sys->sprite_arr[i],
-				     a);
+				     get_particles_spawn_pos(sys));
 	}
 	sys->spawned_particles_nbr = max_i;
 }
