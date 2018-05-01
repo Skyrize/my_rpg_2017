@@ -243,7 +243,7 @@ void clean_displayed_scenes(game_t *game);
 int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name);
 
 ///Clean all displayed tiles.
-void clean_displayed_tiles(game_t *game);
+void clean_displayed_tiles(tile_list_t *displayed);
 
 ///Clean only the scene with the name passed.
 void clean_displayed_scene_name(game_t *game, char *name_scenes);
@@ -371,9 +371,9 @@ void destroy_managed_scene(managed_scene_t *managed);
 
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
 				sfVector2i pos_zone, game_t *game);
-bool move_player_zone(direction_t dir, game_t *game, bool check);
-bool move_player_area(direction_t dir, game_t *game, bool check);
-bool move_player(direction_t dir, game_t *game, bool check);
+bool move_player_zone(direction_t dir, game_t *game);
+bool move_player_area(direction_t dir, game_t *game);
+bool move_player(direction_t dir, game_t *game);
 int anim_player(game_t *game);
 void set_anim_side(game_t *game);
 void init_movements(game_t *game);

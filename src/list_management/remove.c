@@ -8,13 +8,13 @@
 #include "my.h"
 #include "rpg.h"
 
-void clean_displayed_tiles(game_t *game)
+void clean_displayed_tiles(tile_list_t *displayed)
 {
 	tile_list_t *tmp;
 
-	while (TILE_LIST) {
-		tmp = TILE_LIST;
-		TILE_LIST = tmp->next;
+	while (displayed) {
+		tmp = displayed;
+		displayed = tmp->next;
 		obj_destroy(tmp->tile);
 		free(tmp);
 	}

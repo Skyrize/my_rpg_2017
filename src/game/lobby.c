@@ -12,19 +12,19 @@ void on_key_pressed(game_t *game, sfEvent *event)
 {
 	if (sfKeyboard_isKeyPressed(KEY_UP) == sfTrue
 	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP) == sfTrue) {
-		move_player(UP, game, false);
+		move_player(UP, game);
 	}
 	if (sfKeyboard_isKeyPressed(KEY_DOWN) == sfTrue
 	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN) == sfTrue) {
-		move_player(DOWN, game, false);
+		move_player(DOWN, game);
 	}
 	if (sfKeyboard_isKeyPressed(KEY_LEFT) == sfTrue
 	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT) == sfTrue) {
-		move_player(LEFT, game, false);
+		move_player(LEFT, game);
 	}
 	if (sfKeyboard_isKeyPressed(KEY_RIGHT) == sfTrue
 	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT) == sfTrue) {
-		move_player(RIGHT, game, false);
+		move_player(RIGHT, game);
 	}
 	if (event->key.code == sfKeyP)
 		PLAYER_HEALTH += 1;
