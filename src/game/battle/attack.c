@@ -14,9 +14,7 @@ int enemy_turn(window_t *window, game_t *game)
 	while (i < 2 && !game->battle.enemy[i])
 		i++;
 	game->battle.selected_enemy = i;
-	my_printf("I = %d\n", i);
 	if (check_last_enemy(game, i)) {
-		my_printf("LAST\n");
 		game->battle.last_enemy_turn = 1;
 		i = -1;
 		game->battle.enemy_turn = 0;
@@ -37,11 +35,11 @@ int enemy_attack(window_t *window, game_t *game)
 	if (critical_hit >= 95) {
 		damages *= 2;
 		display_special_hit_enemy(window, game, "CRITICAL_HIT");
-	} else if (critical_hit < 10) {
+	} else if (critical_hit < 5) {
 		damages = 0;
 		display_special_hit_enemy(window, game, "ATTACK_FAILED");
 	}
-	printf("ENEMY DOES %d DAMAGES TO YOU\n", damages);
+	manage_hit_enemy(game, -1, damages);
 	PLAYER_HEALTH -= damages;
 	if (reset_enemy_turn(window, game) == 84)
 		return (84);
@@ -55,14 +53,14 @@ int player_attack(window_t *window, game_t *game)
 	int critical_hit = rand() % 100;
 
 	clean_displayed_scene_name(game, "ATTACK");
-	if (critical_hit >= 50) {
+	if (critical_hit >= 95) {
 		damages *= 2;
 		display_special_hit_player(window, game, "CRITICAL_HIT");
 	} else if (critical_hit < 5) {
 		damages = 0;
 		display_special_hit_player(window, game, "ATTACK_FAILED");
 	}
-	printf("YOU DO %d DAMAGES TO ENEMY\n", damages);
+	manage_hit_enemy(game, game->battle.selected_enemy + 1, damages);
 	ENEMY_HEALTH -= damages;
 	if (ENEMY_HEALTH <= 0)
 		SELECTED_ENEMY = NULL;

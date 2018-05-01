@@ -300,7 +300,7 @@ int set_hud_opacity(bucket_t *bucket, game_t *game);
 int manage_hud_opacity(game_t *game);
 int manage_life(game_t *game);
 int change_area_hud(game_t *game);
-int manage_hit_enemy(game_t *game);
+int manage_hit_enemy(game_t *game, int enemy, int damages);
 int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
