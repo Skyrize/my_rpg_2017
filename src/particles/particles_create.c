@@ -17,6 +17,8 @@ bool default_particle_cond(sfSprite *sprite)
 
 void display_particle_sys(window_t *window, particle_sys_t *sys)
 {
+	if (!sys->sprite_arr)
+		return;
 	for (int i = 0; i < sys->spawned_particles_nbr; i++) {
 		sfRenderWindow_drawSprite(window->window, sys->sprite_arr[i]
 			, NULL);
@@ -30,6 +32,8 @@ void set_init_particle_pos(particle_sys_t *sys, sfSprite *sprite)
 
 void update_particle_sys(particle_sys_t *sys)
 {
+	if (!sys->sprite_arr)
+		return;
 	for (int i = 0; i < sys->spawned_particles_nbr; i++) {
 		sfSprite_move(sys->sprite_arr[i], sys->force);
 		if (sys->gravity)

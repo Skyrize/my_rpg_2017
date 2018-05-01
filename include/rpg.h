@@ -351,6 +351,7 @@ typedef struct particle_sys_s
 	sfSprite **sprite_arr;
 	int spawn_density;
 	int spawned_particles_nbr;
+	int sys_id;
 } particle_sys_t;
 
 #include "rpginit.h"

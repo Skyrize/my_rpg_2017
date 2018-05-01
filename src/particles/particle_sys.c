@@ -22,6 +22,10 @@ static void add_sys_to_list(particle_sys_t *sys)
 
 static void particle_sys_init(particle_sys_t *sys)
 {
+	static int id = 0;
+
+	sys->sys_id = id;
+	id++;
 	sys->spawn_density = 3;
 	add_sys_to_list(sys);
 }
@@ -73,4 +77,34 @@ void display_particles(window_t *window, game_t *game)
 		update_particle_sys(act_sys);
 		display_particle_sys(window, act_sys);
 	}
+}
+
+void remove_particle_sys_by_id(int id)
+{
+	int idx = 0;
+	node_t *act_node;
+	node_t *last_node = NULL;
+	particle_sys_t *act_sys;
+
+	my_putstr("removing rain\n");
+	if (!particle_sys_list)
+		return;
+	act_node = particle_sys_list->first;
+	if (!act_node)
+		return;
+	for (; act_node; act_node = act_node->next) {
+		act_sys = act_node->value;
+		if(act_sys->sys_id == id)
+			break;
+		last_node = act_node;
+		idx++;
+	}
+	if (!act_node)
+		return;
+	if (last_node)
+		last_node->next = act_node->next;
+	else
+		particle_sys_list->first = act_node->next;
+	my_putstr("oisdjs\n");
+	free_particle_sys(act_node->value);
 }

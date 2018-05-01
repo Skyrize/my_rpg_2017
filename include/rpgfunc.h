@@ -402,7 +402,9 @@ bool default_particle_cond(sfSprite *sprite);
 void display_particle_sys(window_t *window, particle_sys_t *sys);
 void update_particle_sys(particle_sys_t *sys);
 void display_particles(window_t *window, game_t *game);
-
+void free_particle_sys(particle_sys_t *sys);
+void remove_particle_sys_by_id(int id);
+void remove_particle_sys(particle_sys_t *sys);
 void init_rain(game_t *game);
 
 /////////////////////////// END
