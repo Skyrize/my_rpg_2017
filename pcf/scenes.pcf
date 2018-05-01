@@ -1,11 +1,11 @@
 ### FILE : Initialisation des scènes. ###
-//Format: INIT_INDICATOR + description (voir .h)
+//Format: INIT_CHAR + description (voir .h)
 //Format:	SCENE= nom de la scène + PRIORITY=priorité de la scène
 //Format 		LIST=OBJS --->définit que l'on va ajouter des valeurs dans la liste d’objets
 //Format			OBJ=nom de l'objet / TEXTURE= ID de la texture / BUTTON=0 ou 1 / BUTTON=0 X= pos en x / Y= pos en y
 //Format		LIST=TEXTS --->définit que l'on va ajouter des valeurs dans la liste de texts
 //Format			TEXT=nom du text / TEXT=text / FONT=ID de la font / CHARAC_SIZE=taille de charactère / BUTTON=0 X= pos en x / Y= pos en y
-//format		MUSIC= ID de la musique
+//format		MUSIC= ID de la musique LOOP= 0 / 1 (non ou oui)
 
 ________________________________________________________________________________
 -GAME
@@ -16,6 +16,7 @@ ________________________________________________________________________________
 			OBJ=STATS TEXTURE=CHARAC_BUTTON BUTTON=1 X=382 Y=557
 			OBJ=INVENTORY TEXTURE=INVENTORY_BUTTON BUTTON=1 X=415 Y=557
 			OBJ=PAUSE TEXTURE=COG_BUTTON BUTTON=1 X=448 Y=557
+		MUSIC=HOMETOWN_MUSIC LOOP=1
 
 ________________________________________________________________________________
 -PAUSE
@@ -209,6 +210,7 @@ _____________________________________________________________________________
 	SCENE=STATS PRIORITY=2
 		LIST=OBJS
 			OBJ=BACKGROUND TEXTURE=STATS_BG BUTTON=0 X=294 Y=25
+			OBJ=ITEM_ICO TEXTURE=EMPTY_ITEM BUTTON=0 X=385 Y=290
 		LIST=TEXTS
 			TEXT=CHARAC STR=None FONT=RING CHARAC_SIZE=30 X=366 Y=60
 			TEXT=CHARAC_DESC STR=The_Nobody FONT=RING CHARAC_SIZE=15 X=366 Y=105
@@ -216,9 +218,9 @@ _____________________________________________________________________________
 			TEXT=ARMOR STR=:___0 FONT=RING CHARAC_SIZE=25 X=347 Y=182
 			TEXT=SPECIAL STR=:___0 FONT=RING CHARAC_SIZE=25 X=347 Y=208
 			TEXT=XP STR=:___0 FONT=RING CHARAC_SIZE=25 X=347 Y=234
-			TEXT=NAME_ITEM STR=Item:_ FONT=FRITZ CHARAC_SIZE=12 X=305 Y=320
-			TEXT=HEALTH_ITEM STR=Health:_ FONT=FRITZ CHARAC_SIZE=14 X=305 Y=345
-			TEXT=ARMOR_ITEM STR=Armor:_ FONT=FRITZ CHARAC_SIZE=14 X=305 Y=370
+			TEXT=NAME_ITEM STR=Item:_ FONT=FRITZ CHARAC_SIZE=12 X=305 Y=345
+			TEXT=HEALTH_ITEM STR=Health:_ FONT=FRITZ CHARAC_SIZE=14 X=305 Y=370
+			TEXT=ARMOR_ITEM STR=Armor:_ FONT=FRITZ CHARAC_SIZE=14 X=410 Y=370
 			TEXT=SPECIAL_ITEM STR=Special:_ FONT=FRITZ CHARAC_SIZE=14 X=305 Y=400
 			TEXT=DAMAGES_ITEM STR=Damages:_ FONT=FRITZ CHARAC_SIZE=14 X=305 Y=430
 			TEXT=QUEST_ITEM STR=A_ FONT=FRITZ CHARAC_SIZE=14 X=305 Y=450
@@ -332,5 +334,16 @@ _____________________________________________________________________________
 	SCENE=AREA_HUD PRIORITY=1
 		LIST=TEXTS
 			TEXT=POS STR=00 FONT=RING CHARAC_SIZE=50 X=730 Y=-10
+
+_____________________________________________________________________________
+-DIALOGUE_HUD
+	SCENE=DIALOGUE_HUD PRIORITY=2
+		LIST=OBJS
+			OBJ=DIALOGUE_BOX TEXTURE=DIALOGUE_BOX BUTTON=0 X=0 Y=440
+		LIST=TEXTS
+			TEXT=NAME STR=VARYAN:_ FONT=FRITZ CHARAC_SIZE=25 X=50 Y=462
+			TEXT=LINE_01 STR=I_wanna_be_the_guy. FONT=FRITZ CHARAC_SIZE=25 X=200 Y=462
+			TEXT=LINE_02 STR=I_wanna_save_the_girl,_and_then, FONT=FRITZ CHARAC_SIZE=25 X=50 Y=497
+			TEXT=LINE_03 STR=I_wanna_be_the_hero. FONT=FRITZ CHARAC_SIZE=25 X=50 Y=532
 
 ### END OF FILE ###

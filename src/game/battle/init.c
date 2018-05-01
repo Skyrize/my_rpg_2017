@@ -48,7 +48,7 @@ int init_battle(game_t *game)
 	if (!game || !battle_scene)
 		return (84);
 	clean_displayed_scenes_and_add_back(game, "BATTLE");
-	CURRENT_SCENE = hm_get_bucket(SCENES, "BATTLE");
+	CURRENT_BUCKET = hm_get_bucket(SCENES, "BATTLE");
 	init_enemies(game);
 	init_character(game);
 	update_element_in_battle(game);

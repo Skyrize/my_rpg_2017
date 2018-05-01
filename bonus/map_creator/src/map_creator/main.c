@@ -7,7 +7,7 @@
 
 #include "map_editor.h"
 
-sfRenderWindow *my_window_create()
+sfRenderWindow *my_window_create(void)
 {
 	sfRenderWindow *window;
 	sfVideoMode mode;

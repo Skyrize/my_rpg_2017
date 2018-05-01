@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int get_a_map(char **infos, char **type,
+int get_map(char **infos, char **type,
 	hashmap_t **current_list, game_t *game)
 {
 	char **path = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);

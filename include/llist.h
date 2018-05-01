@@ -44,7 +44,7 @@ node_t *add_to_llist(char *key, void *value, llist_t *llist);
 ////////////////// GET
 
 ///Seek in a given llist a node with the given key and return the node or NULL
-//if not found.
+///if not found.
 node_t *get_node_by_key(char *asked, llist_t *llist);
 
 ///Seek in a given llist a node a the given place. If asked <= 0 or
@@ -54,7 +54,7 @@ node_t *get_node_by_place(int asked, llist_t *llist);
 ////////////////// PROCESS
 
 ///Send every node in a given list to a given function. If the given function
-//return anything else than NULL, return it.
+///return anything else than NULL, return it.
 void *llist_foreach(void *(*fptr)(), llist_t *llist);
 
 ///Print every node key in a given list.

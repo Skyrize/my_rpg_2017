@@ -57,7 +57,7 @@ int manage_life_in_battle(game_t *game)
 
 int manage_life(game_t *game)
 {
-	if (!my_strcmp(CURRENT_SCENE->key, "BATTLE")) {
+	if (!my_strcmp(CURRENT_BUCKET->key, "BATTLE")) {
 		if (manage_life_in_battle(game) == 84)
 			return (84);
 	} else {

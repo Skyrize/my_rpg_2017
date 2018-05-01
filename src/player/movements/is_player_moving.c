@@ -9,7 +9,7 @@
 
 bool is_player_moving(game_t *game)
 {
-	if (strcmp(CURRENT_SCENE->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return (false);
 	if (is_pressing_controls(game))
 		return (true);

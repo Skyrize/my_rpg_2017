@@ -62,7 +62,8 @@ int update_button(char *seek, char *replacement, scene_t *scene, game_t *game)
 	return (init_button_callback(button_bucket, game));
 }
 
-int seek_button_type(char **balise, int (*instruction)(), char *button_key, obj_t *button)
+int seek_button_type(char **balise, int (*instruction)(),
+char *button_key, obj_t *button)
 {
 	int i = 0;
 
