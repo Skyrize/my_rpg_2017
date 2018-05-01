@@ -8,7 +8,8 @@
 #include "my.h"
 #include "rpg.h"
 
-int display_tiles(sfVector2i *tile_coord, int priority, window_t *window, game_t *game)
+int display_tiles(sfVector2i *tile_coord, int priority,
+window_t *window, game_t *game)
 {
 	int x = tile_coord->x;
 	int y = tile_coord->y;

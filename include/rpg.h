@@ -8,13 +8,14 @@
 #ifndef RPG_H_
 #define RPG_H_
 #include "hashify.h"
+#include "llist.h"
 
 ///////////////////////////////// INIT DEFINES //////////////////////////////
 
 /// METTRE UN GNL QUI MARCHE POUR SUPPRIMER CA :
 #define END_OF_FILE "### END OF FILE ###"
 
-#define INIT_INDICATOR "-" /// String to put in the begining of the line
+#define INIT_CHAR "-" /// String to put in the begining of the line
 			///to indicate that lines below are init informations.
 #define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string
 			///init. Get replaced with spaces.
@@ -38,8 +39,8 @@
 
 ///////////////////////////////// MAPS DEFINES //////////////////////////////
 
-#define ZONE_TAB_X 4
-#define ZONE_TAB_Y 4
+#define ZONE_TAB_X 5
+#define ZONE_TAB_Y 5
 #define AREA_TAB_X 3
 #define AREA_TAB_Y 3
 #define TILE_TAB_X 16
@@ -87,7 +88,7 @@
 #define BATTLE_GAME_NULL_DATA (!battle_game || !battle_game->objs\
 || !battle_game->texts)
 #define IS_APRESSED (1 != 1)
-#define IS_A_BATTLE (my_strcmp(CURRENT_SCENE->key, "BATTLE") != 0)
+#define IS_A_BATTLE (my_strcmp(CURRENT_BUCKET->key, "BATTLE") != 0)
 
 ////////////////////////////////// OBJECTS //////////////////////////////
 
@@ -126,6 +127,20 @@ typedef struct texture_s
 } texture_t, texture_data_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////
+
+typedef struct vector_pack_s
+{
+	sfVector2i zone;
+	sfVector2i area;
+	sfVector2i tile;
+} vector_pack_t;
+
+typedef struct remarkable_tile_s
+{
+	int (*fptr)();
+	vector_pack_t tiles[];
+} remarkable_tile_t;
+
 typedef struct tile_list_s tile_list_t;
 
 typedef struct tile_list_s
@@ -179,12 +194,19 @@ typedef enum
 	BUTTONS = 4,
 } objs_type_t;
 
-typedef struct scene_s {
+typedef struct music_s
+{
+	sfMusic *music;
+	sfBool loop;
+	sfBool play_music;
+} music_t;
+
+typedef struct scene_s
+{
 	hashmap_t *objs;
 	hashmap_t *texts;
-	sfBool play_music;
-	sfMusic *music;
 	int priority;
+	music_t music;
 } scene_t;
 
 typedef struct managed_scene_s managed_scene_t;
@@ -197,6 +219,7 @@ typedef struct managed_scene_s
 } managed_scene_t;
 
 /////////////////////////////// INVENTORY ///////////////////////////////////
+
 typedef struct item_stat_s
 {
 	int health;
@@ -212,7 +235,16 @@ typedef struct item_s
 	sfBool quest;
 	sfBool consumable;
 	item_stat_t stats;
-} item_t, item_data_t;
+} item_t;
+
+typedef struct item_data_s
+{
+	char *name;
+	char *texture;
+	sfBool quest;
+	sfBool consumable;
+	item_stat_t stats;
+} item_data_t;
 
 typedef struct slot_s
 {
@@ -232,6 +264,32 @@ typedef struct inventory_s
 	slot_t pants;
 	slot_t items[INVENTORY_SIZE_Y][INVENTORY_SIZE_X];
 } inventory_t;
+
+/////////////////////////////////// BATTLE ////////////////////////////////
+
+typedef struct enemy_s {
+	char *name;
+	char *zone;
+	item_stat_t stats;
+	obj_t *monster;
+} enemy_t;
+
+typedef struct enemy_data_s
+{
+	char *name;
+	char *zone;
+	char *texture;
+	item_stat_t stats;
+} enemy_data_t;
+
+typedef struct battle_s {
+	bool special_hit;
+	bool last_enemy_turn;
+	bool enemy_turn;
+	bool player_turn;
+	int selected_enemy;
+	enemy_t *enemy[3];
+} battle_t;
 
 /////////////////////////////////// PLAYER ////////////////////////////////
 
@@ -266,34 +324,16 @@ typedef enum direction_e {
 
 typedef struct key_control_s
 {
-	sfKeyCode *up;
-	sfKeyCode *down;
-	sfKeyCode *right;
-	sfKeyCode *left;
-	sfKeyCode *up_1;
-	sfKeyCode *down_1;
-	sfKeyCode *right_1;
-	sfKeyCode *left_1;
+	sfKeyCode up;
+	sfKeyCode down;
+	sfKeyCode right;
+	sfKeyCode left;
+	sfKeyCode arrow_up;
+	sfKeyCode arrow_down;
+	sfKeyCode arrow_right;
+	sfKeyCode arrow_left;
 	int move;
 } key_control_t;
-
-/////////////////////////////////// BATTLE ////////////////////////////////
-
-typedef struct enemy_s {
-	int health;
-	int armor;
-	int damages;
-	sfRectangleShape *rec;
-} enemy_t;
-
-typedef struct battle_s {
-	bool special_hit;
-	bool last_enemy_turn;
-	bool enemy_turn;
-	bool player_turn;
-	int selected_enemy;
-	enemy_t enemy[3];
-} battle_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 
@@ -326,6 +366,7 @@ typedef struct lib_s
 	hashmap_t *fonts;
 	hashmap_t *textures;
 	hashmap_t *items;
+	hashmap_t *monsters;
 } lib_t;
 
 typedef struct game_s
@@ -349,6 +390,21 @@ typedef struct window_s
 	sfRenderWindow *window;
 	ctime_t clocker;
 } window_t;
+
+typedef struct particle_sys_s
+{
+	char *sys_name;
+	sfIntRect spawn_zone;
+	int particle_nbr;
+	sfVector2f force;
+	bool gravity;
+	sfTexture *texture;
+	bool (*condition)(sfSprite *);
+	sfSprite **sprite_arr;
+	int spawn_density;
+	int spawned_particles_nbr;
+	int sys_id;
+} particle_sys_t;
 
 #include "rpginit.h"
 #include "rpgdef.h"

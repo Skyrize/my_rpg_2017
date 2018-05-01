@@ -16,9 +16,14 @@ void set_initial_player_pos(game_t *game)
 
 bool is_pressing_controls(game_t *game)
 {
-	if (KEY_PRESSED(left) || KEY_PRESSED(left_1) || KEY_PRESSED(right) ||
-	    KEY_PRESSED(right_1) || KEY_PRESSED(up) || KEY_PRESSED(up_1) ||
-	    KEY_PRESSED(down) || KEY_PRESSED(down_1))
+	if (sfKeyboard_isKeyPressed(KEY_UP)
+	|| sfKeyboard_isKeyPressed(KEY_DOWN)
+	|| sfKeyboard_isKeyPressed(KEY_LEFT)
+	|| sfKeyboard_isKeyPressed(KEY_RIGHT)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT))
 		return (true);
 	return (false);
 }
@@ -37,10 +42,10 @@ void smooth_move_player(game_t *game)
 	sfVector2i *target_pos = &(game->movement.target_tile);
 	sfVector2f s_pos;
 	sfVector2f offset_f = (sfVector2f) {(target_pos->x - act_pos.x) * 5,
-					    (target_pos->y - act_pos.y) * 5};
+					(target_pos->y - act_pos.y) * 5};
 	static bool is_check = false;
 
-	if (my_strcmp(CURRENT_SCENE->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!(game->player.character))
 		return;

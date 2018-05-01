@@ -38,7 +38,7 @@ int check_already_existing_area_coords(char *name, game_t *game)
 
 int check_already_existing_tile_coords(game_t *game)
 {
-	if (TILE_COOR_X != -1 && TILE_LIST != NULL) {
+	if (TILE_LIST != NULL) {
 		my_printf("WARNING: YOU ARE TRYING TO PUT 2 TILES AT ");
 		my_printf("COORDINATES (%d/%d) IN AREA '%s' !\n",
 		TILE_COOR_X, TILE_COOR_Y, AREA_NAME);

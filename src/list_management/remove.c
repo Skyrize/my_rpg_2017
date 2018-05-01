@@ -8,13 +8,13 @@
 #include "my.h"
 #include "rpg.h"
 
-void clean_displayed_tiles(game_t *game)
+void clean_displayed_tiles(tile_list_t *displayed)
 {
 	tile_list_t *tmp;
 
-	while (TILE_LIST) {
-		tmp = TILE_LIST;
-		TILE_LIST = tmp->next;
+	while (displayed) {
+		tmp = displayed;
+		displayed = tmp->next;
 		obj_destroy(tmp->tile);
 		free(tmp);
 	}
@@ -27,7 +27,7 @@ void clean_displayed_scenes(game_t *game)
 	while (MANAGED_SCENES) {
 		tmp = MANAGED_SCENES;
 		MANAGED_SCENES = tmp->next;
-		free(tmp);
+		destroy_managed_scene(tmp);
 	}
 }
 
@@ -41,7 +41,7 @@ void clean_displayed_scene_name(game_t *game, char *name_scenes)
 		my_strcmp(tmp->next->name, name_scenes) == 0) {
 			freed = tmp->next;
 			tmp->next = tmp->next->next;
-			free(freed);
+			destroy_managed_scene(freed);
 			break;
 		}
 		tmp = tmp->next;
@@ -57,15 +57,16 @@ int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name)
 		tmp = MANAGED_SCENES;
 		MANAGED_SCENES = tmp->next;
 		if (my_strcmp(scene_name, tmp->name) != 0) {
-			free(tmp);
+			destroy_managed_scene(tmp);
 		} else
 			already_in = 1;
 	}
 	if (already_in == 0) {
+		MANAGED_SCENES = NULL;
 		bucket_t *scene = hm_get_bucket(SCENES, scene_name);
 		if (check_unexisting_scene(scene, scene_name) != 0)
 			return (84);
-		add_scene_to_display_list(scene, game);
+		return (add_scene_to_display_list(scene, game));
 	}
 	return (0);
 }

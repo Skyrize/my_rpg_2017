@@ -47,12 +47,13 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 	if (button->button != sfTrue)
 		return (0);
 	if (button_fly_over(button, MOUSE_POS) == 1 &&
-	click_button((button), MOUSE_POS, sfMouseLeft) == 0)
+	click_button((button), MOUSE_POS, sfMouseLeft) == 0) {
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
-	else if (button_fly_over(button, MOUSE_POS) == 1 &&
+	} else if (button_fly_over(button, MOUSE_POS) == 1 &&
 	click_button((button), MOUSE_POS, sfMouseLeft) == 1
 	&& CLICK_RELEASED == sfTrue) {
 		CLICK_RELEASED = sfFalse;
+		make_sound("SELECT_SOUND", game);
 		return (button->callback ? button->callback(window, game) : 84);
 	} else if (!game->movement.is_moving
 	&& sfRectangleShape_getFillColor(button->obj).a == 255)

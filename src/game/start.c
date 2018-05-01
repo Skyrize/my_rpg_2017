@@ -10,9 +10,11 @@
 
 int start_scene_music(scene_t *scene)
 {
-	if (scene->music) {
-		sfMusic_play(scene->music);
-		sfMusic_setLoop(scene->music, sfTrue);
+	if (!scene)
+		return (84);
+	if (scene->music.music && scene->music.play_music == sfTrue) {
+		sfMusic_play(scene->music.music);
+		sfMusic_setLoop(scene->music.music, scene->music.loop);
 	}
 	return (0);
 }
@@ -33,33 +35,34 @@ int init_frame_rate(window_t *window, game_t *game)
 		return (84);
 	sfText_setString(text_bucket->value, int_to_str(FRAMERATE));
 	sfRenderWindow_setFramerateLimit(window->window, FRAMERATE);
+	sfRenderWindow_setKeyRepeatEnabled(window->window, sfTrue);
 	return (0);
 }
 
 void place_player(game_t *game)
 {
-	TILE_COOR_X = 8;
-	TILE_COOR_Y = 6;
+	TILE_COOR_X = 6;
+	TILE_COOR_Y = 4;
 	AREA_COOR_X = 0;
 	AREA_COOR_Y = 2;
-	ZONE_COOR_X = 0;
-	ZONE_COOR_Y = 0;
+	ZONE_COOR_X = 3;
+	ZONE_COOR_Y = 4;
 }
 
 int start_game(window_t *window, game_t *game)
 {
-	CURRENT_SCENE = hm_get_bucket(SCENES, STARTING_SCENE_NAME);
-	if (check_undefined_scene(CURRENT_SCENE, STARTING_SCENE_NAME) != 0)
+	CURRENT_BUCKET = hm_get_bucket(SCENES, STARTING_SCENE_NAME);
+	if (check_undefined_scene(CURRENT_BUCKET, STARTING_SCENE_NAME) != 0)
 		return (84);
 	if (init_frame_rate(window, game) != 0)
 		return (84);
-	if (start_scene_music(CURRENT_SCENE->value) != 0)
+	if (start_scene_music(CURRENT_BUCKET->value) != 0)
 		return (84);
-	if (add_scene_to_display_list(CURRENT_SCENE, game) != 0)
-		return (84);
-	if (load_my_zone(game) != 0)
+	if (add_scene_to_display_list(CURRENT_BUCKET, game) != 0)
 		return (84);
 	place_player(game);
+	if (load_my_zone(game) != 0)
+		return (84);
 	sfRenderWindow_setMouseCursorVisible(window->window, sfFalse);
 	return (0);
 }

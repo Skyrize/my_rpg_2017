@@ -12,9 +12,22 @@
 /////////////////////////////////// MAIN /////////////////////////////////
 
 #define SCENES game->scenes
-#define CURRENT_SCENE game->current
+#define CURRENT_BUCKET game->current
 #define MANAGED_SCENES game->displayed_scenes
+
+/////////////////////////////////// MAIN /////////////////////////////////
+
 #define KEY_PLAYER game->key_player
+
+#define KEY_UP KEY_PLAYER.up
+#define KEY_DOWN KEY_PLAYER.down
+#define KEY_LEFT KEY_PLAYER.left
+#define KEY_RIGHT KEY_PLAYER.right
+
+#define ARROW_KEY_UP KEY_PLAYER.arrow_up
+#define ARROW_KEY_DOWN KEY_PLAYER.arrow_down
+#define ARROW_KEY_LEFT KEY_PLAYER.arrow_left
+#define ARROW_KEY_RIGHT KEY_PLAYER.arrow_right
 
 ////////////////////////////////////// TOOLS ////////////////////////////
 
@@ -29,6 +42,7 @@
 #define FONTS_LIB LIBS.fonts
 #define TEXTURES_LIB LIBS.textures
 #define ITEMS_LIB LIBS.items
+#define MONSTERS_LIB LIBS.monsters
 
 ////////////////////////////////// INVENTORY ///////////////////////////////
 
@@ -67,7 +81,7 @@
 #define ZONE_NAME ZONE.name
 #define ZONE_FILEPATH ZONE.filepath
 #define AREA_NAME AREA.name
-#define AREA_ENCOUTER AREA.encounter
+#define AREA_ENCOUNTER AREA.encounter
 #define TILE_LIST TILE.displayed_tiles
 #define TILE_BLOCK TILE.block
 
@@ -92,20 +106,18 @@
 ////////////////////////////////// BATTLE //////////////////////////////
 
 #define SELECTED_ENEMY game->battle.enemy[game->battle.selected_enemy]
-#define ENEMY_ARMOR game->battle.enemy[game->battle.selected_enemy].armor
-#define ENEMY_DAMAGES game->battle.enemy[game->battle.selected_enemy].damages
-#define ENEMY_HEALTH game->battle.enemy[game->battle.selected_enemy].health
+#define ENEMY_ARMOR game->battle.enemy[game->battle.selected_enemy]->stats.armor
+#define ENEMY_DAMAGES game->battle.enemy[game->battle.selected_enemy]->stats.damages
+#define ENEMY_HEALTH game->battle.enemy[game->battle.selected_enemy]->stats.health
 
 #define SPECIAL_HIT game->battle.special_hit
 #define ENEMY_TURN game->battle.enemy_turn
 #define PLAYER_TURN game->battle.player_turn
+#define LAST_ENEMY_TURN game->battle.last_enemy_turn
 
 ////////////////////////////////// USED //////////////////////////////
 
 #define MIN(X, Y) X >= Y ? Y : X
 #define MAX(X, Y) X >= Y ? X : Y
-
-#define KEY_PRESSED(key) \
-sfKeyboard_isKeyPressed((sfKeyCode) game->key_player.key)
 
 #endif /* RPGDEF_H_ */

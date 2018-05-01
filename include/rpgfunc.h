@@ -22,12 +22,13 @@ int init_textures_lib(game_t *game);
 int init_fonts_lib(game_t *game);
 int init_items_lib(game_t *game);
 int init_map(game_t *game);
-int init_zone(game_t *game);
+void init_zone(game_t *game);
 int init_inventory(game_t *game);
 int init_scene_lists(char **infos, game_t *game);
 int init_buttons(game_t *game);
 int init_a_text(char **infos, game_t *game, hashmap_t *current_list);
 int init_an_obj(char **infos, game_t *game, hashmap_t *current_list);
+int init_monsters_lib(game_t *game);
 
 /// Change ZONE_COOR_X and ZONE_COOR_Y and call load_my_zone to fulfill
 ///AREA maps with asked zone.
@@ -48,57 +49,65 @@ int init_from_pcf(char **infos, game_t *game, const key_word_t *keys);
 
 /////////////////////////// KEY WORDS FUNCTIONS
 
-int get_a_scene(char **infos, char **type,
+int get_scene(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_list(char **infos, char **type,
+int get_list(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_index(char **infos, char **type,
+int get_index(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_obj(char **infos, char **type,
+int get_obj(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_text(char **infos, char **type,
+int get_text(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_music(char **infos, char **type,
+int get_music(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_audio(char **infos, char **type,
+int getudio(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_font(char **infos, char **type,
+int get_font(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_texture(char **infos, char **type,
+int get_texture(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_texture_filepath(char **infos, char **type,
+int get_texture_filepath(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int is_texture_animated(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_rect_values(char **infos, char **type,
+int get_rect_values(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_rect_max_values(char **infos, char **type,
+int get_rect_max_values(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_rect_max_offset(char **infos, char **type,
+int get_rect_max_offset(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_rect_start_values(char **infos, char **type,
+int get_rect_start_values(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_map(char **infos, char **type,
+int get_map(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_zone(char **infos, char **type,
+int get_zone(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_area(char **infos, char **type,
+int getrea(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_tile(char **infos, char **type,
+int get_tile(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_tile_texture(char **infos, char **type,
+int get_tile_texture(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_a_priority(char **infos, char **type,
+int get_priority(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_item(char **infos, char **type,
+int get_item(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
-int get_an_item_texture(char **infos, char **type,
+int get_item_texture(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int is_item_for_quest(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int is_item_consumable(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_item_stats(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_monster(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_enemy_data_texture(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_monster_zone(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_monster_stats(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 
 /////////////////////////// INIT WARNING : UNEXISTING
@@ -145,6 +154,7 @@ int check_already_existing_area_name(char *name, game_t *game);
 int check_already_existing_area_coords(char *name, game_t *game);
 int check_already_existing_tile_coords(game_t *game);
 int check_already_existing_item(hashmap_t *hashmap, char *item_name);
+int check_already_existing_monster(hashmap_t *hashmap, char *monster_name);
 
 /////////////////////////// INIT WARNING : MISSING
 
@@ -163,6 +173,8 @@ int check_undefined_texture(bucket_t *texture, char *data);
 int check_undefined_area(game_t *game);
 int check_undefined_tile(game_t *game);
 int check_undefined_item(bucket_t *item, char *data);
+int check_undefined_zone(char *zone_name, game_t *game);
+int check_undefined_monster(bucket_t *monster, char *data);
 
 /////////////////////////// IN GAME WARNING
 
@@ -184,10 +196,11 @@ managed_scene_t *create_display(char *name, scene_t *scene);
 ///Pass a texture name and window and return a tile_list used to display a
 ///linked list of tiles. return NULL on fail
 tile_list_t *create_tile(char *texture_name, game_t *game);
-
-item_t *create_item(item_data_t *data);
-
-texture_t *create_texture(texture_data_t *data);
+item_t *create_item(char *name, game_t *game);
+item_data_t *create_item_data(char *name);
+texture_t *create_texture(void);
+enemy_data_t *create_enemy_data(char *name);
+enemy_t *create_enemy(char *name, game_t *game);
 
 //////////////////////////// LIST ADDING
 
@@ -230,7 +243,7 @@ void clean_displayed_scenes(game_t *game);
 int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name);
 
 ///Clean all displayed tiles.
-void clean_displayed_tiles(game_t *game);
+void clean_displayed_tiles(tile_list_t *displayed);
 
 ///Clean only the scene with the name passed.
 void clean_displayed_scene_name(game_t *game, char *name_scenes);
@@ -311,6 +324,8 @@ int process_engine(window_t *window, game_t *game);
 
 int game_lobby(window_t *window, game_t *game);
 int battle_lobby(window_t *window, game_t *game);
+int start_scene_music(scene_t *scene);
+int make_sound(char *sound_name, game_t *game);
 
 ///Update the 3 stats strings in a given scene with there actual values
 ///in Window.
@@ -350,14 +365,15 @@ void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
 void item_destroy(item_t *item);
+void destroy_managed_scene(managed_scene_t *managed);
 
 /////////////////////////// PLAYER FUNCTIONS
 
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
 				sfVector2i pos_zone, game_t *game);
-bool move_player_zone(direction_t dir, game_t *game, bool check);
-bool move_player_area(direction_t dir, game_t *game, bool check);
-bool move_player(direction_t dir, game_t *game, bool check);
+bool move_player_zone(direction_t dir, game_t *game);
+bool move_player_area(direction_t dir, game_t *game);
+bool move_player(direction_t dir, game_t *game);
 int anim_player(game_t *game);
 void set_anim_side(game_t *game);
 void init_movements(game_t *game);
@@ -386,12 +402,15 @@ int display_special_hit_player(window_t *window, game_t *game, char *scene);
 int display_special_hit_enemy(window_t *window, game_t *game, char *scene);
 int wait_for_enemy_attack(window_t *window, game_t *game, bool wait);
 int enemy_turn(window_t *window, game_t *game);
+int check_last_enemy(game_t *game, int i);
+int first_enemy_available(game_t *game);
+int reset_enemy_turn(window_t *window, game_t *game);
+int reset_player_turn(window_t *window, game_t *game);
 
 /////////////////////////////////// INVENTORY
 
 int items_foreach(game_t *game, window_t *window, int (*fptr)());
 int slots_foreach(game_t *game, int (*fptr)());
-item_t *copy_item_lib(char *name, hashmap_t *items_lib);
 int add_new_to_slot(char *name, sfVector2f *pos, slot_t *slot, game_t *game);
 
 int inventory_lobby(window_t *window, game_t *game);
@@ -410,6 +429,23 @@ int update_health_item(slot_t *slot, game_t *game);
 int replace_mouse_skin(obj_t *obj, sfVector2f *offset, game_t *game);
 int reset_mouse_skin(game_t *game);
 int display_mouse(game_t *game, window_t *window);
+
+/////////////////////////// PARTICLES
+
+particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
+				    int particle_nbr, game_t *game);
+sfVector2f get_particles_spawn_pos(particle_sys_t *sys);
+void init_particle_position(particle_sys_t *sys);
+bool default_particle_cond(sfSprite *sprite);
+void display_particle_sys(window_t *window, particle_sys_t *sys);
+void update_particle_sys(particle_sys_t *sys);
+void display_particles(window_t *window, game_t *game);
+void free_particle_sys(particle_sys_t *sys);
+void remove_particle_sys_by_id(int id);
+void remove_particle_sys(particle_sys_t *sys);
+void init_rain(game_t *game);
+void remove_end(node_t *last_node, node_t *act_node,
+		llist_t *particle_sys_list);
 
 /////////////////////////// END
 

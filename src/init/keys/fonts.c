@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-int get_a_font(char **infos, char **type,
+int get_font(char **infos, char **type,
 	hashmap_t **current_list, game_t *game)
 {
 	sfFont *font;

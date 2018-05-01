@@ -56,7 +56,7 @@ bool set_ply_tile(sfVector2i pos_tile, game_t *game, bool check)
 }
 
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
-			 sfVector2i pos_zone, game_t *game)
+			sfVector2i pos_zone, game_t *game)
 {
 	if (!(set_ply_zone(pos_zone, game, true) &&
 		set_ply_area(pos_aera, game, true) &&

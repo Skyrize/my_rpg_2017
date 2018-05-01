@@ -1,9 +1,14 @@
 ### FILE : Initialisation des sons et des musiques du jeu ###
-//Format: INIT_INDICATOR + description (voir .h)
+//Format: INIT_CHAR + description (voir .h)
 //Format:	AUDIO=nom de l'audio + FILEPATH=chemin d'accès
 
 -SOUNDS
+	AUDIO=CURSOR_SOUND FILEPATH=sounds/cursor_sound.ogg
+	AUDIO=DIALOGUE_SOUND FILEPATH=sounds/dialogue_sound.ogg
+	AUDIO=SELECT_SOUND FILEPATH=sounds/select_sound.ogg
+	AUDIO=FOOTSTEP_SOUND FILEPATH=sounds/footstep_sound.ogg
 
 -MUSIC
+	AUDIO=HOMETOWN_MUSIC FILEPATH=sounds/hometown_music.ogg
 
 ### END OF FILE ###
