@@ -179,12 +179,19 @@ typedef enum
 	BUTTONS = 4,
 } objs_type_t;
 
-typedef struct scene_s {
+typedef struct music_s
+{
+	sfMusic *music;
+	sfBool loop;
+	sfBool play_music;
+} music_t;
+
+typedef struct scene_s
+{
 	hashmap_t *objs;
 	hashmap_t *texts;
-	sfBool play_music;
-	sfMusic *music;
 	int priority;
+	music_t music;
 } scene_t;
 
 typedef struct managed_scene_s managed_scene_t;

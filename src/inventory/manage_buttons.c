@@ -17,11 +17,13 @@ int is_button_clicked(obj_t *button, slot_t *slot, game_t *game)
 	} else if (click_button((button), MOUSE_POS, sfMouseLeft) == 1
 	&& CLICK_RELEASED == sfTrue) {
 		CLICK_RELEASED = sfFalse;
+		make_sound("SELECT_SOUND", game);
 		return (button->callback ?
 		button->callback(slot, game) : 84);
 	} else if (click_button((button), MOUSE_POS, sfMouseRight) == 1
 	&& CLICK_RELEASED == sfTrue) {
 	 	CLICK_RELEASED = sfFalse;
+		make_sound("SELECT_SOUND", game);
 		return (slot->item ? display_item_stats(slot, game) : 0);
 	}
 	return (0);

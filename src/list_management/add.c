@@ -45,6 +45,7 @@ int add_scene_to_display_list(bucket_t *scene, game_t *game)
 
 	if (!display)
 		return (84);
+	start_scene_music(display->scene);
 	if (!tmp) {
 		MANAGED_SCENES = display;
 		return (0);
@@ -54,9 +55,8 @@ int add_scene_to_display_list(bucket_t *scene, game_t *game)
 		MANAGED_SCENES = display;
 		return (0);
 	}
-	while (tmp->next
-		&& display->scene->priority > tmp->next->scene->priority)
-		tmp = tmp->next;
+	for (; tmp->next && display->scene->priority >
+	tmp->next->scene->priority; tmp = tmp->next);
 	display->next = tmp->next;
 	tmp->next = display;
 	return (0);

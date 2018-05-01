@@ -10,9 +10,11 @@
 
 int start_scene_music(scene_t *scene)
 {
-	if (scene->music) {
-		sfMusic_play(scene->music);
-		sfMusic_setLoop(scene->music, sfTrue);
+	if (!scene)
+		return (84);
+	if (scene->music.music) {
+		sfMusic_play(scene->music.music);
+		sfMusic_setLoop(scene->music.music, scene->music.loop);
 	}
 	return (0);
 }

@@ -324,6 +324,8 @@ int process_engine(window_t *window, game_t *game);
 
 int game_lobby(window_t *window, game_t *game);
 int battle_lobby(window_t *window, game_t *game);
+int start_scene_music(scene_t *scene);
+int make_sound(char *sound_name, game_t *game);
 
 ///Update the 3 stats strings in a given scene with there actual values
 ///in Window.

@@ -32,8 +32,32 @@ void on_key_pressed(game_t *game, sfEvent *event)
 		PLAYER_HEALTH -= 1;
 }
 
+int press_action_key(game_t *game)
+{
+	static sfBool pass = sfTrue;
+	static sfBool music = sfTrue;
+
+	// check_special_tiles_around();
+	if (pass == sfTrue) {
+		if (music == sfTrue) {
+			make_sound("DIALOGUE_SOUND", game);
+			music = sfFalse;
+		} else {
+			music = sfTrue;
+		}
+		if (button_display_hide_scene("DIALOGUE_HUD", NULL, game) == 84)
+			return (84);
+		pass = sfFalse;
+	} else {
+		pass = sfTrue;
+	}
+	return (0);
+}
+
 int game_events(window_t *window, game_t *game)
 {
+	int my_errno = 0;
+
 	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
 		if (window->event.type == sfEvtClosed)
 			sfRenderWindow_close(window->window);
@@ -42,6 +66,11 @@ int game_events(window_t *window, game_t *game)
 		if (window->event.type == sfEvtKeyPressed
 		&& KEY_PLAYER.move == 1)
 			on_key_pressed(game, &window->event);
+		if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue) {
+			my_errno = press_action_key(game);
+		}
+		if (my_errno == 84)
+			return (my_errno);
 	}
 	return (0);
 }

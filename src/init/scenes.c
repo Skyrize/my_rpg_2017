@@ -20,7 +20,9 @@ scene_t *scene_init(int priority)
 	value->texts = hm_create(64, &sfText_destroy);
 	if (!value->texts)
 		return (NULL);
-	value->music = NULL;
+	value->music.music = NULL;
+	value->music.loop = 0;
+	value->music.play_music = 0;
 	value->priority = priority;
 	return (value);
 }
@@ -56,7 +58,7 @@ int init_scenes(game_t *game)
 		(char *[]) {"TEXTURE", "BUTTON", "X", "Y", NULL}},
 	{"TEXT", 5, &get_text,
 		(char *[]) {"STR", "FONT", "CHARAC_SIZE", "X", "Y", NULL}},
-	{"MUSIC", 0, &get_music, NULL},
+	{"MUSIC", 1, &get_music, (char *[]) {"LOOP", NULL}},
 	{NULL, 0, NULL, NULL}};
 	get_infos_t infos = {"pcf/scenes.pcf", INIT_CHAR, scene_keys,
 	&list_savior};
