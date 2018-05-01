@@ -66,7 +66,7 @@ void display_particles(window_t *window, game_t *game)
 	particle_sys_t *act_sys;
 	static bool init = false;
 
-	if (strcmp(CURRENT_SCENE->key, "GAME") != 0)
+	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!init) {
 		init_rain(game);
