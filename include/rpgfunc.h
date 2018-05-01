@@ -356,7 +356,9 @@ int display_map(window_t *window, game_t *game);
 
 /////////////////////////// INPUT
 
-void analyse_events(window_t *window, game_t *game);
+int analyse_events(window_t *window, game_t *game);
+int battle_events(window_t *window, game_t *game);
+int game_events(window_t *window, game_t *game);
 
 /////////////////////////// DESTROY FUNCTIONS
 

@@ -185,6 +185,7 @@ typedef struct manager_s
 {
 	char *balise;
 	int (*fptr)();
+	int (*event)();
 } manager_t;
 
 typedef enum

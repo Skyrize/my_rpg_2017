@@ -28,7 +28,6 @@ void display_inventory(window_t *window, game_t *game)
 
 int inventory_lobby(window_t *window, game_t *game)
 {
-	analyse_events(window, game);
 	display_inventory(window, game);
 	if (manage_inventory_buttons(game) != 0)
 		return (84);
