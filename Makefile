@@ -92,6 +92,7 @@ SRC	=	src/main.c						\
 		src/game/battle/manage/notif_right.c 			\
 		src/game/battle/manage/notif_left.c 			\
 		src/game/battle/manage/special_hit.c			\
+		src/game/battle/manage/wait_enemy.c			\
 		src/game/battle/init.c					\
 		src/game/battle/update_battle_hud.c			\
 		src/game/battle/lobby.c					\
@@ -99,7 +100,6 @@ SRC	=	src/main.c						\
 		src/game/battle/attack.c				\
 		src/game/battle/select_enemy.c				\
 		src/game/battle/end_screen.c				\
-		src/game/battle/manage/wait_enemy.c				\
 		src/game/engine.c					\
 		src/game/mouse/replace.c				\
 		src/inventory/update_item_stats.c			\

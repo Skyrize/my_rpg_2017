@@ -82,7 +82,6 @@ int player_attack(window_t *window, game_t *game)
 		sfRectangleShape_destroy(SELECTED_ENEMY.rec);
 		SELECTED_ENEMY.rec = NULL;
 	}
-
 	return (0);
 }
 
