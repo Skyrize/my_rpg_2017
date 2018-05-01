@@ -32,6 +32,7 @@ static void particle_sys_init(particle_sys_t *sys)
 	sys->condition = default_particle_cond;
 	sys->force = V2F(1, 0);
 	sys->gravity = false;
+	sys->activated = true;
 	add_sys_to_list(sys);
 }
 
@@ -69,7 +70,7 @@ void display_particles(window_t *window, game_t *game)
 	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!init) {
-		init_rain(game);
+		init_rain(game, window);
 		init = true;
 	}
 	if (!particle_sys_list)
@@ -78,7 +79,7 @@ void display_particles(window_t *window, game_t *game)
 	for (; act_node; act_node = act_node->next) {
 		act_sys = act_node->value;
 		init_particle_position(act_sys);
-		update_particle_sys(act_sys);
+		update_particle_sys(act_sys, game);
 		display_particle_sys(window, act_sys);
 	}
 }

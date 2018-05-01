@@ -42,3 +42,13 @@ void init_particle_position(particle_sys_t *sys)
 	}
 	sys->spawned_particles_nbr = max_i;
 }
+
+int init_particles(game_t *game)
+{
+	game->particles = malloc(sizeof(particles_t));
+
+	if (!game->particles)
+		return (1);
+	game->particles->rain = NULL;
+	return (0);
+}

@@ -413,16 +413,19 @@ particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
 				    int particle_nbr, game_t *game);
 sfVector2f get_particles_spawn_pos(particle_sys_t *sys);
 void init_particle_position(particle_sys_t *sys);
-bool default_particle_cond(sfSprite *sprite);
+bool default_particle_cond(sfSprite *sprite, game_t *game);
 void display_particle_sys(window_t *window, particle_sys_t *sys);
-void update_particle_sys(particle_sys_t *sys);
+void update_particle_sys(particle_sys_t *sys, game_t *game);
 void display_particles(window_t *window, game_t *game);
 void free_particle_sys(particle_sys_t *sys);
 void remove_particle_sys_by_id(int id);
 void remove_particle_sys(particle_sys_t *sys);
-void init_rain(game_t *game);
+particle_sys_t *init_rain(game_t *game);
 void remove_end(node_t *last_node, node_t *act_node,
 		llist_t *particle_sys_list);
+void update_feet_particles(game_t *game);
+void rain(game_t *game, window_t *window);
+int init_particles(game_t *game);
 
 /////////////////////////// END
 

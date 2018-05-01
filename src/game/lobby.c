@@ -77,6 +77,7 @@ int game_events(window_t *window, game_t *game)
 
 int game_lobby(window_t *window, game_t *game)
 {
+	rain(game, window);
 	if (game_events(window, game)
 	|| manage_life(game) != 0
 	|| change_area_hud(game) != 0
