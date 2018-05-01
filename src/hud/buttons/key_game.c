@@ -10,17 +10,15 @@
 void replace_key(int choice, game_t *game)
 {
 	if (choice == 0) {
-		KEY_PLAYER.up = (sfKeyCode *)sfKeyZ;
-		KEY_PLAYER.down = (sfKeyCode *)sfKeyS;
-		KEY_PLAYER.left = (sfKeyCode *)sfKeyQ;
-		KEY_PLAYER.right = (sfKeyCode *)sfKeyD;
-		KEY_PLAYER.up_1 = (sfKeyCode *)sfKeyUp;
+		KEY_PLAYER.up = sfKeyZ;
+		KEY_PLAYER.down = sfKeyS;
+		KEY_PLAYER.left = sfKeyQ;
+		KEY_PLAYER.right = sfKeyD;
 	} else {
-		KEY_PLAYER.up = (sfKeyCode *)sfKeyW;
-		KEY_PLAYER.down = (sfKeyCode *)sfKeyS;
-		KEY_PLAYER.left = (sfKeyCode *)sfKeyA;
-		KEY_PLAYER.right = (sfKeyCode *)sfKeyD;
-		KEY_PLAYER.up_1 = (sfKeyCode *)sfKeyUp;
+		KEY_PLAYER.up = sfKeyW;
+		KEY_PLAYER.down = sfKeyS;
+		KEY_PLAYER.left = sfKeyA;
+		KEY_PLAYER.right = sfKeyD;
 	}
 }
 

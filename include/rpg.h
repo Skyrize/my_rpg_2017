@@ -266,6 +266,7 @@ typedef struct stat_s
 	int health;
 	int max_health;
 	int armor;
+	int level;
 	char *speciality_name;
 	int speciality;
 } stat_t;
@@ -288,14 +289,14 @@ typedef enum direction_e {
 
 typedef struct key_control_s
 {
-	sfKeyCode *up;
-	sfKeyCode *down;
-	sfKeyCode *right;
-	sfKeyCode *left;
-	sfKeyCode *up_1;
-	sfKeyCode *down_1;
-	sfKeyCode *right_1;
-	sfKeyCode *left_1;
+	sfKeyCode up;
+	sfKeyCode down;
+	sfKeyCode right;
+	sfKeyCode left;
+	sfKeyCode arrow_up;
+	sfKeyCode arrow_down;
+	sfKeyCode arrow_right;
+	sfKeyCode arrow_left;
 	int move;
 } key_control_t;
 

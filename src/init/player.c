@@ -41,6 +41,7 @@ int select_varyan(window_t *window, game_t *game)
 	PLAYER_HEALTH = 100;
 	PLAYER_MAX_HP = 100;
 	PLAYER_ARMOR = 50;
+	PLAYER_LEVEL = 1;
 	PLAYER_SPECIALITY_NAME = "Strenght";
 	PLAYER_SPECIALITY = 50;
 	if (add_new_to_slot("COMMON_SWORD_00", &WEAPON_POS, &WEAPON, game) != 0)
@@ -63,6 +64,7 @@ int select_jaina(window_t *window, game_t *game)
 	PLAYER_HEALTH = 100;
 	PLAYER_MAX_HP = 100;
 	PLAYER_ARMOR = 50;
+	PLAYER_LEVEL = 1;
 	PLAYER_SPECIALITY_NAME = "Wisdom";
 	PLAYER_SPECIALITY = 50;
 	if (add_new_to_slot("COMMON_WAND_00", &WEAPON_POS, &WEAPON, game) != 0)
@@ -85,6 +87,7 @@ int select_avelus(window_t *window, game_t *game)
 	PLAYER_HEALTH = 100;
 	PLAYER_MAX_HP = 100;
 	PLAYER_ARMOR = 50;
+	PLAYER_LEVEL = 1;
 	PLAYER_SPECIALITY_NAME = "Agility";
 	PLAYER_SPECIALITY = 50;
 	if (add_new_to_slot("COMMON_BOW_00", &WEAPON_POS, &WEAPON, game) != 0)
@@ -101,6 +104,7 @@ void init_player(game_t *game)
 	PLAYER_HEALTH = 0;
 	PLAYER_MAX_HP = 0;
 	PLAYER_ARMOR = 0;
+	PLAYER_LEVEL = 0;
 	PLAYER_SPECIALITY = 0;
 	PLAYER_SPECIALITY_NAME = NULL;
 }
