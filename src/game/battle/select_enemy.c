@@ -16,7 +16,7 @@ int first_enemy_available(game_t *game)
 	return (2);
 }
 
-void change_selected_enemy(game_t *game, int offset)
+int change_selected_enemy(game_t *game, int offset)
 {
 	int selected = game->battle.selected_enemy;
 	int to_select = selected + offset;
@@ -28,10 +28,11 @@ void change_selected_enemy(game_t *game, int offset)
 			to_select = 2;
 		if (game->battle.enemy[to_select].rec) {
 			game->battle.selected_enemy = to_select;
-			return;
+			return (0);
 		}
 		to_select += offset;
 	}
+	return (1);
 }
 
 void change_arrow_position(game_t *game)
@@ -56,7 +57,11 @@ void select_ennemy(window_t *window, game_t *game)
 			change_arrow_position(game);
 		}
 		if (sfKeyboard_isKeyPressed(sfKeyReturn)) {
-			player_attack(game);
+			player_attack(window, game);
+			// !SPECIAL_HIT ? game->battle.enemy_turn = 1,
+			// enemy_turn(window, game) : 0;
+			//!SPECIAL_HIT ? enemy_turn(window, game) : 0;
+			//enemy_turn(window, game);
 		}
 	}
 }

@@ -287,6 +287,10 @@ typedef struct enemy_s {
 } enemy_t;
 
 typedef struct battle_s {
+	bool special_hit;
+	bool last_enemy_turn;
+	bool enemy_turn;
+	bool player_turn;
 	int selected_enemy;
 	enemy_t enemy[3];
 } battle_t;
@@ -349,5 +353,6 @@ typedef struct window_s
 #include "rpginit.h"
 #include "rpgdef.h"
 #include "rpgfunc.h"
+#include "math.h"
 
 #endif /* RPG_H_ */

@@ -85,8 +85,20 @@
 #define PLAYER_MAX_HP PLAYER_STATS.max_health
 #define PLAYER_ARMOR PLAYER_STATS.armor
 #define PLAYER_SPECIALITY PLAYER_STATS.speciality
+#define PLAYER_DAMAGES PLAYER_STATS.damages
 #define PLAYER_XP PLAYER_STATS.xp
 #define PLAYER_SPECIALITY_NAME PLAYER_STATS.speciality_name
+
+////////////////////////////////// BATTLE //////////////////////////////
+
+#define SELECTED_ENEMY game->battle.enemy[game->battle.selected_enemy]
+#define ENEMY_ARMOR game->battle.enemy[game->battle.selected_enemy].armor
+#define ENEMY_DAMAGES game->battle.enemy[game->battle.selected_enemy].damages
+#define ENEMY_HEALTH game->battle.enemy[game->battle.selected_enemy].health
+
+#define SPECIAL_HIT game->battle.special_hit
+#define ENEMY_TURN game->battle.enemy_turn
+#define PLAYER_TURN game->battle.player_turn
 
 ////////////////////////////////// USED //////////////////////////////
 

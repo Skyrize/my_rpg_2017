@@ -376,11 +376,16 @@ int update_element_in_battle(game_t *game);
 int display_characters(window_t *window, game_t *game);
 int manage_life_in_battle(game_t *game);
 int attack(window_t *window, game_t *game);
-void change_selected_enemy(game_t *game, int offset);
+int change_selected_enemy(game_t *game, int offset);
 void select_ennemy(window_t *window, game_t *game);
 int first_enemy_available(game_t *game);
 void change_arrow_position(game_t *game);
-int player_attack(game_t *game);
+int player_attack(window_t *window, game_t *game);
+int enemy_attack(window_t *window, game_t *game);
+int display_special_hit_player(window_t *window, game_t *game, char *scene);
+int display_special_hit_enemy(window_t *window, game_t *game, char *scene);
+int wait_for_enemy_attack(window_t *window, game_t *game, bool wait);
+int enemy_turn(window_t *window, game_t *game);
 
 /////////////////////////////////// INVENTORY
 

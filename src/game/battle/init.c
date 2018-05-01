@@ -44,16 +44,17 @@ void init_character(game_t *game)
 int init_battle(game_t *game)
 {
 	scene_t *battle_scene = hm_get(SCENES, "BATTLE");
-	bucket_t *battle_buttons = hm_get_bucket(SCENES,
-							"BATTLE_BASIC_BUTTONS");
 
-	if (!game || !battle_scene || !battle_buttons)
+	if (!game || !battle_scene)
 		return (84);
 	clean_displayed_scenes_and_add_back(game, "BATTLE");
-	add_scene_to_display_list(battle_buttons, game);
 	CURRENT_SCENE = hm_get_bucket(SCENES, "BATTLE");
 	init_enemies(game);
 	init_character(game);
 	update_element_in_battle(game);
+	game->battle.special_hit = 0;
+	game->battle.last_enemy_turn = 0;
+	ENEMY_TURN = 0;
+	PLAYER_TURN = 1;
 	return (0);
 }
