@@ -8,6 +8,7 @@
 #ifndef RPG_H_
 #define RPG_H_
 #include "hashify.h"
+#include "llist.h"
 
 ///////////////////////////////// INIT DEFINES //////////////////////////////
 
@@ -361,6 +362,21 @@ typedef struct window_s
 	sfRenderWindow *window;
 	ctime_t clocker;
 } window_t;
+
+typedef struct particle_sys_s
+{
+	char *sys_name;
+	sfIntRect spawn_zone;
+	int particle_nbr;
+	sfVector2f force;
+	bool gravity;
+	sfTexture *texture;
+	bool (*condition)(sfSprite *);
+	sfSprite **sprite_arr;
+	int spawn_density;
+	int spawned_particles_nbr;
+	int sys_id;
+} particle_sys_t;
 
 #include "rpginit.h"
 #include "rpgdef.h"
