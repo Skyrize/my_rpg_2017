@@ -36,7 +36,8 @@ static const button_t g_tab[] =
 	{(char *[]){"KEY_WASD", NULL}, key_english},
 	{(char *[]){"YES", NULL}, yes_save},
 	{(char *[]){"NO", NULL}, no_save},
-	{(char *[]){"ATTACK", NULL}, exit_game},
+	{(char *[]){"SPELLS", "ITEMS", "RUN_AWAY", NULL}, exit_game},
+	{(char *[]){"ATTACK", NULL}, attack},
 	{NULL, NULL}
 };
 

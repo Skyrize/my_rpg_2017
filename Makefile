@@ -53,10 +53,19 @@ SRC	=	src/main.c						\
 		src/game/display/texts.c		\
 		src/game/display/mouse.c		\
 		src/game/display/animate.c			\
+		src/game/battle/init.c					\
+		src/game/battle/update_battle_hud.c			\
+		src/game/battle/display.c				\
+		src/game/battle/attack.c				\
+		src/game/battle/select_enemy.c				\
+		src/game/battle/end_screen.c				\
 		src/game/battle/lobby.c \
 		src/game/battle/manage/hit.c \
 		src/game/battle/manage/notif_right.c \
 		src/game/battle/manage/notif_left.c \
+		src/game/battle/manage/special_hit.c			\
+		src/game/battle/manage/wait_enemy.c			\
+		src/game/battle/battle_utils.c				\
 		src/game/mouse/replace.c \
 		src/hud/buttons/area.c				\
 		src/hud/buttons/control_key.c 				\
@@ -66,7 +75,7 @@ SRC	=	src/main.c						\
 		src/hud/buttons/inventory.c 				\
 		src/hud/buttons/key_game.c 				\
 		src/hud/buttons/load.c 					\
-		src/hud/buttons/main_menu.c 			\
+		src/hud/buttons/main_menu.c 				\
 		src/hud/buttons/map.c 					\
 		src/hud/buttons/new_game.c 				\
 		src/hud/buttons/option.c 				\
@@ -121,9 +130,13 @@ NAME	=	my_rpg
 NAME2	=	unit-tests
 
 CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lcsfml-graphics \
+<<<<<<< HEAD
 -lcsfml-audio -lcsfml-system -lcsfml-window
+=======
+		-lcsfml-audio -lcsfml-system -lcsfml-window
+>>>>>>> lucas_dev
 
-LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy
+LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy -lm
 
 CC	=	gcc
 

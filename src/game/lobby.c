@@ -30,6 +30,8 @@ void on_key_pressed(game_t *game, sfEvent *event)
 		PLAYER_HEALTH += 1;
 	else if (event->key.code == sfKeyM)
 		PLAYER_HEALTH -= 1;
+	if (event->key.code == sfKeyB)
+		init_battle(game);
 }
 
 int press_action_key(game_t *game)
@@ -45,7 +47,8 @@ int press_action_key(game_t *game)
 		} else {
 			music = sfTrue;
 		}
-		if (button_display_hide_scene("DIALOGUE_HUD", NULL, game) == 84)
+		if (button_display_hide_scene("DIALOGUE_HUD", NULL,
+		game, NULL) == 84)
 			return (84);
 		pass = sfFalse;
 	} else {
@@ -82,7 +85,7 @@ int game_lobby(window_t *window, game_t *game)
 	|| manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0
-	    || (display_particles(window, game), false)
+	|| (display_particles(window, game), false)
 	|| manage_hud_opacity(game) != 0)
 		return (84);
 	smooth_move_player(game);

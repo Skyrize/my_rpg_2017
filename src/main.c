@@ -57,11 +57,12 @@ int game_loop(window_t *window, game_t *game)
 	return (0);
 }
 
-int main()
+int main(void)
 {
 	window_t window;
 	game_t game;
 
+	srand(time(NULL));
 	if (init(&window, &game) != 0)
 		return (84);
 	if (start_game(&window, &game) != 0)

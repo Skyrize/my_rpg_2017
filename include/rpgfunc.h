@@ -252,7 +252,7 @@ void clean_displayed_scene_name(game_t *game, char *name_scenes);
 
 int manage_buttons(managed_scene_t *scene, window_t *window, game_t *game);
 int button_display_hide_scene(char *scene_name, void (*update)(),
-				game_t *game);
+				game_t *game, char *old_scene);
 int update_button(char *seek, char *replacement, scene_t *scene,
 				game_t *game);
 
@@ -300,7 +300,7 @@ int set_hud_opacity(bucket_t *bucket, game_t *game);
 int manage_hud_opacity(game_t *game);
 int manage_life(game_t *game);
 int change_area_hud(game_t *game);
-int manage_hit_enemy(game_t *game);
+int manage_hit_enemy(game_t *game, int enemy, int damages);
 int manage_notif_right(game_t *game, char *);
 int manage_notif_left(game_t *game, char *);
 void move_and_update(sfRectangleShape *notif, sfText *notif_text,
@@ -383,6 +383,29 @@ void set_waiting_player_rect(game_t *game);
 bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
+
+/////////////////////////// BATTLE
+
+char *found_icon(game_t *game);
+int init_battle(game_t *game);
+int update_element_in_battle(game_t *game);
+int display_characters(window_t *window, game_t *game);
+int manage_life_in_battle(game_t *game);
+int attack(window_t *window, game_t *game);
+int change_selected_enemy(game_t *game, int offset);
+void select_ennemy(window_t *window, game_t *game);
+int first_enemy_available(game_t *game);
+void change_arrow_position(game_t *game);
+int player_attack(window_t *window, game_t *game);
+int enemy_attack(window_t *window, game_t *game);
+int display_special_hit_player(window_t *window, game_t *game, char *scene);
+int display_special_hit_enemy(window_t *window, game_t *game, char *scene);
+int wait_for_enemy_attack(window_t *window, game_t *game, bool wait);
+int enemy_turn(window_t *window, game_t *game);
+int check_last_enemy(game_t *game, int i);
+int first_enemy_available(game_t *game);
+int reset_enemy_turn(window_t *window, game_t *game);
+int reset_player_turn(window_t *window, game_t *game);
 
 /////////////////////////////////// INVENTORY
 

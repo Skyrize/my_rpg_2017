@@ -284,6 +284,15 @@ typedef struct enemy_data_s
 	item_stat_t stats;
 } enemy_data_t;
 
+typedef struct battle_s {
+	bool special_hit;
+	bool last_enemy_turn;
+	bool enemy_turn;
+	bool player_turn;
+	int selected_enemy;
+	enemy_t *enemy[3];
+} battle_t;
+
 /////////////////////////////////// PLAYER ////////////////////////////////
 
 typedef struct stat_s
@@ -291,6 +300,9 @@ typedef struct stat_s
 	int health;
 	int max_health;
 	int armor;
+	int damages;
+	int xp;
+	int xp_max;
 	int level;
 	char *speciality_name;
 	int speciality;
@@ -365,6 +377,7 @@ typedef struct game_s
 	tool_t tools;
 	lib_t libraries;
 	player_t player;
+	battle_t battle;
 	movement_t movement;
 	inventory_t inventory;
 	key_control_t key_player;
@@ -405,5 +418,6 @@ typedef struct particles_s
 #include "rpginit.h"
 #include "rpgdef.h"
 #include "rpgfunc.h"
+#include "math.h"
 
 #endif /* RPG_H_ */

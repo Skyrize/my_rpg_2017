@@ -10,15 +10,19 @@
 
 int display_item_stats(slot_t *slot, game_t *game)
 {
+	static char *old_scene = NULL;
 	scene_t *stats_scene = hm_get(game->scenes, STATS_GAME);
 	obj_t *ico_item = hm_get(stats_scene->objs, "ITEM_ICO");
 
 	if (!slot|| !game || !slot->item || !slot->item->name)
 		return (84);
-	if (get_scene_from_displayed(STATS_GAME, game) == NULL)
+	if (get_scene_from_displayed(STATS_GAME, game) == NULL) {
+		if (my_strcmp(CURRENT_BUCKET->key, "STATS"))
+			old_scene = CURRENT_BUCKET->key;
 		if (button_display_hide_scene(STATS_GAME,
-		&update_stats, game) == 84)
+		&update_stats, game, old_scene) == 84)
 			return (84);
+	}
 	if (update_item_info(slot, game) != 0)
 		return (84);
 	sfRectangleShape_setTexture(ico_item->obj,
