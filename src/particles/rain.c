@@ -14,5 +14,5 @@ void init_rain(game_t *game)
 	particle_sys_t *sys = create_particle_sys(spawn,
 		"RAIN_DROP", 700, game);
 	sys->spawn_density = 2;
-	sys->force = V2F(0, 2);
+	sys->force = V2F(0, 4);
 }

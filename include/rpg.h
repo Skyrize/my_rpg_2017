@@ -371,11 +371,12 @@ typedef struct particle_sys_s
 	sfVector2f force;
 	bool gravity;
 	sfTexture *texture;
-	bool (*condition)(sfSprite *);
+	bool (*condition)(sfSprite *, game_t *);
 	sfSprite **sprite_arr;
 	int spawn_density;
 	int spawned_particles_nbr;
 	int sys_id;
+	bool activated;
 } particle_sys_t;
 
 #include "rpginit.h"
