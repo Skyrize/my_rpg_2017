@@ -77,6 +77,7 @@ int anim_player(game_t *game)
 			return (84);
 	}
 	if (sfClock_getElapsedTime(clocker).microseconds > 100000) {
+		make_sound("FOOTSTEP_SOUND", game);
 		sfClock_restart(clocker);
 		set_next_rect(game);
 	}
