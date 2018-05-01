@@ -10,6 +10,7 @@
 
 bool default_particle_cond(sfSprite *sprite, game_t *game)
 {
+	(void) game;
 	if (sfSprite_getPosition(sprite).y > 600)
 		return (true);
 	return (false);
