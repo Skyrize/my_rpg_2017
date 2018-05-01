@@ -99,6 +99,10 @@ SRC	=	src/main.c						\
 		src/warnings/ingame.c			\
 		src/inventory/update_item_stats.c			\
 		src/inventory/update_info_item.c			\
+		src/particles/particle_spawn.c	\
+		src/particles/particle_sys.c	\
+		src/particles/particles_create.c	\
+		src/particles/rain.c
 
 OBJS	=	$(SRC:.c=.o)
 

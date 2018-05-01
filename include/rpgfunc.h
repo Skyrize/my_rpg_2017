@@ -396,6 +396,14 @@ int display_mouse(game_t *game, window_t *window);
 
 particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
 				    int particle_nbr, game_t *game);
+sfVector2f get_particles_spawn_pos(particle_sys_t *sys);
+void init_particle_position(particle_sys_t *sys);
+bool default_particle_cond(sfSprite *sprite);
+void display_particle_sys(window_t *window, particle_sys_t *sys);
+void update_particle_sys(particle_sys_t *sys);
+void display_particles(window_t *window, game_t *game);
+
+void init_rain(game_t *game);
 
 /////////////////////////// END
 
