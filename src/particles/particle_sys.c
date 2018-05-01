@@ -28,6 +28,10 @@ static void particle_sys_init(particle_sys_t *sys)
 	id++;
 	sys->spawn_density = 3;
 	sys->spawned_particles_nbr = 0;
+	sys->sprite_arr[sys->particle_nbr] = NULL;
+	sys->condition = default_particle_cond;
+	sys->force = V2F(1, 0);
+	sys->gravity = false;
 	add_sys_to_list(sys);
 }
 
@@ -43,14 +47,14 @@ particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
 	ret->spawn_zone = spawn;
 	ret->particle_nbr = particle_nbr;
 	ret->sprite_arr = malloc(sizeof(sfSprite *) * particle_nbr + 1);
+	if (!ret->sprite_arr)
+		return (NULL);
 	for (int i = 0; i < ret->particle_nbr; i++) {
 		ret->sprite_arr[i] = sfSprite_create();
+		if (!ret->sprite_arr[i])
+			return (NULL);
 		sfSprite_setTexture(ret->sprite_arr[i], ret->texture, sfFalse);
 	}
-	ret->sprite_arr[particle_nbr] = NULL;
-	ret->condition = default_particle_cond;
-	ret->force = V2F(1, 0);
-	ret->gravity = false;
 	ret->sys_name = tex_name;
 	particle_sys_init(ret);
 	return (ret);
@@ -89,8 +93,6 @@ void remove_particle_sys_by_id(int id)
 	if (!particle_sys_list)
 		return;
 	act_node = particle_sys_list->first;
-	if (!act_node)
-		return;
 	for (; act_node; act_node = act_node->next) {
 		act_sys = act_node->value;
 		if(act_sys->sys_id == id)
@@ -100,9 +102,5 @@ void remove_particle_sys_by_id(int id)
 	}
 	if (!act_node)
 		return;
-	if (last_node)
-		last_node->next = act_node->next;
-	else
-		particle_sys_list->first = act_node->next;
-	free_particle_sys(act_node->value);
+	remove_end(last_node, act_node, particle_sys_list);
 }
