@@ -20,3 +20,13 @@ void remove_particle_sys(particle_sys_t *sys)
 {
 	remove_particle_sys_by_id(sys->sys_id);
 }
+
+void remove_end(node_t *last_node, node_t *act_node,
+		llist_t *particle_sys_list)
+{
+	if (last_node)
+		last_node->next = act_node->next;
+	else
+		particle_sys_list->first = act_node->next;
+	free_particle_sys(act_node->value);
+}
