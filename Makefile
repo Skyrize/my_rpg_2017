@@ -130,11 +130,7 @@ NAME	=	my_rpg
 NAME2	=	unit-tests
 
 CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -lcsfml-graphics \
-<<<<<<< HEAD
--lcsfml-audio -lcsfml-system -lcsfml-window
-=======
 		-lcsfml-audio -lcsfml-system -lcsfml-window
->>>>>>> lucas_dev
 
 LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy -lm
 
