@@ -36,6 +36,7 @@
                 "/usr/include",
                 "${workspaceRoot}",
                 "${workspaceRoot}/include",
+                "/home/baudonnel/depository/graphical/my_rpg_2017/include",
                 "${workspaceRoot}/bonus/map_creator/include"
             ],
             "defines": [],
@@ -55,7 +56,11 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
             },
+<<<<<<< HEAD
             "compilerPath": "/usr/bin/clang",
+=======
+            "compilerPath": "/usr/bin/gcc",
+>>>>>>> 5bf6d455bd03afcd376a110561a33eb6f25fba22
             "cStandard": "c11",
             "cppStandard": "c++17"
         },

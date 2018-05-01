@@ -21,17 +21,17 @@ sfRenderWindow *my_window_create()
 	return (window);
 }
 
-void main_loop(ressources_t *rsces, texture_list_t *list, sfVector2i area)
+void main_loop(ressources_t *rsces, texture_list_t *list)
 {
 	sfEvent event;
+	sfClock *my_clock = sfClock_create();
 
-	(void) area;
 	while (sfRenderWindow_isOpen(rsces->window)) {
-		while (sfRenderWindow_pollEvent(rsces->window, &event))
-			on_event(rsces, list, event);
 		sfRenderWindow_clear(rsces->window, sfWhite);
 		display_map(rsces->rsces);
 		draw_texture_list(list, rsces->window);
+		while (sfRenderWindow_pollEvent(rsces->window, &event))
+			on_event(rsces, list, event, my_clock);
 		sfRenderWindow_display(rsces->window);
 	}
 }
@@ -44,7 +44,8 @@ int main(int ac, char **av)
 	v2i area;
 
 	rsces.window = my_window_create();
-	window = init_my_ressource_window(rsces.window);
+	rsces.mode = 0;
+	window = init_ressource_window(rsces.window);
 	list = read_hashmap_texture(window.textures_lib);
 	if (ac != 4)
 		return (84);
@@ -53,9 +54,8 @@ int main(int ac, char **av)
 		return (84);
 	}
 	load_my_zone(&window);
-	area.x = my_getnbr(av[2]);
-	area.y = my_getnbr(av[3]);
+	window.map.area_coord = V2I(my_getnbr(av[2]), my_getnbr(av[3]));
 	rsces.rsces = &window;
-	main_loop(&rsces, list, area);
+	main_loop(&rsces, list);
 	return (0);
 }

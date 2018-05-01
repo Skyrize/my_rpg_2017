@@ -28,10 +28,15 @@ SRC	=	src/init/file_analysing.c			\
 		src/map_creator/seek_zone.c			\
 		src/map_creator/draw_list.c			\
 		src/map_creator/display_map.c			\
+		src/map_creator/button_clicked.c		\
 		src/map_creator/move_rect.c			\
+		src/map_creator/tile_block.c			\
 		src/map_creator/left_event.c			\
+		src/map_creator/right_event.c			\
 		src/map_creator/add_texture.c			\
 		src/map_creator/read_hashmap.c			\
+		src/map_creator/write_area.c			\
+		src/map_creator/save_map.c			\
 		src/list_management/objs_list_create.c		\
 		src/list_management/objs_list_add.c		\
 		src/list_management/objs_list_remove.c		\

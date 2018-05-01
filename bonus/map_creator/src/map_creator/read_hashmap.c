@@ -34,7 +34,7 @@ texture_list_t *read_hashmap_texture(hashmap_t *textures)
 	texture_list_t *list = malloc(sizeof(*list));
 	bucket_t *tmp;
 
-	list->sprite = NULL;
+	list->rec = NULL;
 	for (int i = 0; i != textures->size; i++) {
 		tmp = textures->data[i];
 		while (tmp) {

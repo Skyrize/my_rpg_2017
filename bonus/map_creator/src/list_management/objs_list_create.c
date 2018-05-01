@@ -19,11 +19,11 @@ void create_obj_rect(obj_t *new_obj, texture_t *texture)
 
 obj_t *create_obj(obj_data_t *data, my_w_t *window)
 {
-	texture_t *texture = hm_get(window->textures_lib, data->type);
+	texture_t *texture = hm_get(window->textures_lib, data->texture);
 	obj_t *new_obj = malloc(sizeof(obj_t));
 	sfVector2f rec_size;
 
-	if (check_unexisting_texture(texture, data->type) != 0
+	if (check_unexisting_texture(texture, data->texture) != 0
 	|| new_obj == NULL)
 		return (NULL);
 	new_obj->priority = texture->priority;
@@ -64,6 +64,7 @@ tile_list_t *create_a_tile(char *texture_name, my_w_t *window)
 			TILE_COOR_Y * WINDOW_PIXELS_UNIT}}, window);
 	if (!new_tile->tile)
 		return (NULL);
+	new_tile->tile->name = my_strdup(texture_name);
 	new_tile->next = NULL;
 	return (new_tile);
 }

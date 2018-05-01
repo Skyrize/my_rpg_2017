@@ -10,8 +10,7 @@
 void draw_texture_list(texture_list_t *list, sfRenderWindow *window)
 {
 	while (list) {
-		//my_printf("pos = %d  %d\n", (int)list->pos.x, (int)list->pos.y);
-		sfRenderWindow_drawSprite(window, list->sprite, NULL);
+		sfRenderWindow_drawRectangleShape(window, list->rec, NULL);
 		list = list->next;
 	}
 }

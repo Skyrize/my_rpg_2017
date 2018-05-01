@@ -7,19 +7,33 @@
 
 #include "map_editor.h"
 
-void right_click_event(ressources_t *rsces, texture_list_t *list)
+int check_timer(sfClock *my_clock)
 {
-	return;
+	static sfTime timer;
+	static float counter;
+
+	timer = sfClock_getElapsedTime(my_clock);
+	counter = timer.microseconds / 1000000.;
+	if (counter > 0.4) {
+		sfClock_restart(my_clock);
+		return (1);
+	}
+	return (0);
 }
 
-void on_event(ressources_t *rsces, texture_list_t *list, sfEvent event)
+void on_event(ressources_t *rsces, texture_list_t *list, sfEvent event,
+							sfClock *my_clock)
 {
-	if (event.type == sfEvtClosed)
+	if (event.type == sfEvtClosed) {
+		save_map(rsces->rsces);
 		sfRenderWindow_close(rsces->window);
-	if (event.type == sfEvtMouseButtonPressed) {
-		if (event.mouseButton.button == sfMouseLeft)
-			left_click_event(rsces, list);
-		else if (event.mouseButton.button == sfMouseRight)
-			right_click_event(rsces, list);
 	}
+	if (sfMouse_isButtonPressed(sfMouseLeft) && check_timer(my_clock))
+		left_click_event(rsces, list);
+	else if (sfMouse_isButtonPressed(sfMouseRight) && check_timer(my_clock))
+		right_click_event(rsces, list);
+	if (sfKeyboard_isKeyPressed(sfKeyB))
+		rsces->mode = 1;
+	else if (sfKeyboard_isKeyPressed(sfKeyE))
+		rsces->mode = 0;
 }

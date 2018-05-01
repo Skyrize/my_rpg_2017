@@ -64,7 +64,7 @@
 #define QUIT_GAME "QUIT"
 #define QUETES_GAME "QUETE"
 #define PAUSE_GAME "PAUSE"
-#define CARAC_GAME "CARACTERISTIC"
+#define CARAC_GAME "STATS"
 #define EXIT_GAME "EXIT"
 #define INVENTORY_GAME "INVENTORY"
 #define LOAD_GAME "LOAD"
@@ -89,6 +89,7 @@ typedef struct rect_s
 
 typedef struct obj_s
 {
+	char *name;
 	int priority;
 	int (*callback)();
 	sfRectangleShape *obj;
@@ -272,7 +273,7 @@ typedef struct obj_infos_s
 typedef struct obj_data_s
 {
 	char *name;
-	char *type;
+	char *texture;
 	sfBool button;
 	sfVector2f position;
 } obj_data_t;
@@ -324,15 +325,15 @@ typedef struct myfunc_s {
 
 //// INIT FUNCTIONS
 
-my_w_t init_my_window(void);
-int init_my_scenes(my_w_t *window);
-int init_my_audio_lib(my_w_t *window);
-int init_my_textures_lib(my_w_t *window);
-int init_my_fonts_lib(my_w_t *window);
-int init_my_map(my_w_t *window);
-int init_my_zone(my_w_t *window);
+my_w_t init_window(void);
+int init_scenes(my_w_t *window);
+int init_audio_lib(my_w_t *window);
+int init_textures_lib(my_w_t *window);
+int init_fonts_lib(my_w_t *window);
+int init_map(my_w_t *window);
+int init_zone(my_w_t *window);
 int init_scene_lists(char **infos, my_w_t *window);
-int init_my_buttons(my_w_t *window);
+int init_buttons(my_w_t *window);
 int init_a_text(char **infos, my_w_t *window, hashmap_t *current_list);
 int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
 

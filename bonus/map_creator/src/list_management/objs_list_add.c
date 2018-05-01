@@ -71,8 +71,7 @@ int add_tile_to_list(char *texture, my_w_t *window)
 		TILE_LIST = display;
 		return (0);
 	}
-	while (tmp->next
-		&& display->tile->priority > tmp->next->tile->priority)
+	while (tmp->next && display->tile->priority > tmp->next->tile->priority)
 		tmp = tmp->next;
 	display->next = tmp->next;
 	tmp->next = display;

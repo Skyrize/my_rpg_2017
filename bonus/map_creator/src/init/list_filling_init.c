@@ -12,7 +12,7 @@ obj_data_t get_obj_data_from_infos(obj_infos_t *obj)
 	obj_data_t data;
 
 	data.name = obj->name[1];
-	data.type = obj->type[1];
+	data.texture = obj->type[1];
 	data.button = my_getnbr(obj->button[1]);
 	data.position.x = (float)my_getnbr(obj->x[1]);
 	data.position.y = (float)my_getnbr(obj->y[1]);
@@ -32,11 +32,11 @@ int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list)
 	data = get_obj_data_from_infos(&obj);
 	if (add_obj_to_list(&data, current_list, window) != 0)
 		return (84);
-	free_char_2d(obj.name);
-	free_char_2d(obj.type);
-	free_char_2d(obj.button);
-	free_char_2d(obj.x);
-	free_char_2d(obj.y);
+	my_destroy_tab(obj.name);
+	my_destroy_tab(obj.type);
+	my_destroy_tab(obj.button);
+	my_destroy_tab(obj.x);
+	my_destroy_tab(obj.y);
 	return (0);
 }
 
@@ -46,7 +46,7 @@ text_data_t get_text_data_from_infos(text_infos_t *text, my_w_t *window)
 
 	data.name = text->name[1];
 	data.text = text->text[1];
-	replace_char(data.text, TEXT_SEPARATOR_CHAR, ' ');
+	my_replace_char(data.text, TEXT_SEPARATOR_CHAR, ' ');
 	data.font = hm_get(window->fonts_lib, text->font[1]);
 	data.charac_size = my_getnbr(text->charac_size[1]);
 	data.position.x = (float)my_getnbr(text->x[1]);

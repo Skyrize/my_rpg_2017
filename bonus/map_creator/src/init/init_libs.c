@@ -7,7 +7,7 @@
 
 #include "map_editor.h"
 
-int init_my_textures_lib(my_w_t *window)
+int init_textures_lib(my_w_t *window)
 {
 	const key_word_t texture_keys[] = {
 	{"TEXTURE", 0, &get_a_texture, NULL},

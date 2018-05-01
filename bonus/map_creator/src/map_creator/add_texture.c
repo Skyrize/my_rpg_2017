@@ -10,11 +10,14 @@
 void assign_texture_to_elem(texture_list_t *list, sfTexture *texture,
 							v2f pos, char *name)
 {
+	sfVector2u size = sfTexture_getSize(texture);
+
 	list->texture = texture;
-	list->sprite = sfSprite_create();
-	sfSprite_setTexture(list->sprite, texture, sfTrue);
-	sfSprite_setTextureRect(list->sprite, (sfIntRect){0, 0, 50, 50});
-	sfSprite_setPosition(list->sprite, pos);
+	list->rec = sfRectangleShape_create();
+	sfRectangleShape_setTexture(list->rec, texture, sfTrue);
+	sfRectangleShape_setSize(list->rec, (sfVector2f){size.x, size.y});
+	sfRectangleShape_setTextureRect(list->rec, (sfIntRect){0, 0, 50, 50});
+	sfRectangleShape_setPosition(list->rec, pos);
 	list->pos = pos;
 	list->name = name;
 	list->next = NULL;
@@ -26,7 +29,7 @@ void add_texture_to_list(texture_list_t *list, texture_t *texture)
 	static int b = 0;
 	texture_list_t *new_elem;
 
-	if (!list->sprite) {
+	if (!list->rec) {
 		assign_texture_to_elem(list, texture->texture,
 					V2F(810 + a, 10 + b), texture->name);
 		a += 104;
@@ -47,10 +50,13 @@ void add_texture_to_list(texture_list_t *list, texture_t *texture)
 void assign_big_texture_to_elem(texture_list_t *list, sfTexture *texture,
 							v2f pos, char *name)
 {
+	sfVector2u size = sfTexture_getSize(texture);
+
 	list->texture = texture;
-	list->sprite = sfSprite_create();
-	sfSprite_setTexture(list->sprite, texture, sfTrue);
-	sfSprite_setPosition(list->sprite, pos);
+	list->rec = sfRectangleShape_create();
+	sfRectangleShape_setTexture(list->rec, texture, sfTrue);
+	sfRectangleShape_setSize(list->rec, (sfVector2f){size.x, size.y});
+	sfRectangleShape_setPosition(list->rec, pos);
 	list->pos = pos;
 	list->name = name;
 	list->next = NULL;
@@ -62,7 +68,7 @@ void add_big_texture_to_list(texture_list_t *list, texture_t *texture)
 	static int b = 0;
 	texture_list_t *new_elem;
 
-	if (!list->sprite) {
+	if (!list->rec) {
 		assign_big_texture_to_elem(list, texture->texture,
 					V2F(10 + a, 650 + b), texture->name);
 		a += 208;
