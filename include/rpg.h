@@ -8,6 +8,7 @@
 #ifndef RPG_H_
 #define RPG_H_
 #include "hashify.h"
+#include "llist.h"
 
 ///////////////////////////////// INIT DEFINES //////////////////////////////
 
@@ -126,6 +127,20 @@ typedef struct texture_s
 } texture_t, texture_data_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////
+
+typedef struct vector_pack_s
+{
+	sfVector2i zone;
+	sfVector2i area;
+	sfVector2i tile;
+} vector_pack_t;
+
+typedef struct remarkable_tile_s
+{
+	int (*fptr)();
+	vector_pack_t tiles[];
+} remarkable_tile_t;
+
 typedef struct tile_list_s tile_list_t;
 
 typedef struct tile_list_s
@@ -179,12 +194,19 @@ typedef enum
 	BUTTONS = 4,
 } objs_type_t;
 
-typedef struct scene_s {
+typedef struct music_s
+{
+	sfMusic *music;
+	sfBool loop;
+	sfBool play_music;
+} music_t;
+
+typedef struct scene_s
+{
 	hashmap_t *objs;
 	hashmap_t *texts;
-	sfBool play_music;
-	sfMusic *music;
 	int priority;
+	music_t music;
 } scene_t;
 
 typedef struct managed_scene_s managed_scene_t;
@@ -197,6 +219,7 @@ typedef struct managed_scene_s
 } managed_scene_t;
 
 /////////////////////////////// INVENTORY ///////////////////////////////////
+
 typedef struct item_stat_s
 {
 	int health;
@@ -354,6 +377,21 @@ typedef struct window_s
 	sfRenderWindow *window;
 	ctime_t clocker;
 } window_t;
+
+typedef struct particle_sys_s
+{
+	char *sys_name;
+	sfIntRect spawn_zone;
+	int particle_nbr;
+	sfVector2f force;
+	bool gravity;
+	sfTexture *texture;
+	bool (*condition)(sfSprite *);
+	sfSprite **sprite_arr;
+	int spawn_density;
+	int spawned_particles_nbr;
+	int sys_id;
+} particle_sys_t;
 
 #include "rpginit.h"
 #include "rpgdef.h"

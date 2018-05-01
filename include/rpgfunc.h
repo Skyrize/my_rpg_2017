@@ -243,7 +243,7 @@ void clean_displayed_scenes(game_t *game);
 int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name);
 
 ///Clean all displayed tiles.
-void clean_displayed_tiles(game_t *game);
+void clean_displayed_tiles(tile_list_t *displayed);
 
 ///Clean only the scene with the name passed.
 void clean_displayed_scene_name(game_t *game, char *name_scenes);
@@ -324,6 +324,8 @@ int process_engine(window_t *window, game_t *game);
 
 int game_lobby(window_t *window, game_t *game);
 int battle_lobby(window_t *window, game_t *game);
+int start_scene_music(scene_t *scene);
+int make_sound(char *sound_name, game_t *game);
 
 ///Update the 3 stats strings in a given scene with there actual values
 ///in Window.
@@ -369,9 +371,9 @@ void destroy_managed_scene(managed_scene_t *managed);
 
 bool set_player_position(sfVector2i pos_tile, sfVector2i pos_aera,
 				sfVector2i pos_zone, game_t *game);
-bool move_player_zone(direction_t dir, game_t *game, bool check);
-bool move_player_area(direction_t dir, game_t *game, bool check);
-bool move_player(direction_t dir, game_t *game, bool check);
+bool move_player_zone(direction_t dir, game_t *game);
+bool move_player_area(direction_t dir, game_t *game);
+bool move_player(direction_t dir, game_t *game);
 int anim_player(game_t *game);
 void set_anim_side(game_t *game);
 void init_movements(game_t *game);
@@ -404,6 +406,23 @@ int update_health_item(slot_t *slot, game_t *game);
 int replace_mouse_skin(obj_t *obj, sfVector2f *offset, game_t *game);
 int reset_mouse_skin(game_t *game);
 int display_mouse(game_t *game, window_t *window);
+
+/////////////////////////// PARTICLES
+
+particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
+				    int particle_nbr, game_t *game);
+sfVector2f get_particles_spawn_pos(particle_sys_t *sys);
+void init_particle_position(particle_sys_t *sys);
+bool default_particle_cond(sfSprite *sprite);
+void display_particle_sys(window_t *window, particle_sys_t *sys);
+void update_particle_sys(particle_sys_t *sys);
+void display_particles(window_t *window, game_t *game);
+void free_particle_sys(particle_sys_t *sys);
+void remove_particle_sys_by_id(int id);
+void remove_particle_sys(particle_sys_t *sys);
+void init_rain(game_t *game);
+void remove_end(node_t *last_node, node_t *act_node,
+		llist_t *particle_sys_list);
 
 /////////////////////////// END
 

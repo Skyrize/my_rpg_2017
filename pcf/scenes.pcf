@@ -5,7 +5,7 @@
 //Format			OBJ=nom de l'objet / TEXTURE= ID de la texture / BUTTON=0 ou 1 / BUTTON=0 X= pos en x / Y= pos en y
 //Format		LIST=TEXTS --->définit que l'on va ajouter des valeurs dans la liste de texts
 //Format			TEXT=nom du text / TEXT=text / FONT=ID de la font / CHARAC_SIZE=taille de charactère / BUTTON=0 X= pos en x / Y= pos en y
-//format		MUSIC= ID de la musique
+//format		MUSIC= ID de la musique LOOP= 0 / 1 (non ou oui)
 
 ________________________________________________________________________________
 -GAME
@@ -16,6 +16,7 @@ ________________________________________________________________________________
 			OBJ=STATS TEXTURE=CHARAC_BUTTON BUTTON=1 X=382 Y=557
 			OBJ=INVENTORY TEXTURE=INVENTORY_BUTTON BUTTON=1 X=415 Y=557
 			OBJ=PAUSE TEXTURE=COG_BUTTON BUTTON=1 X=448 Y=557
+		MUSIC=HOMETOWN_MUSIC LOOP=1
 
 ________________________________________________________________________________
 -PAUSE
@@ -300,5 +301,16 @@ _____________________________________________________________________________
 	SCENE=AREA_HUD PRIORITY=1
 		LIST=TEXTS
 			TEXT=POS STR=00 FONT=RING CHARAC_SIZE=50 X=730 Y=-10
+
+_____________________________________________________________________________
+-DIALOGUE_HUD
+	SCENE=DIALOGUE_HUD PRIORITY=2
+		LIST=OBJS
+			OBJ=DIALOGUE_BOX TEXTURE=DIALOGUE_BOX BUTTON=0 X=0 Y=440
+		LIST=TEXTS
+			TEXT=NAME STR=VARYAN:_ FONT=FRITZ CHARAC_SIZE=25 X=50 Y=462
+			TEXT=LINE_01 STR=I_wanna_be_the_guy. FONT=FRITZ CHARAC_SIZE=25 X=200 Y=462
+			TEXT=LINE_02 STR=I_wanna_save_the_girl,_and_then, FONT=FRITZ CHARAC_SIZE=25 X=50 Y=497
+			TEXT=LINE_03 STR=I_wanna_be_the_hero. FONT=FRITZ CHARAC_SIZE=25 X=50 Y=532
 
 ### END OF FILE ###
