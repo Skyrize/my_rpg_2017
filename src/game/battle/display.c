@@ -13,14 +13,14 @@ int display_characters(window_t *window, game_t *game)
 		return (84);
 	sfRenderWindow_drawRectangleShape(window->window,
 	PLAYER_CHARACTER->obj, NULL);
-	if (game->battle.enemy[0].rec)
+	if (game->battle.enemy[0])
 		sfRenderWindow_drawRectangleShape(window->window,
-		game->battle.enemy[0].rec, NULL);
-	if (game->battle.enemy[1].rec)
+		game->battle.enemy[0]->monster->obj, NULL);
+	if (game->battle.enemy[1])
 		sfRenderWindow_drawRectangleShape(window->window,
-		game->battle.enemy[1].rec, NULL);
-	if (game->battle.enemy[2].rec)
+		game->battle.enemy[1]->monster->obj, NULL);
+	if (game->battle.enemy[2])
 		sfRenderWindow_drawRectangleShape(window->window,
-		game->battle.enemy[2].rec, NULL);
+		game->battle.enemy[2]->monster->obj, NULL);
 	return (0);
 }

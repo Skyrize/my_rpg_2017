@@ -282,6 +282,15 @@ typedef struct enemy_data_s
 	item_stat_t stats;
 } enemy_data_t;
 
+typedef struct battle_s {
+	bool special_hit;
+	bool last_enemy_turn;
+	bool enemy_turn;
+	bool player_turn;
+	int selected_enemy;
+	enemy_t *enemy[3];
+} battle_t;
+
 /////////////////////////////////// PLAYER ////////////////////////////////
 
 typedef struct stat_s
@@ -325,24 +334,6 @@ typedef struct key_control_s
 	sfKeyCode arrow_left;
 	int move;
 } key_control_t;
-
-/////////////////////////////////// BATTLE ////////////////////////////////
-
-typedef struct enemy_s {
-	int health;
-	int armor;
-	int damages;
-	sfRectangleShape *rec;
-} enemy_t;
-
-typedef struct battle_s {
-	bool special_hit;
-	bool last_enemy_turn;
-	bool enemy_turn;
-	bool player_turn;
-	int selected_enemy;
-	enemy_t enemy[3];
-} battle_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
 

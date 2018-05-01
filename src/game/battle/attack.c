@@ -10,10 +10,10 @@
 int check_last_enemy(game_t *game, int i)
 {
 	if (i == 0) {
-		if (!game->battle.enemy[1].rec && !game->battle.enemy[2].rec)
+		if (!game->battle.enemy[1]->monster->obj && !game->battle.enemy[2]->monster->obj)
 			return (1);
 	} else if (i == 1) {
-		if (!game->battle.enemy[2].rec)
+		if (!game->battle.enemy[2]->monster->obj)
 			return (1);
 	} else
 		return (1);
@@ -24,7 +24,7 @@ int enemy_turn(window_t *window, game_t *game)
 {
 	static int i = 0;
 
-	while (i < 2 && !game->battle.enemy[i].rec)
+	while (i < 2 && !game->battle.enemy[i]->monster->obj)
 		i++;
 	game->battle.selected_enemy = i;
 	if (check_last_enemy(game, i)) {
@@ -79,8 +79,8 @@ int player_attack(window_t *window, game_t *game)
 	printf("YOU DO %d DAMAGES TO ENEMY\n", damages);
 	ENEMY_HEALTH -= damages > 0 ? damages : 0;
 	if (ENEMY_HEALTH <= 0) {
-		sfRectangleShape_destroy(SELECTED_ENEMY.rec);
-		SELECTED_ENEMY.rec = NULL;
+		sfRectangleShape_destroy(SELECTED_ENEMY->monster->obj);
+		SELECTED_ENEMY->monster->obj = NULL;
 	}
 
 	return (0);

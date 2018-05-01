@@ -26,7 +26,8 @@ int battle_lobby(window_t *window, game_t *game)
 	|| manage_hit_enemy(game) != 0
 	|| display_special_hit_player(window, game, NULL) != 0
 	|| display_special_hit_enemy(window, game, NULL) != 0
-	|| (!SPECIAL_HIT && wait_for_enemy_attack(window, game, 0) != 0)
+	|| (!SPECIAL_HIT
+	&& wait_for_enemy_attack(window, game, 0) != 0)
 	|| manage_life_in_battle(game) != 0
 	|| display_characters(window, game) != 0)
 		return (84);

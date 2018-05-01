@@ -47,7 +47,8 @@ int press_action_key(game_t *game)
 		} else {
 			music = sfTrue;
 		}
-		if (button_display_hide_scene("DIALOGUE_HUD", NULL, game) == 84)
+		if (button_display_hide_scene("DIALOGUE_HUD", NULL,
+		game, NULL) == 84)
 			return (84);
 		pass = sfFalse;
 	} else {

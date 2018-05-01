@@ -9,9 +9,9 @@
 
 int first_enemy_available(game_t *game)
 {
-	if (game->battle.enemy[0].rec)
+	if (game->battle.enemy[0]->monster->obj)
 		return (0);
-	if (game->battle.enemy[1].rec)
+	if (game->battle.enemy[1]->monster->obj)
 		return (1);
 	return (2);
 }
@@ -26,7 +26,7 @@ int change_selected_enemy(game_t *game, int offset)
 			to_select = 0;
 		if (to_select < 0)
 			to_select = 2;
-		if (game->battle.enemy[to_select].rec) {
+		if (game->battle.enemy[to_select]->monster->obj) {
 			game->battle.selected_enemy = to_select;
 			return (0);
 		}

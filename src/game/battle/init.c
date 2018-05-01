@@ -7,31 +7,20 @@
 
 #include "rpg.h"
 
-void set_enemy_alone(game_t *game, texture_t *texture, int i)
-{
-	game->battle.enemy[i].health = 100 * PLAYER_LEVEL;
-	game->battle.enemy[i].armor = 20 * PLAYER_LEVEL;
-	game->battle.enemy[i].damages = 20 * PLAYER_LEVEL;
-	game->battle.enemy[i].rec = sfRectangleShape_create();
-	sfRectangleShape_setTexture(game->battle.enemy[i].rec,
-	texture->texture, sfTrue);
-	sfRectangleShape_setTextureRect(game->battle.enemy[i].rec,
-	(sfIntRect){0, 100, 50, 100});
-	sfRectangleShape_setPosition(game->battle.enemy[i].rec,
-	V2F(600 + (25 * i), 200 + (50 * i)));
-	sfRectangleShape_setSize(game->battle.enemy[i].rec, V2F(50, 100));
-}
-
-void init_enemies(game_t *game)
+int init_enemies(game_t *game)
 {
 	int nbr = rand() % 2 + 1;
-	texture_t *texture = hm_get(TEXTURES_LIB, "SKELETON_01");
 
 	for (int i = 0; i < 3; i++)
-		game->battle.enemy[i].rec = NULL;
-	set_enemy_alone(game, texture, 0);
-	if (nbr == 2)
-		set_enemy_alone(game, texture, 2);
+		game->battle.enemy[i] = NULL;
+	for (int i = 0; i != nbr; i++) {
+		game->battle.enemy[i] = create_enemy("SKELETON", game);
+		if (!game->battle.enemy[i])
+			return (84);
+		sfRectangleShape_setPosition(game->battle.enemy[i]->\
+		monster->obj, V2F(600 + (i * 50), 200 + (i * 100)));
+	}
+	return (0);
 }
 
 void init_character(game_t *game)
@@ -39,6 +28,7 @@ void init_character(game_t *game)
 	sfRectangleShape_setTextureRect(PLAYER_CHARACTER->obj,
 	(sfIntRect){50, 200, 50, 100});
 	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, V2F(100, 225));
+	my_printf("place\n");
 }
 
 int init_battle(game_t *game)
@@ -49,7 +39,8 @@ int init_battle(game_t *game)
 		return (84);
 	clean_displayed_scenes_and_add_back(game, "BATTLE");
 	CURRENT_BUCKET = hm_get_bucket(SCENES, "BATTLE");
-	init_enemies(game);
+	if (!CURRENT_BUCKET || init_enemies(game) != 0)
+		return (84);
 	init_character(game);
 	update_element_in_battle(game);
 	game->battle.special_hit = 0;

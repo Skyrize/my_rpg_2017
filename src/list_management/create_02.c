@@ -56,14 +56,18 @@ enemy_t *create_enemy(char *name, game_t *game)
 	enemy_data_t *data = hm_get(MONSTERS_LIB, name);
 	enemy_t *new = malloc(sizeof(enemy_t));
 
-	if (!data || !new)
+	if (!data || !new) {
+		my_printf("WARNING: YOU ASKED FOR '%s' MONSTER BUT IT ", name);
+		my_printf("DOESN'T EXIST !\n");
 		return (NULL);
+	}
 	new->name = my_strdup(data->name);
 	new->zone = my_strdup(data->zone);
 	new->monster = create_obj(&(obj_data_t){name, data->texture,
 					0, V2F(0, 0)}, game);
-	if (!new->name || !new->zone || !new->monster)
+	if (!new->name || !new->zone || !new->monster) {
 		return (NULL);
+	}
 	new->stats = data->stats;
 	return (new);
 }

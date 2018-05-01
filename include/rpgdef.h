@@ -106,9 +106,9 @@
 ////////////////////////////////// BATTLE //////////////////////////////
 
 #define SELECTED_ENEMY game->battle.enemy[game->battle.selected_enemy]
-#define ENEMY_ARMOR game->battle.enemy[game->battle.selected_enemy].armor
-#define ENEMY_DAMAGES game->battle.enemy[game->battle.selected_enemy].damages
-#define ENEMY_HEALTH game->battle.enemy[game->battle.selected_enemy].health
+#define ENEMY_ARMOR game->battle.enemy[game->battle.selected_enemy]->stats.armor
+#define ENEMY_DAMAGES game->battle.enemy[game->battle.selected_enemy]->stats.damages
+#define ENEMY_HEALTH game->battle.enemy[game->battle.selected_enemy]->stats.health
 
 #define SPECIAL_HIT game->battle.special_hit
 #define ENEMY_TURN game->battle.enemy_turn
