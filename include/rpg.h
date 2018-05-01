@@ -127,6 +127,20 @@ typedef struct texture_s
 } texture_t, texture_data_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////
+
+typedef struct vector_pack_s
+{
+	sfVector2i zone;
+	sfVector2i area;
+	sfVector2i tile;
+} vector_pack_t;
+
+typedef struct remarkable_tile_s
+{
+	int (*fptr)();
+	vector_pack_t tiles[];
+} remarkable_tile_t;
+
 typedef struct tile_list_s tile_list_t;
 
 typedef struct tile_list_s
@@ -205,6 +219,7 @@ typedef struct managed_scene_s
 } managed_scene_t;
 
 /////////////////////////////// INVENTORY ///////////////////////////////////
+
 typedef struct item_stat_s
 {
 	int health;

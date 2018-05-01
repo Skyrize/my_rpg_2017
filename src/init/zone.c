@@ -7,29 +7,24 @@
 
 #include "rpg.h"
 
-void unload_my_tiles(game_t *game)
+void unload_my_area(int x, int y, game_t *game)
 {
-	if (AREA_NAME != NULL)
-		clean_displayed_tiles(game);
-}
-
-void unload_my_area(game_t *game)
-{
-	TILE_COOR_X = 0;
-	TILE_COOR_Y = 0;
-	for (; TILE_COOR_Y != TILE_TAB_Y; TILE_COOR_Y++)
-		for (; TILE_COOR_X != TILE_TAB_X; TILE_COOR_X++)
-			unload_my_tiles(game);
-
+	for (int j = 0; j != TILE_TAB_Y; j++) {
+		for (int i = 0; i != TILE_TAB_X; i++) {
+			clean_displayed_tiles(MAP.areas[y][x].\
+			tiles[j][i].displayed_tiles);
+			MAP.areas[y][x].tiles[j][i].displayed_tiles = NULL;
+		}
+	}
+	free(MAP.areas[y][x].name);
+	MAP.areas[y][x].name = NULL;
 }
 
 void unload_my_zone(game_t *game)
 {
-	AREA_COOR_X = 0;
-	AREA_COOR_Y = 0;
-	for (; AREA_COOR_Y != AREA_TAB_Y; AREA_COOR_Y++)
-		for (; AREA_COOR_X != AREA_TAB_X; AREA_COOR_X++)
-			unload_my_area(game);
+	for (int y = 0; y != AREA_TAB_Y; y++)
+		for (int x = 0; x != AREA_TAB_X; x++)
+			unload_my_area(x, y, game);
 }
 
 int load_my_zone(game_t *game)
