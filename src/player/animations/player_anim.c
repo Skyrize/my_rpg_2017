@@ -67,9 +67,8 @@ int anim_player(game_t *game)
 	update_moving_state(game);
 	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return (0);
-	if (!(game->player.character))
-		return (0);
-	if (!game->player.character->obj_rect.animated)
+	if (!(game->player.character) ||
+	    !game->player.character->obj_rect.animated)
 		return (0);
 	if (!clocker) {
 		clocker = sfClock_create();
