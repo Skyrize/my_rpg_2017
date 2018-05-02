@@ -24,7 +24,7 @@ int pause_game(window_t *window, game_t *game)
 	static sfBool pass = sfTrue;
 	static sfRectangleShape *rec = NULL;
 	
-	if (!window || !game || !rec)
+	if (!window || !game || (!rec && pass == sfFalse))
 		return (84);
 	if (my_strcmp(CURRENT_BUCKET->key, PAUSE_GAME))
 		old_scene = CURRENT_BUCKET->key;
