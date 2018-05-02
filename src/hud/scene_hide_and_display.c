@@ -40,5 +40,5 @@ int button_display_hide_scene(char *scene_name, void (*fptr)(), game_t *game,
 		game) != 0 || make_sound("CURSOR_SOUND", game) == 2)
 			return (84);
 	}
-	return (1);
+	return (0);
 }
