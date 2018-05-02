@@ -28,7 +28,8 @@ int enemy_turn(window_t *window, game_t *game)
 
 int enemy_attack(window_t *window, game_t *game)
 {
-	float bonus = ((rand() % (ENEMY_DAMAGES * 2)) - ENEMY_DAMAGES) / 10;
+	float bonus = ((float)(rand() % (ENEMY_DAMAGES * 2))
+	- (float)ENEMY_DAMAGES) / 10.0;
 	int damages = MAX(ENEMY_DAMAGES + round(bonus) - PLAYER_ARMOR, 0);
 	int critical_hit = rand() % 100;
 
@@ -48,7 +49,8 @@ int enemy_attack(window_t *window, game_t *game)
 
 int player_attack(window_t *window, game_t *game)
 {
-	float bonus = ((rand() % (PLAYER_DAMAGES * 2)) - PLAYER_DAMAGES) / 10;
+	float bonus = ((float)(rand() % (PLAYER_DAMAGES * 2))
+	- (float)PLAYER_DAMAGES) / 10.0;
 	int damages = MAX(PLAYER_DAMAGES + round(bonus) - ENEMY_ARMOR, 0);
 	int critical_hit = rand() % 100;
 
