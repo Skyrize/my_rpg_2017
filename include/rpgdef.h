@@ -105,15 +105,19 @@
 
 ////////////////////////////////// BATTLE //////////////////////////////
 
-#define SELECTED_ENEMY game->battle.enemy[game->battle.selected_enemy]
-#define ENEMY_ARMOR game->battle.enemy[game->battle.selected_enemy]->stats.armor
-#define ENEMY_DAMAGES game->battle.enemy[game->battle.selected_enemy]->stats.damages
-#define ENEMY_HEALTH game->battle.enemy[game->battle.selected_enemy]->stats.health
+#define BATTLE game->battle
+#define ENEMY BATTLE.enemy
 
-#define SPECIAL_HIT game->battle.special_hit
-#define ENEMY_TURN game->battle.enemy_turn
-#define PLAYER_TURN game->battle.player_turn
-#define LAST_ENEMY_TURN game->battle.last_enemy_turn
+#define SELECTED_ENEMY ENEMY[BATTLE.selected_enemy]
+#define ENEMY_ARMOR SELECTED_ENEMY->stats.armor
+#define ENEMY_DAMAGES SELECTED_ENEMY->stats.damages
+#define ENEMY_HEALTH SELECTED_ENEMY->stats.health
+
+#define STEP_TO_BATTLE BATTLE.step_to_battle
+#define SPECIAL_HIT BATTLE.special_hit
+#define ENEMY_TURN BATTLE.enemy_turn
+#define PLAYER_TURN BATTLE.player_turn
+#define LAST_ENEMY_TURN BATTLE.last_enemy_turn
 
 ////////////////////////////////// USED //////////////////////////////
 

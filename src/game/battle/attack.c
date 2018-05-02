@@ -15,11 +15,11 @@ int enemy_turn(window_t *window, game_t *game)
 		i++;
 	game->battle.selected_enemy = i;
 	if (check_last_enemy(game, i)) {
-		game->battle.last_enemy_turn = 1;
+		LAST_ENEMY_TURN = 1;
 		i = -1;
-		game->battle.enemy_turn = 0;
+		ENEMY_TURN = 0;
 	} else
-		game->battle.last_enemy_turn = 0;
+		LAST_ENEMY_TURN = 0;
 	if (wait_for_enemy_attack(window, game, 1) == 84)
 		return (84);
 	i++;

@@ -388,8 +388,10 @@ bool is_player_moving(game_t *game);
 
 /////////////////////////// BATTLE
 
+int check_step_to_battle(game_t *game);
 char *found_icon(game_t *game);
-int init_battle(game_t *game);
+void init_battle(game_t *game);
+int start_battle(game_t *game);
 int update_element_in_battle(game_t *game);
 int display_characters(window_t *window, game_t *game);
 int manage_life_in_battle(game_t *game);

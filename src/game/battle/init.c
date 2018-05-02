@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2018
+** EPITECH PROJECT, 2017
 ** my_rpg_2017
 ** File description:
-** init_battle
+** init.c
 */
 
 #include "rpg.h"
@@ -11,8 +11,6 @@ int init_enemies(game_t *game)
 {
 	int nbr = rand() % 2 + 1;
 
-	for (int i = 0; i < 3; i++)
-		game->battle.enemy[i] = NULL;
 	game->battle.enemy[0] = create_enemy("SKELETON", game);
 	if (!game->battle.enemy[0])
 		return (84);
@@ -35,7 +33,7 @@ void init_character(game_t *game)
 	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, V2F(100, 225));
 }
 
-int init_battle(game_t *game)
+int start_battle(game_t *game)
 {
 	scene_t *battle_scene = hm_get(SCENES, "BATTLE");
 	bucket_t *battle = hm_get_bucket(SCENES, "BATTLE_BASIC_BUTTONS");
@@ -49,9 +47,5 @@ int init_battle(game_t *game)
 		return (84);
 	init_character(game);
 	update_element_in_battle(game);
-	game->battle.special_hit = 0;
-	game->battle.last_enemy_turn = 0;
-	ENEMY_TURN = 0;
-	PLAYER_TURN = 1;
-	return (0);
+	return (1);
 }

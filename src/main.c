@@ -14,25 +14,6 @@ void get_time(ctime_t *clocker)
 	clocker->seconds = clocker->timer.microseconds / 1000000.0;
 }
 
-int init_rectangle_divers(game_t *game)
-{
-	scene_t *battle_game = NULL;
-	obj_t *obj = NULL;
-
-	if (!game)
-		return (84);
-	battle_game = hm_get(game->scenes, "BATTLE");
-	if (!battle_game)
-		return (84);
-	obj = hm_get(battle_game->objs, "VERSUS_ICO");
-	if (!obj)
-		return (84);
-	sfRectangleShape *versus_ico = obj->obj;
-	sfRectangleShape_setFillColor(versus_ico,
-	(sfColor){255, 255, 255 , 0});
-	return (0);
-}
-
 int init(window_t *window, game_t *game)
 {
 	if (init_window(window) != 0) {
@@ -43,10 +24,6 @@ int init(window_t *window, game_t *game)
 		my_printf("WARNING: ERROR IN GAME INITIALISATION !\n");
 		return (84);
 	}
-	//if (init_rectangle_divers(game) != 0) {
-	//	my_printf("WARNING: ERROR IN REC DIVERS INITIALISATION !\n");
-	//	return (84);
-	//}
 	return (0);
 }
 

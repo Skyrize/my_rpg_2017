@@ -58,6 +58,21 @@ int analyse_events(window_t *window, game_t *game)
 	return (0);
 }
 
+int manage_scene(managed_scene_t *scene, window_t *window, game_t *game)
+{
+	int my_errno = 0;
+
+	if (display_scene(scene, window, game) != 0)
+		return (84);
+	my_errno = manage(sfFalse, scene, window, game);
+	if (my_errno != 0)
+		return (my_errno);
+	my_errno = manage_buttons(scene, window, game);
+	if (my_errno != 0)
+		return (my_errno);
+	return (0);
+}
+
 int process_engine(window_t *window, game_t *game)
 {
 	managed_scene_t *tmp = MANAGED_SCENES;
@@ -65,18 +80,15 @@ int process_engine(window_t *window, game_t *game)
 
 	MOUSE_POS = sfMouse_getPosition((const sfWindow *)window->window);
 	my_errno = analyse_events(window, game);
-	if (my_errno != 0)
-		return (my_errno - 1);
+	if (my_errno == 1) {
+		return (0);
+	} else if (my_errno == 84)
+		return (84);
 	while (tmp) {
-		if (display_scene(tmp, window, game) != 0)
-			return (84);
-		my_errno = manage(sfFalse, tmp, window, game);
-		if (my_errno != 0)
-			break;
-		my_errno = manage_buttons(tmp, window, game);
-		if (my_errno == 1)
+		my_errno = manage_scene(tmp, window, game);
+		if (my_errno == 1) {
 			return (0);
-		else if (my_errno == 84)
+		} else if (my_errno == 84)
 			return (84);
 		tmp = tmp->next;
 	}

@@ -14,6 +14,7 @@ SRC	=	src/main.c						\
 		src/init/inventory.c				\
 		src/init/player.c			\
 		src/init/entity.c			\
+		src/init/battle.c			\
 		src/init/scenes.c			\
 		src/init/window.c			\
 		src/init/game.c			\

@@ -10,30 +10,23 @@
 
 int on_key_pressed(game_t *game, sfEvent *event)
 {
+	game->movement.is_moving = sfFalse;
 	if (sfKeyboard_isKeyPressed(KEY_UP) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP) == sfTrue)
 		move_player(UP, game);
-	}
 	if (sfKeyboard_isKeyPressed(KEY_DOWN) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN) == sfTrue)
 		move_player(DOWN, game);
-	}
 	if (sfKeyboard_isKeyPressed(KEY_LEFT) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT) == sfTrue)
 		move_player(LEFT, game);
-	}
 	if (sfKeyboard_isKeyPressed(KEY_RIGHT) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT) == sfTrue)
 		move_player(RIGHT, game);
-	}
 	if (event->key.code == sfKeyP)
 		PLAYER_HEALTH += 1;
 	else if (event->key.code == sfKeyM)
 		PLAYER_HEALTH -= 1;
-	if (event->key.code == sfKeyB) {
-		init_battle(game);
-		return (1); ////penser à retirer
-	}
 	return (0);
 }
 
@@ -68,7 +61,7 @@ int game_events(window_t *window, game_t *game)
 		CLICK_RELEASED = sfTrue;
 	if (window->event.type == sfEvtKeyPressed
 	&& KEY_PLAYER.move == 1)
-		return (on_key_pressed(game, &window->event));
+		on_key_pressed(game, &window->event);
 	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 		if (press_action_key(game) != 0)
 			return (84);
@@ -77,6 +70,10 @@ int game_events(window_t *window, game_t *game)
 
 int game_lobby(window_t *window, game_t *game)
 {
+	int my_errno = check_step_to_battle(game);
+
+	if (my_errno != 0)
+		return (my_errno);
 	rain(game, window);
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
