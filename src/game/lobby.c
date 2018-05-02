@@ -74,11 +74,11 @@ int game_lobby(window_t *window, game_t *game)
 
 	if (my_errno != 0)
 		return (my_errno);
-	//rain(game, window);
+	rain(game, window);
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0
-	//|| (display_particles(window, game), false)
+	|| (display_particles(window, game), false)
 	|| manage_hud_opacity(game) != 0)
 		return (84);
 	smooth_move_player(game);
