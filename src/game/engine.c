@@ -19,33 +19,41 @@ int manage(sfBool event, managed_scene_t *scene, window_t *window, game_t *game)
 {
 	for (int i = 0; manager_tab[i].balise; i++) {
 		if (my_strcmp(scene->name, manager_tab[i].balise) == 0
-		&& event == sfFalse)
+		&& event == sfFalse && manager_tab[i].fptr)
 			return (manager_tab[i].fptr(window, game));
 		else if (my_strcmp(scene->name, manager_tab[i].balise) == 0
-		&& event == sfTrue)
+		&& event == sfTrue && manager_tab[i].event)
 			return (manager_tab[i].event(window, game));
 	}
 	return (0);
 }
 
+/////////// PENSEZ à : refaire le retour de battle pour break les boucles tmp
+
 int process_managed_events(window_t *window, game_t *game)
 {
+	int my_errno = 0;
+
 	for (managed_scene_t *tmp = MANAGED_SCENES; tmp; tmp = tmp->next) {
-		if (manage(sfTrue, tmp, window, game) != 0)
-			return (84);
+		my_errno = manage(sfTrue, tmp, window, game);
+		if (my_errno != 0) // penser à retirer.
+			return (my_errno);
 	}
 	return (0);
 }
 
 int analyse_events(window_t *window, game_t *game)
 {
+	int my_errno = 0;
+
 	while (sfRenderWindow_pollEvent(window->window, &window->event)) {
 		if (window->event.type == sfEvtClosed)
 			sfRenderWindow_close(window->window);
 		if (window->event.type == sfEvtMouseButtonReleased)
 			CLICK_RELEASED = sfTrue;
-		if (process_managed_events(window, game) != 0)
-			return (84);
+		my_errno = process_managed_events(window, game);
+		if (my_errno != 0) // penser à retirer.
+			return (my_errno);
 	}
 	return (0);
 }
@@ -56,16 +64,20 @@ int process_engine(window_t *window, game_t *game)
 	int my_errno = 0;
 
 	MOUSE_POS = sfMouse_getPosition((const sfWindow *)window->window);
-	if (analyse_events(window, game) != 0)
-		return (84);
+	my_errno = analyse_events(window, game);
+	if (my_errno != 0)
+		return (my_errno - 1);
 	while (tmp) {
 		if (display_scene(tmp, window, game) != 0)
-			return (84);
-		if (manage_buttons(tmp, window, game) != 0)
 			return (84);
 		my_errno = manage(sfFalse, tmp, window, game);
 		if (my_errno != 0)
 			break;
+		my_errno = manage_buttons(tmp, window, game);
+		if (my_errno == 1)
+			return (0);
+		else if (my_errno == 84)
+			return (84);
 		tmp = tmp->next;
 	}
 	return (my_errno);

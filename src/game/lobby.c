@@ -8,7 +8,7 @@
 #include <SFML/Window/Event.h>
 #include "rpg.h"
 
-void on_key_pressed(game_t *game, sfEvent *event)
+int on_key_pressed(game_t *game, sfEvent *event)
 {
 	if (sfKeyboard_isKeyPressed(KEY_UP) == sfTrue
 	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP) == sfTrue) {
@@ -30,8 +30,11 @@ void on_key_pressed(game_t *game, sfEvent *event)
 		PLAYER_HEALTH += 1;
 	else if (event->key.code == sfKeyM)
 		PLAYER_HEALTH -= 1;
-	if (event->key.code == sfKeyB)
+	if (event->key.code == sfKeyB) {
 		init_battle(game);
+		return (1); ////penser à retirer
+	}
+	return (0);
 }
 
 int press_action_key(game_t *game)
@@ -65,7 +68,7 @@ int game_events(window_t *window, game_t *game)
 		CLICK_RELEASED = sfTrue;
 	if (window->event.type == sfEvtKeyPressed
 	&& KEY_PLAYER.move == 1)
-		on_key_pressed(game, &window->event);
+		return (on_key_pressed(game, &window->event));
 	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 		if (press_action_key(game) != 0)
 			return (84);
@@ -75,8 +78,7 @@ int game_events(window_t *window, game_t *game)
 int game_lobby(window_t *window, game_t *game)
 {
 	rain(game, window);
-	if (game_events(window, game)
-	|| manage_life(game) != 0
+	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0
 	|| (display_particles(window, game), false)
