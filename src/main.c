@@ -8,6 +8,12 @@
 #include "my.h"
 #include "rpg.h"
 
+void get_time(ctime_t *clocker)
+{
+	clocker->timer = sfClock_getElapsedTime(clocker->clock);
+	clocker->seconds = clocker->timer.microseconds / 1000000.0;
+}
+
 int init_rectangle_divers(game_t *game)
 {
 	scene_t *battle_game = NULL;

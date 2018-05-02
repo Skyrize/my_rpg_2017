@@ -27,7 +27,7 @@ bool move_player_aera_down(game_t *game)
 		return (move_player_zone(DOWN, game));
 	if (!(MAP.areas[AREA_COOR_Y + 1][AREA_COOR_X].name))
 		return (false);
-	TILE_COOR_Y = 0;
+	TILE_COOR_Y = -1;
 	AREA_COOR_Y++;
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X, TILE_COOR_Y};
 	set_initial_player_pos(game);

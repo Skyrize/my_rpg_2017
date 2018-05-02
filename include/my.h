@@ -100,6 +100,14 @@ typedef struct fnct_s
 	void (*fptr)(va_list list);
 } fnct_t;
 
+typedef struct getline_s
+{
+	FILE *file;
+	char *line;
+	size_t len;
+	int read;
+} getline_t;
+
 /////////////////////// CSFML ////////////////////////:
 
 typedef struct framebuffer_s
