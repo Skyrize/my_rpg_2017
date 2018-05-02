@@ -408,6 +408,7 @@ int check_last_enemy(game_t *game, int i);
 int first_enemy_available(game_t *game);
 int reset_enemy_turn(window_t *window, game_t *game);
 int reset_player_turn(window_t *window, game_t *game);
+int run_away(window_t *window, game_t *game);
 
 /////////////////////////////////// INVENTORY
 
