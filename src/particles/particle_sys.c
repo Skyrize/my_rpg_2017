@@ -47,7 +47,7 @@ particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
 	ret->texture = tex->texture;
 	ret->spawn_zone = spawn;
 	ret->particle_nbr = particle_nbr;
-	ret->sprite_arr = malloc(sizeof(sfSprite *) * particle_nbr + 1);
+	ret->sprite_arr = malloc(sizeof(sfSprite *) * (particle_nbr + 1));
 	if (!ret->sprite_arr)
 		return (NULL);
 	for (int i = 0; i < ret->particle_nbr; i++) {
