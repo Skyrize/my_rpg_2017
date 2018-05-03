@@ -9,6 +9,7 @@
 
 int battle_end_screen(game_t *game, char *result)
 {
+	(void)game;
 	printf("%s\n", result);
 	return (0);
 }

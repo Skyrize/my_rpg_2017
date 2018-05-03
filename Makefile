@@ -14,6 +14,7 @@ SRC	=	src/main.c						\
 		src/init/inventory.c				\
 		src/init/player.c			\
 		src/init/entity.c			\
+		src/init/battle.c			\
 		src/init/scenes.c			\
 		src/init/window.c			\
 		src/init/game.c			\
@@ -65,6 +66,7 @@ SRC	=	src/main.c						\
 		src/game/battle/manage/special_hit.c			\
 		src/game/battle/manage/wait_enemy.c			\
 		src/game/battle/battle_utils.c				\
+		src/game/battle/run_away.c				\
 		src/game/mouse/replace.c \
 		src/hud/buttons/area.c				\
 		src/hud/buttons/control_key.c 				\

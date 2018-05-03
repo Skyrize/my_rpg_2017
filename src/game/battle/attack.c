@@ -15,11 +15,11 @@ int enemy_turn(window_t *window, game_t *game)
 		i++;
 	game->battle.selected_enemy = i;
 	if (check_last_enemy(game, i)) {
-		game->battle.last_enemy_turn = 1;
+		LAST_ENEMY_TURN = 1;
 		i = -1;
-		game->battle.enemy_turn = 0;
+		ENEMY_TURN = 0;
 	} else
-		game->battle.last_enemy_turn = 0;
+		LAST_ENEMY_TURN = 0;
 	if (wait_for_enemy_attack(window, game, 1) == 84)
 		return (84);
 	i++;
@@ -28,7 +28,8 @@ int enemy_turn(window_t *window, game_t *game)
 
 int enemy_attack(window_t *window, game_t *game)
 {
-	float bonus = ((rand() % (ENEMY_DAMAGES * 2)) - ENEMY_DAMAGES) / 10;
+	float bonus = ((float)(rand() % (ENEMY_DAMAGES * 2))
+	- (float)ENEMY_DAMAGES) / 10.0;
 	int damages = MAX(ENEMY_DAMAGES + round(bonus) - PLAYER_ARMOR, 0);
 	int critical_hit = rand() % 100;
 
@@ -48,7 +49,8 @@ int enemy_attack(window_t *window, game_t *game)
 
 int player_attack(window_t *window, game_t *game)
 {
-	float bonus = ((rand() % (PLAYER_DAMAGES * 2)) - PLAYER_DAMAGES) / 10;
+	float bonus = ((float)(rand() % (PLAYER_DAMAGES * 2))
+	- (float)PLAYER_DAMAGES) / 10.0;
 	int damages = MAX(PLAYER_DAMAGES + round(bonus) - ENEMY_ARMOR, 0);
 	int critical_hit = rand() % 100;
 

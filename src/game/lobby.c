@@ -8,30 +8,26 @@
 #include <SFML/Window/Event.h>
 #include "rpg.h"
 
-void on_key_pressed(game_t *game, sfEvent *event)
+int on_key_pressed(game_t *game, sfEvent *event)
 {
+	game->movement.is_moving = sfFalse;
 	if (sfKeyboard_isKeyPressed(KEY_UP) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP) == sfTrue)
 		move_player(UP, game);
-	}
 	if (sfKeyboard_isKeyPressed(KEY_DOWN) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN) == sfTrue)
 		move_player(DOWN, game);
-	}
 	if (sfKeyboard_isKeyPressed(KEY_LEFT) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT) == sfTrue)
 		move_player(LEFT, game);
-	}
 	if (sfKeyboard_isKeyPressed(KEY_RIGHT) == sfTrue
-	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT) == sfTrue) {
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT) == sfTrue)
 		move_player(RIGHT, game);
-	}
 	if (event->key.code == sfKeyP)
 		PLAYER_HEALTH += 1;
 	else if (event->key.code == sfKeyM)
 		PLAYER_HEALTH -= 1;
-	if (event->key.code == sfKeyB)
-		init_battle(game);
+	return (0);
 }
 
 int press_action_key(game_t *game)
@@ -74,9 +70,12 @@ int game_events(window_t *window, game_t *game)
 
 int game_lobby(window_t *window, game_t *game)
 {
+	int my_errno = check_step_to_battle(game);
+
+	if (my_errno != 0)
+		return (my_errno);
 	rain(game, window);
-	if (game_events(window, game)
-	|| manage_life(game) != 0
+	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0
 	|| (display_particles(window, game), false)

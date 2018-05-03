@@ -59,14 +59,10 @@ void set_waiting_player_rect(game_t *game)
 		game->player.character->obj_rect.rect);
 }
 
-//call on every frames
 int anim_player(game_t *game)
 {
 	static sfClock *clocker = NULL;
 
-	update_moving_state(game);
-	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
-		return (0);
 	if (!(game->player.character) ||
 	    !game->player.character->obj_rect.animated)
 		return (0);
@@ -76,6 +72,8 @@ int anim_player(game_t *game)
 			return (84);
 	}
 	if (sfClock_getElapsedTime(clocker).microseconds > 100000) {
+		if (AREA_ENCOUNTER == sfTrue)
+			STEP_TO_BATTLE--;
 		make_sound("FOOTSTEP_SOUND", game);
 		sfClock_restart(clocker);
 		set_next_rect(game);

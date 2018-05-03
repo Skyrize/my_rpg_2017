@@ -320,6 +320,18 @@ _____________________________________________________________________________
 			TEXT=WHO STR=ATTACK____FAILED FONT=ARCADE CHARAC_SIZE=40 X=260 Y=475
 
 _____________________________________________________________________________
+-RUN_SUCCESS
+	SCENE=RUN_SUCCESS PRIORITY=1
+		LIST=TEXTS
+			TEXT=WHO STR=SUCCEED____TO____RUN____AWAY FONT=ARCADE CHARAC_SIZE=40 X=200 Y=475
+
+_____________________________________________________________________________
+-RUN_FAIL
+	SCENE=RUN_FAIL PRIORITY=1
+		LIST=TEXTS
+			TEXT=WHO STR=FAILED____TO____RUN____AWAY FONT=ARCADE CHARAC_SIZE=40 X=210 Y=475
+
+_____________________________________________________________________________
 -HEALTH_HUD
 	SCENE=HEALTH_HUD PRIORITY=1
 		LIST=OBJS

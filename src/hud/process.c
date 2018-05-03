@@ -63,15 +63,8 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 
 int manage_buttons(managed_scene_t *scene, window_t *window, game_t *game)
 {
-	int my_errno = 0;
-
 	if (!scene || !window || !game)
 		return (84);
-	my_errno = read_hashmap(window, game, scene->scene->objs,
-		&process_button_over);
-	if (my_errno == 1)
-		return (0);
-	if (my_errno == 84)
-		return (84);
-	return (0);
+	return (read_hashmap(window, game, scene->scene->objs,
+		&process_button_over));
 }
