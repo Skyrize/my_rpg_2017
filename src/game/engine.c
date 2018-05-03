@@ -30,6 +30,8 @@ int manage(sfBool event, managed_scene_t *scene, window_t *window, game_t *game)
 
 int process_managed_events(window_t *window, game_t *game)
 {
+	if (!window || !game || !MANAGED_SCENES)
+		return (84);
 	for (managed_scene_t *tmp = MANAGED_SCENES; tmp; tmp = tmp->next) {
 		if (manage(sfTrue, tmp, window, game) != 0)
 			return (84);

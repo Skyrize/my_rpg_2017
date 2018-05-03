@@ -25,16 +25,18 @@ void unload_my_area(my_w_t *window)
 
 void unload_my_zone(my_w_t *window)
 {
-	sfVector2i area_pos = MAP.area_pos;
-	sfVector2i tile_pos = MAP.tile_pos;
+	sfVector2i area_pos = {.x = AREA_COOR_X, .y= AREA_COOR_Y};
+	sfVector2i tile_pos = {.x = TILE_COOR_X, .y= TILE_COOR_Y};
 
 	AREA_COOR_X = 0;
 	AREA_COOR_Y = 0;
 	for (; AREA_COOR_Y != AREA_TAB_Y; AREA_COOR_Y++)
 		for (; AREA_COOR_X != AREA_TAB_X; AREA_COOR_X++)
 			unload_my_area(window);
-	MAP.area_pos = area_pos;
-	MAP.tile_pos = tile_pos;
+	AREA_COOR_X = area_pos.x;
+	AREA_COOR_Y = area_pos.y;
+	TILE_COOR_X = tile_pos.x;
+	TILE_COOR_Y = tile_pos.y;
 }
 
 int load_my_zone(my_w_t *window)
