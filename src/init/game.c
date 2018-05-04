@@ -51,7 +51,7 @@ void init_movement(game_t *game)
 {
 	game->movement.target_tile = (sfVector2i) {0, 0};
 	game->movement.anim_mult = 1;
-	game->movement.is_moving = false;
+	game->movement.is_moving = sfFalse;
 }
 
 int init_game(game_t *game)
@@ -66,7 +66,7 @@ int init_game(game_t *game)
 	|| init_scenes(game) != 0
 	|| init_inventory(game) != 0
 	|| init_buttons(game) != 0
-	    || init_particles(game) != 0
+	|| init_particles(game) != 0
 	|| init_tools(game) != 0)
 		return (84);
 	if (set_game_version(game) != 0)
@@ -74,5 +74,6 @@ int init_game(game_t *game)
 	init_key_player(game);
 	init_movement(game);
 	init_player(game);
+	init_battle(game);
 	return (0);
 }

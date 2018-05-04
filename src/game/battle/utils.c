@@ -22,19 +22,20 @@ char *get_item_type(char *item)
 {
 	int i = 0;
 
-	while (item[i++] != '_');
+	while (item[i] != '_')
+		i++;
 	i++;
-	if (!my_strncmp(item + i, "CHEST", 5))
+	if (item[i] == 'C')
 		return ("CHEST");
-	if (!my_strncmp(item + i, "HELMET", 6))
+	if (item[i] == 'H')
 		return ("HELMET");
-	if (!my_strncmp(item + i, "GAUNTLETS", 9))
+	if (item[i] == 'G')
 		return ("GAUNTLETS");
-	if (!my_strncmp(item + i, "PANTS", 5))
+	if (item[i] == 'P')
 		return ("PANTS");
-	if (!my_strncmp(item + i, "BOW", 3))
+	if (item[i] == 'B')
 		return ("BOW");
-	if (!my_strncmp(item + i, "WAND", 4))
+	if (item[i] == 'W')
 		return ("WAND");
 	return ("SWORD");
 }

@@ -89,6 +89,7 @@ bool move_player(direction_t dir, game_t *game)
 {
 	if (game->player.character->obj_rect.animated)
 		return (false);
+	game->movement.is_moving = sfTrue;
 	switch (dir) {
 		case UP:
 			return (move_player_up(game));

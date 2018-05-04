@@ -286,6 +286,7 @@ typedef struct enemy_data_s
 } enemy_data_t;
 
 typedef struct battle_s {
+	int step_to_battle;
 	bool special_hit;
 	bool last_enemy_turn;
 	bool enemy_turn;

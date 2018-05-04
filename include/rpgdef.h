@@ -110,6 +110,7 @@
 #define ENEMY_DAMAGES SELECTED_ENEMY->stats.damages
 #define ENEMY_HEALTH SELECTED_ENEMY->stats.health
 
+#define STEP_TO_BATTLE game->battle.step_to_battle
 #define SPECIAL_HIT game->battle.special_hit
 #define ENEMY_TURN game->battle.enemy_turn
 #define PLAYER_TURN game->battle.player_turn

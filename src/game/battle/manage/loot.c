@@ -61,7 +61,6 @@ char *epic_mythic(game_t *game)
 
 char *compute_loot(game_t *game)
 {
-	scene_t *scene = hm_get(SCENES, "BATTLE_END_SCREEN");
 	char *item = NULL;
 
 	if (!my_strcmp(ZONE_NAME, "MORIA"))

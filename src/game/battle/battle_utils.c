@@ -43,6 +43,7 @@ int reset_enemy_turn(window_t *window, game_t *game)
 	bucket_t *bucket = hm_get_bucket(SCENES, "BATTLE_BASIC_BUTTONS");
 
 	if (PLAYER_HEALTH <= 0) {
+		sfClock_restart(window->clocker.clock);
 		game->battle.lose = 1;
 		return (0);
 	}
@@ -60,6 +61,7 @@ int reset_enemy_turn(window_t *window, game_t *game)
 int reset_player_turn(window_t *window, game_t *game)
 {
 	if (all_enemie_dead(game)) {
+		sfClock_restart(window->clocker.clock);
 		game->battle.win = 1;
 		return (0);
 	}

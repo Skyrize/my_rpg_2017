@@ -17,6 +17,7 @@ SRC	=	src/main.c						\
 		src/init/scenes.c					\
 		src/init/window.c					\
 		src/init/game.c						\
+		src/init/battle.c					\
 		src/init/free_destroy/lobby.c				\
 		src/init/free_destroy/list.c				\
 		src/init/read/savior.c					\

@@ -7,17 +7,17 @@
 
 #include "rpg.h"
 
-int update_type_rarity(game_t *game, scene_t *scene, char *item)
+int update_type_rarity(scene_t *scene, char *item)
 {
 	char *type = get_item_type(item);
 	char *rarity = get_item_rarity(item);
-	sfText *txt_type = hm_get(scene, "TYPE");
-	sfText *txt_rarity = hm_get(scene, "RARITY");
+	sfText *txt_type = hm_get(scene->texts, "TYPE");
+	sfText *txt_rarity = hm_get(scene->texts, "RARITY");
 
 	if (!txt_type || !txt_rarity)
 		return (84);
-	sfText_setString(txt_type, type);
-	sfText_setString(txt_rarity, rarity);
+	sfText_setString(txt_type, my_strcat("TYPE      ", type));
+	sfText_setString(txt_rarity, my_strcat("RARITY    ", rarity));
 	return (0);
 }
 
@@ -58,6 +58,8 @@ int update_battle_result(game_t *game)
 	sfText *found = hm_get(end_screen->texts, "FOUND");
 	obj_t *item_icon = hm_get(end_screen->objs, "ITEM");
 	char *item = compute_loot(game);
+	texture_t *texture_lib = hm_get(TEXTURES_LIB, item);
+	sfTexture *texture = texture_lib->texture;
 
 	if (!xp || !found || !item_icon)
 		return (84);
@@ -65,9 +67,8 @@ int update_battle_result(game_t *game)
 	int_to_str(compute_xp_won(game))));
 	if (item) {
 		sfText_setString(found, "YOU GOT AN ITEM!");
-		sfRectangleShape_setTexture(item_icon->obj,
-		hm_get(ITEMS_LIB, item), sfTrue);
-		if (update_type_rarity(game, end_screen, item) == 84)
+		sfRectangleShape_setTexture(item_icon->obj, texture, sfTrue);
+		if (update_type_rarity(end_screen, item) == 84)
 			return (84);
 	}
 	return (0);
@@ -87,12 +88,11 @@ int battle_end_screen(game_t *game, char *result)
 		sfText_setString(res, "YOU  WIN !");
 		if (update_battle_result(game) == 84)
 			return (84);
-	} else {
-		sfText_setString(res, "YOU  LOSE !");
+	} else
 		PLAYER_HEALTH = 0;
-	}
-	clean_displayed_scene_name(game, "BATTLE");
+	clean_displayed_scenes_and_add_back(game, "GAME");
 	add_scene_to_display_list(hm_get_bucket(SCENES,
 						"BATTLE_END_SCREEN"), game);
+	CURRENT_BUCKET = hm_get_bucket(SCENES, "BATTLE_END_SCREEN");
 	return (0);
 }

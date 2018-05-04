@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2018
+** EPITECH PROJECT, 2017
 ** my_rpg_2017
 ** File description:
-** init_battle
+** init.c
 */
 
 #include "rpg.h"
@@ -36,7 +36,7 @@ void init_character(game_t *game)
 	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, V2F(100, 225));
 }
 
-int init_battle(game_t *game)
+int start_battle(game_t *game)
 {
 	scene_t *battle_scene = hm_get(SCENES, "BATTLE");
 	bucket_t *battle = hm_get_bucket(SCENES, "BATTLE_BASIC_BUTTONS");
@@ -56,5 +56,5 @@ int init_battle(game_t *game)
 	game->battle.win = 0;
 	ENEMY_TURN = 0;
 	PLAYER_TURN = 1;
-	return (0);
+	return (1);
 }
