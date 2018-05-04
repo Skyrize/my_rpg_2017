@@ -293,6 +293,7 @@ int chest_slot(window_t *window, game_t *game);
 int gauntlets_slot(window_t *window, game_t *game);
 int pants_slot(window_t *window, game_t *game);
 int weapon_slot(window_t *window, game_t *game);
+int cross(window_t *window, game_t *game);
 
 /////////////////////////// HUD FONCTIONS
 
@@ -409,6 +410,10 @@ int first_enemy_available(game_t *game);
 int reset_enemy_turn(window_t *window, game_t *game);
 int reset_player_turn(window_t *window, game_t *game);
 int run_away(window_t *window, game_t *game);
+char *compute_loot(game_t *game);
+char *get_item_rarity(char *item);
+char *get_item_type(char *item);
+int battle_end_screen(game_t *game, char *result);
 
 /////////////////////////////////// INVENTORY
 

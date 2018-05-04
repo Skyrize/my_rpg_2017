@@ -7,6 +7,15 @@
 
 #include "rpg.h"
 
+int all_enemie_dead(game_t *game)
+{
+	if (!game->battle.enemy[0]
+	&& !game->battle.enemy[1]
+	&& !game->battle.enemy[2])
+		return (1);
+	return (0);
+}
+
 int check_last_enemy(game_t *game, int i)
 {
 	if (i == 0) {
@@ -33,6 +42,10 @@ int reset_enemy_turn(window_t *window, game_t *game)
 {
 	bucket_t *bucket = hm_get_bucket(SCENES, "BATTLE_BASIC_BUTTONS");
 
+	if (PLAYER_HEALTH <= 0) {
+		game->battle.lose = 1;
+		return (0);
+	}
 	if (!bucket)
 		return (84);
 	if (LAST_ENEMY_TURN && !SPECIAL_HIT) {
@@ -46,6 +59,10 @@ int reset_enemy_turn(window_t *window, game_t *game)
 
 int reset_player_turn(window_t *window, game_t *game)
 {
+	if (all_enemie_dead(game)) {
+		game->battle.win = 1;
+		return (0);
+	}
 	if (!SPECIAL_HIT) {
 		if (enemy_turn(window, game) == 84)
 			return (84);

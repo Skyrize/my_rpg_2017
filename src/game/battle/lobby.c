@@ -19,6 +19,7 @@ int battle_events(window_t *window, game_t *game)
 
 int battle_lobby(window_t *window, game_t *game)
 {
+	get_time(&window->clocker);
 	if (battle_events(window, game) != 0
 	|| manage_hit_enemy(game, 0, 0) != 0
 	|| (SPECIAL_HIT && display_special_hit_player(window, game, NULL) != 0)
@@ -27,5 +28,14 @@ int battle_lobby(window_t *window, game_t *game)
 	|| manage_life_in_battle(game) != 0
 	|| display_characters(window, game) != 0)
 		return (84);
+	if (!SPECIAL_HIT && window->clocker.seconds >= 3
+	&& game->battle.win) {
+		if (battle_end_screen(game, "WIN") == 84)
+			return (84);
+	} else if (!SPECIAL_HIT && window->clocker.seconds >= 3
+	&& game->battle.lose) {
+		if (battle_end_screen(game, "LOSE") == 84)
+			return (84);
+	}
 	return (0);
 }

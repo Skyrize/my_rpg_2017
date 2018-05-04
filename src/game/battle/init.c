@@ -11,6 +11,7 @@ int init_enemies(game_t *game)
 {
 	int nbr = rand() % 2 + 1;
 
+	game->battle.nbr_enemies = nbr;
 	for (int i = 0; i < 3; i++)
 		game->battle.enemy[i] = NULL;
 	game->battle.enemy[0] = create_enemy("SKELETON", game);
@@ -51,6 +52,8 @@ int init_battle(game_t *game)
 	update_element_in_battle(game);
 	game->battle.special_hit = 0;
 	game->battle.last_enemy_turn = 0;
+	game->battle.lose = 0;
+	game->battle.win = 0;
 	ENEMY_TURN = 0;
 	PLAYER_TURN = 1;
 	return (0);
