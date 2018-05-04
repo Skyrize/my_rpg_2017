@@ -14,7 +14,8 @@ void check_timer_special_enemy(window_t *window, game_t *game,
 	if (*a == 1 && window->clocker.seconds >= 2) {
 		*a = 0;
 		SPECIAL_HIT = 0;
-		reset_enemy_turn(window, game);
+		if (!game->battle.lose)
+			reset_enemy_turn(window, game);
 		clean_displayed_scene_name(game, save);
 	}
 }
@@ -28,8 +29,9 @@ void check_timer_special_player(window_t *window, game_t *game,
 		SPECIAL_HIT = 0;
 		ENEMY_TURN = 1;
 		PLAYER_TURN = 0;
+		if (!game->battle.win)
+			reset_player_turn(window, game);
 		clean_displayed_scene_name(game, save);
-		enemy_turn(window, game);
 	}
 }
 

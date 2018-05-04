@@ -1,4 +1,4 @@
-### FILE : Initialisation des items du jeu. ###
+### FILE : Initialisation des monstres du jeu. ###
 //Format: INIT_CHAR + description (voir .h)
 //Format: 	MONSTER=nom du monstre
 //Format:		TEXTURE=texture du monstre

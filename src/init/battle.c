@@ -14,7 +14,7 @@ void init_battle(game_t *game)
 	LAST_ENEMY_TURN = 0;
 	ENEMY_TURN = 0;
 	PLAYER_TURN = 1;
-	BATTLE.selected_enemy = 0;
+	SELECTED_ENEMY = 0;
 	for (int i = 0; i < 3; i++)
-		ENEMY[i] = NULL;
+		game->battle.enemy[i] = NULL;
 }

@@ -36,6 +36,7 @@ int select_varyan(window_t *window, game_t *game)
 
 	PLAYER_NAME = "Varyan";
 	PLAYER_CHARACTER = create_obj(&charac_data, game);
+	GOLDS = 50;
 	if (!PLAYER_CHARACTER)
 		return (84);
 	PLAYER_STATS = (stat_t){100, 100, 0, 10, 0, 100, 1, "Strenght", 20};
@@ -54,6 +55,7 @@ int select_jaina(window_t *window, game_t *game)
 
 	PLAYER_NAME = "Jaina";
 	PLAYER_CHARACTER = create_obj(&charac_data, game);
+	GOLDS = 50;
 	if (!PLAYER_CHARACTER)
 		return (84);
 	PLAYER_STATS = (stat_t){100, 100, 0, 10, 0, 100, 1, "Wisdom", 20};
@@ -72,6 +74,7 @@ int select_avelus(window_t *window, game_t *game)
 
 	PLAYER_NAME = "Avelus";
 	PLAYER_CHARACTER = create_obj(&charac_data, game);
+	GOLDS = 50;
 	if (!PLAYER_CHARACTER)
 		return (84);
 	PLAYER_STATS = (stat_t){100, 100, 0, 10, 0, 100, 1, "Agility", 20};
