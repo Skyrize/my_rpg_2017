@@ -101,6 +101,7 @@
 #define PLAYER_SPECIALITY PLAYER_STATS.speciality
 #define PLAYER_DAMAGES PLAYER_STATS.damages
 #define PLAYER_XP PLAYER_STATS.xp
+#define PLAYER_MAX_XP PLAYER_STATS.xp_max
 #define PLAYER_SPECIALITY_NAME PLAYER_STATS.speciality_name
 
 ////////////////////////////////// BATTLE //////////////////////////////

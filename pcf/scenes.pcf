@@ -357,6 +357,9 @@ _____________________________________________________________________________
 			OBJ=END_LIFE_BAR TEXTURE=END_LIFE_BAR BUTTON=0 X=190 Y=7
 			OBJ=BG_LIFE TEXTURE=BG_LIFE_BAR BUTTON=0 X=90 Y=10
 			OBJ=STATS TEXTURE=JAINA_ICON BUTTON=1 X=20 Y=18
+			OBJ=XP_BAR TEXTURE=XP BUTTON=0 X=90 Y=50
+			OBJ=BG_XP TEXTURE=BG_LIFE_BAR BUTTON=0 X=90 Y=50
+			OBJ=END_XP_BAR TEXTURE=END_XP_BAR BUTTON=0 X=190 Y=47
 
 _____________________________________________________________________________
 -AREA_HUD
