@@ -13,9 +13,22 @@ int run_away(window_t *window, game_t *game)
 
 	if (!window || !game)
 		return (84);
-	if (run >= 85)
+	if (run >= 85) {
 		display_special_hit_player(window, game, "RUN_SUCCESS");
-	else
+		game->battle.run_away = 1;
+	} else
 		display_special_hit_player(window, game, "RUN_FAIL");
 	return (0);
+}
+
+void check_run_away(game_t *game)
+{
+	if (game->battle.run_away && !SPECIAL_HIT) {
+		clean_displayed_scenes_and_add_back(game, "GAME");
+		add_scene_to_display_list(hm_get_bucket(SCENES,
+							"HEALTH_HUD"), game);
+		CURRENT_BUCKET = hm_get_bucket(SCENES, "GAME");
+		sfRectangleShape_setPosition(PLAYER_CHARACTER->obj,
+		V2F(TARGET_TILE.x * 50, TARGET_TILE.y * 50));
+	}
 }

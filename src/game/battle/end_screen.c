@@ -58,14 +58,14 @@ int update_battle_result(game_t *game)
 	sfText *found = hm_get(end_screen->texts, "FOUND");
 	obj_t *item_icon = hm_get(end_screen->objs, "ITEM");
 	char *item = compute_loot(game);
-	texture_t *texture_lib = hm_get(TEXTURES_LIB, item);
-	sfTexture *texture = texture_lib->texture;
+	sfTexture *texture = NULL;
 
 	if (!xp || !found || !item_icon)
 		return (84);
 	sfText_setString(xp, my_strcat(":   ",
 	int_to_str(compute_xp_won(game))));
 	if (item) {
+		texture = ((texture_t *)hm_get(TEXTURES_LIB, item))->texture;
 		sfText_setString(found, "YOU GOT AN ITEM!");
 		sfRectangleShape_setTexture(item_icon->obj, texture, sfTrue);
 		if (update_type_rarity(end_screen, item) == 84)
@@ -81,8 +81,7 @@ int battle_end_screen(game_t *game, char *result)
 
 	if (!game || !end_screen)
 		return (84);
-	res = hm_get(end_screen->texts, "RESULT");
-	if (!res)
+	if (!(res = hm_get(end_screen->texts, "RESULT")))
 		return (84);
 	if (!my_strcmp(result, "WIN")) {
 		sfText_setString(res, "YOU  WIN !");
@@ -92,6 +91,7 @@ int battle_end_screen(game_t *game, char *result)
 		PLAYER_HEALTH = 0;
 	clean_displayed_scenes_and_add_back(game, "GAME");
 	add_scene_to_display_list(hm_get_bucket(SCENES, "WIN_SCREEN"), game);
+	add_scene_to_display_list(hm_get_bucket(SCENES, "HEALTH_HUD"), game);
 	CURRENT_BUCKET = hm_get_bucket(SCENES, "WIN_SCREEN");
 	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj,
 	V2F(TARGET_TILE.x * 50, TARGET_TILE.y * 50));

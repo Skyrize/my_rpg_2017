@@ -387,6 +387,10 @@ bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
 
+/////////////////////////// DIALOGUES
+
+int print_random_pnj_dialogue();
+
 /////////////////////////// BATTLE
 
 int check_step_to_battle(game_t *game);
@@ -417,6 +421,7 @@ char *compute_loot(game_t *game);
 char *get_item_rarity(char *item);
 char *get_item_type(char *item);
 int battle_end_screen(game_t *game, char *result);
+void check_run_away(game_t *game);
 
 /////////////////////////////////// INVENTORY
 
