@@ -140,7 +140,7 @@ typedef struct vector_pack_s
 typedef struct remarkable_tile_s
 {
 	int (*fptr)();
-	vector_pack_t tiles[];
+	vector_pack_t coord;
 } remarkable_tile_t;
 
 typedef struct tile_list_s tile_list_t;

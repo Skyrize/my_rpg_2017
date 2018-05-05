@@ -12,7 +12,7 @@ particle_sys_t *init_rain(game_t *game)
 	sfIntRect spawn = (sfIntRect) {.top = 0, .left = 0,
 				.height = 2, .width = 800};
 	particle_sys_t *sys = create_particle_sys(spawn,
-		"RAIN_DROP", 700, game);
+		"RAIN_DROP", 300, game);
 	sys->spawn_density = 2;
 	sys->force = V2F(0, 4);
 	sys->sys_name = "main_rain";

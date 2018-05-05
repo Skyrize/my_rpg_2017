@@ -387,6 +387,10 @@ bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
 
+/////////////////////////// DIALOGUES
+
+int print_random_pnj_dialogue();
+
 /////////////////////////// BATTLE
 
 int check_step_to_battle(game_t *game);
