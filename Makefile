@@ -46,7 +46,7 @@ SRC	=	src/main.c						\
 		src/game/engine.c					\
 		src/game/lobby.c					\
 		src/game/start.c					\
-		src/game/tile.c					\
+		src/game/tiles.c					\
 		src/game/music.c					\
 		src/game/display/lobby.c				\
 		src/game/display/map.c					\
@@ -54,6 +54,7 @@ SRC	=	src/main.c						\
 		src/game/display/texts.c				\
 		src/game/display/mouse.c				\
 		src/game/display/animate.c				\
+		src/game/dialogues/random.c				\
 		src/game/battle/init.c					\
 		src/game/battle/update_battle_hud.c			\
 		src/game/battle/display.c				\

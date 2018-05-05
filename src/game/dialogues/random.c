@@ -2,12 +2,14 @@
 ** EPITECH PROJECT, 2017
 ** my_rpg_2017
 ** File description:
-** lobby.c
+** random.c
 */
 
 #include "rpg.h"
+#include "my.h"
 
-int check_special_tiles_around(game_t *game)
+int print_random_pnj_dialogue()
 {
+	my_printf("test\n");
 	return (0);
 }
