@@ -63,6 +63,7 @@ int anim_player(game_t *game)
 {
 	static sfClock *clocker = NULL;
 
+	update_moving_state(game);
 	if (!(game->player.character) ||
 	    !game->player.character->obj_rect.animated)
 		return (0);
