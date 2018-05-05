@@ -32,9 +32,33 @@ int set_battle(game_t *game)
 	game->battle.last_enemy_turn = 0;
 	game->battle.lose = 0;
 	game->battle.win = 0;
+	game->battle.run_away = 0;
 	ENEMY_TURN = 0;
 	PLAYER_TURN = 1;
 	return (update_element_in_battle(game));
+}
+
+int set_background(game_t *game, scene_t *scene)
+{
+	obj_t *bg = hm_get(scene->objs, "BG");
+	sfTexture *texture = NULL;
+
+	if (!bg)
+		return (84);
+	if (!my_strcmp(ZONE_NAME, "MORIA")) {
+		texture = ((texture_t *)hm_get(TEXTURES_LIB,
+						"PLAINS_BATTLE_BG"))->texture;
+		sfRectangleShape_setTexture(bg->obj, texture, sfTrue);
+	} else if (!my_strcmp(ZONE_NAME, "CURSED_FOREST")) {
+		texture = ((texture_t *)hm_get(TEXTURES_LIB,
+						"FOREST_BATTLE_BG"))->texture;
+		sfRectangleShape_setTexture(bg->obj, texture, sfTrue);
+	} else {
+		texture = ((texture_t *)hm_get(TEXTURES_LIB,
+						"LAKE_BATTLE_BG"))->texture;
+		sfRectangleShape_setTexture(bg->obj, texture, sfTrue);
+	}
+	return (0);
 }
 
 int start_battle(game_t *game)
@@ -51,7 +75,7 @@ int start_battle(game_t *game)
 	if (!CURRENT_BUCKET || init_enemies(game) != 0)
 		return (84);
 	init_character(game);
-	if (set_battle(game) != 0)
+	if (set_battle(game) != 0 || set_background(game, battle_scene) != 0)
 		return (84);
 	return (1);
 }

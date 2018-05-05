@@ -417,6 +417,7 @@ char *compute_loot(game_t *game);
 char *get_item_rarity(char *item);
 char *get_item_type(char *item);
 int battle_end_screen(game_t *game, char *result);
+void check_run_away(game_t *game);
 
 /////////////////////////////////// INVENTORY
 
