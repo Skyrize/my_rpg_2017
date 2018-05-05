@@ -28,15 +28,13 @@ int manage(sfBool event, managed_scene_t *scene, window_t *window, game_t *game)
 	return (0);
 }
 
-/////////// PENSEZ à : refaire le retour de battle pour break les boucles tmp
-
 int process_managed_events(window_t *window, game_t *game)
 {
 	int my_errno = 0;
 
 	for (managed_scene_t *tmp = MANAGED_SCENES; tmp; tmp = tmp->next) {
 		my_errno = manage(sfTrue, tmp, window, game);
-		if (my_errno != 0) // penser à retirer.
+		if (my_errno != 0)
 			return (my_errno);
 	}
 	return (0);
@@ -52,7 +50,7 @@ int analyse_events(window_t *window, game_t *game)
 		if (window->event.type == sfEvtMouseButtonReleased)
 			CLICK_RELEASED = sfTrue;
 		my_errno = process_managed_events(window, game);
-		if (my_errno != 0) // penser à retirer.
+		if (my_errno != 0)
 			return (my_errno);
 	}
 	return (0);

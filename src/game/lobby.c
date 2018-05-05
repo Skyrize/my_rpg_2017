@@ -38,22 +38,23 @@ int press_action_key(game_t *game)
 {
 	static sfBool pass = sfTrue;
 	static sfBool music = sfTrue;
+	static char *old_scene = NULL;
 
 	// check_special_tiles_around();
+	if (my_strcmp(CURRENT_BUCKET->key, "DIALOGUE_HUD"))
+		old_scene = CURRENT_BUCKET->key;
 	if (pass == sfTrue) {
 		if (music == sfTrue) {
 			make_sound("DIALOGUE_SOUND", game);
 			music = sfFalse;
-		} else {
+		} else
 			music = sfTrue;
-		}
 		if (button_display_hide_scene("DIALOGUE_HUD", NULL,
-		game, "GAME") == 84)
+		game, old_scene) == 84)
 			return (84);
 		pass = sfFalse;
-	} else {
+	} else
 		pass = sfTrue;
-	}
 	return (0);
 }
 
@@ -64,7 +65,7 @@ int game_events(window_t *window, game_t *game)
 	if (window->event.type == sfEvtMouseButtonReleased)
 		CLICK_RELEASED = sfTrue;
 	if (window->event.type == sfEvtKeyPressed
-	&& KEY_PLAYER.move == 1)
+	&& KEY_PLAYER.move == 1 && my_strcmp(CURRENT_BUCKET->key, "GAME") == 0)
 		on_key_pressed(game, &window->event);
 	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 		if (press_action_key(game) != 0)
