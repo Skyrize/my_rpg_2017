@@ -112,6 +112,7 @@
 
 ////////////////////////////////// BATTLE //////////////////////////////
 
+#define ENEMY game->battle.enemy
 #define SELECTED_ENEMY game->battle.enemy[game->battle.selected_enemy]
 #define ENEMY_ARMOR SELECTED_ENEMY->stats.armor
 #define ENEMY_DAMAGES SELECTED_ENEMY->stats.damages

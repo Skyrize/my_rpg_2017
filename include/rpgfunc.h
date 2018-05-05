@@ -392,6 +392,7 @@ bool is_player_moving(game_t *game);
 int check_step_to_battle(game_t *game);
 char *found_icon(game_t *game);
 void init_battle(game_t *game);
+int get_enemy(game_t *game, int nbr);
 int start_battle(game_t *game);
 int update_element_in_battle(game_t *game);
 int display_characters(window_t *window, game_t *game);

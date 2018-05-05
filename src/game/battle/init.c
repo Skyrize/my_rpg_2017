@@ -11,21 +11,11 @@ int init_enemies(game_t *game)
 {
 	int nbr = rand() % 2 + 1;
 
-	game->battle.nbr_enemies = nbr;
 	for (int i = 0; i < 3; i++)
 		game->battle.enemy[i] = NULL;
-	game->battle.enemy[0] = create_enemy("SKELETON", game);
-	if (!game->battle.enemy[0])
+	game->battle.nbr_enemies = nbr;
+	if (get_enemy(game, nbr) != 0)
 		return (84);
-	sfRectangleShape_setPosition(game->battle.enemy[0]->\
-	monster->obj, V2F(600, 200));
-	if (nbr == 1)
-		return (0);
-	game->battle.enemy[2] = create_enemy("SKELETON", game);
-	if (!game->battle.enemy[2])
-		return (84);
-	sfRectangleShape_setPosition(game->battle.enemy[2]->\
-	monster->obj, V2F(650, 300));
 	return (0);
 }
 

@@ -51,6 +51,9 @@ node_t *get_node_by_key(char *asked, llist_t *llist);
 ///Asked > number of node in list, return NULL. Else, return the node.
 node_t *get_node_by_place(int asked, llist_t *llist);
 
+///return the len of the passed llist;
+int llist_len(llist_t *llist);
+
 ////////////////// PROCESS
 
 ///Send every node in a given list to a given function. If the given function
