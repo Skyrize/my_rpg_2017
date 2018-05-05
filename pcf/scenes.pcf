@@ -332,8 +332,8 @@ _____________________________________________________________________________
 			TEXT=WHO STR=FAILED____TO____RUN____AWAY FONT=ARCADE CHARAC_SIZE=40 X=210 Y=475
 
 _____________________________________________________________________________
--BATTLE_END_SCREEN
-	SCENE=BATTLE_END_SCREEN PRIORITY=1
+-WIN_SCREEN
+	SCENE=WIN_SCREEN PRIORITY=1
 		LIST=OBJS
 			OBJ=BG TEXTURE=DEFAULT_BG BUTTON=0 X=294 Y=90
 			OBJ=CROSS TEXTURE=RED_CROSS BUTTON=1 X=500 Y=85

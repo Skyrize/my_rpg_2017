@@ -53,7 +53,7 @@ int compute_gold_won(game_t *game)
 
 int update_battle_result(game_t *game)
 {
-	scene_t *end_screen = hm_get(SCENES, "BATTLE_END_SCREEN");
+	scene_t *end_screen = hm_get(SCENES, "WIN_SCREEN");
 	sfText *xp = hm_get(end_screen->texts, "XP");
 	sfText *found = hm_get(end_screen->texts, "FOUND");
 	obj_t *item_icon = hm_get(end_screen->objs, "ITEM");
@@ -76,7 +76,7 @@ int update_battle_result(game_t *game)
 
 int battle_end_screen(game_t *game, char *result)
 {
-	scene_t *end_screen = hm_get(SCENES, "BATTLE_END_SCREEN");
+	scene_t *end_screen = hm_get(SCENES, "WIN_SCREEN");
 	sfText *res = NULL;
 
 	if (!game || !end_screen)
@@ -91,8 +91,9 @@ int battle_end_screen(game_t *game, char *result)
 	} else
 		PLAYER_HEALTH = 0;
 	clean_displayed_scenes_and_add_back(game, "GAME");
-	add_scene_to_display_list(hm_get_bucket(SCENES,
-						"BATTLE_END_SCREEN"), game);
-	CURRENT_BUCKET = hm_get_bucket(SCENES, "BATTLE_END_SCREEN");
+	add_scene_to_display_list(hm_get_bucket(SCENES, "WIN_SCREEN"), game);
+	CURRENT_BUCKET = hm_get_bucket(SCENES, "WIN_SCREEN");
+	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj,
+	V2F(TARGET_TILE.x * 50, TARGET_TILE.y * 50));
 	return (0);
 }
