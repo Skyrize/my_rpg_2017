@@ -48,7 +48,7 @@ int press_action_key(game_t *game)
 			music = sfTrue;
 		}
 		if (button_display_hide_scene("DIALOGUE_HUD", NULL,
-		game, NULL) == 84)
+		game, "GAME") == 84)
 			return (84);
 		pass = sfFalse;
 	} else {
@@ -79,10 +79,10 @@ int game_lobby(window_t *window, game_t *game)
 	if (my_errno != 0)
 		return (my_errno);
 	rain(game, window);
+	display_particles(window, game);
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0
-	|| (display_particles(window, game), false)
 	|| manage_hud_opacity(game) != 0)
 		return (84);
 	smooth_move_player(game);

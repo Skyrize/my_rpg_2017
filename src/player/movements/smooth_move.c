@@ -14,11 +14,24 @@ void set_initial_player_pos(game_t *game)
 	(sfVector2f) {TILE_COOR_X * 50, TILE_COOR_Y * 50});
 }
 
+bool is_pressing_controls(game_t *game)
+{
+	if (sfKeyboard_isKeyPressed(KEY_UP)
+	|| sfKeyboard_isKeyPressed(KEY_DOWN)
+	|| sfKeyboard_isKeyPressed(KEY_LEFT)
+	|| sfKeyboard_isKeyPressed(KEY_RIGHT)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_UP)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_DOWN)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_LEFT)
+	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT))
+		return (true);
+	return (false);
+}
+
 void is_waiting(game_t *game)
 {
-	if (game->movement.is_moving == sfFalse) {
+	if (!is_pressing_controls(game)) {
 		set_waiting_player_rect(game);
-		game->movement.is_moving = sfFalse;
 	}
 }
 
@@ -33,10 +46,6 @@ void smooth_move_player(game_t *game)
 					(target_pos->y - act_pos.y) * 5};
 	static bool is_check = false;
 
-	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
-		return;
-	if (!(game->player.character))
-		return;
 	if (!is_check) {
 		set_initial_player_pos(game);
 		is_check = true;
