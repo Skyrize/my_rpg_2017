@@ -46,6 +46,7 @@ SRC	=	src/main.c						\
 		src/game/engine.c					\
 		src/game/lobby.c					\
 		src/game/start.c					\
+		src/game/tile.c					\
 		src/game/music.c					\
 		src/game/display/lobby.c				\
 		src/game/display/map.c					\
