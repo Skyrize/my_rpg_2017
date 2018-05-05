@@ -11,7 +11,7 @@
 int re_init_at_initial(sfText *hit, int enemy)
 {
 	if (!my_strcmp(sfText_getString(hit), "")
-	|| sfText_getPosition(hit).y <= -50) {
+	|| sfText_getPosition(hit).y <= -10) {
 		sfText_setCharacterSize(hit, 40);
 		sfText_setColor(hit, (sfColor){200, 0, 0, 255});
 		sfText_setPosition(hit,

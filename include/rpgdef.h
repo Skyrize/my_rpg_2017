@@ -101,23 +101,22 @@
 #define PLAYER_SPECIALITY PLAYER_STATS.speciality
 #define PLAYER_DAMAGES PLAYER_STATS.damages
 #define PLAYER_XP PLAYER_STATS.xp
+#define PLAYER_MAX_XP PLAYER_STATS.xp_max
 #define PLAYER_SPECIALITY_NAME PLAYER_STATS.speciality_name
 
 ////////////////////////////////// BATTLE //////////////////////////////
 
-#define BATTLE game->battle
-#define ENEMY BATTLE.enemy
-
-#define SELECTED_ENEMY ENEMY[BATTLE.selected_enemy]
+#define SELECTED_ENEMY game->battle.enemy[game->battle.selected_enemy]
 #define ENEMY_ARMOR SELECTED_ENEMY->stats.armor
 #define ENEMY_DAMAGES SELECTED_ENEMY->stats.damages
 #define ENEMY_HEALTH SELECTED_ENEMY->stats.health
 
-#define STEP_TO_BATTLE BATTLE.step_to_battle
-#define SPECIAL_HIT BATTLE.special_hit
-#define ENEMY_TURN BATTLE.enemy_turn
-#define PLAYER_TURN BATTLE.player_turn
-#define LAST_ENEMY_TURN BATTLE.last_enemy_turn
+#define STEP_TO_BATTLE game->battle.step_to_battle
+#define SPECIAL_HIT game->battle.special_hit
+#define ENEMY_TURN game->battle.enemy_turn
+#define PLAYER_TURN game->battle.player_turn
+#define LAST_ENEMY_TURN game->battle.last_enemy_turn
+#define NBR_ENEMIES game->battle.nbr_enemies
 
 ////////////////////////////////// USED //////////////////////////////
 

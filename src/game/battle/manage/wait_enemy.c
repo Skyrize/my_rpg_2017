@@ -10,7 +10,7 @@
 int check_timer_enemy(window_t *window, game_t *game, int *a)
 {
 	get_time(&window->clocker);
-	if (*a == 1 && window->clocker.seconds >= 3) {
+	if (*a == 1 && window->clocker.seconds >= 2) {
 		*a = 0;
 		clean_displayed_scene_name(game, "ENEMY_TURN");
 		enemy_attack(window, game);

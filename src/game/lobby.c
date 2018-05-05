@@ -27,6 +27,10 @@ int on_key_pressed(game_t *game, sfEvent *event)
 		PLAYER_HEALTH += 1;
 	else if (event->key.code == sfKeyM)
 		PLAYER_HEALTH -= 1;
+	if (event->key.code == sfKeyO)
+		PLAYER_XP += 1;
+	else if (event->key.code == sfKeyL)
+		PLAYER_XP -= 1;
 	return (0);
 }
 

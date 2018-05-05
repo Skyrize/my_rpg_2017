@@ -39,6 +39,7 @@ static const button_t g_tab[] =
 	{(char *[]){"SPELLS", "ITEMS", NULL}, exit_game},
 	{(char *[]){"ATTACK", NULL}, attack},
 	{(char *[]){"RUN_AWAY", NULL}, run_away},
+	{(char *[]){"CROSS", NULL}, cross},
 	{NULL, NULL}
 };
 

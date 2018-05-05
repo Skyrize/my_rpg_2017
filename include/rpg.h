@@ -291,7 +291,10 @@ typedef struct battle_s {
 	bool last_enemy_turn;
 	bool enemy_turn;
 	bool player_turn;
+	bool win;
+	bool lose;
 	int selected_enemy;
+	int nbr_enemies;
 	enemy_t *enemy[3];
 } battle_t;
 
