@@ -388,9 +388,15 @@ bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
 
+//////////////////////////// TILES
+
+int check_special_tiles_around(game_t *game);
+
 /////////////////////////// DIALOGUES
 
-int print_random_pnj_dialogue();
+int update_random_pnj_dialogue(char *name, game_t *game);
+int update_nothing_here(game_t *game);
+bucket_t **get_dialogue_hud_texts(game_t *game);
 
 /////////////////////////// BATTLE
 
