@@ -41,7 +41,6 @@ int main(int ac, char **av)
 	ressources_t rsces;
 	my_w_t window;
 	texture_list_t *list;
-	v2i area;
 
 	rsces.window = my_window_create();
 	rsces.mode = 0;
