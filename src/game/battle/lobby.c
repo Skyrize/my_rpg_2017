@@ -30,6 +30,8 @@ int check_step_to_battle(game_t *game)
 
 int battle_lobby(window_t *window, game_t *game)
 {
+	//if (manage_versus_animation(game) != 0)
+	//	return (84);
 	get_time(&window->clocker);
 	check_run_away(game);
 	if (battle_events(window, game) != 0
