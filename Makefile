@@ -78,6 +78,7 @@ SRC	=	src/main.c						\
 		src/hud/buttons/exit.c 					\
 		src/hud/buttons/frame_rate.c 				\
 		src/hud/buttons/inventory.c 				\
+		src/hud/buttons/how_to_play.c 				\
 		src/hud/buttons/key_game.c 				\
 		src/hud/buttons/load.c 					\
 		src/hud/buttons/main_menu.c 				\

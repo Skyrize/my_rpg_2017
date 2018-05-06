@@ -260,6 +260,7 @@ int update_button(char *seek, char *replacement, scene_t *scene,
 
 int start_game(window_t *window, game_t *game);
 int option(window_t *window, game_t *game);
+int how_to_play(window_t *window, game_t *game);
 int credits(window_t *window, game_t *game);
 int exit_game(window_t *window, game_t *game);
 int stats(window_t *window, game_t *game);

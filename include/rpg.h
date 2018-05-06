@@ -80,7 +80,7 @@
 #define MAP_GAME "MAP"
 #define HOME "MAIN_MENU"
 #define CONTROL_KEY "CONTROL_KEY"
-#define VERSION_GAME "V0.8"
+#define VERSION_GAME "V1.0"
 
 //NOTIF MANAGEMENT
 
