@@ -9,16 +9,23 @@
 #include "my.h"
 
 static const remarkable_tile_t tile_tab[] = {
-	{print_random_pnj_dialogue, {V2I(3, 4), V2I(0, 0), V2I(6, 4)}},
-	{NULL, {V2I(-1, -1), V2I(-1, -1), V2I(-1, -1)}},
+	{"PENNY", update_random_pnj_dialogue, {V2I(3, 4), V2I(0, 0), V2I(6, 3)}},
+	{NULL, NULL, {V2I(-1, -1), V2I(-1, -1), V2I(-1, -1)}},
 };
 
-int compare_coords(const remarkable_tile_t *tile, game_t *game)
+int compare_coords(const remarkable_tile_t *get_tile, game_t *game)
 {
-	(void)tile;
-	(void)game;
-	if (1)
-		my_printf("not done yet\n");
+	sfVector2i tile = get_tile->coord.tile;
+
+	if ((TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y)
+	|| (TILE_COOR_X == tile.x + 1 && TILE_COOR_Y == tile.y)
+	|| (TILE_COOR_X == tile.x - 1 && TILE_COOR_Y == tile.y)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y + 1)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y - 1)) {
+		if (get_tile->fptr(get_tile->name, game) != 0)
+			return (84);
+		return (1);
+	}
 	return (0);
 }
 
@@ -37,5 +44,7 @@ int check_special_tiles_around(game_t *game)
 		else if (my_errno == 84)
 			return (84);
 	}
+	if (update_nothing_here(game) != 0)
+		return (84);
 	return (0);
 }

@@ -139,6 +139,7 @@ typedef struct vector_pack_s
 
 typedef struct remarkable_tile_s
 {
+	char *name;
 	int (*fptr)();
 	vector_pack_t coord;
 } remarkable_tile_t;
