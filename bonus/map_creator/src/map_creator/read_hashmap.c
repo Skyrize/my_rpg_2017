@@ -35,7 +35,7 @@ texture_list_t *read_hashmap_texture(hashmap_t *textures)
 	bucket_t *tmp;
 
 	list->rec = NULL;
-	for (int i = 0; i != textures->size; i++) {
+	for (unsigned int i = 0; i != textures->size; i++) {
 		tmp = textures->data[i];
 		while (tmp) {
 			check_for_big_texture(tmp, list);
