@@ -27,6 +27,7 @@ int init(window_t *window, game_t *game)
 	return (0);
 }
 
+//manage_loading_scene(game, window, "MAIN_MENU");
 int game_loop(window_t *window, game_t *game)
 {
 	while (sfRenderWindow_isOpen(window->window)) {
@@ -40,11 +41,14 @@ int game_loop(window_t *window, game_t *game)
 	return (0);
 }
 
-int main(void)
+int main(int ac, char **av, char **env)
 {
 	window_t window;
 	game_t game;
+	int ret = 0;
 
+	if ((ret = error_handling_args(ac, av, env)) != 0)
+		return (ret);
 	srand(time(NULL));
 	if (init(&window, &game) != 0)
 		return (84);

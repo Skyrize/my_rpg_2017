@@ -11,6 +11,10 @@
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
+/////////////////////////// ERROR HANDLINGS START FUNCTIONS
+
+int error_handling_args(int ac, char **av, char **env);
+
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);
@@ -29,6 +33,8 @@ int init_buttons(game_t *game);
 int init_a_text(char **infos, game_t *game, hashmap_t *current_list);
 int init_an_obj(char **infos, game_t *game, hashmap_t *current_list);
 int init_monsters_lib(game_t *game);
+int init_npcs_lib(game_t *game);
+int init_libs(game_t *game);
 
 /// Change ZONE_COOR_X and ZONE_COOR_Y and call load_my_zone to fulfill
 ///AREA maps with asked zone.
@@ -109,6 +115,20 @@ int get_monster_zone(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_monster_stats(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
+int get_npc(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_npc_zone(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_npc_area(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_npc_tile(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_npc_line_01(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_npc_line_02(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_npc_line_03(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
 
 /////////////////////////// INIT WARNING : UNEXISTING
 
@@ -140,7 +160,7 @@ int check_invalid_consumable(sfBool consumable);
 int check_invalid_quest(sfBool quest);
 
 /////////////////////////// INIT WARNING : ALREADY_EXISTING
-
+int check_already_existing(hashmap_t *hashmap, char *data_name, char *pcf_name);
 int check_already_existing_obj(char *obj_name, hashmap_t *current_list);
 int check_already_existing_text(char *text_name, hashmap_t *current_list);
 int check_already_existing_texture(hashmap_t *hashmap, char *texture_name);
@@ -167,6 +187,7 @@ int check_missing_or_invalid_sub_keyword(const key_word_t *keys,
 
 /////////////////////////// INIT WARNING : UNDEFINED
 
+int check_undefined(bucket_t *data, char *data_name, char *data_type);
 int check_undefined_scene(bucket_t *scene, char *asked_list);
 int check_undefined_list(hashmap_t *current_list, char *obj);
 int check_undefined_texture(bucket_t *texture, char *data);
@@ -201,6 +222,7 @@ item_data_t *create_item_data(char *name);
 texture_t *create_texture(void);
 enemy_data_t *create_enemy_data(char *name);
 enemy_t *create_enemy(char *name, game_t *game);
+npc_t *create_npc(char *name, char *texture);
 
 //////////////////////////// LIST ADDING
 
@@ -260,6 +282,7 @@ int update_button(char *seek, char *replacement, scene_t *scene,
 
 int start_game(window_t *window, game_t *game);
 int option(window_t *window, game_t *game);
+int how_to_play(window_t *window, game_t *game);
 int credits(window_t *window, game_t *game);
 int exit_game(window_t *window, game_t *game);
 int stats(window_t *window, game_t *game);
@@ -316,6 +339,7 @@ int *check_hit, int *offset);
 /////////////////////////// GAME FUNCTIONS
 
 int start_game(window_t *window, game_t *game);
+int manage_loading_scene(game_t *game, window_t *window, char *new_scene);
 
 ///Pass window, fulfill the timer struct in it.
 void get_time(ctime_t *clocker);
@@ -327,6 +351,7 @@ int game_lobby(window_t *window, game_t *game);
 int battle_lobby(window_t *window, game_t *game);
 int start_scene_music(scene_t *scene);
 int make_sound(char *sound_name, game_t *game);
+int set_npc(bucket_t *npc_bucket, game_t *game);
 
 ///Update the 3 stats strings in a given scene with there actual values
 ///in Window.
@@ -369,6 +394,8 @@ void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
 void item_destroy(item_t *item);
 void destroy_managed_scene(managed_scene_t *managed);
+void npc_destroy(npc_t *npc);
+void monster_destroy(enemy_data_t *monster);
 
 /////////////////////////// PLAYER FUNCTIONS
 
@@ -386,6 +413,16 @@ void set_waiting_player_rect(game_t *game);
 bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
+
+/////////////////////////// DIALOGUES
+
+int process_npc_dialogue(game_t *game);
+int update_random_pnj_dialogue(char *name, game_t *game);
+int update_nothing_here(game_t *game);
+bucket_t **get_dialogue_hud_texts(game_t *game);
+int update_pnj_dialogue(npc_t *npc, game_t *game);
+int update_no_place_dialogue(game_t *game);
+int update_no_place_dialogue(game_t *game);
 
 /////////////////////////// BATTLE
 
@@ -418,6 +455,7 @@ char *get_item_rarity(char *item);
 char *get_item_type(char *item);
 int battle_end_screen(game_t *game, char *result);
 void check_run_away(game_t *game);
+int manage_versus_animation(game_t *game);
 
 /////////////////////////////////// INVENTORY
 
@@ -435,6 +473,7 @@ int update_damages_item(slot_t *slot, game_t *game);
 int update_special_item(slot_t *slot, game_t *game);
 int update_armor_item(slot_t *slot, game_t *game);
 int update_health_item(slot_t *slot, game_t *game);
+int add_item(item_t *item, game_t *game);
 
 //////////////////////////////// MOUSE
 

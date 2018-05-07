@@ -8,7 +8,7 @@
 #include "my.h"
 #include "rpg.h"
 
-void update_characteristic(int value, char *wanted, scene_t *scene)
+void update_stat(int value, char *wanted, scene_t *scene)
 {
 	char *space = ":   ";
 	char *value_string = int_to_str(value);
@@ -21,8 +21,9 @@ void update_characteristic(int value, char *wanted, scene_t *scene)
 
 void update_stats(scene_t *scene, game_t *game)
 {
-	update_characteristic(PLAYER_HEALTH, "HEALTH", scene);
-	update_characteristic(PLAYER_ARMOR, "ARMOR", scene);
-	update_characteristic(PLAYER_SPECIALITY, "SPECIAL", scene);
-	update_characteristic(PLAYER_XP, "XP", scene);
+	update_stat(PLAYER_HEALTH, "HEALTH", scene);
+	update_stat(PLAYER_ARMOR, "ARMOR", scene);
+	update_stat(PLAYER_SPECIALITY, "SPECIAL", scene);
+	update_stat(PLAYER_SPECIALITY, "DAMAGES", scene);
+	update_stat(PLAYER_XP, "XP", scene);
 }

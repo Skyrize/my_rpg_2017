@@ -23,7 +23,6 @@ void remove_tile_from_list(my_w_t *window)
 		tmp = tmp->next;
 	free(tmp->next);
 	tmp->next = NULL;
-	return (0);
 }
 
 void check_click_for_remove(ressources_t *rsces, my_w_t *window, int i, int j)
@@ -49,5 +48,6 @@ void check_position_for_remove_in_map(ressources_t *rsces, my_w_t *window)
 
 void right_click_event(ressources_t *rsces, texture_list_t *list)
 {
+	(void)list;
 	check_position_for_remove_in_map(rsces, rsces->rsces);
 }

@@ -23,6 +23,7 @@ int run_away(window_t *window, game_t *game)
 
 void check_run_away(game_t *game)
 {
+	//anim_versus();
 	if (game->battle.run_away && !SPECIAL_HIT) {
 		clean_displayed_scenes_and_add_back(game, "GAME");
 		add_scene_to_display_list(hm_get_bucket(SCENES,

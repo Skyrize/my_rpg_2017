@@ -11,7 +11,7 @@
 
 hashmap_t *hm_create(unsigned int size, void (*fptr)())
 {
-	hashmap_t *hashmap = (hashmap_t *) malloc(sizeof(*hashmap));
+	hashmap_t *hashmap = malloc(sizeof(hashmap_t));
 
 	hashmap->size = size;
 	hashmap->destroyer = fptr;

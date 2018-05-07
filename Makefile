@@ -6,6 +6,7 @@
 ##
 
 SRC	=	src/main.c						\
+		src/error_handlings_args.c				\
 		src/init/buttons.c					\
 		src/init/libs.c						\
 		src/init/list_filling.c					\
@@ -20,6 +21,7 @@ SRC	=	src/main.c						\
 		src/init/battle.c					\
 		src/init/free_destroy/lobby.c				\
 		src/init/free_destroy/list.c				\
+		src/init/free_destroy/entity.c				\
 		src/init/read/savior.c					\
 		src/init/read/file_analysing.c				\
 		src/init/keys/audio.c					\
@@ -32,6 +34,8 @@ SRC	=	src/main.c						\
 		src/init/keys/items.c					\
 		src/init/keys/zone.c					\
 		src/init/keys/monster.c					\
+		src/init/keys/npc_01.c					\
+		src/init/keys/npc_02.c					\
 		src/list_management/create_01.c				\
 		src/list_management/create_02.c				\
 		src/list_management/add.c				\
@@ -46,7 +50,7 @@ SRC	=	src/main.c						\
 		src/game/engine.c					\
 		src/game/lobby.c					\
 		src/game/start.c					\
-		src/game/tile.c					\
+		src/game/npcs.c					\
 		src/game/music.c					\
 		src/game/display/lobby.c				\
 		src/game/display/map.c					\
@@ -54,6 +58,7 @@ SRC	=	src/main.c						\
 		src/game/display/texts.c				\
 		src/game/display/mouse.c				\
 		src/game/display/animate.c				\
+		src/game/dialogues.c				\
 		src/game/battle/init.c					\
 		src/game/battle/update_battle_hud.c			\
 		src/game/battle/display.c				\
@@ -62,8 +67,7 @@ SRC	=	src/main.c						\
 		src/game/battle/end_screen.c				\
 		src/game/battle/lobby.c 				\
 		src/game/battle/manage/hit.c 				\
-		src/game/battle/manage/notif_right.c 			\
-		src/game/battle/manage/notif_left.c 			\
+		src/game/battle/manage/versus_animation.c 				\
 		src/game/battle/manage/special_hit.c			\
 		src/game/battle/manage/wait_enemy.c			\
 		src/game/battle/manage/loot.c				\
@@ -77,6 +81,7 @@ SRC	=	src/main.c						\
 		src/hud/buttons/exit.c 					\
 		src/hud/buttons/frame_rate.c 				\
 		src/hud/buttons/inventory.c 				\
+		src/hud/buttons/how_to_play.c 				\
 		src/hud/buttons/key_game.c 				\
 		src/hud/buttons/load.c 					\
 		src/hud/buttons/main_menu.c 				\
@@ -96,6 +101,7 @@ SRC	=	src/main.c						\
 		src/hud/life.c						\
 		src/hud/opacity.c					\
 		src/hud/process.c 					\
+		src/hud/loading.c 					\
 		src/player/movements/move_player.c			\
 		src/player/movements/move_player_area.c			\
 		src/player/movements/move_player_zone.c			\
