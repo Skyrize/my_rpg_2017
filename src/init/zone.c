@@ -14,6 +14,8 @@ void unload_my_area(int x, int y, game_t *game)
 			clean_displayed_tiles(MAP.areas[y][x].\
 			tiles[j][i].displayed_tiles);
 			MAP.areas[y][x].tiles[j][i].displayed_tiles = NULL;
+			free(MAP.areas[y][x].name);
+			MAP.areas[y][x].name = NULL;
 		}
 	}
 	free(MAP.areas[y][x].name);
