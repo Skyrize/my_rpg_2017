@@ -80,6 +80,7 @@
 #define MAP_GAME "MAP"
 #define HOME "MAIN_MENU"
 #define CONTROL_KEY "CONTROL_KEY"
+#define S_LOAD "LOADING"
 #define VERSION_GAME "V1.0"
 
 //NOTIF MANAGEMENT

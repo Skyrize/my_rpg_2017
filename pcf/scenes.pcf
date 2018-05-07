@@ -378,6 +378,18 @@ _____________________________________________________________________________
 			OBJ=END_XP_BAR TEXTURE=END_XP_BAR BUTTON=0 X=190 Y=47
 
 _____________________________________________________________________________
+-LOADING
+	SCENE=LOADING PRIORITY=1
+		LIST=OBJS
+			OBJ=TITLE TEXTURE=TITLE_GAME BUTTON=0 X=140 Y=0
+			OBJ=BACKGROUND TEXTURE=WALLP_LOADING BUTTON=0 X=0 Y=0
+			OBJ=BAR_LOADING TEXTURE=BG_lOADING BUTTON=0 X=120 Y=309
+			OBJ=BG_BAR TEXTURE=BG_PROGRESSBAR BUTTON=0 X=100 Y=300
+		LIST=TEXTS
+			TEXT=PERCENT STR=0 FONT=RING CHARAC_SIZE=30 X=610 Y=301
+			TEXT=VERSION STR=V_1.0 FONT=RING CHARAC_SIZE=30 X=115 Y=360
+
+_____________________________________________________________________________
 -AREA_HUD
 	SCENE=AREA_HUD PRIORITY=1
 		LIST=TEXTS
