@@ -317,6 +317,7 @@ int *check_hit, int *offset);
 /////////////////////////// GAME FUNCTIONS
 
 int start_game(window_t *window, game_t *game);
+int manage_loading_scene(game_t *game, window_t *window, char *new_scene);
 
 ///Pass window, fulfill the timer struct in it.
 void get_time(ctime_t *clocker);

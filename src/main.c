@@ -27,6 +27,7 @@ int init(window_t *window, game_t *game)
 	return (0);
 }
 
+//manage_loading_scene(game, window, "MAIN_MENU");
 int game_loop(window_t *window, game_t *game)
 {
 	while (sfRenderWindow_isOpen(window->window)) {
