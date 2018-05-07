@@ -11,6 +11,10 @@
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
+/////////////////////////// ERROR HANDLINGS START FUNCTIONS
+
+int error_handling_args(int ac, char **av, char **env);
+
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);

@@ -6,6 +6,7 @@
 ##
 
 SRC	=	src/main.c						\
+		src/error_handlings_args.c				\
 		src/init/buttons.c					\
 		src/init/libs.c						\
 		src/init/list_filling.c					\
