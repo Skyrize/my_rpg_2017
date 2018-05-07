@@ -43,7 +43,7 @@ char *rare_epic(game_t *game)
 
 	if (random < 15)
 		return (my_strcat("EPIC_", compute_slot(game)));
-	else if (random >= 40)
+	else if (random >= 0)
 		return (my_strcat("RARE_", compute_slot(game)));
 	return (NULL);
 }
