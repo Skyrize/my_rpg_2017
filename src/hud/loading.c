@@ -10,18 +10,23 @@
 
 static float offset = 0.0;
 
-int open_scene(game_t *game, window_t *window, char *new_scene)
+int open_scene(game_t *game, window_t *window, char *new_scene, int finished)
 {
-	int my_errno = 0;
+	bucket_t *hud = NULL;
 
 	if (!window || !game)
 		return (84);
 	CURRENT_BUCKET = hm_get_bucket(SCENES, new_scene);
 	if (check_unexisting_scene(CURRENT_BUCKET, new_scene) != 0)
 		return (84);
-	my_errno = clean_displayed_scenes_and_add_back(game, new_scene);
-	if (my_errno == 84)
+	if (clean_displayed_scenes_and_add_back(game, new_scene) != 0)
 		return (84);
+	if (finished == 1) {
+		if ((hud = hm_get_bucket(SCENES, "HEALTH_HUD")) == NULL)
+			return (84);
+		if (add_scene_to_display_list(hud, game) != 0)
+			return (84);
+	}
 	(void)window;
 	return (0);
 }
@@ -36,14 +41,14 @@ int manage_ratios(int *finished, obj_t *obj)
 	sfRectangleShape_setTextureRect(obj->obj, obj->obj_rect.rect);
 	sfRectangleShape_setSize(obj->obj,
 	V2F(obj->obj_rect.rect.width, obj->obj_rect.rect.height));
-	offset < 560 ? (offset += 1) : (offset = 0, *finished = 1);
+	offset < 560 ? (offset += 10) : (offset = 0, *finished = 1);
 	return (0);
 }
 
 int open_loading_scene(game_t *game, window_t *window)
 {
 	if (my_strcmp(CURRENT_BUCKET->key, S_LOAD) != 0)
-		if (open_scene(game, window, S_LOAD) != 0)
+		if (open_scene(game, window, S_LOAD, 0) != 0)
 			return (84);
 	return (0);
 }
@@ -66,8 +71,8 @@ int manage_loading(game_t *game, window_t *window)
 		return (84);
 	if (manage_ratios(&finished, obj) != 0)
 		return (84);
-	if (finished == 1)
-		return (1);
+	if (finished == 1 || manage_text(game, window, s_loading) != 0)
+		return (finished == 1 ? 1 : 84);
 	sfText_setString(percent, my_strcat(int_to_str(offset / 5.6), " %"));
 	return (0);
 }
@@ -78,14 +83,12 @@ int manage_loading_scene(game_t *game, window_t *window, char *new_scene)
 
 	if (!game || !window || !CURRENT_BUCKET)
 		return (84);
-	//if (my_strcmp(CURRENT_BUCKET->key, S_LOAD) != 0)
-	//	return (0);
 	if ((my_errno = manage_loading(game, window)) != 0) {
 		game->loading = false;
 		if (my_errno == 84)
 			return (84);
 		if (my_errno == 1 && (open_scene(game, window,
-		new_scene) != 0))
+		new_scene, 1) != 0))
 			return (84);
 	}
 	return (0);

@@ -30,11 +30,11 @@ int init(window_t *window, game_t *game)
 int game_loop(window_t *window, game_t *game)
 {
 	while (sfRenderWindow_isOpen(window->window)) {
-		if (game->loading == true &&
-		manage_loading_scene(game, window, "MAIN_MENU") != 0)
-			return (84);
 		get_time(&window->clocker);
 		sfRenderWindow_clear(window->window, sfBlack);
+		if (game->loading == true &&
+		manage_loading_scene(game, window, "GAME") != 0)
+			return (84);
 		if (process_engine(window, game) != 0)
 			return (84);
 		display_mouse(game, window);

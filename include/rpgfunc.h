@@ -35,6 +35,7 @@ int init_an_obj(char **infos, game_t *game, hashmap_t *current_list);
 int init_monsters_lib(game_t *game);
 int init_npcs_lib(game_t *game);
 int init_libs(game_t *game);
+void place_player(game_t *game);
 
 /// Change ZONE_COOR_X and ZONE_COOR_Y and call load_my_zone to fulfill
 ///AREA maps with asked zone.
@@ -340,6 +341,7 @@ int *check_hit, int *offset);
 
 int start_game(window_t *window, game_t *game);
 int manage_loading_scene(game_t *game, window_t *window, char *new_scene);
+int manage_text(game_t *game, window_t *window, scene_t *s_load);
 
 ///Pass window, fulfill the timer struct in it.
 void get_time(ctime_t *clocker);

@@ -102,6 +102,7 @@ SRC	=	src/main.c						\
 		src/hud/opacity.c					\
 		src/hud/process.c 					\
 		src/hud/loading.c 					\
+		src/hud/manage_text_loading.c 				\
 		src/player/movements/move_player.c			\
 		src/player/movements/move_player_area.c			\
 		src/player/movements/move_player_zone.c			\
