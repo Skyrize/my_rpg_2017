@@ -59,6 +59,8 @@ int load_my_zone(game_t *game)
 		my_printf("WARNING: ERROR IN ZONE '%s' INIT !\n", ZONE_NAME);
 		return (84);
 	}
+	if (read_hashmap(NULL, game, NPCS_LIB, &set_npc) != 0)
+		return (84);
 	replace_player(&pos, game);
 	return (0);
 }

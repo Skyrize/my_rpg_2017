@@ -60,18 +60,13 @@ int init_game(game_t *game, window_t *window)
 	game->window = window;
 	game->loading = false;
 	if (init_map(game) != 0
-	|| init_textures_lib(game) != 0
-	|| init_audio_lib(game) != 0
-	|| init_fonts_lib(game) != 0
-	|| init_items_lib(game) != 0
-	|| init_monsters_lib(game) != 0
+	|| init_libs(game) != 0
 	|| init_scenes(game) != 0
 	|| init_inventory(game) != 0
 	|| init_buttons(game) != 0
 	|| init_particles(game) != 0
-	|| init_tools(game) != 0)
-		return (84);
-	if (set_game_version(game) != 0)
+	|| init_tools(game) != 0
+	|| set_game_version(game) != 0)
 		return (84);
 	init_key_player(game);
 	init_movement(game);

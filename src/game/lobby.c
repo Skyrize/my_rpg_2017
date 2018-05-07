@@ -40,7 +40,7 @@ int press_action_key(game_t *game)
 	static sfBool music = sfTrue;
 
 	if (pass == sfTrue) {
-		if (check_special_tiles_around(game) != 0)
+		if (process_npc_dialogue(game) != 0)
 			return (84);
 		if (music == sfTrue) {
 			make_sound("DIALOGUE_SOUND", game);

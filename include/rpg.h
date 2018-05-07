@@ -129,6 +129,18 @@ typedef struct texture_s
 	sfVector2i rect_offset;
 } texture_t, texture_data_t;
 
+typedef struct npc_s
+{
+	char *name;
+	char *texture;
+	sfVector2i zone;
+	sfVector2i area;
+	sfVector2i tile;
+	char *line_01;
+	char *line_02;
+	char *line_03;
+} npc_t;
+
 /////////////////////////////////// MAPPING /////////////////////////////////
 
 typedef struct vector_pack_s
@@ -137,13 +149,6 @@ typedef struct vector_pack_s
 	sfVector2i area;
 	sfVector2i tile;
 } vector_pack_t;
-
-typedef struct remarkable_tile_s
-{
-	char *name;
-	int (*fptr)();
-	vector_pack_t coord;
-} remarkable_tile_t;
 
 typedef struct tile_list_s tile_list_t;
 
@@ -377,6 +382,7 @@ typedef struct lib_s
 	hashmap_t *textures;
 	hashmap_t *items;
 	hashmap_t *monsters;
+	hashmap_t *npcs;
 } lib_t;
 
 typedef struct window_s window_t;

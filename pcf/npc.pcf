@@ -1,0 +1,29 @@
+### FILE : Fichier d'initialisation de zone. ###
+//Format: INIT_CHAR + description (voir .h)
+//Format: 	NPC=nom du pnj TEXTURE= texture
+//Format:		ZONE=DATA X= Y=
+//Format:		AREA=DATA X= Y=
+//Format:		TILE=DATA X= Y=
+//Format: 		LINE_01= première phrase, séparée par des '_' ou RANDOM ou phrase aléatoire;
+//Format: 		LINE_02=
+//Format: 		LINE_03=
+
+-Village
+	NPC=PENNY TEXTURE=VILLAGER_02
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=6 Y=3
+		LINE_01=RANDOM
+	NPC=TILER TEXTURE=VILLAGER_01
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=7 Y=3
+		LINE_01=Welcome_to_the_game.
+	NPC=Lily TEXTURE=GUARD_02
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=7 Y=6
+		LINE_01=As-tu_vu_un_chat_noir_passer_?
+		LINE_02=Je_voudrai_le_capturer.
+
+### END OF FILE ###

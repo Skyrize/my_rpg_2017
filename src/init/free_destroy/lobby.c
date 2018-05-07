@@ -37,6 +37,8 @@ void destroy_and_free(window_t *window, game_t *game)
 	hm_destroy(AUDIO_LIB);
 	hm_destroy(FONTS_LIB);
 	hm_destroy(SCENES);
+	hm_destroy(MONSTERS_LIB);
+	hm_destroy(NPCS_LIB);
 	sfClock_destroy(window->clocker.clock);
 	sfRenderWindow_destroy(window->window);
 }
