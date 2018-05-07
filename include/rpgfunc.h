@@ -414,16 +414,15 @@ bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
 
-//////////////////////////// NPCS
-
-int process_npc_dialogue(game_t *game);
-
 /////////////////////////// DIALOGUES
 
+int process_npc_dialogue(game_t *game);
 int update_random_pnj_dialogue(char *name, game_t *game);
 int update_nothing_here(game_t *game);
 bucket_t **get_dialogue_hud_texts(game_t *game);
 int update_pnj_dialogue(npc_t *npc, game_t *game);
+int update_no_place_dialogue(game_t *game);
+int update_no_place_dialogue(game_t *game);
 
 /////////////////////////// BATTLE
 
@@ -474,6 +473,7 @@ int update_damages_item(slot_t *slot, game_t *game);
 int update_special_item(slot_t *slot, game_t *game);
 int update_armor_item(slot_t *slot, game_t *game);
 int update_health_item(slot_t *slot, game_t *game);
+int add_item(item_t *item, game_t *game);
 
 //////////////////////////////// MOUSE
 
