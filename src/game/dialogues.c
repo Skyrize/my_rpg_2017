@@ -8,6 +8,18 @@
 #include "rpg.h"
 #include "my.h"
 
+static const char *random_sentence[] = {
+	"Hello adventurer !\nWelcome to the village of Pikili.\nYou are free to\
+ visit. Don't forget the tavern.",
+	"I used to be an adventurer like you.\nThen\
+ I took and arrow in the knee.",
+	"...",
+	"What ?",
+	"What do you want ?",
+	"You look tired.",
+	NULL,
+};
+
 bucket_t **get_dialogue_hud_texts(game_t *game)
 {
 	scene_t *dialogue_scene = hm_get(SCENES, "DIALOGUE_HUD");
@@ -31,7 +43,7 @@ int update_nothing_here(game_t *game)
 	char *line_01 = "Nothing to do here ..";
 	char *line_02 = "";
 
-	if (!texts)
+	if (!texts || !name)
 		return (84);
 	sfText_setString(texts[0]->value, name);
 	sfText_setString(texts[1]->value, line_01);
@@ -46,17 +58,33 @@ int update_random_pnj_dialogue(char *named, game_t *game)
 {
 	bucket_t **texts = get_dialogue_hud_texts(game);
 	char *name = my_strcat(named, " :");
-	char *line_01 = "Hello adventurer !";
-	char *line_02 = "Welcome to the village of Pikili.";
-	char *line_03 = "You are free to visit. Don't forget the tavern.";
+	const char *line_01 = random_sentence[rand()
+	% my_tab_len(random_sentence)];
+	char *line_02 = "";
 
-	if (!texts)
+	if (!texts || !name)
 		return (84);
 	sfText_setString(texts[0]->value, name);
 	sfText_setString(texts[1]->value, line_01);
 	sfText_setString(texts[2]->value, line_02);
-	sfText_setString(texts[3]->value, line_03);
+	sfText_setString(texts[3]->value, line_02);
 	free(texts);
 	free(name);
+	return (0);
+}
+
+int update_pnj_dialogue(npc_t *npc, game_t *game)
+{
+	bucket_t **texts = get_dialogue_hud_texts(game);
+	char *name = my_strcat(npc->name, " :");
+
+	if (!texts || !name)
+		return (84);
+	sfText_setString(texts[0]->value, name);
+	sfText_setString(texts[1]->value, npc->line_01);
+	sfText_setString(texts[2]->value, npc->line_02);
+	sfText_setString(texts[3]->value, npc->line_03);
+	free(name);
+	free(texts);
 	return (0);
 }

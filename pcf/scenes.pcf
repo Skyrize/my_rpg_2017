@@ -390,7 +390,7 @@ _____________________________________________________________________________
 			OBJ=DIALOGUE_BOX TEXTURE=DIALOGUE_BOX BUTTON=0 X=0 Y=440
 		LIST=TEXTS
 			TEXT=NAME STR=VARYAN:_ FONT=FRITZ CHARAC_SIZE=25 X=50 Y=462
-			TEXT=LINE_01 STR=I_wanna_be_the_guy. FONT=FRITZ CHARAC_SIZE=25 X=200 Y=462
+			TEXT=LINE_01 STR=I_wanna_be_the_guy. FONT=FRITZ CHARAC_SIZE=25 X=175 Y=462
 			TEXT=LINE_02 STR=I_wanna_save_the_girl,_and_then, FONT=FRITZ CHARAC_SIZE=25 X=50 Y=497
 			TEXT=LINE_03 STR=I_wanna_be_the_hero. FONT=FRITZ CHARAC_SIZE=25 X=50 Y=532
 
