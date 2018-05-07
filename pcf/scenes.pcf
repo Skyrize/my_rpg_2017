@@ -388,6 +388,7 @@ _____________________________________________________________________________
 		LIST=TEXTS
 			TEXT=PERCENT STR=0 FONT=RING CHARAC_SIZE=30 X=610 Y=301
 			TEXT=VERSION STR=V_1.0 FONT=RING CHARAC_SIZE=30 X=115 Y=360
+			TEXT=NEXT_ZONE STR=En_route_vers FONT=RING CHARAC_SIZE=20 X=120 Y=270
 
 _____________________________________________________________________________
 -AREA_HUD

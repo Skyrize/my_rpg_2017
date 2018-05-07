@@ -385,6 +385,8 @@ typedef struct lib_s
 	hashmap_t *npcs;
 } lib_t;
 
+typedef struct window_s window_t;
+
 typedef struct game_s
 {
 	map_t map;
@@ -399,6 +401,8 @@ typedef struct game_s
 	hashmap_t *scenes;
 	managed_scene_t *displayed_scenes;
 	particles_t *particles;
+	window_t *window;
+	bool loading;
 } game_t;
 
 typedef struct window_s
