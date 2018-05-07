@@ -78,9 +78,10 @@ int manage_loading_scene(game_t *game, window_t *window, char *new_scene)
 
 	if (!game || !window || !CURRENT_BUCKET)
 		return (84);
-	if (my_strcmp(CURRENT_BUCKET->key, S_LOAD) != 0)
-		return (0);
+	//if (my_strcmp(CURRENT_BUCKET->key, S_LOAD) != 0)
+	//	return (0);
 	if ((my_errno = manage_loading(game, window)) != 0) {
+		game->loading = false;
 		if (my_errno == 84)
 			return (84);
 		if (my_errno == 1 && (open_scene(game, window,

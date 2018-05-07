@@ -54,9 +54,11 @@ void init_movement(game_t *game)
 	game->movement.is_moving = sfFalse;
 }
 
-int init_game(game_t *game)
+int init_game(game_t *game, window_t *window)
 {
 	game->displayed_scenes = NULL;
+	game->window = window;
+	game->loading = false;
 	if (init_map(game) != 0
 	|| init_textures_lib(game) != 0
 	|| init_audio_lib(game) != 0

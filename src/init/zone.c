@@ -42,6 +42,8 @@ void replace_player(vector_pack_t *pos, game_t *game)
 
 int load_my_zone(game_t *game)
 {
+	game->loading = true;
+	printf("lol\n");
 	const key_word_t zone_keys[] = {
 	{"AREA", 3, &get_area, (char *[]) {"ENCOUNTER", "X", "Y", NULL}},
 	{"TILE", 3, &get_tile, (char *[]) {"BLOCK", "X", "Y", NULL}},

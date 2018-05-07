@@ -20,17 +20,19 @@ int init(window_t *window, game_t *game)
 		my_printf("WARNING: ERROR IN WINDOW INITIALISATION !\n");
 		return (84);
 	}
-	if (init_game(game) != 0) {
+	if (init_game(game, window) != 0) {
 		my_printf("WARNING: ERROR IN GAME INITIALISATION !\n");
 		return (84);
 	}
 	return (0);
 }
 
-//manage_loading_scene(game, window, "MAIN_MENU");
 int game_loop(window_t *window, game_t *game)
 {
 	while (sfRenderWindow_isOpen(window->window)) {
+		if (game->loading == true &&
+		manage_loading_scene(game, window, "MAIN_MENU") != 0)
+			return (84);
 		get_time(&window->clocker);
 		sfRenderWindow_clear(window->window, sfBlack);
 		if (process_engine(window, game) != 0)

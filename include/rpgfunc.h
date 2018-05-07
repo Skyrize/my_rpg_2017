@@ -18,7 +18,7 @@ int error_handling_args(int ac, char **av, char **env);
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);
-int init_game(game_t *game);
+int init_game(game_t *game, window_t *window);
 void init_player(game_t *game);
 int init_scenes(game_t *game);
 int init_audio_lib(game_t *game);
