@@ -89,7 +89,7 @@ void my_printadress(va_list);
 void my_printoctal(va_list);
 void my_printpercent(va_list);
 void my_printformatedstring(va_list);
-int my_array_len(char **);
+int my_tab_len(const char **);
 int my_str_isalphanum(char *str);
 int my_find_char(char seeked, char *inside);
 void my_replace_char(char *str, char seeked, char replacement);

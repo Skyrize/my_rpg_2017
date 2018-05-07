@@ -49,6 +49,7 @@
 #define TEXTURES_LIB LIBS.textures
 #define ITEMS_LIB LIBS.items
 #define MONSTERS_LIB LIBS.monsters
+#define NPCS_LIB LIBS.npcs
 
 ////////////////////////////////// INVENTORY ///////////////////////////////
 
