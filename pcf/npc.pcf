@@ -1,6 +1,7 @@
 ### FILE : Fichier d'initialisation de zone. ###
 //Format: INIT_CHAR + description (voir .h)
 //Format: 	NPC=nom du pnj TEXTURE= texture
+//Format:		ACTION= action disponible;
 //Format:		ZONE=DATA X= Y=
 //Format:		AREA=DATA X= Y=
 //Format:		TILE=DATA X= Y=
