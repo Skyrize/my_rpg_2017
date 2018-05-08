@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int all_enemie_dead(game_t *game)
+int all_enemies_dead(game_t *game)
 {
 	if (!game->battle.enemy[0]
 	&& !game->battle.enemy[1]
@@ -60,7 +60,7 @@ int reset_enemy_turn(window_t *window, game_t *game)
 
 int reset_player_turn(window_t *window, game_t *game)
 {
-	if (all_enemie_dead(game)) {
+	if (all_enemies_dead(game)) {
 		sfClock_restart(window->clocker.clock);
 		game->battle.win = 1;
 		return (0);

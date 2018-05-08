@@ -73,6 +73,8 @@ SRC	=	src/main.c						\
 		src/game/battle/manage/loot.c				\
 		src/game/battle/battle_utils.c				\
 		src/game/battle/run_away.c				\
+		src/game/battle/special.c				\
+		src/game/battle/nothing.c				\
 		src/game/battle/utils.c					\
 		src/game/mouse/replace.c 				\
 		src/hud/buttons/area.c					\

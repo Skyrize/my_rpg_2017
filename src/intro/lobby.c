@@ -14,7 +14,7 @@ int intro_events(window_t *window)
 			sfRenderWindow_close(window->window);
 		if (window->event.type == sfEvtKeyPressed
 		|| window->event.type == sfEvtMouseButtonPressed)
-			break;
+			return (1);
 	}
 	return (0);
 }

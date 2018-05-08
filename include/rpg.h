@@ -302,6 +302,7 @@ typedef struct battle_s {
 	bool win;
 	bool lose;
 	bool run_away;
+	bool used_special;
 	int selected_enemy;
 	int nbr_enemies;
 	enemy_t *enemy[3];
