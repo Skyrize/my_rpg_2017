@@ -15,6 +15,10 @@
 
 int error_handling_args(int ac, char **av, char **env);
 
+/////////////////////////// INTRO
+
+int start_intro(window_t *window);
+
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);

@@ -10,5 +10,6 @@
 
 -MUSIC
 	AUDIO=HOMETOWN_MUSIC FILEPATH=sounds/hometown_music.ogg
+	AUDIO=INTRO_MUSIC FILEPATH=sounds/intro_music.ogg
 
 ### END OF FILE ###

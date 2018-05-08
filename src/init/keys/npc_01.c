@@ -19,7 +19,7 @@ int get_npc(char **infos, char **type,
 	if (!npc)
 		return (84);
 	*current_list = NPCS_LIB;
-	if (check_already_existing(*current_list, type[1], "NPCS.PCF") != 0)
+	if (check_already_existing(*current_list, type[1], "NPC.PCF") != 0)
 		return (84);
 	hm_add(*current_list, type[1], npc);
 	CURRENT_BUCKET = hm_get_bucket(*current_list, type[1]);

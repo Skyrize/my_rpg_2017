@@ -50,7 +50,7 @@ SRC	=	src/main.c						\
 		src/game/engine.c					\
 		src/game/lobby.c					\
 		src/game/start.c					\
-		src/game/npcs.c					\
+		src/game/npcs.c						\
 		src/game/music.c					\
 		src/game/display/lobby.c				\
 		src/game/display/map.c					\
@@ -58,7 +58,7 @@ SRC	=	src/main.c						\
 		src/game/display/texts.c				\
 		src/game/display/mouse.c				\
 		src/game/display/animate.c				\
-		src/game/dialogues.c				\
+		src/game/dialogues.c					\
 		src/game/battle/init.c					\
 		src/game/battle/update_battle_hud.c			\
 		src/game/battle/display.c				\
@@ -67,7 +67,7 @@ SRC	=	src/main.c						\
 		src/game/battle/end_screen.c				\
 		src/game/battle/lobby.c 				\
 		src/game/battle/manage/hit.c 				\
-		src/game/battle/manage/versus_animation.c 				\
+		src/game/battle/manage/versus_animation.c 		\
 		src/game/battle/manage/special_hit.c			\
 		src/game/battle/manage/wait_enemy.c			\
 		src/game/battle/manage/loot.c				\
@@ -132,6 +132,7 @@ SRC	=	src/main.c						\
 		src/particles/rain.c					\
 		src/particles/free_system.c				\
 		src/particles/feet_particles.c				\
+		src/intro/lobby.c					\
 
 OBJS	=	$(SRC:.c=.o)
 
