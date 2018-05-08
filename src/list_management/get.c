@@ -17,7 +17,7 @@ managed_scene_t *get_scene_from_displayed(char *asked, game_t *game)
 	return (tmp);
 }
 
-void seek_zone_enemy_data(bucket_t *bucket, char *monsters[3], game_t *game)
+void seek_zone_enemy_data(bucket_t *bucket, char *monsters[4], game_t *game)
 {
 	enemy_data_t *data = bucket->value;
 	static int i = 0;
@@ -26,9 +26,11 @@ void seek_zone_enemy_data(bucket_t *bucket, char *monsters[3], game_t *game)
 		return;
 	monsters[i] = data->name;
 	i++;
+	if (i > 2)
+		i = 0;
 }
 
-void get_enemy_data(char *monsters[3], game_t *game)
+void get_enemy_data(char *monsters[4], game_t *game)
 {
 	bucket_t *tmp;
 	hashmap_t *hashmap = MONSTERS_LIB;

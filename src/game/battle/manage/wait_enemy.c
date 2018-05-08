@@ -34,5 +34,5 @@ int wait_for_enemy_attack(window_t *window, game_t *game, bool wait)
 	add_scene_to_display_list(special, game);
 	sfClock_restart(window->clocker.clock);
 	a = 1;
-	return (0);
+	return (1);
 }
