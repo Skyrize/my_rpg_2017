@@ -139,7 +139,7 @@ SRC	=	src/main.c						\
 		src/particles/free_system.c				\
 		src/particles/feet_particles.c				\
 		src/intro/lobby.c					\
-		src/init/init_particles.c				\
+		src/init/init_particles.c
 
 OBJS	=	$(SRC:.c=.o)
 
@@ -149,16 +149,24 @@ NAME	=	my_rpg
 
 NAME2	=	unit-tests
 
-LFLAGS	=	-lc_graph_prog
+CFLAGS	=	 -Wall -Wextra -W -lc_graph_prog
 
-CFLAGS	=	 -Wall -Wextra -W -g3 -I./include/ -L./lib/my -lmy
+LDFLAGS	=	-L./lib/llist/ -lllist -L./lib/my/ -lmy -lm
 
 CC	=	gcc
+
+_END=$'\x1b[0m'
+_RED=$'\x1b[31m'
+NO_OF_FILES := $(words $(SRC))
 
 all:	prepare_lib $(NAME)
 
 prepare_lib:
-	make -C lib/my
+	make -C lib/
+
+map:	prepare_lib
+	make -C bonus/map_creator/
+	mv bonus/map_creator/map_editor ./
 
 tests_run:	prepare_lib
 	make -C tests/
@@ -166,17 +174,32 @@ tests_run:	prepare_lib
 
 
 $(NAME):	$(OBJS)
-	$(CC) -o $(NAME) $(OBJS) $(LFLAGS) $(CFLAGS)
+	@ echo "\033[1;36m[ FILES COMPILED ] \033[0m \033[1;35m$(NO_OF_FILES)\033[0m"
+	$(CC) -o $(NAME) $(OBJS) $(LDFLAGS) $(CFLAGS)
+	@ echo "\033[1;31m ------------------Name of Binary : \033[1;35m$(NAME)\033[0;31m®\033[1;31m Created Sucesfully ------------------\033[0m"
+
+clean_map:
+	make clean -C bonus/map_creator
+
+fclean_map:
+	make fclean -C bonus/map_creator
 
 clean:
-	make clean -C lib/my
+	make clean -C lib/
 	make clean -C tests/
 	$(RM) $(OBJS)
 
 fclean:	clean
+	make fclean -C lib/
 	make fclean -C tests/
-	make fclean -C lib/my/
 	$(RM) $(NAME)
 
 re:	fclean all
 re_game: fclean game
+
+
+%.o:	%.c
+	@ echo "\033[1;35m[ OK ]\033[0m Compiling" $<
+	@ $(CC) -o $@ -c $< $(CFLAGS)
+
+.SILENT:
