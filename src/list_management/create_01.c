@@ -74,7 +74,7 @@ item_t *create_item(char *name, game_t *game)
 	item_t *new = malloc(sizeof(item_t));
 	item_data_t *data = hm_get(ITEMS_LIB, name);
 
-	if (!new || !data)
+	if (!new || !data || !name)
 		return (NULL);
 	new->name = my_strdup(data->name);
 	new->obj = create_obj(&(obj_data_t){name,

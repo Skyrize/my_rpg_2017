@@ -322,6 +322,8 @@ int gauntlets_slot(window_t *window, game_t *game);
 int pants_slot(window_t *window, game_t *game);
 int weapon_slot(window_t *window, game_t *game);
 int cross(window_t *window, game_t *game);
+int nothing(window_t *window, game_t *game);
+
 
 /////////////////////////// HUD FONCTIONS
 
@@ -462,6 +464,7 @@ char *get_item_type(char *item);
 int battle_end_screen(game_t *game, char *result);
 void check_run_away(game_t *game);
 int manage_versus_animation(game_t *game);
+int use_special(window_t *window, game_t *game);
 
 /////////////////////////////////// INVENTORY
 
