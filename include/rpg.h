@@ -364,6 +364,7 @@ typedef struct ctime_s
 typedef struct movement_s
 {
 	sfVector2i target_tile;
+	ctime_t timer;
 	int anim_mult;
 	bool is_moving;
 } movement_t;

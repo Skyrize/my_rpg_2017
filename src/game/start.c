@@ -24,8 +24,9 @@ int init_frame_rate(window_t *window, game_t *game)
 	bucket_t *bucket_scene = hm_get_bucket(SCENES, OPTION_GAME);
 	scene_t *scene_option = NULL;
 	bucket_t *text_bucket = NULL;
+	char *framerate = int_to_str(FRAMERATE);
 
-	if (!bucket_scene)
+	if (!bucket_scene || !framerate)
 		return (84);
 	scene_option = bucket_scene->value;
 	if (!scene_option)
@@ -33,9 +34,10 @@ int init_frame_rate(window_t *window, game_t *game)
 	text_bucket = hm_get_bucket(scene_option->texts, "FRAME");
 	if (!text_bucket)
 		return (84);
-	sfText_setString(text_bucket->value, int_to_str(FRAMERATE));
+	sfText_setString(text_bucket->value, framerate);
 	sfRenderWindow_setFramerateLimit(window->window, FRAMERATE);
 	sfRenderWindow_setKeyRepeatEnabled(window->window, sfTrue);
+	free(framerate);
 	return (0);
 }
 

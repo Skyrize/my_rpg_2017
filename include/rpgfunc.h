@@ -23,6 +23,7 @@ int start_intro(window_t *window);
 
 int init_window(window_t *window);
 int init_game(game_t *game, window_t *window);
+int init_timer(ctime_t *clocker);
 void init_player(game_t *game);
 int init_scenes(game_t *game);
 int init_audio_lib(game_t *game);

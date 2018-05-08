@@ -33,25 +33,29 @@ void init_key_player(game_t *game)
 
 int set_game_version(game_t *game)
 {
-	bucket_t *scene = hm_get_bucket(SCENES, PAUSE_GAME);
+	if (!game
+	|| !SCENES)
+		my_printf("fail\n");
+	scene_t *scene = hm_get(SCENES, PAUSE_GAME);
 	bucket_t *text = NULL;
-	scene_t *curr_scene = NULL;
 
-	if (check_unexisting_scene(scene, PAUSE_GAME) != 0)
+	if (!scene)
 		return (84);
-	curr_scene = scene->value;
-	text = hm_get_bucket(curr_scene->texts, "VERSION_GAME");
-	if (check_unexisting_text(text, "VERSION_GAME", scene->key) != 0)
+	text = hm_get_bucket(scene->texts, "VERSION_GAME");
+	if (check_unexisting_text(text, "VERSION_GAME", PAUSE_GAME) != 0)
 		return (84);
 	sfText_setString(text->value, VERSION_GAME);
 	return (0);
 }
 
-void init_movement(game_t *game)
+int init_movement(game_t *game)
 {
 	game->movement.target_tile = (sfVector2i) {0, 0};
 	game->movement.anim_mult = 1;
 	game->movement.is_moving = sfFalse;
+	if (init_timer(&game->movement.timer) != 0)
+		return (84);
+	return (0);
 }
 
 int init_game(game_t *game, window_t *window)
@@ -66,10 +70,10 @@ int init_game(game_t *game, window_t *window)
 	|| init_buttons(game) != 0
 	|| init_particles(game) != 0
 	|| init_tools(game) != 0
-	|| set_game_version(game) != 0)
+	|| set_game_version(game) != 0
+	|| init_movement(game) != 0)
 		return (84);
 	init_key_player(game);
-	init_movement(game);
 	init_player(game);
 	init_battle(game);
 	return (0);
