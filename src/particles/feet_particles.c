@@ -31,6 +31,7 @@ particle_sys_t *init_foot_particles(game_t *game)
 		.height = 2, .width = 2};
 	particle_sys_t *sys = create_particle_sys(spawn,
 						  "RAIN_DROP", 10, game);
+
 	sys->spawn_density = 1;
 	sys->force = V2F(1, 0);
 	sys->condition = feet_particles_cond;

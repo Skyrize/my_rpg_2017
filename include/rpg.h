@@ -433,6 +433,7 @@ typedef struct particle_sys_s
 typedef struct particles_s
 {
 	particle_sys_t *rain;
+	sfSprite *rain_background;
 } particles_t;
 
 #include "rpginit.h"

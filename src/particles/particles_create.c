@@ -10,8 +10,12 @@
 
 bool default_particle_cond(sfSprite *sprite, game_t *game)
 {
+	sfVector2f pos = sfSprite_getPosition(sprite);
+
 	(void) game;
-	if (sfSprite_getPosition(sprite).y > 600)
+	if (get_rnd(1, 100) == 50)
+		return (true);
+	if (pos.y > 600 || pos.x > 800 || pos.x < 0)
 		return (true);
 	return (false);
 }
@@ -41,6 +45,5 @@ void update_particle_sys(particle_sys_t *sys, game_t *game)
 			sfSprite_move(sys->sprite_arr[i], V2F(0, 2));
 		if (sys->condition(sys->sprite_arr[i], game))
 			set_init_particle_pos(sys, sys->sprite_arr[i]);
-
 	}
 }
