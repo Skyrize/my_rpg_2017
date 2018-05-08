@@ -63,10 +63,10 @@ int update_battle_result(game_t *game, scene_t *end_screen)
 	if (!xp || !found || !item_icon || !gold)
 		return (84);
 	sfText_setString(xp, my_strcat(":   ", XP_WON));
+	sfText_setString(gold, my_strcat(":   ", GOLD_WON));
 	if (item) {
 		sfRectangleShape_setTexture(item_icon->obj,
 		sfRectangleShape_getTexture(item->obj->obj), sfTrue);
-		sfText_setString(gold, my_strcat(":   ", GOLD_WON));
 		sfText_setString(found, "YOU GOT AN ITEM!");
 		if (update_type_rarity(end_screen, item_name) == 84
 		|| add_item(item, game) == 84)
