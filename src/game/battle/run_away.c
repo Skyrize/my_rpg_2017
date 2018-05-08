@@ -28,7 +28,7 @@ void check_run_away(game_t *game)
 		add_scene_to_display_list(hm_get_bucket(SCENES,
 							"HEALTH_HUD"), game);
 		add_scene_to_display_list(hm_get_bucket(SCENES,
-							"AREA_HUD"), game;
+							"AREA_HUD"), game);
 		CURRENT_BUCKET = hm_get_bucket(SCENES, "GAME");
 		sfRectangleShape_setPosition(PLAYER_CHARACTER->obj,
 		V2F(TARGET_TILE.x * 50, TARGET_TILE.y * 50));
