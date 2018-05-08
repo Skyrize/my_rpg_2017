@@ -6,6 +6,7 @@
 ##
 
 SRC	=	src/main.c						\
+		src/error_handlings_args.c				\
 		src/init/buttons.c					\
 		src/init/libs.c						\
 		src/init/list_filling.c					\
@@ -72,6 +73,8 @@ SRC	=	src/main.c						\
 		src/game/battle/manage/loot.c				\
 		src/game/battle/battle_utils.c				\
 		src/game/battle/run_away.c				\
+		src/game/battle/special.c				\
+		src/game/battle/nothing.c				\
 		src/game/battle/utils.c					\
 		src/game/mouse/replace.c 				\
 		src/hud/buttons/area.c					\
@@ -101,6 +104,7 @@ SRC	=	src/main.c						\
 		src/hud/opacity.c					\
 		src/hud/process.c 					\
 		src/hud/loading.c 					\
+		src/hud/manage_text_loading.c 				\
 		src/player/movements/move_player.c			\
 		src/player/movements/move_player_area.c			\
 		src/player/movements/move_player_zone.c			\

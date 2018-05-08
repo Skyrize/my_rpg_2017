@@ -27,9 +27,10 @@ void check_timer_special_player(window_t *window, game_t *game,
 	if (*a == 1 && window->clocker.seconds >= 2) {
 		*a = 0;
 		SPECIAL_HIT = 0;
-		ENEMY_TURN = 1;
-		PLAYER_TURN = 0;
-		if (!game->battle.win)
+		if (!my_strcmp(save, "USE_SPECIAL"))
+			add_scene_to_display_list(hm_get_bucket(SCENES,
+						"BATTLE_BASIC_BUTTONS"), game);
+		else if (!game->battle.win)
 			reset_player_turn(window, game);
 		clean_displayed_scene_name(game, save);
 	}

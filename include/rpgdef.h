@@ -126,6 +126,10 @@
 #define LAST_ENEMY_TURN game->battle.last_enemy_turn
 #define NBR_ENEMIES game->battle.nbr_enemies
 
+#define PLAYER_POS V2F(TARGET_TILE.x * 50, TARGET_TILE.y * 50)
+#define XP_WON int_to_str(compute_xp_won(game))
+#define GOLD_WON int_to_str(compute_gold_won(game))
+
 ////////////////////////////////// USED //////////////////////////////
 
 #define MIN(X, Y) X >= Y ? Y : X

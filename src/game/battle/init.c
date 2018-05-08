@@ -33,6 +33,7 @@ int set_battle(game_t *game)
 	game->battle.lose = 0;
 	game->battle.win = 0;
 	game->battle.run_away = 0;
+	game->battle.used_special = 0;
 	ENEMY_TURN = 0;
 	PLAYER_TURN = 1;
 	return (update_element_in_battle(game));

@@ -60,9 +60,6 @@ int start_game(window_t *window, game_t *game)
 		return (84);
 	if (add_scene_to_display_list(CURRENT_BUCKET, game) != 0)
 		return (84);
-	place_player(game);
-	if (load_my_zone(game) != 0)
-		return (84);
 	sfRenderWindow_setMouseCursorVisible(window->window, sfFalse);
 	return (0);
 }
