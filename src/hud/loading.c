@@ -13,18 +13,20 @@ static float offset = 0.0;
 int open_scene(game_t *game, window_t *window, char *new_scene, int finished)
 {
 	bucket_t *hud = NULL;
+	bucket_t *coord = NULL;
 
-	if (!window || !game)
-		return (84);
 	CURRENT_BUCKET = hm_get_bucket(SCENES, new_scene);
 	if (check_unexisting_scene(CURRENT_BUCKET, new_scene) != 0)
 		return (84);
 	if (clean_displayed_scenes_and_add_back(game, new_scene) != 0)
 		return (84);
 	if (finished == 1) {
-		if ((hud = hm_get_bucket(SCENES, "HEALTH_HUD")) == NULL)
+		if ((!(hud = hm_get_bucket(SCENES, "HEALTH_HUD"))) ||
+		(!(coord = hm_get_bucket(SCENES, "AREA_HUD"))))
 			return (84);
 		if (add_scene_to_display_list(hud, game) != 0)
+			return (84);
+		if (add_scene_to_display_list(coord, game) != 0)
 			return (84);
 	}
 	(void)window;
