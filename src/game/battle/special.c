@@ -20,6 +20,8 @@ int process_special(window_t *window, game_t *game,
 	for (int i = 0; i < 3; i++) {
 		if (ENEMY[i])
 			ENEMY[i]->stats.health -= damages;
+		if (ENEMY[i] && ENEMY[i]->stats.health <= 0)
+			ENEMY[i] = NULL;
 	}
 	if (reset_player_turn(window, game) == 84)
 		return (84);
