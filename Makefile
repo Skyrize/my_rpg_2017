@@ -50,7 +50,7 @@ SRC	=	src/main.c						\
 		src/game/engine.c					\
 		src/game/lobby.c					\
 		src/game/start.c					\
-		src/game/npcs.c					\
+		src/game/npcs.c						\
 		src/game/music.c					\
 		src/game/display/lobby.c				\
 		src/game/display/map.c					\
@@ -104,6 +104,7 @@ SRC	=	src/main.c						\
 		src/hud/opacity.c					\
 		src/hud/process.c 					\
 		src/hud/loading.c 					\
+		src/hud/manage_text_loading.c 				\
 		src/player/movements/move_player.c			\
 		src/player/movements/move_player_area.c			\
 		src/player/movements/move_player_zone.c			\
@@ -133,6 +134,7 @@ SRC	=	src/main.c						\
 		src/particles/rain.c					\
 		src/particles/free_system.c				\
 		src/particles/feet_particles.c				\
+		src/intro/lobby.c					\
 
 OBJS	=	$(SRC:.c=.o)
 

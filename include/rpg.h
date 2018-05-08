@@ -61,6 +61,7 @@
 #define INTRECT(x, y, width, height) (sfIntRect) {x, y, width, height}
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
+#define V2U(x, y) (sfVector2u) {(unsigned int) x, (unsigned int) y}
 #define MIN(X, Y) X >= Y ? Y : X
 #define MAX(X, Y) X >= Y ? X : Y
 
@@ -386,6 +387,8 @@ typedef struct lib_s
 	hashmap_t *npcs;
 } lib_t;
 
+typedef struct window_s window_t;
+
 typedef struct game_s
 {
 	map_t map;
@@ -400,6 +403,8 @@ typedef struct game_s
 	hashmap_t *scenes;
 	managed_scene_t *displayed_scenes;
 	particles_t *particles;
+	window_t *window;
+	bool loading;
 } game_t;
 
 typedef struct window_s
