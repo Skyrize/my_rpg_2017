@@ -68,7 +68,8 @@ int update_battle_result(game_t *game, scene_t *end_screen)
 		sfRectangleShape_getTexture(item->obj->obj), sfTrue);
 		sfText_setString(gold, my_strcat(":   ", GOLD_WON));
 		sfText_setString(found, "YOU GOT AN ITEM!");
-		if (update_type_rarity(end_screen, item_name) == 84)
+		if (update_type_rarity(end_screen, item_name) == 84
+		|| add_item(item, game) == 84)
 			return (84);
 	}
 	return (0);

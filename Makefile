@@ -58,7 +58,7 @@ SRC	=	src/main.c						\
 		src/game/display/texts.c				\
 		src/game/display/mouse.c				\
 		src/game/display/animate.c				\
-		src/game/dialogues.c				\
+		src/game/dialogues.c					\
 		src/game/battle/init.c					\
 		src/game/battle/update_battle_hud.c			\
 		src/game/battle/display.c				\
@@ -67,12 +67,14 @@ SRC	=	src/main.c						\
 		src/game/battle/end_screen.c				\
 		src/game/battle/lobby.c 				\
 		src/game/battle/manage/hit.c 				\
-		src/game/battle/manage/versus_animation.c 				\
+		src/game/battle/manage/versus_animation.c 		\
 		src/game/battle/manage/special_hit.c			\
 		src/game/battle/manage/wait_enemy.c			\
 		src/game/battle/manage/loot.c				\
 		src/game/battle/battle_utils.c				\
 		src/game/battle/run_away.c				\
+		src/game/battle/special.c				\
+		src/game/battle/nothing.c				\
 		src/game/battle/utils.c					\
 		src/game/mouse/replace.c 				\
 		src/hud/buttons/area.c					\
