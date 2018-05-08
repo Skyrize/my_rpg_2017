@@ -26,5 +26,47 @@
 		TILE=DATA X=7 Y=6
 		LINE_01=As-tu_vu_un_chat_noir_passer_?
 		LINE_02=Je_voudrai_le_capturer.
+	NPC=Jake TEXTURE=GUARD_04
+		ZONE=DATA X=2 Y=4
+		AREA=DATA X=2 Y=0
+		TILE=DATA X=4 Y=5
+		LINE_01=Attention_les_ennemies,_sont_dangereux,_ici_!
+		LINE_02=Force_a_toi_guerrier.
+	NPC=Zoe TEXTURE=VILLAGER_02
+		ZONE=DATA X=2 Y=4
+		AREA=DATA X=2 Y=2
+		TILE=DATA X=4 Y=5
+		LINE_01=Je_suis_perdu..._Ou_est_le_village..?
+	NPC=Doctor TEXTURE=MEDIC_01
+		ZONE=DATA X=2 Y=4
+		AREA=DATA X=0 Y=1
+		TILE=DATA X=4 Y=5
+		LINE_01=Rendre_un_service_est_toujours_benefique!
+		LINE_02=Parols_d'un_grand_homme.
+	NPC=Explorer TEXTURE=VILLAGER_03
+		ZONE=DATA X=2 Y=4
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=4 Y=5
+		LINE_01=Moi_c'est_doudou_je_vagabonde,
+		LINE_02=dans_ces_terres_austile...
+	NPC=Andy TEXTURE=VILLAGER_04
+		ZONE=DATA X=2 Y=4
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=12 Y=7
+		LINE_01=Je_te_conseille_de_te_refugier_dans_une
+		LINE_02=maison_de_moria,_il_ce_trouve_qu'elle
+		LINE_03=y_cache_des_choses_interessante.
+	NPC=Kali TEXTURE=VILLAGER_06
+		ZONE=DATA X=2 Y=4
+		AREA=DATA X=1 Y=1
+		TILE=DATA X=7 Y=7
+		LINE_01=Le_fruit_de_la_vie,_c'est_de_poursuivre
+		LINE_02=ses_reves_mais_aussi_ses_quetes!
+	NPC=Vieux TEXTURE=VILLAGER_05
+		ZONE=DATA X=2 Y=4
+		AREA=DATA X=1 Y=2
+		TILE=DATA X=7 Y=7
+		LINE_01=Ne_t'arrete_pas_gamin!_autrefois_
+		LINE_02=je_poursuivais_les_memes_reves_que_toi..
 
 ### END OF FILE ###
