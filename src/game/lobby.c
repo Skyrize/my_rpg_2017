@@ -79,6 +79,7 @@ int game_lobby(window_t *window, game_t *game)
 	if (my_errno != 0)
 		return (my_errno);
 	rain(game, window);
+	update_feet_particles(game);
 	display_particles(window, game);
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0

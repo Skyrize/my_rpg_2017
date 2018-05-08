@@ -126,6 +126,10 @@
 #define LAST_ENEMY_TURN game->battle.last_enemy_turn
 #define NBR_ENEMIES game->battle.nbr_enemies
 
+//////////////////////////////// PARTICLES ///////////////////////////
+
+#define PARTICLES game->particles
+
 ////////////////////////////////// USED //////////////////////////////
 
 #define MIN(X, Y) X >= Y ? Y : X
