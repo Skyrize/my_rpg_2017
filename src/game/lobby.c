@@ -63,6 +63,8 @@ int game_events(window_t *window, game_t *game)
 		sfRenderWindow_close(window->window);
 	if (window->event.type == sfEvtMouseButtonReleased)
 		CLICK_RELEASED = sfTrue;
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
+		return (0);
 	if (window->event.type == sfEvtKeyPressed
 	&& KEY_PLAYER.move == 1)
 		on_key_pressed(game, &window->event);

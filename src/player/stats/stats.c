@@ -17,6 +17,8 @@ void update_stat(int value, char *wanted, scene_t *scene)
 
 	if (actual)
 		sfText_setString(actual, display);
+	free(value_string);
+	free(display);
 }
 
 void update_stats(scene_t *scene, game_t *game)

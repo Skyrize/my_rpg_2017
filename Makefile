@@ -22,6 +22,10 @@ SRC	=	src/main.c						\
 		src/init/free_destroy/lobby.c				\
 		src/init/free_destroy/list.c				\
 		src/init/free_destroy/entity.c				\
+		src/init/free_destroy/struct.c				\
+		src/init/free_destroy/particles.c			\
+		src/init/free_destroy/libs.c				\
+		src/init/free_destroy/map.c				\
 		src/init/read/savior.c					\
 		src/init/read/file_analysing.c				\
 		src/init/keys/audio.c					\

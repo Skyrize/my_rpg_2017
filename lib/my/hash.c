@@ -13,9 +13,13 @@ hashmap_t *hm_create(unsigned int size, void (*fptr)())
 {
 	hashmap_t *hashmap = malloc(sizeof(hashmap_t));
 
+	if (!hashmap)
+		return (NULL);
 	hashmap->size = size;
 	hashmap->destroyer = fptr;
 	hashmap->data = malloc(sizeof(*(hashmap->data)) * size);
+	if (!hashmap->data)
+		return (NULL);
 	for (unsigned int i = 0; i < size; ++i)
 		hashmap->data[i] = NULL;
 	return (hashmap);
