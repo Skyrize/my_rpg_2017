@@ -27,7 +27,7 @@ void init_rain(game_t *game)
 	sfSprite *bg = sfSprite_create();
 
 	sfSprite_setTexture(bg, tex->texture, sfFalse);
-	sfSprite_setColor(bg, sfColor_fromRGBA(255, 255, 255, 100));
+	sfSprite_setColor(bg, sfColor_fromRGBA(255, 255, 255, 150));
 	PARTICLES->rain = sys;
 	PARTICLES->rain_background = bg;
 }
