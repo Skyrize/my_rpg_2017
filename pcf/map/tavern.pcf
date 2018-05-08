@@ -4,8 +4,8 @@
 //Format: 		TILE=DATA + BLOCK=bloque ou pas le passage + X=coord_x + Y=coord_y (voir .h pour x y max)
 //Format: 			TEXTURE=ID texture du tile
 
--TEST_ZONE
-	AREA=STARTING_VILLAGE_01 ENCOUNTER=0 X=0 Y=0
+-TAVERN
+	AREA=STARTING_TAVERN ENCOUNTER=0 X=0 Y=0
 		TILE=DATA BLOCK=0 X=0 Y=0
 			TEXTURE=VOID
 		TILE=DATA BLOCK=0 X=1 Y=0
