@@ -5,7 +5,7 @@
 ** putchar to appeal
 */
 
-void write (int fd, char *c, int n);
+void write(int fd, char *c, int n);
 
 int my_putchar(char c)
 {

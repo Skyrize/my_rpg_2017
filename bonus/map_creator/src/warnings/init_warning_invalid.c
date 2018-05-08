@@ -5,18 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
-
-int check_invalid_index(int index)
-{
-	if (index < 0 || index >= OBJS_TYPE_NB) {
-		my_printf("WARNING: INDEX HAS TO STICK BETWEEN 0 AND %d !\n",
-		OBJS_TYPE_NB);
-		return (84);
-	}
-	return (0);
-}
+#include "map_editor.h"
 
 int check_invalid_key_word(char *last_word_used, char **type, char **infos,
 	int error_no)
@@ -28,8 +17,8 @@ int check_invalid_key_word(char *last_word_used, char **type, char **infos,
 		type[0]);
 		return (84);
 	}
-	free_char_2d(type);
-	free_char_2d(infos);
+	my_destroy_tab(type);
+	my_destroy_tab(infos);
 	return (0);
 }
 

@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"*.h": "c",
+		"system_error": "c",
+		"type_traits": "c",
+		"typeinfo": "c",
+		"*.tcc": "c",
+		"array": "c"
+	}
+}

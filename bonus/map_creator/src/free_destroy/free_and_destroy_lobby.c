@@ -5,16 +5,12 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 void scenes_destroy(scene_t *scene)
 {
 	hm_destroy(scene->texts);
-	hm_destroy(scene->objs[BACKGROUNDS]);
-	hm_destroy(scene->objs[PNJS]);
-	hm_destroy(scene->objs[ITEMS]);
-	hm_destroy(scene->objs[BUTTONS]);
+	hm_destroy(scene->objs);
 }
 
 void obj_destroy(obj_t *obj)

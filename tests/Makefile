@@ -1,7 +1,7 @@
 ##
-## EPITECH PROJECT, 2018
-## minishell1
-## File description
+## EPITECH PROJECT, 2017
+## my_rpg_2017
+## File description:
 ## Makefile
 ##
 
@@ -13,7 +13,7 @@ CFLAGS		=	-I../include -L../lib/my/ -lmy --coverage -lcriterion
 
 RM	=	rm -rf
 
-SRCTEST	=	
+SRCTEST	=	main.c	\
 
 OBJTEST	=	$(SRCTEST:.c=.o)
 

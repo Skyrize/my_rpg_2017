@@ -4,6 +4,7 @@
 ** File description:
 ** (main.c bootstrap minishell_1)
 */
+
 #include "../../include/my.h"
 
 int count_words(char *str, char sep)
@@ -66,19 +67,14 @@ char **my_str_to_word_array(char *str, char sep)
 {
 	int nb_words = count_words(str, sep);
 	char **array = malloc(sizeof(char *) * (nb_words + 1));
-	char *freed;
 
-	for (int i = 0; i < nb_words + 1; i++)
-		array[i] = NULL;
 	if (!array)
 		return (NULL);
+	my_replace_char(str, '\t', ' ');
+	for (int i = 0; i < nb_words + 1; i++)
+		array[i] = NULL;
 	if (alloc_my_words(str, array, sep) != 0)
 		return (NULL);
 	copy_my_words(str, array, sep);
-	for (unsigned int i = 0; array[i]; i++) {
-		freed = array[i];
-		array[i] = my_cleanstr(freed, '\t');
-		free(freed);
-	}
 	return (array);
 }

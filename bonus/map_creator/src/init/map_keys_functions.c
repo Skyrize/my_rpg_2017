@@ -5,8 +5,7 @@
 ** (enter)
 */
 
-#include "my.h"
-#include "rpg.h"
+#include "map_editor.h"
 
 int get_a_map(char **infos, char **type,
 	hashmap_t **current_list, my_w_t *window)
@@ -27,8 +26,8 @@ int get_a_map(char **infos, char **type,
 		return (84);
 	ZONE_NAME = my_strdup(type[1]);
 	ZONE_FILEPATH = my_strdup(path[1]);
-	free_char_2d(path);
-	free_char_2d(x);
-	free_char_2d(y);
+	my_destroy_tab(path);
+	my_destroy_tab(x);
+	my_destroy_tab(y);
 	return (0);
 }
