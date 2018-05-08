@@ -20,6 +20,8 @@ int init(window_t *window, game_t *game)
 		my_printf("WARNING: ERROR IN WINDOW INITIALISATION !\n");
 		return (84);
 	}
+	if (start_intro(window) != 0)
+		return (84);
 	if (init_game(game, window) != 0) {
 		my_printf("WARNING: ERROR IN GAME INITIALISATION !\n");
 		return (84);

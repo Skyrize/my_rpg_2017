@@ -52,12 +52,13 @@ int init_npcs_lib(game_t *game)
 int set_npc(bucket_t *npc_bucket, game_t *game)
 {
 	npc_t *npc = npc_bucket->value;
-	scene_t *game_scene = hm_get(SCENES, "GAME");
+	scene_t *game_scene;
 
+	if (ZONE_COOR_X != npc->zone.x || ZONE_COOR_Y !=  npc->zone.y)
+		return (0);
+	game_scene = hm_get(SCENES, "GAME");
 	if (!game_scene || !npc)
 		return (84);
-	ZONE_COOR_X = npc->zone.x;
-	ZONE_COOR_Y = npc->zone.y;
 	AREA_COOR_X = npc->area.x;
 	AREA_COOR_Y = npc->area.y;
 	TILE_COOR_X = npc->tile.x;
