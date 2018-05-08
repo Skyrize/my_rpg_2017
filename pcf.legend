@@ -1,40 +1,43 @@
 ##################################################################################################################################################################
-  ___       ________  ________   ________  ________           ________  ________      ___      ___ ________  ___       ________  ________  ________  ________
-|\  \     |\   __  \|\   ___  \|\   ___ \|\   ____\         |\   __  \|\  _____\    |\  \    /  /|\   __  \|\  \     |\   __  \|\   __  \|\   __  \|\   ___  \
-\ \  \    \ \  \|\  \ \  \\ \  \ \  \_|\ \ \  \___|_        \ \  \|\  \ \  \__/     \ \  \  /  / | \  \|\  \ \  \    \ \  \|\  \ \  \|\  \ \  \|\  \ \  \\ \  \
- \ \  \    \ \   __  \ \  \\ \  \ \  \ \\ \ \_____  \        \ \  \\\  \ \   __\     \ \  \/  / / \ \   __  \ \  \    \ \  \\\  \ \   _  _\ \   __  \ \  \\ \  \
-  \ \  \____\ \  \ \  \ \  \\ \  \ \  \_\\ \|____|\  \        \ \  \\\  \ \  \_|      \ \    / /   \ \  \ \  \ \  \____\ \  \\\  \ \  \\  \\ \  \ \  \ \  \\ \  \
-   \ \_______\ \__\ \__\ \__\\ \__\ \_______\____\_\  \        \ \_______\ \__\        \ \__/ /     \ \__\ \__\ \_______\ \_______\ \__\\ _\\ \__\ \__\ \__\\ \__\
-    \|_______|\|__|\|__|\|__| \|__|\|_______|\_________\        \|_______|\|__|         \|__|/       \|__|\|__|\|_______|\|_______|\|__|\|__|\|__|\|__|\|__| \|__|
-                                            \|_________|
+  ___       ________  ________   ________  ________	   ________  ________      ___      ___ ________  ___       ________  ________  ________  ________
+|\  \     |\   __  \|\   ___  \|\   ___ \|\   ____\	 |\   __  \|\  _____\    |\  \    /  /|\   __  \|\  \     |\   __  \|\   __  \|\   __  \|\   ___  \
+\ \  \    \ \  \|\  \ \  \\ \  \ \  \_|\ \ \  \___|_	\ \  \|\  \ \  \__/     \ \  \  /  / | \  \|\  \ \  \    \ \  \|\  \ \  \|\  \ \  \|\  \ \  \\ \  \
+ \ \  \    \ \   __  \ \  \\ \  \ \  \ \\ \ \_____  \	\ \  \\\  \ \   __\     \ \  \/  / / \ \   __  \ \  \    \ \  \\\  \ \   _  _\ \   __  \ \  \\ \  \
+  \ \  \____\ \  \ \  \ \  \\ \  \ \  \_\\ \|____|\  \	\ \  \\\  \ \  \_|      \ \    / /   \ \  \ \  \ \  \____\ \  \\\  \ \  \\  \\ \  \ \  \ \  \\ \  \
+   \ \_______\ \__\ \__\ \__\\ \__\ \_______\____\_\  \	\ \_______\ \__\	\ \__/ /     \ \__\ \__\ \_______\ \_______\ \__\\ _\\ \__\ \__\ \__\\ \__\
+    \|_______|\|__|\|__|\|__| \|__|\|_______|\_________\	\|_______|\|__|	 \|__|/       \|__|\|__|\|_______|\|_______|\|__|\|__|\|__|\|__|\|__| \|__|
+					    \|_________|
 ##################################################################################################################################################################
 
-
+INTRODUCTION :
+En header de chaque .Pcf vous y retrouvez des informations à propos de celui-ci, plus détaillé pour chaque cas en particulier.
 ##### MAP + MAP EDITOR #####
 
-Introduction :
-En header de chaque .Pcf vous y retrouvez des informations à propos de celui-ci, plus détaillées pour chaque cas en particulier.
+UTILS :
+1 -Si vous souhaitez rendre un "tile" bloquant en jeu, vous utilisez la touche b et vous sélectionnez ce que vous souhaitez.
+  Si vous souhaitez rendre un "tile" non bloquant alors qu'il est bloquant, vous utilisez la touche "b" et vous sélectionnez ce tile bloquant.
+  PS: Si vous voulez sortir du mode "bloquant" vous pouvez utiliser la touche "e'".
 
 ------------- Comment créer une map ? -------------
 
 1: Se rendre dans bonus/map_creator/
 2: Make
-3: Ouvrir le .pcf "TEST_ZONE" qui ce trouve dans pcf/map/ verifier ceci :
+3: Ouvrir le .pcf "TEST_ZONE" qui ce trouve dans pcf/map/ vérifier ceci :
 AREA=NAME... X=0 Y=0  si X && Y ne sont pas à zero veuillez les set à zero.
 
 4: ./map_editor {DEFAULT NAME : TEST_ZONE} 0 0
 5: créer la map que vous souhaitez
-6: Quitter et la map sera auto-save. 
+6: Quitter et la map sera auto-save.
 
 ------------- Comment modifier une map ? -------------
 
-1: Se rendre dans le .pcf du jeu, que vous avez envie de modifier, selectionné à partir de AREA= jusqu'a ça derniere ligne, soit avant la fin du fichier ou avant une aute ligne débutant par AREA=
+1: Se rendre dans le .pcf du jeu, que vous avez envie de modifier, selectionné à partir de AREA= jusqu'a ça derniere ligne, soit avant la fin du fichier ou avant une autre ligne débutant par AREA=
 2: Se rendre dans bonus/map_creator/
 3: Make
 4: Ouvrir le .pcf "TEST_ZONE" qui ce trouve dans pcf/map/ ensuite remplacer votre map part ce qui ce trouve dans celui-ci (bien à partir du AREA=), ainsi set X && Y à 0, pour l'éditeur.
 5: ./map_editor {DEFAULT NAME : TEST_ZONE} 0 0
 6: Modifiez comme bon vous sembles
-7: Quitter et la map sera auto-save. 
+7: Quitter et la map sera auto-save.
 
 ------------- Comment ajouter une map dans le jeu ? -------------
 
@@ -46,8 +49,8 @@ AREA=NAME... X=0 Y=0  si X && Y ne sont pas à zero veuillez les set à zero.
 5: Ajouter en dessous de la fin d'une map.
 
 UTILS :
-- Vérifier que le nom de la map soit différent des autres. 
-- Vérifier que ces coordonées soit cohérente (voir chapitre correspondant)
+- Vérifier que le nom de la map soit différent des autres.
+- Vérifier que ces coordonnées soient cohérentes (voir chapitre correspondant)
 
 ------------- Comprendre l'affichage des maps ? -------------
 
@@ -128,18 +131,12 @@ Les maps du jeux sont dans .pcf/map/
 
 
 ##################################################################################################################################################################
-  ___       ________  ________   ________  ________           ________  ________      ___      ___ ________  ___       ________  ________  ________  ________
-|\  \     |\   __  \|\   ___  \|\   ___ \|\   ____\         |\   __  \|\  _____\    |\  \    /  /|\   __  \|\  \     |\   __  \|\   __  \|\   __  \|\   ___  \
-\ \  \    \ \  \|\  \ \  \\ \  \ \  \_|\ \ \  \___|_        \ \  \|\  \ \  \__/     \ \  \  /  / | \  \|\  \ \  \    \ \  \|\  \ \  \|\  \ \  \|\  \ \  \\ \  \
- \ \  \    \ \   __  \ \  \\ \  \ \  \ \\ \ \_____  \        \ \  \\\  \ \   __\     \ \  \/  / / \ \   __  \ \  \    \ \  \\\  \ \   _  _\ \   __  \ \  \\ \  \
-  \ \  \____\ \  \ \  \ \  \\ \  \ \  \_\\ \|____|\  \        \ \  \\\  \ \  \_|      \ \    / /   \ \  \ \  \ \  \____\ \  \\\  \ \  \\  \\ \  \ \  \ \  \\ \  \
-   \ \_______\ \__\ \__\ \__\\ \__\ \_______\____\_\  \        \ \_______\ \__\        \ \__/ /     \ \__\ \__\ \_______\ \_______\ \__\\ _\\ \__\ \__\ \__\\ \__\
-    \|_______|\|__|\|__|\|__| \|__|\|_______|\_________\        \|_______|\|__|         \|__|/       \|__|\|__|\|_______|\|_______|\|__|\|__|\|__|\|__|\|__| \|__|
-                                            \|_________|
+  ___       ________  ________   ________  ________	   ________  ________      ___      ___ ________  ___       ________  ________  ________  ________
+|\  \     |\   __  \|\   ___  \|\   ___ \|\   ____\	 |\   __  \|\  _____\    |\  \    /  /|\   __  \|\  \     |\   __  \|\   __  \|\   __  \|\   ___  \
+\ \  \    \ \  \|\  \ \  \\ \  \ \  \_|\ \ \  \___|_	\ \  \|\  \ \  \__/     \ \  \  /  / | \  \|\  \ \  \    \ \  \|\  \ \  \|\  \ \  \|\  \ \  \\ \  \
+ \ \  \    \ \   __  \ \  \\ \  \ \  \ \\ \ \_____  \	\ \  \\\  \ \   __\     \ \  \/  / / \ \   __  \ \  \    \ \  \\\  \ \   _  _\ \   __  \ \  \\ \  \
+  \ \  \____\ \  \ \  \ \  \\ \  \ \  \_\\ \|____|\  \	\ \  \\\  \ \  \_|      \ \    / /   \ \  \ \  \ \  \____\ \  \\\  \ \  \\  \\ \  \ \  \ \  \\ \  \
+   \ \_______\ \__\ \__\ \__\\ \__\ \_______\____\_\  \	\ \_______\ \__\	\ \__/ /     \ \__\ \__\ \_______\ \_______\ \__\\ _\\ \__\ \__\ \__\\ \__\
+    \|_______|\|__|\|__|\|__| \|__|\|_______|\_________\	\|_______|\|__|	 \|__|/       \|__|\|__|\|_______|\|_______|\|__|\|__|\|__|\|__|\|__| \|__|
+					    \|_________|
 ##################################################################################################################################################################
-
-
-
-
-
-
