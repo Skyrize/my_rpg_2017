@@ -65,14 +65,9 @@ void display_particles(window_t *window, game_t *game)
 {
 	node_t *act_node;
 	particle_sys_t *act_sys;
-	static bool init = false;
 
 	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
-	if (!init) {
-		init_rain(game);
-		init = true;
-	}
 	if (!particle_sys_list)
 		return;
 	act_node = particle_sys_list->first;
@@ -82,6 +77,7 @@ void display_particles(window_t *window, game_t *game)
 		update_particle_sys(act_sys, game);
 		display_particle_sys(window, act_sys);
 	}
+	rain(game, game->window);
 }
 
 void remove_particle_sys_by_id(int id)
@@ -96,7 +92,7 @@ void remove_particle_sys_by_id(int id)
 	act_node = particle_sys_list->first;
 	for (; act_node; act_node = act_node->next) {
 		act_sys = act_node->value;
-		if(act_sys->sys_id == id)
+		if (act_sys->sys_id == id)
 			break;
 		last_node = act_node;
 		idx++;
