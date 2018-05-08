@@ -13,8 +13,7 @@ int battle_events(window_t *window, game_t *game)
 		sfRenderWindow_close(window->window);
 	if (window->event.type == sfEvtMouseButtonReleased)
 		CLICK_RELEASED = sfTrue;
-	select_ennemy(window, game);
-	return (0);
+	return (select_ennemy(window, game));
 }
 
 int check_step_to_battle(game_t *game)
@@ -30,24 +29,29 @@ int check_step_to_battle(game_t *game)
 
 int battle_lobby(window_t *window, game_t *game)
 {
-	get_time(&window->clocker);
-	check_run_away(game);
-	if (battle_events(window, game) != 0
-	|| manage_hit_enemy(game, 0, 0) != 0
-	|| (SPECIAL_HIT && display_special_hit_player(window, game, NULL) != 0)
-	|| (SPECIAL_HIT && display_special_hit_enemy(window, game, NULL) != 0)
-	|| (!SPECIAL_HIT && wait_for_enemy_attack(window, game, 0) != 0)
+	int my_errno = 0;
+
+	my_errno = check_run_away(game);
+	if (my_errno != 0)
+		return (my_errno);
+	if (manage_hit_enemy(game, 0, 0) != 0
 	|| manage_life_in_battle(game) != 0
 	|| display_characters(window, game) != 0)
 		return (84);
-	if (!SPECIAL_HIT && window->clocker.seconds >= 3
-	&& game->battle.win) {
-		if (battle_end_screen(game, "WIN") == 84)
-			return (84);
-	} else if (!SPECIAL_HIT && window->clocker.seconds >= 3
-	&& game->battle.lose) {
-		if (battle_end_screen(game, "LOSE") == 84)
-			return (84);
+	if (SPECIAL_HIT) {
+		my_errno = display_special_hit_player(window, game, NULL);
+		if (my_errno != 0)
+			return (my_errno);
+		my_errno = display_special_hit_enemy(window, game, NULL);
+	} else
+		my_errno = wait_for_enemy_attack(window, game, 0);
+	if (my_errno != 0)
+		return (my_errno);
+	if (!SPECIAL_HIT && window->clocker.seconds >= 3) {
+		if (game->battle.win)
+			return (battle_end_screen(game, "WIN"));
+		else if (game->battle.lose)
+			return (battle_end_screen(game, "LOSE"));
 	}
 	return (0);
 }

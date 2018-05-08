@@ -405,6 +405,9 @@ void item_destroy(item_t *item);
 void destroy_managed_scene(managed_scene_t *managed);
 void npc_destroy(npc_t *npc);
 void monster_destroy(enemy_data_t *monster);
+void destroy_libs(game_t *game);
+void clocks_destroy(game_t *game, window_t *window);
+void map_destroy(game_t *game);
 
 /////////////////////////// PLAYER FUNCTIONS
 
@@ -445,7 +448,7 @@ int display_characters(window_t *window, game_t *game);
 int manage_life_in_battle(game_t *game);
 int attack(window_t *window, game_t *game);
 int change_selected_enemy(game_t *game, int offset);
-void select_ennemy(window_t *window, game_t *game);
+int select_ennemy(window_t *window, game_t *game);
 int first_enemy_available(game_t *game);
 void change_arrow_position(game_t *game);
 int player_attack(window_t *window, game_t *game);
@@ -463,7 +466,7 @@ char *compute_loot(game_t *game);
 char *get_item_rarity(char *item);
 char *get_item_type(char *item);
 int battle_end_screen(game_t *game, char *result);
-void check_run_away(game_t *game);
+int check_run_away(game_t *game);
 int manage_versus_animation(game_t *game);
 int use_special(window_t *window, game_t *game);
 
