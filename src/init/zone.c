@@ -14,6 +14,8 @@ void unload_my_area(int x, int y, game_t *game)
 			clean_displayed_tiles(MAP.areas[y][x].\
 			tiles[j][i].displayed_tiles);
 			MAP.areas[y][x].tiles[j][i].displayed_tiles = NULL;
+			free(MAP.areas[y][x].name);
+			MAP.areas[y][x].name = NULL;
 		}
 	}
 	free(MAP.areas[y][x].name);
@@ -50,6 +52,7 @@ int load_my_zone(game_t *game)
 	vector_pack_t pos = {V2I(ZONE_COOR_X, ZONE_COOR_Y),
 	V2I(AREA_COOR_X,AREA_COOR_Y), V2I(TILE_COOR_X, TILE_COOR_Y)};
 
+	game->loading = true;
 	if (check_unexisting_zone(ZONE_NAME) != 0)
 		return (84);
 	if (analyse_pcf(game, &infos) != 0) {
@@ -57,6 +60,7 @@ int load_my_zone(game_t *game)
 		my_printf("WARNING: ERROR IN ZONE '%s' INIT !\n", ZONE_NAME);
 		return (84);
 	}
+	replace_player(&pos, game);
 	if (read_hashmap(NULL, game, NPCS_LIB, &set_npc) != 0)
 		return (84);
 	replace_player(&pos, game);

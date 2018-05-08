@@ -21,7 +21,6 @@
 
 typedef sfVector2f v2f;
 typedef sfVector2i v2i;
-
 typedef struct texture_list_s texture_list_t;
 
 typedef struct texture_list_s {
@@ -57,6 +56,5 @@ int button_is_clicked(sfRectangleShape *rec, v2i clickPosition);
 void check_click_for_block(ressources_t *rsces, my_w_t *window, int i, int j);
 void save_map(my_w_t *window);
 void write_areas(my_w_t *window, int fd);
-
 
 #endif /* MAP_EDITOR */

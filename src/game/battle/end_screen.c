@@ -51,24 +51,25 @@ int compute_gold_won(game_t *game)
 	return (gold);
 }
 
-int update_battle_result(game_t *game)
+int update_battle_result(game_t *game, scene_t *end_screen)
 {
-	scene_t *end_screen = hm_get(SCENES, "WIN_SCREEN");
 	sfText *xp = hm_get(end_screen->texts, "XP");
+	sfText *gold = hm_get(end_screen->texts, "GOLD");
 	sfText *found = hm_get(end_screen->texts, "FOUND");
 	obj_t *item_icon = hm_get(end_screen->objs, "ITEM");
-	char *item = compute_loot(game);
-	sfTexture *texture = NULL;
+	char *item_name = compute_loot(game);
+	item_t *item = create_item(item_name, game);
 
-	if (!xp || !found || !item_icon)
+	if (!xp || !found || !item_icon || !gold)
 		return (84);
-	sfText_setString(xp, my_strcat(":   ",
-	int_to_str(compute_xp_won(game))));
+	sfText_setString(xp, my_strcat(":   ", XP_WON));
+	sfText_setString(gold, my_strcat(":   ", GOLD_WON));
 	if (item) {
-		texture = ((texture_t *)hm_get(TEXTURES_LIB, item))->texture;
+		sfRectangleShape_setTexture(item_icon->obj,
+		sfRectangleShape_getTexture(item->obj->obj), sfTrue);
 		sfText_setString(found, "YOU GOT AN ITEM!");
-		sfRectangleShape_setTexture(item_icon->obj, texture, sfTrue);
-		if (update_type_rarity(end_screen, item) == 84)
+		if (update_type_rarity(end_screen, item_name) == 84
+		|| add_item(item, game) == 84)
 			return (84);
 	}
 	return (0);
@@ -85,15 +86,15 @@ int battle_end_screen(game_t *game, char *result)
 		return (84);
 	if (!my_strcmp(result, "WIN")) {
 		sfText_setString(res, "YOU  WIN !");
-		if (update_battle_result(game) == 84)
+		if (update_battle_result(game, end_screen) == 84)
 			return (84);
 	} else
 		PLAYER_HEALTH = 0;
 	clean_displayed_scenes_and_add_back(game, "GAME");
 	add_scene_to_display_list(hm_get_bucket(SCENES, "WIN_SCREEN"), game);
 	add_scene_to_display_list(hm_get_bucket(SCENES, "HEALTH_HUD"), game);
+	add_scene_to_display_list(hm_get_bucket(SCENES, "AREA_HUD"), game);
 	CURRENT_BUCKET = hm_get_bucket(SCENES, "WIN_SCREEN");
-	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj,
-	V2F(TARGET_TILE.x * 50, TARGET_TILE.y * 50));
-	return (0);
+	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, PLAYER_POS);
+	return (1);
 }
