@@ -96,7 +96,7 @@ void remove_particle_sys_by_id(int id)
 	act_node = particle_sys_list->first;
 	for (; act_node; act_node = act_node->next) {
 		act_sys = act_node->value;
-		if(act_sys->sys_id == id)
+		if (act_sys->sys_id == id)
 			break;
 		last_node = act_node;
 		idx++;
