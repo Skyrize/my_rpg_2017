@@ -28,7 +28,6 @@ void init_key_player(game_t *game)
 	KEY_PLAYER.arrow_down = sfKeyDown;
 	KEY_PLAYER.arrow_left = sfKeyLeft;
 	KEY_PLAYER.arrow_right = sfKeyRight;
-	KEY_PLAYER.move = 1;
 }
 
 int set_game_version(game_t *game)

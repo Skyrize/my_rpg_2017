@@ -350,7 +350,6 @@ typedef struct key_control_s
 	sfKeyCode arrow_down;
 	sfKeyCode arrow_right;
 	sfKeyCode arrow_left;
-	int move;
 } key_control_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////

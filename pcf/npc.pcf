@@ -116,5 +116,32 @@
 		LINE_01=The_door_is_closed..
 		LINE_02=_
 		LINE_03=_
+	NPC=Server TEXTURE=VILLAGER_01
+		ZONE=DATA X=0 Y=0
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=3 Y=3
+		LINE_01=Je_suis_ivre_comme_mes_clients...
+	NPC=Black TEXTURE=BLACK_SMITH_01
+		ZONE=DATA X=0 Y=0
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=12 Y=3
+		LINE_01=Ou_est_mon_armure_jeune_?
+		LINE_02=_
+		LINE_03=_
+	NPC=Guard TEXTURE=GUARD_01
+		ZONE=DATA X=0 Y=0
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=6 Y=4
+		LINE_01=Moria,_Cursed,_Destinity..?
+		LINE_02=Courage,_aventurier_!
+		LINE_03=_
+	NPC=Vieux_ TEXTURE=VILLAGER_05
+		ZONE=DATA X=0 Y=0
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=3 Y=6
+		LINE_01=Une_bierre_s'il_vous_plait_!
+		LINE_02=_
+		LINE_03=_
+
 
 ### END OF FILE ###
