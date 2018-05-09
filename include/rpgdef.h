@@ -14,7 +14,26 @@
 #define SCENES game->scenes
 #define CURRENT_BUCKET game->current
 #define MANAGED_SCENES game->displayed_scenes
+
+//////////////////////////////////// MOVEMENT ///////////////////////////
+
+#define MOVEMENT game->movement
+
+#define TARGET_TILE MOVEMENT.target_tile
+
+/////////////////////////////////// KEY /////////////////////////////////
+
 #define KEY_PLAYER game->key_player
+
+#define KEY_UP KEY_PLAYER.up
+#define KEY_DOWN KEY_PLAYER.down
+#define KEY_LEFT KEY_PLAYER.left
+#define KEY_RIGHT KEY_PLAYER.right
+
+#define ARROW_KEY_UP KEY_PLAYER.arrow_up
+#define ARROW_KEY_DOWN KEY_PLAYER.arrow_down
+#define ARROW_KEY_LEFT KEY_PLAYER.arrow_left
+#define ARROW_KEY_RIGHT KEY_PLAYER.arrow_right
 
 ////////////////////////////////////// TOOLS ////////////////////////////
 
@@ -30,6 +49,7 @@
 #define TEXTURES_LIB LIBS.textures
 #define ITEMS_LIB LIBS.items
 #define MONSTERS_LIB LIBS.monsters
+#define NPCS_LIB LIBS.npcs
 
 ////////////////////////////////// INVENTORY ///////////////////////////////
 
@@ -86,14 +106,36 @@
 #define PLAYER_MAX_HP PLAYER_STATS.max_health
 #define PLAYER_ARMOR PLAYER_STATS.armor
 #define PLAYER_SPECIALITY PLAYER_STATS.speciality
+#define PLAYER_DAMAGES PLAYER_STATS.damages
+#define PLAYER_XP PLAYER_STATS.xp
+#define PLAYER_MAX_XP PLAYER_STATS.xp_max
 #define PLAYER_SPECIALITY_NAME PLAYER_STATS.speciality_name
+
+////////////////////////////////// BATTLE //////////////////////////////
+
+#define ENEMY game->battle.enemy
+#define SELECTED_ENEMY game->battle.enemy[game->battle.selected_enemy]
+#define ENEMY_ARMOR SELECTED_ENEMY->stats.armor
+#define ENEMY_DAMAGES SELECTED_ENEMY->stats.damages
+#define ENEMY_HEALTH SELECTED_ENEMY->stats.health
+
+#define STEP_TO_BATTLE game->battle.step_to_battle
+#define SPECIAL_HIT game->battle.special_hit
+#define ENEMY_TURN game->battle.enemy_turn
+#define PLAYER_TURN game->battle.player_turn
+#define LAST_ENEMY_TURN game->battle.last_enemy_turn
+#define NBR_ENEMIES game->battle.nbr_enemies
+#define PLAYER_POS V2F(TARGET_TILE.x * 50, TARGET_TILE.y * 50)
+#define XP_WON int_to_str(compute_xp_won(game))
+#define GOLD_WON int_to_str(compute_gold_won(game))
+
+//////////////////////////////// PARTICLES ///////////////////////////
+
+#define PARTICLES game->particles
 
 ////////////////////////////////// USED //////////////////////////////
 
 #define MIN(X, Y) X >= Y ? Y : X
 #define MAX(X, Y) X >= Y ? X : Y
-
-#define KEY_PRESSED(key) \
-sfKeyboard_isKeyPressed((sfKeyCode) game->key_player.key)
 
 #endif /* RPGDEF_H_ */

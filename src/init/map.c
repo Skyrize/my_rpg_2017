@@ -5,56 +5,32 @@
 ** (enter)
 */
 
-#include "my.h"
 #include "rpg.h"
 
-void unload_my_tiles(game_t *game)
+void init_zone(game_t *game)
 {
-	if (AREA_NAME != NULL)
-		clean_displayed_tiles(game);
+	for (int y = 0; y != ZONE_TAB_Y; y++)
+		for (int x = 0; x != ZONE_TAB_X; x++) {
+			MAP.zones[y][x].name = NULL;
+			MAP.zones[y][x].filepath = NULL;
+		}
 }
 
-void unload_my_area(game_t *game)
+void init_displayed_tiles(int x, int y, game_t *game)
 {
-	TILE_COOR_X = 0;
-	TILE_COOR_Y = 0;
-	for (; TILE_COOR_Y != TILE_TAB_Y; TILE_COOR_Y++)
-		for (; TILE_COOR_X != TILE_TAB_X; TILE_COOR_X++)
-			unload_my_tiles(game);
-
+	for (int j = 0; j != TILE_TAB_Y; j++)
+		for (int i = 0; i != TILE_TAB_X; i++)
+			MAP.areas[y][x].tiles[j][i].displayed_tiles = NULL;
 }
 
-void unload_my_zone(game_t *game)
+void init_area(game_t *game)
 {
-	AREA_COOR_X = 0;
-	AREA_COOR_Y = 0;
-	for (; AREA_COOR_Y != AREA_TAB_Y; AREA_COOR_Y++)
-		for (; AREA_COOR_X != AREA_TAB_X; AREA_COOR_X++)
-			unload_my_area(game);
-}
-
-int load_my_zone(game_t *game)
-{
-	const key_word_t zone_keys[] = {
-	{"AREA", 3, &getrea, (char *[]) {"ENCOUNTER", "X", "Y", NULL}},
-	{"TILE", 3, &get_tile, (char *[]) {"BLOCK", "X", "Y", NULL}},
-	{"TEXTURE", 0, &get_tile_texture, NULL}, {NULL, 0, NULL, NULL}};
-	get_infos_t infos = {ZONE_FILEPATH, INIT_CHAR, zone_keys, &map_savior};
-	sfVector2i zone_pos = {ZONE_COOR_X, ZONE_COOR_Y};
-	sfVector2i area_pos = {AREA_COOR_X, AREA_COOR_Y};
-	sfVector2i tile_pos = {TILE_COOR_X, TILE_COOR_Y};
-
-	if (check_unexisting_zone(ZONE_NAME) != 0)
-		return (84);
-	if (analyse_pcf(game, &infos) != 0) {
-		MAP.zone_coord = zone_pos;
-		my_printf("WARNING: ERROR IN ZONE '%s' INIT !\n", ZONE_NAME);
-		return (84);
+	for (int y = 0; y != AREA_TAB_Y; y++) {
+		for (int x = 0; x != AREA_TAB_X; x++) {
+			MAP.areas[y][x].name = NULL;
+			init_displayed_tiles(x, y, game);
+		}
 	}
-	MAP.zone_coord = zone_pos;
-	MAP.area_coord = area_pos;
-	MAP.tile_coord = tile_pos;
-	return (0);
 }
 
 int init_map(game_t *game)
@@ -65,14 +41,8 @@ int init_map(game_t *game)
 	get_infos_t infos = {"pcf/map.pcf", INIT_CHAR, map_keys,
 	&map_savior};
 
-	for (int y = 0; y != ZONE_TAB_Y; y++)
-		for (int x = 0; x != ZONE_TAB_X; x++) {
-			MAP.zones[y][x].name = NULL;
-			MAP.zones[y][x].filepath = NULL;
-		}
-	for (int y = 0; y != AREA_TAB_Y; y++)
-		for (int x = 0; x != AREA_TAB_X; x++)
-			MAP.areas[y][x].name = NULL;
+	init_zone(game);
+	init_area(game);
 	if (analyse_pcf(game, &infos) != 0) {
 		my_printf("WARNING: ERROR IN MAP INIT !\n");
 		return (84);

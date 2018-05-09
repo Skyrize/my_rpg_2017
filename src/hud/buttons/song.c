@@ -9,11 +9,13 @@
 
 void update_text(scene_t *tmp_value, bucket_t *bucket_texts)
 {
-	if (tmp_value->play_music == sfFalse) {
-		tmp_value->play_music = sfTrue;
+	if (tmp_value->music.play_music == sfFalse) {
+		tmp_value->music.play_music = sfTrue;
+		sfMusic_play(tmp_value->music.music);
 		sfText_setString(bucket_texts->value, "ON");
 	} else {
-		tmp_value->play_music = sfFalse;
+		sfMusic_stop(tmp_value->music.music);
+		tmp_value->music.play_music = sfFalse;
 		sfText_setString(bucket_texts->value, "OFF");
 	}
 }

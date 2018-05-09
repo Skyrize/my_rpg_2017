@@ -8,6 +8,16 @@
 #include "my.h"
 #include "rpg.h"
 
+int check_undefined(bucket_t *data, char *data_name, char *data_type)
+{
+	if (!data) {
+		my_printf("WARNING: YOU ASKED FOR '%s' ", data_name);
+		my_printf("DATA BUT %s ISN'T DEFINED !\n", data_type);
+		return (84);
+	}
+	return (0);
+}
+
 int check_undefined_item(bucket_t *item, char *data)
 {
 	if (!item) {

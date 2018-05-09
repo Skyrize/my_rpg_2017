@@ -53,6 +53,7 @@ int get_monster_zone(char **infos, char **type,
 		return (84);
 	if (check_undefined_zone(type[1], game) != 0)
 		return (84);
+	monster->zone = my_strdup(type[1]);
 	(void)infos;
 	(void)current_list;
 	return (0);

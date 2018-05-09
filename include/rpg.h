@@ -8,6 +8,7 @@
 #ifndef RPG_H_
 #define RPG_H_
 #include "hashify.h"
+#include "llist.h"
 
 ///////////////////////////////// INIT DEFINES //////////////////////////////
 
@@ -60,6 +61,7 @@
 #define INTRECT(x, y, width, height) (sfIntRect) {x, y, width, height}
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
+#define V2U(x, y) (sfVector2u) {(unsigned int) x, (unsigned int) y}
 #define MIN(X, Y) X >= Y ? Y : X
 #define MAX(X, Y) X >= Y ? X : Y
 
@@ -79,7 +81,8 @@
 #define MAP_GAME "MAP"
 #define HOME "MAIN_MENU"
 #define CONTROL_KEY "CONTROL_KEY"
-#define VERSION_GAME "V0.8"
+#define S_LOAD "LOADING"
+#define VERSION_GAME "V1.0"
 
 //NOTIF MANAGEMENT
 
@@ -95,6 +98,8 @@ typedef struct obj_data_s obj_data_t;
 typedef struct text_data_s text_data_t;
 
 typedef struct obj_s obj_t;
+
+typedef struct particles_s particles_t;
 
 typedef struct rect_s
 {
@@ -125,7 +130,27 @@ typedef struct texture_s
 	sfVector2i rect_offset;
 } texture_t, texture_data_t;
 
+typedef struct npc_s
+{
+	char *name;
+	char *texture;
+	sfVector2i zone;
+	sfVector2i area;
+	sfVector2i tile;
+	char *line_01;
+	char *line_02;
+	char *line_03;
+} npc_t;
+
 /////////////////////////////////// MAPPING /////////////////////////////////
+
+typedef struct vector_pack_s
+{
+	sfVector2i zone;
+	sfVector2i area;
+	sfVector2i tile;
+} vector_pack_t;
+
 typedef struct tile_list_s tile_list_t;
 
 typedef struct tile_list_s
@@ -168,6 +193,7 @@ typedef struct manager_s
 {
 	char *balise;
 	int (*fptr)();
+	int (*event)();
 } manager_t;
 
 typedef enum
@@ -179,12 +205,19 @@ typedef enum
 	BUTTONS = 4,
 } objs_type_t;
 
-typedef struct scene_s {
+typedef struct music_s
+{
+	sfMusic *music;
+	sfBool loop;
+	sfBool play_music;
+} music_t;
+
+typedef struct scene_s
+{
 	hashmap_t *objs;
 	hashmap_t *texts;
-	sfBool play_music;
-	sfMusic *music;
 	int priority;
+	music_t music;
 } scene_t;
 
 typedef struct managed_scene_s managed_scene_t;
@@ -197,6 +230,7 @@ typedef struct managed_scene_s
 } managed_scene_t;
 
 /////////////////////////////// INVENTORY ///////////////////////////////////
+
 typedef struct item_stat_s
 {
 	int health;
@@ -259,6 +293,21 @@ typedef struct enemy_data_s
 	item_stat_t stats;
 } enemy_data_t;
 
+typedef struct battle_s {
+	int step_to_battle;
+	bool special_hit;
+	bool last_enemy_turn;
+	bool enemy_turn;
+	bool player_turn;
+	bool win;
+	bool lose;
+	bool run_away;
+	bool used_special;
+	int selected_enemy;
+	int nbr_enemies;
+	enemy_t *enemy[3];
+} battle_t;
+
 /////////////////////////////////// PLAYER ////////////////////////////////
 
 typedef struct stat_s
@@ -266,6 +315,9 @@ typedef struct stat_s
 	int health;
 	int max_health;
 	int armor;
+	int damages;
+	int xp;
+	int xp_max;
 	int level;
 	char *speciality_name;
 	int speciality;
@@ -289,14 +341,14 @@ typedef enum direction_e {
 
 typedef struct key_control_s
 {
-	sfKeyCode *up;
-	sfKeyCode *down;
-	sfKeyCode *right;
-	sfKeyCode *left;
-	sfKeyCode *up_1;
-	sfKeyCode *down_1;
-	sfKeyCode *right_1;
-	sfKeyCode *left_1;
+	sfKeyCode up;
+	sfKeyCode down;
+	sfKeyCode right;
+	sfKeyCode left;
+	sfKeyCode arrow_up;
+	sfKeyCode arrow_down;
+	sfKeyCode arrow_right;
+	sfKeyCode arrow_left;
 	int move;
 } key_control_t;
 
@@ -312,6 +364,7 @@ typedef struct ctime_s
 typedef struct movement_s
 {
 	sfVector2i target_tile;
+	ctime_t timer;
 	int anim_mult;
 	bool is_moving;
 } movement_t;
@@ -332,7 +385,10 @@ typedef struct lib_s
 	hashmap_t *textures;
 	hashmap_t *items;
 	hashmap_t *monsters;
+	hashmap_t *npcs;
 } lib_t;
+
+typedef struct window_s window_t;
 
 typedef struct game_s
 {
@@ -340,12 +396,16 @@ typedef struct game_s
 	tool_t tools;
 	lib_t libraries;
 	player_t player;
+	battle_t battle;
 	movement_t movement;
 	inventory_t inventory;
 	key_control_t key_player;
 	bucket_t *current;
 	hashmap_t *scenes;
 	managed_scene_t *displayed_scenes;
+	particles_t *particles;
+	window_t *window;
+	bool loading;
 } game_t;
 
 typedef struct window_s
@@ -355,8 +415,31 @@ typedef struct window_s
 	ctime_t clocker;
 } window_t;
 
+typedef struct particle_sys_s
+{
+	char *sys_name;
+	sfIntRect spawn_zone;
+	int particle_nbr;
+	sfVector2f force;
+	bool gravity;
+	sfTexture *texture;
+	bool (*condition)(sfSprite *, game_t *);
+	sfSprite **sprite_arr;
+	int spawn_density;
+	int spawned_particles_nbr;
+	int sys_id;
+	bool activated;
+} particle_sys_t;
+
+typedef struct particles_s
+{
+	particle_sys_t *rain;
+	sfSprite *rain_background;
+} particles_t;
+
 #include "rpginit.h"
 #include "rpgdef.h"
 #include "rpgfunc.h"
+#include "math.h"
 
 #endif /* RPG_H_ */

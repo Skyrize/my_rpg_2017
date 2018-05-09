@@ -47,12 +47,13 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 	if (button->button != sfTrue)
 		return (0);
 	if (button_fly_over(button, MOUSE_POS) == 1 &&
-	click_button((button), MOUSE_POS, sfMouseLeft) == 0)
+	click_button((button), MOUSE_POS, sfMouseLeft) == 0) {
 		sfRectangleShape_setFillColor(button->obj, OVER_COLOR);
-	else if (button_fly_over(button, MOUSE_POS) == 1 &&
+	} else if (button_fly_over(button, MOUSE_POS) == 1 &&
 	click_button((button), MOUSE_POS, sfMouseLeft) == 1
 	&& CLICK_RELEASED == sfTrue) {
 		CLICK_RELEASED = sfFalse;
+		make_sound("SELECT_SOUND", game);
 		return (button->callback ? button->callback(window, game) : 84);
 	} else if (!game->movement.is_moving
 	&& sfRectangleShape_getFillColor(button->obj).a == 255)
@@ -62,15 +63,8 @@ int process_button_over(bucket_t *button_bucket, window_t *window, game_t *game)
 
 int manage_buttons(managed_scene_t *scene, window_t *window, game_t *game)
 {
-	int my_errno = 0;
-
 	if (!scene || !window || !game)
 		return (84);
-	my_errno = read_hashmap(window, game, scene->scene->objs,
-		&process_button_over);
-	if (my_errno == 1)
-		return (0);
-	if (my_errno == 84)
-		return (84);
-	return (0);
+	return (read_hashmap(window, game, scene->scene->objs,
+		&process_button_over));
 }

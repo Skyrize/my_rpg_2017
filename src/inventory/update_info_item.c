@@ -8,18 +8,37 @@
 #include "my.h"
 #include "rpg.h"
 
+char *clean_item_name(char *item_name)
+{
+	char *str = my_strdup(item_name);
+	int len = my_strlen(item_name);
+
+	if (!str)
+		return (NULL);
+	for (int i = 0; i != len; i++) {
+		if (str[i] == '_')
+			str[i] = ' ';
+		if (CHAR_IS_NUM(str[i]))
+			str[i] = 0;
+	}
+	return (str);
+}
+
 int update_name_item(slot_t *slot, game_t *game)
 {
 	scene_t *stats_scene = hm_get(game->scenes, STATS_GAME);
 	bucket_t *bucket_texts = NULL;
+	char *tmp = NULL;
 
 	if (!stats_scene || !stats_scene->texts || !slot || !slot->item
 	|| !slot->item->name)
 		return (84);
 	if (!(bucket_texts = hm_get_bucket(stats_scene->texts, "NAME_ITEM")))
 		return (84);
+	tmp = clean_item_name(slot->item->name);
 	sfText_setString(bucket_texts->value, my_strcat(
-		"Item: ", slot->item->name));
+		"Item: ", tmp));
+	free(tmp);
 	return (0);
 }
 

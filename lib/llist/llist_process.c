@@ -11,9 +11,12 @@
 
 void *llist_foreach(void *(*fptr)(), llist_t *llist)
 {
-	node_t *tmp = llist->first;
+	node_t *tmp;
 	void *my_errno = NULL;
 
+	if (!llist)
+		return (NULL);
+	tmp = llist->first;
 	for (; tmp; tmp = tmp->next) {
 		my_errno = fptr(tmp);
 		if (my_errno != NULL)

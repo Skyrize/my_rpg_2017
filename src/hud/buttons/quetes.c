@@ -11,7 +11,5 @@ int quetes(window_t *window, game_t *game)
 {
 	if (!window || !game)
 		return (84);
-	(void)window;
-	return (button_display_hide_scene(QUESTS_GAME,
-		NULL, game));
+	return (button_display_hide_scene(QUESTS_GAME, NULL, game, "GAME"));
 }

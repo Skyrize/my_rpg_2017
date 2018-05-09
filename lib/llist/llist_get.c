@@ -26,3 +26,11 @@ node_t *get_node_by_place(int asked, llist_t *llist)
 		i++;
 	return (tmp);
 }
+
+int llist_len(llist_t *llist)
+{
+	int len = 0;
+
+	for (node_t *tmp = llist->first; tmp; tmp = tmp->next, len++);
+	return (len);
+}

@@ -36,7 +36,12 @@ static const button_t g_tab[] =
 	{(char *[]){"KEY_WASD", NULL}, key_english},
 	{(char *[]){"YES", NULL}, yes_save},
 	{(char *[]){"NO", NULL}, no_save},
-	{(char *[]){"ATTACK", NULL}, exit_game},
+	{(char *[]){"SPECIAL", NULL}, use_special},
+	{(char *[]){"ITEMS", NULL}, nothing},
+	{(char *[]){"ATTACK", NULL}, attack},
+	{(char *[]){"RUN_AWAY", NULL}, run_away},
+	{(char *[]){"CROSS", NULL}, cross},
+	{(char *[]){"HOW_TO_PLAY", NULL}, how_to_play},
 	{NULL, NULL}
 };
 
