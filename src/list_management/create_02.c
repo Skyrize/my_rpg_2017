@@ -79,6 +79,9 @@ npc_t *create_npc(char *name, char *texture)
 	if (!new)
 		return (NULL);
 	new->name = my_strdup(name);
+	my_replace_char(new->name, '_', ' ');
+	for (int i = my_strlen(new->name) - 1; new->name[i] == ' '; i--)
+		new->name[i] = 0;
 	new->texture = my_strdup(texture);
 	new->zone = V2I(-1, -1);
 	new->area = V2I(-1, -1);

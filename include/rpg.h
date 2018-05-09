@@ -140,6 +140,7 @@ typedef struct npc_s
 	char *line_01;
 	char *line_02;
 	char *line_03;
+	char *action;
 } npc_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////

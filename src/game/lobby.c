@@ -8,7 +8,7 @@
 #include <SFML/Window/Event.h>
 #include "rpg.h"
 
-int on_key_pressed(game_t *game, sfEvent *event)
+int on_key_pressed(game_t *game)
 {
 	game->movement.is_moving = sfFalse;
 	if (sfKeyboard_isKeyPressed(KEY_UP) == sfTrue
@@ -23,14 +23,6 @@ int on_key_pressed(game_t *game, sfEvent *event)
 	if (sfKeyboard_isKeyPressed(KEY_RIGHT) == sfTrue
 	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT) == sfTrue)
 		move_player(RIGHT, game);
-	if (event->key.code == sfKeyP)
-		PLAYER_HEALTH += 1;
-	else if (event->key.code == sfKeyM)
-		PLAYER_HEALTH -= 1;
-	if (event->key.code == sfKeyO)
-		PLAYER_XP += 1;
-	else if (event->key.code == sfKeyL)
-		PLAYER_XP -= 1;
 	return (0);
 }
 
@@ -67,7 +59,7 @@ int game_events(window_t *window, game_t *game)
 		return (0);
 	if (window->event.type == sfEvtKeyPressed
 	&& KEY_PLAYER.move == 1)
-		on_key_pressed(game, &window->event);
+		on_key_pressed(game);
 	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 		if (press_action_key(game) != 0)
 			return (84);

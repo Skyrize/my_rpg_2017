@@ -135,6 +135,8 @@ int get_npc_line_02(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_npc_line_03(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
+int get_npc_action(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
 
 /////////////////////////// INIT WARNING : UNEXISTING
 
