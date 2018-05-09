@@ -34,6 +34,7 @@ int init_npcs_lib(game_t *game)
 	{"ZONE", 2, &get_npc_zone, (char *[]) {"X", "Y", NULL}},
 	{"AREA", 2, &get_npc_area, (char *[]) {"X", "Y", NULL}},
 	{"TILE", 2, &get_npc_tile, (char *[]) {"X", "Y", NULL}},
+	{"ACTION", 0, &get_npc_action, NULL},
 	{"LINE_01", 0, &get_npc_line_01, NULL},
 	{"LINE_02", 0, &get_npc_line_02, NULL},
 	{"LINE_03", 0, &get_npc_line_03, NULL},
