@@ -47,7 +47,7 @@ void place_player(game_t *game)
 	ZONE_COOR_Y = 0;
 	AREA_COOR_X = 0;
 	AREA_COOR_Y = 0;
-	TILE_COOR_X = 3;
+	TILE_COOR_X = 7;
 	TILE_COOR_Y = 4;
 }
 

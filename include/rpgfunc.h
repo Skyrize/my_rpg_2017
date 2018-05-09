@@ -515,6 +515,7 @@ void rain(game_t *game, window_t *window);
 int init_particles(game_t *game);
 void init_rain(game_t *game);
 int get_rnd(int min, int max);
+void check_rain(game_t *game);
 
 /////////////////////////// END
 
