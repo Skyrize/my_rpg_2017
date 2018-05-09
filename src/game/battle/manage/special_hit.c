@@ -55,7 +55,7 @@ int display_special_hit_player(window_t *window, game_t *game, char *scene)
 	sfClock_restart(window->clocker.clock);
 	save = scene;
 	a = 1;
-	return (0);
+	return (1);
 }
 
 int display_special_hit_enemy(window_t *window, game_t *game, char *scene)
