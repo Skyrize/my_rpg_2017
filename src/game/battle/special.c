@@ -20,10 +20,12 @@ int process_special(window_t *window, game_t *game,
 	for (int i = 0; i < 3; i++) {
 		if (ENEMY[i])
 			ENEMY[i]->stats.health -= damages;
+		if (ENEMY[i] && ENEMY[i]->stats.health <= 0)
+			ENEMY[i] = NULL;
 	}
 	if (reset_player_turn(window, game) == 84)
 		return (84);
-	return (0);
+	return (1);
 }
 
 int use_special(window_t *window, game_t *game)
@@ -38,9 +40,8 @@ int use_special(window_t *window, game_t *game)
 	used_special = hm_get(scene->texts, "WHO");
 	using_special = hm_get(scene->texts, "SPECIAL");
 	if (!game->battle.used_special) {
-		if (process_special(window, game,
-		using_special, used_special) == 84)
-			return (84);
+		return (process_special(window, game,
+		using_special, used_special));
 	} else {
 		sfText_setString(used_special,
 		"YOU    ALREADY    USED    SPECIAL");

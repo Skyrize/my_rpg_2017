@@ -36,7 +36,7 @@ void change_arrow_position(game_t *game)
 	175 + game->battle.selected_enemy * 50));
 }
 
-void select_ennemy(window_t *window, game_t *game)
+int select_ennemy(window_t *window, game_t *game)
 {
 	if (get_scene_from_displayed("ATTACK", game)
 	&& window->event.type == sfEvtKeyPressed) {
@@ -47,7 +47,9 @@ void select_ennemy(window_t *window, game_t *game)
 			change_selected_enemy(game, 1);
 			change_arrow_position(game);
 		}
-		if (sfKeyboard_isKeyPressed(sfKeyReturn))
-			player_attack(window, game);
+		if (sfKeyboard_isKeyPressed(sfKeyReturn)) {
+			return (player_attack(window, game));
+		}
 	}
+	return (0);
 }

@@ -96,5 +96,5 @@ int battle_end_screen(game_t *game, char *result)
 	add_scene_to_display_list(hm_get_bucket(SCENES, "AREA_HUD"), game);
 	CURRENT_BUCKET = hm_get_bucket(SCENES, "WIN_SCREEN");
 	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, PLAYER_POS);
-	return (0);
+	return (1);
 }

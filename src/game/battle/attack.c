@@ -81,5 +81,5 @@ int attack(window_t *window, game_t *game)
 	game->battle.selected_enemy = first_enemy_available(game);
 	change_arrow_position(game);
 	clean_displayed_scene_name(game, "BATTLE_BASIC_BUTTONS");
-	return (0);
+	return (1);
 }
