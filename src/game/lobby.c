@@ -37,8 +37,11 @@ int press_action_key(game_t *game)
 		if (music == sfTrue) {
 			make_sound("DIALOGUE_SOUND", game);
 			music = sfFalse;
-		} else
+		} else {
 			music = sfTrue;
+			if (process_npc_action(game) != 0)
+				return (84);
+		}
 		if (button_display_hide_scene("DIALOGUE_HUD", NULL,
 		game, "GAME") == 84)
 			return (84);
