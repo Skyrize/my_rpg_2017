@@ -26,26 +26,34 @@ int on_key_pressed(game_t *game)
 	return (0);
 }
 
+int process_action_key(game_t *game)
+{
+	static sfBool open = sfTrue;
+
+	if (process_npc_dialogue(game) != 0)
+		return (84);
+	if (open == sfTrue) {
+		make_sound("DIALOGUE_SOUND", game);
+		open = sfFalse;
+	} else {
+		open = sfTrue;
+		if (process_npc_action(game) != 0)
+			return (84);
+	}
+	if (button_display_hide_scene("DIALOGUE_HUD", NULL,
+	game, "GAME") == 84)
+		return (84);
+	CURRENT_BUCKET = hm_get_bucket(SCENES, "GAME");
+	return (0);
+}
+
 int press_action_key(game_t *game)
 {
 	static sfBool pass = sfTrue;
-	static sfBool music = sfTrue;
 
 	if (pass == sfTrue) {
-		if (process_npc_dialogue(game) != 0)
+		if (process_action_key(game) != 0)
 			return (84);
-		if (music == sfTrue) {
-			make_sound("DIALOGUE_SOUND", game);
-			music = sfFalse;
-		} else {
-			music = sfTrue;
-			if (process_npc_action(game) != 0)
-				return (84);
-		}
-		if (button_display_hide_scene("DIALOGUE_HUD", NULL,
-		game, "GAME") == 84)
-			return (84);
-		CURRENT_BUCKET = hm_get_bucket(SCENES, "GAME");
 		pass = sfFalse;
 	} else
 		pass = sfTrue;
@@ -60,9 +68,6 @@ int game_events(window_t *window, game_t *game)
 		CLICK_RELEASED = sfTrue;
 	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return (0);
-	if (window->event.type == sfEvtKeyPressed
-	&& KEY_PLAYER.move == 1)
-		on_key_pressed(game);
 	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
 		if (press_action_key(game) != 0)
 			return (84);
@@ -75,6 +80,7 @@ int game_lobby(window_t *window, game_t *game)
 
 	if (my_errno != 0)
 		return (my_errno);
+	on_key_pressed(game);
 	update_feet_particles(game);
 	display_particles(window, game);
 	if (manage_life(game) != 0

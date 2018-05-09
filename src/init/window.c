@@ -21,7 +21,7 @@ int init_window(window_t *window)
 {
 	window->window = sfRenderWindow_create((sfVideoMode){WINDOW_WIDTH,
 					WINDOW_HEIGHT, WINDOW_BITS_PER_PIXEL},
-					GAME_TITLE, sfClose, NULL);
+					GAME_TITLE, sfClose | sfResize, NULL);
 	if (!window->window)
 		return (84);
 	if (init_timer(&window->clocker) != 0)

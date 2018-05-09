@@ -22,13 +22,13 @@ int compare_coords(npc_t *npc, game_t *game, int (*fptr)())
 	sfVector2i tile = npc->tile;
 
 	if ((TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y)
-	|| (TILE_COOR_X == tile.x + 1 && TILE_COOR_Y == tile.y)
-	|| (TILE_COOR_X == tile.x - 1 && TILE_COOR_Y == tile.y)
-	|| (TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y + 1)
-	|| (TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y - 1)
-	|| (TILE_COOR_X == tile.x + 1 && TILE_COOR_Y == tile.y + 1)
-	|| (TILE_COOR_X == tile.x - 1 && TILE_COOR_Y == tile.y + 1)
-	|| (TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y + 2)) {
+	|| (TILE_COOR_X + 1 == tile.x && TILE_COOR_Y == tile.y)
+	|| (TILE_COOR_X - 1 == tile.x && TILE_COOR_Y == tile.y)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y + 1 == tile.y)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y - 1 == tile.y)
+	|| (TILE_COOR_X + 1 == tile.x && TILE_COOR_Y + 1 == tile.y)
+	|| (TILE_COOR_X - 1 == tile.x && TILE_COOR_Y + 1 == tile.y)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y + 2 == tile.y)) {
 		if (fptr(npc, game) != 0)
 			return (84);
 		return (1);
