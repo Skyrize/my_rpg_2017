@@ -16,6 +16,7 @@ void remove_node_by_key(char *asked, llist_t *llist)
 	llist->size--;
 	if (tmp && my_strcmp(tmp->key, asked) == 0) {
 		llist->first = llist->first->next;
+		llist->first->next->prev = llist->first;
 		destroy_node(tmp);
 		return;
 	}
@@ -25,6 +26,7 @@ void remove_node_by_key(char *asked, llist_t *llist)
 	}
 	freed = tmp->next;
 	tmp->next = tmp->next->next;
+	tmp->next->prev = tmp;
 	destroy_node(freed);
 	return;
 }
@@ -36,6 +38,7 @@ void remove_node_by_place(int place, llist_t *llist)
 
 	if (place == 1) {
 		llist->first = llist->first->next;
+		llist->first->next->prev = llist->first;
 		destroy_node(tmp);
 		return;
 	}
@@ -45,6 +48,7 @@ void remove_node_by_place(int place, llist_t *llist)
 	}
 	freed = tmp->next;
 	tmp->next = tmp->next->next;
+	tmp->next->prev = tmp;
 	destroy_node(freed);
 	return;
 }
