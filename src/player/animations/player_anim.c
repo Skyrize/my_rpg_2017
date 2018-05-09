@@ -51,6 +51,7 @@ void set_anim_side(game_t *game)
 
 void set_waiting_player_rect(game_t *game)
 {
+	reset_feet_particles(game);
 	PLAYER.character->obj_rect.rect.top =
 		PLAYER.character->obj_rect.rect_start.y;
 	PLAYER.character->obj_rect.rect.left = 50;

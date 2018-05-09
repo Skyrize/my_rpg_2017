@@ -17,6 +17,7 @@ static const char *random_sentence[] = {
 	"What ?",
 	"What do you want ?",
 	"You look tired.",
+	"T bo Marlon.",
 	NULL,
 };
 

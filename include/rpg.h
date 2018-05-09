@@ -140,6 +140,7 @@ typedef struct npc_s
 	char *line_01;
 	char *line_02;
 	char *line_03;
+	char *action;
 } npc_t;
 
 /////////////////////////////////// MAPPING /////////////////////////////////
@@ -435,6 +436,7 @@ typedef struct particles_s
 {
 	particle_sys_t *rain;
 	sfSprite *rain_background;
+	particle_sys_t *feet_deject;
 } particles_t;
 
 #include "rpginit.h"

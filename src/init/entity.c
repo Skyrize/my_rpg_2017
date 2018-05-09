@@ -34,6 +34,7 @@ int init_npcs_lib(game_t *game)
 	{"ZONE", 2, &get_npc_zone, (char *[]) {"X", "Y", NULL}},
 	{"AREA", 2, &get_npc_area, (char *[]) {"X", "Y", NULL}},
 	{"TILE", 2, &get_npc_tile, (char *[]) {"X", "Y", NULL}},
+	{"ACTION", 0, &get_npc_action, NULL},
 	{"LINE_01", 0, &get_npc_line_01, NULL},
 	{"LINE_02", 0, &get_npc_line_02, NULL},
 	{"LINE_03", 0, &get_npc_line_03, NULL},
@@ -63,10 +64,11 @@ int set_npc(bucket_t *npc_bucket, game_t *game)
 	AREA_COOR_Y = npc->area.y;
 	TILE_COOR_X = npc->tile.x;
 	TILE_COOR_Y = npc->tile.y;
-	if (check_invalid_tile_coords(npc->name, game) != 0)
+	if (check_invalid_tile_coords(npc->name, game) != 0
+	|| add_tile_to_list(npc->texture, game) != 0)
 		return (84);
-	if (add_tile_to_list(npc->texture, game) != 0)
-		return (84);
+	if (my_strcmp(npc->texture, "EMPTY") == 0)
+		return (0);
 	TILE_BLOCK = 1;
 	AREA.tiles[TILE_COOR_Y + 1][TILE_COOR_X].block = 1;
 	return (0);

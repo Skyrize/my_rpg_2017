@@ -15,23 +15,29 @@
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=6 Y=3
 		LINE_01=RANDOM
+		LINE_02=RANDOM
+		LINE_03=RANDOM
 	NPC=TILER TEXTURE=VILLAGER_01
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=7 Y=3
 		LINE_01=Welcome_to_the_game.
+		LINE_02=_
+		LINE_03=_
 	NPC=Lily TEXTURE=GUARD_02
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=7 Y=6
 		LINE_01=As-tu_vu_un_chat_noir_passer_?
 		LINE_02=Je_voudrai_le_capturer.
+		LINE_03=_
 	NPC=Jake TEXTURE=GUARD_04
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=4 Y=5
 		LINE_01=Attention_les_ennemies,_sont_dangereux,_ici_!
 		LINE_02=Force_a_toi_guerrier.
+		LINE_03=_
 	NPC=Zoe TEXTURE=VILLAGER_02
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=2 Y=2
@@ -43,12 +49,14 @@
 		TILE=DATA X=4 Y=5
 		LINE_01=Rendre_un_service_est_toujours_benefique!
 		LINE_02=Parols_d'un_grand_homme.
+		LINE_03=_
 	NPC=Explorer TEXTURE=VILLAGER_03
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=4 Y=5
 		LINE_01=Moi_c'est_doudou_je_vagabonde,
 		LINE_02=dans_ces_terres_austile...
+		LINE_03=_
 	NPC=Andy TEXTURE=VILLAGER_04
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=0
@@ -62,11 +70,51 @@
 		TILE=DATA X=7 Y=7
 		LINE_01=Le_fruit_de_la_vie,_c'est_de_poursuivre
 		LINE_02=ses_reves_mais_aussi_ses_quetes!
+		LINE_03=_
 	NPC=Vieux TEXTURE=VILLAGER_05
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=2
 		TILE=DATA X=7 Y=7
 		LINE_01=Ne_t'arrete_pas_gamin!_autrefois_
 		LINE_02=je_poursuivais_les_memes_reves_que_toi..
+		LINE_03=_
+	NPC=Door TEXTURE=EMPTY
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=3 Y=3
+		LINE_01=The_door_is_closed..
+		LINE_02=_
+		LINE_03=_
+	NPC=Door_ TEXTURE=EMPTY
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=7 Y=3
+		ACTION=TP_0_0_0_0_8_10
+		LINE_01=The_tavern.
+		LINE_02=_
+		LINE_03=_
+	NPC=Door________ TEXTURE=EMPTY
+		ZONE=DATA X=0 Y=0
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=7 Y=11
+		ACTION=TP_3_4_1_0_7_4
+		LINE_01=The_outside.
+		LINE_02=_
+		LINE_03=_
+	NPC=Door_________ TEXTURE=EMPTY
+		ZONE=DATA X=0 Y=0
+		AREA=DATA X=0 Y=0
+		TILE=DATA X=8 Y=11
+		ACTION=TP_3_4_1_0_7_4
+		LINE_01=The_outside.
+		LINE_02=_
+		LINE_03=_
+	NPC=Door__ TEXTURE=EMPTY
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=11 Y=3
+		LINE_01=The_door_is_closed..
+		LINE_02=_
+		LINE_03=_
 
 ### END OF FILE ###

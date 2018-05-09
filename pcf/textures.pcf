@@ -3203,5 +3203,21 @@ HUD:
     		RECT_START=DATA X=0 Y=0
     		RECT_MAX=DATA X=0 Y=0
     		RECT_OFFSET=DATA X=0 Y=0
+	TEXTURE=EMPTY
+    		FILEPATH=textures/empty.png
+    		ANIMATED=0
+    		PRIORITY=0
+    		RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=50 HEIGHT=50
+    		RECT_START=DATA X=0 Y=0
+    		RECT_MAX=DATA X=0 Y=0
+    		RECT_OFFSET=DATA X=0 Y=0
+    TEXTURE=GROUND_DROP
+            FILEPATH=textures/particle/ground.png
+            ANIMATED=0
+            PRIORITY=0
+            RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=2 HEIGHT=3
+            RECT_START=DATA X=0 Y=0
+            RECT_MAX=DATA X=0 Y=0
+            RECT_OFFSET=DATA X=0 Y=0
 
 ### END OF FILE ###
