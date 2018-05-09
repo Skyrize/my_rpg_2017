@@ -190,6 +190,12 @@ typedef struct map_s
 
 //////////////////////////////////////// SCENES ////////////////////////////
 
+typedef struct action_s
+{
+	char *balise;
+	int (*fptr)();
+} action_t;
+
 typedef struct manager_s
 {
 	char *balise;
