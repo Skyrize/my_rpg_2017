@@ -434,6 +434,7 @@ typedef struct particles_s
 {
 	particle_sys_t *rain;
 	sfSprite *rain_background;
+	particle_sys_t *feet_deject;
 } particles_t;
 
 #include "rpginit.h"

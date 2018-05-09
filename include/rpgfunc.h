@@ -512,6 +512,8 @@ int init_particles(game_t *game);
 void init_rain(game_t *game);
 int get_rnd(int min, int max);
 void check_rain(game_t *game);
+particle_sys_t *init_foot_particles(game_t *game);
+void reset_feet_particles(game_t *game);
 
 /////////////////////////// END
 

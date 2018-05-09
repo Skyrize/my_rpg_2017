@@ -15,6 +15,8 @@ int init_particles(game_t *game)
 		return (1);
 	game->particles->rain = NULL;
 	game->particles->rain_background = NULL;
+	game->particles->feet_deject = NULL;
 	init_rain(game);
+	game->particles->feet_deject = init_foot_particles(game);
 	return (0);
 }
