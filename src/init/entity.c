@@ -64,10 +64,11 @@ int set_npc(bucket_t *npc_bucket, game_t *game)
 	AREA_COOR_Y = npc->area.y;
 	TILE_COOR_X = npc->tile.x;
 	TILE_COOR_Y = npc->tile.y;
-	if (check_invalid_tile_coords(npc->name, game) != 0)
+	if (check_invalid_tile_coords(npc->name, game) != 0
+	|| add_tile_to_list(npc->texture, game) != 0)
 		return (84);
-	if (add_tile_to_list(npc->texture, game) != 0)
-		return (84);
+	if (my_strcmp(npc->texture, "EMPTY") == 0)
+		return (0);
 	TILE_BLOCK = 1;
 	AREA.tiles[TILE_COOR_Y + 1][TILE_COOR_X].block = 1;
 	return (0);

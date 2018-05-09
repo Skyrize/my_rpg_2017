@@ -428,7 +428,7 @@ bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
 
-/////////////////////////// DIALOGUES
+/////////////////////////// NPCS
 
 int process_npc_dialogue(game_t *game);
 int update_random_pnj_dialogue(char *name, game_t *game);
@@ -437,6 +437,9 @@ bucket_t **get_dialogue_hud_texts(game_t *game);
 int update_pnj_dialogue(npc_t *npc, game_t *game);
 int update_no_place_dialogue(game_t *game);
 int update_no_place_dialogue(game_t *game);
+int process_npc_action(game_t *game);
+int check_action_around(bucket_t *npc_bucket, game_t *game);
+int compare_coords(npc_t *npc, game_t *game, int (*fptr)());
 
 /////////////////////////// BATTLE
 
@@ -518,6 +521,8 @@ int init_particles(game_t *game);
 void init_rain(game_t *game);
 int get_rnd(int min, int max);
 void check_rain(game_t *game);
+particle_sys_t *init_foot_particles(game_t *game);
+void reset_feet_particles(game_t *game);
 
 /////////////////////////// END
 
