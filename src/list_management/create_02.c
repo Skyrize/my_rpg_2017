@@ -89,5 +89,6 @@ npc_t *create_npc(char *name, char *texture)
 	new->line_01 = NULL;
 	new->line_02 = NULL;
 	new->line_03 = NULL;
+	new->action = NULL;
 	return (new);
 }

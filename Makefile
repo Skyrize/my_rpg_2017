@@ -63,6 +63,7 @@ SRC	=	src/main.c						\
 		src/game/display/mouse.c				\
 		src/game/display/animate.c				\
 		src/game/dialogues.c					\
+		src/game/action.c					\
 		src/game/battle/init.c					\
 		src/game/battle/update_battle_hud.c			\
 		src/game/battle/display.c				\
