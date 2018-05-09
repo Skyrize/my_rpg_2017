@@ -63,9 +63,6 @@ int launch_game(window_t *window, game_t *game)
 		hm_get_bucket(SCENES, "AREA_HUD"), game) != 0)
 		return (84);
 	(void)window;
-	place_player(game);
-	if (load_my_zone(game) != 0)
-		return (84);
 	return (1);
 }
 
