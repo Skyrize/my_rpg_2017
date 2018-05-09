@@ -26,15 +26,30 @@ void init_rain(game_t *game)
 	texture_t *tex = hm_get(TEXTURES_LIB, "BG_INTERFACE");
 	sfSprite *bg = sfSprite_create();
 
+	if (!tex || !sys || !bg)
+		return;
 	sfSprite_setTexture(bg, tex->texture, sfFalse);
 	sfSprite_setColor(bg, sfColor_fromRGBA(255, 255, 255, 150));
 	PARTICLES->rain = sys;
 	PARTICLES->rain_background = bg;
+	game->particles->rain->activated = false;
 }
 
 void rain(game_t *game, window_t *window)
 {
+	if (!(game->particles->rain) || !(game->particles->rain_background))
+		return;
 	if (game->particles->rain->activated)
 		sfRenderWindow_drawSprite(window->window,
 					  PARTICLES->rain_background, NULL);
+}
+
+void check_rain(game_t *game)
+{
+	if (ZONE_COOR_X == 4 && ZONE_COOR_Y == 4) {
+		PARTICLES->rain->spawned_particles_nbr = 0;
+		init_particle_position(PARTICLES->rain);
+		game->particles->rain->activated = true;
+	} else
+		game->particles->rain->activated = false;
 }
