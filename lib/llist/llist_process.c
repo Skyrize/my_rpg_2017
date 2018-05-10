@@ -30,3 +30,12 @@ void llist_display(llist_t *llist)
 	for (node_t *tmp = llist->first; tmp; tmp = tmp->next)
 		my_printf("%s\n", tmp->key);
 }
+
+void llist_rdisplay(llist_t *llist)
+{
+	node_t *tmp = llist->first;
+
+	for (; tmp->next; tmp = tmp->next);
+	for (; tmp; tmp = tmp->prev)
+		my_printf("%s\n", tmp->key);
+}
