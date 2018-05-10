@@ -40,7 +40,8 @@ static const button_t g_tab[] =
 	{(char *[]){"ITEMS", NULL}, nothing},
 	{(char *[]){"ATTACK", NULL}, attack},
 	{(char *[]){"RUN_AWAY", NULL}, run_away},
-	{(char *[]){"CROSS", NULL}, cross},
+	{(char *[]){"END_SCREEN_CROSS", NULL}, end_screen_cross},
+	{(char *[]){"LVL_UP_CROSS", NULL}, lvl_up_cross},
 	{(char *[]){"HOW_TO_PLAY", NULL}, how_to_play},
 	{NULL, NULL}
 };
