@@ -81,6 +81,7 @@ SRC	=	src/main.c						\
 		src/game/battle/special.c				\
 		src/game/battle/nothing.c				\
 		src/game/battle/utils.c					\
+		src/game/battle/stop_music.c				\
 		src/game/mouse/replace.c 				\
 		src/hud/buttons/area.c					\
 		src/hud/buttons/control_key.c 				\
@@ -110,6 +111,7 @@ SRC	=	src/main.c						\
 		src/hud/process.c 					\
 		src/hud/loading.c 					\
 		src/hud/manage_text_loading.c 				\
+		src/hud/manage_xp.c					\
 		src/player/movements/move_player.c			\
 		src/player/movements/move_player_area.c			\
 		src/player/movements/move_player_zone.c			\

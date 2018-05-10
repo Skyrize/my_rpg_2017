@@ -14,7 +14,6 @@ int process_special(window_t *window, game_t *game,
 
 	sfText_setString(using_special, "YOU    HIT    ALL    ENEMIES");
 	sfText_setString(used_special, " ");
-	game->battle.used_special = 1;
 	display_special_hit_player(window, game, "USE_SPECIAL");
 	manage_hit_enemy(game, 2, damages);
 	for (int i = 0; i < 3; i++) {

@@ -120,7 +120,7 @@ Une zone contient 9 maps allant de 0 à 2 en x et en y.
 ------------- Comment ajouter une texture au jeu ? -------------
 
 1: Download la textures(png), la stocker dans textures/
-2: Ouvrir le .pcf sounds
+2: Ouvrir le .pcf textures
 3: Suivre les instructions du header.
 
 

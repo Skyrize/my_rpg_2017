@@ -34,6 +34,7 @@ int set_battle(game_t *game)
 	game->battle.win = 0;
 	game->battle.run_away = 0;
 	game->battle.used_special = 0;
+	game->movement.is_moving = 0;
 	ENEMY_TURN = 0;
 	PLAYER_TURN = 1;
 	return (update_element_in_battle(game));
@@ -65,9 +66,10 @@ int set_background(game_t *game, scene_t *scene)
 int start_battle(game_t *game)
 {
 	scene_t *battle_scene = hm_get(SCENES, "BATTLE");
+	scene_t *game_scene = hm_get(SCENES, "GAME");
 	bucket_t *battle = hm_get_bucket(SCENES, "BATTLE_BASIC_BUTTONS");
 
-	if (!game || !battle_scene || !battle)
+	if (!game || !battle_scene || !battle || !game)
 		return (84);
 	if (clean_displayed_scenes_and_add_back(game, "BATTLE") != 0
 	|| add_scene_to_display_list(battle, game) != 0)
@@ -78,5 +80,6 @@ int start_battle(game_t *game)
 	init_character(game);
 	if (set_battle(game) != 0 || set_background(game, battle_scene) != 0)
 		return (84);
+	sfMusic_stop(game_scene->music.music);
 	return (1);
 }

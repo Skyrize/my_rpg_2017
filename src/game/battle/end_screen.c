@@ -31,8 +31,9 @@ int compute_xp_won(game_t *game)
 		bonus = 1;
 	else if (!my_strcmp(ZONE_NAME, "CURSED_FOREST"))
 		bonus = 2;
-	xp = (NBR_ENEMIES * 25 * bonus) + bonus_sup;
-	PLAYER_XP += xp;
+	xp = (NBR_ENEMIES * 40 * bonus) + bonus_sup;
+	if (add_xp_to_player(game, xp) == 84)
+		return (84);
 	return (xp);
 }
 
@@ -46,7 +47,7 @@ int compute_gold_won(game_t *game)
 		bonus = 1;
 	else if (!my_strcmp(ZONE_NAME, "CURSED_FOREST"))
 		bonus = 2;
-	gold = (NBR_ENEMIES * 10 * bonus) + bonus_sup;
+	gold = (NBR_ENEMIES * 20 * bonus) + bonus_sup;
 	GOLDS += gold;
 	return (gold);
 }
@@ -88,13 +89,13 @@ int battle_end_screen(game_t *game, char *result)
 		sfText_setString(res, "YOU  WIN !");
 		if (update_battle_result(game, end_screen) == 84)
 			return (84);
-	} else
-		PLAYER_HEALTH = 0;
+	}
 	clean_displayed_scenes_and_add_back(game, "GAME");
 	add_scene_to_display_list(hm_get_bucket(SCENES, "WIN_SCREEN"), game);
 	add_scene_to_display_list(hm_get_bucket(SCENES, "HEALTH_HUD"), game);
 	add_scene_to_display_list(hm_get_bucket(SCENES, "AREA_HUD"), game);
 	CURRENT_BUCKET = hm_get_bucket(SCENES, "WIN_SCREEN");
+	stop_battle_music(game);
 	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, PLAYER_POS);
 	return (1);
 }

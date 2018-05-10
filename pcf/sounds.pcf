@@ -7,9 +7,11 @@
 	AUDIO=DIALOGUE_SOUND FILEPATH=sounds/dialogue_sound.ogg
 	AUDIO=SELECT_SOUND FILEPATH=sounds/select_sound.ogg
 	AUDIO=FOOTSTEP_SOUND FILEPATH=sounds/footstep_sound.ogg
+	AUDIO=LEVEL_UP_SOUND FILEPATH=sounds/level_up.ogg
 
 -MUSIC
 	AUDIO=HOMETOWN_MUSIC FILEPATH=sounds/hometown_music.ogg
 	AUDIO=INTRO_MUSIC FILEPATH=sounds/intro_music.ogg
+	AUDIO=BATTLE_MUSIC FILEPATH=sounds/battle_music.ogg
 
 ### END OF FILE ###

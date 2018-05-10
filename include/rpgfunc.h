@@ -324,7 +324,8 @@ int chest_slot(window_t *window, game_t *game);
 int gauntlets_slot(window_t *window, game_t *game);
 int pants_slot(window_t *window, game_t *game);
 int weapon_slot(window_t *window, game_t *game);
-int cross(window_t *window, game_t *game);
+int end_screen_cross(window_t *window, game_t *game);
+int lvl_up_cross(window_t *window, game_t *game);
 int nothing(window_t *window, game_t *game);
 
 
@@ -474,6 +475,11 @@ int battle_end_screen(game_t *game, char *result);
 int check_run_away(game_t *game);
 int manage_versus_animation(game_t *game);
 int use_special(window_t *window, game_t *game);
+void stop_battle_music(game_t *game);
+
+////////////////////////////////// XP
+
+int add_xp_to_player(game_t *game, int xp);
 
 /////////////////////////////////// INVENTORY
 
