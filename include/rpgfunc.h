@@ -479,7 +479,9 @@ int battle_end_screen(game_t *game, char *result);
 int check_run_away(game_t *game);
 int manage_versus_animation(game_t *game);
 int use_special(window_t *window, game_t *game);
-void stop_battle_music(game_t *game);
+void clean_battle_scenes(game_t *game);
+void lose_tp(game_t *game);
+int stop_battle_music(game_t *game);
 
 ////////////////////////////////// XP
 

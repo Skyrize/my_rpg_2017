@@ -90,12 +90,6 @@ int battle_end_screen(game_t *game, char *result)
 		if (update_battle_result(game, end_screen) == 84)
 			return (84);
 	}
-	clean_displayed_scenes_and_add_back(game, "GAME");
-	add_scene_to_display_list(hm_get_bucket(SCENES, "WIN_SCREEN"), game);
-	add_scene_to_display_list(hm_get_bucket(SCENES, "HEALTH_HUD"), game);
-	add_scene_to_display_list(hm_get_bucket(SCENES, "AREA_HUD"), game);
-	CURRENT_BUCKET = hm_get_bucket(SCENES, "WIN_SCREEN");
-	stop_battle_music(game);
-	sfRectangleShape_setPosition(PLAYER_CHARACTER->obj, PLAYER_POS);
+	clean_battle_scenes(game);
 	return (1);
 }
