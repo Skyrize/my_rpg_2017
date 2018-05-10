@@ -385,6 +385,20 @@
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
+	NPC=HOUSE______ TEXTURE=EMPTY
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=0 Y=1
+		TILE=DATA X=12 Y=4
+		LINE_01=__Door_is_closed
+		LINE_02=_
+		LINE_03=_
+	NPC=HOUSE____ TEXTURE=EMPTY
+		ZONE=DATA X=3 Y=4
+		AREA=DATA X=0 Y=2
+		TILE=DATA X=7 Y=6
+		LINE_01=__Door_is_closed
+		LINE_02=_
+		LINE_03=_
 
 
 ### END OF FILE ###
