@@ -28,7 +28,7 @@ void move_rect(obj_t *obj)
 void time_animation(obj_t *obj, float seconds, window_t *window)
 {
 	if (obj->obj_rect.animated == sfTrue
-		&& window->clocker.seconds >= seconds) {
+	&& window->clocker.seconds >= seconds) {
 		move_rect(obj);
 		sfClock_restart(window->clocker.clock);
 	}

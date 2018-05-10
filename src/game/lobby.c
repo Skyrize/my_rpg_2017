@@ -23,6 +23,10 @@ int on_key_pressed(game_t *game)
 	if (sfKeyboard_isKeyPressed(KEY_RIGHT) == sfTrue
 	|| sfKeyboard_isKeyPressed(ARROW_KEY_RIGHT) == sfTrue)
 		move_player(RIGHT, game);
+	if (sfKeyboard_isKeyPressed(sfKeyP))
+		add_xp_to_player(game, 1);
+	if (sfKeyboard_isKeyPressed(sfKeyM))
+		add_xp_to_player(game, -1);
 	return (0);
 }
 
