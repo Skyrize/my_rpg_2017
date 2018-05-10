@@ -8,6 +8,11 @@
 #include "rpg.h"
 #include "my.h"
 
+static const action_t action_tab[] = {
+	{"TP", teleport},
+	{NULL, NULL},
+};
+
 int teleport(char **data_tp, game_t *game)
 {
 	unload_my_zone(game);
@@ -22,15 +27,16 @@ int teleport(char **data_tp, game_t *game)
 
 int do_npc_action(npc_t *npc, game_t *game)
 {
-	char **action_tab = NULL;
+	char **action_desc = NULL;
 
 	if (!npc->action)
 		return (0);
-	action_tab = my_str_to_word_array(npc->action, '_');
-	if (!action_tab)
+	action_desc = my_str_to_word_array(npc->action, '_');
+	if (!action_desc)
 		return (84);
-	if (my_strcmp(action_tab[0], "TP") == 0)
-		return (teleport(action_tab, game));
+	for (int i = 0; action_tab[i].balise; i++)
+		if (my_strcmp(action_desc[0], action_tab[i].balise) == 0)
+			return (action_tab[i].fptr(action_desc, game));
 	return (0);
 }
 

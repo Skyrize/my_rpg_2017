@@ -441,6 +441,10 @@ int process_npc_action(game_t *game);
 int check_action_around(bucket_t *npc_bucket, game_t *game);
 int compare_coords(npc_t *npc, game_t *game, int (*fptr)());
 
+///////////////////// ACTIONS
+
+int teleport(char **data_tp, game_t *game);
+
 /////////////////////////// BATTLE
 
 int check_step_to_battle(game_t *game);
