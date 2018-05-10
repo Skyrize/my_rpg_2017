@@ -8,5 +8,6 @@
 	ZONE=VILLAGE FILEPATH=pcf/map/village.pcf X=3 Y=4
 	ZONE=CURSED_FOREST FILEPATH=pcf/map/cursed_forest.pcf X=4 Y=4
 	ZONE=TAVERN FILEPATH=pcf/map/tavern.pcf X=0 Y=0
+	ZONE=INTERIOR FILEPATH=pcf/map/interior.pcf X=1 Y=0
 
 ### END OF FILE ###
