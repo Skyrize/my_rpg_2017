@@ -234,6 +234,8 @@ _____________________________________________________________________________
 		LIST=TEXTS
 			TEXT=CHARAC STR=None FONT=RING CHARAC_SIZE=30 X=366 Y=60
 			TEXT=CHARAC_DESC STR=The_Nobody FONT=RING CHARAC_SIZE=15 X=366 Y=105
+			TEXT=LEVEL_STR STR=Level FONT=RING CHARAC_SIZE=20 X=366 Y=125
+			TEXT=LEVEL STR=Level: FONT=RING CHARAC_SIZE=25 X=420 Y=122
 			TEXT=HEALTH STR=:___0 FONT=RING CHARAC_SIZE=25 X=347 Y=158
 			TEXT=ARMOR STR=:___0 FONT=RING CHARAC_SIZE=25 X=347 Y=182
 			TEXT=SPECIAL STR=:___0 FONT=RING CHARAC_SIZE=25 X=347 Y=208
@@ -332,7 +334,7 @@ _____________________________________________________________________________
 	SCENE=USE_SPECIAL PRIORITY=1
 		LIST=TEXTS
 			TEXT=SPECIAL STR=YOU____HIT____ALL____ENEMIES FONT=ARCADE CHARAC_SIZE=40 X=210 Y=475
-			TEXT=WHO STR=_ FONT=ARCADE CHARAC_SIZE=40 X=170 Y=475			
+			TEXT=WHO STR=_ FONT=ARCADE CHARAC_SIZE=40 X=170 Y=475
 
 _____________________________________________________________________________
 -CRITICAL_HIT
@@ -402,6 +404,7 @@ _____________________________________________________________________________
 			OBJ=XP_BAR TEXTURE=XP BUTTON=0 X=90 Y=50
 			OBJ=BG_XP TEXTURE=BG_LIFE_BAR BUTTON=0 X=90 Y=50
 			OBJ=END_XP_BAR TEXTURE=END_XP_BAR BUTTON=0 X=190 Y=47
+			OBJ=BG_LEVEL TEXTURE=BG_LEVEL BUTTON=0 X=2 Y=66
 
 _____________________________________________________________________________
 -LOADING

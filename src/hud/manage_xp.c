@@ -65,7 +65,7 @@ int update_characteristics(game_t *game, scene_t *scene)
 int process_level_up(game_t *game)
 {
 	scene_t *scene = hm_get(SCENES, "LEVEL_UP");
-	
+
 	if (!scene
 	|| change_icon_texture(game, scene) == 84
 	|| update_level(game, scene) == 84
