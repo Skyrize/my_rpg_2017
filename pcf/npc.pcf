@@ -58,7 +58,7 @@
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=7 Y=7
 		LINE_01=The_fruit_of_life_is_to
-		LINE_02=pursue_you_dreams_!
+		LINE_02=pursue_your_dreams_!
 		LINE_03=_
 	NPC=Old_Man_ TEXTURE=VILLAGER_05
 		ZONE=DATA X=2 Y=4
@@ -83,7 +83,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=House_2_ TEXTURE=EMPTY
+	NPC=House TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=11 Y=3
@@ -126,7 +126,7 @@
 		TILE=DATA X=12 Y=3
 		LINE_01=I_am_in_socks_because_i_lost_my_shoes...
 		LINE_02=And_do_not_forget_to_use_shaders_!
-		LINE_03=_
+		LINE_03=I_miss_Montpellier...
 	NPC=Guard TEXTURE=GUARD_01
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
@@ -148,7 +148,7 @@
 		LINE_01=RANDOM
 		LINE_02=RANDOM
 		LINE_03=RANDOM
-	NPC=House_1_ TEXTURE=EMPTY
+	NPC=House__ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=3 Y=3
@@ -164,7 +164,7 @@
 		LINE_01=Basement...
 		LINE_02=_
 		LINE_03=_
-	NPC=House_1__ TEXTURE=EMPTY
+	NPC=House___ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=10 Y=8
@@ -239,7 +239,7 @@
 		LINE_02=_
 		LINE_03=_
 		ACTION=HEAL
-	NPC=HOUSE_3 TEXTURE=EMPTY
+	NPC=House____ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=11 Y=8
@@ -262,14 +262,14 @@
 		LINE_01=I_like_fishing.
 		LINE_02=_
 		LINE_03=_
-	NPC=House TEXTURE=EMPTY
+	NPC=House_____ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=6 Y=5
 		LINE_01=Abandoned_house...
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_4 TEXTURE=EMPTY
+	NPC=House______ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=8 Y=7
@@ -292,7 +292,7 @@
 		LINE_01=_____I_am_so_old.
 		LINE_02=I_wish_to_be_as_young_as_you_are
 		LINE_03=_
-	NPC=HOUSE_5 TEXTURE=EMPTY
+	NPC=House_______ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=13 Y=3
@@ -315,7 +315,7 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_6 TEXTURE=EMPTY
+	NPC=House________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=3 Y=3
@@ -338,7 +338,7 @@
 		LINE_01=What_are_you_doing_here_?
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_7 TEXTURE=EMPTY
+	NPC=House_________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=13 Y=3
@@ -361,35 +361,35 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE__ TEXTURE=EMPTY
+	NPC=House__________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=13 Y=10
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE___ TEXTURE=EMPTY
+	NPC=House___________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=3 Y=10
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE______ TEXTURE=EMPTY
+	NPC=House____________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=12 Y=4
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE____ TEXTURE=EMPTY
+	NPC=House_____________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=2
 		TILE=DATA X=7 Y=6
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_8 TEXTURE=EMPTY
+	NPC=House______________ TEXTURE=EMPTY
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=2 Y=6
@@ -412,7 +412,7 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_9 TEXTURE=EMPTY
+	NPC=House_______________ TEXTURE=EMPTY
 		ZONE=DATA X=4 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=12 Y=7
