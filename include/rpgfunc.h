@@ -445,6 +445,7 @@ int compare_coords(npc_t *npc, game_t *game, int (*fptr)());
 ///////////////////// ACTIONS
 
 int teleport(char **data_tp, game_t *game);
+int heal(char **data_heal, game_t *game);
 
 /////////////////////////// BATTLE
 
@@ -482,6 +483,7 @@ int use_special(window_t *window, game_t *game);
 void clean_battle_scenes(game_t *game);
 void lose_tp(game_t *game);
 int stop_battle_music(game_t *game);
+int init_end_screen(game_t *game, scene_t *scene);
 
 ////////////////////////////////// XP
 
