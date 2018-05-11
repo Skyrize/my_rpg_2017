@@ -328,7 +328,6 @@ int end_screen_cross(window_t *window, game_t *game);
 int lvl_up_cross(window_t *window, game_t *game);
 int nothing(window_t *window, game_t *game);
 
-
 /////////////////////////// HUD FONCTIONS
 
 int set_hud_opacity(bucket_t *bucket, game_t *game);
@@ -516,7 +515,7 @@ int display_mouse(game_t *game, window_t *window);
 /////////////////////////// PARTICLES
 
 particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
-				    int particle_nbr, game_t *game);
+				int particle_nbr, game_t *game);
 sfVector2f get_particles_spawn_pos(particle_sys_t *sys);
 void init_particle_position(particle_sys_t *sys);
 bool default_particle_cond(sfSprite *sprite, game_t *game);

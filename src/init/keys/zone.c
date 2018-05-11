@@ -18,7 +18,6 @@ void set_area_values(char *encounter, char *x, char *y, game_t *game)
 			AREA.tiles[y][x].displayed_tiles = NULL;
 }
 
-
 int get_area(char **infos, char **type,
 	hashmap_t **current_list, game_t *game)
 {

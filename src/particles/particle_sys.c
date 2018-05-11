@@ -37,7 +37,7 @@ static void particle_sys_init(particle_sys_t *sys)
 }
 
 particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
-				    int particle_nbr, game_t *game)
+				int particle_nbr, game_t *game)
 {
 	particle_sys_t *ret = malloc(sizeof(*ret));
 	texture_t *tex = hm_get(TEXTURES_LIB, tex_name);

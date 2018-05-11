@@ -19,6 +19,7 @@ int check_already_existing_obj(char *obj_name, hashmap_t *current_list)
 	}
 	return (0);
 }
+
 int check_already_existing_text(char *text_name, hashmap_t *current_list)
 {
 	bucket_t *text = hm_get_bucket(current_list, text_name);

@@ -64,7 +64,7 @@ int anim_player(game_t *game)
 {
 	update_moving_state(game);
 	if (!(game->player.character) ||
-	    !game->player.character->obj_rect.animated)
+	!game->player.character->obj_rect.animated)
 		return (0);
 	get_time(&game->movement.timer);
 	if (game->movement.timer.seconds > 0.1) {

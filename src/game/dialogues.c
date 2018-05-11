@@ -9,7 +9,7 @@
 #include "my.h"
 
 static const char *random_sentence[] = {
-	"Hello adventurer !\nWelcome to the village of Pikili.\nYou are free to\
+	"Hello adventurer !\nWelcome to the village of Pikili\nYou are free to\
  visit. Don't forget the tavern.",
 	"I used to be an adventurer like you.\nThen\
  I took and arrow in the knee.",
