@@ -10,6 +10,7 @@
 
 static const action_t action_tab[] = {
 	{"TP", teleport},
+	{"HEAL", heal},
 	{NULL, NULL},
 };
 
@@ -23,6 +24,15 @@ int teleport(char **data_tp, game_t *game)
 	TILE_COOR_X = my_getnbr(data_tp[5]);
 	TILE_COOR_Y = my_getnbr(data_tp[6]);
 	return (load_my_zone(game));
+}
+
+int heal(char **data_heal, game_t *game)
+{
+	if (!game)
+		return (84);
+	(void)data_heal;
+	PLAYER_HEALTH = PLAYER_MAX_HP;
+	return (0);
 }
 
 int do_npc_action(npc_t *npc, game_t *game)

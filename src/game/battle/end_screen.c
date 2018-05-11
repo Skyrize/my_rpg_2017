@@ -85,11 +85,14 @@ int battle_end_screen(game_t *game, char *result)
 		return (84);
 	if (!(res = hm_get(end_screen->texts, "RESULT")))
 		return (84);
+	if (init_end_screen(game, end_screen) == 84)
+		return (84);
+	clean_battle_scenes(game);
 	if (!my_strcmp(result, "WIN")) {
 		sfText_setString(res, "YOU  WIN !");
 		if (update_battle_result(game, end_screen) == 84)
 			return (84);
-	}
-	clean_battle_scenes(game);
+	} else
+		PLAYER_HEALTH = 0;
 	return (1);
 }
