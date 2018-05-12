@@ -87,14 +87,17 @@ int game_lobby(window_t *window, game_t *game)
 
 	if (my_errno != 0)
 		return (my_errno);
-	on_key_pressed(game);
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") == 0) {
+		on_key_pressed(game);
+		if (manage_hud_opacity(game) != 0)
+			return (84);
+	}
 	update_feet_particles(game);
 	display_particles(window, game);
 	update_day_night_cycle(game);
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
-	|| anim_player(game) != 0
-	|| manage_hud_opacity(game) != 0)
+	|| anim_player(game) != 0)
 		return (84);
 	smooth_move_player(game);
 	return (0);

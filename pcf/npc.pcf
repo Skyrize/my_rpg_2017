@@ -75,7 +75,7 @@
 		LINE_01=The_tavern.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door________ TEXTURE=EMPTY
+	NPC=Door__ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=7 Y=11
@@ -83,7 +83,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door____________ TEXTURE=EMPTY
+	NPC=Door___ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=8 Y=11
@@ -115,7 +115,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_________ TEXTURE=EMPTY
+	NPC=Door____ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=7 Y=11
@@ -123,7 +123,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_______________________ TEXTURE=EMPTY
+	NPC=Door_____ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=8 Y=11
@@ -204,7 +204,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door__________ TEXTURE=EMPTY
+	NPC=Door______ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=7 Y=11
@@ -212,7 +212,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door____________________________________ TEXTURE=EMPTY
+	NPC=Door_______ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=8 Y=11
@@ -235,7 +235,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door___________ TEXTURE=EMPTY
+	NPC=Door________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=7 Y=10
@@ -243,7 +243,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_________________________________ TEXTURE=EMPTY
+	NPC=Door_________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=8 Y=10
@@ -295,7 +295,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_____________ TEXTURE=EMPTY
+	NPC=Door__________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=7 Y=10
@@ -303,7 +303,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door___________________________ TEXTURE=EMPTY
+	NPC=Door___________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=8 Y=10
@@ -333,7 +333,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door______________ TEXTURE=EMPTY
+	NPC=Door____________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=7 Y=10
@@ -341,7 +341,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_____________________ TEXTURE=EMPTY
+	NPC=Door_____________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=8 Y=10
@@ -364,7 +364,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_______________ TEXTURE=EMPTY
+	NPC=Door______________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=7 Y=10
@@ -372,7 +372,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door________________________ TEXTURE=EMPTY
+	NPC=Door_______________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=8 Y=10
@@ -403,7 +403,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_________________________ TEXTURE=EMPTY
+	NPC=Door_________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=8 Y=10
@@ -418,7 +418,7 @@
 		LINE_01=What_are_you_doing_here_?
 		LINE_02=_
 		LINE_03=_
-	NPC=House_________ TEXTURE=EMPTY
+	NPC=House_____________________________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=13 Y=3
@@ -426,7 +426,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_________________ TEXTURE=EMPTY
+	NPC=Door__________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=7 Y=10
@@ -434,7 +434,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door__________________________ TEXTURE=EMPTY
+	NPC=Door___________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=8 Y=10
@@ -453,31 +453,31 @@
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=13 Y=10
-		LINE_01=__Door_is_closed
+		LINE_01=___it's_open.
 		LINE_02=_
 		LINE_03=_
-	NPC=House___________ TEXTURE=EMPTY
+	NPC=Door____________________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=3 Y=10
-		LINE_01=__Door_is_closed
+		LINE_01=___it's_open.
 		LINE_02=_
 		LINE_03=_
-	NPC=House____________ TEXTURE=EMPTY
+	NPC=Door_____________________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=12 Y=4
-		LINE_01=__Door_is_closed
+		LINE_01=___it's_open.
 		LINE_02=_
 		LINE_03=_
-	NPC=House_____________ TEXTURE=EMPTY
+	NPC=Door______________________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=2
 		TILE=DATA X=7 Y=6
-		LINE_01=__Door_is_closed
+		LINE_01=___it's_open.
 		LINE_02=_
 		LINE_03=_
-	NPC=House______________ TEXTURE=EMPTY
+	NPC=Door_______________________ TEXTURE=EMPTY
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=2 Y=6
@@ -485,7 +485,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door__________________ TEXTURE=EMPTY
+	NPC=Door________________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=7 Y=10
@@ -493,7 +493,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door______________________ TEXTURE=EMPTY
+	NPC=Door_________________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=8 Y=10
@@ -516,7 +516,7 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Door___________________ TEXTURE=EMPTY
+	NPC=Door__________________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=7 Y=10
@@ -524,7 +524,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Door_______________________________ TEXTURE=EMPTY
+	NPC=Door___________________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=8 Y=10
@@ -532,31 +532,17 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Vagabon_ TEXTURE=GUARD_03
+	NPC=Hobo_ TEXTURE=GUARD_03
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=8 Y=6
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=Vagabon__ TEXTURE=GUARD_04
+	NPC=Hobo__ TEXTURE=GUARD_04
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=7 Y=6
-		LINE_01=RANDOM
-		LINE_02=_
-		LINE_03=_
-	NPC=Vagabon___ TEXTURE=GUARD_03
-		ZONE=DATA X=1 Y=0
-		AREA=DATA X=2 Y=2
-		TILE=DATA X=9 Y=6
-		LINE_01=RANDOM
-		LINE_02=_
-		LINE_03=_
-	NPC=Vagabon____ TEXTURE=VILLAGER_07
-		ZONE=DATA X=1 Y=0
-		AREA=DATA X=2 Y=2
-		TILE=DATA X=6 Y=6
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
