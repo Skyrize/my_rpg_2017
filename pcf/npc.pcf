@@ -52,7 +52,7 @@
 		TILE=DATA X=12 Y=7
 		LINE_01=Refugees_in_the_house_of_Moria
 		LINE_02=if_you_are_having_issues.
-		LINE_03=It_also_hides_interesting_things...
+		LINE_03=An_expert_in_ogre_lives_there.
 	NPC=Kali TEXTURE=VILLAGER_06
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=1
@@ -104,7 +104,7 @@
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=5 Y=4
 		ACTION=TP_0_0_2_0_9_9
-		LINE_01=Basement...
+		LINE_01=____Basement...
 		LINE_02=_
 		LINE_03=_
 	NPC=House_ TEXTURE=EMPTY
@@ -192,7 +192,7 @@
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=5 Y=4
 		ACTION=TP_0_0_1_1_9_9
-		LINE_01=Basement...
+		LINE_01=____Basement...
 		LINE_02=_
 		LINE_03=_
 	NPC=House___ TEXTURE=EMPTY
@@ -237,7 +237,7 @@
 	NPC=Door___________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
-		TILE=DATA X=7 Y=9
+		TILE=DATA X=7 Y=10
 		ACTION=TP_3_4_2_0_8_3
 		LINE_01=The_outside.
 		LINE_02=_
@@ -245,7 +245,7 @@
 	NPC=Door_________________________________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
-		TILE=DATA X=8 Y=9
+		TILE=DATA X=8 Y=10
 		ACTION=TP_3_4_2_0_8_3
 		LINE_01=The_outside.
 		LINE_02=_
@@ -254,28 +254,28 @@
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=7 Y=6
-		LINE_01=ici_tu_retrouveras_tout_types
-		LINE_02=d'equipement_et_d'armes_pour_reussir
-		LINE_03=tes_questes_!
+		LINE_01=You_will_find_here_all_armors
+		LINE_02=and_weapons_that_you_need_for_your_adventure.
+		LINE_03=_
 	NPC=Shopkeeper_ TEXTURE=GUARD_03
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=4 Y=4
-		LINE_01=RANDOM
+		LINE_01=______I_am_the_shopkeeper.
 		LINE_02=_
 		LINE_03=_
 	NPC=Shopkeeper__ TEXTURE=GUARD_02
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=5 Y=4
-		LINE_01=RANDOM
+		LINE_01=______I_am_the_shopkeeper.
 		LINE_02=_
 		LINE_03=_
 	NPC=Shopkeeper___ TEXTURE=GUARD_04
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=9 Y=4
-		LINE_01=RANDOM
+		LINE_01=______I_am_the_shopkeeper.
 		LINE_02=_
 		LINE_03=_
 	NPC=Doctor___ TEXTURE=MEDIC_01
@@ -289,7 +289,7 @@
 	NPC=House____ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=1
-		TILE=DATA X=11 Y=8
+		TILE=DATA X=11 Y=7
 		ACTION=TP_0_0_2_2_7_9
 		LINE_01=House...
 		LINE_02=_
@@ -297,7 +297,7 @@
 	NPC=Door_____________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=2
-		TILE=DATA X=7 Y=9
+		TILE=DATA X=7 Y=10
 		ACTION=TP_3_4_1_1_11_8
 		LINE_01=The_outside.
 		LINE_02=_
@@ -305,7 +305,7 @@
 	NPC=Door___________________________ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=2
-		TILE=DATA X=8 Y=9
+		TILE=DATA X=8 Y=10
 		ACTION=TP_3_4_1_1_11_8
 		LINE_01=The_outside.
 		LINE_02=_
@@ -314,20 +314,20 @@
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=9 Y=7
-		LINE_01=I_like_fishing.
+		LINE_01=___I_like_fishing.
 		LINE_02=_
 		LINE_03=_
 	NPC=House_____ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=1
-		TILE=DATA X=6 Y=5
+		TILE=DATA X=6 Y=4
 		LINE_01=Abandoned_house...
 		LINE_02=_
 		LINE_03=_
 	NPC=House______ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=2
-		TILE=DATA X=8 Y=7
+		TILE=DATA X=8 Y=6
 		ACTION=TP_1_0_0_0_7_9
 		LINE_01=House...
 		LINE_02=_
@@ -335,7 +335,7 @@
 	NPC=Door______________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=0
-		TILE=DATA X=7 Y=9
+		TILE=DATA X=7 Y=10
 		ACTION=TP_3_4_2_2_8_7
 		LINE_01=The_outside.
 		LINE_02=_
@@ -343,7 +343,7 @@
 	NPC=Door_____________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=0
-		TILE=DATA X=8 Y=9
+		TILE=DATA X=8 Y=10
 		ACTION=TP_3_4_2_2_8_7
 		LINE_01=The_outside.
 		LINE_02=_
@@ -366,7 +366,7 @@
 	NPC=Door_______________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=0
-		TILE=DATA X=7 Y=9
+		TILE=DATA X=7 Y=10
 		ACTION=TP_3_4_2_1_13_4
 		LINE_01=The_outside.
 		LINE_02=_
@@ -374,7 +374,7 @@
 	NPC=Door________________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=0
-		TILE=DATA X=8 Y=9
+		TILE=DATA X=8 Y=10
 		ACTION=TP_3_4_2_1_13_4
 		LINE_01=The_outside.
 		LINE_02=_
@@ -397,7 +397,7 @@
 	NPC=Door________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=0
-		TILE=DATA X=7 Y=9
+		TILE=DATA X=7 Y=10
 		ACTION=TP_3_4_2_0_3_3
 		LINE_01=The_outside.
 		LINE_02=_
@@ -405,7 +405,7 @@
 	NPC=Door_________________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=0
-		TILE=DATA X=8 Y=9
+		TILE=DATA X=8 Y=10
 		ACTION=TP_3_4_2_0_3_3
 		LINE_01=The_outside.
 		LINE_02=_
@@ -428,7 +428,7 @@
 	NPC=Door_________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=1
-		TILE=DATA X=7 Y=9
+		TILE=DATA X=7 Y=10
 		ACTION=TP_3_4_2_0_13_3
 		LINE_01=The_outside.
 		LINE_02=_
@@ -436,7 +436,7 @@
 	NPC=Door__________________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=1
-		TILE=DATA X=8 Y=9
+		TILE=DATA X=8 Y=10
 		ACTION=TP_3_4_2_0_13_3
 		LINE_01=The_outside.
 		LINE_02=_
@@ -487,7 +487,7 @@
 	NPC=Door__________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=1
-		TILE=DATA X=7 Y=9
+		TILE=DATA X=7 Y=10
 		ACTION=TP_2_4_0_1_2_6
 		LINE_01=The_outside.
 		LINE_02=_
@@ -495,7 +495,7 @@
 	NPC=Door______________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=1
-		TILE=DATA X=8 Y=9
+		TILE=DATA X=8 Y=10
 		ACTION=TP_2_4_0_1_2_6
 		LINE_01=The_outside.
 		LINE_02=_
