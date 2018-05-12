@@ -30,7 +30,7 @@ particle_sys_t *init_foot_particles(game_t *game)
 	sfIntRect spawn = (sfIntRect) {.top = 0, .left = 0,
 		.height = 10, .width = 10};
 	particle_sys_t *sys = create_particle_sys(spawn,
-						  "GROUND_DROP", 25, game);
+						"GROUND_DROP", 25, game);
 
 	sys->spawn_density = 1;
 	sys->force = V2F(1, 0);
@@ -55,13 +55,12 @@ void reset_feet_particles(game_t *game)
 	}
 }
 
-//TODO good rotation & beautifying
 void update_feet_particles(game_t *game)
 {
 	particle_sys_t *sys = game->particles->feet_deject;
 	sfVector2f pos;
 
-	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	pos = sfRectangleShape_getPosition(PLAYER_CHARACTER->obj);
 	sys->spawn_zone.left = (int) pos.x + 20;

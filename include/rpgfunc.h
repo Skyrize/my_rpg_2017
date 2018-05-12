@@ -328,7 +328,6 @@ int end_screen_cross(window_t *window, game_t *game);
 int lvl_up_cross(window_t *window, game_t *game);
 int nothing(window_t *window, game_t *game);
 
-
 /////////////////////////// HUD FONCTIONS
 
 int set_hud_opacity(bucket_t *bucket, game_t *game);
@@ -445,6 +444,7 @@ int compare_coords(npc_t *npc, game_t *game, int (*fptr)());
 ///////////////////// ACTIONS
 
 int teleport(char **data_tp, game_t *game);
+int heal(char **data_heal, game_t *game);
 
 /////////////////////////// BATTLE
 
@@ -482,6 +482,7 @@ int use_special(window_t *window, game_t *game);
 void clean_battle_scenes(game_t *game);
 void lose_tp(game_t *game);
 int stop_battle_music(game_t *game);
+int init_end_screen(game_t *game, scene_t *scene);
 
 ////////////////////////////////// XP
 
@@ -514,7 +515,7 @@ int display_mouse(game_t *game, window_t *window);
 /////////////////////////// PARTICLES
 
 particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
-				    int particle_nbr, game_t *game);
+				int particle_nbr, game_t *game);
 sfVector2f get_particles_spawn_pos(particle_sys_t *sys);
 void init_particle_position(particle_sys_t *sys);
 bool default_particle_cond(sfSprite *sprite, game_t *game);
@@ -535,6 +536,8 @@ int get_rnd(int min, int max);
 void check_rain(game_t *game);
 particle_sys_t *init_foot_particles(game_t *game);
 void reset_feet_particles(game_t *game);
+int init_day_night_cycle(game_t *game);
+void update_day_night_cycle(game_t *game);
 
 /////////////////////////// END
 

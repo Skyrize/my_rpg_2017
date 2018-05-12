@@ -10,73 +10,62 @@
 //Format: 		LINE_03=
 
 -Village
-	NPC=PENNY TEXTURE=VILLAGER_02
+	NPC=Penny TEXTURE=VILLAGER_02
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=6 Y=3
 		LINE_01=RANDOM
 		LINE_02=RANDOM
 		LINE_03=RANDOM
-	NPC=TILER TEXTURE=VILLAGER_01
-		ZONE=DATA X=3 Y=4
-		AREA=DATA X=0 Y=0
-		TILE=DATA X=7 Y=3
-		LINE_01=Welcome_to_the_game.
-		LINE_02=_
-		LINE_03=_
-	NPC=Lily TEXTURE=GUARD_02
-		ZONE=DATA X=3 Y=4
-		AREA=DATA X=0 Y=0
-		TILE=DATA X=7 Y=6
-		LINE_01=As-tu_vu_un_chat_noir_passer_?
-		LINE_02=Je_voudrai_le_capturer.
-		LINE_03=_
 	NPC=Jake TEXTURE=GUARD_04
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=4 Y=5
-		LINE_01=Attention_les_ennemies,_sont_dangereux,_ici_!
-		LINE_02=Force_a_toi_guerrier.
+		LINE_01=Be_careful,_enemies_are_dangerous_here_!
+		LINE_02=_
 		LINE_03=_
 	NPC=Zoe TEXTURE=VILLAGER_02
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=4 Y=5
-		LINE_01=Je_suis_perdu..._Ou_est_le_village..?
+		LINE_01=I_am_lost...
+		LINE_02=Where_is_the_village_?
+		LINE_03=_
 	NPC=Doctor TEXTURE=MEDIC_01
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=4 Y=5
-		LINE_01=Rendre_un_service_est_toujours_benefique!
-		LINE_02=Parols_d'un_grand_homme.
+		LINE_01=I_am_a_medic,_let_me_heal_you_!
+		LINE_02=_
 		LINE_03=_
-	NPC=Explorer TEXTURE=VILLAGER_03
+		ACTION=HEAL
+	NPC=Doudou TEXTURE=VILLAGER_03
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=4 Y=5
-		LINE_01=Moi_c'est_doudou_je_vagabonde,
-		LINE_02=dans_ces_terres_austile...
+		LINE_01=Hi,_i_am_doudou_i_travel
+		LINE_02=in_these_hostiles_lands.
 		LINE_03=_
 	NPC=Andy TEXTURE=VILLAGER_04
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=12 Y=7
-		LINE_01=Je_te_conseille_de_te_refugier_dans_une
-		LINE_02=maison_de_moria,_il_ce_trouve_qu'elle
-		LINE_03=y_cache_des_choses_interessante.
+		LINE_01=Refugees_in_the_house_of_Moria
+		LINE_02=if_you_are_having_issues.
+		LINE_03=It_also_hides_interesting_things...
 	NPC=Kali TEXTURE=VILLAGER_06
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=7 Y=7
-		LINE_01=Le_fruit_de_la_vie,_c'est_de_poursuivre
-		LINE_02=ses_reves_mais_aussi_ses_quetes!
+		LINE_01=The_fruit_of_life_is_to
+		LINE_02=pursue_your_dreams_!
 		LINE_03=_
-	NPC=Vieux TEXTURE=VILLAGER_05
+	NPC=Old_Man_ TEXTURE=VILLAGER_05
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=1 Y=2
 		TILE=DATA X=7 Y=7
-		LINE_01=Ne_t'arrete_pas_gamin!_autrefois_
-		LINE_02=je_poursuivais_les_memes_reves_que_toi..
+		LINE_01=____Do_not_stop_kid!
+		LINE_02=I_used_to_follow_the_same_dreams_as_you...
 		LINE_03=_
 	NPC=Door_ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
@@ -94,7 +83,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=House_2_ TEXTURE=EMPTY
+	NPC=House TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=11 Y=3
@@ -102,12 +91,12 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Sous_sol_2_ TEXTURE=EMPTY
+	NPC=Basement TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=5 Y=4
 		ACTION=TP_0_0_2_0_9_9
-		LINE_01=Sous_sol...
+		LINE_01=Basement...
 		LINE_02=_
 		LINE_03=_
 	NPC=House_ TEXTURE=EMPTY
@@ -130,27 +119,27 @@
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=3 Y=3
-		LINE_01=Je_suis_ivre_comme_mes_clients...
-	NPC=Black TEXTURE=BLACK_SMITH_01
+		LINE_01=I_am_as_drunk_as_my_clients,_hips!
+	NPC=Mayol TEXTURE=BLACK_SMITH_01
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=12 Y=3
-		LINE_01=Ou_est_mon_armure_jeune_?
-		LINE_02=_
-		LINE_03=_
+		LINE_01=I_am_in_socks_because_i_lost_my_shoes...
+		LINE_02=And_do_not_forget_to_use_shaders_!
+		LINE_03=I_miss_Montpellier...
 	NPC=Guard TEXTURE=GUARD_01
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=6 Y=4
-		LINE_01=Moria,_Cursed,_Destinity..?
-		LINE_02=Courage,_aventurier_!
-		LINE_03=_
-	NPC=Vieux_ TEXTURE=VILLAGER_05
+		LINE_01=If_you_are_hurt,_many_doctors_can
+		LINE_02=help_you_during_your_adventure.
+		LINE_03=There_is_one_in_the_tavern.
+	NPC=Old_Man TEXTURE=VILLAGER_05
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=3 Y=6
-		LINE_01=Une_bierre_s'il_vous_plait_!
-		LINE_02=_
+		LINE_01=___Please,_bring_me_a_beer.
+		LINE_02=I_am_thirsty_!
 		LINE_03=_
 	NPC=Anonym TEXTURE=VILLAGER_05
 		ZONE=DATA X=0 Y=0
@@ -159,7 +148,7 @@
 		LINE_01=RANDOM
 		LINE_02=RANDOM
 		LINE_03=RANDOM
-	NPC=House_1_ TEXTURE=EMPTY
+	NPC=House__ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=3 Y=3
@@ -167,15 +156,15 @@
 		LINE_01=House...
 		LINE_02=_
 		LINE_03=_
-	NPC=Sous_sol___ TEXTURE=EMPTY
+	NPC=Basement_ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=5 Y=4
 		ACTION=TP_0_0_1_1_9_9
-		LINE_01=Sous_sol...
+		LINE_01=Basement...
 		LINE_02=_
 		LINE_03=_
-	NPC=House_1__ TEXTURE=EMPTY
+	NPC=House___ TEXTURE=EMPTY
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=10 Y=8
@@ -191,7 +180,7 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Fillette TEXTURE=VILLAGER_02
+	NPC=Girl TEXTURE=VILLAGER_02
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=7 Y=5
@@ -221,21 +210,21 @@
 		LINE_01=ici_tu_retrouveras_tout_types
 		LINE_02=d'equipement_et_d'armes_pour_reussir
 		LINE_03=tes_questes_!
-	NPC=ARMOR TEXTURE=GUARD_03
+	NPC=Shopkeeper_ TEXTURE=GUARD_03
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=4 Y=4
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=WEAPON TEXTURE=GUARD_02
+	NPC=Shopkeeper__ TEXTURE=GUARD_02
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=5 Y=4
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=UTILS TEXTURE=GUARD_04
+	NPC=Shopkeeper___ TEXTURE=GUARD_04
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=9 Y=4
@@ -246,10 +235,11 @@
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=10 Y=4
-		LINE_01=RANDOM
+		LINE_01=I_am_a_medic,_let_me_heal_you_!
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_3 TEXTURE=EMPTY
+		ACTION=HEAL
+	NPC=House____ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=11 Y=8
@@ -265,21 +255,21 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Pecheur TEXTURE=VILLAGER_04
+	NPC=Fisherman TEXTURE=VILLAGER_04
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=9 Y=7
-		LINE_01=La_peches,_la_peches...
+		LINE_01=I_like_fishing.
 		LINE_02=_
 		LINE_03=_
-	NPC=House TEXTURE=EMPTY
+	NPC=House_____ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=6 Y=5
-		LINE_01=abandoned_house...
+		LINE_01=Abandoned_house...
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_4 TEXTURE=EMPTY
+	NPC=House______ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=8 Y=7
@@ -295,14 +285,14 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Vieux____ TEXTURE=VILLAGER_05
+	NPC=Old_Man__ TEXTURE=VILLAGER_05
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=8 Y=5
-		LINE_01=RANDOM
-		LINE_02=_
+		LINE_01=_____I_am_so_old.
+		LINE_02=I_wish_to_be_as_young_as_you_are
 		LINE_03=_
-	NPC=HOUSE_5 TEXTURE=EMPTY
+	NPC=House_______ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=1
 		TILE=DATA X=13 Y=3
@@ -325,7 +315,7 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_6 TEXTURE=EMPTY
+	NPC=House________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=3 Y=3
@@ -345,10 +335,10 @@
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=6 Y=5
-		LINE_01=Que_fait_tu_ici_?
+		LINE_01=What_are_you_doing_here_?
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_7 TEXTURE=EMPTY
+	NPC=House_________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=13 Y=3
@@ -371,35 +361,35 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE__ TEXTURE=EMPTY
+	NPC=House__________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=13 Y=10
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE___ TEXTURE=EMPTY
+	NPC=House___________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=2 Y=0
 		TILE=DATA X=3 Y=10
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE______ TEXTURE=EMPTY
+	NPC=House____________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=12 Y=4
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE____ TEXTURE=EMPTY
+	NPC=House_____________ TEXTURE=EMPTY
 		ZONE=DATA X=3 Y=4
 		AREA=DATA X=0 Y=2
 		TILE=DATA X=7 Y=6
 		LINE_01=__Door_is_closed
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_8 TEXTURE=EMPTY
+	NPC=House______________ TEXTURE=EMPTY
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=0 Y=1
 		TILE=DATA X=2 Y=6
@@ -422,7 +412,7 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=HOUSE_9 TEXTURE=EMPTY
+	NPC=House_______________ TEXTURE=EMPTY
 		ZONE=DATA X=4 Y=4
 		AREA=DATA X=1 Y=0
 		TILE=DATA X=12 Y=7

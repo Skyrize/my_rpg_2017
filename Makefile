@@ -77,6 +77,7 @@ SRC	=	src/main.c						\
 		src/game/battle/manage/wait_enemy.c			\
 		src/game/battle/manage/loot.c				\
 		src/game/battle/battle_utils.c				\
+		src/game/battle/init_end_screen.c			\
 		src/game/battle/run_away.c				\
 		src/game/battle/special.c				\
 		src/game/battle/nothing.c				\
@@ -142,7 +143,8 @@ SRC	=	src/main.c						\
 		src/particles/free_system.c				\
 		src/particles/feet_particles.c				\
 		src/intro/lobby.c					\
-		src/init/init_particles.c
+		src/init/init_particles.c					\
+		src/daynightcycle/daynightcycle.c
 
 OBJS	=	$(SRC:.c=.o)
 

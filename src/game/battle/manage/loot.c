@@ -11,14 +11,16 @@ char *compute_slot(game_t *game)
 {
 	int random = rand() % 5;
 
-	if (random == 0)
-		return("PANTS_01");
-	else if (random == 1)
-		return("GAUNTLETS_01");
-	else if (random == 2)
-		return("HELMET_01");
-	else if (random == 3)
-		return("CHEST_01");
+	switch (random) {
+		case 0:
+			return ("PANTS_01");
+		case 1:
+			return ("GAUNTLETS_01");
+		case 2:
+			return ("HELMET_01");
+		case 3:
+			return ("CHEST_01");
+	}
 	if (!my_strcmp(PLAYER_NAME, "Avelus"))
 		return ("BOW_01");
 	else if (!my_strcmp(PLAYER_NAME, "Varyan"))

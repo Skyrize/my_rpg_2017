@@ -2625,6 +2625,14 @@ HUD:
 		RECT_START=DATA X=0 Y=0
 		RECT_MAX=DATA X=0 Y=0
 		RECT_OFFSET=DATA X=0 Y=0
+	TEXTURE=BG_LEVEL
+		FILEPATH=textures/hud/health_hud/bg_level.png
+		PRIORITY=1
+		ANIMATED=0
+		RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=80 HEIGHT=80
+		RECT_START=DATA X=0 Y=0
+		RECT_MAX=DATA X=0 Y=0
+		RECT_OFFSET=DATA X=0 Y=0
 	TEXTURE=LIFE
 		FILEPATH=textures/hud/health_hud/life.png
 		PRIORITY=1
@@ -3224,6 +3232,14 @@ HUD:
             ANIMATED=0
             PRIORITY=0
             RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=2 HEIGHT=3
+            RECT_START=DATA X=0 Y=0
+            RECT_MAX=DATA X=0 Y=0
+            RECT_OFFSET=DATA X=0 Y=0
+    TEXTURE=NIGHT
+            FILEPATH=textures/particle/night.png
+            ANIMATED=0
+            PRIORITY=0
+            RECT_VALUES=DATA LEFT=0 TOP=0 WIDTH=800 HEIGHT=600
             RECT_START=DATA X=0 Y=0
             RECT_MAX=DATA X=0 Y=0
             RECT_OFFSET=DATA X=0 Y=0

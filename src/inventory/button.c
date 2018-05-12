@@ -14,7 +14,7 @@ int display_item_stats(slot_t *slot, game_t *game)
 	scene_t *stats_scene = hm_get(game->scenes, STATS_GAME);
 	obj_t *ico_item = hm_get(stats_scene->objs, "ITEM_ICO");
 
-	if (!slot|| !game || !slot->item || !slot->item->name)
+	if (!slot || !game || !slot->item || !slot->item->name)
 		return (84);
 	if (get_scene_from_displayed(STATS_GAME, game) == NULL) {
 		if (my_strcmp(CURRENT_BUCKET->key, "STATS"))

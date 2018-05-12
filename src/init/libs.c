@@ -60,6 +60,7 @@ int init_items_lib(game_t *game)
 	}
 	return (0);
 }
+
 int init_textures_lib(game_t *game)
 {
 	const key_word_t texture_keys[] = {

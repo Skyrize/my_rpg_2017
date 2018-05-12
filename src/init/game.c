@@ -69,6 +69,7 @@ int init_game(game_t *game, window_t *window)
 	|| init_buttons(game) != 0
 	|| init_particles(game) != 0
 	|| init_tools(game) != 0
+	    || init_day_night_cycle(game) != 0
 	|| set_game_version(game) != 0
 	|| init_movement(game) != 0)
 		return (84);

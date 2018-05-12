@@ -119,6 +119,7 @@ typedef struct framebuffer_s
 
 void place_a_square(sfVector2f *size, sfVector2f *pos,
 sfRenderWindow *window, sfColor *color);
+
 //////////////////////////////////// DEFINES //////////////////////
 
 #define CHAR_IS_NUM(x) (x >= '0' && x <= '9')

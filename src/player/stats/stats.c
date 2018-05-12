@@ -10,7 +10,7 @@
 
 void update_stat(int value, char *wanted, scene_t *scene)
 {
-	char *space = ":   ";
+	char *space = ":  ";
 	char *value_string = int_to_str(value);
 	char *display = my_strcat(space, value_string);
 	sfText *actual = hm_get(scene->texts, wanted);
@@ -28,4 +28,5 @@ void update_stats(scene_t *scene, game_t *game)
 	update_stat(PLAYER_SPECIALITY, "SPECIAL", scene);
 	update_stat(PLAYER_SPECIALITY, "DAMAGES", scene);
 	update_stat(PLAYER_XP, "XP", scene);
+	update_stat(PLAYER_LEVEL, "LEVEL", scene);
 }

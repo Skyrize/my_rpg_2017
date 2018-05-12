@@ -37,7 +37,7 @@ static void particle_sys_init(particle_sys_t *sys)
 }
 
 particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
-				    int particle_nbr, game_t *game)
+				int particle_nbr, game_t *game)
 {
 	particle_sys_t *ret = malloc(sizeof(*ret));
 	texture_t *tex = hm_get(TEXTURES_LIB, tex_name);
@@ -66,7 +66,7 @@ void display_particles(window_t *window, game_t *game)
 	node_t *act_node;
 	particle_sys_t *act_sys;
 
-	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!particle_sys_list)
 		return;
