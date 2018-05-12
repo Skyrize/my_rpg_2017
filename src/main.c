@@ -52,7 +52,7 @@ int main(int ac, char **av, char **env)
 	int ret = 0;
 
 	if ((ret = error_handling_args(ac, av, env)) != 0)
-		return (ret);
+		return (ret == 1 ? 0 : ret);
 	srand(time(NULL));
 	if (init(&window, &game) != 0)
 		return (84);
