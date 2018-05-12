@@ -143,8 +143,12 @@ SRC	=	src/main.c						\
 		src/particles/free_system.c				\
 		src/particles/feet_particles.c				\
 		src/intro/lobby.c					\
-		src/init/init_particles.c					\
-		src/daynightcycle/daynightcycle.c
+		src/init/init_particles.c				\
+		src/daynightcycle/daynightcycle.c			\
+		src/quests/quest_1.c					\
+		src/quests/quest_2.c					\
+		src/quests/quest_3.c					\
+		src/quests/xp.c						\
 
 OBJS	=	$(SRC:.c=.o)
 
