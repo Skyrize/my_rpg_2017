@@ -24,7 +24,7 @@
 		LINE_01=Be_careful,_enemies_are_dangerous_here_!
 		LINE_02=_
 		LINE_03=_
-	NPC=Zoe TEXTURE=VILLAGER_02
+	NPC=Mona TEXTURE=VILLAGER_02
 		ZONE=DATA X=2 Y=4
 		AREA=DATA X=2 Y=2
 		TILE=DATA X=4 Y=5
@@ -546,22 +546,6 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=Door____________________ TEXTURE=EMPTY
-		ZONE=DATA X=1 Y=0
-		AREA=DATA X=2 Y=2
-		TILE=DATA X=7 Y=10
-		ACTION=TP_4_4_2_1_7_6
-		LINE_01=The_outside.
-		LINE_02=_
-		LINE_03=_
-	NPC=Door____________________________ TEXTURE=EMPTY
-		ZONE=DATA X=1 Y=0
-		AREA=DATA X=2 Y=2
-		TILE=DATA X=8 Y=10
-		ACTION=TP_4_4_2_1_7_6
-		LINE_01=The_outside.
-		LINE_02=_
-		LINE_03=_
 	NPC=Vagabon___ TEXTURE=GUARD_03
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=2
@@ -583,7 +567,47 @@
 		LINE_01=The_cavern...
 		LINE_02=_
 		LINE_03=_
-		ACTION=TP_1_0_2_2_7_10
+		ACTION=TP_1_0_2_2_7_9
+	NPC=Cavern_ TEXTURE=EMPTY
+		ZONE=DATA X=1 Y=0
+		AREA=DATA X=2 Y=2
+		TILE=DATA X=6 Y=11
+		LINE_01=The_outside...
+		LINE_02=_
+		LINE_03=_
+		ACTION=TP_4_4_2_0_8_4
+	NPC=Cavern__ TEXTURE=EMPTY
+		ZONE=DATA X=1 Y=0
+		AREA=DATA X=2 Y=2
+		TILE=DATA X=7 Y=11
+		LINE_01=The_outside...
+		LINE_02=_
+		LINE_03=_
+		ACTION=TP_4_4_2_0_8_4
+	NPC=Cavern___ TEXTURE=EMPTY
+		ZONE=DATA X=1 Y=0
+		AREA=DATA X=2 Y=2
+		TILE=DATA X=8 Y=11
+		LINE_01=The_outside...
+		LINE_02=_
+		LINE_03=_
+		ACTION=TP_4_4_2_0_8_4
+	NPC=Cavern____ TEXTURE=EMPTY
+		ZONE=DATA X=1 Y=0
+		AREA=DATA X=2 Y=2
+		TILE=DATA X=9 Y=11
+		LINE_01=The_outside...
+		LINE_02=_
+		LINE_03=_
+		ACTION=TP_4_4_2_0_8_4
+	NPC=Cavern________ TEXTURE=EMPTY
+		ZONE=DATA X=1 Y=0
+		AREA=DATA X=2 Y=2
+		TILE=DATA X=10 Y=11
+		LINE_01=The_outside...
+		LINE_02=_
+		LINE_03=_
+		ACTION=TP_4_4_2_0_8_4
 
 
 
