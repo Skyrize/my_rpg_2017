@@ -61,7 +61,7 @@ void update_feet_particles(game_t *game)
 	particle_sys_t *sys = game->particles->feet_deject;
 	sfVector2f pos;
 
-	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	pos = sfRectangleShape_getPosition(PLAYER_CHARACTER->obj);
 	sys->spawn_zone.left = (int) pos.x + 20;

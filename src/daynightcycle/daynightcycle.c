@@ -29,7 +29,7 @@ void update_day_night_cycle(game_t *game)
 	sfUint8 factor = 0;
 	static sfBool check = false;
 
-	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!clock) {
 		clock = sfClock_create();
@@ -43,6 +43,9 @@ void update_day_night_cycle(game_t *game)
 		check = false;
 	} else if (factor == 213 && check == false)
 		check = true;
+	if (my_strcmp(ZONE_NAME, "TAVERN") == 0 ||
+	    my_strcmp(ZONE_NAME, "INTERIOR") == 0)
+		return;
 	sfSprite_setColor(sprite, sfColor_fromRGBA(255, 255, 255, factor));
 	sfRenderWindow_drawSprite(game->window->window, sprite, NULL);
 }

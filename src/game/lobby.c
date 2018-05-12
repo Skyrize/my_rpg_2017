@@ -86,8 +86,8 @@ int game_lobby(window_t *window, game_t *game)
 		return (my_errno);
 	on_key_pressed(game);
 	update_feet_particles(game);
-	update_day_night_cycle(game);
 	display_particles(window, game);
+	update_day_night_cycle(game);
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0

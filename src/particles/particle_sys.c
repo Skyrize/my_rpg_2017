@@ -66,7 +66,7 @@ void display_particles(window_t *window, game_t *game)
 	node_t *act_node;
 	particle_sys_t *act_sys;
 
-	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	if (!particle_sys_list)
 		return;
