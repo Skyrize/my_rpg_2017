@@ -23,6 +23,7 @@ int teleport(char **data_tp, game_t *game)
 	AREA_COOR_Y = my_getnbr(data_tp[4]);
 	TILE_COOR_X = my_getnbr(data_tp[5]);
 	TILE_COOR_Y = my_getnbr(data_tp[6]);
+	check_rain(game);
 	return (load_my_zone(game));
 }
 

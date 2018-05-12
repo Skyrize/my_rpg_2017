@@ -72,9 +72,12 @@ int game_events(window_t *window, game_t *game)
 		CLICK_RELEASED = sfTrue;
 	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return (0);
-	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
+	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue) {
 		if (press_action_key(game) != 0)
 			return (84);
+	}
+	if (sfKeyboard_isKeyPressed(sfKeyEscape))
+		pause_game(window, game);
 	return (0);
 }
 
@@ -87,6 +90,7 @@ int game_lobby(window_t *window, game_t *game)
 	on_key_pressed(game);
 	update_feet_particles(game);
 	display_particles(window, game);
+	update_day_night_cycle(game);
 	if (manage_life(game) != 0
 	|| change_area_hud(game) != 0
 	|| anim_player(game) != 0
