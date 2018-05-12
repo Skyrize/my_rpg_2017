@@ -147,6 +147,7 @@ SRC	=	src/main.c						\
 		src/daynightcycle/daynightcycle.c			\
 		src/quests/quest_1.c					\
 		src/quests/quest_2.c					\
+		src/quests/quest_3.c					\
 		src/quests/xp.c						\
 
 OBJS	=	$(SRC:.c=.o)

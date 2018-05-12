@@ -548,20 +548,14 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=Vagabon___ TEXTURE=GUARD_03
+	NPC=Tyler TEXTURE=GUARD_03
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=2
-		TILE=DATA X=9 Y=6
-		LINE_01=RANDOM
-		LINE_02=_
-		LINE_03=_
-	NPC=Vagabon____ TEXTURE=VILLAGER_07
-		ZONE=DATA X=1 Y=0
-		AREA=DATA X=2 Y=2
-		TILE=DATA X=6 Y=6
-		LINE_01=RANDOM
-		LINE_02=_
-		LINE_03=_
+		TILE=DATA X=8 Y=4
+		LINE_01=The_ogre_at_destiny_lake_is_located_north_of
+		LINE_02=a_maze_made_above_the_water._The_lake_of_this
+		LINE_03=_zone_is_enchanted.___________________________________(New_Quest)
+		ACTION=QUEST_3
 	NPC=Cavern TEXTURE=EMPTY
 		ZONE=DATA X=4 Y=4
 		AREA=DATA X=2 Y=0
@@ -610,6 +604,14 @@
 		LINE_02=_
 		LINE_03=_
 		ACTION=TP_4_4_2_0_8_4
+	NPC=Medic_ TEXTURE=MEDIC_01
+		ZONE=DATA X=4 Y=4
+		AREA=DATA X=2 Y=1
+		TILE=DATA X=9 Y=6
+		LINE_01=Let_me_heal_you.
+		LINE_02=_
+		LINE_03=_
+		ACTION=HEAL
 
 
 

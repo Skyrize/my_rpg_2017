@@ -545,6 +545,7 @@ void update_day_night_cycle(game_t *game);
 int quests(char **action, game_t *game);
 int quest_1(game_t *game);
 int quest_2(game_t *game);
+int quest_3(game_t *game);
 
 /////////////////////////// END
 

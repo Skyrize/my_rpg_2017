@@ -34,5 +34,7 @@ int quests(char **action, game_t *game)
 		quest_1(game);
 	else if (nbr == 2)
 		quest_2(game);
+	else
+		quest_3(game);
 	return (0);
 }
