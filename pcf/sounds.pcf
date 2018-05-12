@@ -8,6 +8,7 @@
 	AUDIO=SELECT_SOUND FILEPATH=sounds/select_sound.ogg
 	AUDIO=FOOTSTEP_SOUND FILEPATH=sounds/footstep_sound.ogg
 	AUDIO=LEVEL_UP_SOUND FILEPATH=sounds/level_up.ogg
+	AUDIO=NEW_QUEST FILEPATH=sounds/new_quest.ogg
 
 -MUSIC
 	AUDIO=HOMETOWN_MUSIC FILEPATH=sounds/hometown_music.ogg

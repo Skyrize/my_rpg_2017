@@ -327,7 +327,6 @@ int weapon_slot(window_t *window, game_t *game);
 int end_screen_cross(window_t *window, game_t *game);
 int lvl_up_cross(window_t *window, game_t *game);
 int nothing(window_t *window, game_t *game);
-int pause_lobby(window_t *window, game_t *game);
 
 /////////////////////////// HUD FONCTIONS
 
@@ -537,8 +536,6 @@ int get_rnd(int min, int max);
 void check_rain(game_t *game);
 particle_sys_t *init_foot_particles(game_t *game);
 void reset_feet_particles(game_t *game);
-int init_day_night_cycle(game_t *game);
-void update_day_night_cycle(game_t *game);
 
 /////////////////////////// END
 

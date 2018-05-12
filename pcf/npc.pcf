@@ -161,9 +161,10 @@
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=10 Y=5
-		LINE_01=I_lost_something.
-		LINE_02=Please_help_me!
-		LINE_03=_
+		LINE_01=My_daughter_got_kidnapped_by_an_ogre
+		LINE_02=Please_bring_her_back_to_me.
+		LINE_03=___________________________________________________________________(New_Quest)
+		ACTION=QUEST_1
 	NPC=Medic___ TEXTURE=MEDIC_01
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
@@ -545,14 +546,6 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
-	NPC=CAVERN_CURSED TEXTURE=EMPTY
-		ZONE=DATA X=4 Y=4
-		AREA=DATA X=2 Y=1
-		TILE=DATA X=7 Y=6
-		ACTION=TP_1_0_2_2_7_9
-		LINE_01=__________________cavern...
-		LINE_02=_
-		LINE_03=_
 	NPC=Door____________________ TEXTURE=EMPTY
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=2 Y=2
@@ -583,6 +576,14 @@
 		LINE_01=RANDOM
 		LINE_02=_
 		LINE_03=_
+	NPC=Cavern TEXTURE=EMPTY
+		ZONE=DATA X=4 Y=4
+		AREA=DATA X=2 Y=0
+		TILE=DATA X=8 Y=3
+		LINE_01=The_cavern...
+		LINE_02=_
+		LINE_03=_
+		ACTION=TP_1_0_2_2_7_10
 
 
 
