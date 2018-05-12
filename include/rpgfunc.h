@@ -445,6 +445,7 @@ int compare_coords(npc_t *npc, game_t *game, int (*fptr)());
 
 int teleport(char **data_tp, game_t *game);
 int heal(char **data_heal, game_t *game);
+int give_xp_01(char **data_xp, game_t *game);
 
 /////////////////////////// BATTLE
 
@@ -536,6 +537,12 @@ int get_rnd(int min, int max);
 void check_rain(game_t *game);
 particle_sys_t *init_foot_particles(game_t *game);
 void reset_feet_particles(game_t *game);
+
+/////////////////////////// QUESTS
+
+int quests(char **action, game_t *game);
+int quest_1(game_t *game);
+int quest_2(game_t *game);
 
 /////////////////////////// END
 

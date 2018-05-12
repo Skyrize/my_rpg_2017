@@ -8,9 +8,12 @@
 #include "rpg.h"
 #include "my.h"
 
-static const action_t action_tab[] = {
+static const action_t action_tab[] =
+{
 	{"TP", teleport},
 	{"HEAL", heal},
+	{"QUEST", quests},
+	{"XP01", give_xp_01},
 	{NULL, NULL},
 };
 

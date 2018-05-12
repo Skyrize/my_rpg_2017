@@ -154,9 +154,10 @@
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=3 Y=7
-		LINE_01=___Please,_bring_me_a_beer.
-		LINE_02=I_am_thirsty_!
-		LINE_03=_
+		LINE_01=I_heard_that_a_man_knows_something
+		LINE_02=about_an_ogre.
+		LINE_03=He_lives_west_of_here.
+		ACTION=XP01_50
 	NPC=Caleof TEXTURE=VILLAGER_07
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
@@ -501,13 +502,14 @@
 		LINE_01=The_outside.
 		LINE_02=_
 		LINE_03=_
-	NPC=Anonym_____ TEXTURE=VILLAGER_04
+	NPC=Lee'nas TEXTURE=VILLAGER_04
 		ZONE=DATA X=1 Y=0
 		AREA=DATA X=1 Y=1
 		TILE=DATA X=8 Y=2
-		LINE_01=RANDOM
-		LINE_02=_
-		LINE_03=_
+		LINE_01=I_know_about_ogres._At_the_last_news,_there_is
+		LINE_02=one_north_of_the_village._Go_see_in_the_forest,_a_person
+		LINE_03=could_help_you_to_know_where_he_is_hiding_(New_Quest)
+		ACTION=QUEST_2
 	NPC=House_______________ TEXTURE=EMPTY
 		ZONE=DATA X=4 Y=4
 		AREA=DATA X=1 Y=0
