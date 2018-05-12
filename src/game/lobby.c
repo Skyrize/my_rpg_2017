@@ -72,9 +72,12 @@ int game_events(window_t *window, game_t *game)
 		CLICK_RELEASED = sfTrue;
 	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return (0);
-	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue)
+	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue) {
 		if (press_action_key(game) != 0)
 			return (84);
+	}
+	if (sfKeyboard_isKeyPressed(sfKeyEscape))
+		pause_game(window, game);
 	return (0);
 }
 
