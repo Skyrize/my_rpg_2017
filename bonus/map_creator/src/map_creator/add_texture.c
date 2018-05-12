@@ -48,8 +48,6 @@ void add_texture_to_list(texture_list_t *list, texture_t *texture)
 void assign_big_texture_to_elem(texture_list_t *list, sfTexture *texture,
 							v2f pos, char *name)
 {
-	sfVector2u size = sfTexture_getSize(texture);
-
 	list->texture = texture;
 	list->rec = sfRectangleShape_create();
 	sfRectangleShape_setTexture(list->rec, texture, sfTrue);
