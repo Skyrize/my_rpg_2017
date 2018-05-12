@@ -327,6 +327,7 @@ int weapon_slot(window_t *window, game_t *game);
 int end_screen_cross(window_t *window, game_t *game);
 int lvl_up_cross(window_t *window, game_t *game);
 int nothing(window_t *window, game_t *game);
+int pause_lobby(window_t *window, game_t *game);
 
 /////////////////////////// HUD FONCTIONS
 
