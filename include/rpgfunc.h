@@ -536,6 +536,8 @@ int get_rnd(int min, int max);
 void check_rain(game_t *game);
 particle_sys_t *init_foot_particles(game_t *game);
 void reset_feet_particles(game_t *game);
+int init_day_night_cycle(game_t *game);
+void update_day_night_cycle(game_t *game);
 
 /////////////////////////// END
 
