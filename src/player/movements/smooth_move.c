@@ -37,7 +37,6 @@ void stop_anim(game_t *game, sfVector2i *target_pos)
 		set_waiting_player_rect(game);
 }
 
-//call every frames
 void smooth_move_player(game_t *game)
 {
 	sfVector2i act_pos = MAP.tile_coord;
