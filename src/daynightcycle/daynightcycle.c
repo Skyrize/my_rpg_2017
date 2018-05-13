@@ -36,7 +36,6 @@ sfUint8 get_night_opacity(void)
 	time = sfClock_getElapsedTime(clock);
 	factor = (sfUint8) (sin(((double)sfTime_asSeconds(time) + 300) \
 	/ 120) * 225);
-	printf("factor: %d %f\n", factor, sfTime_asSeconds(time));
 	if (factor == 0 && check == true) {
 		sfClock_restart(clock);
 		check = false;
