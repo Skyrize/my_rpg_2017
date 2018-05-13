@@ -12,12 +12,10 @@ int init_boss_enemy(game_t *game)
 	for (int i = 0; i < 3; i++)
 		game->battle.enemy[i] = NULL;
 	game->battle.nbr_enemies = 1;
-	ENEMY[1] = create_enemy("MAD_OGRE", game);
-	if (!ENEMY[1] || !ENEMY[1]->monster || !ENEMY[1]->monster->obj) {
-		my_printf("wrong\n");
+	ENEMY[0] = create_enemy("MAD_OGRE", game);
+	if (!ENEMY[0] || !ENEMY[0]->monster || !ENEMY[0]->monster->obj)
 		return (84);
-	}
-	sfRectangleShape_setPosition(ENEMY[1]->monster->obj, V2F(625, 250));
+	sfRectangleShape_setPosition(ENEMY[0]->monster->obj, V2F(575, 225));
 	return (0);
 }
 
