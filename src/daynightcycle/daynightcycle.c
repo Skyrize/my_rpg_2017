@@ -17,7 +17,7 @@ int init_day_night_cycle(game_t *game)
 	if (!game->particles->night_color)
 		return (1);
 	sfSprite_setTexture(game->particles->night_color,
-			    tex->texture, sfFalse);
+			tex->texture, sfFalse);
 	return (0);
 }
 
@@ -52,8 +52,8 @@ void update_day_night_cycle(game_t *game)
 	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
 	factor = get_night_opacity();
-	if (my_strcmp(ZONE_NAME, "TAVERN") == 0 ||
-	    my_strcmp(ZONE_NAME, "INTERIOR") == 0)
+	if (my_strcmp(ZONE_NAME, "TAVERN") == 0
+	|| my_strcmp(ZONE_NAME, "INTERIOR") == 0)
 		return;
 	sfSprite_setColor(sprite, sfColor_fromRGBA(255, 255, 255, factor));
 	sfRenderWindow_drawSprite(game->window->window, sprite, NULL);
