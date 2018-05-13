@@ -39,7 +39,7 @@ int select_varyan(window_t *window, game_t *game)
 	GOLDS = 50;
 	if (!PLAYER_CHARACTER)
 		return (84);
-	PLAYER_STATS = (stat_t){100, 100, 0, 10, 0, 100, 1, "Strenght", 20};
+	PLAYER_STATS = (stat_t){200, 200, 10, 15, 0, 100, 1, "Strenght", 35};
 	if (add_new_to_slot("COMMON_SWORD_00", &WEAPON_POS, &WEAPON, game) != 0)
 		return (84);
 	if (init_stats_scene(desc, &charac_data, game) != 0)
@@ -61,7 +61,7 @@ int select_jaina(window_t *window, game_t *game)
 	GOLDS = 50;
 	if (!PLAYER_CHARACTER)
 		return (84);
-	PLAYER_STATS = (stat_t){100, 100, 0, 10, 0, 100, 1, "Wisdom", 20};
+	PLAYER_STATS = (stat_t){130, 130, 4, 20, 0, 100, 1, "Wisdom", 45};
 	if (add_new_to_slot("COMMON_WAND_00", &WEAPON_POS, &WEAPON, game) != 0)
 		return (84);
 	if (init_stats_scene(desc, &charac_data, game) != 0)
@@ -83,7 +83,7 @@ int select_avelus(window_t *window, game_t *game)
 	GOLDS = 50;
 	if (!PLAYER_CHARACTER)
 		return (84);
-	PLAYER_STATS = (stat_t){100, 100, 0, 10, 0, 100, 1, "Agility", 20};
+	PLAYER_STATS = (stat_t){150, 150, 5, 10, 0, 100, 1, "Agility", 50};
 	if (add_new_to_slot("COMMON_BOW_00", &WEAPON_POS, &WEAPON, game) != 0)
 		return (84);
 	if (init_stats_scene(desc, &charac_data, game) != 0)
