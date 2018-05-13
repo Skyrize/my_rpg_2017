@@ -5,10 +5,6 @@
 ** header file
 */
 
-/*
-** Hashify is a library to create and use hashmaps
-*/
-
 #ifndef HASHIFY_H_
 #define HASHIFY_H_
 #include "my.h"

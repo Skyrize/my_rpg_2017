@@ -13,7 +13,7 @@ int getudio(char **infos, char **type,
 {
 	sfMusic *audio;
 	char **audio_path = my_str_to_word_array(infos[1],
-		KEYWORD_SEPARATOR_CHAR);
+							KEYWORD_SEPARATOR_CHAR);
 
 	*current_list = AUDIO_LIB;
 	audio = hm_get(*current_list, type[1]);

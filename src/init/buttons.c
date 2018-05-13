@@ -19,7 +19,7 @@ static const button_t g_tab[] =
 	{(char *[]){"CREDITS", NULL}, credits},
 	{(char *[]){"STATS", NULL}, stats},
 	{(char *[]){"INVENTORY", NULL}, inventory},
-	{(char *[]){"MAP", NULL}, map},
+	{(char *[]){"MAP", NULL}, nothing},
 	{(char *[]){"PAUSE", NULL}, pause_game},
 	{(char *[]){"QUESTS", NULL}, quetes},
 	{(char *[]){"QUIT", NULL}, quit},

@@ -62,7 +62,7 @@ int update_random_pnj_dialogue(char *named, game_t *game)
 	bucket_t **texts = get_dialogue_hud_texts(game);
 	char *name = my_strcat(named, " :");
 	const char *line_01 = random_sentence[rand()
-	% my_tab_len(random_sentence)];
+						% my_tab_len(random_sentence)];
 	char *line_02 = "";
 
 	if (!texts || !name)

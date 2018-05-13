@@ -150,7 +150,7 @@
 		LINE_01=If_you_are_hurt,_many_doctors_can
 		LINE_02=help_you_during_your_adventure.
 		LINE_03=There_is_one_in_the_tavern.
-	NPC=Old_Man TEXTURE=VILLAGER_07
+	NPC=Clara TEXTURE=VILLAGER_07
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=3 Y=7

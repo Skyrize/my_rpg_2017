@@ -5,10 +5,6 @@
 ** header file
 */
 
-/*
-** Hashify is a library to create and use hashmaps
-*/
-
 #ifndef HASHIFY_H_
 #define HASHIFY_H_
 #include "../../../include/my.h"
@@ -30,37 +26,10 @@ struct hashmap_s {
 typedef struct bucket_s bucket_t;
 typedef struct hashmap_s hashmap_t;
 
-/// Create a hashmap   (recommanded size: 1024)
-///
-/// more size -> more perf but take more memory
-///
-/// less size -> less perf but take less memory
-/// \param size size of the hashmap
-/// \return created hashmap pointer
 hashmap_t *hm_create(unsigned int size, void (*fptr)());
-
-/// Send bucket value to a given destroy function and free all the map
-/// (at this time, free only the main pointer and
-/// the array)
-/// \param hashmap hashmap
 void hm_destroy(hashmap_t *hashmap);
-
-/// add something to the hashmap
-/// \param hashmap hashmap
-/// \param key key (index equivalent)
-/// \param value value
 void hm_add(hashmap_t *hashmap, char *key, void *value);
-
-/// find an item in hashmap
-/// \param hashmap hashmap
-/// \param key key (index equivalent)
-/// \return value
 void *hm_get(hashmap_t *hashmap, char *key);
-
-/////////////////////////////////////////////
-////      DO NOT USE THESE FUNCTIONS     ////
-/////////////////////////////////////////////
-
 unsigned int hm_hash(hashmap_t *hashmap, char *key);
 bucket_t *hm_bucket_create(void *value, char *key);
 void hm_ll_add(bucket_t **list, bucket_t *bucket);
