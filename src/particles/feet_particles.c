@@ -55,7 +55,6 @@ void reset_feet_particles(game_t *game)
 	}
 }
 
-//TODO good rotation & beautifying
 void update_feet_particles(game_t *game)
 {
 	particle_sys_t *sys = game->particles->feet_deject;
