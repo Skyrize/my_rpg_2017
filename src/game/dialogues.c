@@ -54,7 +54,7 @@ int update_nothing_here(game_t *game)
 	sfText_setString(texts[3]->value, line_02);
 	free(texts);
 	free(name);
-	return (0);
+	return (1);
 }
 
 int update_random_pnj_dialogue(char *named, game_t *game)
@@ -73,7 +73,7 @@ int update_random_pnj_dialogue(char *named, game_t *game)
 	sfText_setString(texts[3]->value, line_02);
 	free(texts);
 	free(name);
-	return (0);
+	return (1);
 }
 
 int update_pnj_dialogue(npc_t *npc, game_t *game)
@@ -89,7 +89,7 @@ int update_pnj_dialogue(npc_t *npc, game_t *game)
 	sfText_setString(texts[3]->value, npc->line_03);
 	free(name);
 	free(texts);
-	return (0);
+	return (1);
 }
 
 int update_no_place_dialogue(game_t *game)
@@ -108,5 +108,5 @@ int update_no_place_dialogue(game_t *game)
 	sfText_setString(texts[3]->value, line_03);
 	free(texts);
 	free(name);
-	return (0);
+	return (1);
 }

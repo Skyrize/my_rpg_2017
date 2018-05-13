@@ -33,6 +33,7 @@ int on_key_pressed(game_t *game)
 int process_action_key(game_t *game)
 {
 	static sfBool open = sfTrue;
+	int my_errno = 0;
 
 	if (process_npc_dialogue(game) != 0)
 		return (84);
@@ -41,8 +42,9 @@ int process_action_key(game_t *game)
 		open = sfFalse;
 	} else {
 		open = sfTrue;
-		if (process_npc_action(game) != 0)
-			return (84);
+		my_errno = process_npc_action(game);
+		if (my_errno != 0)
+			return (my_errno);
 	}
 	if (button_display_hide_scene("DIALOGUE_HUD", NULL,
 	game, "GAME") == 84)
@@ -54,11 +56,13 @@ int process_action_key(game_t *game)
 int press_action_key(game_t *game)
 {
 	static sfBool pass = sfTrue;
+	int my_errno = 0;
 
 	if (pass == sfTrue) {
-		if (process_action_key(game) != 0)
-			return (84);
 		pass = sfFalse;
+		my_errno = process_action_key(game);
+		if (my_errno != 0)
+			return (my_errno);
 	} else
 		pass = sfTrue;
 	return (0);
@@ -66,6 +70,8 @@ int press_action_key(game_t *game)
 
 int game_events(window_t *window, game_t *game)
 {
+	int my_errno = 0;
+
 	if (window->event.type == sfEvtClosed)
 		sfRenderWindow_close(window->window);
 	if (window->event.type == sfEvtMouseButtonReleased)
@@ -73,8 +79,9 @@ int game_events(window_t *window, game_t *game)
 	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return (0);
 	if (sfKeyboard_isKeyPressed(sfKeySpace) == sfTrue) {
-		if (press_action_key(game) != 0)
-			return (84);
+		my_errno = press_action_key(game);
+		if (my_errno != 0)
+			return (my_errno);
 	}
 	if (sfKeyboard_isKeyPressed(sfKeyEscape))
 		pause_game(window, game);
