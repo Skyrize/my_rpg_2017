@@ -612,6 +612,20 @@
 		LINE_02=_
 		LINE_03=_
 		ACTION=HEAL
+	NPC=Alex TEXTURE=VILLAGER_03
+		ZONE=DATA X=3 Y=3
+		AREA=DATA X=1 Y=1
+		TILE=DATA X=10 Y=8
+		LINE_01=Arf,_it's_been_days_since_I'm_stuck!
+		LINE_02=I_do_not_found_the_way.
+		LINE_03=_
+	NPC=Clara TEXTURE=VILLAGER_02
+		ZONE=DATA X=3 Y=3
+		AREA=DATA X=1 Y=1
+		TILE=DATA X=2 Y=7
+		LINE_01=I_found_the_solution!
+		LINE_02=But_i_won't_say_anything...
+		LINE_03=_
 
 
 

@@ -14,5 +14,6 @@
 	AUDIO=HOMETOWN_MUSIC FILEPATH=sounds/hometown_music.ogg
 	AUDIO=INTRO_MUSIC FILEPATH=sounds/intro_music.ogg
 	AUDIO=BATTLE_MUSIC FILEPATH=sounds/battle_music.ogg
+	AUDIO=BOSS_BATTLE_MUSIC FILEPATH=sounds/boss_battle_music.ogg
 
 ### END OF FILE ###
