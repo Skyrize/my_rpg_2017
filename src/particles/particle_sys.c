@@ -32,11 +32,12 @@ static void particle_sys_init(particle_sys_t *sys)
 	sys->condition = default_particle_cond;
 	sys->force = V2F(1, 0);
 	sys->gravity = false;
+	sys->activated = true;
 	add_sys_to_list(sys);
 }
 
 particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
-				    int particle_nbr, game_t *game)
+				int particle_nbr, game_t *game)
 {
 	particle_sys_t *ret = malloc(sizeof(*ret));
 	texture_t *tex = hm_get(TEXTURES_LIB, tex_name);
@@ -46,7 +47,7 @@ particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
 	ret->texture = tex->texture;
 	ret->spawn_zone = spawn;
 	ret->particle_nbr = particle_nbr;
-	ret->sprite_arr = malloc(sizeof(sfSprite *) * particle_nbr + 1);
+	ret->sprite_arr = malloc(sizeof(sfSprite *) * (particle_nbr + 1));
 	if (!ret->sprite_arr)
 		return (NULL);
 	for (int i = 0; i < ret->particle_nbr; i++) {
@@ -64,23 +65,19 @@ void display_particles(window_t *window, game_t *game)
 {
 	node_t *act_node;
 	particle_sys_t *act_sys;
-	static bool init = false;
 
-	if (strcmp(CURRENT_BUCKET->key, "GAME") != 0)
+	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
 		return;
-	if (!init) {
-		init_rain(game);
-		init = true;
-	}
 	if (!particle_sys_list)
 		return;
 	act_node = particle_sys_list->first;
 	for (; act_node; act_node = act_node->next) {
 		act_sys = act_node->value;
 		init_particle_position(act_sys);
-		update_particle_sys(act_sys);
+		update_particle_sys(act_sys, game);
 		display_particle_sys(window, act_sys);
 	}
+	rain(game, game->window);
 }
 
 void remove_particle_sys_by_id(int id)
@@ -95,7 +92,7 @@ void remove_particle_sys_by_id(int id)
 	act_node = particle_sys_list->first;
 	for (; act_node; act_node = act_node->next) {
 		act_sys = act_node->value;
-		if(act_sys->sys_id == id)
+		if (act_sys->sys_id == id)
 			break;
 		last_node = act_node;
 		idx++;

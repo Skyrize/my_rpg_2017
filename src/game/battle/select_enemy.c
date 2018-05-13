@@ -7,15 +7,6 @@
 
 #include "rpg.h"
 
-int first_enemy_available(game_t *game)
-{
-	if (game->battle.enemy[0]->monster->obj)
-		return (0);
-	if (game->battle.enemy[1]->monster->obj)
-		return (1);
-	return (2);
-}
-
 int change_selected_enemy(game_t *game, int offset)
 {
 	int selected = game->battle.selected_enemy;
@@ -26,7 +17,7 @@ int change_selected_enemy(game_t *game, int offset)
 			to_select = 0;
 		if (to_select < 0)
 			to_select = 2;
-		if (game->battle.enemy[to_select]->monster->obj) {
+		if (game->battle.enemy[to_select]) {
 			game->battle.selected_enemy = to_select;
 			return (0);
 		}
@@ -45,7 +36,7 @@ void change_arrow_position(game_t *game)
 	175 + game->battle.selected_enemy * 50));
 }
 
-void select_ennemy(window_t *window, game_t *game)
+int select_ennemy(window_t *window, game_t *game)
 {
 	if (get_scene_from_displayed("ATTACK", game)
 	&& window->event.type == sfEvtKeyPressed) {
@@ -57,11 +48,8 @@ void select_ennemy(window_t *window, game_t *game)
 			change_arrow_position(game);
 		}
 		if (sfKeyboard_isKeyPressed(sfKeyReturn)) {
-			player_attack(window, game);
-			// !SPECIAL_HIT ? game->battle.enemy_turn = 1,
-			// enemy_turn(window, game) : 0;
-			//!SPECIAL_HIT ? enemy_turn(window, game) : 0;
-			//enemy_turn(window, game);
+			return (player_attack(window, game));
 		}
 	}
+	return (0);
 }

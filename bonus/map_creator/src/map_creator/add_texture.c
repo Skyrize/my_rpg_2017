@@ -10,12 +10,10 @@
 void assign_texture_to_elem(texture_list_t *list, sfTexture *texture,
 							v2f pos, char *name)
 {
-	sfVector2u size = sfTexture_getSize(texture);
-
 	list->texture = texture;
 	list->rec = sfRectangleShape_create();
 	sfRectangleShape_setTexture(list->rec, texture, sfTrue);
-	sfRectangleShape_setSize(list->rec, (sfVector2f){size.x, size.y});
+	sfRectangleShape_setSize(list->rec, V2F(50, 50));
 	sfRectangleShape_setTextureRect(list->rec, (sfIntRect){0, 0, 50, 50});
 	sfRectangleShape_setPosition(list->rec, pos);
 	list->pos = pos;
@@ -32,7 +30,7 @@ void add_texture_to_list(texture_list_t *list, texture_t *texture)
 	if (!list->rec) {
 		assign_texture_to_elem(list, texture->texture,
 					V2F(810 + a, 10 + b), texture->name);
-		a += 104;
+		a += 52;
 		return;
 	}
 	for (; list->next; list = list->next);
@@ -40,8 +38,8 @@ void add_texture_to_list(texture_list_t *list, texture_t *texture)
 	assign_texture_to_elem(new_elem, texture->texture,
 					V2F(810 + a, 10 + b), texture->name);
 	list->next = new_elem;
-	a += 104;
-	if (a >= 104 * 9) {
+	a += 52;
+	if (a >= 52 * 17) {
 		a = 0;
 		b += 52;
 	}
@@ -50,12 +48,10 @@ void add_texture_to_list(texture_list_t *list, texture_t *texture)
 void assign_big_texture_to_elem(texture_list_t *list, sfTexture *texture,
 							v2f pos, char *name)
 {
-	sfVector2u size = sfTexture_getSize(texture);
-
 	list->texture = texture;
 	list->rec = sfRectangleShape_create();
 	sfRectangleShape_setTexture(list->rec, texture, sfTrue);
-	sfRectangleShape_setSize(list->rec, (sfVector2f){size.x, size.y});
+	sfRectangleShape_setSize(list->rec, V2F(50, 50));
 	sfRectangleShape_setPosition(list->rec, pos);
 	list->pos = pos;
 	list->name = name;
@@ -71,7 +67,7 @@ void add_big_texture_to_list(texture_list_t *list, texture_t *texture)
 	if (!list->rec) {
 		assign_big_texture_to_elem(list, texture->texture,
 					V2F(10 + a, 650 + b), texture->name);
-		a += 208;
+		a += 104;
 		return;
 	}
 	for (; list->next; list = list->next);
@@ -79,9 +75,9 @@ void add_big_texture_to_list(texture_list_t *list, texture_t *texture)
 	assign_big_texture_to_elem(new_elem, texture->texture,
 					V2F(10 + a, 650 + b), texture->name);
 	list->next = new_elem;
-	a += 208;
-	if (a >= 208 * 8) {
+	a += 104;
+	if (a >= 104 * 16) {
 		a = 0;
-		b += 104;
+		b += 52;
 	}
 }

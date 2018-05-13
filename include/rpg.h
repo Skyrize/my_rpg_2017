@@ -61,6 +61,7 @@
 #define INTRECT(x, y, width, height) (sfIntRect) {x, y, width, height}
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
+#define V2U(x, y) (sfVector2u) {(unsigned int) x, (unsigned int) y}
 #define MIN(X, Y) X >= Y ? Y : X
 #define MAX(X, Y) X >= Y ? X : Y
 
@@ -80,7 +81,8 @@
 #define MAP_GAME "MAP"
 #define HOME "MAIN_MENU"
 #define CONTROL_KEY "CONTROL_KEY"
-#define VERSION_GAME "V0.8"
+#define S_LOAD "LOADING"
+#define VERSION_GAME "V1.0"
 
 //NOTIF MANAGEMENT
 
@@ -96,6 +98,8 @@ typedef struct obj_data_s obj_data_t;
 typedef struct text_data_s text_data_t;
 
 typedef struct obj_s obj_t;
+
+typedef struct particles_s particles_t;
 
 typedef struct rect_s
 {
@@ -126,6 +130,19 @@ typedef struct texture_s
 	sfVector2i rect_offset;
 } texture_t, texture_data_t;
 
+typedef struct npc_s
+{
+	char *name;
+	char *texture;
+	sfVector2i zone;
+	sfVector2i area;
+	sfVector2i tile;
+	char *line_01;
+	char *line_02;
+	char *line_03;
+	char *action;
+} npc_t;
+
 /////////////////////////////////// MAPPING /////////////////////////////////
 
 typedef struct vector_pack_s
@@ -134,12 +151,6 @@ typedef struct vector_pack_s
 	sfVector2i area;
 	sfVector2i tile;
 } vector_pack_t;
-
-typedef struct remarkable_tile_s
-{
-	int (*fptr)();
-	vector_pack_t tiles[];
-} remarkable_tile_t;
 
 typedef struct tile_list_s tile_list_t;
 
@@ -179,10 +190,17 @@ typedef struct map_s
 
 //////////////////////////////////////// SCENES ////////////////////////////
 
+typedef struct action_s
+{
+	char *balise;
+	int (*fptr)();
+} action_t;
+
 typedef struct manager_s
 {
 	char *balise;
 	int (*fptr)();
+	int (*event)();
 } manager_t;
 
 typedef enum
@@ -283,11 +301,17 @@ typedef struct enemy_data_s
 } enemy_data_t;
 
 typedef struct battle_s {
+	int step_to_battle;
 	bool special_hit;
 	bool last_enemy_turn;
 	bool enemy_turn;
 	bool player_turn;
+	bool win;
+	bool lose;
+	bool run_away;
+	bool used_special;
 	int selected_enemy;
+	int nbr_enemies;
 	enemy_t *enemy[3];
 } battle_t;
 
@@ -332,7 +356,6 @@ typedef struct key_control_s
 	sfKeyCode arrow_down;
 	sfKeyCode arrow_right;
 	sfKeyCode arrow_left;
-	int move;
 } key_control_t;
 
 /////////////////////////////////// WINDOW ////////////////////////////////
@@ -347,6 +370,7 @@ typedef struct ctime_s
 typedef struct movement_s
 {
 	sfVector2i target_tile;
+	ctime_t timer;
 	int anim_mult;
 	bool is_moving;
 } movement_t;
@@ -367,7 +391,10 @@ typedef struct lib_s
 	hashmap_t *textures;
 	hashmap_t *items;
 	hashmap_t *monsters;
+	hashmap_t *npcs;
 } lib_t;
+
+typedef struct window_s window_t;
 
 typedef struct game_s
 {
@@ -382,6 +409,9 @@ typedef struct game_s
 	bucket_t *current;
 	hashmap_t *scenes;
 	managed_scene_t *displayed_scenes;
+	particles_t *particles;
+	window_t *window;
+	bool loading;
 } game_t;
 
 typedef struct window_s
@@ -399,12 +429,21 @@ typedef struct particle_sys_s
 	sfVector2f force;
 	bool gravity;
 	sfTexture *texture;
-	bool (*condition)(sfSprite *);
+	bool (*condition)(sfSprite *, game_t *);
 	sfSprite **sprite_arr;
 	int spawn_density;
 	int spawned_particles_nbr;
 	int sys_id;
+	bool activated;
 } particle_sys_t;
+
+typedef struct particles_s
+{
+	particle_sys_t *rain;
+	sfSprite *rain_background;
+	particle_sys_t *feet_deject;
+	sfSprite *night_color;
+} particles_t;
 
 #include "rpginit.h"
 #include "rpgdef.h"

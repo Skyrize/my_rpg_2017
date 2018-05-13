@@ -89,7 +89,7 @@ void my_printadress(va_list);
 void my_printoctal(va_list);
 void my_printpercent(va_list);
 void my_printformatedstring(va_list);
-int my_array_len(char **);
+int my_tab_len(const char **);
 int my_str_isalphanum(char *str);
 int my_find_char(char seeked, char *inside);
 void my_replace_char(char *str, char seeked, char replacement);
@@ -100,6 +100,14 @@ typedef struct fnct_s
 	void (*fptr)(va_list list);
 } fnct_t;
 
+typedef struct getline_s
+{
+	FILE *file;
+	char *line;
+	size_t len;
+	int read;
+} getline_t;
+
 /////////////////////// CSFML ////////////////////////:
 
 typedef struct framebuffer_s
@@ -109,7 +117,8 @@ typedef struct framebuffer_s
 	sfUint8 *pixels;
 } framebuffer_t;
 
-void place_a_square(sfVector2f *, sfVector2f *, sfRenderWindow *, sfColor *);
+void place_a_square(sfVector2f *size, sfVector2f *pos,
+sfRenderWindow *window, sfColor *color);
 
 //////////////////////////////////// DEFINES //////////////////////
 

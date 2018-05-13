@@ -28,27 +28,23 @@ bool is_pressing_controls(game_t *game)
 	return (false);
 }
 
-void is_waiting(game_t *game)
+void stop_anim(game_t *game, sfVector2i *target_pos)
 {
+	TILE_COOR_X = target_pos->x;
+	TILE_COOR_Y = target_pos->y;
+	game->player.character->obj_rect.animated = sfFalse;
 	if (!is_pressing_controls(game))
 		set_waiting_player_rect(game);
 }
 
-//TODO norme
 //call every frames
 void smooth_move_player(game_t *game)
 {
 	sfVector2i act_pos = MAP.tile_coord;
 	sfVector2i *target_pos = &(game->movement.target_tile);
 	sfVector2f s_pos;
-	sfVector2f offset_f = (sfVector2f) {(target_pos->x - act_pos.x) * 5,
-					(target_pos->y - act_pos.y) * 5};
 	static bool is_check = false;
 
-	if (my_strcmp(CURRENT_BUCKET->key, "GAME") != 0)
-		return;
-	if (!(game->player.character))
-		return;
 	if (!is_check) {
 		set_initial_player_pos(game);
 		is_check = true;
@@ -57,13 +53,11 @@ void smooth_move_player(game_t *game)
 	if (!game->player.character->obj_rect.animated)
 		return;
 	if (s_pos.x == target_pos->x * 50 && s_pos.y == target_pos->y * 50) {
-		TILE_COOR_X = target_pos->x;
-		TILE_COOR_Y = target_pos->y;
-		game->player.character->obj_rect.animated = sfFalse;
-		is_waiting(game);
+		stop_anim(game, target_pos);
 		return;
 	}
 	if (act_pos.x == target_pos->x && act_pos.y == target_pos->y)
 		return;
-	sfRectangleShape_move(PLAYER.character->obj, offset_f);
+	sfRectangleShape_move(PLAYER.character->obj, (sfVector2f) \
+	{(target_pos->x - act_pos.x) * 5, (target_pos->y - act_pos.y) * 5});
 }

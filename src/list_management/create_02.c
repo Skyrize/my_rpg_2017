@@ -71,3 +71,24 @@ enemy_t *create_enemy(char *name, game_t *game)
 	new->stats = data->stats;
 	return (new);
 }
+
+npc_t *create_npc(char *name, char *texture)
+{
+	npc_t *new = malloc(sizeof(npc_t));
+
+	if (!new)
+		return (NULL);
+	new->name = my_strdup(name);
+	my_replace_char(new->name, '_', ' ');
+	for (int i = my_strlen(new->name) - 1; new->name[i] == ' '; i--)
+		new->name[i] = 0;
+	new->texture = my_strdup(texture);
+	new->zone = V2I(-1, -1);
+	new->area = V2I(-1, -1);
+	new->tile = V2I(-1, -1);
+	new->line_01 = NULL;
+	new->line_02 = NULL;
+	new->line_03 = NULL;
+	new->action = NULL;
+	return (new);
+}

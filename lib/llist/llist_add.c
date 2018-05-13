@@ -22,5 +22,6 @@ node_t *add_to_llist(char *key, void *value, llist_t *llist)
 	}
 	for (; tmp->next; tmp = tmp->next);
 	tmp->next = new;
+	new->prev = tmp;
 	return (new);
 }

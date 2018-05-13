@@ -11,6 +11,7 @@ void add_block_filter(ressources_t *rsces, my_w_t *window)
 {
 	tile_list_t *tmp = TILE.displayed_tiles;
 
+	(void)rsces;
 	while (tmp->next)
 		tmp = tmp->next;
 	sfRectangleShape_setFillColor(tmp->tile->obj, OVER_COLOR);
@@ -20,6 +21,7 @@ void remove_block_filter(ressources_t *rsces, my_w_t *window)
 {
 	tile_list_t *tmp = TILE.displayed_tiles;
 
+	(void)rsces;
 	while (tmp->next)
 		tmp = tmp->next;
 	sfRectangleShape_setFillColor(tmp->tile->obj, REGULAR_COLOR);

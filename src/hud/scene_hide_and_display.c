@@ -12,7 +12,7 @@ int hide_scene(char *scene_name, game_t *game, char *old_scene)
 {
 	make_sound("CURSOR_SOUND", game);
 	CURRENT_BUCKET = hm_get_bucket(SCENES, old_scene);
-	if (check_unexisting_scene(CURRENT_BUCKET, "GAME") != 0)
+	if (check_unexisting_scene(CURRENT_BUCKET, old_scene) != 0)
 		return (84);
 	clean_displayed_scene_name(game, scene_name);
 	return (0);
@@ -25,8 +25,6 @@ int button_display_hide_scene(char *scene_name, void (*fptr)(), game_t *game,
 	game);
 	scene_t *scene = hm_get(SCENES, scene_name);
 
-	if (check_unexisting_scene((bucket_t *)scene, scene_name) != 0)
-		return (84);
 	if (displayed_scene) {
 		if (hide_scene(scene_name, game, old_scene) != 0)
 			return (84);
@@ -40,5 +38,5 @@ int button_display_hide_scene(char *scene_name, void (*fptr)(), game_t *game,
 		game) != 0 || make_sound("CURSOR_SOUND", game) == 2)
 			return (84);
 	}
-	return (1);
+	return (0);
 }

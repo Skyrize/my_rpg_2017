@@ -18,7 +18,7 @@
 struct bucket_s {
 	char *key;
 	void *value;
-	struct bucket_s* next;
+	struct bucket_s *next;
 };
 
 struct hashmap_s {

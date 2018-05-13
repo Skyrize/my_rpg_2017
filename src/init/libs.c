@@ -60,6 +60,7 @@ int init_items_lib(game_t *game)
 	}
 	return (0);
 }
+
 int init_textures_lib(game_t *game)
 {
 	const key_word_t texture_keys[] = {
@@ -81,5 +82,17 @@ int init_textures_lib(game_t *game)
 		my_printf("WARNING: ERROR IN TEXTURES LIB INIT !\n");
 		return (84);
 	}
+	return (0);
+}
+
+int init_libs(game_t *game)
+{
+	if (init_textures_lib(game) != 0
+	|| init_audio_lib(game) != 0
+	|| init_fonts_lib(game) != 0
+	|| init_items_lib(game) != 0
+	|| init_monsters_lib(game) != 0
+	|| init_npcs_lib(game) != 0)
+		return (84);
 	return (0);
 }

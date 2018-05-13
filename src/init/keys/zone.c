@@ -18,8 +18,7 @@ void set_area_values(char *encounter, char *x, char *y, game_t *game)
 			AREA.tiles[y][x].displayed_tiles = NULL;
 }
 
-
-int getrea(char **infos, char **type,
+int get_area(char **infos, char **type,
 	hashmap_t **current_list, game_t *game)
 {
 	char **enc = my_str_to_word_array(infos[1], KEYWORD_SEPARATOR_CHAR);

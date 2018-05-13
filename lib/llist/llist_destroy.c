@@ -15,3 +15,16 @@ void destroy_node(node_t *node)
 		free(node);
 	}
 }
+
+void destroy_llist(llist_t *llist)
+{
+	node_t *tmp;
+
+	while (llist->first) {
+		tmp = llist->first;
+		llist->first = llist->first->next;
+		destroy_node(tmp);
+		tmp = NULL;
+	}
+	free(llist);
+}

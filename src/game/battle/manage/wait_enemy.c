@@ -10,7 +10,7 @@
 int check_timer_enemy(window_t *window, game_t *game, int *a)
 {
 	get_time(&window->clocker);
-	if (*a == 1 && window->clocker.seconds >= 3) {
+	if (*a == 1 && window->clocker.seconds >= 2) {
 		*a = 0;
 		clean_displayed_scene_name(game, "ENEMY_TURN");
 		enemy_attack(window, game);
@@ -34,5 +34,5 @@ int wait_for_enemy_attack(window_t *window, game_t *game, bool wait)
 	add_scene_to_display_list(special, game);
 	sfClock_restart(window->clocker.clock);
 	a = 1;
-	return (0);
+	return (1);
 }

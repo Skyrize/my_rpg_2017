@@ -14,21 +14,8 @@ void check_timer_special_enemy(window_t *window, game_t *game,
 	if (*a == 1 && window->clocker.seconds >= 2) {
 		*a = 0;
 		SPECIAL_HIT = 0;
-		if (game->battle.last_enemy_turn) {
-			ENEMY_TURN = 0;
-			PLAYER_TURN = 1;
-		} else
-			enemy_turn(window, game);
-		// if (!game->battle.last_enemy_turn || game->battle.enemy_turn)
-		// 	enemy_turn(window, game);
-		// else if (game->battle.last_enemy_turn)
-		// 	add_scene_to_display_list(hm_get_bucket(SCENES,
-		// 				"BATTLE_BASIC_BUTTONS"), game);
-		// else
-		// 	enemy_turn(window, game);
-		// if (game->battle.last_enemy_turn && game->battle.enemy_turn)
-		// 	add_scene_to_display_list(hm_get_bucket(SCENES,
-		// 				"BATTLE_BASIC_BUTTONS"), game);
+		if (!game->battle.lose)
+			reset_enemy_turn(window, game);
 		clean_displayed_scene_name(game, save);
 	}
 }
@@ -40,18 +27,17 @@ void check_timer_special_player(window_t *window, game_t *game,
 	if (*a == 1 && window->clocker.seconds >= 2) {
 		*a = 0;
 		SPECIAL_HIT = 0;
-		ENEMY_TURN = 1;
-		PLAYER_TURN = 0;
-		// if (!game->battle.last_enemy_turn || game->battle.enemy_turn)
-		// 	enemy_turn(window, game);
-		// else if (game->battle.last_enemy_turn)
-		// 	add_scene_to_display_list(hm_get_bucket(SCENES,
-		// 				"BATTLE_BASIC_BUTTONS"), game);
-		// else
-		// 	enemy_turn(window, game);
-		// if (game->battle.last_enemy_turn && game->battle.enemy_turn)
-		// 	add_scene_to_display_list(hm_get_bucket(SCENES,
-		// 				"BATTLE_BASIC_BUTTONS"), game);
+		if (!my_strcmp(save, "USE_SPECIAL")
+		&& game->battle.used_special) {
+			add_scene_to_display_list(hm_get_bucket(SCENES,
+						"BATTLE_BASIC_BUTTONS"), game);
+			clean_displayed_scene_name(game, save);
+			return;
+		}
+		if (!my_strcmp(save, "USE_SPECIAL"))
+			game->battle.used_special = 1;
+		if (!game->battle.win)
+			reset_player_turn(window, game);
 		clean_displayed_scene_name(game, save);
 	}
 }
@@ -75,7 +61,7 @@ int display_special_hit_player(window_t *window, game_t *game, char *scene)
 	sfClock_restart(window->clocker.clock);
 	save = scene;
 	a = 1;
-	return (0);
+	return (1);
 }
 
 int display_special_hit_enemy(window_t *window, game_t *game, char *scene)

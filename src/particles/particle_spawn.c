@@ -8,7 +8,7 @@
 #include <rpg.h>
 #include <SFML/Graphics/Rect.h>
 
-static int get_rnd(int min, int max)
+int get_rnd(int min, int max)
 {
 	return (rand() % (max - min + 1) + min);
 }
@@ -16,9 +16,9 @@ static int get_rnd(int min, int max)
 sfVector2f get_particles_spawn_pos(particle_sys_t *sys)
 {
 	int x = get_rnd(sys->spawn_zone.left,
-			  sys->spawn_zone.left + sys->spawn_zone.width);
+			sys->spawn_zone.left + sys->spawn_zone.width);
 	int y = get_rnd(sys->spawn_zone.top,
-			  sys->spawn_zone.top + sys->spawn_zone.height);
+			sys->spawn_zone.top + sys->spawn_zone.height);
 	sfVector2f res = (sfVector2f) {.x = x, .y = y};
 
 	return (res);
@@ -38,7 +38,7 @@ void init_particle_position(particle_sys_t *sys)
 		max_i = sys->particle_nbr;
 	for (; i < max_i; i++) {
 		sfSprite_setPosition(sys->sprite_arr[i],
-				     get_particles_spawn_pos(sys));
+				get_particles_spawn_pos(sys));
 	}
 	sys->spawned_particles_nbr = max_i;
 }
