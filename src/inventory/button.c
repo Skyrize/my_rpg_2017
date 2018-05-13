@@ -35,7 +35,7 @@ int select_slot(slot_t *slot, game_t *game)
 	if (!slot->item)
 		return (0);
 	ITEM_SELECTED = slot->item;
-	//remove_item_stats(ITEM_SELECTED, game);
+	update_item_stats(sfFalse, slot, game);
 	if (replace_mouse_skin(slot->item->obj, &V2F(16, 16), game) != 0)
 		return (84);
 	slot->item = NULL;
@@ -50,13 +50,16 @@ int drop_slot(slot_t *slot, game_t *game)
 		slot->item = ITEM_SELECTED;
 		sfRectangleShape_setPosition(slot->item->obj->obj, slot->pos);
 		ITEM_SELECTED = NULL;
+		update_item_stats(sfTrue, slot, game);
 		return (reset_mouse_skin(game));
 	} else {
 		tmp = slot->item;
+		update_item_stats(sfFalse, slot, game);
 		slot->item = ITEM_SELECTED;
 		sfRectangleShape_setPosition(slot->item->obj->obj, slot->pos);
 		ITEM_SELECTED = NULL;
 		ITEM_SELECTED = tmp;
+		update_item_stats(sfTrue, slot, game);
 		return (replace_mouse_skin(ITEM_SELECTED->obj,
 		&V2F(16, 16), game));
 	}

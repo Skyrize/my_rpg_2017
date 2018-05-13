@@ -506,6 +506,7 @@ int update_special_item(slot_t *slot, game_t *game);
 int update_armor_item(slot_t *slot, game_t *game);
 int update_health_item(slot_t *slot, game_t *game);
 int add_item(item_t *item, game_t *game);
+void update_item_stats(sfBool add, slot_t *slot, game_t *game);
 
 //////////////////////////////// MOUSE
 
