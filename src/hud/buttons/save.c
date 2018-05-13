@@ -9,14 +9,12 @@
 
 int save(window_t *window, game_t *game)
 {
-	int my_errno = 0;
+	bucket_t *scene = hm_get_bucket(SCENES, SAVE_GAME);
 
-	if (!window || !game)
+	if (!window || !game || !scene)
 		return (0);
 	clean_displayed_scene_name(game, PAUSE_GAME);
-	my_errno = add_scene_to_display_list(
-	hm_get_bucket(SCENES, SAVE_GAME), game);
-	if (my_errno == 84)
+	if (add_scene_to_display_list(scene, game) != 0)
 		return (84);
 	(void)window;
 	return (1);
@@ -24,14 +22,14 @@ int save(window_t *window, game_t *game)
 
 int yes_save(window_t *window, game_t *game)
 {
-	int my_errno = 0;
+	bucket_t *scene = hm_get_bucket(SCENES, PAUSE_GAME);
 
-	if (!window || !game)
+	if (!window || !game || !scene)
 		return (0);
 	clean_displayed_scene_name(game, SAVE_GAME);
-	my_errno = add_scene_to_display_list(
-	hm_get_bucket(SCENES, PAUSE_GAME), game);
-	if (my_errno == 84)
+	if (add_scene_to_display_list(scene, game) != 0)
+		return (84);
+	if (save_game(game) != 0)
 		return (84);
 	(void)window;
 	return (1);
@@ -39,14 +37,12 @@ int yes_save(window_t *window, game_t *game)
 
 int no_save(window_t *window, game_t *game)
 {
-	int my_errno = 0;
+	bucket_t *scene = hm_get_bucket(SCENES, PAUSE_GAME);
 
-	if (!window || !game)
+	if (!window || !game || !scene)
 		return (0);
 	clean_displayed_scene_name(game, SAVE_GAME);
-	my_errno = add_scene_to_display_list(
-	hm_get_bucket(SCENES, PAUSE_GAME), game);
-	if (my_errno == 84)
+	if (add_scene_to_display_list(scene, game) != 0)
 		return (84);
 	(void)window;
 	return (1);

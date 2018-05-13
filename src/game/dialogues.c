@@ -62,7 +62,7 @@ int update_random_pnj_dialogue(char *named, game_t *game)
 	bucket_t **texts = get_dialogue_hud_texts(game);
 	char *name = my_strcat(named, " :");
 	const char *line_01 = random_sentence[rand()
-	% my_tab_len(random_sentence)];
+						% my_tab_len(random_sentence)];
 	char *line_02 = "";
 
 	if (!texts || !name)
@@ -73,7 +73,7 @@ int update_random_pnj_dialogue(char *named, game_t *game)
 	sfText_setString(texts[3]->value, line_02);
 	free(texts);
 	free(name);
-	return (0);
+	return (1);
 }
 
 int update_pnj_dialogue(npc_t *npc, game_t *game)
@@ -89,7 +89,7 @@ int update_pnj_dialogue(npc_t *npc, game_t *game)
 	sfText_setString(texts[3]->value, npc->line_03);
 	free(name);
 	free(texts);
-	return (0);
+	return (1);
 }
 
 int update_no_place_dialogue(game_t *game)
@@ -108,5 +108,5 @@ int update_no_place_dialogue(game_t *game)
 	sfText_setString(texts[3]->value, line_03);
 	free(texts);
 	free(name);
-	return (0);
+	return (1);
 }

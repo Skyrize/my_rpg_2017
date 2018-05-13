@@ -484,6 +484,11 @@ void clean_battle_scenes(game_t *game);
 void lose_tp(game_t *game);
 int stop_battle_music(game_t *game);
 int init_end_screen(game_t *game, scene_t *scene);
+void init_character(game_t *game);
+int set_battle(game_t *game);
+int set_background(game_t *game, scene_t *scene);
+int init_boss_battle(char **data, game_t *game);
+void win_tp(game_t *game);
 
 ////////////////////////////////// XP
 
@@ -506,6 +511,7 @@ int update_special_item(slot_t *slot, game_t *game);
 int update_armor_item(slot_t *slot, game_t *game);
 int update_health_item(slot_t *slot, game_t *game);
 int add_item(item_t *item, game_t *game);
+void update_item_stats(sfBool add, slot_t *slot, game_t *game);
 
 //////////////////////////////// MOUSE
 
@@ -546,6 +552,11 @@ int quests(char **action, game_t *game);
 int quest_1(game_t *game);
 int quest_2(game_t *game);
 int quest_3(game_t *game);
+
+////////////////////////// SAVE
+
+int save_game(game_t *game);
+int load_save(int fd_player, int fd_npc, game_t *game);
 
 /////////////////////////// END
 

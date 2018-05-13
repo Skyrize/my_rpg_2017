@@ -49,6 +49,11 @@ void place_player(game_t *game)
 	AREA_COOR_Y = 0;
 	TILE_COOR_X = 7;
 	TILE_COOR_Y = 4;
+	update_item_stats(sfTrue, &HELMET, game);
+	update_item_stats(sfTrue, &CHEST, game);
+	update_item_stats(sfTrue, &PANTS, game);
+	update_item_stats(sfTrue, &WEAPON, game);
+	update_item_stats(sfTrue, &GAUNTLETS, game);
 }
 
 int start_game(window_t *window, game_t *game)

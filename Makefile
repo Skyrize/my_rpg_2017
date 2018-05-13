@@ -40,6 +40,8 @@ SRC	=	src/main.c						\
 		src/init/keys/monster.c					\
 		src/init/keys/npc_01.c					\
 		src/init/keys/npc_02.c					\
+		src/save/lobby.c					\
+		src/save/load.c						\
 		src/list_management/create_01.c				\
 		src/list_management/create_02.c				\
 		src/list_management/add.c				\
@@ -51,6 +53,9 @@ SRC	=	src/main.c						\
 		src/inventory/add.c					\
 		src/inventory/lobby.c					\
 		src/inventory/manage_buttons.c				\
+		src/inventory/update_item_stats.c			\
+		src/inventory/update_info_item.c			\
+		src/inventory/update.c			\
 		src/game/engine.c					\
 		src/game/lobby.c					\
 		src/game/start.c					\
@@ -83,6 +88,7 @@ SRC	=	src/main.c						\
 		src/game/battle/nothing.c				\
 		src/game/battle/utils.c					\
 		src/game/battle/clean_battle_scenes.c			\
+		src/game/battle/init_boss_battle.c			\
 		src/game/mouse/replace.c 				\
 		src/hud/buttons/area.c					\
 		src/hud/buttons/control_key.c 				\
@@ -92,7 +98,6 @@ SRC	=	src/main.c						\
 		src/hud/buttons/inventory.c 				\
 		src/hud/buttons/how_to_play.c 				\
 		src/hud/buttons/key_game.c 				\
-		src/hud/buttons/load.c 					\
 		src/hud/buttons/main_menu.c 				\
 		src/hud/buttons/map.c 					\
 		src/hud/buttons/new_game.c 				\
@@ -134,8 +139,6 @@ SRC	=	src/main.c						\
 		src/warnings/undefined_01.c				\
 		src/warnings/undefined_02.c				\
 		src/warnings/ingame.c					\
-		src/inventory/update_item_stats.c			\
-		src/inventory/update_info_item.c			\
 		src/particles/particle_spawn.c				\
 		src/particles/particle_sys.c				\
 		src/particles/particles_create.c			\

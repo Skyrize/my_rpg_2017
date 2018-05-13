@@ -11,6 +11,7 @@ int process_special(window_t *window, game_t *game,
 				sfText *using_special, sfText *used_special)
 {
 	int damages = PLAYER_SPECIALITY;
+	sfMusic *boom = hm_get(AUDIO_LIB, "BOOM_SOUND");
 
 	sfText_setString(using_special, "YOU    HIT    ALL    ENEMIES");
 	sfText_setString(used_special, " ");
@@ -22,8 +23,9 @@ int process_special(window_t *window, game_t *game,
 		if (ENEMY[i] && ENEMY[i]->stats.health <= 0)
 			ENEMY[i] = NULL;
 	}
-	if (reset_player_turn(window, game) == 84)
+	if (reset_player_turn(window, game) == 84 || !boom)
 		return (84);
+	sfMusic_play(boom);
 	return (1);
 }
 

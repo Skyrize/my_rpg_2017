@@ -9,24 +9,15 @@
 #define RPG_H_
 #include "hashify.h"
 
-///////////////////////////////// INIT DEFINES //////////////////////////////
-
-/// METTRE UN GNL QUI MARCHE POUR SUPPRIMER CA :
 #define END_OF_FILE "### END OF FILE ###"
 
-#define INIT_INDICATOR "-" /// String to put in the begining of the line
-/// to indicate that lines below are init informations.
-#define TEXT_SEPARATOR_CHAR '_' /// Char used to link words in text string
-/// init. Get replaced with spaces.
-#define KEYWORD_SEPARATOR_CHAR '=' /// Char used to separate KEYWORD and data.
-#define DATASET_SEPARATOR_CHAR ' ' /// Char used to separate KEYWORDS from
-/// each other or datas from each other.
-#define STARTING_SCENE_NAME "MENU_PRINCIPAL" /// Name of the starting scene
-/// in a string. Will be displayed at the begining of the game.
-#define MAP_SCENE_NAME "GAME" /// Name of the scene required to display the map
+#define INIT_INDICATOR "-"
+#define TEXT_SEPARATOR_CHAR '_'
+#define KEYWORD_SEPARATOR_CHAR '='
+#define DATASET_SEPARATOR_CHAR ' '
+#define STARTING_SCENE_NAME "MENU_PRINCIPAL"
+#define MAP_SCENE_NAME "GAME"
 #define GAME_TITLE "Lands Of Valoran"
-
-//////////////////////////////// WINDOW DEFINES //////////////////////////////
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600
@@ -36,9 +27,6 @@
 #define CLOCK_SPEED_MENU 0.01
 #define CLOCK_SPEED_GAME 0.1
 
-
-///////////////////////////////// MAPS DEFINES //////////////////////////////
-
 #define ZONE_TAB_X 4
 #define ZONE_TAB_Y 4
 #define AREA_TAB_X 3
@@ -46,19 +34,14 @@
 #define TILE_TAB_X 16
 #define TILE_TAB_Y 12
 
-//////////////////////////////// PLAYER DEFINES /////////////////////////////
-
 #define INVENTORY_SIZE_Y 7
 #define INVENTORY_SIZE_X 5
-
-///////////////////////////////// GAME DEFINES //////////////////////////////
 
 #define REGULAR_COLOR ((sfColor){255, 255, 255, 255})
 #define OVER_COLOR ((sfColor){120, 210, 210, 255})
 #define V2F(x, y) (sfVector2f) {(float) x, (float) y}
 #define V2I(x, y) (sfVector2i) {(int) x, (int) y}
 
-//HUD
 #define NEW_GAME "NEW_GAME"
 #define RESUME_GAME "RESUME"
 #define OPTION_GAME "OPTION_GAME"
@@ -74,8 +57,6 @@
 #define LOAD_GAME "LOAD"
 #define MAP_GAME "MAP"
 #define HOME "MENU_PRINCIPAL"
-
-////////////////////////////////// OBJECTS //////////////////////////////
 
 typedef struct obj_data_s obj_data_t;
 typedef struct text_data_s text_data_t;
@@ -113,7 +94,6 @@ typedef struct texture_s
 	sfVector2i rect_offset;
 } texture_t;
 
-/////////////////////////////////// MAPPING /////////////////////////////////
 typedef struct tile_list_s tile_list_t;
 
 typedef struct tile_list_s
@@ -150,7 +130,6 @@ typedef struct map_s
 	area_t areas[AREA_TAB_Y][AREA_TAB_X];
 } map_t;
 
-//////////////////////////////////////// SCENES ////////////////////////////
 
 typedef enum
 {
@@ -178,7 +157,6 @@ typedef struct display_list_s
 	display_list_t *next;
 } display_list_t;
 
-/////////////////////////////////// PLAYER ////////////////////////////////
 
 typedef enum
 {
@@ -208,7 +186,6 @@ typedef struct player_s
 	characteristic_t characteristics;
 } player_t;
 
-/////////////////////////////////// WINDOW ////////////////////////////////
 
 typedef struct ctime_s
 {
@@ -234,7 +211,6 @@ typedef struct my_window_s
 	display_list_t *displayed_scenes;
 } my_w_t;
 
-///////////////////////////////// INITIALISATION ////////////////////////////
 typedef struct key_word_s key_word_t;
 
 typedef struct get_infos_s
@@ -272,7 +248,6 @@ typedef struct obj_infos_s
 	char **y;
 } obj_infos_t;
 
-/////////////////////////////////////// DATAS //////////////////////////////////
 
 typedef struct obj_data_s
 {
@@ -291,17 +266,11 @@ typedef struct text_data_s
 	sfVector2f position;
 } text_data_t;
 
-//////////////////////////////////// DATA DEFINES /////////////////////////////
-
-//////////////////////////////////// DATA HUD /////////////////////////////
 
 typedef struct myfunc_s {
 	char *balise;
 	int (*instruction)();
 } myfunc_t;
-
-
-//////////////////////////////////// DATA HUD /////////////////////////////
 
 
 #define ZONE_COOR_X window->map.zone_coord.x
@@ -324,10 +293,8 @@ typedef struct myfunc_s {
 
 #define MOUSE_POS window->mouse_pos
 
-///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
 
-//// INIT FUNCTIONS
 
 my_w_t init_window(void);
 int init_scenes(my_w_t *window);
@@ -343,17 +310,14 @@ int init_an_obj(char **infos, my_w_t *window, hashmap_t *current_list);
 
 int load_my_zone(my_w_t *window);
 
-/// SAVIOR TRICK FUNCTIONS
 
 void list_savior(my_w_t *window);
 void map_savior(my_w_t *window);
 
-/// INIT FROM PROG CONFIG FILE
 
 int analyse_my_project_config_file(my_w_t *window, get_infos_t *infos);
 int init_from_pcf(char **infos, my_w_t *window, const key_word_t *keys);
 
-/// KEY WORDS FUNCTIONS
 
 int get_a_scene(char **infos, char **type,
 				hashmap_t **current_list, my_w_t *window);
@@ -397,7 +361,6 @@ int get_a_tile_texture(char **infos, char **type,
 				hashmap_t **current_list, my_w_t *window);
 int get_a_priority(char **infos, char **type,
 				hashmap_t **current_list, my_w_t *window);
-/// INIT WARNING : UNEXISTING
 
 int check_unexisting_font(sfFont *font, char *font_name);
 int check_unexisting_texture(texture_t *texture, char *texture_name);
@@ -405,7 +368,6 @@ int check_unexisting_music(sfMusic *music, char *music_name);
 int check_unexisting_zone(char *zone_name);
 int check_unexisting_scene(bucket_t *scene, char *asked_scene);
 
-/// INIT WARNING : INVALID
 
 int check_invalid_obj_init(obj_infos_t *obj);
 int check_invalid_key_word(char *last_word_used, char **type,
@@ -420,7 +382,6 @@ int check_invalid_area_coords(char *name, my_w_t *window);
 int check_invalid_tile_coords(char *name, my_w_t *window);
 int check_invalid_priority(int priority, char *texture_name);
 
-/// INIT WARNING : ALREADY_EXISTING
 
 int check_already_existing_obj(char *obj_name, hashmap_t *current_list);
 int check_already_existing_text(char *text_name, hashmap_t *current_list);
@@ -435,7 +396,6 @@ int check_already_existing_area_name(char *name, my_w_t *window);
 int check_already_existing_area_coords(char *name, my_w_t *window);
 int check_already_existing_tile_coords(my_w_t *window);
 
-/// INIT WARNING : MISSING
 
 int check_missing_args_for_key_word(const key_word_t *keys,
 				int index, char **args, int j);
@@ -444,7 +404,6 @@ int check_missing_sub_keyword(char *keyword, int nb_keyword,
 int check_missing_or_invalid_sub_keyword(const key_word_t *keys,
 				int index, char **subwords_tab);
 
-/// INIT WARNING : UNDEFINED
 
 int check_undefined_scene(bucket_t *scene, char *asked_list);
 int check_undefined_list(hashmap_t *current_list, char *obj);
@@ -452,34 +411,28 @@ int check_undefined_texture(bucket_t *texture, char *data);
 int check_undefined_area(my_w_t *window);
 int check_undefined_tile(my_w_t *window);
 
-/// IN GAME WARNING
 
 int check_scene_not_created(bucket_t *scene, char *file, int line, char *asked);
 int check_invalid_tile_display(tile_list_t *tile, int x, int y, my_w_t *window);
 
-/// LIST CREATING
 
 obj_t *create_obj(obj_data_t *data, my_w_t *window);
 display_list_t *create_a_display(char *name, scene_t *scene);
 tile_list_t *create_a_tile(char *texture_name, my_w_t *window);
 
-/// LIST ADDING
 
 int add_obj_to_list(obj_data_t *data, hashmap_t *list, my_w_t *window);
 int add_text_to_list(text_data_t *text, hashmap_t *current_list);
 int add_scene_to_display_list(bucket_t *scene, my_w_t *window);
 int add_tile_to_list(char *texture, my_w_t *window);
 
-/// LIST REMOVING
 
 void clean_displayed_scenes(my_w_t *window);
 int clean_displayed_scenes_and_add_back(my_w_t *window, char *scene_name);
 void clean_displayed_tiles(my_w_t *window);
 
-/// MANAGE BUTTONS
 int manage_buttons(my_w_t *window);
 
-//BUTTONS FUNCTIONS
 
 int start_game(my_w_t *window);
 int option(my_w_t *window);
@@ -502,12 +455,10 @@ int manage_song(my_w_t *window);
 int frame_rate_more(my_w_t *window);
 int frame_rate_less(my_w_t *window);
 char *int_to_str(int nb);
-/// GAME FUNCTIONS
 
 void get_time(my_w_t *window);
 int game_lobby(my_w_t *window);
 
-/// DISPLAY FUNCTIONS
 
 int display_scenes(my_w_t *window);
 int display_objs(hashmap_t *objs, my_w_t *window);
@@ -516,17 +467,14 @@ void time_animation(obj_t *obj, float seconds, my_w_t *window);
 int display_map(my_w_t *window);
 int read_hashmap(my_w_t *window, hashmap_t *hashmap, int (*fptr)());
 
-/// INPUT
 
 void analyse_events(my_w_t *window);
 
-/// DESTROY FUNCTIONS
 
 void destroy_and_free(my_w_t *window);
 void obj_destroy(obj_t *obj);
 void scenes_destroy(scene_t *scene);
 void texture_destroy(texture_t *texture);
 
-/// END
 
 #endif /* RPG_H_ */

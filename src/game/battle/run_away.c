@@ -13,6 +13,8 @@ int run_away(window_t *window, game_t *game)
 
 	if (!window || !game)
 		return (84);
+	if (ENEMY[0] && !my_strcmp(ENEMY[0]->name, "MAD_OGRE"))
+		run = 0;
 	if (run >= 85) {
 		display_special_hit_player(window, game, "RUN_SUCCESS");
 		game->battle.run_away = 1;

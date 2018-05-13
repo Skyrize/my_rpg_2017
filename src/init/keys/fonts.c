@@ -13,7 +13,7 @@ int get_font(char **infos, char **type,
 {
 	sfFont *font;
 	char **font_path = my_str_to_word_array(infos[1],
-		KEYWORD_SEPARATOR_CHAR);
+							KEYWORD_SEPARATOR_CHAR);
 
 	*current_list = FONTS_LIB;
 	font = hm_get(*current_list, type[1]);

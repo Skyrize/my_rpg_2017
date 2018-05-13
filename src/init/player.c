@@ -12,7 +12,7 @@ int init_stats_scene(char **desc, obj_data_t *data, game_t *game)
 {
 	scene_t *scene = hm_get(SCENES, STATS_GAME);
 	obj_data_t special_data = {"SPECIAL_CHARAC", desc[2], sfFalse,
-	(sfVector2f){316, 215}};
+							(sfVector2f){316, 215}};
 	sfText *name = hm_get(scene->texts, "CHARAC");
 	sfText *lore = hm_get(scene->texts, "CHARAC_DESC");
 

@@ -51,6 +51,7 @@ void clean_displayed_scene_name(game_t *game, char *name_scenes)
 int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name)
 {
 	managed_scene_t *tmp;
+	bucket_t *scene = NULL;
 	int already_in = 0;
 
 	while (MANAGED_SCENES) {
@@ -62,8 +63,8 @@ int clean_displayed_scenes_and_add_back(game_t *game, char *scene_name)
 			already_in = 1;
 	}
 	if (already_in == 0) {
+		scene = hm_get_bucket(SCENES, scene_name);
 		MANAGED_SCENES = NULL;
-		bucket_t *scene = hm_get_bucket(SCENES, scene_name);
 		if (check_unexisting_scene(scene, scene_name) != 0)
 			return (84);
 		return (add_scene_to_display_list(scene, game));

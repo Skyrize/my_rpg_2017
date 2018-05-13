@@ -55,7 +55,7 @@ int set_npc(bucket_t *npc_bucket, game_t *game)
 	npc_t *npc = npc_bucket->value;
 	scene_t *game_scene;
 
-	if (ZONE_COOR_X != npc->zone.x || ZONE_COOR_Y !=  npc->zone.y)
+	if (ZONE_COOR_X != npc->zone.x || ZONE_COOR_Y != npc->zone.y)
 		return (0);
 	game_scene = hm_get(SCENES, "GAME");
 	if (!game_scene || !npc)

@@ -50,14 +50,13 @@ int load_my_zone(game_t *game)
 	{"TEXTURE", 0, &get_tile_texture, NULL}, {NULL, 0, NULL, NULL}};
 	get_infos_t infos = {ZONE_FILEPATH, INIT_CHAR, zone_keys, &map_savior};
 	vector_pack_t pos = {V2I(ZONE_COOR_X, ZONE_COOR_Y),
-	V2I(AREA_COOR_X,AREA_COOR_Y), V2I(TILE_COOR_X, TILE_COOR_Y)};
+		V2I(AREA_COOR_X, AREA_COOR_Y), V2I(TILE_COOR_X, TILE_COOR_Y)};
 
 	game->loading = true;
 	if (check_unexisting_zone(ZONE_NAME) != 0)
 		return (84);
 	if (analyse_pcf(game, &infos) != 0) {
-		MAP.zone_coord = pos.zone;
-		my_printf("WARNING: ERROR IN ZONE '%s' INIT !\n", ZONE_NAME);
+		my_printf("WARNING: ERROR IN ZONE INIT !\n", ZONE_NAME);
 		return (84);
 	}
 	replace_player(&pos, game);

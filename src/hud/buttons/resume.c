@@ -17,7 +17,7 @@ char *found_icon(game_t *game)
 
 	if (!game)
 		return (NULL);
-	for (int i = 0 ; icon_tab[i][1] != NULL ; i++) {
+	for (int i = 0; icon_tab[i][1] != NULL; i++) {
 		if (my_strcmp(icon_tab[i][0], PLAYER_NAME) == 0)
 			return (icon_tab[i][1]);
 	}

@@ -47,7 +47,7 @@ int check_already_existing_zone_name(char *name, game_t *game)
 
 int check_already_existing_zone_coords(char *name, game_t *game)
 {
-	if (ZONE_NAME != NULL ||  ZONE_FILEPATH != NULL) {
+	if (ZONE_NAME != NULL || ZONE_FILEPATH != NULL) {
 		my_printf("WARNING: YOU ARE TRYING TO PUT ZONE '%s'", name);
 		my_printf(" AT ZONE '%s' COORDINATES !\n", ZONE_NAME);
 		return (84);
