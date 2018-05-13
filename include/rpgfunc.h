@@ -547,6 +547,11 @@ int quest_1(game_t *game);
 int quest_2(game_t *game);
 int quest_3(game_t *game);
 
+////////////////////////// SAVE
+
+int save_game(game_t *game);
+int load_save(int fd_player, int fd_npc, game_t *game);
+
 /////////////////////////// END
 
 #endif /* RPGFUNC_H_ */

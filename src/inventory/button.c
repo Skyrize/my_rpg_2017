@@ -35,6 +35,7 @@ int select_slot(slot_t *slot, game_t *game)
 	if (!slot->item)
 		return (0);
 	ITEM_SELECTED = slot->item;
+	//remove_item_stats(ITEM_SELECTED, game);
 	if (replace_mouse_skin(slot->item->obj, &V2F(16, 16), game) != 0)
 		return (84);
 	slot->item = NULL;
