@@ -83,6 +83,11 @@ item_t *create_item(char *name, game_t *game)
 		return (NULL);
 	new->quest = data->quest;
 	new->consumable = data->consumable;
-	new->stats = data->stats;
+	new->stats.health = data->stats.health
+	+ rand() % (data->stats.health / 2);
+	new->stats.armor = data->stats.armor + rand() % (data->stats.armor / 2);
+	new->stats.special = data->stats.special
+	+ rand() % (data->stats.special / 2);
+	new->stats.damages = data->stats.damages;
 	return (new);
 }

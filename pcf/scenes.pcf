@@ -224,6 +224,11 @@ ________________________________________________________________________________
 			OBJ=BACKGROUND TEXTURE=DEFAULT_BG BUTTON=0 X=40 Y=25
 		LIST=TEXTS
 			TEXT=QUESTS STR=Quests_: FONT=RING CHARAC_SIZE=30 X=90 Y=60
+			TEXT=MAIN STR=The_rumors_(main)_: FONT=RING CHARAC_SIZE=15 X=50 Y=300
+			TEXT=MORE STR=You_heard_about_a FONT=FRITZ CHARAC_SIZE=15 X=50 Y=320
+			TEXT=MORE_01 STR=kidnapping_in_the_region. FONT=FRITZ CHARAC_SIZE=15 X=50 Y=340
+			TEXT=MORE_02 STR=The_tavern_is_a_good_start FONT=FRITZ CHARAC_SIZE=15 X=50 Y=360
+			TEXT=MORE_03 STR=for_investigations FONT=FRITZ CHARAC_SIZE=15 X=50 Y=380
 
 _____________________________________________________________________________
 -STATS
