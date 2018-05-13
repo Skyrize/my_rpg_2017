@@ -29,9 +29,7 @@ int compare_coords(npc_t *npc, game_t *game, int (*fptr)())
 	|| (TILE_COOR_X + 1 == tile.x && TILE_COOR_Y + 1 == tile.y)
 	|| (TILE_COOR_X - 1 == tile.x && TILE_COOR_Y + 1 == tile.y)
 	|| (TILE_COOR_X == tile.x && TILE_COOR_Y + 2 == tile.y)) {
-		if (fptr(npc, game) != 0)
-			return (84);
-		return (1);
+		return (fptr(npc, game));
 	}
 	return (0);
 }
@@ -68,6 +66,6 @@ int process_npc_action(game_t *game)
 
 	my_errno = read_hashmap(NULL, game, NPCS_LIB, &check_action_around);
 	if (my_errno != 0)
-		return (my_errno == 1 ? 0 : 84);
+		return (my_errno);
 	return (0);
 }

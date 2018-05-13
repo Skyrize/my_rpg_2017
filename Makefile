@@ -88,6 +88,7 @@ SRC	=	src/main.c						\
 		src/game/battle/nothing.c				\
 		src/game/battle/utils.c					\
 		src/game/battle/clean_battle_scenes.c			\
+		src/game/battle/init_boss_battle.c			\
 		src/game/mouse/replace.c 				\
 		src/hud/buttons/area.c					\
 		src/hud/buttons/control_key.c 				\

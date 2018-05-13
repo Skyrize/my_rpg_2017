@@ -13,7 +13,8 @@ int quest_1(game_t *game)
 
 	if (!npc)
 		return (84);
-	if (!my_strcmp(npc->line_01, "You may have to look for information,"))
+	if (!my_strcmp(npc->line_01, "You may have to look for information,")
+	|| !my_strcmp(npc->line_01, "Thanks to you, i found back my beloved"))
 		return (0);
 	make_sound("NEW_QUEST", game);
 	npc->line_01 = my_strdup("You may have to look for information,");
