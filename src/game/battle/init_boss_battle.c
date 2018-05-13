@@ -27,6 +27,7 @@ int start_boss_battle(game_t *game)
 
 	if (!game || !battle_scene || !battle || !game)
 		return (84);
+	battle_scene->music.music = hm_get(AUDIO_LIB, "BOSS_BATTLE_MUSIC");
 	if (clean_displayed_scenes_and_add_back(game, "BATTLE") != 0
 	|| add_scene_to_display_list(battle, game) != 0)
 		return (84);
@@ -37,8 +38,6 @@ int start_boss_battle(game_t *game)
 	if (set_battle(game) != 0 || set_background(game, battle_scene) != 0)
 		return (84);
 	sfMusic_stop(game_scene->music.music);
-	battle_scene->music.music = hm_get(game->libraries.audio,
-							"BOSS_BATTLE_MUSIC");
 	return (1);
 }
 

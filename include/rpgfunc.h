@@ -488,6 +488,7 @@ void init_character(game_t *game);
 int set_battle(game_t *game);
 int set_background(game_t *game, scene_t *scene);
 int init_boss_battle(char **data, game_t *game);
+void win_tp(game_t *game);
 
 ////////////////////////////////// XP
 
