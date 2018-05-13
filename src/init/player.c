@@ -44,6 +44,9 @@ int select_varyan(window_t *window, game_t *game)
 		return (84);
 	if (init_stats_scene(desc, &charac_data, game) != 0)
 		return (84);
+	place_player(game);
+	if (load_my_zone(game) != 0)
+		return (84);
 	return (launch_game(window, game));
 }
 
@@ -63,6 +66,9 @@ int select_jaina(window_t *window, game_t *game)
 		return (84);
 	if (init_stats_scene(desc, &charac_data, game) != 0)
 		return (84);
+	place_player(game);
+	if (load_my_zone(game) != 0)
+		return (84);
 	return (launch_game(window, game));
 }
 
@@ -81,6 +87,9 @@ int select_avelus(window_t *window, game_t *game)
 	if (add_new_to_slot("COMMON_BOW_00", &WEAPON_POS, &WEAPON, game) != 0)
 		return (84);
 	if (init_stats_scene(desc, &charac_data, game) != 0)
+		return (84);
+	place_player(game);
+	if (load_my_zone(game) != 0)
 		return (84);
 	return (launch_game(window, game));
 }

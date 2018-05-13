@@ -17,6 +17,7 @@ typedef struct node_s
 	char *key;
 	void *value;
 	node_t *next;
+	node_t *prev;
 } node_t;
 
 typedef struct linked_list_s
@@ -63,6 +64,9 @@ void *llist_foreach(void *(*fptr)(), llist_t *llist);
 ///Print every node key in a given list.
 void llist_display(llist_t *llist);
 
+///Print every node key in a given list from last to first
+void llist_rdisplay(llist_t *llist);
+
 ////////////////// REMOVE
 
 ///Seek and remove a node with the passed key in the passed list.
@@ -75,5 +79,8 @@ void remove_node_by_place(int place, llist_t *llist);
 
 ///Free the passed node and his key
 void destroy_node(node_t *node);
+
+///free the passed llist and all its nodes.
+void destroy_llist(llist_t *llist);
 
 #endif /* LLIST_H_ */

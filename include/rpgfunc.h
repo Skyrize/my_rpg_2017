@@ -11,10 +11,19 @@
 
 ///////////////////////////////////// FUNCTIONS ///////////////////////////////
 
+/////////////////////////// ERROR HANDLINGS START FUNCTIONS
+
+int error_handling_args(int ac, char **av, char **env);
+
+/////////////////////////// INTRO
+
+int start_intro(window_t *window);
+
 /////////////////////////// INIT FUNCTIONS
 
 int init_window(window_t *window);
-int init_game(game_t *game);
+int init_game(game_t *game, window_t *window);
+int init_timer(ctime_t *clocker);
 void init_player(game_t *game);
 int init_scenes(game_t *game);
 int init_audio_lib(game_t *game);
@@ -31,6 +40,7 @@ int init_an_obj(char **infos, game_t *game, hashmap_t *current_list);
 int init_monsters_lib(game_t *game);
 int init_npcs_lib(game_t *game);
 int init_libs(game_t *game);
+void place_player(game_t *game);
 
 /// Change ZONE_COOR_X and ZONE_COOR_Y and call load_my_zone to fulfill
 ///AREA maps with asked zone.
@@ -124,6 +134,8 @@ int get_npc_line_01(char **infos, char **type,
 int get_npc_line_02(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 int get_npc_line_03(char **infos, char **type,
+				hashmap_t **current_list, game_t *game);
+int get_npc_action(char **infos, char **type,
 				hashmap_t **current_list, game_t *game);
 
 /////////////////////////// INIT WARNING : UNEXISTING
@@ -312,7 +324,9 @@ int chest_slot(window_t *window, game_t *game);
 int gauntlets_slot(window_t *window, game_t *game);
 int pants_slot(window_t *window, game_t *game);
 int weapon_slot(window_t *window, game_t *game);
-int cross(window_t *window, game_t *game);
+int end_screen_cross(window_t *window, game_t *game);
+int lvl_up_cross(window_t *window, game_t *game);
+int nothing(window_t *window, game_t *game);
 
 /////////////////////////// HUD FONCTIONS
 
@@ -336,6 +350,7 @@ int *check_hit, int *offset);
 
 int start_game(window_t *window, game_t *game);
 int manage_loading_scene(game_t *game, window_t *window, char *new_scene);
+int manage_text(game_t *game, window_t *window, scene_t *s_load);
 
 ///Pass window, fulfill the timer struct in it.
 void get_time(ctime_t *clocker);
@@ -392,6 +407,9 @@ void item_destroy(item_t *item);
 void destroy_managed_scene(managed_scene_t *managed);
 void npc_destroy(npc_t *npc);
 void monster_destroy(enemy_data_t *monster);
+void destroy_libs(game_t *game);
+void clocks_destroy(game_t *game, window_t *window);
+void map_destroy(game_t *game);
 
 /////////////////////////// PLAYER FUNCTIONS
 
@@ -410,16 +428,24 @@ bool is_pressing_controls(game_t *game);
 void update_moving_state(game_t *game);
 bool is_player_moving(game_t *game);
 
-//////////////////////////// NPCS
+/////////////////////////// NPCS
 
 int process_npc_dialogue(game_t *game);
-
-/////////////////////////// DIALOGUES
-
 int update_random_pnj_dialogue(char *name, game_t *game);
 int update_nothing_here(game_t *game);
 bucket_t **get_dialogue_hud_texts(game_t *game);
 int update_pnj_dialogue(npc_t *npc, game_t *game);
+int update_no_place_dialogue(game_t *game);
+int update_no_place_dialogue(game_t *game);
+int process_npc_action(game_t *game);
+int check_action_around(bucket_t *npc_bucket, game_t *game);
+int compare_coords(npc_t *npc, game_t *game, int (*fptr)());
+
+///////////////////// ACTIONS
+
+int teleport(char **data_tp, game_t *game);
+int heal(char **data_heal, game_t *game);
+int give_xp_01(char **data_xp, game_t *game);
 
 /////////////////////////// BATTLE
 
@@ -433,7 +459,7 @@ int display_characters(window_t *window, game_t *game);
 int manage_life_in_battle(game_t *game);
 int attack(window_t *window, game_t *game);
 int change_selected_enemy(game_t *game, int offset);
-void select_ennemy(window_t *window, game_t *game);
+int select_ennemy(window_t *window, game_t *game);
 int first_enemy_available(game_t *game);
 void change_arrow_position(game_t *game);
 int player_attack(window_t *window, game_t *game);
@@ -451,8 +477,17 @@ char *compute_loot(game_t *game);
 char *get_item_rarity(char *item);
 char *get_item_type(char *item);
 int battle_end_screen(game_t *game, char *result);
-void check_run_away(game_t *game);
+int check_run_away(game_t *game);
 int manage_versus_animation(game_t *game);
+int use_special(window_t *window, game_t *game);
+void clean_battle_scenes(game_t *game);
+void lose_tp(game_t *game);
+int stop_battle_music(game_t *game);
+int init_end_screen(game_t *game, scene_t *scene);
+
+////////////////////////////////// XP
+
+int add_xp_to_player(game_t *game, int xp);
 
 /////////////////////////////////// INVENTORY
 
@@ -470,6 +505,7 @@ int update_damages_item(slot_t *slot, game_t *game);
 int update_special_item(slot_t *slot, game_t *game);
 int update_armor_item(slot_t *slot, game_t *game);
 int update_health_item(slot_t *slot, game_t *game);
+int add_item(item_t *item, game_t *game);
 
 //////////////////////////////// MOUSE
 
@@ -480,7 +516,7 @@ int display_mouse(game_t *game, window_t *window);
 /////////////////////////// PARTICLES
 
 particle_sys_t *create_particle_sys(sfIntRect spawn, char *tex_name,
-				    int particle_nbr, game_t *game);
+				int particle_nbr, game_t *game);
 sfVector2f get_particles_spawn_pos(particle_sys_t *sys);
 void init_particle_position(particle_sys_t *sys);
 bool default_particle_cond(sfSprite *sprite, game_t *game);
@@ -490,12 +526,26 @@ void display_particles(window_t *window, game_t *game);
 void free_particle_sys(particle_sys_t *sys);
 void remove_particle_sys_by_id(int id);
 void remove_particle_sys(particle_sys_t *sys);
-particle_sys_t *init_rain(game_t *game);
+particle_sys_t *create_rain_sys(game_t *game);
 void remove_end(node_t *last_node, node_t *act_node,
 		llist_t *particle_sys_list);
 void update_feet_particles(game_t *game);
 void rain(game_t *game, window_t *window);
 int init_particles(game_t *game);
+void init_rain(game_t *game);
+int get_rnd(int min, int max);
+void check_rain(game_t *game);
+particle_sys_t *init_foot_particles(game_t *game);
+void reset_feet_particles(game_t *game);
+int init_day_night_cycle(game_t *game);
+void update_day_night_cycle(game_t *game);
+
+/////////////////////////// QUESTS
+
+int quests(char **action, game_t *game);
+int quest_1(game_t *game);
+int quest_2(game_t *game);
+int quest_3(game_t *game);
 
 /////////////////////////// END
 

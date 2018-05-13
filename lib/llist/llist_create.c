@@ -22,5 +22,6 @@ node_t *node_create(char *key, void *value)
 	new->key = my_strdup(key);
 	new->value = value;
 	new->next = NULL;
+	new->prev = NULL;
 	return (new);
 }

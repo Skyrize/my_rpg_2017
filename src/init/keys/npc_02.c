@@ -57,3 +57,19 @@ int get_npc_line_03(char **infos, char **type,
 	(void)infos;
 	return (0);
 }
+
+int get_npc_action(char **infos, char **type,
+	hashmap_t **current_list, game_t *game)
+{
+	npc_t *npc;
+
+	if (check_undefined(CURRENT_BUCKET, type[0], "NPC") != 0)
+		return (84);
+	npc = CURRENT_BUCKET->value;
+	if (!npc)
+		return (84);
+	npc->action = my_strdup(type[1]);
+	(void)current_list;
+	(void)infos;
+	return (0);
+}

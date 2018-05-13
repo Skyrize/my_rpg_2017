@@ -19,6 +19,7 @@ bool move_player_zone_up(game_t *game)
 	ZONE_COOR_Y--;
 	load_my_zone(game);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X, TILE_COOR_Y};
+	check_rain(game);
 	return (true);
 }
 
@@ -33,6 +34,7 @@ bool move_player_zone_down(game_t *game)
 	ZONE_COOR_Y++;
 	load_my_zone(game);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X, TILE_COOR_Y};
+	check_rain(game);
 	return (true);
 }
 
@@ -47,6 +49,7 @@ bool move_player_zone_left(game_t *game)
 	ZONE_COOR_X--;
 	load_my_zone(game);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X, TILE_COOR_Y};
+	check_rain(game);
 	return (true);
 }
 
@@ -61,6 +64,7 @@ bool move_player_zone_right(game_t *game)
 	ZONE_COOR_X++;
 	load_my_zone(game);
 	game->movement.target_tile = (sfVector2i) {TILE_COOR_X, TILE_COOR_Y};
+	check_rain(game);
 	return (true);
 }
 

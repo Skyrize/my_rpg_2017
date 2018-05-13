@@ -17,23 +17,26 @@ int get_npc_dialogue(npc_t *npc, game_t *game)
 	return (update_pnj_dialogue(npc, game));
 }
 
-int compare_coords(npc_t *npc, game_t *game)
+int compare_coords(npc_t *npc, game_t *game, int (*fptr)())
 {
 	sfVector2i tile = npc->tile;
 
 	if ((TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y)
-	|| (TILE_COOR_X == tile.x + 1 && TILE_COOR_Y == tile.y)
-	|| (TILE_COOR_X == tile.x - 1 && TILE_COOR_Y == tile.y)
-	|| (TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y + 1)
-	|| (TILE_COOR_X == tile.x && TILE_COOR_Y == tile.y - 1)) {
-		if (get_npc_dialogue(npc, game) != 0)
+	|| (TILE_COOR_X + 1 == tile.x && TILE_COOR_Y == tile.y)
+	|| (TILE_COOR_X - 1 == tile.x && TILE_COOR_Y == tile.y)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y + 1 == tile.y)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y - 1 == tile.y)
+	|| (TILE_COOR_X + 1 == tile.x && TILE_COOR_Y + 1 == tile.y)
+	|| (TILE_COOR_X - 1 == tile.x && TILE_COOR_Y + 1 == tile.y)
+	|| (TILE_COOR_X == tile.x && TILE_COOR_Y + 2 == tile.y)) {
+		if (fptr(npc, game) != 0)
 			return (84);
 		return (1);
 	}
 	return (0);
 }
 
-int check_npc_around(bucket_t *npc_bucket, game_t *game)
+int check_dialogue_around(bucket_t *npc_bucket, game_t *game)
 {
 	npc_t *npc = npc_bucket->value;
 
@@ -43,7 +46,7 @@ int check_npc_around(bucket_t *npc_bucket, game_t *game)
 	&& ZONE_COOR_Y == npc->zone.y
 	&& AREA_COOR_X == npc->area.x
 	&& AREA_COOR_Y == npc->area.y)
-		return (compare_coords(npc, game));
+		return (compare_coords(npc, game, &get_npc_dialogue));
 	return (0);
 }
 
@@ -51,10 +54,20 @@ int process_npc_dialogue(game_t *game)
 {
 	int my_errno = 0;
 
-	my_errno = read_hashmap(NULL, game, NPCS_LIB, &check_npc_around);
+	my_errno = read_hashmap(NULL, game, NPCS_LIB, &check_dialogue_around);
 	if (my_errno != 0)
 		return (my_errno == 1 ? 0 : 84);
 	if (update_nothing_here(game) != 0)
 		return (84);
+	return (0);
+}
+
+int process_npc_action(game_t *game)
+{
+	int my_errno = 0;
+
+	my_errno = read_hashmap(NULL, game, NPCS_LIB, &check_action_around);
+	if (my_errno != 0)
+		return (my_errno == 1 ? 0 : 84);
 	return (0);
 }

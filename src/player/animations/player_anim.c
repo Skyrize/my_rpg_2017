@@ -51,6 +51,7 @@ void set_anim_side(game_t *game)
 
 void set_waiting_player_rect(game_t *game)
 {
+	reset_feet_particles(game);
 	PLAYER.character->obj_rect.rect.top =
 		PLAYER.character->obj_rect.rect_start.y;
 	PLAYER.character->obj_rect.rect.left = 50;
@@ -61,22 +62,16 @@ void set_waiting_player_rect(game_t *game)
 
 int anim_player(game_t *game)
 {
-	static sfClock *clocker = NULL;
-
 	update_moving_state(game);
 	if (!(game->player.character) ||
-	    !game->player.character->obj_rect.animated)
+	!game->player.character->obj_rect.animated)
 		return (0);
-	if (!clocker) {
-		clocker = sfClock_create();
-		if (!clocker)
-			return (84);
-	}
-	if (sfClock_getElapsedTime(clocker).microseconds > 100000) {
+	get_time(&game->movement.timer);
+	if (game->movement.timer.seconds > 0.1) {
 		if (AREA_ENCOUNTER == sfTrue)
 			STEP_TO_BATTLE--;
 		make_sound("FOOTSTEP_SOUND", game);
-		sfClock_restart(clocker);
+		sfClock_restart(game->movement.timer.clock);
 		set_next_rect(game);
 	}
 	return (0);

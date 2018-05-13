@@ -117,7 +117,8 @@ typedef struct framebuffer_s
 	sfUint8 *pixels;
 } framebuffer_t;
 
-void place_a_square(sfVector2f *, sfVector2f *, sfRenderWindow *, sfColor *);
+void place_a_square(sfVector2f *size, sfVector2f *pos,
+sfRenderWindow *window, sfColor *color);
 
 //////////////////////////////////// DEFINES //////////////////////
 
