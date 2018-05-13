@@ -32,6 +32,7 @@ int enemy_attack(window_t *window, game_t *game)
 	- (float)ENEMY_DAMAGES) / 10.0;
 	int damages = MAX(ENEMY_DAMAGES + round(bonus) - PLAYER_ARMOR, 0);
 	int critical_hit = rand() % 100;
+	sfMusic *hit_sound = hm_get(AUDIO_LIB, "SHOOT_SOUND");
 
 	if (critical_hit >= 95) {
 		damages *= 2;
@@ -42,8 +43,9 @@ int enemy_attack(window_t *window, game_t *game)
 	}
 	manage_hit_enemy(game, -1, damages);
 	PLAYER_HEALTH -= damages;
-	if (reset_enemy_turn(window, game) == 84)
+	if (reset_enemy_turn(window, game) == 84 || !hit_sound)
 		return (84);
+	sfMusic_play(hit_sound);
 	return (0);
 }
 
@@ -53,6 +55,7 @@ int player_attack(window_t *window, game_t *game)
 	- (float)PLAYER_DAMAGES) / 10.0;
 	int damages = MAX(PLAYER_DAMAGES + round(bonus) - ENEMY_ARMOR, 0);
 	int critical_hit = rand() % 100;
+	sfMusic *hit_sound = hm_get(AUDIO_LIB, "SHOOT_SOUND");
 
 	clean_displayed_scene_name(game, "ATTACK");
 	if (critical_hit >= 95) {
@@ -66,8 +69,9 @@ int player_attack(window_t *window, game_t *game)
 	ENEMY_HEALTH -= damages;
 	if (ENEMY_HEALTH <= 0)
 		SELECTED_ENEMY = NULL;
-	if (reset_player_turn(window, game) == 84)
+	if (reset_player_turn(window, game) == 84 || !hit_sound)
 		return (84);
+	sfMusic_play(hit_sound);
 	return (0);
 }
 
