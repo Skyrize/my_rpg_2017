@@ -40,6 +40,8 @@ SRC	=	src/main.c						\
 		src/init/keys/monster.c					\
 		src/init/keys/npc_01.c					\
 		src/init/keys/npc_02.c					\
+		src/save/lobby.c					\
+		src/save/load.c					\
 		src/list_management/create_01.c				\
 		src/list_management/create_02.c				\
 		src/list_management/add.c				\
@@ -92,7 +94,6 @@ SRC	=	src/main.c						\
 		src/hud/buttons/inventory.c 				\
 		src/hud/buttons/how_to_play.c 				\
 		src/hud/buttons/key_game.c 				\
-		src/hud/buttons/load.c 					\
 		src/hud/buttons/main_menu.c 				\
 		src/hud/buttons/map.c 					\
 		src/hud/buttons/new_game.c 				\
