@@ -86,11 +86,12 @@ int add_xp_to_player(game_t *game, int xp)
 	if (!game)
 		return (84);
 	PLAYER_XP += xp;
-	rest = PLAYER_XP % PLAYER_MAX_XP;
-	if (rest != PLAYER_XP) {
+	rest = PLAYER_XP - PLAYER_MAX_XP;
+	for (; rest >= 0; rest = PLAYER_XP - PLAYER_MAX_XP) {
 		PLAYER_LEVEL += 1;
 		PLAYER_XP = rest;
 		PLAYER_MAX_XP += PLAYER_MAX_XP / 5;
+		clean_displayed_scene_name(game, "LEVEL_UP");
 		add_scene_to_display_list(hm_get_bucket(SCENES, "LEVEL_UP"),
 									game);
 		make_sound("LEVEL_UP_SOUND", game);
