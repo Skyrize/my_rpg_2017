@@ -150,7 +150,7 @@
 		LINE_01=If_you_are_hurt,_many_doctors_can
 		LINE_02=help_you_during_your_adventure.
 		LINE_03=There_is_one_in_the_tavern.
-	NPC=Old_Man TEXTURE=VILLAGER_07
+	NPC=Old_Man TEXTURE=VILLAGER_05
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=3 Y=7
@@ -158,7 +158,7 @@
 		LINE_02=about_an_ogre.
 		LINE_03=He_lives_west_of_here.
 		ACTION=XP01_50
-	NPC=Caleof TEXTURE=VILLAGER_05
+	NPC=Caleof TEXTURE=VILLAGER_07
 		ZONE=DATA X=0 Y=0
 		AREA=DATA X=0 Y=0
 		TILE=DATA X=10 Y=5
