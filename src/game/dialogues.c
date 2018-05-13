@@ -54,7 +54,7 @@ int update_nothing_here(game_t *game)
 	sfText_setString(texts[3]->value, line_02);
 	free(texts);
 	free(name);
-	return (1);
+	return (0);
 }
 
 int update_random_pnj_dialogue(char *named, game_t *game)

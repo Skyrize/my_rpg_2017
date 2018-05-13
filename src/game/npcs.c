@@ -53,8 +53,9 @@ int process_npc_dialogue(game_t *game)
 	int my_errno = 0;
 
 	my_errno = read_hashmap(NULL, game, NPCS_LIB, &check_dialogue_around);
-	if (my_errno != 0)
+	if (my_errno != 0) {
 		return (my_errno == 1 ? 0 : 84);
+	}
 	if (update_nothing_here(game) != 0)
 		return (84);
 	return (0);
@@ -65,7 +66,8 @@ int process_npc_action(game_t *game)
 	int my_errno = 0;
 
 	my_errno = read_hashmap(NULL, game, NPCS_LIB, &check_action_around);
-	if (my_errno != 0)
+	if (my_errno != 0) {
 		return (my_errno);
+	}
 	return (0);
 }

@@ -31,9 +31,9 @@ int process_action_key(game_t *game)
 	static sfBool open = sfTrue;
 	int my_errno = 0;
 
-	if (process_npc_dialogue(game) != 0)
-		return (84);
 	if (open == sfTrue) {
+		if (process_npc_dialogue(game) != 0)
+			return (84);
 		make_sound("DIALOGUE_SOUND", game);
 		open = sfFalse;
 	} else {

@@ -28,7 +28,9 @@ int teleport(char **data_tp, game_t *game)
 	TILE_COOR_X = my_getnbr(data_tp[5]);
 	TILE_COOR_Y = my_getnbr(data_tp[6]);
 	check_rain(game);
-	return (load_my_zone(game));
+	if (load_my_zone(game) != 0)
+		return (84);
+	return (1);
 }
 
 int heal(char **data_heal, game_t *game)
