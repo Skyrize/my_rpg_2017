@@ -17,5 +17,6 @@ int quest_3(game_t *game)
 		return (0);
 	make_sound("NEW_QUEST", game);
 	tyler->line_03 = my_strdup(" zone is enchanted.");
+	add_xp_to_player(game, 400);
 	return (0);
 }

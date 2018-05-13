@@ -14,6 +14,7 @@ static const action_t action_tab[] =
 	{"HEAL", heal},
 	{"QUEST", quests},
 	{"XP01", give_xp_01},
+	{"BOSSBATTLE", init_boss_battle},
 	{NULL, NULL},
 };
 

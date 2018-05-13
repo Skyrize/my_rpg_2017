@@ -626,6 +626,45 @@
 		LINE_01=I_found_the_solution!
 		LINE_02=But_i_won't_say_anything...
 		LINE_03=_
+	NPC=Mad_Ogre TEXTURE=MAD_OGRE
+		ZONE=DATA X=3 Y=3
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=7 Y=4
+		LINE_01=Roooaaarg!_You_do_not_touch_the_girl.
+		LINE_02=Me_going_to_kill_you_NOW_!
+		LINE_03=_
+		ACTION=BOSSBATTLE
+	NPC=Mad_Ogre_ TEXTURE=EMPTY_ITEM
+		ZONE=DATA X=3 Y=3
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=8 Y=4
+		LINE_01=Roooaaarg!_You_do_not_touch_the_girl.
+		LINE_02=Me_going_to_kill_you_NOW_!
+		LINE_03=_
+		ACTION=BOSSBATTLE
+	NPC=Mad_Ogre__ TEXTURE=EMPTY_ITEM
+		ZONE=DATA X=3 Y=3
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=7 Y=5
+		LINE_01=Roooaaarg!_You_do_not_touch_the_girl.
+		LINE_02=Me_going_to_kill_you_NOW_!
+		LINE_03=_
+		ACTION=BOSSBATTLE
+	NPC=Mad_Ogre___ TEXTURE=EMPTY_ITEM
+		ZONE=DATA X=3 Y=3
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=8 Y=5
+		LINE_01=Roooaaarg!_You_do_not_touch_the_girl.
+		LINE_02=Me_going_to_kill_you_NOW_!
+		LINE_03=_
+		ACTION=BOSSBATTLE
+	NPC=Jassie TEXTURE=VILLAGER_05
+		ZONE=DATA X=3 Y=3
+		AREA=DATA X=1 Y=0
+		TILE=DATA X=9 Y=2
+		LINE_01=Help_me_please...
+		LINE_02=This_horrible_ogre_is_going_to_kill_me!
+		LINE_03=_
 
 
 
