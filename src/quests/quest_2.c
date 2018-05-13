@@ -20,5 +20,10 @@ int quest_2(game_t *game)
 	npc->line_02 = my_strdup(" ");
 	npc->line_03 = my_strdup(" ");
 	add_xp_to_player(game, 200);
+	if (update_quest_scene("The Lost Girl (main) :",
+	"An ogre expert is in\nthe Cursed Forest,\nEast from here.\nI should \
+talk to him.",
+	game) != 0)
+		return (84);
 	return (0);
 }

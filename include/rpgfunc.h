@@ -552,6 +552,7 @@ int quests(char **action, game_t *game);
 int quest_1(game_t *game);
 int quest_2(game_t *game);
 int quest_3(game_t *game);
+int update_quest_scene(char *quest_name, char *instruction, game_t *game);
 
 ////////////////////////// SAVE
 

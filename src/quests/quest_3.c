@@ -18,5 +18,9 @@ int quest_3(game_t *game)
 	make_sound("NEW_QUEST", game);
 	tyler->line_03 = my_strdup(" zone is enchanted.");
 	add_xp_to_player(game, 400);
+	if (update_quest_scene("The Lost Girl (main) :",
+	"The ogre hide in\nDestiny Lake, North\nfrom here.\nThe way is hidden.",
+	game) != 0)
+		return (84);
 	return (0);
 }
