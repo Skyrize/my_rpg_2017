@@ -68,7 +68,7 @@ int player_attack(window_t *window, game_t *game)
 	ENEMY_HEALTH -= damages;
 	if (ENEMY_HEALTH <= 0)
 		SELECTED_ENEMY = NULL;
-	if (reset_player_turn(window, game) == 84 || !hit_sound)
+	if (reset_player_turn(window, game) == 84)
 		return (84);
 	return (0);
 }
