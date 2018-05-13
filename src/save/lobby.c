@@ -29,7 +29,7 @@ int save_player(player_t *player)
 	if (fd == -1) {
 		return (84);
 	}
-	if (write(fd, player, sizeof(player)) == -1) {
+	if (write(fd, player, sizeof(player_t)) == -1) {
 		return (84);
 	}
 	return (0);
